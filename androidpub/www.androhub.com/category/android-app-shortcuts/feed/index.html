@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android App Shortcuts &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-app-shortcuts/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Implementing Android App Shortcuts</title>
+		<link>http://www.androhub.com/implementing-android-app-shortcuts/</link>
+		<comments>http://www.androhub.com/implementing-android-app-shortcuts/#respond</comments>
+		<pubDate>Wed, 20 Dec 2017 11:59:30 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Advanced]]></category>
+		<category><![CDATA[Android App Shortcuts]]></category>
+		<category><![CDATA[android app shortcuts]]></category>
+		<category><![CDATA[android O]]></category>
+		<category><![CDATA[app shortcuts]]></category>
+		<category><![CDATA[disable shortcuts]]></category>
+		<category><![CDATA[dynamic shortcuts]]></category>
+		<category><![CDATA[enable shortcuts]]></category>
+		<category><![CDATA[pinned shortcuts]]></category>
+		<category><![CDATA[remove shortcuts]]></category>
+		<category><![CDATA[shortcut]]></category>
+		<category><![CDATA[static shortcuts]]></category>
+		<category><![CDATA[update shortcuts]]></category>
+
+		<guid isPermaLink="false">http://www.androhub.com/?p=1365</guid>
+		<description><![CDATA[<p>With the release of Android Nougat 7.1(API level 25) a new features is added i.e. App Shortcuts. App Shortcuts allow the user to access primary actions in your app straight from the launcher, taking the user deep into your application by long pressing on your app icon. Users can also pin these shortcuts to the home [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/implementing-android-app-shortcuts/">Implementing Android App Shortcuts</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>With the release of <span style="text-decoration: underline;"><strong>Android Nougat 7.1(API level 25)</strong></span> a new features is added i.e. <a href="https://developer.android.com/guide/topics/ui/shortcuts.html" target="_blank">App Shortcuts</a>. App Shortcuts allow the user to access primary actions in your app straight from the launcher, taking the user deep into your application by long pressing on your app icon. Users can also pin these shortcuts to the home screen for even quicker access to your app’s primary actions.</p>
+<p>You can publish the following types of shortcuts for your app:</p>
+<ul>
+<li><em><strong>Static shortcuts</strong></em> are defined in a resource file that is packaged into an APK. Therefore, you must wait until you update your entire app to change the details of these static shortcuts.</li>
+<li><em><strong>Dynamic shortcuts</strong></em> are published at runtime using the <a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html" target="_blank">ShortcutManager</a> API. During runtime, your app can publish, update, and remove its dynamic shortcuts.</li>
+<li><em><strong>Pinned shortcuts</strong></em> (<span style="text-decoration: underline;">Android 8.0 (API level 26))</span> are published at runtime and also use the <a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html" target="_blank">ShortcutManager</a> API. During runtime, your app can attempt to pin the shortcut, at which time the user receives a confirmation dialog asking their permission to pin the shortcut. The pinned shortcut appears in supported launchers only if the user accepts the pinning request.</li>
+</ul>
+<p><strong>Note: Users can also create pinned shortcuts themselves by copying your app&#8217;s static and dynamic shortcuts onto the launcher.</strong></p>
+<div id="attachment_1376" style="width: 586px" class="wp-caption aligncenter"><img class="size-large wp-image-1376" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/google_map_app_shortcut.jpg?resize=576%2C1024" alt="Google Map Shortcuts" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/google_map_app_shortcut.jpg?resize=576%2C1024 576w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/google_map_app_shortcut.jpg?resize=169%2C300 169w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/google_map_app_shortcut.jpg?resize=768%2C1365 768w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/google_map_app_shortcut.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">Google Map Shortcuts</p></div>
+<p>So today we are going to learn how to implement above mentioned shortcuts in our app and improve user interaction with our app.</p>
+<h2>VIDEO DEMO</h2>
+<p><iframe  id="_ytid_83423" width="602" height="339" src="https://www.youtube.com/embed/bb0xW05SyX0?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<h2 id="ui_controls">Static Shortcuts</h2>
+<p>Static shortcuts provides links to some actions within your app and these actions should remain consistent over the lifetime of your app&#8217;s current version. Some examples for whom you can add static shortcuts in your app:</p>
+<ol>
+<li>Viewing Message Inbox (Send/Received).</li>
+<li>Setting an Alarm.</li>
+<li>Open call logs (Missed/Received/Dialled).</li>
+</ol>
+<p>To create Static shortcuts follow the below steps:</p>
+<p><b>1</b>. Add the below <strong>meta-data</strong> to your <strong>Launcher</strong> activity in <strong>AndroidManifest.xml</strong>.</p><pre class="crayon-plain-tag">&lt;meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" /&gt;</pre><p>
+After adding your AndroidManifest will look like this:</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android_app_shortcuts_demo"&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"&gt;
+        &lt;activity android:name=".MainActivity"&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+            &lt;meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" /&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>2</b>. After adding meta-data you will be getting error for @xml/shortcuts. So for that create a new resource file:  <span style="text-decoration: underline;"><strong>res/xml/shortcuts.xml.</strong></span></p>
+<div id="attachment_1366" style="width: 612px" class="wp-caption aligncenter"><img class="size-large wp-image-1366" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/android_resource_directory.jpg?resize=602%2C376" alt="Create new Android Resource Directory" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/android_resource_directory.jpg?resize=1024%2C640 1024w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/android_resource_directory.jpg?resize=300%2C188 300w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/android_resource_directory.jpg?resize=768%2C480 768w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/android_resource_directory.jpg?w=1440 1440w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/android_resource_directory.jpg?w=1204 1204w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">Create new Android Resource Directory</p></div>
+<p>&nbsp;</p>
+<div id="attachment_1368" style="width: 612px" class="wp-caption aligncenter"><img class="size-large wp-image-1368" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/select_xml.jpg?resize=602%2C376" alt="Select XML from Dropdown" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/select_xml.jpg?resize=1024%2C640 1024w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/select_xml.jpg?resize=300%2C188 300w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/select_xml.jpg?resize=768%2C480 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/select_xml.jpg?w=1440 1440w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/select_xml.jpg?w=1204 1204w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">Select XML from Dropdown</p></div>
+<p>&nbsp;</p>
+<p>In this new resource file, add a <strong>&lt;shortcuts&gt;</strong> root element, which contains a list of <strong>&lt;shortcut&gt;</strong> elements. Each <strong>&lt;shortcut&gt;</strong> element, in turn, contains information about a static shortcut, including its icon, its description labels, and the intents that it launches within the app:</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;shortcuts xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"&gt;
+    &lt;shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_message"
+        android:shortcutDisabledMessage="@string/message_disabled_message"
+        android:shortcutId="message"
+        android:shortcutLongLabel="@string/message_shortcut_long_label"
+        android:shortcutShortLabel="@string/message_shortcut_short_label"
+        tools:targetApi="n_mr1"&gt;
+
+        &lt;!--  i have declared main activity also to maintain back stack --&gt;
+        &lt;intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.android_app_shortcuts_demo.MainActivity"
+            android:targetPackage="com.android_app_shortcuts_demo" /&gt;
+
+        &lt;!-- this activity will open when this shortcut clicked --&gt;
+        &lt;intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.android_app_shortcuts_demo.MessageActivity"
+            android:targetPackage="com.android_app_shortcuts_demo" /&gt;
+
+        &lt;!-- If your shortcut is associated with multiple intents, include them
+             here. The last intent in the list determines what the user sees when
+             they launch this shortcut. --&gt;
+        &lt;categories android:name="android.shortcut.conversation" /&gt;
+    &lt;/shortcut&gt;
+    &lt;!-- Specify more shortcuts here. --&gt;
+&lt;/shortcuts&gt;</pre><p>
+I have added two intent under one shortcut one after other to maintain navigation. <strong>The last intent declared in &lt;shortcut&gt; tag will open when clicked on shortcut.</strong></p>
+<div id="attachment_1374" style="width: 586px" class="wp-caption aligncenter"><img class="size-large wp-image-1374" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/static_shortcut.jpg?resize=576%2C1024" alt="Static Shortcut" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/static_shortcut.jpg?resize=576%2C1024 576w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/static_shortcut.jpg?resize=169%2C300 169w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/static_shortcut.jpg?resize=768%2C1365 768w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/static_shortcut.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">Static Shortcut</p></div>
+<p><strong>Check this link for <a href="https://commondatastorage.googleapis.com/androiddevelopers/shareables/design/app-shortcuts-design-guidelines.pdf" target="_blank">App Shortcuts design guidelines</a>.</strong></p>
+<h2 id="ui_controls">Dynamic Shortcuts</h2>
+<p>Dynamic shortcuts provides links to specific, context-sensitive actions within your app. These actions can change between uses of your app, and they can change even while your app is running.</p>
+<p>Some examples for whom you can add static shortcuts in your app:</p>
+<ol>
+<li>Calling a specific person.</li>
+<li>Navigating to specific location.</li>
+<li>Sending message to specific person, etc.</li>
+</ol>
+<p>To implement Dynamic shortcuts we have to use  <a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html" target="_blank">ShortcutManager</a> API. These API provide following methods:</p>
+<ul>
+<li><strong>Publish:</strong> Use <a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#setDynamicShortcuts(java.util.List&lt;android.content.pm.ShortcutInfo&gt;)" target="_blank"><strong>setDynamicShortcuts()</strong></a> to redefine the entire list of dynamic shortcuts, or use <a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#addDynamicShortcuts(java.util.List&lt;android.content.pm.ShortcutInfo&gt;)" target="_blank"><strong>addDynamicShortcuts()</strong></a> to append an existing list of dynamic shortcuts.</li>
+</ul>
+<pre class="crayon-plain-tag">//get Shortcut manager
+        ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);
+
+        //Add Compose Email Shortcut
+        ShortcutInfo composeEmail = new ShortcutInfo.Builder(this, "compose_email")//add unique id
+                .setShortLabel("Compose Email")//set short label
+                .setLongLabel("Compose email in single tap")//set long label
+                .setDisabledMessage("Compose email is disabled")//disabled message shown when shortcut is disabled
+                .setIcon(Icon.createWithResource(this, R.drawable.ic_email))//set icon
+                .setIntent(new Intent(Intent.ACTION_SENDTO,
+                        Uri.parse("mailto:surender@androhub.com")))//set intent : here i am opening Mail app to send email to an Email ID
+                .build();
+
+        //NOTE : You can add more shortcuts here according to your requirement
+
+        if (shortcutManager != null)
+            shortcutManager.setDynamicShortcuts(Arrays.asList(composeEmail));//finally add all the created shortcut</pre>
+<div id="attachment_1380" style="width: 586px" class="wp-caption aligncenter"><img class="wp-image-1380 size-large" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/app_shortcuts.jpg?resize=576%2C1024" alt="Static and Dynamic Shortcuts" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/app_shortcuts.jpg?resize=576%2C1024 576w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/app_shortcuts.jpg?resize=169%2C300 169w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/app_shortcuts.jpg?resize=768%2C1365 768w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/app_shortcuts.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">Static and Dynamic Shortcuts</p></div>
+<p>&nbsp;</p>
+<ul>
+<li><strong>Update</strong>: Use the <a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#updateShortcuts(java.util.List&lt;android.content.pm.ShortcutInfo&gt;)" target="_blank"><strong>updateShortcuts()</strong> </a>method to update single or list of dynamic shortcuts.</li>
+</ul>
+<pre class="crayon-plain-tag">//if shortcut id is compose_email update the shortcut
+                            ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);
+
+                            ShortcutInfo composeEmail = new ShortcutInfo.Builder(MainActivity.this, getShortcutId)//pass the same shortcut id
+                                    .setShortLabel("Compose Email")
+                                    .setLongLabel("Compose email in single tap")
+                                    .setIcon(Icon.createWithResource(MainActivity.this, R.drawable.ic_web))//i am only updating icon of the shortcut
+                                    .setIntent(new Intent(Intent.ACTION_SENDTO,
+                                            Uri.parse("mailto:surender@androhub.com")))
+                                    .build();
+
+                            if (shortcutManager != null) {
+                                //finally update shortcuts and pass the created shortcut
+                                shortcutManager.updateShortcuts(Arrays.asList(composeEmail));
+
+                                Toast.makeText(MainActivity.this, "Shortcut updated.", Toast.LENGTH_SHORT).show();
+
+                                //NOTE : You can update multiple shortcuts also
+                            }</pre>
+<div id="attachment_1372" style="width: 586px" class="wp-caption aligncenter"><img class="wp-image-1372 size-large" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/updated_shortcut.jpg?resize=576%2C1024" alt="Updated Dynamic Shortcut" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/updated_shortcut.jpg?resize=576%2C1024 576w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/updated_shortcut.jpg?resize=169%2C300 169w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/updated_shortcut.jpg?resize=768%2C1365 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/updated_shortcut.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">Updated Dynamic Shortcut</p></div>
+<p>&nbsp;</p>
+<ul>
+<li><strong>Remove</strong>: Remove a set of dynamic shortcuts using <a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#removeDynamicShortcuts(java.util.List&lt;java.lang.String&gt;)" target="_blank"><strong>removeDynamicShortcuts()</strong></a>, or remove all dynamic shortcuts using <strong><a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#removeAllDynamicShortcuts()" target="_blank">removeAllDynamicShortcuts().</a></strong></li>
+</ul>
+<pre class="crayon-plain-tag">ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);
+        if (shortcutManager != null) {
+
+            //NOTE : remove multiple or single shortcuts then uncomment the below line
+            //shortcutManager.removeDynamicShortcuts(Arrays.asList("compose_email","open_website"));//here you have to provide created shortcut IDs you want to remove
+
+            //NOTE : if you want to remove all shortcuts then use the below code
+            shortcutManager.removeAllDynamicShortcuts();
+
+            Toast.makeText(MainActivity.this, "Shortcut deleted.", Toast.LENGTH_SHORT).show();
+        }</pre>
+<ul>
+<li><strong>Disable</strong>: Disable a set of dynamic pinned shortcuts or single dynamic pinned shortcut using <strong><a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#disableShortcuts(java.util.List&lt;java.lang.String&gt;)" target="_blank">disableShortcuts().</a> </strong>To disable shortcuts we have to pass the ID of the shortcut.</li>
+</ul>
+<pre class="crayon-plain-tag">ShortcutManager shortcutManager =
+                getSystemService(ShortcutManager.class);
+        if (shortcutManager!=null) {
+            //you can disable created shortcuts by passing ID of shortcut you want to disable
+            shortcutManager.disableShortcuts(Arrays.asList("compose_email"));
+
+        }</pre>
+<div id="attachment_1377" style="width: 612px" class="wp-caption aligncenter"><img class="wp-image-1377 size-large" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/disabled_shortcut.jpg?resize=602%2C1004" alt="Disabled Dynamic Shortcut" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/disabled_shortcut.jpg?resize=614%2C1024 614w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/disabled_shortcut.jpg?resize=180%2C300 180w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/12/disabled_shortcut.jpg?w=768 768w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">Disabled Dynamic Shortcut</p></div>
+<p>&nbsp;</p>
+<div id="attachment_1370" style="width: 612px" class="wp-caption aligncenter"><img class="size-large wp-image-1370" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/click_event_on_disabled_shortcut.jpg?resize=602%2C1004" alt="Click event on Disabled Dynamic Shortcut" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/click_event_on_disabled_shortcut.jpg?resize=614%2C1024 614w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/click_event_on_disabled_shortcut.jpg?resize=180%2C300 180w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/click_event_on_disabled_shortcut.jpg?w=768 768w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">Click event on Disabled Dynamic Shortcut</p></div>
+<p>&nbsp;</p>
+<div id="attachment_1379" style="width: 612px" class="wp-caption aligncenter"><img class="size-large wp-image-1379" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/disabled_dyanmic_shortcut.jpg?resize=602%2C1004" alt="After disabling Dynamic Shortcut" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/disabled_dyanmic_shortcut.jpg?resize=614%2C1024 614w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/disabled_dyanmic_shortcut.jpg?resize=180%2C300 180w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/disabled_dyanmic_shortcut.jpg?w=768 768w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">After disabling Dynamic Shortcut (Disabled shortcut not showing in Shortcut List)</p></div>
+<ul>
+<li><strong>Enable</strong>: Enable a set of dynamic pinned shortcuts or single dynamic pinned shortcut using <strong><a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#enableShortcuts(java.util.List&lt;java.lang.String&gt;)" target="_blank">enableShortcuts().</a> </strong>To enable shortcuts we have to pass the ID of the shortcut.</li>
+</ul>
+<pre class="crayon-plain-tag">ShortcutManager shortcutManager =
+                getSystemService(ShortcutManager.class);
+        if (shortcutManager!=null) {
+            //you can enable created shortcuts by passing ID of shortcut you want to enable
+            shortcutManager.enableShortcuts(Arrays.asList("compose_email"));
+
+        }</pre>
+<div id="attachment_1373" style="width: 612px" class="wp-caption aligncenter"><img class="size-large wp-image-1373" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/drag_drop_shortcut.jpg?resize=602%2C1004" alt="Enabled Dynamic Shortcut" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/drag_drop_shortcut.jpg?resize=614%2C1024 614w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/drag_drop_shortcut.jpg?resize=180%2C300 180w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/drag_drop_shortcut.jpg?w=768 768w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">Enabled Dynamic Shortcut</p></div>
+<h2 id="ui_controls">Pinned Shortcuts</h2>
+<p>On <span style="text-decoration: underline;"><strong>Android 8.0 (API level 26)</strong></span> and higher, you can create pinned shortcuts. Unlike static and dynamic shortcuts, pinned shortcuts appear in supported launchers as separate icons.</p>
+<p>To pin a shortcut to a supported launcher using your app, follow the below steps:</p>
+<ol>
+<li>Use <a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#isRequestPinShortcutSupported()" target="_blank"><strong>isRequestPinShortcutSupported()</strong></a> to verify that the device&#8217;s default launcher supports in-app pinning of shortcuts or not.</li>
+<li>Create a <a href="https://developer.android.com/reference/android/content/pm/ShortcutInfo.html" target="_blank">ShortcutInfo</a> object in one of two ways, depending on whether the shortcut already exists:<strong>=&gt;</strong> If the shortcut already exists, create a <a href="https://developer.android.com/reference/android/content/pm/ShortcutInfo.html" target="_blank">ShortcutInfo</a> object that contains only the existing shortcut&#8217;s ID. The system finds and pins all other information related to the shortcut automatically.<br />
+<strong>=&gt;</strong> If you&#8217;re pinning a new shortcut, create a <a href="https://developer.android.com/reference/android/content/pm/ShortcutInfo.html" target="_blank">ShortcutInfo</a> object that contains an ID, an intent, and a short label for the new shortcut.</li>
+<li>Attempt to pin the shortcut to the device&#8217;s launcher by calling <a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#requestPinShortcut(android.content.pm.ShortcutInfo, android.content.IntentSender)" target="_blank"><strong>requestPinShortcut()</strong></a>. During this process, you can pass in a <a href="https://developer.android.com/reference/android/app/PendingIntent.html" target="_blank">PendingIntent</a> object, which notifies your app only when the shortcut is pinned successfully.</li>
+</ol>
+<p><strong>Note: If the user doesn&#8217;t allow the shortcut to be pinned to the launcher, your app doesn&#8217;t receive a callback.</strong></p>
+<p>You can also remove, update pinned shortcuts.</p>
+<div id="attachment_1375" style="width: 586px" class="wp-caption aligncenter"><img class="size-large wp-image-1375" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/pinned_shortcut_dialog.jpg?resize=576%2C1024" alt="Prompt to add Pinned Shortcut to Home Screen" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/pinned_shortcut_dialog.jpg?resize=576%2C1024 576w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/pinned_shortcut_dialog.jpg?resize=169%2C300 169w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/pinned_shortcut_dialog.jpg?resize=768%2C1365 768w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/12/pinned_shortcut_dialog.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">Prompt to add Pinned Shortcut to Home Screen</p></div>
+<p>&nbsp;</p>
+<div id="attachment_1369" style="width: 586px" class="wp-caption aligncenter"><img class="size-large wp-image-1369" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/pinned_shortcut.jpg?resize=576%2C1024" alt="Pinned Shortcut added to Home Screen" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/pinned_shortcut.jpg?resize=576%2C1024 576w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/pinned_shortcut.jpg?resize=169%2C300 169w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/pinned_shortcut.jpg?resize=768%2C1365 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/12/pinned_shortcut.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">Pinned Shortcut added to Home Screen</p></div>
+<p>&nbsp;</p><pre class="crayon-plain-tag">ShortcutManager mShortcutManager =
+                getSystemService(ShortcutManager.class);
+
+        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) {
+            //check if device supports Pin Shortcut or not
+            if (mShortcutManager != null &amp;&amp; mShortcutManager.isRequestPinShortcutSupported()) {
+                // Assumes there's already a shortcut with the ID "open_website".
+                // The shortcut must be enabled.
+                ShortcutInfo pinShortcutInfo =
+                        new ShortcutInfo.Builder(MainActivity.this, "open_website").build();
+
+                // Create the PendingIntent object only if your app needs to be notified
+                // that the user allowed the shortcut to be pinned. Note that, if the
+                // pinning operation fails, your app isn't notified. We assume here that the
+                // app has implemented a method called createShortcutResultIntent() that
+                // returns a broadcast intent.
+                Intent pinnedShortcutCallbackIntent =
+                        mShortcutManager.createShortcutResultIntent(pinShortcutInfo);
+
+                // Configure the intent so that your app's broadcast receiver gets
+                // the callback successfully.
+                PendingIntent successCallback = PendingIntent.getBroadcast(MainActivity.this, 0,
+                        pinnedShortcutCallbackIntent, 0);
+
+                //finally ask user to add the shortcut to home screen
+                mShortcutManager.requestPinShortcut(pinShortcutInfo,
+                        successCallback.getIntentSender());
+            }
+        }</pre><p>
+<h2>Things to know about App Shortcuts</h2>
+<ol>
+<li>Publish only <strong>four</strong> shortcuts including static and dynamic.</li>
+<li><strong>Short description</strong> length of a shortcut should be of <strong>10</strong> characters and <strong>Long description</strong> should be of <strong>25</strong> characters.</li>
+</ol>
+<h2 id="ui_controls">Full Source</h2>
+<p><b>1</b>. Open<em> string.xml</em> and add the below strings to it. We will use this strings in app.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;Android App Shortcuts Demo&lt;/string&gt;
+
+    &lt;string name="message_shortcut_short_label"&gt;Open Messages&lt;/string&gt;
+    &lt;string name="message_shortcut_long_label"&gt;See your all messages in one click&lt;/string&gt;
+    &lt;string name="message_disabled_message"&gt;Messages are disabled for now&lt;/string&gt;
+    &lt;string name="message_activity"&gt;Message Activity&lt;/string&gt;
+    &lt;string name="update_dynamic_shortcuts"&gt;Update Dynamic Shortcuts&lt;/string&gt;
+    &lt;string name="add_dynamic_shortcuts"&gt;Add Dynamic Shortcuts&lt;/string&gt;
+    &lt;string name="delete_dynamic_shortcuts"&gt;Delete Dynamic Shortcuts&lt;/string&gt;
+    &lt;string name="add_pinned_shortcuts"&gt;Add Pinned Shortcuts&lt;/string&gt;
+    &lt;string name="dynamic_shortcut"&gt;Dynamic Shortcut&lt;/string&gt;
+    &lt;string name="pinned_shortcut"&gt;Pinned Shortcut&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>2</b>. Open <em>MainActivity.java</em> and add the below code to it. This class contains all three types of Shortcuts.</p><pre class="crayon-plain-tag">package com.android_app_shortcuts_demo;
+
+import android.annotation.TargetApi;
+import android.app.PendingIntent;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.ShortcutInfo;
+import android.content.pm.ShortcutManager;
+import android.graphics.drawable.Icon;
+import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.Arrays;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void addDynamicShortcuts(View view) {
+        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+            addDynamicShortcuts();
+        }
+    }
+
+    //Method to add dynamic shortcuts
+    @TargetApi(Build.VERSION_CODES.N_MR1)
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void addDynamicShortcuts() {
+        //get Shortcut manager
+        ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);
+
+        //Add Compose Email Shortcut
+        ShortcutInfo composeEmail = new ShortcutInfo.Builder(this, "compose_email")//add unique id
+                .setShortLabel("Compose Email")//set short label
+                .setLongLabel("Compose email in single tap")//set long label
+                .setDisabledMessage("Compose email is disabled")//disabled message shown when shortcut is disabled
+                .setIcon(Icon.createWithResource(this, R.drawable.ic_email))//set icon
+                .setIntent(new Intent(Intent.ACTION_SENDTO,
+                        Uri.parse("mailto:surender@androhub.com")))//set intent : here i am opening Mail app to send email to an Email ID
+                .build();
+
+        ShortcutInfo openWebsite = new ShortcutInfo.Builder(this, "open_website")//add unique id
+                .setShortLabel("Open Website")//set short label
+                .setLongLabel("Click to see my blog")//set long label
+                .setDisabledMessage("You cannot access the link as it is disabled")//disabled message shown when shortcut is disabled
+                .setIcon(Icon.createWithResource(this, R.drawable.ic_web))//set icon
+                .setIntent(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://www.androhub.com")))//set intent : here i am opening browser app to open provided link
+                .build();
+
+        //NOTE : You can add more shortcuts here according to your requirement
+
+        if (shortcutManager != null)
+            shortcutManager.setDynamicShortcuts(Arrays.asList(composeEmail, openWebsite));//finally add all the created shortcut
+
+    }
+
+    /**
+     * method to update dynamic shortcuts
+     * @param view of button
+     * here in this method an alert dialog will be shown up and user have to enter shortcut id to update the shortcut if required
+     */
+    @TargetApi(Build.VERSION_CODES.N_MR1)
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void updateDynamicShortcuts(View view) {
+
+        //create alert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Enter Shortcut Id to update");//set dialog title
+
+        final EditText enterShortcutId = new EditText(this);//create edit text
+        builder.setView(enterShortcutId);//add edit text to alert dialog
+
+        //set positive button
+        builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                //get the entered shortcut id
+                String getShortcutId = enterShortcutId.getText().toString().trim();
+
+                //check shortcut id should not be empty
+                if (!getShortcutId.equals("")) {
+                    switch (getShortcutId) {
+                        case "compose_email":
+                            //if shortcut id is compose_email update the shortcut
+                            ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);
+
+                            ShortcutInfo composeEmail = new ShortcutInfo.Builder(MainActivity.this, getShortcutId)//pass the same shortcut id
+                                    .setShortLabel("Compose Email")
+                                    .setLongLabel("Compose email in single tap")
+                                    .setIcon(Icon.createWithResource(MainActivity.this, R.drawable.ic_web))//i am only updating icon of the shortcut
+                                    .setIntent(new Intent(Intent.ACTION_SENDTO,
+                                            Uri.parse("mailto:surender@androhub.com")))
+                                    .build();
+
+                            if (shortcutManager != null) {
+                                //finally update shortcuts and pass the created shortcut
+                                shortcutManager.updateShortcuts(Arrays.asList(composeEmail));
+
+                                Toast.makeText(MainActivity.this, "Shortcut updated.", Toast.LENGTH_SHORT).show();
+
+                                //NOTE : You can update multiple shortcuts also
+                            }
+
+                            break;
+
+                        case "open_website":
+                            //if shortcut id is open_website update the shortcut
+                            ShortcutManager shortcutManager1 = getSystemService(ShortcutManager.class);
+
+                            ShortcutInfo openWebsite = new ShortcutInfo.Builder(MainActivity.this, getShortcutId)
+                                    .setShortLabel("Open Website")
+                                    .setLongLabel("Click to see my blog")
+                                    .setIcon(Icon.createWithResource(MainActivity.this, R.drawable.ic_web))
+                                    .setIntent(new Intent(Intent.ACTION_VIEW,
+                                            Uri.parse("http://androhub.com")))//I am also changing link
+                                    .build();
+
+                            if (shortcutManager1 != null) {
+
+                                //finally update shortcuts and pass the created shortcut
+                                shortcutManager1.updateShortcuts(Arrays.asList(openWebsite));
+
+                                Toast.makeText(MainActivity.this, "Shortcut updated.", Toast.LENGTH_SHORT).show();
+
+                                //NOTE : You can update multiple shortcuts also
+                            }
+
+                            break;
+
+                        default:
+                            //if shortcut id doesn't match show the below toast
+                            Toast.makeText(MainActivity.this, "No Shortcut created with " + getShortcutId + " name.", Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        //finally show the alert dialog
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+    }
+
+    //method to delete/remove dynamic shortcuts
+    @TargetApi(Build.VERSION_CODES.N_MR1)
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void deleteDynamicShortcuts(View view) {
+        ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);
+        if (shortcutManager != null) {
+
+            //NOTE : remove multiple or single shortcuts then uncomment the below line
+            //shortcutManager.removeDynamicShortcuts(Arrays.asList("compose_email","open_website"));//here you have to provide created shortcut IDs you want to remove
+
+            //NOTE : if you want to remove all shortcuts then use the below code
+            shortcutManager.removeAllDynamicShortcuts();
+
+            Toast.makeText(MainActivity.this, "Shortcut deleted.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+    /**
+     * NOTE : Things to know about PINNED Shortcuts
+     * 1. PINNED SHORTCUTS only work in Android 8.0
+     * 2. To add Pinned Shortcuts you should be having at least one static and dynamic shortcuts created and enabled or you have to create a new one
+     * 3. Previously created static or dynamic shortcut ID will be required to create Pinned shortcuts
+     */
+    /**
+     * method to add PINNED SHORTCUTS for the above created shortcuts
+     * @param view of button
+     */
+    @TargetApi(Build.VERSION_CODES.N_MR1)
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void addPinnedShortcuts(View view) {
+        ShortcutManager mShortcutManager =
+                getSystemService(ShortcutManager.class);
+
+        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) {
+            //check if device supports Pin Shortcut or not
+            if (mShortcutManager != null &amp;&amp; mShortcutManager.isRequestPinShortcutSupported()) {
+                // Assumes there's already a shortcut with the ID "open_website".
+                // The shortcut must be enabled.
+                ShortcutInfo pinShortcutInfo =
+                        new ShortcutInfo.Builder(MainActivity.this, "open_website").build();
+
+                // Create the PendingIntent object only if your app needs to be notified
+                // that the user allowed the shortcut to be pinned. Note that, if the
+                // pinning operation fails, your app isn't notified. We assume here that the
+                // app has implemented a method called createShortcutResultIntent() that
+                // returns a broadcast intent.
+                Intent pinnedShortcutCallbackIntent =
+                        mShortcutManager.createShortcutResultIntent(pinShortcutInfo);
+
+                // Configure the intent so that your app's broadcast receiver gets
+                // the callback successfully.
+                PendingIntent successCallback = PendingIntent.getBroadcast(MainActivity.this, 0,
+                        pinnedShortcutCallbackIntent, 0);
+
+                //finally ask user to add the shortcut to home screen
+                mShortcutManager.requestPinShortcut(pinShortcutInfo,
+                        successCallback.getIntentSender());
+            }
+        }
+    }
+
+    /**
+     * method to disable created shortcuts
+     */
+    @TargetApi(Build.VERSION_CODES.N_MR1)
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void disableShortcuts(){
+        ShortcutManager shortcutManager =
+                getSystemService(ShortcutManager.class);
+        if (shortcutManager!=null) {
+            //you can disable created shortcuts by passing ID of shortcut you want to disable
+            shortcutManager.disableShortcuts(Arrays.asList("compose_email"));
+
+        }
+    }
+
+
+    /**
+     * method to enable created shortcuts
+     */
+    @TargetApi(Build.VERSION_CODES.N_MR1)
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void enableShortcuts(){
+        ShortcutManager shortcutManager =
+                getSystemService(ShortcutManager.class);
+        if (shortcutManager!=null) {
+            //you can enable created shortcuts by passing ID of shortcut you want to enable
+            shortcutManager.enableShortcuts(Arrays.asList("compose_email"));
+
+        }
+    }
+
+
+
+}</pre><p>
+<b>3</b>. Open <em>activity_main.xml</em> and add the below layout to it. This layout contains some button to add, update and remove shortcuts.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.android_app_shortcuts_demo.MainActivity"&gt;
+
+    &lt;TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dynamic_shortcut"
+        android:padding="10dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" /&gt;
+
+    &lt;Button
+        android:id="@+id/add_dynamic_shortcuts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"
+        android:textSize="15sp"
+        android:onClick="addDynamicShortcuts"
+        android:text="@string/add_dynamic_shortcuts" /&gt;
+
+    &lt;Button
+        android:id="@+id/update_dynamic_shortcuts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:onClick="updateDynamicShortcuts"
+        android:text="@string/update_dynamic_shortcuts" /&gt;
+
+    &lt;Button
+        android:id="@+id/delete_dynamic_shortcuts"
+        android:layout_width="match_parent"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="10dp"
+        android:onClick="deleteDynamicShortcuts"
+        android:text="@string/delete_dynamic_shortcuts" /&gt;
+
+    &lt;TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pinned_shortcut"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" /&gt;
+
+    &lt;Button
+        android:id="@+id/add_pinned_shortcuts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"
+        android:onClick="addPinnedShortcuts"
+        android:text="@string/add_pinned_shortcuts" /&gt;
+
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>4</b>. Open <em>AndroidManifest.xml</em> and add the below code to it.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android_app_shortcuts_demo"&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"&gt;
+        &lt;activity android:name=".MainActivity"&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+            &lt;meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" /&gt;
+        &lt;/activity&gt;
+
+
+        &lt;activity android:name=".MessageActivity"
+            android:label="@string/message_activity"
+            android:parentActivityName=".MainActivity"&gt;
+
+            &lt;!-- Parent activity meta-data to support 4.0 and lower --&gt;
+            &lt;meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" /&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>5</b>. Finally all done, now you can also implement App Shortcuts in your app.</p>
+<p class="graf graf--p graf-after--figure">Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" width="13" height="13" /></p>
+<p><strong><a href="http://androhub.com/downloads/AndroidAppShortcutsDemo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/implementing-android-app-shortcuts/">Implementing Android App Shortcuts</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/implementing-android-app-shortcuts/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1365</post-id>	</item>
+	</channel>
+</rss>

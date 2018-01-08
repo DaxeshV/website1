@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Notification Bar &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-notification-bar/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Notification Bar</title>
+		<link>http://www.androhub.com/android-notification-bar/</link>
+		<comments>http://www.androhub.com/android-notification-bar/#respond</comments>
+		<pubDate>Sat, 25 Jul 2015 05:19:17 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Notification Bar]]></category>
+		<category><![CDATA[multi line notification]]></category>
+		<category><![CDATA[notification]]></category>
+		<category><![CDATA[notification bar]]></category>
+		<category><![CDATA[notification manager]]></category>
+		<category><![CDATA[single line notification]]></category>
+		<category><![CDATA[status bar]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=533</guid>
+		<description><![CDATA[<p>A notification is a message you can display to the user outside of your application&#8217;s normal UI. When you tell the system to issue a notification, it first appears as an icon in the notification area. To see the details of the notification, the user opens the notification drawer. Both the notification area and the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-notification-bar/">Android Notification Bar</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>A <a href="http://developer.android.com/intl/ru/guide/topics/ui/notifiers/notifications.html" target="_blank"><b>notification</b> </a>is a message you can display to the user outside of your application&#8217;s normal UI. When you tell the system to issue a notification, it first appears as an icon in the notification area. To see the details of the notification, the user opens the notification drawer. Both the notification area and the notification drawer are system-controlled areas that the user can view at any time.</p>
+<div><b> </b>Notifications are used to alert users on some events that requires their attention. Notifications alert the users through various forms:</div>
+<div>
+<ul>
+<li>Display a status bar icon</li>
+<li>Flash the LED</li>
+<li>Vibrate</li>
+<li>Ringtones</li>
+</ul>
+<p>Status bar notifications indicates some ongoing background services such as downloading or playing music or displays an alert/information.To see the notification user needs to open the notification drawer. Notifications are handled by Notification Manger in Android. Notification Manager is a system service used to manage notifications.</p>
+<p>To create a status bar notification we need to use two classes, <a href="http://developer.android.com/intl/ru/reference/android/app/NotificationManager.html" target="_blank">NotificationManager</a>, Notification.</p>
+<p>The NotificationManager is a system Service used to manage Notification. Get a reference to it using the getSystemService() method. The syntax is given below &#8211;</p><pre class="crayon-plain-tag">NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);</pre><p>
+Using the Notification Manager you can trigger new notifications, modify existing ones, or cancel that are no longer required.</p>
+<h2>Create and Send Notifications</h2>
+<p>You have simple way to create a notification. Follow the following steps in your application to create a notification −</p>
+<h3>1 &#8211; Create Notification Builder</h3>
+<p>As a first step is to create a notification builder using <i>NotificationCompat.Builder.build()</i>. You will use Notification Builder to set various Notification properties like its small and large icons, title, priority etc.</p><pre class="crayon-plain-tag">NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+				this);</pre><p>
+<h3>2 &#8211; Setting Notification Properties</h3>
+<p>Once you have <b>Builder</b> object, you can set its Notification properties using Builder object as per your requirement. But this is mandatory to set at least following −</p>
+<ul>
+<li>A small icon, set by <b>setSmallIcon()</b></li>
+<li>A title, set by <b>setContentTitle()</b></li>
+<li>Detail text, set by <b>setContentText()</b></li>
+</ul>
+<pre class="crayon-plain-tag">mBuilder.setSmallIcon(R.drawable.app_icon_small);
+mBuilder.setContentTitle("New Message");
+mBuilder.setContentText("You've received new message from Androhub.");</pre>
+<h3>3 &#8211; Attach Actions</h3>
+<p>This is an optional part and required if you want to attach an action with the notification. An action allows users to go directly from the notification to an <b>Activity</b> in your application, where they can look at one or more events or do further work.</p>
+<p>The action is defined by a <a href="http://developer.android.com/intl/ru/reference/android/app/PendingIntent.html" target="_blank"><b>PendingIntent</b> </a>containing an <b>Intent</b> that starts an Activity in your application. To associate the PendingIntent with a gesture, call the appropriate method of<i>NotificationCompat.Builder</i>. For example, if you want to start Activity when the user clicks the notification text in the notification drawer, you add the PendingIntent by calling <b>setContentIntent()</b>.</p>
+<p>A PendingIntent object helps you to perform an action on your applications behalf, often at a later time, without caring of whether or not your application is running.</p>
+<p>We take help of <a href="http://developer.android.com/intl/ru/reference/android/support/v4/app/TaskStackBuilder.html" target="_blank">stack builder</a> object which will contain an artificial back stack for the started Activity. This ensures that navigating backward from the Activity leads out of your application to the Home screen.</p><pre class="crayon-plain-tag">Intent resultIntent = new Intent(MainActivity.this,
+				NotificationActivity.class);
+TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+stackBuilder.addParentStack(NotificationActivity.class);
+
+// Adds the Intent that starts the Activity to the top of the stack
+stackBuilder.addNextIntent(resultIntent);
+PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
+mBuilder.setContentIntent(resultPendingIntent);</pre><p>
+<h3>4 &#8211; Issue the notification</h3>
+<p>Finally, you pass the Notification object to the system by calling NotificationManager.notify() to send your notification. Make sure you call <b>NotificationCompat.Builder.build()</b> method on builder object before notifying it. This method combines all of the options that have been set and return a new <b>Notification</b> object.</p><pre class="crayon-plain-tag">NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+    
+// notificationID allows you to update the notification later on.
+mNotificationManager.notify(notificationID, mBuilder.build());</pre><p>
+<h2>The NotificationCompat.Builder Class</h2>
+<p>The <a href="http://developer.android.com/intl/ru/reference/android/support/v4/app/NotificationCompat.Builder.html" target="_blank">NotificationCompat.Builder</a> class allows easier control over all the flags, as well as help constructing the typical notification layouts. Following are few important and most frequently used methods available as a part of NotificationCompat.Builder class.</p>
+
+<table id="tablepress-29" class="tablepress tablepress-id-29">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Method</th><th class="column-2">Description</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">Notification build()</td><td class="column-2">Combine all of the options that have been set and return a new Notification object.</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">NotificationCompat.Builder setAutoCancel (boolean autoCancel)</td><td class="column-2">Setting this flag will make it so the notification is automatically canceled when the user clicks it in the panel.</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">NotificationCompat.Builder setContent (RemoteViews views)</td><td class="column-2">Supply a custom RemoteViews to use instead of the standard one.</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">NotificationCompat.Builder setContentInfo (CharSequence info)</td><td class="column-2">Set the large text at the right-hand side of the notification.</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">NotificationCompat.Builder setContentIntent (PendingIntent intent)</td><td class="column-2">Supply a PendingIntent to send when the notification is clicked.</td>
+</tr>
+<tr class="row-7 odd">
+	<td class="column-1">NotificationCompat.Builder setContentText (CharSequence text)</td><td class="column-2">Set the text (second row) of the notification, in a standard notification.</td>
+</tr>
+<tr class="row-8 even">
+	<td class="column-1">NotificationCompat.Builder setContentTitle (CharSequence title)</td><td class="column-2">Set the text (first row) of the notification, in a standard notification.</td>
+</tr>
+<tr class="row-9 odd">
+	<td class="column-1">NotificationCompat.Builder setDefaults (int defaults)</td><td class="column-2">Set the default notification options that will be used.</td>
+</tr>
+<tr class="row-10 even">
+	<td class="column-1">NotificationCompat.Builder setLargeIcon (Bitmap icon)</td><td class="column-2">Set the large icon that is shown in the ticker and notification.</td>
+</tr>
+<tr class="row-11 odd">
+	<td class="column-1">NotificationCompat.Builder setNumber (int number)</td><td class="column-2">Set the large number at the right-hand side of the notification.</td>
+</tr>
+<tr class="row-12 even">
+	<td class="column-1">NotificationCompat.Builder setOngoing (boolean ongoing)</td><td class="column-2">Set whether this is an ongoing notification.</td>
+</tr>
+<tr class="row-13 odd">
+	<td class="column-1">NotificationCompat.Builder setSmallIcon (int icon)</td><td class="column-2">Set the small icon to use in the notification layouts.</td>
+</tr>
+<tr class="row-14 even">
+	<td class="column-1">NotificationCompat.Builder setStyle (NotificationCompat.Style style)</td><td class="column-2">Add a rich notification style to be applied at build time.</td>
+</tr>
+<tr class="row-15 odd">
+	<td class="column-1">NotificationCompat.Builder setTicker (CharSequence tickerText)</td><td class="column-2">Set the text that is displayed in the status bar when the notification first arrives.</td>
+</tr>
+<tr class="row-16 even">
+	<td class="column-1">NotificationCompat.Builder setVibrate (long[] pattern)</td><td class="column-2">Set the vibration pattern to use.</td>
+</tr>
+<tr class="row-17 odd">
+	<td class="column-1">NotificationCompat.Builder setWhen (long when)</td><td class="column-2">Set the time that the event occurred. Notifications in the panel are sorted by this time.</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-29 from cache -->
+</div>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to create  Single Line Notification and Multi Line Notification in Notification Bar.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_85498" width="602" height="339" src="https://www.youtube.com/embed/IgYLUNFivPg?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. This are some strings that i am going to use in this tutorial.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="app_name"&gt;NotificationBar Demo&lt;/string&gt;
+    &lt;string name="hello_world"&gt;Hello world!&lt;/string&gt;
+    &lt;string name="action_settings"&gt;Settings&lt;/string&gt;
+    &lt;string name="single_line"&gt;Single Line Notification&lt;/string&gt;
+    &lt;string name="multi_line"&gt;Multi Line Notification&lt;/string&gt;
+    &lt;string name="start"&gt;Start Notification&lt;/string&gt;
+    &lt;string name="stop"&gt;Stop Notification&lt;/string&gt;
+    &lt;string name="update"&gt;Update Notification&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Open your <em>AndroidManifest.xml</em> and add the following permission Vibrate permission to make vibrate device when notification occurs .</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.notification_bar"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" /&gt;
+    &lt;!-- Permission required to vibrate --&gt;
+    &lt;uses-permission android:name="android.permission.VIBRATE" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name="com.notification_bar.MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+
+        &lt;!-- Notification activity with back navigate task to MainActivity --&gt;
+        &lt;activity
+            android:name=".NotificationActivity"
+            android:label="Details of Notification"
+            android:parentActivityName=".MainActivity" &gt;
+            &lt;meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" /&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>4</b>. Now create a xml layout naming <em>activity_main.xml </em>and add the following views. In this layout i had taken some buttons for both single and multi line notification separately.</p><pre class="crayon-plain-tag">&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" &gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp" &gt;
+
+        &lt;!-- Single Line Notification Views --&gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="@string/single_line"
+            android:textColor="#0587d9"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;Button
+            android:id="@+id/start_notificationone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start" /&gt;
+
+        &lt;Button
+            android:id="@+id/stop_notificationone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stop" /&gt;
+
+        &lt;Button
+            android:id="@+id/update_notificationone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/update" /&gt;
+
+        &lt;!-- Multi Line Notification Views --&gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="@string/multi_line"
+            android:textColor="#0587d9"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;Button
+            android:id="@+id/start_notificationtwo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start" /&gt;
+
+        &lt;Button
+            android:id="@+id/stop_notificationtwo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stop" /&gt;
+
+        &lt;Button
+            android:id="@+id/update_notificationtwo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/update" /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;</pre><p>
+<b>5</b>. After creating <em>activity_main.xml </em>create a new xml layout naming <em>notification_activity.xml </em>for pending intent to show notification data in new activity.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center" &gt;
+
+    &lt;TextView
+        android:id="@+id/show_notificationmessage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textColor="#000000"
+        android:textSize="20sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>6</b>. Now, for creating Multi line notification we have to add the inbox style of notification. For this NotificationCompat.InboxStyle help us to achieve this. In this i had added 6 lines  and finally add the inboxstyle to notification builder.</p><pre class="crayon-plain-tag">NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+
+		String[] events = new String[6];// No of lines to show
+
+		// Loop to add 6 items to array
+		for (int i = 0; i &lt; events.length; i++)
+			events[i] = new String("This is " + i + " line...");
+
+		// Sets a title for the Inbox style big view
+		inboxStyle.setBigContentTitle("Big Title Details:");
+		// Moves events into the big view
+		for (int i = 0; i &lt; events.length; i++) {
+			inboxStyle.addLine(events[i]);
+		}
+		mBuilder.setStyle(inboxStyle);</pre><p>
+<b>7</b>. Open your <em>MainActivity.java </em>and add the following code. I am using two different NotificationId for both Single and MultiLine notification. We will use this ids to start notification, update notification and stop notification. I am also setting a long[] pattern for vibration and also alarm sound for notification.</p>
+<p>When user clicks over notification a new activity will open and display  a message with current notificationId for this i had put intent values to next intent.</p><pre class="crayon-plain-tag">package com.notification_bar;
+
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.TaskStackBuilder;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity implements OnClickListener {
+	private static Button start, stop, update, start_two, stop_two, update_two;
+
+	private NotificationManager mNotificationManager;// Notification Manager
+
+	// Notification id for both Notifications
+	private final int notificationID_SingleLine = 111;
+	private final int notificationID_MultiLine = 222;
+	// No. of messages count for both type of notifications
+	private int numMessages_SingleLine = 0;
+	private int numMessages_MultiLine = 0;
+
+	private static Uri alarmSound;// Alarm sound uri
+
+	private final long[] pattern = { 100, 300, 300, 300 };// Vibrate pattern in
+															// long array
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		// Find all views id
+		start = (Button) findViewById(R.id.start_notificationone);
+		stop = (Button) findViewById(R.id.stop_notificationone);
+		update = (Button) findViewById(R.id.update_notificationone);
+		start_two = (Button) findViewById(R.id.start_notificationtwo);
+		stop_two = (Button) findViewById(R.id.stop_notificationtwo);
+		update_two = (Button) findViewById(R.id.update_notificationtwo);
+
+		// Implement click listeners
+		start.setOnClickListener(this);
+		stop.setOnClickListener(this);
+		update.setOnClickListener(this);
+		start_two.setOnClickListener(this);
+		stop_two.setOnClickListener(this);
+		update_two.setOnClickListener(this);
+
+		// Set by default alarm sound
+		alarmSound = RingtoneManager
+				.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+		// setting notification manager
+		mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+	}
+
+	// Call repersentative methods on buttons press
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.start_notificationone:
+			displayNotificationSingleLine();
+			break;
+
+		case R.id.stop_notificationone:
+			cancelNotificationSingleLine();
+			break;
+
+		case R.id.update_notificationone:
+			updateNotificationSingleLine();
+			break;
+
+		case R.id.start_notificationtwo:
+			displayNotificationMultiLine();
+			break;
+
+		case R.id.stop_notificationtwo:
+			cancelNotificationMultiLine();
+			break;
+
+		case R.id.update_notificationtwo:
+			updateNotificationMultiLine();
+			break;
+
+		}
+
+	}
+
+	/** Single Line Notifications Methods **/
+	protected void displayNotificationSingleLine() {
+		Log.i("Start", "notification");
+		/* Invoking the default notification service */
+		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+				MainActivity.this);// Setting builder
+		mBuilder.setContentTitle("New Message");// title
+		mBuilder.setContentText("You've received new message from Androhub.");// Message
+		mBuilder.setTicker("New Message Alert!");// Ticker
+		mBuilder.setSmallIcon(R.drawable.app_icon_small);// Small icon
+		/* Increase notification number every time a new notification arrives */
+		mBuilder.setNumber(++numMessages_SingleLine);
+
+		mBuilder.setSound(alarmSound);// set alarm sound
+		mBuilder.setVibrate(pattern);// set vibration
+		/* Creates an explicit intent for an Activity in your app */
+		Intent resultIntent = new Intent(MainActivity.this,
+				NotificationActivity.class);
+
+		resultIntent.putExtra("notificationId", notificationID_SingleLine);// put
+																			// notification
+																			// id
+																			// into
+																			// intent
+		resultIntent.putExtra("message", "http://androhub.com");//Your message to show in next activity
+
+		// Task builder to maintain task for pending intent
+		TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+		stackBuilder.addParentStack(NotificationActivity.class);
+		/* Adds the Intent that starts the Activity to the top of the stack */
+		stackBuilder.addNextIntent(resultIntent);
+
+		PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,
+				PendingIntent.FLAG_UPDATE_CURRENT);// Set flag to update current
+		mBuilder.setContentIntent(resultPendingIntent);// set content intent
+
+		/* notificationID allows you to update the notification later on. */
+		mNotificationManager
+				.notify(notificationID_SingleLine, mBuilder.build());
+	}
+
+	protected void cancelNotificationSingleLine() {
+		Log.i("Cancel", "notification");
+		mNotificationManager.cancel(notificationID_SingleLine);// Cancel the
+																// notification
+																// id
+																// notification
+																// if it is
+																// showing
+	}
+
+	protected void updateNotificationSingleLine() {
+		Log.i("Update", "notification");
+		/* Invoking the default notification service */
+		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+				this);
+		mBuilder.setContentTitle("Updated Message");
+		mBuilder.setContentText("You've got updated message from Androhub.");
+		mBuilder.setTicker("Updated Message Alert!");
+		mBuilder.setSmallIcon(R.drawable.app_icon_small);
+		mBuilder.setSound(alarmSound);
+		mBuilder.setVibrate(pattern);
+		/* Increase notification number every time a new notification arrives */
+		mBuilder.setNumber(++numMessages_SingleLine); /*
+													 * Creates an explicit
+													 * intent for an Activity in
+													 * your app
+													 */
+		Intent resultIntent = new Intent(this, NotificationActivity.class);
+		resultIntent.putExtra("notificationId", notificationID_SingleLine);
+		resultIntent.putExtra("message", "http://androhub.com");
+		TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+		stackBuilder.addParentStack(NotificationActivity.class);
+		/* Adds the Intent that starts the Activity to the top of the stack */
+		stackBuilder.addNextIntent(resultIntent);
+		PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,
+				PendingIntent.FLAG_UPDATE_CURRENT);
+		mBuilder.setContentIntent(resultPendingIntent);
+
+		/* Update the existing notification using same notification ID */
+		mNotificationManager
+				.notify(notificationID_SingleLine, mBuilder.build());
+	}
+
+	/** ---------------------------------------------------------------------- **/
+
+	/** Multi Line Notifications Methods **/
+	protected void displayNotificationMultiLine() {
+		Log.i("Start", "notification");
+		/* Invoking the default notification service */
+		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+				this);
+		mBuilder.setContentTitle("New Message");
+		mBuilder.setContentText("You've received new message from Androhub.");
+		mBuilder.setTicker("New Multi Message Alert!");
+		mBuilder.setSmallIcon(R.drawable.app_icon_small);
+
+		/* Increase notification number every time a new notification arrives */
+		mBuilder.setNumber(++numMessages_MultiLine);
+		mBuilder.setSound(alarmSound);
+		mBuilder.setVibrate(pattern);
+		/* Add Big View Specific Configuration */
+		NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+
+		String[] events = new String[6];// No of lines to show
+
+		// Loop to add 6 items to array
+		for (int i = 0; i &lt; events.length; i++)
+			events[i] = new String("This is " + i + " line...");
+
+		// Sets a title for the Inbox style big view
+		inboxStyle.setBigContentTitle("Big Title Details:");
+		// Moves events into the big view
+		for (int i = 0; i &lt; events.length; i++) {
+			inboxStyle.addLine(events[i]);
+		}
+		mBuilder.setStyle(inboxStyle);
+		/* Creates an explicit intent for an Activity in your app */
+		Intent resultIntent = new Intent(this, NotificationActivity.class);
+		resultIntent.putExtra("notificationId", notificationID_MultiLine);
+		resultIntent.putExtra("message", "http://androhub.com");
+		TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+		stackBuilder.addParentStack(NotificationActivity.class);
+		/* Adds the Intent that starts the Activity to the top of the stack */
+		stackBuilder.addNextIntent(resultIntent);
+		PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,
+				PendingIntent.FLAG_UPDATE_CURRENT);
+		mBuilder.setContentIntent(resultPendingIntent);
+		mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		/* notificationID allows you to update the notification later on. */
+		mNotificationManager.notify(notificationID_MultiLine, mBuilder.build());
+
+	}
+
+	protected void cancelNotificationMultiLine() {
+		Log.i("Cancel", "notification");
+		mNotificationManager.cancel(notificationID_MultiLine);
+	}
+
+	protected void updateNotificationMultiLine() {
+		Log.i("Start", "notification");
+		/* Invoking the default notification service */
+		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+				this);
+		mBuilder.setContentTitle("New Message");
+		mBuilder.setContentText("You've got updated message from Androhub.");
+		mBuilder.setTicker("New Multi Message Alert!");
+		mBuilder.setSmallIcon(R.drawable.app_icon_small);
+		/* Increase notification number every time a new notification arrives */
+		mBuilder.setNumber(++numMessages_MultiLine);
+		mBuilder.setSound(alarmSound);
+		mBuilder.setVibrate(pattern);
+		/* Add Big View Specific Configuration */
+		NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+		String[] events = new String[6];
+		// Loop to add 6 items to array
+		for (int i = 0; i &lt; events.length; i++)
+			events[i] = new String("This is update of " + i + " line...");
+		// Sets a title for the Inbox style big view
+		inboxStyle.setBigContentTitle("Big Title Details");
+		// Moves events into the big view
+		for (int i = 0; i &lt; events.length; i++) {
+			inboxStyle.addLine(events[i]);
+		}
+		mBuilder.setStyle(inboxStyle);
+		/* Creates an explicit intent for an Activity in your app */
+		Intent resultIntent = new Intent(this, NotificationActivity.class);
+		resultIntent.putExtra("notificationId", notificationID_MultiLine);
+		resultIntent.putExtra("message", "http://androhub.com");
+		TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+		stackBuilder.addParentStack(NotificationActivity.class);
+		/* Adds the Intent that starts the Activity to the top of the stack */
+		stackBuilder.addNextIntent(resultIntent);
+		PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,
+				PendingIntent.FLAG_UPDATE_CURRENT);
+		mBuilder.setContentIntent(resultPendingIntent);
+		mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		/* notificationID allows you to update the notification later on. */
+		mNotificationManager.notify(notificationID_MultiLine, mBuilder.build());
+
+	}
+	/** ---------------------------------------------------------------------- **/
+}</pre><p>
+<b>8</b>. Finally create a new activity naming <em>NotificationActivity.java </em>this activity open when user clicks over notification. In this activity i am getting notificationId and message and displaying it over textview.</p><pre class="crayon-plain-tag">package com.notification_bar;
+
+import android.app.NotificationManager;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.util.Linkify;
+import android.widget.TextView;
+
+public class NotificationActivity extends AppCompatActivity {
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.notification_activity);
+		String message = "";
+		int id = 0;
+
+		Bundle extras = getIntent().getExtras();// get intent data
+		if (extras == null) {
+			// If it is null then show error
+			message = "error";
+		} else {
+			// get id and message
+			id = extras.getInt("notificationId");
+			message = extras.getString("message");
+		}
+		TextView text = (TextView) findViewById(R.id.show_notificationmessage);
+
+		message = "Notification Id : " + id + "n Message : " + message;// Concat
+																		// id
+																		// and
+																		// message
+		text.setText(message);// set text
+		Linkify.addLinks(text, Linkify.ALL);// Linkify textview for phone
+											// numbers, url ,etc.
+		NotificationManager myNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+		// remove the notification with the specific id
+		myNotificationManager.cancel(id);
+
+	}
+}</pre><p>
+<b>9</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/NotificationBar_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-notification-bar/">Android Notification Bar</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-notification-bar/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">533</post-id>	</item>
+	</channel>
+</rss>

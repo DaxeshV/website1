@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Authentication &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-authentication/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Confirm Credential (Security Lock)</title>
+		<link>http://www.androhub.com/android-confirm-credential-security-lock/</link>
+		<comments>http://www.androhub.com/android-confirm-credential-security-lock/#respond</comments>
+		<pubDate>Thu, 05 Oct 2017 16:25:17 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Advanced]]></category>
+		<category><![CDATA[Android Authentication]]></category>
+		<category><![CDATA[confirm credential]]></category>
+		<category><![CDATA[intent]]></category>
+		<category><![CDATA[open security settings]]></category>
+		<category><![CDATA[pin lock]]></category>
+		<category><![CDATA[security lock]]></category>
+		<category><![CDATA[startactivityforresult]]></category>
+
+		<guid isPermaLink="false">http://www.androhub.com/?p=1314</guid>
+		<description><![CDATA[<p>Hi all today we are going to work on one more app security topic apart from FingerPrint Authentication. In many of apps you have seen the app is opening a screen where it ask you to enter the PIN or draw a Pattern which is by default security you have set to your device. Some the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-confirm-credential-security-lock/">Android Confirm Credential (Security Lock)</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Hi all today we are going to work on one more app security topic apart from <a href="http://www.androhub.com/android-fingerprint-authentication/" target="_blank">FingerPrint Authentication</a>. In many of apps you have seen the app is opening a screen where it ask you to enter the PIN or draw a Pattern which is by default security you have set to your device. Some the apps are <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.nbu.paisa.user" target="_blank">Tez</a>, <a href="https://play.google.com/store/apps/details?id=net.one97.paytm" target="_blank">Paytm</a>, etc.</p>
+<p><strong>NOTE : The Security Lock authentication only works for API Level 21+ (Lollipop+). </strong></p>
+<p>So today we are going to do the same and we will see how we can also implement the same kind of authentication which other apps are doing. The steps to implement the Security Level Authentication are following:</p>
+<p><strong>1</strong>. You will be needing a <em><a href="https://developer.android.com/reference/android/app/KeyguardManager.html" target="_blank">KeyguardManager</a></em> to implement this authentication:</p><pre class="crayon-plain-tag">KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);</pre><p>
+<strong>2</strong>. Create an <a href="http://www.androhub.com/android-intents/" target="_blank">Intent</a> like below:</p><pre class="crayon-plain-tag">Intent i = keyguardManager.createConfirmDeviceCredentialIntent(title, description);</pre><p>
+After creating Intent start the intent with <a href="http://www.androhub.com/android-startactivityforresult/" target="_blank"><em><strong>startActivityForResult()</strong></em></a> to check if the authentication is successful or not.</p><pre class="crayon-plain-tag">try {
+                //Start activity for result
+                startActivityForResult(i, LOCK_REQUEST_CODE);
+            } catch (Exception e) {
+                //If some exception occurs means Screen lock is not set up please set screen lock
+                
+}</pre><p>
+It will open the screen requesting user to enter the PIN or draw a Pattern which he has set for particular device.</p>
+<div id="attachment_1321" style="width: 586px" class="wp-caption aligncenter"><img class="wp-image-1321 size-large" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pattern.jpg?resize=576%2C1024" alt="Unlock via Pattern Screen" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pattern.jpg?resize=576%2C1024 576w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pattern.jpg?resize=169%2C300 169w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pattern.jpg?resize=768%2C1365 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pattern.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">Unlock via Pattern Screen</p></div>
+<p><strong>3</strong>. Some of the devices have not enabled Security Lock for their device. So for those devices you will get exception and in that case you need to open the <strong>Security Settings</strong> of the device with an intent:</p><pre class="crayon-plain-tag">//Open Security screen directly to enable patter lock
+                Intent intent = new Intent(Settings.ACTION_SECURITY_SETTINGS);
+                try {
+
+                    //Start activity for result
+                    startActivityForResult(intent, SECURITY_SETTING_REQUEST_CODE);
+                } catch (Exception ex) {
+
+                    //If app is unable to find any Security settings then user has to set screen lock manually
+                    textView.setText(getResources().getString(R.string.setting_label));
+                }</pre><p>
+<strong>4. </strong>Alternate way to check if the device is Security Lock enabled or not is given below :</p><pre class="crayon-plain-tag">private boolean isDeviceSecure() {
+        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+
+        //this method only work whose api level is greater than or equal to Jelly_Bean (16)
+        return Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.JELLY_BEAN &amp;&amp; keyguardManager.isKeyguardSecure();
+
+        //You can also use keyguardManager.isDeviceSecure(); but it requires API Level 23
+
+    }</pre><p>
+<strong>The above method only works for API Level 16+ (Jelly Bean+)</strong>.</p>
+<h2>VIDEO DEMO</h2>
+<p><iframe  id="_ytid_20455" width="602" height="339" src="https://www.youtube.com/embed/CqhpNxI8qYw?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. These are some strings that we are going to use in our project.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;Security Lock Demo&lt;/string&gt;
+    &lt;string name="unlock"&gt;Unlock&lt;/string&gt;
+    &lt;string name="confirm_pattern"&gt;Confirm your screen lock PIN,Pattern or Password&lt;/string&gt;
+    &lt;string name="setting_label"&gt;&lt;![CDATA[Please set the screen lock Manually by navigating to : Settings&gt;Security.]]&gt;&lt;/string&gt;
+    &lt;string name="unlock_success"&gt;App is Unlocked successfully.&lt;/string&gt;
+    &lt;string name="unlock_failed"&gt;Failed to Unlock the app.&lt;/string&gt;
+    &lt;string name="device_is_secure"&gt;Device is now secure.&lt;/string&gt;
+    &lt;string name="security_device_cancelled"&gt;Device is not secure or user cancel the request.&lt;/string&gt;
+    &lt;string name="authenticate_again"&gt;Authenticate Again&lt;/string&gt;
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Now go to <em>activity_main.xml</em> and add the below code to it.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.security_lock_demo.MainActivity"&gt;
+
+
+    &lt;TextView
+        android:id="@+id/texview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" /&gt;
+
+    &lt;Button
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorPrimary"
+        android:onClick="authenticateAgain"
+        android:text="@string/authenticate_again"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" /&gt;
+&lt;/LinearLayout&gt;</pre><p>
+<b>4</b>. After adding the<em> activity_main.xml</em> layout come to <em>MainActivity.java</em> and put the below code to it. This code contains all step by step information which we discussed above.</p><pre class="crayon-plain-tag">package com.security_lock_demo;
+
+import android.app.KeyguardManager;
+import android.content.Intent;
+import android.os.Build;
+import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    private static final int LOCK_REQUEST_CODE = 221;
+    private static final int SECURITY_SETTING_REQUEST_CODE = 233;
+
+    private TextView textView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        textView = (TextView) findViewById(R.id.texview);
+        authenticateApp();
+    }
+
+    //method to authenticate app
+    private void authenticateApp() {
+        //Get the instance of KeyGuardManager
+        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+
+        //Check if the device version is greater than or equal to Lollipop(21)
+        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {
+            //Create an intent to open device screen lock screen to authenticate
+            //Pass the Screen Lock screen Title and Description
+            Intent i = keyguardManager.createConfirmDeviceCredentialIntent(getResources().getString(R.string.unlock), getResources().getString(R.string.confirm_pattern));
+            try {
+                //Start activity for result
+                startActivityForResult(i, LOCK_REQUEST_CODE);
+            } catch (Exception e) {
+
+                //If some exception occurs means Screen lock is not set up please set screen lock
+                //Open Security screen directly to enable patter lock
+                Intent intent = new Intent(Settings.ACTION_SECURITY_SETTINGS);
+                try {
+
+                    //Start activity for result
+                    startActivityForResult(intent, SECURITY_SETTING_REQUEST_CODE);
+                } catch (Exception ex) {
+
+                    //If app is unable to find any Security settings then user has to set screen lock manually
+                    textView.setText(getResources().getString(R.string.setting_label));
+                }
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case LOCK_REQUEST_CODE:
+                if (resultCode == RESULT_OK) {
+                    //If screen lock authentication is success update text
+                    textView.setText(getResources().getString(R.string.unlock_success));
+                } else {
+                    //If screen lock authentication is failed update text
+                    textView.setText(getResources().getString(R.string.unlock_failed));
+                }
+                break;
+            case SECURITY_SETTING_REQUEST_CODE:
+                //When user is enabled Security settings then we don't get any kind of RESULT_OK
+                //So we need to check whether device has enabled screen lock or not
+                if (isDeviceSecure()) {
+                    //If screen lock enabled show toast and start intent to authenticate user
+                    Toast.makeText(this, getResources().getString(R.string.device_is_secure), Toast.LENGTH_SHORT).show();
+                    authenticateApp();
+                } else {
+                    //If screen lock is not enabled just update text
+                    textView.setText(getResources().getString(R.string.security_device_cancelled));
+                }
+
+                break;
+        }
+    }
+
+    /**
+     * method to return whether device has screen lock enabled or not
+     **/
+    private boolean isDeviceSecure() {
+        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+
+        //this method only work whose api level is greater than or equal to Jelly_Bean (16)
+        return Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.JELLY_BEAN &amp;&amp; keyguardManager.isKeyguardSecure();
+
+        //You can also use keyguardManager.isDeviceSecure(); but it requires API Level 23
+
+    }
+
+    //On Click of button do authentication again
+    public void authenticateAgain(View view) {
+        authenticateApp();
+    }
+}</pre><p>
+<div id="attachment_1322" style="width: 586px" class="wp-caption aligncenter"><img class="size-large wp-image-1322" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pin.jpg?resize=576%2C1024" alt="Unlock via PIN Screen" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pin.jpg?resize=576%2C1024 576w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pin.jpg?resize=169%2C300 169w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pin.jpg?resize=768%2C1365 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pin.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">Unlock via PIN Screen</p></div>
+<div id="attachment_1320" style="width: 586px" class="wp-caption aligncenter"><img class="size-large wp-image-1320" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_success.jpg?resize=576%2C1024" alt="PIN/Pattern is Authenticated Successfully" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_success.jpg?resize=576%2C1024 576w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_success.jpg?resize=169%2C300 169w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_success.jpg?resize=768%2C1365 768w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_success.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">PIN/Pattern is Authenticated Successfully</p></div>
+<p>&nbsp;</p>
+<p><b>5</b>. Finally all done, now you can also make your app secure with the help of Confirm Credential/Security Lock.</p>
+<h2>USAGE</h2>
+<p><strong>You can use the above code to authenticate the users while making Payment in your app or while accessing some critical information from app.</strong></p>
+<p class="graf graf--p graf-after--figure">Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" width="13" height="13" /></p>
+<p><strong><a href="http://androhub.com/downloads/SecurityLockDemo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-confirm-credential-security-lock/">Android Confirm Credential (Security Lock)</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-confirm-credential-security-lock/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1314</post-id>	</item>
+	</channel>
+</rss>

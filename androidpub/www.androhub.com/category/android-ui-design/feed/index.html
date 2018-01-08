@@ -1,0 +1,3816 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android UI Design &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-ui-design/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Bottom Navigation View in Android</title>
+		<link>http://www.androhub.com/bottom-navigation-view-android/</link>
+		<comments>http://www.androhub.com/bottom-navigation-view-android/#respond</comments>
+		<pubDate>Sat, 14 Jan 2017 14:12:21 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Material Design]]></category>
+		<category><![CDATA[Android UI Design]]></category>
+		<category><![CDATA[bottom bar]]></category>
+		<category><![CDATA[bottom navigation view]]></category>
+		<category><![CDATA[design support library]]></category>
+		<category><![CDATA[Navigation View]]></category>
+
+		<guid isPermaLink="false">http://www.androhub.com/?p=1125</guid>
+		<description><![CDATA[<p>Its been a while i have not written any article. Today we are going to learn new design widget in Android naming Bottom Navigation View which has been added to version 25 of the Design Support Library. The Bottom Navigation View has been in the material design guidelines for some time, but it hasn’t been easy [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/bottom-navigation-view-android/">Bottom Navigation View in Android</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Its been a while i have not written any article. Today we are going to learn new design widget in Android naming <a href="https://developer.android.com/reference/android/support/design/widget/BottomNavigationView.html" target="_blank">Bottom Navigation View</a> which has been added to version 25 of the Design Support Library.</p>
+<p>The Bottom Navigation View has been in the <a class="markup--anchor markup--p-anchor" href="https://material.google.com/components/bottom-navigation.html" target="_blank" rel="nofollow" data-href="https://material.google.com/components/bottom-navigation.html">material design guidelines</a> for some time, but it hasn’t been easy for us to implement it into our apps. Some applications have built their own solutions, whilst others have relied on third-party open-source libraries to get the job done. Now the design support library is seeing the addition of this bottom navigation bar, let’s take a dive into how we can use it!</p>
+<h3>Example</h3>
+<p>In this tutorial, we are going to learn how to implement 3 types Bottom Navigation View : Default, Custom and Bottom Navigation with more than 3 Menus.</p>
+<p>Types of Bottom Navigation View that we are going to learn:</p>
+<p>&nbsp;</p>
+<div id="attachment_1128" style="width: 612px" class="wp-caption aligncenter"><img class="wp-image-1128 size-large" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/01/default_bottom_navigation_image.jpg?resize=602%2C91" alt="Default Bottom Navigation View" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/01/default_bottom_navigation_image.jpg?resize=1024%2C155 1024w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/01/default_bottom_navigation_image.jpg?resize=300%2C46 300w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/01/default_bottom_navigation_image.jpg?resize=768%2C117 768w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/01/default_bottom_navigation_image.jpg?w=1080 1080w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">Default Bottom Navigation View</p></div>
+<p>&nbsp;</p>
+<div id="attachment_1127" style="width: 612px" class="wp-caption aligncenter"><img class="wp-image-1127 size-large" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/01/custom_bottom_navigation_image.jpg?resize=602%2C91" alt="Custom Bottom Navigation View" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/01/custom_bottom_navigation_image.jpg?resize=1024%2C155 1024w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/01/custom_bottom_navigation_image.jpg?resize=300%2C46 300w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/01/custom_bottom_navigation_image.jpg?resize=768%2C117 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/01/custom_bottom_navigation_image.jpg?w=1080 1080w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">Custom Bottom Navigation View</p></div>
+<p>&nbsp;</p>
+<div id="attachment_1126" style="width: 612px" class="wp-caption aligncenter"><img class="wp-image-1126 size-large" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/01/more_menu_bottom_navigation_image.jpg?resize=602%2C93" alt="Bottom Navigation View with 3+ Menu Items" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/01/more_menu_bottom_navigation_image.jpg?resize=1024%2C159 1024w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/01/more_menu_bottom_navigation_image.jpg?resize=300%2C47 300w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/01/more_menu_bottom_navigation_image.jpg?resize=768%2C119 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/01/more_menu_bottom_navigation_image.jpg?w=1080 1080w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">Bottom Navigation View with 3+ Menu Items</p></div>
+<p>&nbsp;</p>
+<h2>VIDEO DEMO</h2>
+<p><iframe  id="_ytid_93226" width="602" height="339" src="https://www.youtube.com/embed/L3_RxqRc5us?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New ⇒ New Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>build.gradle </strong>and include this libraries show below:</p><pre class="crayon-plain-tag">/**  Library Version should be 25 or 25+   **/
+    compile 'com.android.support:design:25.1.0'</pre><p>
+<b>3</b>. Once you have synced your project with the Design support library. Now create a new layout naming <em>bottom_navigation_view_activity.xml</em> and we simply need to add the Bottom Navigation View widget to our desired layout file. Remember that this should be aligned with the bottom of the screen with all content displaying above it.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"&gt;
+
+    &lt;!--  Frame Container for Fragment  --&gt;
+    &lt;FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/default_bottom_navigation" /&gt;
+
+
+    &lt;!--  All 3 Bottom Navigation Views   --&gt;
+    &lt;android.support.design.widget.BottomNavigationView
+        android:id="@+id/default_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:menu="@menu/bottom_navigation_main" /&gt;
+
+    &lt;android.support.design.widget.BottomNavigationView
+        android:id="@+id/custom_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        app:itemBackground="@android:color/white"
+        app:itemIconTint="@drawable/custom_navigation_selector"
+        app:itemTextColor="@drawable/custom_navigation_selector"
+        app:menu="@menu/bottom_navigation_main" /&gt;
+
+    &lt;android.support.design.widget.BottomNavigationView
+        android:id="@+id/more_menu_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:menu="@menu/more_bottom_navigation_main" /&gt;
+&lt;/RelativeLayout&gt;</pre><p>
+You’ll notice that the widget has a couple of attributes set on it. We can use these to set menu items we wish to display and the colours to be used throughout the Bottom Navigation View:</p>
+<ul class="postList">
+<li id="e35f" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">app:itemBackground</strong> — The background color to be used for the bottom navigation menu</li>
+<li id="697e" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">app:itemIconTint</strong> — The tint to be used for the icons in the bottom navigation menu</li>
+<li id="dc3a" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">app:itemTextColor</strong> — The color to be used for the text in the bottom navigation menu</li>
+<li id="99c6" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">app:menu </strong>— The menu resource to be used to display items in the bottom navigation menu</li>
+</ul>
+<p id="b596" class="graf graf--p graf-after--li">We can also set these values programatically by using the following methods on our BottomNavigationView instance:</p>
+<ul class="postList">
+<li id="5bb5" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">inflateMenu(int menuResource)</strong> — Inflate a menu for the bottom navigation view using a menu resource identifier.</li>
+<li id="f3fb" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">setItemBackgroundResource(int backgroundResource)</strong> — The background to be used for the menu items.</li>
+<li id="bda4" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">setItemTextColor(ColorStateList colorStateList)</strong> — A ColorStateList used to color the text used for the menu items</li>
+<li id="7be1" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">setItemIconTintList(ColorStateList colorStateList)</strong> — A ColorStateList used to tint the icons used for the menu items</li>
+</ul>
+<p><b>4</b>. So we referenced a menu in the previous section, so create a menu under menu directory naming <em>bottom_navigation_menu.xml</em> and <em>more_bottom_navigation_menu.xml </em>and add the menu items according to your requirement.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"&gt;
+    &lt;item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/home"
+        app:showAsAction="ifRoom" /&gt;
+    &lt;item
+        android:id="@+id/action_message"
+        android:enabled="true"
+        android:icon="@drawable/ic_chat_black_24dp"
+        android:title="@string/message"
+        app:showAsAction="ifRoom" /&gt;
+    &lt;item
+        android:id="@+id/action_notification"
+        android:enabled="true"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/notification"
+        app:showAsAction="ifRoom" /&gt;
+
+&lt;/menu&gt;</pre><p>
+</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"&gt;
+    &lt;item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/home"
+        app:showAsAction="ifRoom" /&gt;
+    &lt;item
+        android:id="@+id/action_message"
+        android:enabled="true"
+        android:icon="@drawable/ic_chat_black_24dp"
+        android:title="@string/message"
+        app:showAsAction="ifRoom" /&gt;
+    &lt;item
+        android:id="@+id/action_notification"
+        android:enabled="true"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/notification"
+        app:showAsAction="ifRoom" /&gt;
+    &lt;item
+        android:id="@+id/action_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="@string/profile"
+        app:showAsAction="ifRoom" /&gt;
+&lt;/menu&gt;</pre><p>
+It’s important to note that the maximum number of items we can display is 5. This may change at any point, so it’s important to check this by using the <strong class="markup--strong markup--p-strong">getMaxItem()</strong> method provided by the BottomNavigationView class rather than hard-coding the value yourself.</p>
+<p><b>5</b>. For custom Navigation View we need to create a selector file under drawable directory naming <em>custom_navigation_selector.xml. </em>This selector file is going to be used in your point 3 layout file.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;selector xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;item android:color="@android:color/black" android:state_checked="false" /&gt;
+    &lt;item android:color="@color/colorPrimaryDark" android:state_checked="true" /&gt;
+&lt;/selector&gt;</pre><p>
+<strong>6</strong>. Now to handle the click event over Bottom Navigation Bar you need <strong class="markup--strong markup--p-strong">setOnNavigationItemSelectedListener()</strong> method to set a listener for menu.</p><pre class="crayon-plain-tag">defaultBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+              switch (item.getItemId()) {
+            case R.id.action_home:
+               
+                break;
+            case R.id.action_message:
+               
+                break;
+            case R.id.action_notification:
+               
+                break;
+            case R.id.action_profile:
+            
+                break;
+
+        }
+        return true;
+            }
+        });</pre><p>
+<b>7</b>. Now create <em>BottomNavigationViewActivity.java</em> class and add the below code to it. This class contains the implementation of Bottom Navigation View.</p><pre class="crayon-plain-tag">package com.bottomnavigationview_demo;
+
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
+import android.view.View;
+
+/**
+ * Created by sonu on 14/01/17.
+ */
+
+public class BottomNavigationViewActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+    public static final String NAVIGATION_TYPE = "navigation_type";
+    private BottomNavigationView defaultBottomNavigationView, customBottomNavigationView, moreMenuNavigationView;
+    private BottomNavigationType bottomNavigationType;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.bottom_navigation_view_activity);
+
+        //Get the Type of Navigation Via Intent
+        bottomNavigationType = (BottomNavigationType) getIntent().getSerializableExtra(NAVIGATION_TYPE);
+
+        //Find IDs for all Navigation Views
+        defaultBottomNavigationView = (BottomNavigationView) findViewById(R.id.default_bottom_navigation);
+        customBottomNavigationView = (BottomNavigationView) findViewById(R.id.custom_bottom_navigation);
+        moreMenuNavigationView = (BottomNavigationView) findViewById(R.id.more_menu_bottom_navigation);
+
+        setNavigation();
+        setListeners();
+
+    }
+
+    //Create a method to implement listeners over all Navigation Views
+    private void setListeners() {
+        defaultBottomNavigationView.setOnNavigationItemSelectedListener(this);
+        customBottomNavigationView.setOnNavigationItemSelectedListener(this);
+        moreMenuNavigationView.setOnNavigationItemSelectedListener(this);
+    }
+
+
+    //Show hide navigation views on basis of Navigation Type
+    private void setNavigation() {
+        switch (bottomNavigationType) {
+            case DEFAULT:
+                defaultBottomNavigationView.setVisibility(View.VISIBLE);
+                customBottomNavigationView.setVisibility(View.GONE);
+                moreMenuNavigationView.setVisibility(View.GONE);
+
+                //By Default Set Home Fragment
+                replaceDummyFragment(defaultBottomNavigationView.getMenu().findItem(R.id.action_home));
+                break;
+            case CUSTOM:
+                defaultBottomNavigationView.setVisibility(View.GONE);
+                customBottomNavigationView.setVisibility(View.VISIBLE);
+                moreMenuNavigationView.setVisibility(View.GONE);
+
+                //By Default Set Home Fragment
+                replaceDummyFragment(customBottomNavigationView.getMenu().findItem(R.id.action_home));
+                break;
+            case MORE_MENU:
+                defaultBottomNavigationView.setVisibility(View.GONE);
+                customBottomNavigationView.setVisibility(View.GONE);
+                moreMenuNavigationView.setVisibility(View.VISIBLE);
+
+                //By Default Set Home Fragment
+                replaceDummyFragment(moreMenuNavigationView.getMenu().findItem(R.id.action_home));
+                break;
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        //If item is Checked make it unchecked
+        if (item.isChecked())
+            item.setChecked(false);
+        switch (item.getItemId()) {
+            case R.id.action_home:
+                //Check the Item
+                item.setChecked(true);
+                replaceDummyFragment(item);
+                break;
+            case R.id.action_message:
+                //Check the Item
+                item.setChecked(true);
+                replaceDummyFragment(item);
+                break;
+            case R.id.action_notification:
+                //Check the Item
+                item.setChecked(true);
+                replaceDummyFragment(item);
+                break;
+            case R.id.action_profile:
+                //Check the Item
+                item.setChecked(true);
+                replaceDummyFragment(item);
+                break;
+
+        }
+        return true;
+    }
+
+    //Replace Dummy Fragment and Pass the Fragment title via Fragment
+    private void replaceDummyFragment(@NonNull MenuItem item) {
+        Bundle b = new Bundle();
+        b.putString(DummyFragment.FRAGMENT_TITLE, item.getTitle().toString());
+        Fragment dummyFragment = new DummyFragment();
+        dummyFragment.setArguments(b);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, dummyFragment).commit();
+    }
+}</pre><p>
+<b>8</b>. Now you are all set up to create a Bottom Navigation Bar for your Android app.</p>
+<p>Thanks. <img src="https://s.w.org/images/core/emoji/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><a href="http://androhub.com/downloads/BottomNavigationView_Demo.zip" target="_blank"><b>Download Source Code – &gt;</b></a></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/bottom-navigation-view-android/">Bottom Navigation View in Android</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/bottom-navigation-view-android/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1125</post-id>	</item>
+		<item>
+		<title>Lollipop Activity Transitions</title>
+		<link>http://www.androhub.com/lollipop-activity-transitions/</link>
+		<comments>http://www.androhub.com/lollipop-activity-transitions/#comments</comments>
+		<pubDate>Sat, 06 Aug 2016 14:56:33 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Material Design]]></category>
+		<category><![CDATA[Android RecyclerView]]></category>
+		<category><![CDATA[Android UI Design]]></category>
+		<category><![CDATA[activity transitions]]></category>
+		<category><![CDATA[hash code]]></category>
+		<category><![CDATA[lollipop activity transitions]]></category>
+		<category><![CDATA[Material Design]]></category>
+		<category><![CDATA[recycler view]]></category>
+		<category><![CDATA[sharing activity transitions]]></category>
+		<category><![CDATA[transition name]]></category>
+
+		<guid isPermaLink="false">http://www.androhub.com/?p=1073</guid>
+		<description><![CDATA[<p>One of the most interesting aspects of the Material Design specifications is the visual continuity between activities. With just a few lines of code, the new Lollipop APIs allow you to meaningfully transition between two activities. This breaks the classic activity boundaries of the previous Android versions and allows the user to understand how elements go from [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/lollipop-activity-transitions/">Lollipop Activity Transitions</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>One of the most interesting aspects of the Material Design specifications is the visual continuity between activities. With just a few lines of code, the new Lollipop APIs allow you to meaningfully transition between two activities. This breaks the classic activity boundaries of the previous Android versions and allows the user to understand how elements go from one point to another.</p>
+<h3>Example</h3>
+<p>In this tutorial, we are going to learn how to achieve this result with Google’s Material Design guidelines.</p>
+<h2>VIDEO DEMO</h2>
+<p><iframe  id="_ytid_63498" width="602" height="339" src="https://www.youtube.com/embed/RjiK45wC924?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New ⇒ New Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>build.gradle </strong>and include this libraries show below:</p><pre class="crayon-plain-tag">compile 'com.android.support:recyclerview-v7:24.1.1'</pre><p>
+<b>3</b>. Create <em>activity_main.xml</em> and add the <a href="http://www.androhub.com/android-recyclerview/" target="_blank">RecylerView</a> to it..</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"&gt;
+
+    &lt;android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" /&gt;
+
+&lt;/RelativeLayout&gt;</pre><p>
+<b>4</b>. Create POJO class naming <em>User.java</em> for RecyelerView rows.</p><pre class="crayon-plain-tag">package com.activitytransitions_demo;
+
+/**
+ * Created by sonu on 06/08/16.
+ */
+
+public class User {
+    static final User[] USER = new User[]{
+            new User("Surender", "#F44336", "+91 9846342617", "surender@example.com", "Bangalore"),
+            new User("Vikas", "#9C27B0", "+91 9876093891", "vikas@example.com", "Chennai"),
+            new User("Yug", "#2196F3", "+91 8765438901", "yug@example.com", "Jaipur"),
+            new User("Puneet", "#009688", "+91 9876543212", "puneet@example.com", "Lucknow"),
+            new User("Navneet", "#FFC107", "+91 8974327812", "navneet@example.com", "Ahmedabad"),
+            new User("Kajol", "#8BC34A", "+91 9845123471", "kajol@example.com", "Mumbai"),
+            new User("Radha", "#FF5722", "+91 7896514521", "radha@gian.lu", "Chandigarh"),
+            new User("Suresh", "#607D8B", "+91 98640826137", "suresh@example.com", "Rajasthan"),
+    };
+
+    // The fields associated to the User
+    private final String mName, mPhone, mEmail, mCity, mColor;
+
+    private User(String name, String color, String phone, String email, String city) {
+        mName = name;
+        mColor = color;
+        mPhone = phone;
+        mEmail = email;
+        mCity = city;
+    }
+
+    // This method allows to get the item associated to a particular id,
+    // uniquely generated by the method getId defined below
+    static User getItem(int id) {
+        for (User item : USER) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    // since mName and mPhone combined are surely unique,
+    // we don't need to add another id field
+    public int getId() {
+        return mName.hashCode() + mPhone.hashCode();
+    }
+
+    static enum Field {
+        NAME, COLOR, PHONE, EMAIL, CITY
+    }
+
+    String get(Field f) {
+        switch (f) {
+            case COLOR:
+                return mColor;
+            case PHONE:
+                return mPhone;
+            case EMAIL:
+                return mEmail;
+            case CITY:
+                return mCity;
+            case NAME:
+            default:
+                return mName;
+        }
+    }
+}</pre><p>
+<b>5</b>. For circle shape view create <em>circle_bg.xml</em> under drawable directory.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"&gt;
+    &lt;solid android:color="@color/colorAccent" /&gt;
+    &lt;size
+        android:width="32dp"
+        android:height="32dp" /&gt;
+&lt;/shape&gt;</pre><p>
+<b>6</b>. Now create <em>custom_user_row_layout.xml</em> for RecyclerView row items and set above created <em>circle_bg.xml</em> to View.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="82dp"
+    android:background="?android:selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin"&gt;
+
+    &lt;!--  For each sharing view, set attribute transitionName FROM  --&gt;
+
+    &lt;View
+        android:id="@+id/user_circle"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/circle_bg"
+        android:transitionName="@string/transition_name_circle" /&gt;
+
+    &lt;LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_toRightOf="@+id/user_circle"
+        android:orientation="vertical"&gt;
+
+        &lt;TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Harsh"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:transitionName="@string/transition_name_name" /&gt;
+
+        &lt;TextView
+            android:id="@+id/user_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+91 9876436718"
+            android:textColor="#9f9f9f"
+            android:textSize="15sp"
+            android:transitionName="@string/transition_name_phone" /&gt;
+
+    &lt;/LinearLayout&gt;
+
+&lt;/RelativeLayout&gt;</pre><p>
+For <strong>android:transitionName</strong> attribute check <strong>Step 10.</strong></p>
+<p><b>7</b>. For RecyclerView click listener create <em>RecyclerClickListener.java</em> class and add the following code to it. This class will be use for implementing click listener on RecyclerView items.</p><pre class="crayon-plain-tag">package com.activitytransitions_demo;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+
+/**
+ * Created by sonu on 06/08/16.
+ */
+
+public class RecyclerClickListener implements RecyclerView.OnItemTouchListener {
+
+    private OnItemClickListener mListener;
+    private GestureDetector mGestureDetector;
+
+    interface OnItemClickListener {
+        public void onItemClick(View view, int position);
+    }
+
+    RecyclerClickListener(Context context, OnItemClickListener listener) {
+        mListener = listener;
+        mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
+        View childView = view.findChildViewUnder(e.getX(), e.getY());
+        if (childView != null &amp;&amp; mListener != null &amp;&amp; mGestureDetector.onTouchEvent(e)) {
+            mListener.onItemClick(childView, view.getChildPosition(childView));
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onTouchEvent(RecyclerView view, MotionEvent motionEvent) {
+    }
+
+    @Override
+    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+    }
+
+}</pre><p>
+<b>8</b>. Now create <em>RecyclerView_Adapter.java</em> for displaying views and setting data over views.</p>
+<p><strong>Important Lines: </strong></p><pre class="crayon-plain-tag">// Set the color of the shape
+        GradientDrawable bgShape = (GradientDrawable) viewHolder.mCircle.getBackground();
+        bgShape.setColor(Color.parseColor(user.get(User.Field.COLOR)));</pre><p>
+</p><pre class="crayon-plain-tag">package com.activitytransitions_demo;
+
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+/**
+ * Created by sonu on 06/08/16.
+ */
+
+public class RecyclerView_Adapter extends RecyclerView.Adapter&lt;RecyclerView_Adapter.RecyclerViewHolder&gt; {
+
+    static class RecyclerViewHolder extends RecyclerView.ViewHolder {
+
+        TextView mName, mPhone;
+        View mCircle;
+
+        RecyclerViewHolder(View itemView) {
+            super(itemView);
+            mName = (TextView) itemView.findViewById(R.id.user_name);
+            mPhone = (TextView) itemView.findViewById(R.id.user_phone);
+            mCircle = itemView.findViewById(R.id.user_circle);
+        }
+    }
+
+    @Override
+    public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.custom_user_row_layout, viewGroup, false);
+        return new RecyclerViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerViewHolder viewHolder, int i) {
+
+        // get the single element from the main array
+        final User user = User.USER[i];
+
+        // Set the values
+        viewHolder.mName.setText(user.get(User.Field.NAME));
+        viewHolder.mPhone.setText(user.get(User.Field.PHONE));
+
+        // Set the color of the shape
+        GradientDrawable bgShape = (GradientDrawable) viewHolder.mCircle.getBackground();
+        bgShape.setColor(Color.parseColor(user.get(User.Field.COLOR)));
+    }
+
+    @Override
+    public int getItemCount() {
+        return User.USER.length;
+    }
+}</pre><p>
+<b>9</b>. Now create new directory naming <strong>values-v21</strong> under <strong>res</strong> directory and under that directory create <em>styles.xml</em>. Here you have to enable content transitions and set the entrance and the exit of the views that are shared between the two activities.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+
+    &lt;!-- Base application theme. --&gt;
+    &lt;style name="AppTheme" parent="Theme.AppCompat"&gt;
+        &lt;!--  Set the enter and exit transition between two activities  --&gt;
+        &lt;item name="android:windowContentTransitions"&gt;true&lt;/item&gt;
+
+        &lt;item name="android:windowEnterTransition"&gt;@android:transition/slide_bottom&lt;/item&gt;
+        &lt;item name="android:windowExitTransition"&gt;@android:transition/slide_bottom&lt;/item&gt;
+
+        &lt;item name="android:windowAllowEnterTransitionOverlap"&gt;true&lt;/item&gt;
+        &lt;item name="android:windowAllowReturnTransitionOverlap"&gt;true&lt;/item&gt;
+        &lt;item name="android:windowSharedElementEnterTransition"&gt;@android:transition/move&lt;/item&gt;
+        &lt;item name="android:windowSharedElementExitTransition"&gt;@android:transition/move&lt;/item&gt;
+    &lt;/style&gt;
+
+&lt;/resources&gt;</pre><p>
+Please note that your project must be targeted to (and thus be compiled with) at least <strong>Android API 21 or 21+</strong>.</p>
+<p>The animations will be ignored on systems that don&#8217;t have Lollipop installed. Unfortunately, because of performance reasons, the <strong>AppCompat</strong> library does not provide complete backward compatibility for these animations.</p>
+<p><b>10</b>. Now you have to point out the relationship between the two common elements of the views. In this example, the shared views are the field containing the name of the User, the one of the phone number, user name, and the colored circle. For each of them, you have to specify a <strong>common transition name</strong>. For this reason, start adding in the <strong><span class="skimlinks-unlinked">strings.xml</span></strong> resource file the following items:</p><pre class="crayon-plain-tag">&lt;!--  Specify the common transition name  --&gt;
+    &lt;string name="transition_name_name"&gt;transition:NAME&lt;/string&gt;
+    &lt;string name="transition_name_circle"&gt;transition:CIRCLE&lt;/string&gt;
+    &lt;string name="transition_name_phone"&gt;transition:PHONE&lt;/string&gt;</pre><p>
+Then, for each of the three pairs, in the layout files add the <strong><code>android:transitionName</code></strong> attribute with the corresponding value. For the User Name, the code looks like this:</p><pre class="crayon-plain-tag">&lt;!— the item we are transitioning FROM —&gt; 
+&lt;TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Harsh"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:transitionName="@string/transition_name_name" /&gt;</pre><p>
+</p><pre class="crayon-plain-tag">&lt;!— the item we are transitioning TO —&gt;
+&lt;TextView
+            android:id="@+id/details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_toRightOf="@+id/details_circle"
+            android:text="Harsh"
+            android:textColor="#000"
+            android:textSize="25sp"
+            android:transitionName="@string/transition_name_name" /&gt;</pre><p>
+Repeat the same process for the other two views, that we had done in<strong> Step 6.</strong></p>
+<p><b>11</b>. For showing details of user form one activity to another create new layout naming <em>details_activity_layout.xml</em> and add the transition attributes.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    android:orientation="vertical"&gt;
+
+    &lt;!--  For each sharing view, set attribute transitionName TO  --&gt;
+
+    &lt;ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder" /&gt;
+
+    &lt;RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:padding="@dimen/activity_vertical_margin"&gt;
+
+        &lt;View
+            android:id="@+id/details_circle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/circle_bg"
+            android:transitionName="@string/transition_name_circle" /&gt;
+
+        &lt;TextView
+            android:id="@+id/details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_toRightOf="@+id/details_circle"
+            android:text="Harsh"
+            android:textColor="#000"
+            android:textSize="25sp"
+            android:transitionName="@string/transition_name_name" /&gt;
+
+    &lt;/RelativeLayout&gt;
+
+    &lt;LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin"&gt;
+
+        &lt;RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"&gt;
+
+            &lt;TextView
+                android:id="@+id/details_phone_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone:"
+                android:textColor="#000"
+                android:textSize="20sp" /&gt;
+
+            &lt;TextView
+                android:id="@+id/details_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_toRightOf="@+id/details_phone_label"
+                android:text="+91 85647328134"
+                android:textColor="#9f9f9f"
+                android:textSize="20sp"
+                android:transitionName="@string/transition_name_phone" /&gt;
+
+        &lt;/RelativeLayout&gt;
+
+        &lt;RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"&gt;
+
+            &lt;TextView
+                android:id="@+id/details_email_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email:"
+                android:textColor="#000"
+                android:textSize="20sp" /&gt;
+
+            &lt;TextView
+                android:id="@+id/details_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_toRightOf="@+id/details_email_label"
+                android:text="harsh@example.com"
+                android:textColor="#9f9f9f"
+                android:textSize="20sp" /&gt;
+
+        &lt;/RelativeLayout&gt;
+
+        &lt;RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"&gt;
+
+            &lt;TextView
+                android:id="@+id/details_city_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="City:"
+                android:textColor="#000"
+                android:textSize="20sp" /&gt;
+
+            &lt;TextView
+                android:id="@+id/details_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_toRightOf="@+id/details_city_label"
+                android:text="Bangalore"
+                android:textColor="#9f9f9f"
+                android:textSize="20sp" /&gt;
+
+        &lt;/RelativeLayout&gt;
+    &lt;/LinearLayout&gt;
+&lt;/LinearLayout&gt;</pre><p>
+<b>12</b>. Now open your <em>MainActivity.java</em> and the following code to it. In this following code the main code that we need to focus is:</p>
+<p>You will need to attach a specific <a href="https://developer.android.com/reference/android/app/ActivityOptions.html" target="_blank"><strong><code>ActivityOptions</code> </strong></a>bundle to the intent. The method you need is <strong><code>makeSceneTransitionAnimation</code></strong>, which takes as parameters the context of the application and as many shared elements as we need. In the <strong><code>onItemClick</code></strong> method of the <strong><code>RecyclerView.</code></strong></p><pre class="crayon-plain-tag">ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                                // the context of the activity
+                                MainActivity.this,
+
+                                // For each shared element, add to this method a new Pair item,
+                                // which contains the reference of the view we are transitioning *from*,
+                                // and the value of the transitionName attribute
+                                new Pair&lt;View, String&gt;(view.findViewById(R.id.user_circle),
+                                        getString(R.string.transition_name_circle)),
+                                new Pair&lt;View, String&gt;(view.findViewById(R.id.user_name),
+                                        getString(R.string.transition_name_name)),
+                                new Pair&lt;View, String&gt;(view.findViewById(R.id.user_phone),
+                                        getString(R.string.transition_name_phone))
+                        );
+                        ActivityCompat.startActivity(MainActivity.this, intent, options.toBundle());</pre><p>
+For each shared element to be animated, you will have to add to the <strong><code class="inline">makeSceneTransitionAnimation</code></strong> method a new <strong><code>Pair</code></strong> item. Each <strong><code>Pair</code></strong> has two values, the first is a reference to the view you are transitioning <strong>from</strong>, the second is the <strong>value</strong> of the <strong><code>transitionName</code></strong> attribute.</p>
+<p>Be careful when importing the <strong><code>Pair</code></strong> class. You will need to include the <strong><code>android.support.v4.util</code></strong> package,<em>not</em> the <strong><code>android.util</code></strong> package. Also, remember to use <strong><code><a href="https://developer.android.com/reference/android/support/v4/app/ActivityCompat.html" target="_blank">ActivityCompat</a>.startActivity</code></strong> method instead of the <strong><code>startActivity</code></strong> method, because otherwise you will not be able to run your application on environments with <strong>API below 16</strong>.</p><pre class="crayon-plain-tag">package com.activitytransitions_demo;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        RecyclerView rv = (RecyclerView) findViewById(R.id.recycler_view); // layout reference
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true); // to improve performance
+
+        rv.setAdapter(new RecyclerView_Adapter()); // the adapter is assigner to the Recycler View
+        rv.addOnItemTouchListener( // and the click is handled
+                new RecyclerClickListener(this, new RecyclerClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+                        intent.putExtra(DetailsActivity.ID, User.USER[position].getId());
+                        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                                // the context of the activity
+                                MainActivity.this,
+
+                                // For each shared element, add to this method a new Pair item,
+                                // which contains the reference of the view we are transitioning *from*,
+                                // and the value of the transitionName attribute
+                                new Pair&lt;View, String&gt;(view.findViewById(R.id.user_circle),
+                                        getString(R.string.transition_name_circle)),
+                                new Pair&lt;View, String&gt;(view.findViewById(R.id.user_name),
+                                        getString(R.string.transition_name_name)),
+                                new Pair&lt;View, String&gt;(view.findViewById(R.id.user_phone),
+                                        getString(R.string.transition_name_phone))
+                        );
+                        ActivityCompat.startActivity(MainActivity.this, intent, options.toBundle());
+                    }
+                }));
+    }
+
+
+
+}</pre><p>
+<b>13</b>. Finally create  <em>DetailsActivity.java</em> and get the receive data from <em>MainActivity </em>and set over views.</p><pre class="crayon-plain-tag">package com.activitytransitions_demo;
+
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+/**
+ * Created by sonu on 06/08/16.
+ */
+public class DetailsActivity extends AppCompatActivity {
+
+    public final static String ID = "ID";
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.details_activity_layout);
+
+        User mUser = User.getItem(getIntent().getIntExtra(ID, 0));// Get User from Intent
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//Setting back navigation button
+
+        //Find all views
+        View mCircle = findViewById(R.id.details_circle);
+        TextView mName = (TextView) findViewById(R.id.details_name);
+        TextView mPhone = (TextView) findViewById(R.id.details_phone);
+        TextView mEmail = (TextView) findViewById(R.id.details_email);
+        TextView mCity = (TextView) findViewById(R.id.details_city);
+
+        //set user data on text view
+        mName.setText(mUser.get(User.Field.NAME));
+        mPhone.setText(mUser.get(User.Field.PHONE));
+        mEmail.setText(mUser.get(User.Field.EMAIL));
+        mCity.setText(mUser.get(User.Field.CITY));
+
+        //Set color to Circle View
+        GradientDrawable bgShape = (GradientDrawable) mCircle.getBackground();
+        bgShape.setColor(Color.parseColor(mUser.get(User.Field.COLOR)));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                super.onBackPressed();//Call back press method on back Navigation button click
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}</pre><p>
+On back navigation click call <strong>super.onBackPressed()</strong> else the back transition will not appear.</p>
+<p><b>14</b>. That&#8217;s all you have to done.</p>
+<p>Thanks. <img src="https://s.w.org/images/core/emoji/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><a href="http://androhub.com/downloads/ActivityTransitions_Demo.zip" target="_blank"><b>Download Source Code – &gt;</b></a></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/lollipop-activity-transitions/">Lollipop Activity Transitions</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/lollipop-activity-transitions/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1073</post-id>	</item>
+		<item>
+		<title>Android Read Write File Operations</title>
+		<link>http://www.androhub.com/android-read-write-file-operations/</link>
+		<comments>http://www.androhub.com/android-read-write-file-operations/#comments</comments>
+		<pubDate>Sat, 31 Oct 2015 17:45:27 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android File]]></category>
+		<category><![CDATA[Android UI Design]]></category>
+		<category><![CDATA[android file]]></category>
+		<category><![CDATA[android shared preferences]]></category>
+		<category><![CDATA[create file in SD Card]]></category>
+		<category><![CDATA[current time]]></category>
+		<category><![CDATA[delete file from sd catrd]]></category>
+		<category><![CDATA[get system time]]></category>
+		<category><![CDATA[read text file]]></category>
+		<category><![CDATA[SD Card]]></category>
+		<category><![CDATA[shared preferences]]></category>
+		<category><![CDATA[ui design]]></category>
+		<category><![CDATA[write text file]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=740</guid>
+		<description><![CDATA[<p>Reading and Writing files in Android will be helpful if you want to read data from SD Card, store your application data as a text file. In this tutorial we are going to learn same. Below are some points that we are going to learn in today&#8217;s tutorial: 1. Write File &#8211; Write user input data [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-read-write-file-operations/">Android Read Write File Operations</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Reading and Writing files in Android will be helpful if you want to read data from SD Card, store your application data as a text file. In this tutorial we are going to learn same. Below are some points that we are going to learn in today&#8217;s tutorial:</p>
+<p><strong>1. Write File &#8211;</strong> Write user input data into TextFile.</p>
+<p><strong>2. Read File &#8211;</strong> Read data from saved user data file.</p>
+<p><strong>3. Delete File &#8211;</strong> Delete saved file from SD Card.</p>
+<p><strong>4. TimeStamp &#8211;</strong> Fetching current time stamp and saved in shared preferences when file is saved.</p>
+<p><strong>5. File Path &#8211;</strong>  Display file path to locate where the Text File is saved.</p>
+<p><strong>Prerequisites required for this tutorial &#8211;</strong></p>
+<ul>
+<li><strong><a href="http://androhub.com/android-download-files-save/" target="_blank">SD Card Mount &#8211; </a></strong>Check if SD Card is mounted or not.</li>
+<li><strong><a href="http://androhub.com/android-download-files-save/" target="_blank">Create Directory &#8211;</a></strong> How to create directory in SD Card.</li>
+<li><strong><a href="http://androhub.com/android-sharedpreferences/" target="_blank">SharedPreferences &#8211;</a></strong> To store timestamp of saved file.</li>
+</ul>
+<p>We are going to use two classes  for writing and reading file to SD Card &#8211;</p>
+<p><strong>1.</strong> <a href="http://developer.android.com/intl/ru/reference/java/io/FileWriter.html" target="_blank">FileWriter &#8211; </a> A specialised <code><a href="http://developer.android.com/reference/java/io/Writer.html" target="_blank">Writer</a></code> that writes to a file in the file system. All write requests made by calling methods in this class are directly forwarded to the equivalent function of the underlying operating system. Since this may induce some performance penalty, in particular if many small write requests are made, a FileWriter is often wrapped by a BufferedWriter.</p>
+<p><strong>2.</strong> <a href="http://developer.android.com/intl/ru/reference/java/io/FileReader.html" target="_blank">FileReader &#8211;</a> A specialised <code><a href="http://developer.android.com/reference/java/io/Reader.html" target="_blank">Reader</a></code> that reads from a file in the file system. All read requests made by calling methods in this class are directly forwarded to the equivalent function of the underlying operating system. Since this may induce some performance penalty, in particular if many small read requests are made, a FileReader is often wrapped by a BufferedReader.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to write, read and delete File operations in Android.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_50947" width="602" height="339" src="https://www.youtube.com/embed/xVo4dRdQHUk?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <b>res=&gt;values=strings.xml </b>and add the following strings to it.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;Read &amp;amp; Write TextFile Demo&lt;/string&gt;
+
+    &lt;string name="mainTitle"&gt;Read &amp;amp; Write Text File&lt;/string&gt;
+    &lt;string name="enterMessage"&gt;Enter your message below&lt;/string&gt;
+    &lt;string name="saveMessage"&gt;Save Message to SD Card&lt;/string&gt;
+    &lt;string name="readMessage"&gt;Read Message From SD Card&lt;/string&gt;
+    &lt;string name="deleteMessage"&gt;Delete Message From SD Card&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Create a xml layout naming <em>activity_main.xml</em> and add the following code. In this  layout there is one EditText to take user input and some buttons for writing, reading and delete text file and a hidden layout for showing saved text file data.</p><pre class="crayon-plain-tag">&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"&gt;
+
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/mainTitle"
+            android:textAllCaps="true"
+            android:textColor="#3F51B5"
+            android:textSize="19sp" /&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="3dp"
+            android:text="@string/enterMessage"
+            android:textColor="#939393"
+            android:textSize="15sp" /&gt;
+
+        &lt;!-- Input your Message to be save in file  --&gt;
+        &lt;EditText
+            android:id="@+id/enterMessage"
+            android:layout_width="fill_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/editttext_border"
+            android:gravity="top|left"
+            android:inputType="textCapSentences|textMultiLine"
+            android:padding="5dp"
+            android:scrollbars="vertical"
+            android:textColor="#9e9e9e"
+            android:textSize="16sp" /&gt;
+
+        &lt;!-- Save Message Button  --&gt;
+        &lt;Button
+            android:id="@+id/saveMessage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
+            android:elevation="5dp"
+            android:text="@string/saveMessage"
+            android:textColor="#2196F3"
+            android:textSize="15sp" /&gt;
+
+        &lt;!-- Read Message Button  --&gt;
+        &lt;Button
+            android:id="@+id/readMessage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
+            android:elevation="5dp"
+            android:text="@string/readMessage"
+            android:textColor="#2196F3"
+            android:textSize="15sp" /&gt;
+
+
+        &lt;!-- Show Message Layout  --&gt;
+        &lt;RelativeLayout
+            android:id="@+id/readMessageLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:visibility="gone"&gt;
+
+            &lt;!-- TextView For displaying saved file path  --&gt;
+            &lt;TextView
+                android:id="@+id/savedTextFileNameandPath"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/savedTextFileTime"
+                android:gravity="left|center_vertical"
+                android:padding="5dp"
+                android:textColor="#009688"
+                android:textSize="13sp" /&gt;
+
+            &lt;!-- TextView For displaying saved file time  --&gt;
+            &lt;TextView
+                android:id="@+id/savedTextFileTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="right|center_vertical"
+                android:padding="5dp"
+                android:textColor="#9e9e9e"
+                android:textSize="12sp" /&gt;
+
+            &lt;!-- TextView For displaying saved file data  --&gt;
+            &lt;TextView
+                android:id="@+id/savedFileMessageBody"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/savedTextFileNameandPath"
+                android:gravity="center_vertical|left"
+                android:padding="5dp"
+                android:textColor="#616161"
+                android:textSize="14sp" /&gt;
+
+        &lt;/RelativeLayout&gt;
+
+        &lt;!-- Delete Message Button  --&gt;
+        &lt;Button
+            android:id="@+id/deleteMessage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
+            android:elevation="5dp"
+            android:text="@string/deleteMessage"
+            android:textColor="#2196F3"
+            android:textSize="15sp" /&gt;
+
+    &lt;/LinearLayout&gt;
+&lt;/ScrollView&gt;</pre><p>
+<b>4</b>. Create a drawable under <em>drawable</em>  directory naming <em>edittext_border.xml</em> for giving border to EditText.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"&gt;
+    &lt;solid android:color="#ffffff" /&gt;
+    &lt;stroke
+        android:width="1px"
+        android:color="#9e9e9e" /&gt;
+
+&lt;/shape&gt;</pre><p>
+<b>5</b>. Create a <em>CheckForSDCard.java</em><i> </i>class for checking if <em>SDCard</em> is mounted or not.</p><pre class="crayon-plain-tag">com.read_write_textfile_demo;
+
+import android.os.Environment;
+ 
+public class CheckForSDCard {
+    //Check If SD Card is present or not method
+    public boolean isSDCardPresent() {
+        if (Environment.getExternalStorageState().equals(
+ 
+                Environment.MEDIA_MOUNTED)) {
+            return true;
+        }
+        return false;
+    }
+}</pre><p>
+<b>6</b>. Now below are methods that i am using for writing , reading and deleting text files.</p>
+<ul>
+<li>Write File Method</li>
+</ul>
+<pre class="crayon-plain-tag">//Method for writing data to text file
+    private void saveMessageIntoSDCard(File savedFile, String messageBody) {
+        try {
+
+            //File writer is used for writing data
+            FileWriter fWriter = new FileWriter(savedFile);
+            fWriter.write(messageBody);//write data
+            fWriter.flush();//flush writer
+            fWriter.close();//close writer
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }</pre>
+<ul>
+<li> Read File Method &#8211; Here &#8216;fileDirectory&#8217; is main directory and &#8216;savedFile&#8217; is our TextFile. This method will return us string data after reading text file.</li>
+</ul>
+<pre class="crayon-plain-tag">//Method that will return saved text file data after reading
+    private String readMessageFromSDCard() {
+
+        //First check if main directory is present or not
+        if (!fileDirectory.exists())
+            Toast.makeText(getBaseContext(), "There is no main directory present. ",
+                    Toast.LENGTH_SHORT).show();
+        else {
+
+            //Then check if text file is present or not
+            File savedFile = new File(fileDirectory.getAbsolutePath() + "/" + FileName);
+            if (!savedFile.exists())
+                Toast.makeText(getBaseContext(), "There is no such file to read data. ",
+                        Toast.LENGTH_SHORT).show();
+            else {
+                //Finally read data using FileReader
+                try {
+                    FileReader rdr = new FileReader(fileDirectory.getAbsolutePath() + "/" + FileName);
+
+                    char[] inputBuffer = new char[READ_BLOCK_SIZE];//get Block size as buffer
+                    String savedData = "";
+                    int charRead = rdr.read(inputBuffer);
+                    //Read all data one by one by using loop and add it to string created above
+                    for (int k = 0; k &lt; charRead; k++) {
+                        savedData += inputBuffer[k];
+                    }
+                    return savedData;//return saved data
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("Message", e.getLocalizedMessage());
+                    return null;
+                }
+            }
+        }
+        return null;
+    }</pre>
+<ul>
+<li>Delete File Method &#8211;</li>
+</ul>
+<pre class="crayon-plain-tag">//Delete text file method
+    private void deleteMessageFromSDCard() {
+
+        //Check if main directory is present or not
+        if (!fileDirectory.exists())
+            Toast.makeText(getBaseContext(), "There is no main directory present.",
+                    Toast.LENGTH_SHORT).show();
+        else {
+
+            //Now Check if text file is present or not
+            File savedFile = new File(fileDirectory.getAbsolutePath() + "/" + FileName);
+            if (!savedFile.exists())
+                Toast.makeText(getBaseContext(), "There is no saved file present.",
+                        Toast.LENGTH_SHORT).show();
+            else {
+                savedFile.delete();//If text file is present then delete file
+                Toast.makeText(getBaseContext(), "File deleted Successfully.",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }</pre>
+<ul>
+<li>TimeStamp Code &#8211;</li>
+</ul>
+<pre class="crayon-plain-tag">//Get Current Date and put it in Shared Preferences
+  SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+  String currentDateandTime = sdf.format(new Date());</pre>
+<b>7</b>. Finally come to your <em>MainActivity.java</em> and add the following code.<br />
+<pre class="crayon-plain-tag">package com.read_write_textfile_demo;
+
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Environment;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static EditText enterMessage;
+    private static Button saveMessage, readMessage, deleteMessage;
+    private static TextView savedMessageFileNameandPath, savedMessageTime, saveMessageData;
+    private static RelativeLayout readMessageLayout;
+
+    private static File fileDirectory = null;//Main Directory File
+
+    private static final String DirectoryName = "Androhub Saved Files";//Main Directory Name
+    private static final String FileName = "androhub.txt";//Text File Name
+    private static final int READ_BLOCK_SIZE = 512;//Block Size for text File
+
+    //Preferences to Store TimStamp when data is Saved
+    private static SharedPreferences timeSharedPreferences;
+    private static SharedPreferences.Editor editor;
+
+    //Preferences Name and KeyValue for TimeStamp
+    private static final String SharedPreferencesName = "TimePreferences";
+    private static final String TimeKeyValue = "TimeKeyValue";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initViews();
+        setListeners();
+    }
+
+
+    //Init All views
+    private void initViews() {
+
+        //Init shared preferences
+        timeSharedPreferences = getSharedPreferences(SharedPreferencesName, Context.MODE_PRIVATE);
+        editor = timeSharedPreferences.edit();
+
+        enterMessage = (EditText) findViewById(R.id.enterMessage);
+
+        saveMessage = (Button) findViewById(R.id.saveMessage);
+        readMessage = (Button) findViewById(R.id.readMessage);
+        deleteMessage = (Button) findViewById(R.id.deleteMessage);
+
+        savedMessageFileNameandPath = (TextView) findViewById(R.id.savedTextFileNameandPath);
+        savedMessageTime = (TextView) findViewById(R.id.savedTextFileTime);
+        saveMessageData = (TextView) findViewById(R.id.savedFileMessageBody);
+
+        readMessageLayout = (RelativeLayout) findViewById(R.id.readMessageLayout);
+
+
+        //Check if sd card is present or not
+        if (new CheckForSDCard().isSDCardPresent()) {
+            fileDirectory = new File(
+                    Environment.getExternalStorageDirectory() + "/"
+                            + DirectoryName);
+        } else
+            Toast.makeText(MainActivity.this, "SD Card is not present.", Toast.LENGTH_SHORT).show();//Show toast if SD Card is not mounted
+    }
+
+
+    //set listeners to buttons
+    private void setListeners() {
+        saveMessage.setOnClickListener(this);
+        readMessage.setOnClickListener(this);
+        deleteMessage.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.saveMessage:
+                saveMessage();
+                break;
+            case R.id.readMessage:
+                showSavedFileData(readMessageFromSDCard());
+                break;
+            case R.id.deleteMessage:
+                deleteMessageFromSDCard();
+                break;
+        }
+    }
+
+
+    //Call Save Message Method
+    private void saveMessage() {
+        String messageBody = enterMessage.getText().toString().trim();//get Input message
+
+        //Check if it is null or not
+        if (messageBody.length() == 0 &amp;&amp; messageBody.equals(""))
+            Toast.makeText(MainActivity.this, "Please Enter some message.", Toast.LENGTH_SHORT).show();
+        else {
+
+            try {
+                //Create Main Directory if not present
+                if (!fileDirectory.exists())
+                    fileDirectory.mkdir();
+
+                //Make File Name under main Directory
+                File savedFile = new File(fileDirectory.getAbsolutePath() + "/" + FileName);
+
+                //If Saved File exists then check if it's size is greater than 0
+                if (savedFile.exists()) {
+                    if (savedFile.length() &gt; 0)
+                        appendOrOverrideSavedFile(savedFile, messageBody);//if file present then show alert for appending and overriding
+                    else {
+                        //else save data into file
+                        saveMessageIntoSDCard(savedFile, messageBody);
+                        Toast.makeText(getBaseContext(), "File saved successfully!",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    //If Saved file doesn't exists then create new file and save file
+                    saveMessageIntoSDCard(savedFile, messageBody);
+                    Toast.makeText(getBaseContext(), "File saved successfully!",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.e("Message", e.getLocalizedMessage());
+
+            }
+        }
+    }
+
+
+    //Method to show alert if file already present
+    private void appendOrOverrideSavedFile(final File savedFile, final String message) {
+        final String savedMessage = readMessageFromSDCard();//Read saved message
+
+        //Check if saved message not null
+        if (savedMessage != null &amp;&amp; savedMessage.length() &gt; 0 &amp;&amp; !savedMessage.equals("")) {
+
+            //If not null then show alert
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Choose..");
+            builder.setMessage("What do you want to do with message?nnAppend data to current saved file or override saved data.");
+            builder.setPositiveButton("OVERRIDE", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    //If Override is selected then textfile data is overrided
+                    saveMessageIntoSDCard(savedFile, message);
+                    Toast.makeText(getBaseContext(), "File Overrided Successfully!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+            builder.setNegativeButton("APPEND", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    //If Append is selected then textfile data is appended with new data
+                    saveMessageIntoSDCard(savedFile, savedMessage + "nn" + message);
+                    Toast.makeText(getBaseContext(), "File Appended Successfully!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+            builder.setNeutralButton("CANCEL", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            AlertDialog ad = builder.create();
+            ad.setCancelable(true);
+            ad.setCanceledOnTouchOutside(true);
+            ad.show();
+        } else
+            //If there is nothing to read from saved fie then simply add data to file
+            saveMessageIntoSDCard(savedFile, message);
+
+    }
+
+
+    //Method for writing data to text file
+    private void saveMessageIntoSDCard(File savedFile, String messageBody) {
+        try {
+
+            //File writer is used for writing data
+            FileWriter fWriter = new FileWriter(savedFile);
+            fWriter.write(messageBody);//write data
+            fWriter.flush();//flush writer
+            fWriter.close();//close writer
+
+
+            //Get Current Date and put it in Shared Preferences
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+            String currentDateandTime = sdf.format(new Date());
+
+            editor.putString(TimeKeyValue, currentDateandTime);
+            editor.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    //Method that will return saved text file data after reading
+    private String readMessageFromSDCard() {
+
+        //First check if main directory is present or not
+        if (!fileDirectory.exists())
+            Toast.makeText(getBaseContext(), "There is no main directory present. ",
+                    Toast.LENGTH_SHORT).show();
+        else {
+
+            //Then check if text file is present or not
+            File savedFile = new File(fileDirectory.getAbsolutePath() + "/" + FileName);
+            if (!savedFile.exists())
+                Toast.makeText(getBaseContext(), "There is no such file to read data. ",
+                        Toast.LENGTH_SHORT).show();
+            else {
+                //Finally read data using FileReader
+                try {
+                    FileReader rdr = new FileReader(fileDirectory.getAbsolutePath() + "/" + FileName);
+
+                    char[] inputBuffer = new char[READ_BLOCK_SIZE];//get Block size as buffer
+                    String savedData = "";
+                    int charRead = rdr.read(inputBuffer);
+                    //Read all data one by one by using loop and add it to string created above
+                    for (int k = 0; k &lt; charRead; k++) {
+                        savedData += inputBuffer[k];
+                    }
+                    return savedData;//return saved data
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("Message", e.getLocalizedMessage());
+                    return null;
+                }
+            }
+        }
+        return null;
+    }
+
+    //Show Saved data
+    private void showSavedFileData(String savedMessage) {
+
+        //Check if saved data is not null
+        if (savedMessage != null &amp;&amp; savedMessage.length() &gt; 0 &amp;&amp; !savedMessage.equals("")) {
+
+            //Check if TimeStamp is present or not
+            if (timeSharedPreferences.contains(TimeKeyValue))
+                savedMessageTime.setText(timeSharedPreferences.getString(TimeKeyValue, ""));//Dispaly saved timestamp
+
+            savedMessageFileNameandPath.setText(FileName + " - inside '" + fileDirectory.getAbsolutePath() + "'");//Display file path
+            saveMessageData.setText(savedMessage);//display saved data
+            readMessageLayout.setVisibility(View.VISIBLE);//Make visible the read message layout
+        }
+    }
+
+    //Delete text file method
+    private void deleteMessageFromSDCard() {
+
+        //Check if main directory is present or not
+        if (!fileDirectory.exists())
+            Toast.makeText(getBaseContext(), "There is no main directory present.",
+                    Toast.LENGTH_SHORT).show();
+        else {
+
+            //Now Check if text file is present or not
+            File savedFile = new File(fileDirectory.getAbsolutePath() + "/" + FileName);
+            if (!savedFile.exists())
+                Toast.makeText(getBaseContext(), "There is no saved file present.",
+                        Toast.LENGTH_SHORT).show();
+            else {
+                savedFile.delete();//If text file is present then delete file
+                readMessageLayout.setVisibility(View.GONE);//hide read file layout
+
+                //Remove Saved TimeStamp
+                editor.remove(TimeKeyValue);
+                editor.commit();
+
+                Toast.makeText(getBaseContext(), "File deleted Successfully.",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }
+}</pre>
+<b>8</b>. Finally, all done you can use above code to save your data in File.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/Read-Write_TextFile_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-read-write-file-operations/">Android Read Write File Operations</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-read-write-file-operations/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">740</post-id>	</item>
+		<item>
+		<title>Android Advance WebView</title>
+		<link>http://www.androhub.com/android-advance-webview/</link>
+		<comments>http://www.androhub.com/android-advance-webview/#comments</comments>
+		<pubDate>Fri, 30 Oct 2015 17:57:19 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android Internet Connection]]></category>
+		<category><![CDATA[Android UI Design]]></category>
+		<category><![CDATA[advance webview]]></category>
+		<category><![CDATA[android full screen]]></category>
+		<category><![CDATA[android styles]]></category>
+		<category><![CDATA[android webview]]></category>
+		<category><![CDATA[check internet connection]]></category>
+		<category><![CDATA[full screen]]></category>
+		<category><![CDATA[load url in webview]]></category>
+		<category><![CDATA[styles]]></category>
+		<category><![CDATA[webview]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=733</guid>
+		<description><![CDATA[<p>We had learn basic things about WebView in my earlier tutorial. In that tutorial i am showing how to load url in WebView. But in today&#8217;s tutorial we are going to learn some more things about WebView. The things that we are going to learn today are given below: 1 . Go Back  &#8211; We [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-advance-webview/">Android Advance WebView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>We had learn basic things about <a href="http://developer.android.com/intl/ru/reference/android/webkit/WebView.html" target="_blank">WebView</a> in my earlier <a href="http://androhub.com/android-webview/" target="_blank">tutorial</a>. In that tutorial i am showing how to load url in WebView. But in today&#8217;s tutorial we are going to learn some more things about WebView. The things that we are going to learn today are given below:</p>
+<p><strong>1 . Go Back</strong>  &#8211; We can go back to previous page in WebView if present.</p><pre class="crayon-plain-tag">if (webView.canGoBack())
+    webView.goBack();</pre><p>
+<strong>2 .</strong> <strong>Go Forward </strong> &#8211; We can go forward to next page in WebView if present.</p><pre class="crayon-plain-tag">if (webView.canGoForward())
+    webView.goForward();</pre><p>
+<strong>3.</strong> <strong>Refresh WebView </strong> &#8211; We can fetch currentWebView url and reload the WebView.</p><pre class="crayon-plain-tag">String url = webView.getUrl();//Get webview url</pre><p>
+</p><pre class="crayon-plain-tag">webView.loadUrl(url);//Load fetched Url</pre><p>
+4. <strong>Error Catching</strong> &#8211; We can catch errors thrown by WebView occurred by HTTP error,etc. inside <a href="http://developer.android.com/intl/ru/reference/android/webkit/WebViewClient.html" target="_blank">WebViewClient</a> class.</p><pre class="crayon-plain-tag">@Override
+public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+    super.onReceivedError(view, request, error);
+    Toast.makeText(MainActivity.this, &quot;Unexpected error occurred.Reload page again.&quot;, Toast.LENGTH_SHORT).show();
+
+}
+
+@Override
+public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
+    super.onReceivedHttpError(view, request, errorResponse);
+    Toast.makeText(MainActivity.this, &quot;Unexpected error occurred.Reload page again.&quot;, Toast.LENGTH_SHORT).show();
+
+}
+
+@Override
+public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+    super.onReceivedSslError(view, handler, error);
+    Toast.makeText(MainActivity.this, &quot;Unexpected SSL error occurred.Reload page again.&quot;, Toast.LENGTH_SHORT).show();
+
+}</pre><p>
+There are two other things apart from above four steps that we are going to learn are:</p>
+<p><strong>1. UserFriendly UI design &#8211; </strong>I am going to create a Custom Toolbar with some ImageViews as shown in video below.</p>
+<p><strong>2. No ActionBar Activity</strong> &#8211; Since I am creating custom toolbar so we don&#8217;t need <a href="http://developer.android.com/intl/ru/training/appbar/index.html" target="_blank">ActionBar</a> so for that we need our activity withoutActionBar.</p>
+<h2>Video Demo</h2>
+<p><iframe  id="_ytid_24777" width="602" height="339" src="https://www.youtube.com/embed/68WYJySOuJA?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Create a layout naming <em>activity_main.xml</em> and add the following xml code into it. In this code i had created a custom toolbar at top and added some ImageView and title to it and placed WebView below it.</p>
+<p>You can download icons from <a href="http://icons8.com" target="_blank">here</a>. This is a best site to download icons for all sizes, colours and of all app platforms.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"&gt;
+
+    &lt;RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFDFE"
+        android:minHeight="?attr/actionBarSize"&gt;
+
+        &lt;ImageView
+            android:id="@+id/webviewBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/imageview_selector"
+            android:padding="5dp"
+            android:src="@drawable/ic_back" /&gt;
+
+        &lt;ImageView
+            android:id="@+id/webviewForward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@+id/webviewBack"
+            android:background="@drawable/imageview_selector"
+            android:padding="5dp"
+            android:src="@drawable/ic_forward" /&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="5dp"
+            android:text="ANDROHUB"
+            android:textColor="#2196F3"
+            android:textSize="16sp" /&gt;
+
+        &lt;ImageView
+            android:id="@+id/webviewReload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_toLeftOf="@+id/webviewClose"
+            android:background="@drawable/imageview_selector"
+            android:padding="5dp"
+            android:src="@drawable/ic_refresh"
+            android:visibility="gone" /&gt;
+
+        &lt;ProgressBar
+            android:id="@+id/webViewProgressBar"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:layout_toLeftOf="@+id/webviewClose"
+            android:visibility="gone" /&gt;
+
+        &lt;ImageView
+            android:id="@+id/webviewClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/imageview_selector"
+            android:padding="5dp"
+            android:src="@drawable/ic_close" /&gt;
+
+    &lt;/RelativeLayout&gt;
+
+    &lt;View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="#7e7e7e" /&gt;
+
+
+    &lt;WebView
+        android:id="@+id/sitesWebView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" /&gt;
+&lt;/LinearLayout&gt;</pre><p>
+3. Now create a xml <em>drawable</em> file under drawable folder naming <em>imageview_selector.xml</em> for background selector for ImageViews.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;selector xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;item android:state_pressed="true"&gt;
+        &lt;shape android:shape="rectangle"&gt;
+            &lt;solid android:color="#cccacb" /&gt;
+        &lt;/shape&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+        &lt;shape android:shape="rectangle"&gt;
+            &lt;solid android:color="@android:color/transparent" /&gt;
+        &lt;/shape&gt;
+    &lt;/item&gt;
+&lt;/selector&gt;</pre><p>
+4. Now create a <em>MainActivity.java</em> and add the following code. In this code all above discussed steps are included.</p><pre class="crayon-plain-tag">package com.advancewebview;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.http.SslError;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
+import android.view.View;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static WebView webView;
+    private static ProgressBar webViewProgressBar;
+    private static ImageView back, forward, refresh, close;
+
+    private static final String webViewUrl = &quot;http://androhub.com&quot;;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initViews();
+        setUpWebView();
+        setListeners();
+    }
+
+    private void initViews() {
+        back = (ImageView) findViewById(R.id.webviewBack);
+        forward = (ImageView) findViewById(R.id.webviewForward);
+        refresh = (ImageView) findViewById(R.id.webviewReload);
+        close = (ImageView) findViewById(R.id.webviewClose);
+        webViewProgressBar = (ProgressBar) findViewById(R.id.webViewProgressBar);
+    }
+
+
+    private void setUpWebView() {
+        webView = (WebView) findViewById(R.id.sitesWebView);
+        webView.setWebViewClient(new MyWebViewClient());
+        webView.getSettings().setJavaScriptEnabled(true);
+        LoadWebViewUrl(webViewUrl);
+    }
+
+    private void setListeners() {
+        back.setOnClickListener(this);
+        forward.setOnClickListener(this);
+        refresh.setOnClickListener(this);
+        close.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.webviewBack:
+                isWebViewCanGoBack();
+                break;
+            case R.id.webviewForward:
+                if (webView.canGoForward())
+                    webView.goForward();
+                break;
+            case R.id.webviewReload:
+                String url = webView.getUrl();
+                LoadWebViewUrl(url);
+                break;
+            case R.id.webviewClose:
+                finish();
+                break;
+        }
+    }
+
+
+    private class MyWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+
+        }
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+            refresh.setVisibility(View.GONE);
+            if (!webViewProgressBar.isShown())
+                webViewProgressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+            refresh.setVisibility(View.VISIBLE);
+            if (webViewProgressBar.isShown())
+                webViewProgressBar.setVisibility(View.GONE);
+        }
+
+        @Override
+        public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+            super.onReceivedError(view, request, error);
+            refresh.setVisibility(View.VISIBLE);
+            if (webViewProgressBar.isShown())
+                webViewProgressBar.setVisibility(View.GONE);
+            Toast.makeText(MainActivity.this, &quot;Unexpected error occurred.Reload page again.&quot;, Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
+            super.onReceivedHttpError(view, request, errorResponse);
+            refresh.setVisibility(View.VISIBLE);
+            if (webViewProgressBar.isShown())
+                webViewProgressBar.setVisibility(View.GONE);
+            Toast.makeText(MainActivity.this, &quot;Unexpected error occurred.Reload page again.&quot;, Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+            super.onReceivedSslError(view, handler, error);
+            refresh.setVisibility(View.VISIBLE);
+            if (webViewProgressBar.isShown())
+                webViewProgressBar.setVisibility(View.GONE);
+            Toast.makeText(MainActivity.this, &quot;Unexpected SSL error occurred.Reload page again.&quot;, Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
+
+    // To handle &quot;Back&quot; key press event for WebView to go back to previous screen.
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            isWebViewCanGoBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+    private void isWebViewCanGoBack() {
+        if (webView.canGoBack())
+            webView.goBack();
+        else
+            finish();
+    }
+
+
+    private void LoadWebViewUrl(String url) {
+        if (isInternetConnected())
+            webView.loadUrl(url);
+        else {
+            refresh.setVisibility(View.VISIBLE);
+            Toast.makeText(MainActivity.this, &quot;Oops!! There is no internet connection. Please enable your internet connection.&quot;, Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+    public boolean isInternetConnected() {
+        // At activity startup we manually check the internet status and change
+        // the text status
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null &amp;amp;&amp;amp; networkInfo.isConnected())
+            return true;
+        else
+            return false;
+
+    }
+
+}</pre><p>
+5. To open url in WebView we need Internet Connection so for that we have to give “INTERNET” permission in Manifest file also we are checking internet connection before loading any url so for that we need “ACCESS_NETWORK_STATE” permission in Manifest file.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.advancewebview" &gt;
+
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:theme="@style/FullScreen"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+6. Finally add below FullScreen style code inside styles.xml file. This style is used for making our activity fullscreen as i mentioned above.</p><pre class="crayon-plain-tag">&lt;style name="FullScreen" parent="@style/Theme.AppCompat.Light"&gt;
+        &lt;item name="windowNoTitle"&gt;true&lt;/item&gt;
+        &lt;item name="windowActionBar"&gt;false&lt;/item&gt;
+        &lt;item name="android:windowFullscreen"&gt;true&lt;/item&gt;
+        &lt;item name="android:windowContentOverlay"&gt;@null&lt;/item&gt;
+&lt;/style&gt;</pre><p>
+<b>7</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Make sure to put http:// or https:// before loading url and change your url instead of <strong><a href="http://androhub.com/" target="_blank">androhub.com</a> </strong>or you can refer to my <a href="http://androhub.com/android-webview/" target="_blank">earlier tutorial</a> to load url by taking user input.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/AdvanceWebView.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-advance-webview/">Android Advance WebView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-advance-webview/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">733</post-id>	</item>
+		<item>
+		<title>Android Toolbar Animation Using Design Support Library</title>
+		<link>http://www.androhub.com/android-toolbar-animation-using-design-support-library/</link>
+		<comments>http://www.androhub.com/android-toolbar-animation-using-design-support-library/#respond</comments>
+		<pubDate>Fri, 02 Oct 2015 08:24:11 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android CardView]]></category>
+		<category><![CDATA[Android Material Design]]></category>
+		<category><![CDATA[Android RecyclerView]]></category>
+		<category><![CDATA[Android ToolBar]]></category>
+		<category><![CDATA[Android UI Design]]></category>
+		<category><![CDATA[android cardview]]></category>
+		<category><![CDATA[android recyclerview]]></category>
+		<category><![CDATA[appbar layout]]></category>
+		<category><![CDATA[cardview]]></category>
+		<category><![CDATA[collapsing toolbar layout]]></category>
+		<category><![CDATA[floating action button]]></category>
+		<category><![CDATA[Material Design]]></category>
+		<category><![CDATA[recycler view]]></category>
+		<category><![CDATA[recyclerview]]></category>
+		<category><![CDATA[ToolBar]]></category>
+		<category><![CDATA[toolbar animation]]></category>
+		<category><![CDATA[ui design]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=675</guid>
+		<description><![CDATA[<p>With the new Design support library for Android, it has become easier for us to create some great animations with minimal effort. We have seen WhatsApp profile view design with user image hide on scrolling. For that we need Design Support Library. In one of my earlier tutorial i had shown how to hide and show [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-toolbar-animation-using-design-support-library/">Android Toolbar Animation Using Design Support Library</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>With the new Design support library for Android, it has become easier for us to create some great animations with minimal effort.</p>
+<p>We have seen WhatsApp profile view design with user image hide on scrolling. For that we need Design Support Library. In one of my earlier tutorial i had shown how to hide and show ToolBar you can see the <a href="http://androhub.com/android-material-design-tabs-using-tablayout/" target="_blank">tutorial here</a>.</p>
+<p>For this tutorial you need to learn how to implement material design in android that you can <a href="http://androhub.com/android-toolbar/" target="_blank">check here</a>.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to implement ToolBar Animation using Design Support Library.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_18076" width="602" height="339" src="https://www.youtube.com/embed/RH3zaLO8H4E?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>build.gradle </strong>and include this libraries show below:</p><pre class="crayon-plain-tag">dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:design:23.0.1'
+    compile 'com.android.support:recyclerview-v7:23.0.1'
+    compile 'com.android.support:cardview-v7:23.0.1'
+    compile 'com.android.support:palette-v7:23.0.1'
+}</pre><p>
+<b>3</b>. Open <strong>res ⇒ values</strong> and create a new xml file naming <em>colors.xml </em>and add the following colors to it.<strong>   </strong></p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+
+    &lt;color name="colorPrimary"&gt;#2196F3&lt;/color&gt;
+    &lt;color name="colorPrimaryDark"&gt;#1976D2&lt;/color&gt;
+    &lt;color name="colorAccent"&gt;#BBDEFB&lt;/color&gt;
+    &lt;color name="textColorPrimary"&gt;#FFFFFF&lt;/color&gt;
+    &lt;color name="windowBackground"&gt;#FFFFFF&lt;/color&gt;
+    &lt;color name="navigationBarColor"&gt;#000000&lt;/color&gt;
+    &lt;color name="black_trans"&gt;#14000000&lt;/color&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>4</b>. For material design we need to modify to our styles.xml file by adding below codes :</p><pre class="crayon-plain-tag">&lt;resources&gt;
+
+    &lt;style name="AppBaseTheme" parent="AppTheme" /&gt;
+
+    &lt;!-- Base application theme. --&gt;
+    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"&gt;
+        &lt;!-- Customize your theme here. --&gt;
+
+        &lt;item name="android:windowDisablePreview"&gt;true&lt;/item&gt;
+        &lt;item name="windowActionBar"&gt;false&lt;/item&gt;
+
+        &lt;item name="android:textColorPrimary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:textColorSecondary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="actionMenuTextColor"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:windowNoTitle"&gt;true&lt;/item&gt;
+        &lt;item name="colorPrimary"&gt;@color/colorPrimary&lt;/item&gt;
+        &lt;item name="colorPrimaryDark"&gt;@color/colorPrimaryDark&lt;/item&gt;
+        &lt;item name="colorAccent"&gt;@color/colorAccent&lt;/item&gt;
+
+
+    &lt;/style&gt;
+
+&lt;/resources&gt;</pre><p>
+Now, for 21 Api Level we need to create a new folder  under <em>res</em> directory naming <em>values-v21 </em>and create styles.xml file and add this code to it :</p><pre class="crayon-plain-tag">&lt;resources&gt;
+
+
+    &lt;!-- Base application theme. --&gt;
+    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"&gt;
+        &lt;!-- Customize your theme here. --&gt;
+
+        &lt;item name="android:windowDisablePreview"&gt;true&lt;/item&gt;
+        &lt;item name="windowActionBar"&gt;false&lt;/item&gt;
+        &lt;item name="android:textColorPrimary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:textColorSecondary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="actionMenuTextColor"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:windowNoTitle"&gt;true&lt;/item&gt;
+        &lt;item name="colorPrimary"&gt;@color/colorPrimary&lt;/item&gt;
+        &lt;item name="colorPrimaryDark"&gt;@color/colorPrimaryDark&lt;/item&gt;
+        &lt;item name="colorAccent"&gt;@color/colorAccent&lt;/item&gt;
+        &lt;item name="android:navigationBarColor"&gt;@color/colorPrimary&lt;/item&gt;
+        &lt;item name="android:windowContentTransitions"&gt;true&lt;/item&gt;
+        &lt;item name="android:windowAllowEnterTransitionOverlap"&gt;true&lt;/item&gt;
+        &lt;item name="android:windowAllowReturnTransitionOverlap"&gt;true&lt;/item&gt;
+        &lt;item name="android:windowSharedElementEnterTransition"&gt;@android:transition/move&lt;/item&gt;
+        &lt;item name="android:windowSharedElementExitTransition"&gt;@android:transition/move&lt;/item&gt;
+
+
+    &lt;/style&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>5</b>. Now create a layout xml file naming <em>activity_main.xml </em>and add the below code to it. This code will help us to do toolbar animation by hiding image. The parent should be CoordinatorLayout and inside that we need AppBarLayout inside this add CollapsingToolbarLayout that will help us to achieve the animation.</p>
+<p>You must set the <em>layout_scrollFlags</em> for the CollapsingToolbarLayout :</p>
+<ul>
+<li><strong>scroll</strong>: this flag should be set for all views that want to scroll off the screen – for views that do not use this flag, they’ll remain pinned to the top of the screen</li>
+</ul>
+<ul>
+<li><strong>exitUntilCollapsed</strong>: this flag causes the view to scroll off until it is ‘collapsed’ (its minHeight) before exiting.</li>
+</ul>
+<p>In CollapsingToolbarLayout add this flags :</p><pre class="crayon-plain-tag">app:layout_scrollFlags="scroll|exitUntilCollapsed"</pre><p>
+Now put your ImageView inside CollapseToolbar similarly you can put here any view that you want to hide on scroll and add the collapse mode:</p><pre class="crayon-plain-tag">app:layout_collapseMode="parallax"</pre><p>
+The Toolbar must use <em>pin</em> as its <em>collapseMode<strong> </strong></em>because we want the Toolbar to persist and remain on top as the user scrolls down. Note I haven’t set any color for the Toolbar. That will be taken care of by the CollapsingToolbarLayout which will dynamically pick a color from our image and set it to the Toolbar on scroll.</p>
+<p>Now add RecyclerView or any your view with below layout behaviour:</p><pre class="crayon-plain-tag">app:layout_behavior="@string/appbar_scrolling_view_behavior"</pre><p>
+</p><pre class="crayon-plain-tag">&lt;android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"&gt;
+
+    &lt;android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"&gt;
+
+        &lt;android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginBottom="32dp"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"&gt;
+
+            &lt;!--  Your View that you want to hide on animation --&gt;
+            &lt;ImageView
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax" /&gt;
+
+            &lt;!-- Your toolbar should always below your View otherwise it won't be visible  --&gt;
+            &lt;android.support.v7.widget.Toolbar
+                android:id="@+id/toolBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" /&gt;
+        &lt;/android.support.design.widget.CollapsingToolbarLayout&gt;
+    &lt;/android.support.design.widget.AppBarLayout&gt;
+
+    &lt;android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" /&gt;
+
+    &lt;android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:clickable="true"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/colorPrimary"
+        app:elevation="6dp"
+        app:layout_anchor="@+id/appbar"
+        app:layout_anchorGravity="bottom|right|end" /&gt;
+
+&lt;/android.support.design.widget.CoordinatorLayout&gt;</pre><p>
+<b>6</b>. Since we are using RecyclerView so we need custom layout. So create custom layout naming item_row.xml and add the code.</p>
+<p>If you want to learn how to implement recycler view than you can see my <a href="http://androhub.com/android-recyclerview/" target="_blank">RecyclerView tutorial</a>.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="7dp"&gt;
+
+    &lt;TextView
+        android:id="@+id/cardTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="Card Title"
+        android:textColor="#000000"
+        android:textSize="17sp" /&gt;
+
+&lt;/android.support.v7.widget.CardView&gt;</pre><p>
+<b>7</b>. Now create a ViewHolder class for RecyclerView naming <em>DemoViewHolder.java </em>and add the following code.</p><pre class="crayon-plain-tag">package com.androidtoolbaranimation_demo;
+
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
+
+/**
+ * Created by SONU on 25/09/15.
+ */
+public class DemoViewHolder  extends RecyclerView.ViewHolder {
+
+
+public TextView title;
+
+
+public DemoViewHolder(View view) {
+        super(view);
+
+
+        this.title = (TextView) view.findViewById(R.id.cardTitle);
+
+}
+        }</pre><p>
+<b>8</b>. Now create RecyclerViewAdapter class naming <em>RecyclerView_Adapter.java</em> and add the following code.</p><pre class="crayon-plain-tag">package com.androidtoolbaranimation_demo;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
+import java.util.ArrayList;
+
+/**
+ * Created by SONU on 25/09/15.
+ */
+public class RecyclerView_Adapter extends
+        RecyclerView.Adapter&lt;DemoViewHolder&gt; {
+    private ArrayList&lt;String&gt; arrayList;
+    private Context context;
+
+
+    public RecyclerView_Adapter(Context context,
+                                ArrayList&lt;String&gt; arrayList) {
+        this.context = context;
+        this.arrayList = arrayList;
+
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return (null != arrayList ? arrayList.size() : 0);
+
+    }
+
+    @Override
+    public void onBindViewHolder(DemoViewHolder holder,
+                                 int position) {
+
+
+        final DemoViewHolder mainHolder = (DemoViewHolder) holder;
+        //Setting text over textview
+        mainHolder.title.setText(arrayList.get(position));
+
+    }
+
+    @Override
+    public DemoViewHolder onCreateViewHolder(
+            ViewGroup viewGroup, int viewType) {
+        LayoutInflater mInflater = LayoutInflater.from(viewGroup.getContext());
+
+        ViewGroup mainGroup = (ViewGroup) mInflater.inflate(
+                R.layout.item_row, viewGroup, false);
+        DemoViewHolder mainHolder = new DemoViewHolder(mainGroup) {
+            @Override
+            public String toString() {
+                return super.toString();
+            }
+        };
+
+
+        return mainHolder;
+
+    }
+
+
+}</pre><p>
+<b>9</b>. Finally come to your <em>MainActivity.java</em> and add the following code. In this we have to set title to CollapsingToolbarLayout only otherwise it won&#8217;t show title.</p>
+<p>I had uses the palette that will generate the color based on our image in AsyncTask and set it over Toolbar.</p><pre class="crayon-plain-tag">package com.androidtoolbaranimation_demo;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.graphics.Palette;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+    private static RecyclerView recyclerView;
+    private static Toolbar toolbar;
+    private static CollapsingToolbarLayout collapsingToolbarLayout;
+    int mutedColor = R.attr.colorPrimary;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        toolbar = (Toolbar)findViewById(R.id.toolBar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout.setTitle("Toolbar Animation Demo");//Set Title over collapsing toolbar layout
+
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
+                R.drawable.background);
+
+      // It will generate colors based on the image in an AsyncTask.
+        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+            @SuppressWarnings("ResourceType")
+            @Override
+            public void onGenerated(Palette palette) {
+
+                mutedColor = palette.getMutedColor(R.color.colorPrimary);
+                collapsingToolbarLayout.setContentScrimColor(mutedColor);
+                collapsingToolbarLayout.setStatusBarScrimColor(R.color.black_trans);
+            }
+        });
+        setRecyclerView();
+    }
+
+    //Setting recycler view
+    private void setRecyclerView() {
+
+        recyclerView = (RecyclerView)
+                findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView
+                .setLayoutManager(new LinearLayoutManager(MainActivity.this));//Linear Items
+
+
+        ArrayList&lt;String&gt; arrayList = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 20; i++) {
+            arrayList.add("Card Item " + i);//Adding items to recycler view
+        }
+        RecyclerView_Adapter adapter = new RecyclerView_Adapter(MainActivity.this, arrayList);
+        recyclerView.setAdapter(adapter);// set adapter on recyclerview
+
+    }
+}</pre><p>
+<b>10</b>. Finally, all done  –  run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/AndroidToolbarAnimation_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-toolbar-animation-using-design-support-library/">Android Toolbar Animation Using Design Support Library</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-toolbar-animation-using-design-support-library/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">675</post-id>	</item>
+		<item>
+		<title>Android Material Design SnackBar Using Design Support Library</title>
+		<link>http://www.androhub.com/android-material-design-snackbar-using-design-support-library/</link>
+		<comments>http://www.androhub.com/android-material-design-snackbar-using-design-support-library/#respond</comments>
+		<pubDate>Thu, 01 Oct 2015 07:52:31 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Material Design]]></category>
+		<category><![CDATA[Android UI Design]]></category>
+		<category><![CDATA[android coordinator layout]]></category>
+		<category><![CDATA[android custom snackbar]]></category>
+		<category><![CDATA[android design support library]]></category>
+		<category><![CDATA[android fab]]></category>
+		<category><![CDATA[android snackbar]]></category>
+		<category><![CDATA[android toast]]></category>
+		<category><![CDATA[Material Design]]></category>
+		<category><![CDATA[snackbar]]></category>
+		<category><![CDATA[toast]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=671</guid>
+		<description><![CDATA[<p>When Android 5.0 was released, new design guidelines were also released with it, called material design. It introduced many new design patterns and guidelines. But here we’ll discuss only one new UX concept introduced in material design called Snackbar. This new concept is inspired from the Toast widget of android. Android Snackbar is just like [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-material-design-snackbar-using-design-support-library/">Android Material Design SnackBar Using Design Support Library</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>When Android 5.0 was released, new design guidelines were also released with it, called <a href="https://www.google.co.in/design/spec/material-design/introduction.html" target="_blank">material design</a>. It introduced many new design patterns and guidelines. But here we’ll discuss only one new UX concept introduced in material design called <a href="https://developer.android.com/intl/ru/reference/android/support/design/widget/Snackbar.html" target="_blank">Snackbar</a>. This new concept is inspired from the <a href="http://developer.android.com/intl/ru/guide/topics/ui/notifiers/toasts.html" target="_blank">Toast</a> widget of android. Android Snackbar is just like a Toast message except that it has an option for user feedback. You can call it as a toast message with an action button. Usually this type of widget is used in a situation where user needs an option to reverse his actions like undo -ing an action.</p>
+<p><a href="http://developer.android.com/reference/android/support/design/widget/Snackbar.html" target="_blank">Snackbar</a> is a UI element used for user feedback. Generally used when instantaneous feedback is required from the user, after an action is performed. Snackbar appears in on the screen from bottom and can be dispersed by swiping, if a <a href="https://developer.android.com/reference/android/support/design/widget/CoordinatorLayout.html" target="_blank">CoordinatorLayout</a> is used as its parent.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to implement Material Design SnackBar by using Design Support Library. In this article we will learn different types of SnackBars.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_52495" width="602" height="339" src="https://www.youtube.com/embed/qwLi0oU5_BU?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<h2>1. Include Design Support Library</h2>
+<pre class="crayon-plain-tag">compile 'com.android.support:design:23.0.1'</pre>
+<h2>2. Simple SnackBar</h2>
+<p>Below is the syntax of a simple snackbar. The <strong>make</strong> function accepts three parameters: <em>View</em>, <em>display message</em> and <em>duration of the message</em> to be displayed.</p>
+<p>Normally passing <strong>CoordinatorLayout</strong> as view param is the best option as it allows Snackbar to enable some features like swipe-to-dismiss and automatically moving of widgets like FloatingActionButton.</p>
+<p>And the duration should be <em>LENGTH_SHORT</em>, <em>LENGTH_LONG</em> or <em>LENGTH_INDEFINITE</em>. When LENGTH_INDEFINITE is used, the snackbar will be displayed indefinite time and can be dismissed with swipe off.</p><pre class="crayon-plain-tag">Snackbar.make(coordinatorLayout, "Single Line SnackBar Demo.", Snackbar.LENGTH_SHORT).show();</pre><p>
+<h2>3. Android Coordinator Layout</h2>
+<p>Normally passing <strong>CoordinatorLayout</strong> as view param is the best option as it allows Snackbar to enable some features like swipe-to-dismiss and automatically moving of widgets like FloatingActionButton.</p>
+<h2>4. SnackBar with Action</h2>
+<p>You can also mention a callback interaction method using <em>setAction()</em> method. This allows us to take certain action when user interacts with the snackbar.</p><pre class="crayon-plain-tag">Snackbar.make(coordinatorLayout, "Click on Action.", Snackbar.LENGTH_LONG).setAction("ACTION", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Snackbar.make(coordinatorLayout, "You clicked on Action.", Snackbar.LENGTH_SHORT).show();
+                    }
+                }).show();</pre><p>
+<h2>5. SnackBar with Custom Colors i.e. Customised SnackBar</h2>
+<p>We can override color of snackbar action and snackbar message.</p><pre class="crayon-plain-tag">Snackbar snackbar = Snackbar.make(coordinatorLayout, "Custom Text Color and Custom Action Color.", Snackbar.LENGTH_LONG).setAction("ACTION", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Snackbar.make(coordinatorLayout, "You clicked on Action.", Snackbar.LENGTH_SHORT).show();
+                    }
+                }).setActionTextColor(Color.BLUE);//Action Text Color
+
+                // Changing SnackBar text color
+                View snackView = snackbar.getView();
+                TextView textView = (TextView) snackView.findViewById(android.support.design.R.id.snackbar_text);
+                textView.setTextColor(Color.RED);
+                snackbar.show();</pre><p>
+<h2>6. SnackBar with Multi Colored Message</h2>
+<p>We can make our Snackbar message with multicolored by using <a href="http://developer.android.com/intl/ru/reference/android/text/SpannableStringBuilder.html" target="_blank">SpannableStringBuilder</a>.</p><pre class="crayon-plain-tag">//Making multi colored text color of SnackBar text
+                SpannableStringBuilder snackbarText = new SpannableStringBuilder();
+                snackbarText.append("This is ");
+                int boldStart = snackbarText.length();
+                snackbarText.append("Multi Color");
+                snackbarText.setSpan(new ForegroundColorSpan(0xFFFF0000), boldStart, snackbarText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                snackbarText.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), boldStart, snackbarText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                snackbarText.append(" SnackBar Demo.");
+                Snackbar.make(coordinatorLayout, snackbarText, Snackbar.LENGTH_LONG).show();</pre><p>
+<h2>7. Android Layout xml file</h2>
+<p>Create a activity_main.xml file with coordinator layout as parent.</p><pre class="crayon-plain-tag">&lt;android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;ScrollView
+
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"&gt;
+
+        &lt;LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"&gt;
+
+            &lt;Button
+                android:id="@+id/singleLineSnackBar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/singleLine" /&gt;
+
+            &lt;Button
+                android:id="@+id/actionSnackBar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/actionSnackBar" /&gt;
+
+            &lt;Button
+                android:id="@+id/customColorsSnackBar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/customColors" /&gt;
+
+            &lt;Button
+                android:id="@+id/multiColoredSnackBar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/multiColor" /&gt;
+
+
+        &lt;/LinearLayout&gt;
+    &lt;/ScrollView&gt;
+&lt;/android.support.design.widget.CoordinatorLayout&gt;</pre><p>
+<h2>8. Full Source Code</h2>
+<p>Here is the full source code of this article.</p><pre class="crayon-plain-tag">package com.androidsnackbar_demo;
+
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static CoordinatorLayout coordinatorLayout;
+    private static Button singleLine, action, customColors, multiColored;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initViews();
+        setListeners();
+
+    }
+
+    //Initiate Views
+    private void initViews() {
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id
+                .coordinatorLayout);
+        singleLine = (Button) findViewById(R.id.singleLineSnackBar);
+
+        action = (Button) findViewById(R.id.actionSnackBar);
+        customColors = (Button) findViewById(R.id.customColorsSnackBar);
+        multiColored = (Button) findViewById(R.id.multiColoredSnackBar);
+
+
+    }
+
+    //Set Listeners Over buttons
+    private void setListeners() {
+        singleLine.setOnClickListener(this);
+        customColors.setOnClickListener(this);
+        action.setOnClickListener(this);
+        multiColored.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.singleLineSnackBar:
+                Snackbar.make(coordinatorLayout, "Single Line SnackBar Demo.", Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.actionSnackBar:
+
+                Snackbar.make(coordinatorLayout, "Click on Action.", Snackbar.LENGTH_LONG).setAction("ACTION", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Snackbar.make(coordinatorLayout, "You clicked on Action.", Snackbar.LENGTH_SHORT).show();
+                    }
+                }).show();
+
+                break;
+
+            case R.id.customColorsSnackBar:
+                Snackbar snackbar = Snackbar.make(coordinatorLayout, "Custom Text Color and Custom Action Color.", Snackbar.LENGTH_LONG).setAction("ACTION", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Snackbar.make(coordinatorLayout, "You clicked on Action.", Snackbar.LENGTH_SHORT).show();
+                    }
+                }).setActionTextColor(Color.BLUE);//Action Text Color
+
+                // Changing SnackBar text color
+                View snackView = snackbar.getView();
+                TextView textView = (TextView) snackView.findViewById(android.support.design.R.id.snackbar_text);
+                textView.setTextColor(Color.RED);
+                snackbar.show();
+                break;
+            case R.id.multiColoredSnackBar:
+
+                //Making multi colored text color of SnackBar text
+                SpannableStringBuilder snackbarText = new SpannableStringBuilder();
+                snackbarText.append("This is ");
+                int boldStart = snackbarText.length();
+                snackbarText.append("Multi Color");
+                snackbarText.setSpan(new ForegroundColorSpan(0xFFFF0000), boldStart, snackbarText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                snackbarText.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), boldStart, snackbarText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                snackbarText.append(" SnackBar Demo.");
+                Snackbar.make(coordinatorLayout, snackbarText, Snackbar.LENGTH_LONG).show();
+
+                break;
+        }
+
+    }
+}</pre><p>
+Finally all done, run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a title="Android Fragments" href="http://androhub.com/downloads/AndroidSnackBar_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-material-design-snackbar-using-design-support-library/">Android Material Design SnackBar Using Design Support Library</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-material-design-snackbar-using-design-support-library/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">671</post-id>	</item>
+		<item>
+		<title>Android Material Design Floating Labels Using Design Support Library</title>
+		<link>http://www.androhub.com/android-material-design-floating-labels-using-design-support-library/</link>
+		<comments>http://www.androhub.com/android-material-design-floating-labels-using-design-support-library/#respond</comments>
+		<pubDate>Wed, 30 Sep 2015 04:57:22 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Material Design]]></category>
+		<category><![CDATA[Android UI Design]]></category>
+		<category><![CDATA[android design support library]]></category>
+		<category><![CDATA[Android Floating Labels]]></category>
+		<category><![CDATA[Floating Labels]]></category>
+		<category><![CDATA[hint as floating labels]]></category>
+		<category><![CDATA[Material Design]]></category>
+		<category><![CDATA[ui design]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=673</guid>
+		<description><![CDATA[<p>One of the most basic UI widgets in Android is an EditText. It is generally used to take inputs from the user. But what it lacked was a label attached to it. Therefore in most of the implementations a hint was used as a label for the EditText. But last year when material design was [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-material-design-floating-labels-using-design-support-library/">Android Material Design Floating Labels Using Design Support Library</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>One of the most basic UI widgets in Android is an EditText. It is generally used to take inputs from the user. But what it lacked was a label attached to it. Therefore in most of the implementations a hint was used as a label for the EditText. But last year when material design was released, a new concept of <a href="http://www.google.com/design/spec/components/text-fields.html#text-fields-floating-labels" target="_blank">floating labels</a> was introduced. This new Android floating label EditText concept initially showed a label as a hint; when user enters a value in the EditText, that hint moves on to the top of the EditText as a floating label. This new library implements the floating label EditText feature for Android on all API versions of it by using <a href="https://developer.android.com/intl/ru/reference/android/support/design/widget/TextInputLayout.html" target="_blank">TextInputLayout</a>.</p>
+<h2>TextInputLayout</h2>
+<p>In design support library a new element called <a href="https://developer.android.com/intl/zh-tw/reference/android/support/design/widget/TextInputLayout.html" target="_blank">TextInputLayout</a> was introduced to display the floating label on EditText. The EditText has to be wrapped by TextInputLayout in order to display the floating label. You can also set an error message to EditText by using <em>setErrorEnabled(boolean)</em> and <em>setError(CharSequence) </em>methods.</p>
+<p>TextInputLayout takes the value of <em>android:hint</em> assigned to EditText and displays it as floating label.</p><pre class="crayon-plain-tag">&lt;android.support.design.widget.TextInputLayout
+        android:id="@+id/nameLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"&gt;
+
+        &lt;EditText
+            android:id="@+id/name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:inputType="text"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textColor="#000000"
+            android:textColorHint="#d3d3d3" /&gt;
+    &lt;/android.support.design.widget.TextInputLayout&gt;</pre><p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to implement Floating Labels by using Material Design Library.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_14001" width="602" height="339" src="https://www.youtube.com/embed/a7dQqZpE-UM?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<h3>Let&#8217;s start with an Example</h3>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>.Open <strong>build.gradle</strong> and add design support library dependency.</p><pre class="crayon-plain-tag">dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:design:23.0.1'
+}</pre><p>
+<b style="line-height: 1.5;">3</b><span style="line-height: 1.5;">. Open</span><strong style="line-height: 1.5;"><em> res=&gt;values=&gt;strings.xml</em></strong> <span style="line-height: 1.5;">and the following </span><span style="line-height: 1.5;">strings</span><span style="line-height: 1.5;"> to </span><span style="line-height: 1.5;">this</span><span style="line-height: 1.5;"> file.</span></p><pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;FloatingLabels Demo&lt;/string&gt;
+    &lt;string name="name"&gt;Full Name&lt;/string&gt;
+    &lt;string name="email"&gt;Email Id&lt;/string&gt;
+    &lt;string name="phone"&gt;Contact Number&lt;/string&gt;
+    &lt;string name="location"&gt;Location&lt;/string&gt;
+    &lt;string name="submit"&gt;Submit&lt;/string&gt;
+    &lt;string name="title"&gt;Floating Labels Using TextInputLayout&lt;/string&gt;
+&lt;/resources&gt;</pre><p>
+<span style="line-height: 1.5;"><b>4</b>. Create a <em>activity_main.xml </em>file for UI design of floating labels and add the following code to it. Make sure you provide hint to your EditText for floating labels.</span></p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp"&gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/title"
+        android:textColor="#FF2259"
+        android:textSize="18sp"
+        android:textStyle="bold" /&gt;
+
+    &lt;!--  TextInputLayout is Used to Show Floating Labels --&gt;
+
+    &lt;android.support.design.widget.TextInputLayout
+        android:id="@+id/nameLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"&gt;
+
+        &lt;EditText
+            android:id="@+id/name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:inputType="text"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textColor="#000000"
+            android:textColorHint="#d3d3d3" /&gt;
+    &lt;/android.support.design.widget.TextInputLayout&gt;
+
+    &lt;android.support.design.widget.TextInputLayout
+        android:id="@+id/emailLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"&gt;
+
+        &lt;EditText
+            android:id="@+id/email"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textColor="#000000"
+            android:textColorHint="#d3d3d3" /&gt;
+    &lt;/android.support.design.widget.TextInputLayout&gt;
+
+    &lt;android.support.design.widget.TextInputLayout
+        android:id="@+id/numberLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"&gt;
+
+        &lt;EditText
+            android:id="@+id/number"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone"
+            android:inputType="number"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textColor="#000000"
+            android:textColorHint="#d3d3d3" /&gt;
+    &lt;/android.support.design.widget.TextInputLayout&gt;
+
+    &lt;android.support.design.widget.TextInputLayout
+        android:id="@+id/locationLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"&gt;
+
+        &lt;EditText
+            android:id="@+id/location"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/location"
+            android:inputType="text"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textColor="#000000"
+            android:textColorHint="#d3d3d3" /&gt;
+    &lt;/android.support.design.widget.TextInputLayout&gt;
+
+    &lt;Button
+        android:id="@+id/submit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>5</b>. Open <strong>MainActivity.java</strong> and add the following code. On submit button click i am checking every field if empty or not and setError() to TextInputLayout.</p><pre class="crayon-plain-tag">package com.androidfloatinglables_demo;
+
+import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    private static EditText name, email, number, location;
+    private static TextInputLayout nameLayout, emailLayout, numberLayout, locationLayout;
+
+    private static Button submit;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initViews();
+    }
+
+
+    //Initiate all views
+    private void initViews() {
+        name = (EditText) findViewById(R.id.name);
+        email = (EditText) findViewById(R.id.email);
+        number = (EditText) findViewById(R.id.number);
+        location = (EditText) findViewById(R.id.location);
+
+        nameLayout = (TextInputLayout) findViewById(R.id.nameLayout);
+        emailLayout = (TextInputLayout) findViewById(R.id.emailLayout);
+        numberLayout = (TextInputLayout) findViewById(R.id.numberLayout);
+        locationLayout = (TextInputLayout) findViewById(R.id.locationLayout);
+
+        submit = (Button) findViewById(R.id.submit);
+
+
+        //Implement click listener over button
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkValidation();//Call check validation method
+
+            }
+        });
+    }
+
+    //Check Validation Method will check if all fields are filled or not
+    private void checkValidation() {
+        String getName = name.getText().toString();
+        String getEmail = email.getText().toString();
+        String getNumber = number.getText().toString();
+        String getLocation = location.getText().toString();
+
+
+        //If fields are empty then set error over TextInputLayout over their corresponding EditText
+        if (getName.equals("") || getName.length() == 0)
+            nameLayout.setError("Enter your full name.");
+        else if (getEmail.equals("") || getEmail.length() == 0)
+            emailLayout.setError("Enter your email id.");
+        else if (getNumber.equals("") || getNumber.length() == 0)
+            numberLayout.setError("Enter your contact number.");
+        else if (getLocation.equals("") || getLocation.length() == 0)
+            locationLayout.setError("Enter your location.");
+        else
+        //If all fields are filled then do your stuff
+            Toast.makeText(MainActivity.this, "All fields are filled.", Toast.LENGTH_SHORT).show();
+
+    }
+
+
+}</pre><p>
+<b>6</b>. Finally all done, run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a title="Android Fragments" href="http://androhub.com/downloads/AndroidFloatingLables_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-material-design-floating-labels-using-design-support-library/">Android Material Design Floating Labels Using Design Support Library</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-material-design-floating-labels-using-design-support-library/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">673</post-id>	</item>
+		<item>
+		<title>Login, SignUp and Forgot Password Screen Design Android</title>
+		<link>http://www.androhub.com/login-signup-and-forgot-password-screen-design-android/</link>
+		<comments>http://www.androhub.com/login-signup-and-forgot-password-screen-design-android/#comments</comments>
+		<pubDate>Wed, 16 Sep 2015 13:21:40 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Animations]]></category>
+		<category><![CDATA[Android UI Design]]></category>
+		<category><![CDATA[android fragments]]></category>
+		<category><![CDATA[animations]]></category>
+		<category><![CDATA[awesome login desing ui]]></category>
+		<category><![CDATA[custom selector]]></category>
+		<category><![CDATA[forgot password]]></category>
+		<category><![CDATA[fragment]]></category>
+		<category><![CDATA[left and right animation]]></category>
+		<category><![CDATA[login page]]></category>
+		<category><![CDATA[selector]]></category>
+		<category><![CDATA[shake animation]]></category>
+		<category><![CDATA[signup page]]></category>
+		<category><![CDATA[textview selector]]></category>
+		<category><![CDATA[ui design]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=655</guid>
+		<description><![CDATA[<p>Today every app needs Login and SignUp page. So today we are going to learn how to create awesome Login and SignUp screen. There are certain functionalities that i had included in this app also that are listed below: Custom Toast Alert when any error occurred. Shake Animation when fields are empty. (Login Only) Show/Hide [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/login-signup-and-forgot-password-screen-design-android/">Login, SignUp and Forgot Password Screen Design Android</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Today every app needs Login and SignUp page. So today we are going to learn how to create awesome Login and SignUp screen. There are certain functionalities that i had included in this app also that are listed below:</p>
+<ol>
+<li>Custom Toast Alert when any error occurred.</li>
+<li>Shake Animation when fields are empty. (Login Only)</li>
+<li>Show/Hide Password. (Login Only)</li>
+<li>Screen Animation.</li>
+</ol>
+<p>The icons that i have used in this app you can find them on <a href="https://icons8.com/" target="_blank">icons8.com</a>. Here you can find icon for ios, android and windows.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_97206" width="602" height="339" src="https://www.youtube.com/embed/HKtbjlkzNfE?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>So let&#8217;s start with this tutorial :</p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. This are the strings that i am going to use in this tutorial.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="app_name"&gt;Login and SignUp ScreenDesign Demo&lt;/string&gt;
+    &lt;string name="hello_world"&gt;Hello world!&lt;/string&gt;
+    &lt;string name="action_settings"&gt;Settings&lt;/string&gt;
+    &lt;string name="email"&gt;Email Id&lt;/string&gt;
+    &lt;string name="passowrd"&gt;Password&lt;/string&gt;
+    &lt;string name="login"&gt;LOGIN&lt;/string&gt;
+    &lt;string name="show_pwd"&gt;Show Password&lt;/string&gt;
+    &lt;string name="hide_pwd"&gt;Hide Password&lt;/string&gt;
+    &lt;string name="forgot"&gt;Forgot password?&lt;/string&gt;
+    &lt;string name="closebutton"&gt;Close Button for Activity&lt;/string&gt;
+    &lt;string name="newUser"&gt;Not a Member yet? Sign Up here.&lt;/string&gt;
+    &lt;string name="fullName"&gt;Full Name&lt;/string&gt;
+    &lt;string name="mobileNumber"&gt;Mobile Number&lt;/string&gt;
+    &lt;string name="location"&gt;Location&lt;/string&gt;
+    &lt;string name="confirmPassword"&gt;Confirm Password&lt;/string&gt;
+    &lt;string name="terms_conditions"&gt;By clicking SignUp you agree all the Terms and Conditions.&lt;/string&gt;
+    &lt;string name="signUp"&gt;SIGN UP&lt;/string&gt;
+    &lt;string name="already_user"&gt;Already have Account? Login here.&lt;/string&gt;
+    &lt;string name="registered_emailid"&gt;Please enter your Registered Email Id below:&lt;/string&gt;
+    &lt;string name="submit"&gt;SUBMIT&lt;/string&gt;
+    &lt;string name="back"&gt;BACK&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Open <strong>res ⇒ values </strong>and create new xml file naming <em>colors.xml </em>for placing all the colors at one place to use it anytime.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;color name="background_color"&gt;#009688&lt;/color&gt;
+    &lt;color name="white"&gt;#FFFFFF&lt;/color&gt;
+    &lt;color name="black"&gt;#000000&lt;/color&gt;
+    &lt;color name="white_greyish"&gt;#EEEEEE&lt;/color&gt;
+    &lt;color name="button_selectorcolor"&gt;#9E9E9E&lt;/color&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>4</b>. Now create <em>activity_main.xml </em>file that contains an ImageView that close activity on press and a FrameLayout for placing fragments.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    android:scrollbars="none" &gt;
+
+    &lt;RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_color" &gt;
+
+        &lt;ImageView
+            android:id="@+id/close_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="top|end"
+            android:layout_margin="4dp"
+            android:contentDescription="@string/closebutton"
+            android:padding="5dp"
+            android:src="@drawable/close" /&gt;
+
+        &lt;FrameLayout
+            android:id="@+id/frameContainer"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/close_activity" /&gt;
+    &lt;/RelativeLayout&gt;
+
+&lt;/ScrollView&gt;</pre><p>
+We will here work on fragments so if you don&#8217;t know how to use fragments then you can check my tutorial about <a href="http://androhub.com/android-fragments/" target="_blank">Android Fragments</a>.</p>
+<p><b>5</b>. Now create a new <em>drawable</em> directory under <em>res</em> folder and under this directory create drawable selector.</p>
+<ul>
+<li>Button Selector</li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;selector xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+
+    &lt;!-- When item pressed this item will be triggered --&gt;
+    &lt;item android:state_pressed="true"&gt;&lt;shape android:shape="rectangle"&gt;
+            &lt;corners android:radius="3dp" /&gt;
+
+            &lt;solid android:color="@color/button_selectorcolor" /&gt;
+        &lt;/shape&gt;&lt;/item&gt;
+
+    &lt;!-- By default the background will be this item --&gt;
+    &lt;item&gt;&lt;shape android:shape="rectangle"&gt;
+            &lt;corners android:radius="3dp" /&gt;
+
+            &lt;solid android:color="@color/white_greyish" /&gt;
+        &lt;/shape&gt;&lt;/item&gt;
+
+&lt;/selector&gt;</pre>
+<ul>
+<li>TextView Selector</li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;selector xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+
+    &lt;item android:state_pressed="true" android:color="@color/black"/&gt;
+    &lt;item android:color="@color/white"&gt;&lt;/item&gt;
+
+&lt;/selector&gt;</pre>
+We have to use this selector for Buttons and TextViews.</p>
+<p><b>6</b>. Create new xml file for Login screen naming <em>login_layout.xml</em> and add the following lines.</p><pre class="crayon-plain-tag">&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="20dp" &gt;
+
+    &lt;LinearLayout
+        android:id="@+id/login_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical" &gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/login"
+            android:textColor="@color/white_greyish"
+            android:textSize="25sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;EditText
+            android:id="@+id/login_emailid"
+             android:singleLine="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/email"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="16sp" /&gt;
+
+        &lt;View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/white_greyish" /&gt;
+
+        &lt;EditText
+            android:id="@+id/login_password"
+             android:singleLine="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/password"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="@string/passowrd"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="16sp" /&gt;
+
+        &lt;LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="8dp" &gt;
+
+            &lt;CheckBox
+                android:id="@+id/show_hide_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/show_pwd"
+                android:textColor="@color/white"
+                android:textSize="14sp" /&gt;
+
+            &lt;TextView
+                android:id="@+id/forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:padding="5dp"
+                android:text="@string/forgot"
+                android:textColor="@color/white"
+                android:textSize="14sp" /&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;Button
+            android:id="@+id/loginBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/loginbutton_selector"
+            android:padding="3dp"
+            android:text="@string/login"
+            android:textColor="#009688"
+            android:textSize="17sp"
+            android:textStyle="bold" /&gt;
+    &lt;/LinearLayout&gt;
+
+    &lt;TextView
+        android:id="@+id/createAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/newUser"
+        android:textColor="@color/white"
+        android:textSize="15sp" /&gt;
+
+&lt;/RelativeLayout&gt;</pre><p>
+<b>7</b>. Create new xml file for SignUp screen naming <em>signup_layout.xml</em> and add the following lines.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="20dp" &gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/signUp"
+        android:textColor="@color/white_greyish"
+        android:textSize="25sp"
+        android:textStyle="bold" /&gt;
+
+    &lt;EditText
+        android:id="@+id/fullName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/user"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:hint="@string/fullName"
+        android:inputType="textCapWords"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp" /&gt;
+
+    &lt;View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/white_greyish" /&gt;
+
+    &lt;EditText
+        android:id="@+id/userEmailId"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/email"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp" /&gt;
+
+    &lt;View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/white_greyish" /&gt;
+
+    &lt;EditText
+        android:id="@+id/mobileNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/phone"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:hint="@string/mobileNumber"
+        android:inputType="phone"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp" /&gt;
+
+    &lt;View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/white_greyish" /&gt;
+
+    &lt;EditText
+        android:id="@+id/location"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/location"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:hint="@string/location"
+        android:inputType="textCapWords"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp" /&gt;
+
+    &lt;View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/white_greyish" /&gt;
+
+    &lt;EditText
+        android:id="@+id/password"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/password"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:hint="@string/passowrd"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp" /&gt;
+
+    &lt;View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/white_greyish" /&gt;
+
+    &lt;EditText
+        android:id="@+id/confirmPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/confirm_password"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:hint="@string/confirmPassword"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp" /&gt;
+
+    &lt;CheckBox
+        android:id="@+id/terms_conditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="@string/terms_conditions"
+        android:textColor="@color/white"
+        android:textSize="14sp" /&gt;
+
+    &lt;Button
+        android:id="@+id/signUpBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/loginbutton_selector"
+        android:padding="3dp"
+        android:text="@string/signUp"
+        android:textColor="@color/background_color"
+        android:textSize="17sp"
+        android:textStyle="bold" /&gt;
+
+    &lt;TextView
+        android:id="@+id/already_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/already_user"
+        android:textColor="@color/white_greyish"
+        android:textSize="15sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>8</b>. Create  new xml file for ForgorPassword screen naming <em>forgotpassword_layout.xml</em> and add the following lines.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp" &gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/registered_emailid"
+        android:textColor="@color/white_greyish"
+        android:textSize="17sp" /&gt;
+
+    &lt;EditText
+        android:id="@+id/registered_emailid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:singleLine="true"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/email"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp" /&gt;
+
+    &lt;View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/white_greyish" /&gt;
+
+    &lt;RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" &gt;
+
+        &lt;TextView
+            android:id="@+id/backToLoginBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+          
+            android:padding="5dp"
+            android:text="@string/back"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;TextView
+            android:id="@+id/forgot_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+           android:gravity="right"
+            android:padding="5dp"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" /&gt;
+    &lt;/RelativeLayout&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>9</b>. Now create a <em>Utils.java </em>file that contains some global strings for email validation and fragment tags.</p><pre class="crayon-plain-tag">package com.login_signup_screendesign_demo;
+
+public class Utils {
+	
+	//Email Validation pattern
+	public static final String regEx = "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b";
+
+	//Fragments Tags
+	public static final String Login_Fragment = "Login_Fragment";
+	public static final String SignUp_Fragment = "SignUp_Fragment";
+	public static final String ForgotPassword_Fragment = "ForgotPassword_Fragment";
+	
+}</pre><p>
+<b>10</b>. Since i am using Custom Toast for displaying error so for this we need a custom xml file under layout directory. So create a new xml file naming <em>custom_toast.xml</em> that contains a TextView for displaying error.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toast_root"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:padding="5dp" &gt;
+
+    &lt;TextView
+        android:id="@+id/toast_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/error"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:textColor="#c0392b"
+        android:textSize="15sp" /&gt;
+
+&lt;/RelativeLayout&gt;</pre><p>
+<b>11</b>. Now create java file for Custom Toast naming <em>CustomToast.java </em>and add the following code. If you don&#8217;t know how to implement custom toast then you can read me tutorial about <a href="http://androhub.com/android-custom-toast/" target="_blank">Custom Toast</a>.</p><pre class="crayon-plain-tag">package com.login_signup_screendesign_demo;
+
+import com.login_signup_screendesign_demo.R;
+
+import android.content.Context;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class CustomToast {
+
+	// Custom Toast Method
+	public void Show_Toast(Context context, View view, String error) {
+
+		// Layout Inflater for inflating custom view
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+		// inflate the layout over view
+		View layout = inflater.inflate(R.layout.custom_toast,
+				(ViewGroup) view.findViewById(R.id.toast_root));
+
+		// Get TextView id and set error
+		TextView text = (TextView) layout.findViewById(R.id.toast_error);
+		text.setText(error);
+
+		Toast toast = new Toast(context);// Get Toast Context
+		toast.setGravity(Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, 0);// Set
+																		// Toast
+																		// gravity
+																		// and
+																		// Fill
+																		// Horizoontal
+
+		toast.setDuration(Toast.LENGTH_SHORT);// Set Duration
+		toast.setView(layout); // Set Custom View over toast
+
+		toast.show();// Finally show toast
+	}
+
+}</pre><p>
+<b>12</b>. And also i am giving shake animation and fragment animation and for that we need to create new directory under <em>res</em> directory naming <em>anim </em>and under this directory create animation files. Below are certain animations that i am going to use in this app:</p>
+<ul>
+<li>Left Enter Animation</li>
+</ul>
+<pre class="crayon-plain-tag">&lt;set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false" &gt;
+
+    &lt;translate
+        android:duration="300"
+        android:fromXDelta="-100%"
+        android:fromYDelta="0%"
+        android:toXDelta="0%"
+        android:toYDelta="0%" /&gt;
+
+&lt;/set&gt;</pre>
+<ul>
+<li>Left Exit Animation</li>
+</ul>
+<pre class="crayon-plain-tag">&lt;set xmlns:android="http://schemas.android.com/apk/res/android"
+android:shareInterpolator="false"&gt;
+&lt;translate
+android:fromXDelta="0%" android:toXDelta="-100%"
+android:fromYDelta="0%" android:toYDelta="0%"
+android:duration="300"/&gt;
+&lt;/set&gt;</pre>
+<ul>
+<li>Right Enter Animation</li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;set xmlns:android="http://schemas.android.com/apk/res/android"
+     android:shareInterpolator="false"&gt;
+  &lt;translate
+     android:fromXDelta="100%" android:toXDelta="0%"
+     android:fromYDelta="0%" android:toYDelta="0%"
+     android:duration="300" /&gt;
+&lt;/set&gt;</pre>
+<ul>
+<li>Right Exit Animation</li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;set xmlns:android="http://schemas.android.com/apk/res/android" &gt;
+
+    &lt;translate
+        android:duration="300"
+        android:fromXDelta="0"
+        android:toXDelta="100%p" /&gt;
+
+   
+
+&lt;/set&gt;</pre>
+<ul>
+<li>Cycle Animation</li>
+</ul>
+<pre class="crayon-plain-tag">&lt;cycleInterpolator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:cycles="4" /&gt;</pre>
+<ul>
+<li>Shake Animation (x-axis)</li>
+</ul>
+<pre class="crayon-plain-tag">&lt;translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromXDelta="0" android:toXDelta="10" android:duration="1000"
+    android:interpolator="@anim/cycle" /&gt;</pre>
+You can learn how to use Animation in android from this <a href="http://androhub.com/android-animation/" target="_blank">Animation Tutorial</a>. We will use all above animations in our app.</p>
+<p><b>13</b>. Now create a java class for Login naming <em>Login_Fragment.java </em>and add the following code.</p><pre class="crayon-plain-tag">package com.login_signup_screendesign_demo;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.login_signup_screendesign_demo.R;
+
+import android.content.res.ColorStateList;
+import android.content.res.XmlResourceParser;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.Toast;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+public class Login_Fragment extends Fragment implements OnClickListener {
+	private static View view;
+
+	private static EditText emailid, password;
+	private static Button loginButton;
+	private static TextView forgotPassword, signUp;
+	private static CheckBox show_hide_password;
+	private static LinearLayout loginLayout;
+	private static Animation shakeAnimation;
+	private static FragmentManager fragmentManager;
+
+	public Login_Fragment() {
+
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		view = inflater.inflate(R.layout.login_layout, container, false);
+		initViews();
+		setListeners();
+		return view;
+	}
+
+	// Initiate Views
+	private void initViews() {
+		fragmentManager = getActivity().getSupportFragmentManager();
+
+		emailid = (EditText) view.findViewById(R.id.login_emailid);
+		password = (EditText) view.findViewById(R.id.login_password);
+		loginButton = (Button) view.findViewById(R.id.loginBtn);
+		forgotPassword = (TextView) view.findViewById(R.id.forgot_password);
+		signUp = (TextView) view.findViewById(R.id.createAccount);
+		show_hide_password = (CheckBox) view
+				.findViewById(R.id.show_hide_password);
+		loginLayout = (LinearLayout) view.findViewById(R.id.login_layout);
+
+		// Load ShakeAnimation
+		shakeAnimation = AnimationUtils.loadAnimation(getActivity(),
+				R.anim.shake);
+
+		// Setting text selector over textviews
+		XmlResourceParser xrp = getResources().getXml(R.drawable.text_selector);
+		try {
+			ColorStateList csl = ColorStateList.createFromXml(getResources(),
+					xrp);
+
+			forgotPassword.setTextColor(csl);
+			show_hide_password.setTextColor(csl);
+			signUp.setTextColor(csl);
+		} catch (Exception e) {
+		}
+	}
+
+	// Set Listeners
+	private void setListeners() {
+		loginButton.setOnClickListener(this);
+		forgotPassword.setOnClickListener(this);
+		signUp.setOnClickListener(this);
+
+		// Set check listener over checkbox for showing and hiding password
+		show_hide_password
+				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+					@Override
+					public void onCheckedChanged(CompoundButton button,
+							boolean isChecked) {
+
+						// If it is checkec then show password else hide
+						// password
+						if (isChecked) {
+
+							show_hide_password.setText(R.string.hide_pwd);// change
+																			// checkbox
+																			// text
+
+							password.setInputType(InputType.TYPE_CLASS_TEXT);
+							password.setTransformationMethod(HideReturnsTransformationMethod
+									.getInstance());// show password
+						} else {
+							show_hide_password.setText(R.string.show_pwd);// change
+																			// checkbox
+																			// text
+
+							password.setInputType(InputType.TYPE_CLASS_TEXT
+									| InputType.TYPE_TEXT_VARIATION_PASSWORD);
+							password.setTransformationMethod(PasswordTransformationMethod
+									.getInstance());// hide password
+
+						}
+
+					}
+				});
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.loginBtn:
+			checkValidation();
+			break;
+
+		case R.id.forgot_password:
+
+			// Replace forgot password fragment with animation
+			fragmentManager
+					.beginTransaction()
+					.setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+					.replace(R.id.frameContainer,
+							new ForgotPassword_Fragment(),
+							Utils.ForgotPassword_Fragment).commit();
+			break;
+		case R.id.createAccount:
+
+			// Replace signup frgament with animation
+			fragmentManager
+					.beginTransaction()
+					.setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+					.replace(R.id.frameContainer, new SignUp_Fragment(),
+							Utils.SignUp_Fragment).commit();
+			break;
+		}
+
+	}
+
+	// Check Validation before login
+	private void checkValidation() {
+		// Get email id and password
+		String getEmailId = emailid.getText().toString();
+		String getPassword = password.getText().toString();
+
+		// Check patter for email id
+		Pattern p = Pattern.compile(Utils.regEx);
+
+		Matcher m = p.matcher(getEmailId);
+
+		// Check for both field is empty or not
+		if (getEmailId.equals("") || getEmailId.length() == 0
+				|| getPassword.equals("") || getPassword.length() == 0) {
+			loginLayout.startAnimation(shakeAnimation);
+			new CustomToast().Show_Toast(getActivity(), view,
+					"Enter both credentials.");
+
+		}
+		// Check if email id is valid or not
+		else if (!m.find())
+			new CustomToast().Show_Toast(getActivity(), view,
+					"Your Email Id is Invalid.");
+		// Else do login and do your stuff
+		else
+			Toast.makeText(getActivity(), "Do Login.", Toast.LENGTH_SHORT)
+					.show();
+
+	}
+}</pre><p>
+<b>14</b>. Now create a java class for SignUp naming <em>SignUp_Fragment.java </em>and add the following code.</p><pre class="crayon-plain-tag">package com.login_signup_screendesign_demo;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.login_signup_screendesign_demo.R;
+
+import android.content.res.ColorStateList;
+import android.content.res.XmlResourceParser;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class SignUp_Fragment extends Fragment implements OnClickListener {
+	private static View view;
+	private static EditText fullName, emailId, mobileNumber, location,
+			password, confirmPassword;
+	private static TextView login;
+	private static Button signUpButton;
+	private static CheckBox terms_conditions;
+
+	public SignUp_Fragment() {
+
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		view = inflater.inflate(R.layout.signup_layout, container, false);
+		initViews();
+		setListeners();
+		return view;
+	}
+
+	// Initialize all views
+	private void initViews() {
+		fullName = (EditText) view.findViewById(R.id.fullName);
+		emailId = (EditText) view.findViewById(R.id.userEmailId);
+		mobileNumber = (EditText) view.findViewById(R.id.mobileNumber);
+		location = (EditText) view.findViewById(R.id.location);
+		password = (EditText) view.findViewById(R.id.password);
+		confirmPassword = (EditText) view.findViewById(R.id.confirmPassword);
+		signUpButton = (Button) view.findViewById(R.id.signUpBtn);
+		login = (TextView) view.findViewById(R.id.already_user);
+		terms_conditions = (CheckBox) view.findViewById(R.id.terms_conditions);
+
+		// Setting text selector over textviews
+		XmlResourceParser xrp = getResources().getXml(R.drawable.text_selector);
+		try {
+			ColorStateList csl = ColorStateList.createFromXml(getResources(),
+					xrp);
+
+			login.setTextColor(csl);
+			terms_conditions.setTextColor(csl);
+		} catch (Exception e) {
+		}
+	}
+
+	// Set Listeners
+	private void setListeners() {
+		signUpButton.setOnClickListener(this);
+		login.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.signUpBtn:
+
+			// Call checkValidation method
+			checkValidation();
+			break;
+
+		case R.id.already_user:
+
+			// Replace login fragment
+			new MainActivity().replaceLoginFragment();
+			break;
+		}
+
+	}
+
+	// Check Validation Method
+	private void checkValidation() {
+
+		// Get all edittext texts
+		String getFullName = fullName.getText().toString();
+		String getEmailId = emailId.getText().toString();
+		String getMobileNumber = mobileNumber.getText().toString();
+		String getLocation = location.getText().toString();
+		String getPassword = password.getText().toString();
+		String getConfirmPassword = confirmPassword.getText().toString();
+
+		// Pattern match for email id
+		Pattern p = Pattern.compile(Utils.regEx);
+		Matcher m = p.matcher(getEmailId);
+
+		// Check if all strings are null or not
+		if (getFullName.equals("") || getFullName.length() == 0
+				|| getEmailId.equals("") || getEmailId.length() == 0
+				|| getMobileNumber.equals("") || getMobileNumber.length() == 0
+				|| getLocation.equals("") || getLocation.length() == 0
+				|| getPassword.equals("") || getPassword.length() == 0
+				|| getConfirmPassword.equals("")
+				|| getConfirmPassword.length() == 0)
+
+			new CustomToast().Show_Toast(getActivity(), view,
+					"All fields are required.");
+
+		// Check if email id valid or not
+		else if (!m.find())
+			new CustomToast().Show_Toast(getActivity(), view,
+					"Your Email Id is Invalid.");
+
+		// Check if both password should be equal
+		else if (!getConfirmPassword.equals(getPassword))
+			new CustomToast().Show_Toast(getActivity(), view,
+					"Both password doesn't match.");
+
+		// Make sure user should check Terms and Conditions checkbox
+		else if (!terms_conditions.isChecked())
+			new CustomToast().Show_Toast(getActivity(), view,
+					"Please select Terms and Conditions.");
+
+		// Else do signup or do your stuff
+		else
+			Toast.makeText(getActivity(), "Do SignUp.", Toast.LENGTH_SHORT)
+					.show();
+
+	}
+}</pre><p>
+<b>15</b>. Now create a java class for ForgotPassword naming <em>ForgotPassword_Fragment.java </em>and add the following code.</p><pre class="crayon-plain-tag">package com.login_signup_screendesign_demo;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.login_signup_screendesign_demo.R;
+
+import android.content.res.ColorStateList;
+import android.content.res.XmlResourceParser;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class ForgotPassword_Fragment extends Fragment implements
+		OnClickListener {
+	private static View view;
+
+	private static EditText emailId;
+	private static TextView submit, back;
+
+	public ForgotPassword_Fragment() {
+
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		view = inflater.inflate(R.layout.forgotpassword_layout, container,
+				false);
+		initViews();
+		setListeners();
+		return view;
+	}
+
+	// Initialize the views
+	private void initViews() {
+		emailId = (EditText) view.findViewById(R.id.registered_emailid);
+		submit = (TextView) view.findViewById(R.id.forgot_button);
+		back = (TextView) view.findViewById(R.id.backToLoginBtn);
+
+		// Setting text selector over textviews
+		XmlResourceParser xrp = getResources().getXml(R.drawable.text_selector);
+		try {
+			ColorStateList csl = ColorStateList.createFromXml(getResources(),
+					xrp);
+
+			back.setTextColor(csl);
+			submit.setTextColor(csl);
+
+		} catch (Exception e) {
+		}
+
+	}
+
+	// Set Listeners over buttons
+	private void setListeners() {
+		back.setOnClickListener(this);
+		submit.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.backToLoginBtn:
+
+			// Replace Login Fragment on Back Presses
+			new MainActivity().replaceLoginFragment();
+			break;
+
+		case R.id.forgot_button:
+
+			// Call Submit button task
+			submitButtonTask();
+			break;
+
+		}
+
+	}
+
+	private void submitButtonTask() {
+		String getEmailId = emailId.getText().toString();
+
+		// Pattern for email id validation
+		Pattern p = Pattern.compile(Utils.regEx);
+
+		// Match the pattern
+		Matcher m = p.matcher(getEmailId);
+
+		// First check if email id is not null else show error toast
+		if (getEmailId.equals("") || getEmailId.length() == 0)
+
+			new CustomToast().Show_Toast(getActivity(), view,
+					"Please enter your Email Id.");
+
+		// Check if email id is valid or not
+		else if (!m.find())
+			new CustomToast().Show_Toast(getActivity(), view,
+					"Your Email Id is Invalid.");
+
+		// Else submit email id and fetch passwod or do your stuff
+		else
+			Toast.makeText(getActivity(), "Get Forgot Password.",
+					Toast.LENGTH_SHORT).show();
+	}
+}</pre><p>
+<b>16</b>. Finally, run the app and you will get the output as shown in video. You can use this code for your app by making slightly changes or as it is.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/Login_SignUp_ScreenDesgin_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/login-signup-and-forgot-password-screen-design-android/">Login, SignUp and Forgot Password Screen Design Android</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/login-signup-and-forgot-password-screen-design-android/feed/</wfw:commentRss>
+		<slash:comments>33</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">655</post-id>	</item>
+	</channel>
+</rss>

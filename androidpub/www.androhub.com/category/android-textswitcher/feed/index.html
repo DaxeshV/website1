@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android TextSwitcher &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-textswitcher/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android TextSwitcher</title>
+		<link>http://www.androhub.com/android-textswitcher/</link>
+		<comments>http://www.androhub.com/android-textswitcher/#respond</comments>
+		<pubDate>Mon, 18 May 2015 08:08:58 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Animations]]></category>
+		<category><![CDATA[Android TextSwitcher]]></category>
+		<category><![CDATA[Android ViewAnimator]]></category>
+		<category><![CDATA[animtions]]></category>
+		<category><![CDATA[switcher]]></category>
+		<category><![CDATA[textswitcher]]></category>
+		<category><![CDATA[viewanimator]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=334</guid>
+		<description><![CDATA[<p>A TextSwitcher is a specialized ViewSwitcher that contains only children of type TextView. A TextSwitcher is useful to animate a label on screen. Whenever setText(CharSequence) is called, TextSwitcher animates the current text out and animates the new text in. To learn Basic of Android Animation  go to  Android Animation Tutorial. Two types animations are required for  [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-textswitcher/">Android TextSwitcher</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>A TextSwitcher is a specialized <a href="http://developer.android.com/reference/android/widget/ViewSwitcher.html" target="_blank">ViewSwitcher</a> that contains only children of type TextView. A TextSwitcher is useful to animate a label on screen. Whenever <a href="http://developer.android.com/reference/android/widget/TextSwitcher.html#setText%28java.lang.CharSequence%29" target="_blank">setText(CharSequence)</a> is called, TextSwitcher animates the current text out and animates the new text in.</p>
+<p><b>To learn Basic of Android Animation  go to</b>  <a href="http://androhub.com/android-animation/" target="_blank"><span style="text-decoration: underline;">Android Animation Tutorial.</span></a></p>
+<p>Two types animations are required for  for TextSwitcher to switch between the texts.<br />
+1: <strong>In Animation</strong>: with which  Text come in the Screen.<br />
+2: <strong>Out Animation</strong>: with which Text goes out from the Screen.</p>
+<h2>Example</h2>
+<p>In this example i will demonstrate you how to work switch between the TextViews.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_97286" width="602" height="339" src="https://www.youtube.com/embed/yJ4np5jy-1I?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Let’s get start by creating a project in Eclipse IDE.</p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>)</p>
+<p><b>2</b>.  Create a layout file for <em>MainActivtiy.java</em> under <em>res ⇒ layout</em> folder. I named the layout file as <em>activity_main.xml</em>. In this layout i had taken TextSwitcher for switching between texts and a Button to show the next Text.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;!-- Text Switcher to switch between texts --&gt;
+
+    &lt;TextSwitcher
+        android:id="@+id/textSwitcher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp" /&gt;
+
+    &lt;Button
+        android:id="@+id/buttonNext"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="NEXT" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>3</b>. Now, add the following code to <em>MainActivity.java </em>, in this activity i am going to show how to switch between the Text. You can add as much Text for switching.</p><pre class="crayon-plain-tag">package com.android_textswitcher_demo;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.TextSwitcher;
+import android.widget.TextView;
+import android.widget.ViewSwitcher.ViewFactory;
+
+public class MainActivity extends ActionBarActivity {
+	private static Button next;
+	private static TextSwitcher textswitcher;
+
+	// String array to be shown on textSwitcher
+	String textToShow[] = { "What is your name?", "I am a developer.",
+			"What are you doing?", "Hey bro, whats up?", "Etc. etc..." };
+
+	// Total length of the string array
+	int messageCount = textToShow.length;
+	// to keep current Index of text
+	int currentIndex = -1;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		// Call all the methods
+		init();
+		loadAnimations();
+		setFactory();
+		setListener();
+	}
+
+	void init() {
+		next = (Button) findViewById(R.id.buttonNext);
+		textswitcher = (TextSwitcher) findViewById(R.id.textSwitcher);
+
+	}
+
+	void loadAnimations() {
+
+		// Declare the in and out animations and initialize them
+		Animation in = AnimationUtils.loadAnimation(this,
+				android.R.anim.slide_in_left);
+		Animation out = AnimationUtils.loadAnimation(this,
+				android.R.anim.slide_out_right);
+
+		// set the animation type of textSwitcher
+		textswitcher.setInAnimation(in);
+		textswitcher.setOutAnimation(out);
+	}
+
+	// Click listener method for button
+	void setListener() {
+
+		// ClickListener for NEXT button
+		// When clicked on Button TextSwitcher will switch between texts
+		// The current Text will go OUT and next text will come in with
+		// specified animation
+		next.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+
+				currentIndex++;
+				// If index reaches maximum reset it
+				if (currentIndex == messageCount)
+					currentIndex = 0;
+
+				// Set the textSwitcher text according to current index from
+				// string array
+				textswitcher.setText(textToShow[currentIndex]);
+			}
+		});
+	}
+
+	// Set Factory for the textSwitcher *Compulsory part
+	void setFactory() {
+		textswitcher.setFactory(new ViewFactory() {
+
+			public View makeView() {
+
+				// Create run time textView with some attributes like gravity,
+				// color, etc.
+				TextView myText = new TextView(MainActivity.this);
+				myText.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+				myText.setTextSize(30);
+				myText.setTextColor(Color.RED);
+				return myText;
+			}
+		});
+
+	}
+}</pre><p>
+<b>4</b>. Finally, run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a title="Android ViewSwitcher" href="http://androhub.com/downloads/Android_TextSwitcher_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-textswitcher/">Android TextSwitcher</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-textswitcher/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">334</post-id>	</item>
+	</channel>
+</rss>

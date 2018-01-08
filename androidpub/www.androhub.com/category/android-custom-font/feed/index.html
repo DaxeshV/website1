@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Custom Font &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-custom-font/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Custom Fonts TextView</title>
+		<link>http://www.androhub.com/android-custom-fonts-textview/</link>
+		<comments>http://www.androhub.com/android-custom-fonts-textview/#respond</comments>
+		<pubDate>Sun, 11 Oct 2015 09:04:13 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android Custom Font]]></category>
+		<category><![CDATA[Android Custom View]]></category>
+		<category><![CDATA[Android ActionBar Tabs]]></category>
+		<category><![CDATA[android application]]></category>
+		<category><![CDATA[android custom font]]></category>
+		<category><![CDATA[android font]]></category>
+		<category><![CDATA[application]]></category>
+		<category><![CDATA[custom font style]]></category>
+		<category><![CDATA[custom font textview]]></category>
+		<category><![CDATA[custom textview]]></category>
+		<category><![CDATA[custom view]]></category>
+		<category><![CDATA[display rupee font]]></category>
+		<category><![CDATA[font]]></category>
+		<category><![CDATA[how to use rupee font]]></category>
+		<category><![CDATA[rupee font]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=708</guid>
+		<description><![CDATA[<p>In android, you can define your own custom fonts for the strings in your application. You just need to download the required font from the internet, and then place it in assets/fonts folder. In Eclipse the assets folder is by-default created but in Android Studio you have to create assets folder. Note : assets folder creating [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-custom-fonts-textview/">Android Custom Fonts TextView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>In android, you can define your own custom fonts for the strings in your application. You just need to download the required font from the internet, and then place it in assets/fonts folder. In Eclipse the assets folder is by-default created but in Android Studio you have to create assets folder.</p>
+<p>Note : assets folder creating path in Android Studio <em><strong>app/source/main/assets/fonts.</strong></em></p>
+<p>After putting fonts in the assets folder under fonts folder, you can access it in your java code through Typeface class. You can achieve creating custom font in just two simple steps:</p>
+<p>1.      Call static method of <a href="http://developer.android.com/intl/ru/reference/android/graphics/Typeface.html" target="_blank">Typeface</a> class <b>createFromAsset()</b> to get your custom font from assets.</p><pre class="crayon-plain-tag">Typeface opensanLight = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Light.ttf");</pre><p>
+2.      Set this custom font object to your TextView Typeface property. You need to call <b>setTypeface()</b> method to do that.</p><pre class="crayon-plain-tag">textView.setTypeface(opensansLight);</pre><p>
+Apart from these Methods, there are other methods defined in the Typeface class , that you can use to handle Fonts more effectively that are shown below :</p>
+
+<table id="tablepress-34" class="tablepress tablepress-id-34">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Method</th><th class="column-2">Description</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">create(String familyName, int style)</td><td class="column-2">Create a Typeface object given a family name, and option style information.</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">create(Typeface family, int style)</td><td class="column-2">Create a Typeface object that best matches the specified existing Typeface and the specified Style.</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">createFromFile(String path)</td><td class="column-2">Create a new Typeface from the specified font file.</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">defaultFromStyle(int style)</td><td class="column-2">Returns one of the default Typeface objects, based on the specified style.</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">getStyle()</td><td class="column-2">Returns the Typeface's intrinsic style attributes.</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-34 from cache -->
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to use Custom Font in Android. This article will show the use of two Custom TextView with different font and how to display rupee symbol using Rupee font.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_56730" width="602" height="339" src="https://www.youtube.com/embed/gV4qoKyIRZM?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <b>res=&gt;values=strings.xml </b>and add the following strings to it.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;Custom Font Demo&lt;/string&gt;
+
+    &lt;string name="homePageTitle"&gt;Custom Font Styles&lt;/string&gt;
+    &lt;string name="openSansLight"&gt;This is Open Sans Light text.&lt;/string&gt;
+    &lt;string name="openSansBold"&gt;This is Open Sans Bold text.&lt;/string&gt;
+    &lt;string name="smartwatch"&gt;This is Styled Custom text.&lt;/string&gt;
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Now create a <em>MyApplication.java</em> class and extend it with <a href="http://developer.android.com/intl/ru/reference/android/app/Application.html" target="_blank">Application</a>. Inside this class create all your fonts typefaces. The use of this class that this will create Typefaces globally use in your activity.</p><pre class="crayon-plain-tag">package com.customfont_demo;
+
+import android.app.Application;
+import android.graphics.Typeface;
+
+/**
+ * Created by SONU on 31/08/15.
+ */
+public class MyApplication extends Application {
+    public static Typeface openSansLight, openSansBold, smartwatchFont, rupeeFont;
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        //Get font from assets folder, Make sure use correct directory and correct spellings
+        openSansLight = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Light.ttf");
+        openSansBold = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Bold.ttf");
+        smartwatchFont = Typeface.createFromAsset(getAssets(), "fonts/smartwatch.ttf");
+        rupeeFont = Typeface.createFromAsset(getAssets(), "fonts/Rupee.ttf");
+    }
+}</pre><p>
+<b>4</b>. Now update your <em>AndroidManifest.xml </em>file by adding  <em><strong>android:name=&#8221;.MyApplication&#8221; </strong></em>inside <em>application</em> tag.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.customfont_demo" &gt;
+
+    &lt;application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>5</b>. Now i am going to create two different TextView class for using it in layout. One is for OpenSansLight Font and another one is for OpenSansBold Font.</p>
+<p>CustomFontTextView.java</p><pre class="crayon-plain-tag">package com.customfont_demo;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.widget.TextView;
+
+/**
+ * Created by SONU on 24/09/15.
+ */
+public class CustomFontTextView extends TextView {
+
+
+    public CustomFontTextView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+
+        init();
+    }
+
+    public CustomFontTextView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+    public CustomFontTextView(Context context) {
+        super(context);
+
+        init();
+    }
+
+    private void init() {
+        setTypeface(new MyApplication().openSansLight);//Set Typeface from MyApplication
+    }
+}</pre><p>
+CustomFontTextView.java</p><pre class="crayon-plain-tag">package com.customfont_demo;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.widget.TextView;
+
+/**
+ * Created by SONU on 24/09/15.
+ */
+public class CustomBoldFontTextView extends TextView {
+
+
+
+    public CustomBoldFontTextView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+
+        init();
+    }
+
+    public CustomBoldFontTextView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+    public CustomBoldFontTextView(Context context) {
+        super(context);
+
+        init();
+    }
+
+    private void init() {
+        setTypeface(new MyApplication().openSansBold);//Set Typeface from MyApplication
+    }
+}</pre><p>
+In above both classes there is <em><strong>init() </strong></em>method that is used for setting typeface over the TextView.</p>
+<p><b>6</b>. Now create a layout xml file naming <em>activity_main.xml</em> and add the following code. In this layout i had taken both custom TextView that i had created in above step and two more for setting typeface programatically.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"&gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/homePageTitle"
+        android:textColor="#42A5F5"
+        android:textSize="25sp"
+        android:textStyle="bold" /&gt;
+
+    &lt;!--  Use Open Sans Light Font Custom TextView  --&gt;
+    &lt;com.customfont_demo.CustomFontTextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/openSansLight"
+        android:textColor="#ff00"
+        android:textSize="15sp" /&gt;
+
+    &lt;!--  Use Open Sans Bold Font Custom TextView  --&gt;
+    &lt;com.customfont_demo.CustomBoldFontTextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/openSansBold"
+        android:textColor="#ff6600"
+        android:textSize="15sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/smartwatchFont"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/smartwatch"
+        android:textColor="#009688"
+        android:textSize="20sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/rupeeFont"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="#1E7A9C"
+        android:textSize="15sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>7</b>. Finally come to your <em>MainActivity.java</em> and add the following code. In this code i am setting typeface over both TextView. For Rupee font to show rupee symbol we need to use &#8220;<strong>`</strong>&#8221; this symbol.</p><pre class="crayon-plain-tag">package com.customfont_demo;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //Find both textview id
+        TextView smartwatchFont = (TextView) findViewById(R.id.smartwatchFont);
+        TextView rupeeFont = (TextView) findViewById(R.id.rupeeFont);
+
+        //Set Tytpeface to both textview
+        smartwatchFont.setTypeface(new MyApplication().smartwatchFont);
+        rupeeFont.setTypeface(new MyApplication().rupeeFont);
+
+        //Set Text to rupee text view, use this "`" symbol to print rupee symbol
+        rupeeFont.setText("Mathew owes " + "`" + "20000 from Harry. After that he will have `40000.");
+    }
+
+
+}</pre><p>
+<b>8</b>. Finally, all done you can use above steps for using custom font in your app.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/CustomFont_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-custom-fonts-textview/">Android Custom Fonts TextView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-custom-fonts-textview/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">708</post-id>	</item>
+	</channel>
+</rss>

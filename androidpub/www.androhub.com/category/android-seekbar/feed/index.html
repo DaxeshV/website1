@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android SeekBar &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-seekbar/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android SeekBar</title>
+		<link>http://www.androhub.com/android-seekbar/</link>
+		<comments>http://www.androhub.com/android-seekbar/#comments</comments>
+		<pubDate>Thu, 28 May 2015 06:03:42 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android SeekBar]]></category>
+		<category><![CDATA[SeekBar]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=393</guid>
+		<description><![CDATA[<p>&#160; Android SeekBar is the extension of ProgressBar. SeekBar allows the user to change the value using touch event/draggable thumb/left right arrow keys. SeekBar has a thumb that can be slided in order to choose a value between 0 and some maximum that can be set from the developer. The user can increase the value by [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-seekbar/">Android SeekBar</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>&nbsp;</p>
+<p>Android <strong><em>SeekBar</em> </strong>is the extension of <a href="http://androhub.com/android_progressbar/" target="_blank">ProgressBar</a>. SeekBar allows the user to change the value using touch event/draggable thumb/left right arrow keys. <span style="font-family: monospace;">SeekBar</span> has a thumb that can be slided in order to choose a value between 0 and some maximum that can be set from the developer. The user can increase the value by dragging the thumb right or by pressing the right arrow key. Similarly the user can decrease the value by dragging the thumb left or by pressing the left arrow key.</p>
+<p>The seekbar has three states: drag start, changing and drag ended.</p>
+<h2>Example</h2>
+<p>In this example I will show you how to implement simple and custom SeekBar.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_14354" width="602" height="339" src="https://www.youtube.com/embed/_fLWzPVdhhw?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Let’s get start by creating a project in Eclipse IDE.</p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>).</p>
+<p><b>2</b>.  Create a layout file for <em>MainActivtiy.java</em> under <em>res ⇒ layout</em> folder. I named the layout file as <em>activity_main.xml</em>. In this layout i had taken two SeekBar one for Simple and another for Custom.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Simple Seekabar"
+        android:textSize="20sp" /&gt;
+
+    &lt;SeekBar
+        android:id="@+id/simple_seekbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:max="100" /&gt;
+
+    &lt;TextView
+        android:id="@+id/seek_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:gravity="right"
+        android:textSize="15sp" /&gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Custom Seekabar"
+        android:textSize="20sp" /&gt;
+
+    &lt;SeekBar
+        android:id="@+id/custom_seekbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:max="100"
+        android:progress="50"
+        android:progressDrawable="@drawable/custom_progress"
+        android:thumb="@drawable/thumb"
+   /&gt;
+     &lt;TextView
+        android:id="@+id/custom_seek_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:gravity="right"
+        android:textSize="15sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>3</b>. For custom seekbar we need to create a new <em>xml</em> file for that in <em>drawable</em> folder and set it to seekbar as :</p><pre class="crayon-plain-tag">android:progressDrawable="@drawable/custom_progress"</pre><p>
+Here custom_progress is xml file created in drawable shown below :</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;layer-list xmlns:android="http://schemas.android.com/apk/res/android" &gt;
+
+    &lt;!-- SeekBar Background --&gt;
+    &lt;item android:id="@android:id/background"&gt;
+        &lt;shape android:shape="rectangle" &gt;
+            &lt;corners android:radius="5dp" /&gt;
+
+            &lt;gradient
+                android:angle="270"
+                android:endColor="#DDFF"
+                android:startColor="#DDCC" /&gt;
+        &lt;/shape&gt;
+    &lt;/item&gt;
+
+    &lt;!-- SeekBar Secondary Progress --&gt;
+    &lt;item android:id="@android:id/secondaryProgress"&gt;
+        &lt;clip&gt;
+            &lt;shape android:shape="rectangle" &gt;
+                &lt;corners android:radius="5dp" /&gt;
+
+                &lt;gradient
+                    android:angle="270"
+                    android:endColor="#00996a"
+                    android:startColor="#00d190" /&gt;
+            &lt;/shape&gt;
+        &lt;/clip&gt;
+    &lt;/item&gt;
+    &lt;item android:id="@android:id/progress"&gt;
+        &lt;clip&gt;
+            &lt;shape android:shape="rectangle" &gt;
+                &lt;corners android:radius="5dp" /&gt;
+
+                &lt;gradient
+                    android:angle="270"
+                    android:endColor="#00996a"
+                    android:startColor="#00d190" /&gt;
+            &lt;/shape&gt;
+        &lt;/clip&gt;
+    &lt;/item&gt;
+
+&lt;/layer-list&gt;</pre><p>
+<b>4</b>. Now, come to <em>MainActivity.java </em>and add the following code. In this class we read the tracking on both seekbar and display the seek in textView as text and also work on three states of seekbar as listeners.</p><pre class="crayon-plain-tag">package com.android_seekbar_demo;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends ActionBarActivity {
+	private static SeekBar simple, custom;
+	private static TextView seek_progress, custom_seek_progress;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		init();
+		setListeners();
+	}
+
+	// Initializing all views
+	void init() {
+		simple = (SeekBar) findViewById(R.id.simple_seekbar);
+		custom = (SeekBar) findViewById(R.id.custom_seekbar);
+
+		seek_progress = (TextView) findViewById(R.id.seek_progress);
+		custom_seek_progress = (TextView) findViewById(R.id.custom_seek_progress);
+
+		// Initially setting text to textViews
+		seek_progress.setText("Progress Covered : " + simple.getProgress() // Get
+																			// progress
+				+ "/" + simple.getMax());// Get maximum progress
+
+		custom_seek_progress.setText("Progress Covered : "
+				+ custom.getProgress() + "/" + custom.getMax());
+
+	}
+
+	// Setting listeners to both seekbars
+	void setListeners() {
+
+		simple.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+
+			// Initially progress should be 0
+			int progress = 0;
+
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progresValue,
+					boolean fromUser) {
+
+				// On progress changed the progress value should also change
+				progress = progresValue;
+
+				Toast.makeText(getApplicationContext(),
+						"Changing seekbar's progress", Toast.LENGTH_SHORT)
+						.show();
+
+			}
+
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+
+				Toast.makeText(getApplicationContext(),
+						"Started tracking seekbar", Toast.LENGTH_SHORT).show();
+
+			}
+
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+
+				// When tracking stops modify the textview text with progress
+				// value
+				seek_progress.setText("Progress Covered : " + progress + "/"
+						+ seekBar.getMax());
+
+				Toast.makeText(getApplicationContext(),
+						"Stopped tracking seekbar", Toast.LENGTH_SHORT).show();
+
+			}
+
+		});
+
+		custom.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+
+			int progress = 0;
+
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progresValue,
+					boolean fromUser) {
+
+				progress = progresValue;
+
+				Toast.makeText(getApplicationContext(),
+						"Changing seekbar's progress", Toast.LENGTH_SHORT)
+						.show();
+
+			}
+
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+
+				Toast.makeText(getApplicationContext(),
+						"Started tracking seekbar", Toast.LENGTH_SHORT).show();
+
+			}
+
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+
+				custom_seek_progress.setText("Progress Covered : " + progress
+						+ "/" + seekBar.getMax());
+
+				Toast.makeText(getApplicationContext(),
+						"Stopped tracking seekbar", Toast.LENGTH_SHORT).show();
+
+			}
+
+		});
+
+	}
+
+}</pre><p>
+<b>5</b>. Now, run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/Android_SeekBar_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<footer class="clearfix"></footer>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-seekbar/">Android SeekBar</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-seekbar/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">393</post-id>	</item>
+	</channel>
+</rss>

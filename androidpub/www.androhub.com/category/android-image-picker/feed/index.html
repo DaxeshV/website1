@@ -1,0 +1,1509 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Image Picker &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-image-picker/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Select and Share Multiple Images</title>
+		<link>http://www.androhub.com/select-and-share-multiple-images/</link>
+		<comments>http://www.androhub.com/select-and-share-multiple-images/#comments</comments>
+		<pubDate>Tue, 03 Nov 2015 05:08:44 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Image Picker]]></category>
+		<category><![CDATA[adding library]]></category>
+		<category><![CDATA[custom gridview]]></category>
+		<category><![CDATA[fetching all images from gallery]]></category>
+		<category><![CDATA[gridview with checkboxes]]></category>
+		<category><![CDATA[importing library]]></category>
+		<category><![CDATA[multiple images sharing app]]></category>
+		<category><![CDATA[select multiple images]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=747</guid>
+		<description><![CDATA[<p>Today we are going to learn how to select multiple images from our own created gallery because default gallery doesn&#8217;t support us to fetch selected images. So for this we need to create our own gallery and select images and do whatever we want like whatsapp, hike and other app doing. Another way of doing [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/select-and-share-multiple-images/">Select and Share Multiple Images</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Today we are going to learn how to select multiple images from our own created gallery because default gallery doesn&#8217;t support us to fetch selected images. So for this we need to create our own gallery and select images and do whatever we want like whatsapp, hike and other app doing.</p>
+<p>Another way of doing this thing is to make our app sharable so that we can share multiple images from gallery to our own app.</p>
+<p>So today we are going to do both things.</p>
+<p><strong>Prerequisite for this tutorial:</strong></p>
+<ul>
+<li><a href="http://androhub.com/android-gridview/" target="_blank">Custom GridView &#8211; </a> Since we are creating Custom Gallery so we need to create Custom GridView with CheckBoxes.</li>
+<li><a href="http://androhub.com/android-gallery-image-picker/" target="_blank">Fetch Images &#8211; </a> To display all images into our GridView then we should know how to fetch images.</li>
+<li><a href="http://androhub.com/android-share-text-and-images-using-share-intent/" target="_blank">Shareable Activity &#8211;</a> How to create our Activity shareable so that other apps can share multiple images to our activity.</li>
+</ul>
+<h2>Example</h2>
+<p>In this tutorial, we are going to create Custom Gallery for selecting multiple images and also how to make our app shareable for multiple images.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_29186" width="602" height="339" src="https://www.youtube.com/embed/8gAFvuSHPvU?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New ⇒ New Project</strong> and fill required details. By default my activity is  <em>MainActivity.java</em>.</p>
+<p><b>2</b>. We are using <em><strong><a href="https://github.com/nostra13/Android-Universal-Image-Loader" target="_blank">UniversalImageLoader</a></strong></em> library for loading images faster and efficiently and you can get the library from the link given. Below are steps to include library:</p>
+<ul>
+<li>Download the library.</li>
+<li>Create a new folder under your main project file naming <strong><em>libraries.</em></strong></li>
+<li>Copy the library folder from downloaded file and add paste into libraries folder.</li>
+<li>Now go to your settings.gradle and add the below line and sync your gradle.</li>
+</ul>
+<pre class="crayon-plain-tag">include ':libraries:UniversalImageLoader-Library'</pre>
+<ul>
+<li>Now right click on your project and select <strong>Open Module Settings -&gt; app -&gt; dependencies -&gt; press &#8220;+&#8221; icon -&gt; Module dependency -&gt; select your library</strong> and press ok.</li>
+<li>If you want to skip above step then you can go to <strong><em>build.gradle</em></strong> inside <em><strong>app</strong></em> folder and add the below code inside <em><strong>dependencies</strong></em> bracket and sync gradle.</li>
+</ul>
+<pre class="crayon-plain-tag">compile project(':libraries:library')</pre>
+<b>3</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. These are some strings that we are going to use in our project.<br />
+<pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;Select MultipleImages Demo&lt;/string&gt;
+
+    &lt;string name="customGallery"&gt;Custom Gallery&lt;/string&gt;
+    &lt;string name="mainTitle"&gt;Select MultipleImages From Gallery&lt;/string&gt;
+    &lt;string name="openCustomGallery"&gt;Open Custom Gallery&lt;/string&gt;
+    &lt;string name="selectedImages"&gt;Selected Images will display below&lt;/string&gt;
+&lt;/resources&gt;</pre>
+<b>4</b>. Now, create an xml layout naming <em>activity_main.xml </em>for <em>ShareActivity.java. </em>In this layout i had taken a Button for opening Custom Gallery and GridView for displaying selected images.<br />
+<pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical"
+    android:padding="5dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/mainTitle"
+        android:textColor="#00BCD4"
+        android:textSize="18sp" /&gt;
+
+    &lt;!-- Button to Open Custom gallery --&gt;
+    &lt;Button
+        android:id="@+id/openCustomGallery"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#ffffff"
+        android:text="@string/openCustomGallery"
+        android:textColor="#009688"
+        android:textSize="15sp" /&gt;
+
+
+    &lt;View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="5dp"
+        android:background="#616161" /&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/selectedImages"
+        android:textColor="#9e9e9e"
+        android:textSize="14sp" /&gt;
+
+    &lt;!--  Grid View to display Selected Images--&gt;
+    &lt;include
+        android:id="@+id/selectedImagesGridView"
+        layout="@layout/gridview_layout" /&gt;
+
+
+&lt;/LinearLayout&gt;</pre>
+<b>5</b>. Create a <em>gridview_layout.xml</em> and add the following code. We create this layout for GridView and include this into other xml files.<br />
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#eeeeee"
+    android:horizontalSpacing="4dp"
+    android:listSelector="@android:color/transparent"
+    android:numColumns="2"
+    android:verticalSpacing="4dp" /&gt;</pre>
+<b>6</b>. Now, create a new xml file naming <em>customgallery_activity.xml</em> and add the following code. This layout is for our custom gallery.<br />
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#eeeeee"
+    android:padding="5dp"&gt;
+
+    &lt;!-- Grid View fr Custom Gallery  --&gt;
+    &lt;include
+        android:id="@+id/galleryImagesGridView"
+        layout="@layout/gridview_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/selectImagesBtn" /&gt;
+
+    &lt;!-- Button to return Selected Images  --&gt;
+    &lt;Button
+        android:id="@+id/selectImagesBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+        android:textColor="#009688"
+        android:textSize="15sp"
+        android:visibility="gone"/&gt;
+&lt;/RelativeLayout&gt;</pre>
+<b>7</b>. Since we are using custom gridview so we need create a layout for custom view naming <em>customgridview_item.xml</em>.<br />
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:layout_margin="3dp"&gt;
+
+    &lt;ImageView
+        android:id="@+id/galleryImageView"
+        android:layout_width="140dp"
+        android:layout_height="170dp"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="centerCrop"/&gt;
+
+    &lt;CheckBox
+        android:id="@+id/selectCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/galleryImageView"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/&gt;
+
+&lt;/RelativeLayout&gt;</pre>
+<b>8</b>. Now create a java class naming MyApplication.java and extend it with Application. In this class we initialise our ImageLoader library configurations so that we don&#8217;t need to it initialise every time but only single time here.<br />
+<pre class="crayon-plain-tag">package com.selectmultipleimages_demo;
+
+import android.app.Application;
+import android.content.Context;
+
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+
+/**
+ * Created by SONU on 31/10/15.
+ */
+public class MyApplication extends Application {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initImageLoader(getApplicationContext());
+    }
+
+
+    //Initiate Image Loader Configuration
+    public static void initImageLoader(Context context) {
+        ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(
+                context);
+        config.threadPriority(Thread.NORM_PRIORITY - 2);
+        config.denyCacheImageMultipleSizesInMemory();
+        config.diskCacheFileNameGenerator(new Md5FileNameGenerator());
+        config.diskCacheSize(50 * 1024 * 1024); // 50 MiB
+        config.tasksProcessingOrder(QueueProcessingType.LIFO);
+        config.writeDebugLogs(); // Remove for release app
+
+        // Initialize ImageLoader with configuration.
+        ImageLoader.getInstance().init(config.build());
+
+    }
+
+
+}</pre>
+<b>9</b>. Now create a new java class naming <em>CustomGallery_Activity.java </em>and add the following code. In this code we fetch all images in our phone by date wise and load over GridView. If user click on button then our MainActivity will open and display selected images.<br />
+<pre class="crayon-plain-tag">package com.selectmultipleimages_demo;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.GridView;
+
+import java.util.ArrayList;
+
+/**
+ * Created by SONU on 31/10/15.
+ */
+public class CustomGallery_Activity extends AppCompatActivity implements View.OnClickListener {
+    private static Button selectImages;
+    private static GridView galleryImagesGridView;
+    private static ArrayList&lt;String&gt; galleryImageUrls;
+    private static GridView_Adapter imagesAdapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.customgallery_activity);
+        initViews();
+        setListeners();
+        fetchGalleryImages();
+        setUpGridView();
+    }
+
+    //Init all views
+    private void initViews() {
+        selectImages = (Button) findViewById(R.id.selectImagesBtn);
+        galleryImagesGridView = (GridView) findViewById(R.id.galleryImagesGridView);
+
+    }
+
+    //fetch all images from gallery
+    private void fetchGalleryImages() {
+        final String[] columns = {MediaStore.Images.Media.DATA, MediaStore.Images.Media._ID};//get all columns of type images
+        final String orderBy = MediaStore.Images.Media.DATE_TAKEN;//order data by date
+        Cursor imagecursor = managedQuery(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI, columns, null,
+                null, orderBy + " DESC");//get all data in Cursor by sorting in DESC order
+
+        galleryImageUrls = new ArrayList&lt;String&gt;();//Init array
+
+
+        //Loop to cursor count
+        for (int i = 0; i &lt; imagecursor.getCount(); i++) {
+            imagecursor.moveToPosition(i);
+            int dataColumnIndex = imagecursor.getColumnIndex(MediaStore.Images.Media.DATA);//get column index
+            galleryImageUrls.add(imagecursor.getString(dataColumnIndex));//get Image from column index
+            System.out.println("Array path" + galleryImageUrls.get(i));
+        }
+
+
+    }
+
+    //Set Up GridView method
+    private void setUpGridView() {
+        imagesAdapter = new GridView_Adapter(CustomGallery_Activity.this, galleryImageUrls, true);
+        galleryImagesGridView.setAdapter(imagesAdapter);
+    }
+
+    //Set Listeners method
+    private void setListeners() {
+        selectImages.setOnClickListener(this);
+    }
+
+
+    //Show hide select button if images are selected or deselected
+    public void showSelectButton() {
+        ArrayList&lt;String&gt; selectedItems = imagesAdapter.getCheckedItems();
+        if (selectedItems.size() &gt; 0) {
+            selectImages.setText(selectedItems.size() + " - Images Selected");
+            selectImages.setVisibility(View.VISIBLE);
+        } else
+            selectImages.setVisibility(View.GONE);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.selectImagesBtn:
+
+                //When button is clicked then fill array with selected images
+                ArrayList&lt;String&gt; selectedItems = imagesAdapter.getCheckedItems();
+
+                //Send back result to MainActivity with selected images
+                Intent intent = new Intent();
+                intent.putExtra(MainActivity.CustomGalleryIntentKey, selectedItems.toString());//Convert Array into string to pass data
+                setResult(RESULT_OK, intent);//Set result OK
+                finish();//finish activity
+                break;
+
+        }
+
+    }
+}</pre>
+<b>10</b>. Create a new custom adapter class for GridView naming <em>GridView_Adapter.java</em> and add the following line. In this we load the passed image over ImageView by using ImageLoader library.<br />
+<pre class="crayon-plain-tag">package com.selectmultipleimages_demo;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.util.SparseBooleanArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
+
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.util.ArrayList;
+
+/**
+ * Created by SONU on 31/10/15.
+ */
+public class GridView_Adapter extends BaseAdapter {
+    private Context context;
+    private ArrayList&lt;String&gt; imageUrls;
+    private SparseBooleanArray mSparseBooleanArray;//Variable to store selected Images
+    private DisplayImageOptions options;
+    private boolean isCustomGalleryActivity;//Variable to check if gridview is to setup for Custom Gallery or not
+
+    public GridView_Adapter(Context context, ArrayList&lt;String&gt; imageUrls, boolean isCustomGalleryActivity) {
+        this.context = context;
+        this.imageUrls = imageUrls;
+        this.isCustomGalleryActivity = isCustomGalleryActivity;
+        mSparseBooleanArray = new SparseBooleanArray();
+
+
+        options = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .resetViewBeforeLoading(true).cacheOnDisk(true)
+                .considerExifParams(true).bitmapConfig(Bitmap.Config.RGB_565)
+                .build();
+    }
+
+    //Method to return selected Images
+    public ArrayList&lt;String&gt; getCheckedItems() {
+        ArrayList&lt;String&gt; mTempArry = new ArrayList&lt;String&gt;();
+
+        for (int i = 0; i &lt; imageUrls.size(); i++) {
+            if (mSparseBooleanArray.get(i)) {
+                mTempArry.add(imageUrls.get(i));
+            }
+        }
+
+        return mTempArry;
+    }
+
+    @Override
+    public int getCount() {
+        return imageUrls.size();
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return imageUrls.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(int position, View view, ViewGroup viewGroup) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if (view == null)
+            view = inflater.inflate(R.layout.customgridview_item, viewGroup, false);//Inflate layout
+
+        CheckBox mCheckBox = (CheckBox) view.findViewById(R.id.selectCheckBox);
+        final ImageView imageView = (ImageView) view.findViewById(R.id.galleryImageView);
+
+        //If Context is MainActivity then hide checkbox
+        if (!isCustomGalleryActivity)
+            mCheckBox.setVisibility(View.GONE);
+
+        ImageLoader.getInstance().displayImage("file://" + imageUrls.get(position), imageView, options);//Load Images over ImageView
+
+        mCheckBox.setTag(position);//Set Tag for CheckBox
+        mCheckBox.setChecked(mSparseBooleanArray.get(position));
+        mCheckBox.setOnCheckedChangeListener(mCheckedChangeListener);
+        return view;
+    }
+
+    CompoundButton.OnCheckedChangeListener mCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            mSparseBooleanArray.put((Integer) buttonView.getTag(), isChecked);//Insert selected checkbox value inside boolean array
+            ((CustomGallery_Activity) context).showSelectButton();//call custom gallery activity method
+        }
+    };
+}</pre>
+<b>11</b>. Now in MainActivity we will get the selected images from Custom Gallery in onActivityResult() method. Set all image array for loading over gridview.<br />
+<pre class="crayon-plain-tag">protected void onActivityResult(int requestcode, int resultcode,
+                                    Intent imagereturnintent) {
+        super.onActivityResult(requestcode, resultcode, imagereturnintent);
+        switch (requestcode) {
+            case CustomGallerySelectId:
+                if (resultcode == RESULT_OK) {
+                    String imagesArray = imagereturnintent.getStringExtra(CustomGalleryIntentKey);//get Intent data
+                    //Convert string array into List by splitting by ',' and substring after '[' and before ']'
+                    List&lt;String&gt; selectedImages = Arrays.asList(imagesArray.substring(1, imagesArray.length() - 1).split(", "));
+                    
+                }
+                break;
+
+        }
+    }</pre>
+<b>12</b>. Second thing we are doing if someone share multiple images to our MainActivity then how to get all images the code is shown below:<br />
+<pre class="crayon-plain-tag">//Read Shared Images
+    private void getSharedImages() {
+
+        //If Intent Action equals then proceed
+        if (Intent.ACTION_SEND_MULTIPLE.equals(getIntent().getAction())
+                &amp;&amp; getIntent().hasExtra(Intent.EXTRA_STREAM)) {
+            ArrayList&lt;Parcelable&gt; list =
+                    getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM);//get Parcelabe list
+            ArrayList&lt;String&gt; selectedImages = new ArrayList&lt;&gt;();
+
+            //Loop to all parcelable list
+            for (Parcelable parcel : list) {
+                Uri uri = (Uri) parcel;//get URI
+                String sourcepath = getPath(uri);//Get Path of URI
+                selectedImages.add(sourcepath);//add images to arraylist
+            }
+            loadGridView(selectedImages);//call load gridview
+        }
+    }
+
+
+    //get actual path of uri
+    public String getPath(Uri uri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        startManagingCursor(cursor);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
+    }</pre>
+<b>13</b>. Finally come to your <em>MainActivity.java</em> and add the following code. In this code we are reading images from Custom Gallery and also if someone share images from their app.<br />
+<pre class="crayon-plain-tag">package com.selectmultipleimages_demo;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.GridView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static Button openCustomGallery;
+    private static GridView selectedImageGridView;
+
+    private static final int CustomGallerySelectId = 1;//Set Intent Id
+    public static final String CustomGalleryIntentKey = "ImageArray";//Set Intent Key Value
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initViews();
+        setListeners();
+        getSharedImages();
+    }
+
+    //Init all views
+    private void initViews() {
+        openCustomGallery = (Button) findViewById(R.id.openCustomGallery);
+        selectedImageGridView = (GridView) findViewById(R.id.selectedImagesGridView);
+    }
+
+    //set Listeners
+    private void setListeners() {
+        openCustomGallery.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.openCustomGallery:
+                //Start Custom Gallery Activity by passing intent id
+                startActivityForResult(new Intent(MainActivity.this, CustomGallery_Activity.class), CustomGallerySelectId);
+                break;
+        }
+
+    }
+
+    protected void onActivityResult(int requestcode, int resultcode,
+                                    Intent imagereturnintent) {
+        super.onActivityResult(requestcode, resultcode, imagereturnintent);
+        switch (requestcode) {
+            case CustomGallerySelectId:
+                if (resultcode == RESULT_OK) {
+                    String imagesArray = imagereturnintent.getStringExtra(CustomGalleryIntentKey);//get Intent data
+                    //Convert string array into List by splitting by ',' and substring after '[' and before ']'
+                    List&lt;String&gt; selectedImages = Arrays.asList(imagesArray.substring(1, imagesArray.length() - 1).split(", "));
+                    loadGridView(new ArrayList&lt;String&gt;(selectedImages));//call load gridview method by passing converted list into arrayList
+                }
+                break;
+
+        }
+    }
+
+    //Load GridView
+    private void loadGridView(ArrayList&lt;String&gt; imagesArray) {
+        GridView_Adapter adapter = new GridView_Adapter(MainActivity.this, imagesArray, false);
+        selectedImageGridView.setAdapter(adapter);
+    }
+
+    //Read Shared Images
+    private void getSharedImages() {
+
+        //If Intent Action equals then proceed
+        if (Intent.ACTION_SEND_MULTIPLE.equals(getIntent().getAction())
+                &amp;&amp; getIntent().hasExtra(Intent.EXTRA_STREAM)) {
+            ArrayList&lt;Parcelable&gt; list =
+                    getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM);//get Parcelabe list
+            ArrayList&lt;String&gt; selectedImages = new ArrayList&lt;&gt;();
+
+            //Loop to all parcelable list
+            for (Parcelable parcel : list) {
+                Uri uri = (Uri) parcel;//get URI
+                String sourcepath = getPath(uri);//Get Path of URI
+                selectedImages.add(sourcepath);//add images to arraylist
+            }
+            loadGridView(selectedImages);//call load gridview
+        }
+    }
+
+
+    //get actual path of uri
+    public String getPath(Uri uri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        startManagingCursor(cursor);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
+    }
+
+}</pre>
+<b>14</b>. Now main thing to make our app multiple image shareable we have to add some intent filter inside our activity in <em>AndroidManifest.xml </em>and <strong><em>READ_EXTERNAL_STORAGE</em></strong> permission to read storage data.<br />
+<pre class="crayon-plain-tag">&amp;lt;!-- Intent filter action for receiving multiple images  --&amp;gt;
+&amp;lt;action android:name=&quot;android.intent.action.SEND_MULTIPLE&quot; /&amp;gt;
+&amp;lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&amp;gt;
+
+&amp;lt;!--  To receive Images set mime type to image --&amp;gt;
+&amp;lt;data android:mimeType=&quot;image/*&quot; /&amp;gt;</pre>
+And use your MyApplication in <em>application</em> name that we had created in above steps.<br />
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.selectmultipleimages_demo"&gt;
+
+    &lt;uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /&gt;
+    &lt;application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"&gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+            &lt;intent-filter&gt;
+                &lt;!-- Intent filter action for receiving multiple images  --&gt;
+                &lt;action android:name="android.intent.action.SEND_MULTIPLE" /&gt;
+                &lt;category android:name="android.intent.category.DEFAULT" /&gt;
+
+                &lt;!--  To receive Images set mime type to image --&gt;
+                &lt;data android:mimeType="image/*" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+
+        &lt;!-- Custom Gallery Activity --&gt;
+        &lt;activity
+            android:name=".CustomGallery_Activity"
+            android:label="@string/customGallery" /&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre>
+<b>15</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/SelectMultipleImages_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/select-and-share-multiple-images/">Select and Share Multiple Images</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/select-and-share-multiple-images/feed/</wfw:commentRss>
+		<slash:comments>32</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">747</post-id>	</item>
+		<item>
+		<title>Android Share Text and Images Using Share Intent</title>
+		<link>http://www.androhub.com/android-share-text-and-images-using-share-intent/</link>
+		<comments>http://www.androhub.com/android-share-text-and-images-using-share-intent/#respond</comments>
+		<pubDate>Thu, 20 Aug 2015 13:54:48 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Image Picker]]></category>
+		<category><![CDATA[Intent]]></category>
+		<category><![CDATA[android share image]]></category>
+		<category><![CDATA[android share text]]></category>
+		<category><![CDATA[decode image]]></category>
+		<category><![CDATA[gallery image picker]]></category>
+		<category><![CDATA[intent]]></category>
+		<category><![CDATA[share]]></category>
+		<category><![CDATA[share image]]></category>
+		<category><![CDATA[share image into our app]]></category>
+		<category><![CDATA[share text]]></category>
+		<category><![CDATA[share text into our app]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=629</guid>
+		<description><![CDATA[<p>Android provide us an Intent by which we can use to share image, video, audio, text, etc. to other installed apps like WhatsApp, Facebook, Twitter, etc. We had seen many apps has functionality of sharing image and text to other app and also they have functionality to make other apps share their text and image to [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-share-text-and-images-using-share-intent/">Android Share Text and Images Using Share Intent</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Android provide us an Intent by which we can use to share image, video, audio, text, etc. to other installed apps like <a href="https://www.whatsapp.com/" target="_blank">WhatsApp</a>, <a href="http://facebook.com" target="_blank">Facebook</a>, <a href="http://twitter.com/" target="_blank">Twitter</a>, etc. We had seen many apps has functionality of sharing image and text to other app and also they have functionality to make other apps share their text and image to the app like WhatsApp from which we can share text and image and also we can share text and image to WhatsApp.</p>
+<p>For more information about this Sharing Intent you can read over <a href="http://developer.android.com/intl/ru/training/sharing/send.html" target="_blank">here</a>.</p>
+<p>Today we are going to create an app that share text and image to other app and also the other app can share their image and text to this app.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to share image and text to other apps and help other apps to share image and text to our app.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_45672" width="602" height="339" src="https://www.youtube.com/embed/mEpN-K8LurY?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>ShareActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. These are some strings that we are going to use in our project.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+    &lt;string name="share_activity"&gt;Share Activity Demo&lt;/string&gt;
+    &lt;string name="shared_activity"&gt;Shared Activity Demo&lt;/string&gt;
+    &lt;string name="imageview"&gt;Share ImageView&lt;/string&gt;
+    &lt;string name="share_image"&gt;Share Image&lt;/string&gt;
+    &lt;string name="share_text"&gt;Share Text&lt;/string&gt;
+    &lt;string name="select_image"&gt;Select Image&lt;/string&gt;
+    &lt;string name="enter_text"&gt;Enter something to share&lt;/string&gt;
+    &lt;string name="shared_text"&gt;Shared Text&lt;/string&gt;
+    &lt;string name="shared_image"&gt;Shared Image&lt;/string&gt;
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Now, create an xml layout naming <em>share_activity.xml </em>for <em>ShareActivity.java. </em>In this layout i had taken ImageView to display the selected image from gallery and share button for image and one edittext for user input to share the text.</p><pre class="crayon-plain-tag">&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" &gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp" &gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/share_image"
+            android:textColor="#ff6600"
+            android:textSize="25sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;ImageView
+            android:id="@+id/share_imageview"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/imageview"
+            android:padding="5dp"
+            android:src="@drawable/logo" /&gt;
+
+        &lt;LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp" &gt;
+
+            &lt;Button
+                android:id="@+id/select_image"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/select_image" /&gt;
+
+            &lt;Button
+                android:id="@+id/share_image"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/share_image"
+                android:visibility="gone" /&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/share_text"
+            android:textColor="#ff6600"
+            android:textSize="25sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;EditText
+            android:id="@+id/text_share"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/enter_text"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#d3d3d3"
+            android:textSize="15sp" /&gt;
+
+        &lt;Button
+            android:id="@+id/btnTextShare"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:text="@string/share_text" /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;</pre><p>
+<b>4</b>. For sharing image we have to follow some steps :</p>
+<ul>
+<li><em>ACTION_SEND &#8211; </em>This intent will start the Send Activity.</li>
+<li><em>setType(&#8220;image/*&#8221;) &#8211; </em>We have to set type of send data i.e. for image it is&#8221; image/*&#8221;.</li>
+<li><em>putExtra(Intent.EXTRA_STREAM, imagePath) &#8211; </em>Put extra will put the extra stream with the path name of image that we are sharing.</li>
+<li><em>startActivity(Intent.createChooser(sharingIntent, &#8220;Share Image Using&#8221;)) &#8211; </em>Now start chooser activity with title name.</li>
+</ul>
+<p>For sharing text also we have to follow some steps :</p>
+<ul>
+<li><em>setType(&#8220;text/plain&#8221;)  &#8211; </em>We have to change the type of send because we are sending text.</li>
+<li><em>putExtra(Intent.EXTRA_SUBJECT, &#8220;Subject Here&#8221;) &#8211; </em>We can add extra subject to our text.</li>
+<li><em>putExtra(Intent.EXTRA_TEXT, text) &#8211; </em>Now put extra text that we want to share.</li>
+<li><em>startActivity(Intent.createChooser(sharingIntent, &#8220;Share Text Using&#8221;)) &#8211; </em>Finally start chooser activity for text share.</li>
+</ul>
+<p><b>5</b>. Finally come to your ShareActivity.java and add the following code. In this code i had also implemented to choose an image from gallery for image sharing. If you don&#8217;t know how to <a href="http://androhub.com/android-gallery-image-picker/" target="_blank">pick an image from gallery</a> you can read my earlier tutorial.</p><pre class="crayon-plain-tag">package com.imagetext_share_demo;
+
+import java.io.FileNotFoundException;
+
+import com.imagetext_share_demo.R;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+public class ShareActivity extends AppCompatActivity implements OnClickListener {
+	private static Button selectImage, shareImage, shareText;
+	private static ImageView imageView;
+	private static EditText textToShare;
+
+	// Uri for image path
+	private static Uri imageUri = null;
+
+	private final int select_photo = 1; // request code fot gallery intent
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.share_activity);
+
+		init();
+		setListeners();
+
+	}
+
+	// Initialize views
+	private void init() {
+		selectImage = (Button) findViewById(R.id.select_image);
+		shareImage = (Button) findViewById(R.id.share_image);
+		shareText = (Button) findViewById(R.id.btnTextShare);
+
+		imageView = (ImageView) findViewById(R.id.share_imageview);
+
+		textToShare = (EditText) findViewById(R.id.text_share);
+	}
+
+	// Implement click listeners
+	private void setListeners() {
+		selectImage.setOnClickListener(this);
+		shareImage.setOnClickListener(this);
+		shareText.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.select_image:
+			// Intent to gallery
+			Intent in = new Intent(Intent.ACTION_PICK);
+			in.setType("image/*");
+			startActivityForResult(in, select_photo);// start
+														// activity
+														// for
+														// result
+			break;
+		case R.id.share_image:
+
+			// share image
+			shareImage(imageUri);
+
+			break;
+		case R.id.btnTextShare:
+
+			// Share text
+			String getText = textToShare.getText().toString();
+			if (!getText.equals("") &amp;&amp; getText.length() != 0)
+				shareText(getText);
+			else
+				Toast.makeText(ShareActivity.this,
+						"Please enter something to share.", Toast.LENGTH_SHORT)
+						.show();
+
+			break;
+
+		}
+	}
+
+	protected void onActivityResult(int requestcode, int resultcode,
+			Intent imagereturnintent) {
+		super.onActivityResult(requestcode, resultcode, imagereturnintent);
+		switch (requestcode) {
+		case select_photo:
+			if (resultcode == RESULT_OK) {
+				try {
+
+					imageUri = imagereturnintent.getData();// Get intent
+															// data
+
+					Bitmap bitmap = Utils.decodeUri(ShareActivity.this,
+							imageUri, 200);// call
+											// deocde
+											// uri
+											// method
+					// Check if bitmap is not null then set image else show
+					// toast
+					if (bitmap != null) {
+						imageView.setImageBitmap(bitmap);// Set image over
+															// bitmap
+						shareImage.setVisibility(View.VISIBLE);// Visible button
+																// if bitmap is
+																// not null
+					} else {
+						shareImage.setVisibility(View.GONE);
+						Toast.makeText(ShareActivity.this,
+								"Error while decoding image.",
+								Toast.LENGTH_SHORT).show();
+					}
+				} catch (FileNotFoundException e) {
+
+					e.printStackTrace();
+					Toast.makeText(ShareActivity.this, "File not found.",
+							Toast.LENGTH_SHORT).show();
+				}
+			}
+		}
+	}
+
+	// Share image
+	private void shareImage(Uri imagePath) {
+		Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+		sharingIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+		sharingIntent.setType("image/*");
+		sharingIntent.putExtra(Intent.EXTRA_STREAM, imagePath);
+		startActivity(Intent.createChooser(sharingIntent, "Share Image Using"));
+	}
+
+	// Share text
+	private void shareText(String text) {
+
+		Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+		sharingIntent.setType("text/plain");// Plain format text
+
+		// You can add subject also
+		/*
+		 * sharingIntent.putExtra( android.content.Intent.EXTRA_SUBJECT,
+		 * "Subject Here");
+		 */
+		sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
+		startActivity(Intent.createChooser(sharingIntent, "Share Text Using"));
+	}
+}</pre><p>
+<b>6</b>. Create a new class naming Utils.java for decoding large image into smaller image while picking an image from gallery.</p><pre class="crayon-plain-tag">package com.imagetext_share_demo;
+
+import java.io.FileNotFoundException;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+
+public class Utils {
+	// Method that deocde uri into bitmap. This method is necessary to deocde
+	// large size images to load over imageview
+	public static Bitmap decodeUri(Context context, Uri uri,
+			final int requiredSize) throws FileNotFoundException {
+		BitmapFactory.Options o = new BitmapFactory.Options();
+		o.inJustDecodeBounds = true;
+		BitmapFactory.decodeStream(context.getContentResolver()
+				.openInputStream(uri), null, o);
+
+		int width_tmp = o.outWidth, height_tmp = o.outHeight;
+		int scale = 1;
+
+		while (true) {
+			if (width_tmp / 2 &lt; requiredSize || height_tmp / 2 &lt; requiredSize)
+				break;
+			width_tmp /= 2;
+			height_tmp /= 2;
+			scale *= 2;
+		}
+
+		BitmapFactory.Options o2 = new BitmapFactory.Options();
+		o2.inSampleSize = scale;
+		return BitmapFactory.decodeStream(context.getContentResolver()
+				.openInputStream(uri), null, o2);
+	}
+
+}</pre><p>
+&nbsp;</p>
+<p><b>Still we had learned how to share an image and text to other apps. Now we are going to learn how to make our app in such a way so that other apps can also share image and text.</b></p>
+<p><b>7</b>. For other apps to share image and text we have to create a layout to display image and text. I named this layout <em>shared_activity.xml.</em></p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;TextView
+        android:id="@+id/shared_textview_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/shared_text"
+        android:textColor="#ff6600"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:visibility="gone" /&gt;
+
+    &lt;TextView
+        android:id="@+id/shared_textview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:visibility="gone" /&gt;
+
+    &lt;TextView
+        android:id="@+id/shared_imageview_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/shared_image"
+        android:textColor="#ff6600"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:visibility="gone" /&gt;
+
+    &lt;ImageView
+        android:id="@+id/shared_imageview"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/imageview"
+        android:padding="5dp"
+        android:src="@drawable/logo"
+        android:visibility="gone" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>8</b>. Now create a new class naming <em>SharedActivity.java </em>for sharing text  and image to this activity. In this activity we get the intent action and action type and check the conditions according to text and image and display according to it.</p><pre class="crayon-plain-tag">package com.imagetext_share_demo;
+
+import java.io.FileNotFoundException;
+
+import com.imagetext_share_demo.R;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class SharedActivity extends AppCompatActivity {
+	private static ImageView sharedImageView;
+	private static TextView sharedTextView, shared_textview_title,
+			shared_imageview_title;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.shared_activity);
+		sharedImageView = (ImageView) findViewById(R.id.shared_imageview);
+		sharedTextView = (TextView) findViewById(R.id.shared_textview);
+		shared_textview_title = (TextView) findViewById(R.id.shared_textview_title);
+		shared_imageview_title = (TextView) findViewById(R.id.shared_imageview_title);
+
+		// Call shared intent
+		onSharedIntent();
+	}
+
+	// Shared intent method
+	private void onSharedIntent() {
+		Intent receiverdIntent = getIntent();// Receive intent
+		String receivedAction = receiverdIntent.getAction();// Get Action from
+															// receive intent
+		String receivedType = receiverdIntent.getType();// Get type from receive
+														// intent
+
+		// If action is equal to action send
+		if (receivedAction.equals(Intent.ACTION_SEND)) {
+
+			// If nothing shared
+			sharedTextView.setText("Nothing has shared");
+			sharedTextView.setVisibility(View.VISIBLE);
+			shared_textview_title.setVisibility(View.GONE);
+			sharedImageView.setVisibility(View.GONE);
+			shared_imageview_title.setVisibility(View.GONE);
+
+			// If mime type is equal to text then show text and hide imageview
+			if (receivedType.startsWith("text/")) {
+				sharedImageView.setVisibility(View.GONE);
+				shared_imageview_title.setVisibility(View.GONE);
+				String receivedText = receiverdIntent
+						.getStringExtra(Intent.EXTRA_TEXT);
+				if (receivedText != null) {
+					sharedTextView.setText(receivedText);
+					sharedTextView.setVisibility(View.VISIBLE);
+					shared_textview_title.setVisibility(View.VISIBLE);
+				}
+			}
+			// If mime type is equal to image then show image and hide textview
+			else if (receivedType.startsWith("image/")) {
+				sharedTextView.setVisibility(View.GONE);
+				shared_textview_title.setVisibility(View.GONE);
+				Uri receiveUri = (Uri) receiverdIntent
+						.getParcelableExtra(Intent.EXTRA_STREAM);
+
+				if (receiveUri != null) {
+					try {
+						Bitmap bitmap = Utils.decodeUri(SharedActivity.this,
+								receiveUri, 200);
+						sharedImageView.setImageBitmap(bitmap);
+						sharedImageView.setVisibility(View.VISIBLE);
+						shared_imageview_title.setVisibility(View.VISIBLE);
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+		} else if (receivedAction.equals(Intent.ACTION_MAIN)) {
+			sharedTextView.setText("Nothing has shared");
+			sharedTextView.setVisibility(View.VISIBLE);
+			shared_textview_title.setVisibility(View.GONE);
+			sharedImageView.setVisibility(View.GONE);
+			shared_imageview_title.setVisibility(View.GONE);
+		}
+	}
+
+}</pre><p>
+<b>9</b>. Finally the main thing is to add this <em>SharedActivity.java </em>to Manifest file so that your activity should list in Sharing listview. For this you have to add some intent filter and data type that activity gonna listen.</p><pre class="crayon-plain-tag">&lt;activity
+            android:name="com.imagetext_share_demo.SharedActivity"
+            android:icon="@drawable/share_this"
+            android:label="@string/shared_activity" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.SEND" /&gt; &lt;!-- Send action required to display activity in share list --&gt;
+
+                &lt;category android:name="android.intent.category.DEFAULT" /&gt; &lt;!-- Make activity default to launch --&gt;
+
+
+                &lt;!-- Mime type i.e. what can be shared with this activity only image and text --&gt;
+                &lt;data android:mimeType="image/*" /&gt;
+                &lt;data android:mimeType="text/*" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;</pre><p>
+Your Manifest will look like this :</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.imagetext_share_demo"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/share"
+        android:label="@string/share_activity"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name="com.imagetext_share_demo.ShareActivity"
+            android:icon="@drawable/share"
+            android:label="@string/share_activity" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+
+        &lt;!-- Shared Activity --&gt;
+        &lt;activity
+            android:name="com.imagetext_share_demo.SharedActivity"
+            android:icon="@drawable/share_this"
+            android:label="@string/shared_activity" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.SEND" /&gt; &lt;!-- Send action required to display activity in share list --&gt;
+
+                &lt;category android:name="android.intent.category.DEFAULT" /&gt; &lt;!-- Make activity default to launch --&gt;
+
+
+                &lt;!-- Mime type i.e. what can be shared with this activity only image and text --&gt;
+                &lt;data android:mimeType="image/*" /&gt;
+                &lt;data android:mimeType="text/*" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>10</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/ImageText_Share_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-share-text-and-images-using-share-intent/">Android Share Text and Images Using Share Intent</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-share-text-and-images-using-share-intent/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">629</post-id>	</item>
+		<item>
+		<title>Android Gallery Image Picker</title>
+		<link>http://www.androhub.com/android-gallery-image-picker/</link>
+		<comments>http://www.androhub.com/android-gallery-image-picker/#respond</comments>
+		<pubDate>Wed, 19 Aug 2015 16:04:02 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Image Picker]]></category>
+		<category><![CDATA[Intent]]></category>
+		<category><![CDATA[Gallery]]></category>
+		<category><![CDATA[gallery picker]]></category>
+		<category><![CDATA[get image real path]]></category>
+		<category><![CDATA[get image uri]]></category>
+		<category><![CDATA[Image Picker]]></category>
+		<category><![CDATA[intent]]></category>
+		<category><![CDATA[picker]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=614</guid>
+		<description><![CDATA[<p>Android supports seamless integration of applications and content providers. Lot many things are handy provided to developers, which helps in reducing the code and consumes less time to integrate different features to app. For example, if we have an application that allow user to change his profile picture. In this requirement user will be welling [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-gallery-image-picker/">Android Gallery Image Picker</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Android supports seamless integration of applications and content providers. Lot many things are handy provided to developers, which helps in reducing the code and consumes less time to integrate different features to app.</p>
+<p>For example, if we have an application that allow user to change his profile picture. In this requirement user will be welling to browse his mobile gallery and pick a picture of his own to set his profile picture. Integrating this feature in traditional operating system, need lot of effort write code to integrate file browser. But in android we can use <strong><code>Intent.ACTION_PICK</code></strong> action to get this feature integrated .</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to pick an Image from Gallery and display in our app.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_67099" width="602" height="339" src="https://www.youtube.com/embed/0Sa2e7LSUNo?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. First create a layout in xml file naming <em>activity_main.xml </em>that contains Button for selecting image , and ImageView to display image and two TextViews for displaying URI path and original path of image.</p><pre class="crayon-plain-tag">&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" &gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp" &gt;
+
+        &lt;FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border" &gt;
+
+            &lt;ImageView
+                android:id="@+id/gallery_imageview"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/gallery_imageview"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logo" /&gt;
+        &lt;/FrameLayout&gt;
+
+        &lt;TextView
+            android:id="@+id/uri_path"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:visibility="gone" /&gt;
+
+        &lt;TextView
+            android:id="@+id/real_path"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:visibility="gone" /&gt;
+
+        &lt;Button
+            android:id="@+id/change_image"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:text="@string/change_image" /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;</pre><p>
+<b>3</b>. In above layout you had seen i had set background to FrameLayout creating a border to ImageView for this we have to create an xml file under <em>drawable</em> directory naming <em>border.xml</em>.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" &gt;
+
+    &lt;corners android:radius="10dp" /&gt;
+
+    &lt;padding
+        android:bottom="5dp"
+        android:left="5dp"
+        android:right="5dp"
+        android:top="5dp" /&gt;
+
+    &lt;solid android:color="#ffffff" /&gt;
+
+    &lt;stroke android:color="#000000" android:width="1dp" /&gt;
+
+&lt;/shape&gt;</pre><p>
+<b>4</b>. Now there are only three main steps by which we can achieve our goal :</p>
+<p><strong>Step 1: Starting Intent</strong></p>
+<ul>
+<li><em>ACTION_PICK &#8211; </em>Action Pick will open the picker in Android device.</li>
+<li><em>setType(&#8220;image/*&#8221;) &#8211; </em>This will set the type of picker i.e. all image type. So action_pick will open gallery.</li>
+</ul>
+<p><strong>Step 2: Receiving the gallery response</strong><br />
+The selected image will result in <strong>onActivityforResult </strong>where we get the image URI and we convert the URI into real path via below method :</p><pre class="crayon-plain-tag">public static String getRealPathFromUri(Context context, Uri contentUri) {
+		Cursor cursor = null;
+		try {
+			String[] proj = { MediaStore.Images.Media.DATA };
+			cursor = context.getContentResolver().query(contentUri, proj, null,
+					null, null);
+			int column_index = cursor
+					.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+			cursor.moveToFirst();
+			return cursor.getString(column_index);
+		} finally {
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+	}</pre><p>
+<strong>Step 3: After receiving response we have to compress the image</strong><br />
+We have to compress and scale the image because large images can cause Exceptions so better to avoid exception. The below method is going to do this task and return a bitmap:</p><pre class="crayon-plain-tag">public static Bitmap decodeUri(Context context, Uri uri,
+			final int requiredSize) throws FileNotFoundException {
+		BitmapFactory.Options o = new BitmapFactory.Options();
+		o.inJustDecodeBounds = true;
+		BitmapFactory.decodeStream(context.getContentResolver()
+				.openInputStream(uri), null, o);
+
+		int width_tmp = o.outWidth, height_tmp = o.outHeight;
+		int scale = 1;
+
+		while (true) {
+			if (width_tmp / 2 &lt; requiredSize || height_tmp / 2 &lt; requiredSize)
+				break;
+			width_tmp /= 2;
+			height_tmp /= 2;
+			scale *= 2;
+		}
+
+		BitmapFactory.Options o2 = new BitmapFactory.Options();
+		o2.inSampleSize = scale;
+		return BitmapFactory.decodeStream(context.getContentResolver()
+				.openInputStream(uri), null, o2);
+	}</pre><p>
+<b>5</b>. Finally  come to your <em>MainActivity.java </em>and add the following code that we had discusses in above point.</p><pre class="crayon-plain-tag">package com.galleryimagepicker_demo;
+
+import java.io.FileNotFoundException;
+
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+	private final int select_photo = 1; // request code fot gallery intent
+
+	private static ImageView gallery_image;
+
+	private static TextView uriPath, realPath;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		gallery_image = (ImageView) findViewById(R.id.gallery_imageview);
+
+		uriPath = (TextView) findViewById(R.id.uri_path);
+		realPath = (TextView) findViewById(R.id.real_path);
+
+		// Implement click listener over button
+		findViewById(R.id.change_image).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View arg0) {
+
+						// Intent to gallery
+						Intent in = new Intent(Intent.ACTION_PICK);
+						in.setType("image/*");
+						startActivityForResult(in, select_photo);// start
+																	// activity
+																	// for
+																	// result
+
+					}
+				});
+
+	}
+
+	protected void onActivityResult(int requestcode, int resultcode,
+			Intent imagereturnintent) {
+		super.onActivityResult(requestcode, resultcode, imagereturnintent);
+		switch (requestcode) {
+		case select_photo:
+			if (resultcode == RESULT_OK) {
+				try {
+
+					Uri imageuri = imagereturnintent.getData();// Get intent
+																// data
+
+					uriPath.setText("URI Path: " + imageuri.toString());
+					// Get real path and show over text view
+					String real_Path = getRealPathFromUri(MainActivity.this,
+							imageuri);
+					realPath.setText("Real Path: " + real_Path);
+
+					uriPath.setVisibility(View.VISIBLE);
+					realPath.setVisibility(View.VISIBLE);
+
+					Bitmap bitmap = decodeUri(MainActivity.this, imageuri, 300);// call
+																				// deocde
+																				// uri
+																				// method
+					// Check if bitmap is not null then set image else show
+					// toast
+					if (bitmap != null)
+						gallery_image.setImageBitmap(bitmap);// Set image over
+																// bitmap
+
+					else
+						Toast.makeText(MainActivity.this,
+								"Error while decoding image.",
+								Toast.LENGTH_SHORT).show();
+				} catch (FileNotFoundException e) {
+
+					e.printStackTrace();
+					Toast.makeText(MainActivity.this, "File not found.",
+							Toast.LENGTH_SHORT).show();
+				}
+			}
+		}
+	}
+
+	// Method that deocde uri into bitmap. This method is necessary to deocde
+	// large size images to load over imageview
+	public static Bitmap decodeUri(Context context, Uri uri,
+			final int requiredSize) throws FileNotFoundException {
+		BitmapFactory.Options o = new BitmapFactory.Options();
+		o.inJustDecodeBounds = true;
+		BitmapFactory.decodeStream(context.getContentResolver()
+				.openInputStream(uri), null, o);
+
+		int width_tmp = o.outWidth, height_tmp = o.outHeight;
+		int scale = 1;
+
+		while (true) {
+			if (width_tmp / 2 &lt; requiredSize || height_tmp / 2 &lt; requiredSize)
+				break;
+			width_tmp /= 2;
+			height_tmp /= 2;
+			scale *= 2;
+		}
+
+		BitmapFactory.Options o2 = new BitmapFactory.Options();
+		o2.inSampleSize = scale;
+		return BitmapFactory.decodeStream(context.getContentResolver()
+				.openInputStream(uri), null, o2);
+	}
+
+	// Get Original image path
+	public static String getRealPathFromUri(Context context, Uri contentUri) {
+		Cursor cursor = null;
+		try {
+			String[] proj = { MediaStore.Images.Media.DATA };
+			cursor = context.getContentResolver().query(contentUri, proj, null,
+					null, null);
+			int column_index = cursor
+					.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+			cursor.moveToFirst();
+			return cursor.getString(column_index);
+		} finally {
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+	}
+}</pre><p>
+<b>6</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/GalleryImagePicker_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-gallery-image-picker/">Android Gallery Image Picker</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-gallery-image-picker/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">614</post-id>	</item>
+	</channel>
+</rss>

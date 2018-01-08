@@ -1,0 +1,2421 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android GPS &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-gps/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Introduction to Android Google Maps V2</title>
+		<link>http://www.androhub.com/introduction-to-android-google-maps-v2/</link>
+		<comments>http://www.androhub.com/introduction-to-android-google-maps-v2/#comments</comments>
+		<pubDate>Mon, 08 Aug 2016 14:30:16 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android GPS]]></category>
+		<category><![CDATA[Android ToolBar]]></category>
+		<category><![CDATA[Google Maps]]></category>
+		<category><![CDATA[auto location dialog]]></category>
+		<category><![CDATA[getting fingerprint]]></category>
+		<category><![CDATA[google api client]]></category>
+		<category><![CDATA[google api console]]></category>
+		<category><![CDATA[google maps]]></category>
+		<category><![CDATA[location updates]]></category>
+		<category><![CDATA[map gestures]]></category>
+		<category><![CDATA[map toolbar]]></category>
+		<category><![CDATA[map types]]></category>
+		<category><![CDATA[map ui settings]]></category>
+		<category><![CDATA[maps]]></category>
+		<category><![CDATA[play services]]></category>
+		<category><![CDATA[sha1 key]]></category>
+
+		<guid isPermaLink="false">http://www.androhub.com/?p=1077</guid>
+		<description><![CDATA[<p>Android allows us to integrate google maps in our application. You can show any location on the map , or can show different routes on the map e.t.c. You can also customize the map according to your choices. Prerequisites Location Request Dialog  Marshmallow Permission Example Today we are going to integrate google map in android. The [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/introduction-to-android-google-maps-v2/">Introduction to Android Google Maps V2</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p class="p1"><span class="s1">Android allows us to integrate <a href="https://developers.google.com/android/reference/com/google/android/gms/maps/GoogleMap.html" target="_blank">google maps</a> in our application. You can show any location on the map , or can show different routes on the map e.t.c. You can also customize the map according to your choices.</span></p>
+<h2 id="ui_controls">Prerequisites</h2>
+<ol>
+<li class="p3"><a href="http://www.androhub.com/show-location-setting-dialog-using-google-api-client/" target="_blank"><span class="s1">Location Request Dialog<span class="Apple-converted-space"> </span></span></a></li>
+<li class="p3"><a href="http://www.androhub.com/working-android-marshmallow-6-0-permissions/" target="_blank"><span class="s1">Marshmallow Permission</span></a></li>
+</ol>
+<h2 id="ui_controls">Example</h2>
+<p class="p3"><span class="s1">Today we are going to integrate google map in android. The things that we are going to cover are:</span></p>
+<ol>
+<li class="p3"><span class="s1">Displaying google map.</span></li>
+<li class="p3"><span class="s1">Showing User Current Location on Map.</span></li>
+<li class="p3"><span class="s1">Showing different type of maps.</span></li>
+<li class="p3"><span class="s1">Working on My Location Button and Blue dot.</span></li>
+<li class="p3"><span class="s1">Showing Default Marker as well as custom marker with Camera Animation.</span></li>
+<li class="p3"><span class="s1">Updating marker position on location changed by using Location Update method.</span></li>
+<li class="p3"><span class="s1">Google Map UI Settings and Gestures Functionality.</span></li>
+<li class="p3"><span class="s1">Handling Google API Client Call back methods.</span></li>
+<li class="p3"><span class="s1">Handling Marker Click event.</span></li>
+<li class="p3"><span class="s1">Hiding Navigation and GPS pointer which appears on clicking of marker i.e. Map Toolbar.</span></li>
+</ol>
+<h2 id="ui_controls">VIDEO DEMO</h2>
+<p><iframe  id="_ytid_70511" width="602" height="339" src="https://www.youtube.com/embed/9qWHzj8k-Uo?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p class="p3"><span class="s1">So Lets start playing with Google Maps,</span></p>
+<h3>Create Project in Android Studio</h3>
+<p>Firstly, create new project in Android Studio naming anything whatever you want.</p>
+<h3>Getting Google Maps API Key</h3>
+<p class="p3"><span class="s1">1. Now login into your Gmail Account and go to <a href="https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&amp;keyType=CLIENT_SIDE_ANDROID&amp;reusekey=true" target="_blank">Google API Console</a>.</span></p>
+<p class="p3"><span class="s1">2.<span class="Apple-converted-space">  C</span>lick on <strong>Create New Project.</strong></span></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1083" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/create_new_project.jpg?resize=342%2C312" alt="create_new_project" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/create_new_project.jpg?w=342 342w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/create_new_project.jpg?resize=300%2C274 300w" sizes="(max-width: 342px) 100vw, 342px" data-recalc-dims="1" /></p>
+<p class="p3"><span class="s1">3. Enter your project name and click create.</span></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1088" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/entered_project_name.jpg?resize=530%2C254" alt="entered_project_name" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/entered_project_name.jpg?w=530 530w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/entered_project_name.jpg?resize=300%2C144 300w" sizes="(max-width: 530px) 100vw, 530px" data-recalc-dims="1" /></p>
+<p class="p3"><span class="s1">4. Creating project will take some couple of minutes you can check the processing of your project top and bottom of page.</span></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1107" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/project_processing.jpg?resize=344%2C88" alt="project_processing" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/project_processing.jpg?w=344 344w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/project_processing.jpg?resize=300%2C77 300w" sizes="(max-width: 344px) 100vw, 344px" data-recalc-dims="1" /></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1106" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/project_processing_top.jpg?resize=436%2C204" alt="project_processing_top" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/project_processing_top.jpg?w=436 436w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/project_processing_top.jpg?resize=300%2C140 300w" sizes="(max-width: 436px) 100vw, 436px" data-recalc-dims="1" /></p>
+<p class="p3"><span class="s1">5. After successful creation of your project the below is the first screen you get.</span></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1090" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/first_page.jpg?resize=602%2C360" alt="first_page" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/first_page.jpg?w=1440 1440w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/first_page.jpg?resize=300%2C180 300w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/first_page.jpg?resize=768%2C460 768w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/first_page.jpg?resize=1024%2C613 1024w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/first_page.jpg?w=1204 1204w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /></p>
+<p class="p3"><span class="s1">6. You can check your dashboard by clicking <strong>Dashboard</strong> from side menu. Currently, it is empty, when we integrate and test the app then analytics will show here.</span></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1084" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/empty_dashboard.jpg?resize=602%2C361" alt="empty_dashboard" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/empty_dashboard.jpg?w=1440 1440w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/empty_dashboard.jpg?resize=300%2C180 300w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/empty_dashboard.jpg?resize=768%2C461 768w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/empty_dashboard.jpg?resize=1024%2C614 1024w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/empty_dashboard.jpg?w=1204 1204w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /></p>
+<p class="p3"><span class="s1">7. Now for Integration we need API Key so for this click over <strong>Credentials</strong> from side menu and you will get Credential Screen</span></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1079" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/add_credential.jpg?resize=602%2C360" alt="add_credential" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/add_credential.jpg?w=1440 1440w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/add_credential.jpg?resize=300%2C180 300w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/add_credential.jpg?resize=768%2C460 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/add_credential.jpg?resize=1024%2C613 1024w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/add_credential.jpg?w=1204 1204w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /></p>
+<p class="p3"><span class="s1">From the <strong>dropdown menu</strong> select <strong>API Key</strong> and on selection of API key a new popup will appear that ask you platform type, select android from it.</span></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1110" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/select_credential_type.jpg?resize=494%2C524" alt="select_credential_type" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/select_credential_type.jpg?w=494 494w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/select_credential_type.jpg?resize=283%2C300 283w" sizes="(max-width: 494px) 100vw, 494px" data-recalc-dims="1" /></p>
+<p class="p3"><span class="s1">8. Now another Screen will open here you have to give <strong>package name</strong> and <strong>fingerprint</strong> (optional) but it is good to put package name and fingerprint.</span></p>
+<p class="p4"><span class="s1"><span class="Apple-converted-space"><img class="aligncenter size-full wp-image-1081" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/android_api_key.jpg?resize=602%2C333" alt="android_api_key" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/android_api_key.jpg?w=654 654w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/android_api_key.jpg?resize=300%2C166 300w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" />  </span></span></p>
+<h3>Getting Certificate Fingerprint</h3>
+<p>There are two ways of getting fingerprint:</p>
+<p><b>From Terminal or CMD</b></p>
+<p>1. Locate your debug <em><strong>keystore</strong></em> file. The file name is <em><strong><code>debug.keystore</code></strong></em>, and is created the first time you build your project. By default, it is stored in the same directory as your <em><strong>Android Virtual Device (AVD)</strong></em> files:</p>
+<ul>
+<li><strong>macOS and Linux</strong>: <code>~/.android/</code></li>
+<li><strong>Windows Vista and Windows 7</strong>: <code>C:\Users\your_user_name\.android\</code></li>
+</ul>
+<p>2. List the SHA-1 fingerprint:</p>
+<ul>
+<li>For Linux or macOS, open a terminal window and enter the following:</li>
+</ul>
+<pre class="crayon-plain-tag">keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android</pre>
+<ul>
+<li>For Windows Vista and Windows 7, run:</li>
+</ul>
+<pre class="crayon-plain-tag">keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android</pre>
+<p class="p9"><span class="s1">You should see output similar to this:</span></p>
+<pre class="crayon-plain-tag">Alias name: androiddebugkey
+Creation date: 5 Jun, 2016
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: C=US, O=Android, CN=Android Debug
+Issuer: C=US, O=Android, CN=Android Debug
+Serial number: 1
+Valid from: Sun Jun 05 16:58:31 IST 2016 until: Tue May 29 16:58:31 IST 2046
+Certificate fingerprints:
+	 MD5:  DE:DC:D0:74:0E:40:50:D8:79:71:4D:10:42:89:C4:0A
+	 SHA1: 96:77:03:77:0E:46:5B:18:90:49:E2:3B:19:AB:9C:70:F3:2A:44:A8
+	 SHA256: F9:B1:CC:7F:94:FA:A6:2D:DD:11:57:7F:F3:71:0A:15:30:16:91:BF:18:0F:84:C1:67:3E:4E:6E:77:60:02:BC
+	 Signature algorithm name: SHA1withRSA
+	 Version: 1</pre>
+<p class="p11"><span class="s1">The line that begins with </span><strong><span class="s9">SHA1</span></strong><span class="s1"> contains the <strong>certificate&#8217;s SHA-1 fingerprint</strong>. The fingerprint is the sequence of 20 two-digit hexadecimal numbers separated by colons.</span></p>
+<p class="p11"><img class="aligncenter size-full wp-image-1112" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/terminal_hash_key.jpg?resize=576%2C362" alt="terminal_hash_key" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/terminal_hash_key.jpg?w=576 576w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/terminal_hash_key.jpg?resize=300%2C189 300w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /></p>
+<p class="p3"><b>From Gradle</b></p>
+<p class="p3">1. Click on Gradle (From Right Side Panel, you will see <strong>Gradle Bar</strong>).</p>
+<p><span class="s1">2. Click on Refresh (Click on Refresh from <b>Gradle Bar</b>, you will see <b>List</b> Gradle scripts of your Project).</span></p>
+<p><img class="aligncenter size-full wp-image-1093" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/gradle_view.jpg?resize=478%2C182" alt="gradle_view" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/gradle_view.jpg?w=478 478w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/gradle_view.jpg?resize=300%2C114 300w" sizes="(max-width: 478px) 100vw, 478px" data-recalc-dims="1" /></p>
+<p><span class="s1">3. Click on Your Project (Your Project Name form <b>List</b> (root)) -&gt; Tasks -&gt; android -&gt; signingReport (double click).</span></p>
+<p>&nbsp;</p>
+<p><img class="aligncenter size-full wp-image-1092" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/gradle_inside_view.jpg?resize=482%2C492" alt="gradle_inside_view" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/gradle_inside_view.jpg?w=482 482w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/gradle_inside_view.jpg?resize=294%2C300 294w" sizes="(max-width: 482px) 100vw, 482px" data-recalc-dims="1" /></p>
+<p><span class="s1">4. You will get <b>SHA1</b> and <b>MD5</b> in <b>Run Bar</b>.</span></p>
+<p><img class="aligncenter size-full wp-image-1094" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/hashkey_output.jpg?resize=602%2C309" alt="hashkey_output" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/hashkey_output.jpg?w=1420 1420w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/hashkey_output.jpg?resize=300%2C154 300w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/hashkey_output.jpg?resize=768%2C395 768w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/hashkey_output.jpg?resize=1024%2C526 1024w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/hashkey_output.jpg?w=1204 1204w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /></p>
+<p>Now Copy your SHA1 fingerprint.</p>
+<h3>Back to Google API Console</h3>
+<p class="p3"><span class="s1">9. Now enter your package name and copied SHA1 fingerprint in respective text fields.</span></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1086" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/enter_details.jpg?resize=602%2C391" alt="enter_details" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/enter_details.jpg?w=634 634w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/enter_details.jpg?resize=300%2C195 300w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /></p>
+<p class="p3"><span class="s1">After adding click create.</span></p>
+<p class="p3"><span class="s1">10. A popup will open containing your <strong>API Key</strong> copy that API key and keep if safe with you and don’t disclose with anyone.</span></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1097" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_api_key.jpg?resize=584%2C190" alt="map_api_key" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_api_key.jpg?w=584 584w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_api_key.jpg?resize=300%2C98 300w" sizes="(max-width: 584px) 100vw, 584px" data-recalc-dims="1" /></p>
+<p class="p3"><span class="s1">You can also delete and regenerate to existing API key.</span></p>
+<p class="p3"><span class="s1">11. Now go back to <strong>Library </strong>menu and click <strong>Google Maps Android API</strong><span class="Apple-converted-space"> under <strong>Google Maps APIs</strong> category </span>and click <strong>enable</strong> to enable Google Map API</span></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1085" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/enable_map.jpg?resize=602%2C186" alt="enable_map" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/enable_map.jpg?w=1440 1440w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/enable_map.jpg?resize=300%2C93 300w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/enable_map.jpg?resize=768%2C237 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/enable_map.jpg?resize=1024%2C316 1024w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/enable_map.jpg?w=1204 1204w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /></p>
+<p class="p3">Now all done from Google API Console side come back to Android Studio.</p>
+<h3>Adding Google Play Services</h3>
+<p class="p3">Before doing anything firstly you need <strong>Google Play Services</strong> to deal with Google Maps. Follow below steps:</p>
+<p class="p3"><span class="s1"><span class="Apple-converted-space">1.   For this you have to go to <strong>Project Module Setting -&gt; Dependency.</strong></span></span></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1103" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/module_settings.jpg?resize=602%2C502" alt="module_settings" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/module_settings.jpg?w=828 828w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/module_settings.jpg?resize=300%2C250 300w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/module_settings.jpg?resize=768%2C640 768w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1102" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/module_dependency.jpg?resize=602%2C495" alt="module_dependency" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/module_dependency.jpg?w=822 822w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/module_dependency.jpg?resize=300%2C247 300w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/module_dependency.jpg?resize=768%2C632 768w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /></p>
+<p class="p3">2. Click + button and select <strong>Library Dependency.</strong></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1082" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/click_library.jpg?resize=602%2C496" alt="click_library" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/click_library.jpg?w=828 828w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/click_library.jpg?resize=300%2C247 300w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/click_library.jpg?resize=768%2C633 768w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /></p>
+<p class="p3"><span class="s1">3. Now new screen will open from this select <strong>com.google.android.gms:play-services-maps</strong> and click Ok and you can see that it will added to you existing dependency.</span></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1080" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/add_play_services.jpg?resize=602%2C498" alt="add_play_services" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/add_play_services.jpg?w=820 820w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/add_play_services.jpg?resize=300%2C248 300w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/add_play_services.jpg?resize=768%2C635 768w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /></p>
+<p class="p3"><span class="s1">4. Now to add it to your <strong>grade</strong> file click <strong>OK</strong> again and wait for sometime.</span></p>
+<p class="p3"><span class="s1">5. If you are not able to find Play Services then open you <strong>SDK manage</strong>r and install library form it.</span></p>
+<p class="p3"><img class="aligncenter size-full wp-image-1109" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/sdk_manager.jpg?resize=602%2C560" alt="sdk_manager" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/sdk_manager.jpg?w=828 828w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/sdk_manager.jpg?resize=300%2C279 300w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/sdk_manager.jpg?resize=768%2C714 768w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /></p>
+<p class="p3">6. You can check your added <strong>Play Services</strong> dependency in <strong>build.gradle</strong> file.</p>
+<pre class="crayon-plain-tag">compile 'com.google.android.gms:play-services-maps:9.4.0'</pre>
+<p class="p3"><span class="s1">7. O<span class="s10">pen your <strong>AndroidManifest.xml</strong> and</span><span class="s1"> the following element as a child of the <a href="https://developer.android.com/guide/topics/manifest/application-element.html" target="_blank"><span class="s11">&lt;application&gt;</span></a> element, by inserting it just before the closing </span><span class="s9">&lt;/application&gt;</span><span class="s1"> tag:</span></span></p>
+<pre class="crayon-plain-tag">&lt;meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" /&gt;</pre>
+<h2>Add the API key to your application</h2>
+<p class="p17"><span class="s10">Now open your <strong>AndroidManifest.xml</strong> and</span><span class="s1"> the following element as a child of the <a href="https://developer.android.com/guide/topics/manifest/application-element.html" target="_blank"><span class="s11">&lt;application&gt;</span></a> element, by inserting it just before the closing </span><span class="s9">&lt;/application&gt;</span><span class="s1"> tag:</span></p>
+<pre class="crayon-plain-tag">&lt;meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_map_api_key" /&gt;</pre>
+<p class="p11"><span class="s1">Substitute your API key for <i>google_map_api_key</i> in the </span><span class="s9">value</span><span class="s1"> attribute. This element sets the key </span><span class="s9">com.google.android.maps.v2.API_KEY</span><span class="s1"> to the value of your API key.</span></p>
+<h2>Permission and Features Required For Google Map</h2>
+<p>Add the below permission and features to your <strong>AndroidManifest.xml.</strong></p><pre class="crayon-plain-tag">&lt;permission
+        android:name="com.googlemap_demo.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" /&gt;
+
+    &lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+    &lt;uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" /&gt;
+
+    &lt;!-- Required OpenGL ES 2.0. for Maps V2 --&gt;
+    &lt;uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="false" /&gt;</pre><p>
+<h2>Add a Fragment</h2>
+<p>Add a <code>&lt;fragment&gt;</code> element to the activity&#8217;s layout file to define a <a href="https://developer.android.com/reference/android/app/Fragment.html" target="_blank"><code>Fragment</code></a> object. In this element, set the <strong><code>android:name</code></strong> attribute to <code>"com.google.android.gms.maps.SupportMapFragment"</code>. This automatically attaches a <a href="https://developers.google.com/android/reference/com/google/android/gms/maps/SupportMapFragment" target="_blank"><code>SupportMapFragment</code></a> to the activity.</p>
+<p>The following layout file contains a <code>&lt;fragment&gt;</code> element:</p><pre class="crayon-plain-tag">&lt;!--  Google Map Use Support Map Fragment class to Support all Devices else use MapFragment  --&gt;
+    &lt;fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" /&gt;</pre><p>
+<h2>Add Map Code</h2>
+<p class="p11"><span class="s1">To work with the map inside your app, you&#8217;ll need to implement the <a href="https://developers.google.com/android/reference/com/google/android/gms/maps/OnMapReadyCallback.html" target="_blank"><span class="s11">OnMapReadyCallback</span></a> interface and set an instance of the callback on a <a href="https://developers.google.com/android/reference/com/google/android/gms/maps/SupportMapFragment" target="_blank">SupportMapFragment</a> . This tutorial uses a Support</span><span class="s9">MapFragment</span><span class="s1">, because that&#8217;s the most common way of adding a map to an app. The first step is to implement the callback interface:</span></p>
+<pre class="crayon-plain-tag">public class MainActivity extends AppCompatActivity
+
+    implements OnMapReadyCallback {
+
+...
+
+}</pre>
+<p class="p20">Now find the ID of the SupportMapFragment by using <strong>getSupportFragmentManager() </strong> and then use <a href="https://developers.google.com/android/reference/com/google/android/gms/maps/MapFragment.html#getMapAsync(com.google.android.gms.maps.OnMapReadyCallback)" target="_blank"><code>getMapAsync()</code></a> to set the callback on the fragment.</p>
+<pre class="crayon-plain-tag">/* Set Up google map if Google Play Services Exists */
+    private void setUpGoogleMap() {
+        if (new GooglePlayServiceCheck().isGooglePlayInstalled(MainActivity.this)) {
+            SupportMapFragment map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
+            map.getMapAsync(this);//after getting map call async method, this method will call onMapReady(GoogleMap map) method
+        }
+    }</pre>
+<p class="p20"><span class="s1">Call the above method on your activity <em>OnCreate</em> method</span></p>
+<p class="p29"><span class="s1"><b>Note:</b> </span><span class="s20"><b>getMapAsync()</b></span><span class="s1"> must be called from the main thread, and the callback will be executed in the main thread. If Google Play services is not installed on the user&#8217;s device, the callback will not be triggered until the user installs Play services.So we are checking if PlayServices are installed or not.</span></p>
+<p class="p11"><span class="s1">Use the <a href="https://developers.google.com/android/reference/com/google/android/gms/maps/OnMapReadyCallback.html#onMapReady(com.google.android.gms.maps.GoogleMap)" target="_blank"><span class="s11">onMapReady(GoogleMap)</span></a> callback method to get a handle to the <a href="https://developers.google.com/android/reference/com/google/android/gms/maps/GoogleMap.html" target="_blank"><span class="s11">GoogleMap</span></a> object. The callback is triggered when the map is ready to be used. It provides a non-null instance of </span><span class="s9">GoogleMap</span><span class="s1">. You can use the </span><span class="s9">GoogleMap</span><span class="s1"> object to set the view options for the map or add a marker, for example.</span></p>
+<pre class="crayon-plain-tag">@Override
+    public void onMapReady(GoogleMap map) {
+        //When map ready
+        googleMap = map;
+    }</pre>
+<h2>Map Types</h2>
+<p class="p20"><span class="s1">There are many types of maps available within the Google Maps Android API. For example, an atlas usually contains <b>political</b> maps that focus on showing boundaries, and <b>road</b> maps that show all of the roads for a city or region.</span></p>
+<p class="p20"><span class="s1">The Google Maps Android API offers four types of maps, as well as an option to have no map at all:</span></p>
+<p class="p31"><span class="s1"><b>1. Normal</b></span></p>
+<p class="p11"><span class="s1">Typical road map. Roads, some man-made features, and important natural features such as rivers are shown. Road and feature labels are also visible.</span></p>
+<div id="attachment_1105" style="width: 612px" class="wp-caption aligncenter"><img class="wp-image-1105 size-large" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/normal_map.jpg?resize=602%2C1017" alt="normal_map" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/normal_map.jpg?resize=606%2C1024 606w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/normal_map.jpg?resize=177%2C300 177w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/normal_map.jpg?resize=768%2C1298 768w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/normal_map.jpg?w=1204 1204w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">Normal Map Type</p></div>
+<p class="p31"><span class="s1"><b>2. Hybrid</b></span></p>
+<p class="p11"><span class="s1">Satellite photograph data with road maps added. Road and feature labels are also visible.</span></p>
+<div id="attachment_1095" style="width: 612px" class="wp-caption aligncenter"><img class="wp-image-1095 size-large" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/hybrid_map.jpg?resize=602%2C1017" alt="hybrid_map" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/hybrid_map.jpg?resize=606%2C1024 606w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/hybrid_map.jpg?resize=177%2C300 177w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/hybrid_map.jpg?resize=768%2C1298 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/hybrid_map.jpg?w=1204 1204w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">Hybrid Map Type</p></div>
+<p class="p31"><span class="s1"><b>3. Satellite</b></span></p>
+<p class="p11"><span class="s1">Satellite photograph data. Road and feature labels are not visible.</span></p>
+<div id="attachment_1108" style="width: 612px" class="wp-caption aligncenter"><img class="wp-image-1108 size-large" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/satellite_map.jpg?resize=602%2C1017" alt="satellite_map" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/satellite_map.jpg?resize=606%2C1024 606w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/satellite_map.jpg?resize=177%2C300 177w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/satellite_map.jpg?resize=768%2C1298 768w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/satellite_map.jpg?w=1204 1204w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">Satellite Map Type</p></div>
+<p class="p31"><span class="s1"><b>4. Terrain</b></span></p>
+<p class="p11"><span class="s1">Topographic data. The map includes colors, contour lines and labels, and perspective shading. Some roads and labels are also visible.</span></p>
+<div id="attachment_1113" style="width: 612px" class="wp-caption aligncenter"><img class="wp-image-1113 size-large" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/terrain_map.jpg?resize=602%2C1017" alt="terrain_map" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/terrain_map.jpg?resize=606%2C1024 606w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/terrain_map.jpg?resize=177%2C300 177w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/terrain_map.jpg?resize=768%2C1298 768w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/terrain_map.jpg?w=1204 1204w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">Terrain Map Type</p></div>
+<p class="p31"><span class="s1"><b>5. None</b></span></p>
+<p class="p11"><span class="s1">No tiles. The map will be rendered as an empty grid with no tiles loaded.</span></p>
+<div id="attachment_1104" style="width: 612px" class="wp-caption aligncenter"><img class="wp-image-1104 size-large" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/none_map.jpg?resize=602%2C1017" alt="none_map" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/none_map.jpg?resize=606%2C1024 606w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/none_map.jpg?resize=177%2C300 177w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/none_map.jpg?resize=768%2C1298 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2016/08/none_map.jpg?w=1204 1204w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /><p class="wp-caption-text">None Map Type</p></div>
+<p class="p20"><span class="s1">To set the type of a map, call the <a href="https://developers.google.com/android/reference/com/google/android/gms/maps/GoogleMap.html" target="_blank"><span class="s11">GoogleMap</span></a> object&#8217;s <a href="https://developers.google.com/android/reference/com/google/android/gms/maps/GoogleMap.html#setMapType(int)" target="_blank"><span class="s11">setMapType()</span></a> method, passing one of the type constants defined in <a href="https://developers.google.com/android/reference/com/google/android/gms/maps/GoogleMap.html" target="_blank"><span class="s11">GoogleMap</span></a>. For example, to display a hybrid map:</span></p>
+<pre class="crayon-plain-tag">googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);</pre>
+<h2>Adding Marker</h2>
+<p class="p32"><span class="s1">You can add a marker on the map by using following code:</span></p>
+<pre class="crayon-plain-tag">double lat = latitude here;
+double lng = longitude here; 
+googleMap.addMarker(new MarkerOptions().position(new LatLng(lat,lng))
+.title("You are here"));</pre>
+<h2>Changing Marker Color</h2>
+<p class="p35"><span class="s1">By default map marker color will be RED. Google maps provides some set of predefined colored icons for the marker.</span></p>
+<pre class="crayon-plain-tag">mMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));//Cyan Marker
+mMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));//Blue Marker
+mMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));//Green marker</pre>
+<h2>Custom Marker Color</h2>
+<p class="p35"><span class="s1">Apart from maps native marker icons, you can use own image to show as a marker. You can load the icon from any kind of supported sources.</span></p>
+<ul>
+<li><span class="s21"><b>fromAsset(String assetName)</b></span><span class="s1"> – Loading from assets folder.<br />
+</span></li>
+<li><span class="s21"><b>fromBitmap (Bitmap image)</b></span><span class="s1"> – Loading bitmap image.<br />
+</span></li>
+<li><span class="s21"><b>fromFile (String path)</b></span><span class="s1"> – Loading from file.<br />
+</span></li>
+<li><span class="s21"><b>fromResource (int resourceId)</b></span><span class="s1"> – Loading from drawable resource.</span></li>
+</ul>
+<p class="p35"><span class="s1">Below I loaded a custom marker icon from <b>drawable</b> folder</span></p>
+<pre class="crayon-plain-tag">mMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_user_location));</pre>
+<h2>Moving Camera to a Location with Animation</h2>
+<p class="p35"><span class="s1">You may want to move camera to a particular position. Google maps provides set of functions to achieve this.</span></p>
+<pre class="crayon-plain-tag">googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17.0f));</pre>
+<h2 id="ui_controls">UI Controls</h2>
+<p>The Maps API offers built-in UI controls that are similar to those found in the Google Maps application on your Android phone. You can toggle the visibility of these controls using the <a href="https://developers.google.com/android/reference/com/google/android/gms/maps/UiSettings.html" target="_blank"><code>UiSettings</code></a> class which can be obtained from a<code>GoogleMap</code> with the <strong><code>GoogleMap.getUiSettings</code></strong> method.</p>
+<p class="p37"><span class="s1"><b>1. Zoom Controls</b></span></p>
+<p class="p38"><span class="s1">You can call </span><span class="s21"><b>setZoomControlsEnabled(<b>boolean</b>)</b></span><span class="s1"> function to get rid of those zooming controls on the map. By disabling these buttons map zooming functionality still work by pinching gesture.</span></p>
+<pre class="crayon-plain-tag">googleMap.getUiSettings().setZoomControlsEnabled(true);</pre>
+<p class="p37"><span class="s1"><b>2. Compass</b></span></p>
+<p class="p38"><span class="s1">Compass can be disabled by calling </span><span class="s21"><b>setCompassEnabled(<b>boolean</b>)</b></span><span class="s1"> function.</span></p>
+<pre class="crayon-plain-tag">googleMap.getUiSettings().setCompassEnabled(true);</pre>
+<p class="p37"><b>3. My Location Button</b></p>
+<p class="p38"><span class="s1">My location button will be used to move map to your current location. This button can be shown / hidden by calling </span><span class="s21"><b>setMyLocationButtonEnabled(<b>boolean</b>)</b></span><span class="s1"> function.</span></p>
+<pre class="crayon-plain-tag">googleMap.getUiSettings().setMyLocationButtonEnabled(true);</pre>
+<div id="attachment_1101" style="width: 187px" class="wp-caption aligncenter"><img class="wp-image-1101 size-medium" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_without_location_button.jpg?resize=177%2C300" alt="On False Mode" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_without_location_button.jpg?resize=177%2C300 177w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_without_location_button.jpg?resize=768%2C1298 768w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_without_location_button.jpg?resize=606%2C1024 606w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_without_location_button.jpg?w=1204 1204w" sizes="(max-width: 177px) 100vw, 177px" data-recalc-dims="1" /><p class="wp-caption-text">On False Mode</p></div>
+<h2 id="map_gestures">Map Gestures</h2>
+<p class="p37"><span class="s1"><b>1. Rotate Gestures</b></span></p>
+<p class="p38"><span class="s1">My rotate gesture can be enabled or disabled by calling </span><span class="s21"><b>setRotateGesturesEnabled(<b>boolean</b>)</b></span><span class="s1"> method.</span></p>
+<pre class="crayon-plain-tag">googleMap.getUiSettings().setRotateGesturesEnabled(true);</pre>
+<p class="p37"><span class="s1"><b>2. Zoom Gestures</b></span></p>
+<p class="p38"><span class="s1">You can disable zooming gesture functionality by calling </span><span class="s21"><b>setZoomGesturesEnabled(boolean).</b></span></p>
+<pre class="crayon-plain-tag">googleMap.getUiSettings().setZoomGesturesEnabled(true);</pre>
+<p class="p37"><b>3. Tilt Gestures</b></p>
+<p class="p37">A user can tilt the map by placing two fingers on the map and moving them down or up together to increase or decrease the tilt angle respectively. You can disable tilt gestures by calling <strong><code>setTiltGesturesEnabled(boolean)</code>.</strong></p>
+<pre class="crayon-plain-tag">googleMap.getUiSettings().setTiltGesturesEnabled(true);</pre>
+<p class="p37"><b>4. Pan/Scroll Gestures</b></p>
+<p class="p37">A user can scroll (pan) around the map by dragging the map with their finger. You can disable scrolling by calling <strong><code>setScrollGesturesEnabled(boolean)</code>.</strong></p>
+<pre class="crayon-plain-tag">googleMap.getUiSettings().setScrollGesturesEnabled(true);</pre>
+<h2 id="map_toolbar">Map toolbar</h2>
+<p>By default, a toolbar appears at the bottom right of the map when a user taps a marker. The toolbar gives the user quick access to the Google Maps mobile app. You can enable and disable the toolbar by calling <strong><code>setMapToolbarEnabled(boolean)</code>.</strong></p><pre class="crayon-plain-tag">googleMap.getUiSettings().setMapToolbarEnabled(true);</pre><p>
+<div id="attachment_1100" style="width: 187px" class="wp-caption alignleft"><img class="wp-image-1100 size-medium" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_with_toolbar.jpg?resize=177%2C300" alt="map_with_toolbar" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_with_toolbar.jpg?resize=177%2C300 177w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_with_toolbar.jpg?resize=768%2C1298 768w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_with_toolbar.jpg?resize=606%2C1024 606w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_with_toolbar.jpg?w=1204 1204w" sizes="(max-width: 177px) 100vw, 177px" data-recalc-dims="1" /><p class="wp-caption-text">Default Mode</p></div>
+<div id="attachment_1098" style="width: 187px" class="wp-caption aligncenter"><img class="wp-image-1098 size-medium" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_wihtou_toolbar.jpg?resize=177%2C300" alt="False Mode" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_wihtou_toolbar.jpg?resize=177%2C300 177w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_wihtou_toolbar.jpg?resize=768%2C1298 768w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_wihtou_toolbar.jpg?resize=606%2C1024 606w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2016/08/map_wihtou_toolbar.jpg?w=1204 1204w" sizes="(max-width: 177px) 100vw, 177px" data-recalc-dims="1" /><p class="wp-caption-text">On False Mode</p></div>
+<p>&nbsp;</p>
+<h2 id="map_toolbar">Showing Blue Dot</h2>
+<p class="p38"><span class="s1">You can show user’s current location on the map by calling </span><span class="s21"><b>setMyLocationEnabled()</b></span><span class="s1">. Pass true / false to enable or disable this feature.</span></p>
+<pre class="crayon-plain-tag">googleMap.setMyLocationEnabled(true);</pre>
+<h2 id="map_toolbar">Handling Marker Click Event</h2>
+<p>1. For handling marker click event implement <strong>GoogleMap.OnMarkerClickListener</strong> to your activity.</p>
+<p>2. Now inside onMapReady method set marker click event over google map.</p><pre class="crayon-plain-tag">googleMap.setOnMarkerClickListener(this);</pre><p>
+3. The below method is used to handle marker click event, here you will get marker instance to do your stuff.</p><pre class="crayon-plain-tag">@Override
+    public boolean onMarkerClick(Marker marker) {
+        Log.e(TAG, "Marker Click: " + marker.getTitle() + "\nLocation : " + marker.getPosition());
+        return false;
+    }</pre><p>
+<h2 id="map_toolbar">Handling MyLocationButton Click Event</h2>
+<p>1. For handling marker click event implement <strong>GoogleMap.OnMyLocationButtonClickListener</strong> to your activity.</p>
+<p>2. Now inside onMapReady method set marker click event over google map.</p><pre class="crayon-plain-tag">googleMap.setOnMyLocationButtonClickListener(this);</pre><p>
+3. The below method is used to get current location and update blue dot.</p><pre class="crayon-plain-tag">@Override
+    public boolean onMyLocationButtonClick() {
+        Log.e(TAG, "onMyLocationButtonClick");
+        return false;
+    }</pre><p>
+Till here we are all done with google maps integration. Now lets look upon <a href="https://developers.google.com/android/reference/com/google/android/gms/common/api/GoogleApiClient" target="_blank">Google API Client </a>and <a href="https://developer.android.com/reference/android/location/Location.html" target="_blank">Location</a> Updates.</p>
+<h2 id="location-request">Set Up a Location Request</h2>
+<p>Check <a href="http://www.androhub.com/show-location-setting-dialog-using-google-api-client/" target="_blank">Location Request Tutorial </a>for showing location alert dialog whenever GPS goes off.</p>
+<p>To store parameters for requests to the fused location provider, create a <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest.html" target="_blank"><code>LocationRequest</code></a>. The parameters determine the level of accuracy for location requests.</p><pre class="crayon-plain-tag">LocationRequest mLocationRequest = new LocationRequest();
+ mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+ mLocationRequest.setInterval(30 * 1000);
+ mLocationRequest.setFastestInterval(5 * 1000);</pre><p>
+The meaning of code lines that used above is :</p>
+<ol>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest.html#setInterval(long)" target="_blank">setInterval() </a>: This method sets the rate in milliseconds at which your app prefers to receive location updates. Note that the location updates may be faster than this rate if another app is receiving updates at a faster rate, or slower than this rate, or there may be no updates at all.</li>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest.html#setFastestInterval(long)" target="_blank">setFasterInterval()</a> : This method sets the <strong>fastest</strong> rate in milliseconds at which your app can handle location updates. You need to set this rate because other apps also affect the rate at which updates are sent. The Google Play services location APIs send out updates at the fastest rate that any app has requested with <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest.html#setInterval(long)" target="_blank"><code>setInterval()</code></a>. If this rate is faster than your app can handle, you may encounter problems with UI flicker or data overflow. To prevent this, call <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest.html#setFastestInterval(long)" target="_blank"><code>setFastestInterval()</code></a> to set an upper limit to the update rate.</li>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest.html#setPriority(int)" target="_blank">setPriority()</a> : This method sets the priority of the request, which gives the Google Play services location services a strong hint about which location sources to use. The following values are supported:</li>
+</ol>
+<ul>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest.html#PRIORITY_BALANCED_POWER_ACCURACY" target="_blank"><code>PRIORITY_BALANCED_POWER_ACCURACY</code></a> &#8211; Use this setting to request location precision to within a city block, which is an accuracy of approximately 100 meters. This is considered a coarse level of accuracy, and is likely to consume less power.</li>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest.html#PRIORITY_HIGH_ACCURACY" target="_blank"><code>PRIORITY_HIGH_ACCURACY</code></a> &#8211; Use this setting to request the most precise location possible. With this setting, the location services are more likely to use GPS to determine the location.</li>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest.html#PRIORITY_LOW_POWER" target="_blank"><code>PRIORITY_LOW_POWER</code></a> &#8211; Use this setting to request city-level precision, which is an accuracy of approximately 10 kilometers. This is considered a coarse level of accuracy, and is likely to consume less power.</li>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest.html#PRIORITY_NO_POWER" target="_blank"><code>PRIORITY_NO_POWER</code></a> &#8211; Use this setting if you need negligible impact on power consumption, but want to receive location updates when available. With this setting, your app does not trigger any location updates, but receives locations triggered by other apps.</li>
+</ul>
+<p>The priority of <a href="https://developer.android.com/reference/com/google/android/gms/location/LocationRequest.html#PRIORITY_HIGH_ACCURACY"><code>PRIORITY_HIGH_ACCURACY</code></a>, combined with the <code><a href="https://developer.android.com/reference/android/Manifest.permission.html#ACCESS_FINE_LOCATION">ACCESS_FINE_LOCATION</a></code> permission setting that you&#8217;ve defined in the app manifest, and a fast update interval of 5000 milliseconds (5 seconds), causes the fused location provider to return location updates that are accurate to within a <strong>few feet.</strong> This approach is appropriate for mapping apps that display the location in <strong>real time.</strong></p>
+<h2 id="map_toolbar">Receiving Location Update</h2>
+<p class="p38"><span class="s1">1. For getting location update we need to add google location dependency in <strong>build.gradle</strong> file.</span></p>
+<pre class="crayon-plain-tag">compile 'com.google.android.gms:play-services-location:9.4.0'</pre>
+<p class="p38"><span class="s1">2. Now implement <a href="https://developer.android.com/reference/android/location/LocationListener.html" target="_blank">LocationListener</a> interface to your activity.</span></p>
+<pre class="crayon-plain-tag">public class MainActivity extends AppCompatActivity implements LocationListener{
+  @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+  
+...
+ 
+   }
+}</pre>
+<p class="p37">3. On implementing LocationListener you will get this method that will return changed Location.</p>
+<pre class="crayon-plain-tag">@Override
+    public void onLocationChanged(Location location) {
+        Log.e(TAG, "Location Changed : " + location.getLatitude() + ", " + location.getLongitude());  
+    }</pre>
+<p class="p39">3. Add GoogleApiClient call backs to your activity that are used to help in starting location update and stopping location update.</p>
+<pre class="crayon-plain-tag">public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+
+@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+      
+    }
+}</pre>
+<p class="p39">4. <strong>Build</strong> and <strong>Connect</strong> API Client in your <strong>onResume</strong> method.</p>
+<pre class="crayon-plain-tag">/* Initiate Google API Client  */
+    private void initGoogleAPIClient() {
+        Log.e(TAG, "Init google api client");
+        //Without Google API Client Auto Location Dialog will not work
+        mGoogleApiClient = new GoogleApiClient.Builder(MainActivity.this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+        mGoogleApiClient.connect();
+    }</pre>
+<p class="p39">5. Inside <b>onConnected </b>method get user last know location (optional if needed) and start getting location update.</p>
+<pre class="crayon-plain-tag">@Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+      Location mLocation = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);//getting last know location
+
+            if (mLocation != null) {
+              //Last known location got
+            } 
+        }
+
+        //Start Location Update on successful connection
+        startLocationUpdates();
+    }
+
+    protected void startLocationUpdates() {
+     
+            LocationServices.FusedLocationApi.requestLocationUpdates(
+                    mGoogleApiClient, mLocationRequest, this);
+    }</pre>
+<p class="p39">6. API Clients <strong>failed</strong> and <strong>suspended</strong> callbacks.</p>
+<pre class="crayon-plain-tag">@Override
+    public void onConnectionSuspended(int i) {
+        Log.e(TAG, "onConnectionSuspended");
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.e(TAG, "onConnectionFailed");
+    }</pre>
+7. When activity status goes to <strong>onPause</strong> then stop getting location updates.<br />
+<pre class="crayon-plain-tag">@Override
+    protected void onPause() {
+        super.onPause();
+        //On Pause stop Location Update
+        Log.e(TAG, "onPause stopLocationUpdates");
+        if (mGoogleApiClient != null &amp;&amp; mGoogleApiClient.isConnected())
+            stopLocationUpdates();
+    }
+
+    //Stop Location Update Method
+    protected void stopLocationUpdates() {
+        Log.e(TAG, "stopLocationUpdates");
+        LocationServices.FusedLocationApi.removeLocationUpdates(
+                mGoogleApiClient, this);
+    }</pre>
+8. When activity status goes to <strong>onStop</strong> disconnect the api client.<br />
+<pre class="crayon-plain-tag">protected void onStop() {
+        //On Stop disconnect Api Client
+        if (mGoogleApiClient != null) {
+            Log.e(TAG, "onStop disconnect api client");
+            mGoogleApiClient.disconnect();
+        }
+        super.onStop();
+    }</pre>
+<h2 id="map_toolbar">Full MainActivity.java Code</h2>
+<p>Below is the full code of MainActivity.java code. Apart from all the above steps we need to check two things first:</p>
+<ol>
+<li>Location Permission is granted or not. (only marshmallow devices).</li>
+<li>Check if GPS is enabled or disabled.</li>
+</ol>
+<pre class="crayon-plain-tag">package com.googlemap_demo;
+
+import android.content.Intent;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStates;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, GoogleMap.OnMyLocationButtonClickListener {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
+
+    private static final int REQUEST_CHECK_SETTINGS = 0x1;
+    private static GoogleApiClient mGoogleApiClient;
+    private static final int ACCESS_FINE_LOCATION_INTENT_ID = 3;
+
+    private AppCompatTextView normalMap, hybridMap, satelliteMap, terrainMap, noneMap;
+    private AppCompatTextView locationLabel;
+
+    /*  Required for Google Maps  */
+    private GoogleMap googleMap;
+    private LocationRequest mLocationRequest;
+    private Marker mMarker;
+    private Location mLocation;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        setUpToolbar();
+        setUpGoogleMap();//Set Up Map
+        findViews();
+        setClickListeners();
+    }
+
+    //Set Up toolbar
+    private void setUpToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    //find all views
+    private void findViews() {
+        normalMap = (AppCompatTextView) findViewById(R.id.normal_map);
+        hybridMap = (AppCompatTextView) findViewById(R.id.hybrid_map);
+        satelliteMap = (AppCompatTextView) findViewById(R.id.satellite_map);
+        terrainMap = (AppCompatTextView) findViewById(R.id.terrain_map);
+        noneMap = (AppCompatTextView) findViewById(R.id.none_map);
+        locationLabel = (AppCompatTextView) findViewById(R.id.current_location_label);
+    }
+
+    //set click listeners over required textviews
+    private void setClickListeners() {
+        normalMap.setOnClickListener(this);
+        hybridMap.setOnClickListener(this);
+        satelliteMap.setOnClickListener(this);
+        terrainMap.setOnClickListener(this);
+        noneMap.setOnClickListener(this);
+    }
+
+
+    /* Set Up google map if Google Play Services Exists */
+    private void setUpGoogleMap() {
+        if (new GooglePlayServiceCheck().isGooglePlayInstalled(MainActivity.this)) {
+            SupportMapFragment map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
+            map.getMapAsync(this);//after getting map call async method, this method will call onMapReady(GoogleMap map) method
+        }
+    }
+
+    @Override
+    public void onMapReady(GoogleMap map) {
+        //When map ready
+        googleMap = map;
+        googleMap.getUiSettings().setZoomControlsEnabled(true);//enable zoom controls
+        googleMap.getUiSettings().setAllGesturesEnabled(true);//enable all gestures
+        googleMap.getUiSettings().setScrollGesturesEnabled(true);
+        /*The below setting is used for showing navigation and map toolbar on marker click, set false if you don't want show map toolbar else leave it
+        by default it is true  */
+        googleMap.getUiSettings().setMapToolbarEnabled(true);
+
+        //Enable current Location buttons
+        enableCurrentLocationButton();
+
+        /* Set Click listener for Marker and MyLocationButton Click event*/
+        googleMap.setOnMarkerClickListener(this);
+        googleMap.setOnMyLocationButtonClickListener(this);
+
+        //By default set Normal Map
+        setMapType(MapType.NORMAL);
+    }
+
+    private void enableCurrentLocationButton() {
+        //before further proceed check if google map is null or not because this method is calling after giving permission
+        if (googleMap != null) {
+            if (ContextCompat.checkSelfPermission(MainActivity.this,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED)
+                requestLocationPermission();
+            else {
+                googleMap.getUiSettings().setMyLocationButtonEnabled(true);//enable Location button, if you don't want MyLocationButton set it false
+                googleMap.setMyLocationEnabled(true);//enable blue dot
+            }
+        }
+    }
+
+
+    /* Initiate Google API Client  */
+    private void initGoogleAPIClient() {
+        Log.e(TAG, "Init google api client");
+        //Without Google API Client Auto Location Dialog will not work
+        mGoogleApiClient = new GoogleApiClient.Builder(MainActivity.this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+        mGoogleApiClient.connect();
+    }
+
+    /* Check Location Permission for Marshmallow Devices */
+    private void checkPermissions() {
+        if (Build.VERSION.SDK_INT &gt;= 23) {
+            if (ContextCompat.checkSelfPermission(MainActivity.this,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED)
+                requestLocationPermission();
+            else
+                showSettingDialog();
+        } else
+            showSettingDialog();
+
+    }
+
+    /*  Show Popup to access Location Permission  */
+    private void requestLocationPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    ACCESS_FINE_LOCATION_INTENT_ID);
+
+        } else {
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    ACCESS_FINE_LOCATION_INTENT_ID);
+        }
+    }
+
+    /* Show Location Access Dialog */
+    private void showSettingDialog() {
+        mLocationRequest = LocationRequest.create();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);//Setting priotity of Location request to high
+        mLocationRequest.setInterval(30 * 1000);//after 30sec the location will update
+        mLocationRequest.setFastestInterval(5 * 1000);//5 sec Time interval
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(mLocationRequest);
+        builder.setAlwaysShow(true); //this is the key ingredient to show dialog always when GPS is off
+
+        PendingResult&lt;LocationSettingsResult&gt; result =
+                LocationServices.SettingsApi.checkLocationSettings(mGoogleApiClient, builder.build());
+        result.setResultCallback(new ResultCallback&lt;LocationSettingsResult&gt;() {
+            @Override
+            public void onResult(LocationSettingsResult result) {
+                final Status status = result.getStatus();
+                final LocationSettingsStates state = result.getLocationSettingsStates();
+                switch (status.getStatusCode()) {
+                    case LocationSettingsStatusCodes.SUCCESS:
+                        // All location settings are satisfied. The client can initialize location
+                        // requests here.
+                        //getOriginLatLng();
+                        break;
+                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                        // Location settings are not satisfied. But could be fixed by showing the user
+                        // a dialog.
+                        try {
+                            // Show the dialog by calling startResolutionForResult(),
+                            // and check the result in onActivityResult().
+                            status.startResolutionForResult(MainActivity.this, REQUEST_CHECK_SETTINGS);
+                        } catch (IntentSender.SendIntentException e) {
+                            e.printStackTrace();
+                            // Ignore the error.
+                        }
+                        break;
+                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                        // Location settings are not satisfied. However, we have no way to fix the
+                        // settings so we won't show the dialog.
+                        break;
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //On Resume check if google api is not null and is connected so that location update should start again
+        if (mGoogleApiClient != null &amp;&amp; mGoogleApiClient.isConnected()) {
+            Log.e(TAG, "onResume api client connect");
+            startLocationUpdates();
+        } else {
+            //else if not connected or null initiate api client
+            initGoogleAPIClient();
+            Log.e(TAG, "onResume init api client");
+        }
+
+        //If location is not null set the last know location
+        if (mLocation != null) {
+            Log.e(TAG, "onResume update marker if location not null");
+            updateCurrentMarker(new LatLng(mLocation.getLatitude(), mLocation.getLongitude()));
+        }
+
+        //Check Location permission
+        checkPermissions();
+    }
+
+    protected void onStop() {
+        //On Stop disconnect Api Client
+        if (mGoogleApiClient != null) {
+            Log.e(TAG, "onStop disconnect api client");
+            mGoogleApiClient.disconnect();
+        }
+        super.onStop();
+    }
+
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()) {
+            case R.id.normal_map:
+                setMapType(MapType.NORMAL);
+                break;
+            case R.id.hybrid_map:
+                setMapType(MapType.HYBRID);
+                break;
+            case R.id.satellite_map:
+                setMapType(MapType.SATELLITE);
+                break;
+            case R.id.terrain_map:
+                setMapType(MapType.TERRAIN);
+                break;
+            case R.id.none_map:
+                setMapType(MapType.NONE);
+                break;
+        }
+    }
+
+    /*  Set Map Type on basis of MapType Enum and highlight selected TextView */
+    private void setMapType(MapType mapType) {
+        switch (mapType) {
+            case NORMAL:
+                googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                normalMap.setTextColor(getResources().getColor(R.color.teal));
+                setDefaultColorBack(new AppCompatTextView[]{hybridMap, satelliteMap, terrainMap, noneMap});
+                break;
+            case HYBRID:
+                googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                hybridMap.setTextColor(getResources().getColor(R.color.teal));
+                setDefaultColorBack(new AppCompatTextView[]{normalMap, satelliteMap, terrainMap, noneMap});
+                break;
+            case SATELLITE:
+                googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                satelliteMap.setTextColor(getResources().getColor(R.color.teal));
+                setDefaultColorBack(new AppCompatTextView[]{hybridMap, normalMap, terrainMap, noneMap});
+                break;
+            case TERRAIN:
+                googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                terrainMap.setTextColor(getResources().getColor(R.color.teal));
+                setDefaultColorBack(new AppCompatTextView[]{hybridMap, satelliteMap, normalMap, noneMap});
+                break;
+            case NONE:
+                googleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
+                noneMap.setTextColor(getResources().getColor(R.color.teal));
+                setDefaultColorBack(new AppCompatTextView[]{hybridMap, satelliteMap, terrainMap, normalMap});
+                break;
+        }
+    }
+
+    /*  Turn Selected TextView color back to Black when MapType changes  */
+    private void setDefaultColorBack(AppCompatTextView[] views) {
+        for (AppCompatTextView v : views)
+            v.setTextColor(getResources().getColor(android.R.color.black));
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+        //On API Client Connection check if location permission is granted or not
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED)
+            requestLocationPermission();
+        else {
+            //If granted then get last know location and update the location label if last know location is not null
+            Log.e(TAG, "onConnected get last know location");
+            mLocation = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);
+            if (mLocation != null) {
+                Log.e(TAG, "onConnected get last know location not null");
+                locationLabel.setText(String.format(getResources().getString(R.string.lat_lng), mLocation.getLatitude(), mLocation.getLongitude()));
+            } else
+                Log.e(TAG, "onConnected get last know location null");
+        }
+
+        //Start Location Update on successful connection
+        startLocationUpdates();
+    }
+
+    /*  Start Location Update */
+    protected void startLocationUpdates() {
+        Log.e(TAG, "startLocationUpdates");
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED)
+            requestLocationPermission();
+        else
+            LocationServices.FusedLocationApi.requestLocationUpdates(
+                    mGoogleApiClient, mLocationRequest, this);
+    }
+
+    //Handle API Client Connection Suspended
+    @Override
+    public void onConnectionSuspended(int i) {
+        Log.e(TAG, "onConnectionSuspended");
+    }
+
+    //Handle API Client Connection Failed
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.e(TAG, "onConnectionFailed");
+    }
+
+    //Handle Marker click event
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        Log.e(TAG, "Marker Click: " + marker.getTitle() + "\nLocation : " + marker.getPosition());
+        return false;
+    }
+
+
+    //On Location change method
+    @Override
+    public void onLocationChanged(Location location) {
+        Log.e(TAG, "Location Changed : " + location.getLatitude() + ", " + location.getLongitude());
+
+        mLocation = location;
+
+        //Update Location label text
+        locationLabel.setText(String.format(getResources().getString(R.string.lat_lng), location.getLatitude(), location.getLongitude()));
+
+        //Update map marker on location change
+        updateCurrentMarker(new LatLng(location.getLatitude(), location.getLongitude()));
+    }
+
+
+    //Update current marker of map
+    private void updateCurrentMarker(LatLng latLng) {
+        if (mMarker == null) {
+            Log.e(TAG, "updateCurrentMarker marker null");
+            if (googleMap != null) {
+                Log.e(TAG, "updateCurrentMarker google map not null");
+
+                //Set Marker position and default Icon
+                mMarker = googleMap.addMarker(new MarkerOptions().position(latLng)
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+
+                //If you want to set Custom Icon then uncomment below line and comment above lines
+                //  mMarker =  googleMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_user_location)));
+
+                mMarker.setTitle("You are here");//set Marker title
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17.0f));//animate camera to 17 float value
+            } else
+                Log.e(TAG, "updateCurrentMarker google map null");
+
+        } else {
+            //If marker is already there just update position
+            Log.e(TAG, "updateCurrentMarker marker not null");
+            mMarker.setPosition(latLng);
+
+            //if you want to animate camera to updated location, then uncomment below line
+            // googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17.0f));
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            // Check for the integer request code originally supplied to startResolutionForResult().
+            case REQUEST_CHECK_SETTINGS:
+                switch (resultCode) {
+                    case RESULT_OK:
+                        //If result is OK then start location Update
+                        startLocationUpdates();
+                        break;
+                    case RESULT_CANCELED:
+                        //else show toast
+                        Toast.makeText(this, R.string.location_access_denied, Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                break;
+        }
+    }
+
+    /* On Request permission method to check the permisison is granted or not for Marshmallow+ Devices  */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case ACCESS_FINE_LOCATION_INTENT_ID: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length &gt; 0
+                        &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //If permission granted show location dialog if APIClient is not null
+                    if (mGoogleApiClient == null) {
+                        initGoogleAPIClient();
+                        showSettingDialog();
+                    } else
+                        showSettingDialog();
+
+                    //enable MyLocationButton
+                    enableCurrentLocationButton();
+
+
+                } else {
+                    Toast.makeText(MainActivity.this, R.string.permission_denied, Toast.LENGTH_SHORT).show();
+                    // permission denied
+                }
+                return;
+            }
+        }
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //On Pause stop Location Update
+        Log.e(TAG, "onPause stopLocationUpdates");
+        if (mGoogleApiClient != null &amp;&amp; mGoogleApiClient.isConnected())
+            stopLocationUpdates();
+    }
+
+    //Stop Location Update Method
+    protected void stopLocationUpdates() {
+        Log.e(TAG, "stopLocationUpdates");
+        LocationServices.FusedLocationApi.removeLocationUpdates(
+                mGoogleApiClient, this);
+    }
+
+    //Handle MyLocationButton click event
+    @Override
+    public boolean onMyLocationButtonClick() {
+        Log.e(TAG, "onMyLocationButtonClick");
+        return false;
+    }
+}</pre>
+Finally, all set up. Run your code and see the magic of google maps. Now integrate google map to create location based applications.</p>
+<p>Thanks. <img src="https://s.w.org/images/core/emoji/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><a href="http://androhub.com/downloads/GoogleMap_Demo.zip" target="_blank"><b>Download Source Code – &gt;</b></a></p>
+<p class="p39">
+<p>The post <a rel="nofollow" href="http://www.androhub.com/introduction-to-android-google-maps-v2/">Introduction to Android Google Maps V2</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/introduction-to-android-google-maps-v2/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1077</post-id>	</item>
+		<item>
+		<title>Show Location Setting Dialog Using Google API Client</title>
+		<link>http://www.androhub.com/show-location-setting-dialog-using-google-api-client/</link>
+		<comments>http://www.androhub.com/show-location-setting-dialog-using-google-api-client/#comments</comments>
+		<pubDate>Fri, 05 Aug 2016 11:17:35 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android GPS]]></category>
+		<category><![CDATA[Auto location popup]]></category>
+		<category><![CDATA[google api client]]></category>
+		<category><![CDATA[handler]]></category>
+		<category><![CDATA[Location Manager]]></category>
+		<category><![CDATA[location request]]></category>
+		<category><![CDATA[marshmallow permission]]></category>
+		<category><![CDATA[runnable thread]]></category>
+
+		<guid isPermaLink="false">http://www.androhub.com/?p=1052</guid>
+		<description><![CDATA[<p>In Google Maps Android application and many more other applications you had seen that if your Location is disabled then a request location dialog is appearing that directly turn GPS on without redirecting you to Settings page. To achieve this dialog implementation we have to know below things: Google API Client : GoogleApiClient is used with a variety of [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/show-location-setting-dialog-using-google-api-client/">Show Location Setting Dialog Using Google API Client</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>In <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps" target="_blank">Google Maps</a> Android application and many more other applications you had seen that if your <a href="https://developer.android.com/training/location/change-location-settings.html" target="_blank">Location</a> is disabled then a request location dialog is appearing that directly turn GPS on without redirecting you to Settings page.</p>
+<div id="attachment_1053" style="width: 241px" class="wp-caption aligncenter"><img class="size-full wp-image-1053" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2016/08/location_popup.jpg?resize=231%2C201" alt="Location Dialog" data-recalc-dims="1" /><p class="wp-caption-text">Request Location Dialog</p></div>
+<p>To achieve this dialog implementation we have to know below things:</p>
+<ol>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/common/api/GoogleApiClient" target="_blank">Google API Client</a> : GoogleApiClient is used with a variety of static methods. Some of these methods require that GoogleApiClient be connected, some will queue up calls before GoogleApiClient is connected; check the specific API documentation to determine whether you need to be connected.</li>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest" target="_blank">Location Request</a> : LocationRequest objects are used to request a quality of service for location updates from the <code><a href="https://developers.google.com/android/reference/com/google/android/gms/location/FusedLocationProviderApi.html" target="_blank">FusedLocationProviderApi</a></code>.</li>
+</ol>
+<h2>Prerequisite:</h2>
+<ol>
+<li><a href="http://www.androhub.com/working-android-marshmallow-6-0-permissions/" target="_blank">Marshmallow Permissions</a>.</li>
+<li><a href="http://www.androhub.com/android-detect-internet-connection-using-broadcast-receiver/" target="_blank">Broadcast Receiver.</a></li>
+</ol>
+<h3>Example</h3>
+<p>In this tutorial, we are going to learn how to implement Request Location Dialog with the help of GoogleAPIClient and we will use Broadcast Receiver to check GPS status.</p>
+<h2>VIDEO DEMO</h2>
+<p><iframe  id="_ytid_13646" width="602" height="339" src="https://www.youtube.com/embed/DH8JoO64I0s?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New ⇒ New Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>build.gradle </strong>and include this libraries show below:</p><pre class="crayon-plain-tag">dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.google.android.gms:play-services:9.0.2'
+}</pre><p>
+<b>3</b>. Open <b>AndroidManifest.xml </b>and include below permission to it for accessing location.</p><pre class="crayon-plain-tag">&lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;</pre><p>
+<b>4</b>. Create <em>activity_main.xml</em> and add the following code.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="com.autolocation_demo.MainActivity"&gt;
+
+    &lt;!--  TextView to show GPS Status  --&gt;
+    &lt;TextView
+        android:id="@+id/gps_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>5</b>. Now follow below steps to implement the functionality.</p>
+<p><strong>Step 1: Initiate Google API Client</strong></p><pre class="crayon-plain-tag">/* Initiate Google API Client  */
+    private void initGoogleAPIClient() {
+        //Without Google API Client Auto Location Dialog will not work
+        mGoogleApiClient = new GoogleApiClient.Builder(MainActivity.this)
+                .addApi(LocationServices.API)
+                .build();
+        mGoogleApiClient.connect();
+    }</pre><p>
+<strong>Step 2: Now check Location Permission for Marshmallow Devices</strong></p><pre class="crayon-plain-tag">private void checkPermissions() {
+        if (Build.VERSION.SDK_INT &gt;= 23) {
+            if (ContextCompat.checkSelfPermission(MainActivity.this,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED)
+                requestLocationPermission();
+            else
+                showSettingDialog();
+        } else
+            showSettingDialog();
+
+    }
+
+  private void requestLocationPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    ACCESS_FINE_LOCATION_INTENT_ID);
+
+        } else {
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    ACCESS_FINE_LOCATION_INTENT_ID);
+        }
+    }</pre><p>
+<strong>Step 3: Method to show Location Dialog when GPS is Off</strong></p><pre class="crayon-plain-tag">private void showSettingDialog() {
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);//Setting priotity of Location request to high
+        locationRequest.setInterval(30 * 1000);
+        locationRequest.setFastestInterval(5 * 1000);//5 sec Time interval for location update
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(locationRequest);
+        builder.setAlwaysShow(true); //this is the key ingredient to show dialog always when GPS is off
+
+        PendingResult&lt;LocationSettingsResult&gt; result =
+                LocationServices.SettingsApi.checkLocationSettings(mGoogleApiClient, builder.build());
+        result.setResultCallback(new ResultCallback&lt;LocationSettingsResult&gt;() {
+            @Override
+            public void onResult(LocationSettingsResult result) {
+                final Status status = result.getStatus();
+                final LocationSettingsStates state = result.getLocationSettingsStates();
+                switch (status.getStatusCode()) {
+                    case LocationSettingsStatusCodes.SUCCESS:
+                        // All location settings are satisfied. The client can initialize location
+                        // requests here.
+                        updateGPSStatus("GPS is Enabled in your device");
+                        break;
+                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                        // Location settings are not satisfied. But could be fixed by showing the user
+                        // a dialog.
+                        try {
+                            // Show the dialog by calling startResolutionForResult(),
+                            // and check the result in onActivityResult().
+                            status.startResolutionForResult(MainActivity.this, REQUEST_CHECK_SETTINGS);
+                        } catch (IntentSender.SendIntentException e) {
+                            e.printStackTrace();
+                            // Ignore the error.
+                        }
+                        break;
+                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                        // Location settings are not satisfied. However, we have no way to fix the
+                        // settings so we won't show the dialog.
+                        break;
+                }
+            }
+        });
+    }</pre><p>
+<strong>Step 4: Getting Result on user action over Location Request Dialog (Yes or No)</strong></p><pre class="crayon-plain-tag">@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            // Check for the integer request code originally supplied to startResolutionForResult().
+            case REQUEST_CHECK_SETTINGS:
+                switch (resultCode) {
+                    case RESULT_OK:
+                        Log.e("Settings", "Result OK");
+                        updateGPSStatus("GPS is Enabled in your device");
+                        //startLocationUpdates();
+                        break;
+                    case RESULT_CANCELED:
+                        Log.e("Settings", "Result Cancel");
+                        updateGPSStatus("GPS is Disabled in your device");
+                        break;
+                }
+                break;
+        }
+    }</pre><p>
+<strong>Step 5: Create a Broadcast Receiver to check the status of GPS every time whenever its get On and Off</strong></p><pre class="crayon-plain-tag">private BroadcastReceiver gpsLocationReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            //If Action is Location
+            if (intent.getAction().matches(BROADCAST_ACTION)) {
+                LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+                //Check if GPS is turned ON or OFF
+                if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    Log.e("About GPS", "GPS is Enabled in your device");
+                    updateGPSStatus("GPS is Enabled in your device");
+                } else {
+                    //If GPS turned OFF show Location Dialog
+                    new Handler().postDelayed(sendUpdatesToUI, 10);
+                    // showSettingDialog();
+                    updateGPSStatus("GPS is Disabled in your device");
+                    Log.e("About GPS", "GPS is Disabled in your device");
+                }
+
+            }
+        }
+    };</pre><p>
+<strong>Step 6: Show Location Request Dialog when GPS status Off. Here we have to use Handler to run call the method in Main Thread.</strong></p><pre class="crayon-plain-tag">private Runnable sendUpdatesToUI = new Runnable() {
+        public void run() {
+            showSettingDialog();
+        }
+    };</pre><p>
+<strong>Step 7: Register and Unregister Receiver on onResume and onDestroy method respectively.</strong></p><pre class="crayon-plain-tag">@Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(gpsLocationReceiver, new IntentFilter(BROADCAST_ACTION));//Register broadcast receiver to check the status of GPS
+    }
+
+@Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //Unregister receiver on destroy
+        if (gpsLocationReceiver != null)
+            unregisterReceiver(gpsLocationReceiver);
+    }</pre><p>
+<b>6</b>. Finally open your <em>MainActivity.java</em> and add the following code to it.</p><pre class="crayon-plain-tag">package com.autolocation_demo;
+
+import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStates;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+
+public class MainActivity extends AppCompatActivity {
+    private static final int REQUEST_CHECK_SETTINGS = 0x1;
+    private static GoogleApiClient mGoogleApiClient;
+    private static final int ACCESS_FINE_LOCATION_INTENT_ID = 3;
+    private static final String BROADCAST_ACTION = "android.location.PROVIDERS_CHANGED";
+    private TextView gps_status;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        gps_status = (TextView) findViewById(R.id.gps_status);
+        initGoogleAPIClient();//Init Google API Client
+        checkPermissions();//Check Permission
+    }
+
+    /* Initiate Google API Client  */
+    private void initGoogleAPIClient() {
+        //Without Google API Client Auto Location Dialog will not work
+        mGoogleApiClient = new GoogleApiClient.Builder(MainActivity.this)
+                .addApi(LocationServices.API)
+                .build();
+        mGoogleApiClient.connect();
+    }
+
+    /* Check Location Permission for Marshmallow Devices */
+    private void checkPermissions() {
+        if (Build.VERSION.SDK_INT &gt;= 23) {
+            if (ContextCompat.checkSelfPermission(MainActivity.this,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED)
+                requestLocationPermission();
+            else
+                showSettingDialog();
+        } else
+            showSettingDialog();
+
+    }
+
+    /*  Show Popup to access User Permission  */
+    private void requestLocationPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    ACCESS_FINE_LOCATION_INTENT_ID);
+
+        } else {
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    ACCESS_FINE_LOCATION_INTENT_ID);
+        }
+    }
+
+    /* Show Location Access Dialog */
+    private void showSettingDialog() {
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);//Setting priotity of Location request to high
+        locationRequest.setInterval(30 * 1000);
+        locationRequest.setFastestInterval(5 * 1000);//5 sec Time interval for location update
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(locationRequest);
+        builder.setAlwaysShow(true); //this is the key ingredient to show dialog always when GPS is off
+
+        PendingResult&lt;LocationSettingsResult&gt; result =
+                LocationServices.SettingsApi.checkLocationSettings(mGoogleApiClient, builder.build());
+        result.setResultCallback(new ResultCallback&lt;LocationSettingsResult&gt;() {
+            @Override
+            public void onResult(LocationSettingsResult result) {
+                final Status status = result.getStatus();
+                final LocationSettingsStates state = result.getLocationSettingsStates();
+                switch (status.getStatusCode()) {
+                    case LocationSettingsStatusCodes.SUCCESS:
+                        // All location settings are satisfied. The client can initialize location
+                        // requests here.
+                        updateGPSStatus("GPS is Enabled in your device");
+                        break;
+                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                        // Location settings are not satisfied. But could be fixed by showing the user
+                        // a dialog.
+                        try {
+                            // Show the dialog by calling startResolutionForResult(),
+                            // and check the result in onActivityResult().
+                            status.startResolutionForResult(MainActivity.this, REQUEST_CHECK_SETTINGS);
+                        } catch (IntentSender.SendIntentException e) {
+                            e.printStackTrace();
+                            // Ignore the error.
+                        }
+                        break;
+                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                        // Location settings are not satisfied. However, we have no way to fix the
+                        // settings so we won't show the dialog.
+                        break;
+                }
+            }
+        });
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            // Check for the integer request code originally supplied to startResolutionForResult().
+            case REQUEST_CHECK_SETTINGS:
+                switch (resultCode) {
+                    case RESULT_OK:
+                        Log.e("Settings", "Result OK");
+                        updateGPSStatus("GPS is Enabled in your device");
+                        //startLocationUpdates();
+                        break;
+                    case RESULT_CANCELED:
+                        Log.e("Settings", "Result Cancel");
+                        updateGPSStatus("GPS is Disabled in your device");
+                        break;
+                }
+                break;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(gpsLocationReceiver, new IntentFilter(BROADCAST_ACTION));//Register broadcast receiver to check the status of GPS
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //Unregister receiver on destroy
+        if (gpsLocationReceiver != null)
+            unregisterReceiver(gpsLocationReceiver);
+    }
+
+    //Run on UI
+    private Runnable sendUpdatesToUI = new Runnable() {
+        public void run() {
+            showSettingDialog();
+        }
+    };
+
+    /* Broadcast receiver to check status of GPS */
+    private BroadcastReceiver gpsLocationReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            //If Action is Location
+            if (intent.getAction().matches(BROADCAST_ACTION)) {
+                LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+                //Check if GPS is turned ON or OFF
+                if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    Log.e("About GPS", "GPS is Enabled in your device");
+                    updateGPSStatus("GPS is Enabled in your device");
+                } else {
+                    //If GPS turned OFF show Location Dialog
+                    new Handler().postDelayed(sendUpdatesToUI, 10);
+                    // showSettingDialog();
+                    updateGPSStatus("GPS is Disabled in your device");
+                    Log.e("About GPS", "GPS is Disabled in your device");
+                }
+
+            }
+        }
+    };
+
+    //Method to update GPS status text
+    private void updateGPSStatus(String status) {
+        gps_status.setText(status);
+    }
+
+
+    /* On Request permission method to check the permisison is granted or not for Marshmallow+ Devices  */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case ACCESS_FINE_LOCATION_INTENT_ID: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length &gt; 0
+                        &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    //If permission granted show location dialog if APIClient is not null
+                    if (mGoogleApiClient == null) {
+                        initGoogleAPIClient();
+                        showSettingDialog();
+                    } else
+                        showSettingDialog();
+
+
+                } else {
+                    updateGPSStatus("Location Permission denied.");
+                    Toast.makeText(MainActivity.this, "Location Permission denied.", Toast.LENGTH_SHORT).show();
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+        }
+    }
+}</pre><p>
+<b>7</b>. Finally, all done run your code.</p>
+<p>Thanks. <img src="https://s.w.org/images/core/emoji/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><a href="http://androhub.com/downloads/AutoLocation_Demo.zip" target="_blank"><b>Download Source Code – &gt;</b></a></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/show-location-setting-dialog-using-google-api-client/">Show Location Setting Dialog Using Google API Client</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/show-location-setting-dialog-using-google-api-client/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1052</post-id>	</item>
+		<item>
+		<title>Android GPS Location Manager</title>
+		<link>http://www.androhub.com/android-gps-location-manager/</link>
+		<comments>http://www.androhub.com/android-gps-location-manager/#respond</comments>
+		<pubDate>Fri, 24 Jul 2015 05:53:46 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android GPS]]></category>
+		<category><![CDATA[Android Internet Connection]]></category>
+		<category><![CDATA[connection detector]]></category>
+		<category><![CDATA[get current location]]></category>
+		<category><![CDATA[get user address]]></category>
+		<category><![CDATA[GPS]]></category>
+		<category><![CDATA[GPS Location]]></category>
+		<category><![CDATA[internet connection detector]]></category>
+		<category><![CDATA[Location Manager]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=530</guid>
+		<description><![CDATA[<p>If you are developing any location based app, you can make your app more smarter by finding user’s location automatically. For this you need to integrate location modules in your application. You can learn more about location strategies. Example In this tutorial, we are going to learn how to get user location using GPS location manager [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-gps-location-manager/">Android GPS Location Manager</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>If you are developing any location based app, you can make your app more smarter by finding user’s location automatically. For this you need to integrate location modules in your application. You can learn more about <a href="http://developer.android.com/intl/ru/guide/topics/location/strategies.html" target="_blank">location strategies</a>.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to get user location using GPS location manager with and without internet.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_77377" width="602" height="339" src="https://www.youtube.com/embed/6TrwL18nbXw?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. This are some strings that i am going to use in this tutorial.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="app_name"&gt;LocationGPS Demo&lt;/string&gt;
+    &lt;string name="location_without_internet"&gt;Get Location Without Internet&lt;/string&gt;
+    &lt;string name="location_internet"&gt;Get Location Using Internet&lt;/string&gt;
+    &lt;string name="display_location"&gt;Your Location will be displayed here.&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Open <em>AndroidManifest.xml</em> and add <em>ACCESS_FINE_LOCATION</em> (Which includes both ACCESS_FINE_LOCATION and ACCESS_COARSE_LOCATION). Also we have to detect internet connection so we need ACCESS_NETWORK_STATE this permission also.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.locationgps_demo"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" /&gt;
+
+    &lt;!-- This permission is used to get current location via internet --&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
+
+    &lt;!-- This permission is used to check internet connection --&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>4</b>. Now create a xml layout containing two button and two textview to display location using internet and without internet.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;Button
+        android:id="@+id/get_location_without_internet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/location_without_internet" /&gt;
+
+    &lt;TextView
+        android:id="@+id/show_location_without_internet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="@string/display_location"
+        android:textColor="#000000"
+        android:textSize="16sp" /&gt;
+
+    &lt;Button
+        android:id="@+id/get_location_using_internet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/location_internet" /&gt;
+
+    &lt;TextView
+        android:id="@+id/show_location_using_internet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="@string/display_location"
+        android:textColor="#000000"
+        android:textSize="16sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>5</b>. Create a new java class naming <em>ConnectionDetector.java</em> to detect Internet connection. If you don&#8217;t no how to detect internet connection then you can check my tutorial <a href="http://androhub.com/android-detect-internet-connection-using-broadcast-receiver/" target="_blank">here</a>.</p><pre class="crayon-plain-tag">package com.locationgps_demo;
+
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
+public class ConnectionDetector {
+
+	private Context _context;
+
+	public ConnectionDetector(Context context) {
+		this._context = context;
+	}
+
+	// This method will return boolean value if internet is there or not
+	public boolean isConnectingToInternet() {
+		ConnectivityManager connectivityManager = (ConnectivityManager) _context
+				.getSystemService(Context.CONNECTIVITY_SERVICE);// Connectivity
+																// manager to
+																// work on
+																// connectivtiy
+																// service
+
+		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();// Get
+																				// the
+																				// network
+																				// info
+
+		if (networkInfo != null &amp;&amp; networkInfo.isConnected()) {// Check if
+																// network info
+																// is not null
+																// and it is
+																// connected
+			return true;// Internet is there
+		} else {
+			return false;// No internet
+		}
+
+	}
+}</pre><p>
+<b>6</b>. Now, create a new java class naming <em>GPSService.java</em> extending <em>Service</em> also implement this class from <em>LocationListener </em>and add the following code.</p><pre class="crayon-plain-tag">public class GPSService extends Service implements LocationListener {
+
+	// saving the context for later use
+	private final Context mContext;
+
+	// if GPS is enabled
+	boolean isGPSEnabled = false;
+	// if Network is enabled
+	boolean isNetworkEnabled = false;
+	// if Location co-ordinates are available using GPS or Network
+	public boolean isLocationAvailable = false;
+
+	// Location and co-ordinates coordinates
+	Location mLocation;
+	double mLatitude;
+	double mLongitude;
+
+	// Minimum time fluctuation for next update (in milliseconds)
+	private static final long TIME = 30000;
+	// Minimum distance fluctuation for next update (in meters)
+	private static final long DISTANCE = 20;
+
+	// Declaring a Location Manager
+	protected LocationManager mLocationManager;
+
+	public GPSService(Context context) {
+		this.mContext = context;
+		mLocationManager = (LocationManager) mContext
+				.getSystemService(LOCATION_SERVICE);
+
+	}</pre><p>
+Add the implementation for the function <strong>geoLocation()</strong> which was called in the constructor. In this function we’ll get the location from network provider first. If network provider is disabled, then we get the location from GPS provider.</p><pre class="crayon-plain-tag">public Location getLocation() {
+		try {
+
+			// Getting GPS status
+			isGPSEnabled = mLocationManager
+					.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+			// If GPS enabled, get latitude/longitude using GPS Services
+			if (isGPSEnabled) {
+				mLocationManager.requestLocationUpdates(
+						LocationManager.GPS_PROVIDER, TIME, DISTANCE, this);
+				if (mLocationManager != null) {
+					mLocation = mLocationManager
+							.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+					if (mLocation != null) {
+						mLatitude = mLocation.getLatitude();
+						mLongitude = mLocation.getLongitude();
+						isLocationAvailable = true; // setting a flag that
+													// location is available
+						return mLocation;
+					}
+				}
+			}
+
+			// If we are reaching this part, it means GPS was not able to fetch
+			// any location
+			// Getting network status
+			isNetworkEnabled = mLocationManager
+					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+			if (isNetworkEnabled) {
+				mLocationManager.requestLocationUpdates(
+						LocationManager.NETWORK_PROVIDER, TIME, DISTANCE, this);
+				if (mLocationManager != null) {
+					mLocation = mLocationManager
+							.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+					if (mLocation != null) {
+						mLatitude = mLocation.getLatitude();
+						mLongitude = mLocation.getLongitude();
+						isLocationAvailable = true; // setting a flag that
+													// location is available
+						return mLocation;
+					}
+				}
+			}
+			// If reaching here means, we were not able to get location neither
+			// from GPS not Network,
+			if (!isGPSEnabled) {
+				// so asking user to open GPS
+				askUserToOpenGPS();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// if reaching here means, location was not available, so setting the
+		// flag as false
+		isLocationAvailable = false;
+		return null;
+	}</pre><p>
+This method will return the complete address.</p><pre class="crayon-plain-tag">public String getLocationAddress() {
+
+		if (isLocationAvailable) {
+
+			Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
+			// Get the current location from the input parameter list
+			// Create a list to contain the result address
+			List&lt;Address&gt; addresses = null;
+			try {
+				/*
+				 * Return 1 address.
+				 */
+				addresses = geocoder.getFromLocation(mLatitude, mLongitude, 1);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				return ("IO Exception trying to get address:" + e1);
+			} catch (IllegalArgumentException e2) {
+				// Error message to post in the log
+				String errorString = "Illegal arguments "
+						+ Double.toString(mLatitude) + " , "
+						+ Double.toString(mLongitude)
+						+ " passed to address service";
+				e2.printStackTrace();
+				return errorString;
+			}
+			// If the reverse geocode returned an address
+			if (addresses != null &amp;&amp; addresses.size() &gt; 0) {
+				// Get the first address
+				Address address = addresses.get(0);
+				/*
+				 * Format the first line of address (if available), city, and
+				 * country name.
+				 */
+				String addressText = String.format(
+						"%s, %s, %s",
+						// If there's a street address, add it
+						address.getMaxAddressLineIndex() &gt; 0 ? address
+								.getAddressLine(0) : "",
+						// Locality is usually a city
+						address.getLocality(),
+						// The country of the address
+						address.getCountryName());
+				// Return the text
+				return addressText;
+			} else {
+				return "No address found by the service: Note to the developers, If no address is found by google itself, there is nothing you can do about it.";
+			}
+		} else {
+			return "Location Not available";
+		}
+
+	}</pre><p>
+This methods used to getLongitude, getLatitude and closeGPS.</p><pre class="crayon-plain-tag">/**
+	 * get latitude
+	 * 
+	 * @return latitude in double
+	 */
+	public double getLatitude() {
+		if (mLocation != null) {
+			mLatitude = mLocation.getLatitude();
+		}
+		return mLatitude;
+	}
+
+	/**
+	 * get longitude
+	 * 
+	 * @return longitude in double
+	 */
+	public double getLongitude() {
+		if (mLocation != null) {
+			mLongitude = mLocation.getLongitude();
+		}
+		return mLongitude;
+	}
+	
+	/**
+	 * close GPS to save battery
+	 */
+	public void closeGPS() {
+		if (mLocationManager != null) {
+			mLocationManager.removeUpdates(GPSService.this);
+		}
+	}</pre><p>
+If GPS is not enabled then prompt user to enable GPS via this method.</p><pre class="crayon-plain-tag">/**
+	 * show settings to open GPS
+	 */
+	public void askUserToOpenGPS() {
+		AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(mContext);
+
+		// Setting Dialog Title
+		mAlertDialog.setTitle("Location not available, Open GPS?")
+		.setMessage("Activate GPS to use use location services?")
+		.setPositiveButton("Open Settings", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+				mContext.startActivity(intent);
+				}
+			})
+			.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+					}
+				}).show();
+	}</pre><p>
+Final Source code.</p><pre class="crayon-plain-tag">package com.locationgps_demo;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
+import android.app.AlertDialog;
+import android.app.Service;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.provider.Settings;
+
+public class GPSService extends Service implements LocationListener {
+
+	// saving the context for later use
+	private final Context mContext;
+
+	// if GPS is enabled
+	boolean isGPSEnabled = false;
+	// if Network is enabled
+	boolean isNetworkEnabled = false;
+	// if Location co-ordinates are available using GPS or Network
+	public boolean isLocationAvailable = false;
+
+	// Location and co-ordinates coordinates
+	Location mLocation;
+	double mLatitude;
+	double mLongitude;
+
+	// Minimum time fluctuation for next update (in milliseconds)
+	private static final long TIME = 30000;
+	// Minimum distance fluctuation for next update (in meters)
+	private static final long DISTANCE = 20;
+
+	// Declaring a Location Manager
+	protected LocationManager mLocationManager;
+
+	public GPSService(Context context) {
+		this.mContext = context;
+		mLocationManager = (LocationManager) mContext
+				.getSystemService(LOCATION_SERVICE);
+
+	}
+
+	/**
+	 * Returs the Location
+	 * 
+	 * @return Location or null if no location is found
+	 */
+	public Location getLocation() {
+		try {
+
+			// Getting GPS status
+			isGPSEnabled = mLocationManager
+					.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+			// If GPS enabled, get latitude/longitude using GPS Services
+			if (isGPSEnabled) {
+				mLocationManager.requestLocationUpdates(
+						LocationManager.GPS_PROVIDER, TIME, DISTANCE, this);
+				if (mLocationManager != null) {
+					mLocation = mLocationManager
+							.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+					if (mLocation != null) {
+						mLatitude = mLocation.getLatitude();
+						mLongitude = mLocation.getLongitude();
+						isLocationAvailable = true; // setting a flag that
+													// location is available
+						return mLocation;
+					}
+				}
+			}
+
+			// If we are reaching this part, it means GPS was not able to fetch
+			// any location
+			// Getting network status
+			isNetworkEnabled = mLocationManager
+					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+			if (isNetworkEnabled) {
+				mLocationManager.requestLocationUpdates(
+						LocationManager.NETWORK_PROVIDER, TIME, DISTANCE, this);
+				if (mLocationManager != null) {
+					mLocation = mLocationManager
+							.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+					if (mLocation != null) {
+						mLatitude = mLocation.getLatitude();
+						mLongitude = mLocation.getLongitude();
+						isLocationAvailable = true; // setting a flag that
+													// location is available
+						return mLocation;
+					}
+				}
+			}
+			// If reaching here means, we were not able to get location neither
+			// from GPS not Network,
+			if (!isGPSEnabled) {
+				// so asking user to open GPS
+				askUserToOpenGPS();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// if reaching here means, location was not available, so setting the
+		// flag as false
+		isLocationAvailable = false;
+		return null;
+	}
+
+	/**
+	 * Gives you complete address of the location
+	 * 
+	 * @return complete address in String
+	 */
+	public String getLocationAddress() {
+
+		if (isLocationAvailable) {
+
+			Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
+			// Get the current location from the input parameter list
+			// Create a list to contain the result address
+			List&lt;Address&gt; addresses = null;
+			try {
+				/*
+				 * Return 1 address.
+				 */
+				addresses = geocoder.getFromLocation(mLatitude, mLongitude, 1);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				return ("IO Exception trying to get address:" + e1);
+			} catch (IllegalArgumentException e2) {
+				// Error message to post in the log
+				String errorString = "Illegal arguments "
+						+ Double.toString(mLatitude) + " , "
+						+ Double.toString(mLongitude)
+						+ " passed to address service";
+				e2.printStackTrace();
+				return errorString;
+			}
+			// If the reverse geocode returned an address
+			if (addresses != null &amp;&amp; addresses.size() &gt; 0) {
+				// Get the first address
+				Address address = addresses.get(0);
+				/*
+				 * Format the first line of address (if available), city, and
+				 * country name.
+				 */
+				String addressText = String.format(
+						"%s, %s, %s",
+						// If there's a street address, add it
+						address.getMaxAddressLineIndex() &gt; 0 ? address
+								.getAddressLine(0) : "",
+						// Locality is usually a city
+						address.getLocality(),
+						// The country of the address
+						address.getCountryName());
+				// Return the text
+				return addressText;
+			} else {
+				return "No address found by the service: Note to the developers, If no address is found by google itself, there is nothing you can do about it.";
+			}
+		} else {
+			return "Location Not available";
+		}
+
+	}
+
+	
+
+	/**
+	 * get latitude
+	 * 
+	 * @return latitude in double
+	 */
+	public double getLatitude() {
+		if (mLocation != null) {
+			mLatitude = mLocation.getLatitude();
+		}
+		return mLatitude;
+	}
+
+	/**
+	 * get longitude
+	 * 
+	 * @return longitude in double
+	 */
+	public double getLongitude() {
+		if (mLocation != null) {
+			mLongitude = mLocation.getLongitude();
+		}
+		return mLongitude;
+	}
+	
+	/**
+	 * close GPS to save battery
+	 */
+	public void closeGPS() {
+		if (mLocationManager != null) {
+			mLocationManager.removeUpdates(GPSService.this);
+		}
+	}
+
+	/**
+	 * show settings to open GPS
+	 */
+	public void askUserToOpenGPS() {
+		AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(mContext);
+
+		// Setting Dialog Title
+		mAlertDialog.setTitle("Location not available, Open GPS?")
+		.setMessage("Activate GPS to use use location services?")
+		.setPositiveButton("Open Settings", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+				mContext.startActivity(intent);
+				}
+			})
+			.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+					}
+				}).show();
+	}
+
+	/** 
+	 * Updating the location when location changes
+	 */
+	@Override
+	public void onLocationChanged(Location location) {
+		mLatitude = location.getLatitude();
+		mLongitude = location.getLongitude();
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+	}
+
+	@Override
+	public IBinder onBind(Intent arg0) {
+		return null;
+	}
+
+}</pre><p>
+<b>7</b>. Now, create a new java class naming <em>GPSLocation.java. </em>This class contains methods like turnOn ,turnOff GPS and getLocation that we will use in our activity.</p><pre class="crayon-plain-tag">package com.locationgps_demo;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+
+import android.content.Context;
+import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
+
+public class GPSLocation {
+	private Context context;
+	private StringBuilder currentLocation = new StringBuilder();
+
+	public GPSLocation(Context context) {
+		this.context = context;
+	}
+
+	/**
+	 * Check the type of GPS Provider available at that instance and collect the
+	 * location informations
+	 * 
+	 * @Output Latitude and Longitude
+	 */
+
+	public void turnGPSOn() {
+		try {
+
+			@SuppressWarnings("deprecation")
+			String provider = Settings.Secure.getString(
+					context.getContentResolver(),
+					Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+
+			if (!provider.contains("gps")) { // if gps is disabled
+				final Intent poke = new Intent();
+				poke.setClassName("com.android.settings",
+						"com.android.settings.widget.SettingsAppWidgetProvider");
+				poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+				poke.setData(Uri.parse("3"));
+				context.sendBroadcast(poke);
+			}
+		} catch (Exception e) {
+
+		}
+	}
+
+	// Method to turn off the GPS
+	@SuppressWarnings("deprecation")
+	public void turnGPSOff() {
+		String provider = Settings.Secure.getString(
+				context.getContentResolver(),
+				Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+
+		if (provider.contains("gps")) { // if gps is enabled
+			final Intent poke = new Intent();
+			poke.setClassName("com.android.settings",
+					"com.android.settings.widget.SettingsAppWidgetProvider");
+			poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+			poke.setData(Uri.parse("3"));
+			context.sendBroadcast(poke);
+		}
+	}
+
+	public String getMyCurrentLocation() {
+
+		LocationManager locManager = (LocationManager) context
+				.getSystemService(Context.LOCATION_SERVICE);
+		LocationListener locListener = new MyLocationListener();
+
+		try {
+			gps_enabled = locManager
+					.isProviderEnabled(LocationManager.GPS_PROVIDER);
+		} catch (Exception ex) {
+		}
+		try {
+			network_enabled = locManager
+					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+		} catch (Exception ex) {
+		}
+
+		// don't start listeners if no provider is enabled
+		// if(!gps_enabled &amp;&amp; !network_enabled)
+		// return false;
+
+		if (gps_enabled) {
+			locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
+					0, locListener);
+
+		}
+
+		if (gps_enabled) {
+			location = locManager
+					.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+		}
+
+		if (network_enabled &amp;&amp; location == null) {
+			locManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
+					0, 0, locListener);
+
+		}
+
+		if (network_enabled &amp;&amp; location == null) {
+			location = locManager
+					.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+		}
+
+		if (location != null) {
+
+			MyLat = location.getLatitude();
+			MyLong = location.getLongitude();
+			currentLocation.append("Latitude : " + MyLat + "nLongitude : "
+					+ MyLong);
+
+		} else {
+			Location loc = getLastKnownLocation(context);
+			if (loc != null) {
+
+				MyLat = loc.getLatitude();
+				MyLong = loc.getLongitude();
+
+			}
+		}
+		locManager.removeUpdates(locListener); // removes the periodic updates
+												// from location listener to
+												// //avoid battery drainage. If
+												// you want to get location at
+												// the periodic intervals call
+												// this method using //pending
+												// intent.
+
+		try {
+			// Getting address from found locations.
+			Geocoder geocoder;
+
+			List&lt;Address&gt; addresses;
+			geocoder = new Geocoder(context, Locale.getDefault());
+			addresses = geocoder.getFromLocation(MyLat, MyLong, 1);
+
+			StateName = addresses.get(0).getAdminArea();
+			CityName = addresses.get(0).getLocality();
+			CountryName = addresses.get(0).getCountryName();
+
+			currentLocation.append("nState Name : " + StateName
+					+ "nCity Name : " + CityName + "nCountry Name : "
+					+ CountryName);
+			// you can get more details other than this . like country code,
+			// state code, etc.
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return currentLocation.toString();
+	}
+
+	// Location listener class. to get location.
+	public class MyLocationListener implements LocationListener {
+		public void onLocationChanged(Location location) {
+			if (location != null) {
+			}
+		}
+
+		public void onProviderDisabled(String provider) {
+			// TODO Auto-generated method stub
+		}
+
+		public void onProviderEnabled(String provider) {
+			// TODO Auto-generated method stub
+		}
+
+		public void onStatusChanged(String provider, int status, Bundle extras) {
+			// TODO Auto-generated method stub
+		}
+	}
+
+	private boolean gps_enabled = false;
+	private boolean network_enabled = false;
+	Location location;
+
+	Double MyLat, MyLong;
+	String CityName = "", StateName = "", CountryName = "";
+
+	// below method to get the last remembered location. because we don't get
+	// locations all the times .At some instances we are unable to get the
+	// location from GPS. so at that moment it will show us the last stored
+	// location.
+
+	public static Location getLastKnownLocation(Context context) {
+		Location location = null;
+		LocationManager locationmanager = (LocationManager) context
+				.getSystemService("location");
+		List&lt;String&gt; list = locationmanager.getAllProviders();
+		boolean i = false;
+		Iterator&lt;&gt; iterator = list.iterator();
+		do {
+
+			if (!iterator.hasNext())
+				break;
+			String s = (String) iterator.next();
+
+			if (i != false &amp;&amp; !locationmanager.isProviderEnabled(s))
+				continue;
+
+			Location location1 = locationmanager.getLastKnownLocation(s);
+			if (location1 == null)
+				continue;
+			if (location != null) {
+
+				float f = location.getAccuracy();
+				float f1 = location1.getAccuracy();
+				if (f &gt;= f1) {
+					long l = location1.getTime();
+					long l1 = location.getTime();
+					if (l - l1 &lt;= 600000L)
+						continue;
+				}
+			}
+			location = location1;
+
+			i = locationmanager.isProviderEnabled(s);
+
+		} while (true);
+		return location;
+	}
+
+}</pre><p>
+<b>8</b>. The above two classes are used to get location in presence of internet but in absence of internet we have to do something else. I am using this method to get current location in latitude and longitude.</p><pre class="crayon-plain-tag">private void getLocationWithoutInternet() {
+		// Acquire a reference to the system Location Manager
+		LocationManager locationManager = (LocationManager) this
+				.getSystemService(Context.LOCATION_SERVICE);
+
+		// Define a listener that responds to location updates
+		LocationListener locationListener = new LocationListener() {
+
+			public void onStatusChanged(String provider, int status,
+					Bundle extras) {
+			}
+
+			public void onProviderEnabled(String provider) {
+			}
+
+			public void onProviderDisabled(String provider) {
+			}
+
+			@Override
+			public void onLocationChanged(Location location) {
+
+				// The toast will show loaction continuosly as we are requesting
+				// local updates
+				Toast.makeText(
+						getApplicationContext(),
+						location.getLatitude() + "     "
+								+ location.getLongitude(), Toast.LENGTH_SHORT)
+						.show();
+
+				
+
+			}
+		};
+
+		// Register the listener with the Location Manager to receive location
+		// updates
+		if (locationManager.getAllProviders().contains(LocationManager.NETWORK_PROVIDER))
+		    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+
+		if (locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER))
+		    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+	}</pre><p>
+<b>9</b>. Finally come to your <em>MainActivity.java </em>and add the following code. In this activity we are getting current location via internet and without internet. While getting location through internet we have to check first if internet is present or not. So for this I used ConnectionDetector class to get network status.</p><pre class="crayon-plain-tag">package com.locationgps_demo;
+
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity implements OnClickListener {
+	private static Button getLocation, getLocation_usingInternet;
+	private static TextView displayLocation, displayInternetLocation;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		init();
+		setListeners();
+
+	}
+
+	// Initialize the views
+	private void init() {
+		getLocation = (Button) findViewById(R.id.get_location_without_internet);
+		getLocation_usingInternet = (Button) findViewById(R.id.get_location_using_internet);
+		displayLocation = (TextView) findViewById(R.id.show_location_without_internet);
+		displayInternetLocation = (TextView) findViewById(R.id.show_location_using_internet);
+	}
+
+	// Set listeners over both button
+	private void setListeners() {
+		getLocation.setOnClickListener(this);
+		getLocation_usingInternet.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.get_location_using_internet:
+			getLocationUsingInternet();
+			break;
+
+		case R.id.get_location_without_internet:
+			getLocationWithoutInternet();
+			break;
+		}
+
+	}
+
+	// Method that will return location in longitude, latitude, city, state, and
+	// country
+	private void getLocationUsingInternet() {
+
+		boolean isInternetConnected = new ConnectionDetector(MainActivity.this)
+				.isConnectingToInternet();
+
+		// Before proceding we have to check if therr is internet connection or
+		// not
+		if (isInternetConnected) {
+			getLocation_usingInternet.setText("Please wait...");// while getting
+																// location
+																// please wait
+																// and disable
+																// the button
+			getLocation_usingInternet.setEnabled(false);
+			new GPSLocation(MainActivity.this).turnGPSOn();// First turn on GPS
+			String getLocation = new GPSLocation(MainActivity.this)
+					.getMyCurrentLocation();// Get current location from
+											// Location class
+			displayInternetLocation.setText(getLocation);// Set location over
+															// textview
+
+			// Now again change the state of button
+			getLocation_usingInternet.setText(R.string.location_internet);
+			getLocation_usingInternet.setEnabled(true);
+		} else {
+
+			// If there is no internet connection toast will be displayed
+			Toast.makeText(MainActivity.this,
+					"There is no internet connection.", Toast.LENGTH_SHORT)
+					.show();
+		}
+
+	}
+
+	// Method that will fetch the location in longitude and latitude in absence
+	// of internet
+	private void getLocationWithoutInternet() {
+
+		// Change the state of button
+		getLocation.setText("Please wait..");
+		getLocation.setEnabled(false);
+
+		// Acquire a reference to the system Location Manager
+		LocationManager locationManager = (LocationManager) this
+				.getSystemService(Context.LOCATION_SERVICE);
+
+		// Define a listener that responds to location updates
+		LocationListener locationListener = new LocationListener() {
+
+			public void onStatusChanged(String provider, int status,
+					Bundle extras) {
+			}
+
+			public void onProviderEnabled(String provider) {
+			}
+
+			public void onProviderDisabled(String provider) {
+			}
+
+			@Override
+			public void onLocationChanged(Location location) {
+
+				// Display currnet longitude and latitude over textview
+				displayLocation.setText("Latitude : " + location.getLatitude()
+						+ "nLongitude : " + location.getLongitude());
+
+				// The toast will show loaction continuosly as we are requesting
+				// local updates
+				Toast.makeText(
+						getApplicationContext(),
+						location.getLatitude() + "     "
+								+ location.getLongitude(), Toast.LENGTH_SHORT)
+						.show();
+
+				// Now, again change the state of button
+				getLocation.setText(R.string.location_without_internet);
+				getLocation.setEnabled(true);
+
+			}
+		};
+
+		// Register the listener with the Location Manager to receive location
+		// updates
+		if (locationManager.getAllProviders().contains(LocationManager.NETWORK_PROVIDER))
+		    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+
+		if (locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER))
+		    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+	}
+
+	@Override
+	protected void onDestroy() {
+
+		super.onDestroy();
+		// When activity destroyed we have to turn off GPS
+		new GPSLocation(MainActivity.this).turnGPSOff();
+	}
+
+}</pre><p>
+<b>10</b>. Now, you are all done. If you run your app in emulator you will get longitude and latitude but if you run it over real device you will get proper address (in case of internet).</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/LocationGPS_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-gps-location-manager/">Android GPS Location Manager</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-gps-location-manager/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">530</post-id>	</item>
+	</channel>
+</rss>

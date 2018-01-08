@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Drawer &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-drawer/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Navigation View-Material Design Support Library Tutorial</title>
+		<link>http://www.androhub.com/navigation-view-material-design-support-library-tutorial/</link>
+		<comments>http://www.androhub.com/navigation-view-material-design-support-library-tutorial/#comments</comments>
+		<pubDate>Tue, 22 Mar 2016 06:05:53 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Drawer]]></category>
+		<category><![CDATA[Android Fragment]]></category>
+		<category><![CDATA[Android Material Design]]></category>
+		<category><![CDATA[Android NavigationDrawer]]></category>
+		<category><![CDATA[Android ToolBar]]></category>
+		<category><![CDATA[android]]></category>
+		<category><![CDATA[android design support library]]></category>
+		<category><![CDATA[android toolbar]]></category>
+		<category><![CDATA[fragment]]></category>
+		<category><![CDATA[navigation]]></category>
+		<category><![CDATA[Navigation Drawer]]></category>
+		<category><![CDATA[Navigation View]]></category>
+		<category><![CDATA[ToolBar]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=811</guid>
+		<description><![CDATA[<p>Google I/O 2015 has brought a whole new set of tools for Android Developers which are meant to make our lives easier. I´d like to devote a set of articles to talk about the incredibly useful Design Support Library. For Material Design tutorial check this link. Navigation View In this article, I&#8217;ll start talking about [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/navigation-view-material-design-support-library-tutorial/">Navigation View-Material Design Support Library Tutorial</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p><a href="https://events.google.com/io2015/" target="_blank">Google I/O 2015</a> has brought a whole new set of tools for Android Developers which are meant to make our lives easier. I´d like to devote a set of articles to talk about the incredibly useful <a href="http://android-developers.blogspot.com.es/2015/05/android-design-support-library.html" target="_blank">Design Support Library</a>.</p>
+<p>For Material Design tutorial check this <a href="http://androhub.com/android-toolbar/" target="_blank">link</a>.</p>
+<h2>Navigation View</h2>
+<p>In this article, I&#8217;ll start talking about the <strong><a href="http://developer.android.com/reference/android/support/design/widget/NavigationView.html" target="_blank">Navigation View</a></strong>. Since Material Design was released, we were given a standard definition on <a href="http://www.google.com/design/spec/patterns/navigation-drawer.html" target="_blank">how a Navigation Drawer must look and feel</a>. Truth is that implementing those guidelines was rather time consuming. But now, with the navigation view, the implementation is much easier.</p>
+<p><strong>Navigation View</strong> represents a standard navigation menu for application. The menu contents can be populated by a menu resource file. NavigationView is typically placed inside a <code><a href="http://developer.android.com/reference/android/support/v4/widget/DrawerLayout.html" target="_blank">DrawerLayout</a></code>.</p>
+<p>We had done <a href="http://androhub.com/android-navigationdrawer/" target="_blank">Navigation Drawer</a> in earlier articles but this is too easy and too awesome.</p>
+<p><span style="text-decoration: underline;"><strong>Navigation View Xml structure:</strong></span></p><pre class="crayon-plain-tag">&lt;android.support.design.widget.NavigationView
+        android:id="@+id/slider_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/navigation_menu"
+        app:header="@layout/header" /&gt;</pre><p>
+<h3>Prerequisite:</h3>
+<ol>
+<li><a href="http://androhub.com/android-toolbar/" target="_blank">Material Design Toolbar.</a></li>
+<li><a href="http://androhub.com/android-fragments/" target="_blank">Fragment Implementation.</a></li>
+<li><a href="http://androhub.com/android-pass-data-from-activity-to-fragment/" target="_blank">Pass data between Activity.</a></li>
+<li><a href="http://androhub.com/android-pass-data-from-activity-to-fragment/" target="_blank">Pass data to Fragments.</a></li>
+</ol>
+<h3>Example</h3>
+<p>In this tutorial, we are going to learn how to implement Navigation View with default and custom way.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_12116" width="602" height="339" src="https://www.youtube.com/embed/_ky7q7QywXo?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New ⇒ New Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>build.gradle </strong>and include this libraries show below:</p><pre class="crayon-plain-tag">dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+}</pre><p>
+<b>3</b>. Open <strong>res ⇒ values</strong> and create a new xml file naming <em>colors.xml </em>and add the following colors to it.<strong>   </strong></p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+    &lt;color name="colorPrimary"&gt;#009688&lt;/color&gt;
+    &lt;color name="colorPrimaryDark"&gt;#00796B&lt;/color&gt;
+    &lt;color name="colorAccent"&gt;#4DB6AC&lt;/color&gt;
+&lt;/resources&gt;</pre><p>
+<b>4</b>. Open <strong>strings.xml</strong> located under <strong>res=&gt;values</strong> folder and add following strings.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;NavigationView Demo&lt;/string&gt;
+
+    &lt;string name="default_navigation_view"&gt;Default Navigation View&lt;/string&gt;
+    &lt;string name="custom_navigation_view"&gt;Custom Navigation View&lt;/string&gt;
+    &lt;string name="drawer_open"&gt;Drawer Open&lt;/string&gt;
+    &lt;string name="drawer_close"&gt;Drawer Close&lt;/string&gt;
+    &lt;string name="others"&gt;Others&lt;/string&gt;
+
+    &lt;!--  Navigation View String Values  --&gt;
+    &lt;string name="home"&gt;Home&lt;/string&gt;
+    &lt;string name="my_account"&gt;My Account&lt;/string&gt;
+    &lt;string name="chat"&gt;Chat&lt;/string&gt;
+    &lt;string name="notification"&gt;Notification&lt;/string&gt;
+    &lt;string name="share"&gt;Share App&lt;/string&gt;
+    &lt;string name="rate"&gt;Rate App&lt;/string&gt;
+    &lt;string name="settings"&gt;Settings&lt;/string&gt;
+    &lt;string name="help"&gt;Help&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>5</b>. Create a xml for toolbar naming <em>toolbar.xml.</em></p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimary"
+    android:elevation="4dp"
+    local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" &gt;
+&lt;/android.support.v7.widget.Toolbar&gt;</pre><p>
+<b>6</b>. Since we are going to learn default and custom navigation view, so we need to create two xml files for this:</p>
+<ul>
+<li><em><strong>default_navigation_view.xml</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"&gt;
+
+        &lt;include
+            android:id="@+id/main_toolbar"
+            layout="@layout/toolbar" /&gt;
+
+        &lt;FrameLayout
+            android:id="@+id/frame_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" /&gt;
+    &lt;/LinearLayout&gt;
+
+    &lt;!--  Navigation View--&gt;
+    &lt;android.support.design.widget.NavigationView
+        android:id="@+id/slider_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/navigation_menu" /&gt;
+
+&lt;/android.support.v4.widget.DrawerLayout&gt;</pre>
+<ul>
+<li><em><strong>custom_navigation_view.xml</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"&gt;
+
+        &lt;include
+            android:id="@+id/main_toolbar"
+            layout="@layout/toolbar" /&gt;
+
+        &lt;FrameLayout
+            android:id="@+id/frame_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" /&gt;
+    &lt;/LinearLayout&gt;
+
+    &lt;!--  Navigation View--&gt;
+    &lt;android.support.design.widget.NavigationView
+        android:id="@+id/slider_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:itemIconTint="@drawable/navigation_menu_selector"
+        app:itemTextColor="@drawable/navigation_menu_selector"
+        app:menu="@menu/navigation_menu" /&gt;
+
+&lt;/android.support.v4.widget.DrawerLayout&gt;</pre>
+<b>7</b>. In <em>custom_navigation_view.xml</em> we are using <em>drawable</em> <em>navigation_menu_selector</em> i.e. custom selector, so now create a new xml file under <em>drawable</em> resource naming <em>navigation_menu_selector.xml</em> and add the following code:<br />
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;selector xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;!-- This is used when the Navigation Item is checked --&gt;
+    &lt;item android:color="#E91E63" android:state_checked="true" /&gt;
+    &lt;!-- This is the default text color --&gt;
+    &lt;item android:color="@android:color/black" /&gt;
+&lt;/selector&gt;</pre>
+<b>8</b>. For menu items  for Navigation View we need to create a new menu under menu directory naming navigation_menu.xml and add the following menus:<br />
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;!-- Main Menus --&gt;
+    &lt;group android:checkableBehavior="single"&gt;
+
+        &lt;item
+            android:id="@+id/home"
+            android:checkable="true"
+            android:checked="true"
+            android:icon="@drawable/ic_home"
+            android:title="@string/home" /&gt;
+
+
+        &lt;item
+            android:id="@+id/my_account"
+            android:checkable="true"
+            android:checked="false"
+            android:icon="@drawable/ic_my_account"
+            android:title="@string/my_account" /&gt;
+
+        &lt;item
+            android:id="@+id/notifications"
+            android:checkable="true"
+            android:checked="false"
+            android:icon="@drawable/ic_notification"
+            android:title="@string/notification" /&gt;
+        &lt;item
+            android:id="@+id/chat"
+            android:checkable="true"
+            android:checked="false"
+            android:icon="@drawable/ic_chat"
+            android:title="@string/chat" /&gt;
+
+    &lt;/group&gt;
+
+    &lt;!--  Sub Menus  --&gt;
+    &lt;item android:title="@string/others"&gt;
+        &lt;menu&gt;
+            &lt;group android:checkableBehavior="none"&gt;
+                &lt;item
+                    android:id="@+id/share_app"
+                    android:icon="@drawable/ic_share"
+                    android:title="@string/share" /&gt;
+                &lt;item
+                    android:id="@+id/rate_app"
+                    android:icon="@drawable/ic_rate"
+                    android:title="@string/rate" /&gt;
+                &lt;item
+                    android:id="@+id/settings"
+                    android:icon="@drawable/ic_settings"
+                    android:title="@string/settings" /&gt;
+                &lt;item
+                    android:id="@+id/help"
+                    android:icon="@drawable/ic_help"
+                    android:title="@string/help" /&gt;
+            &lt;/group&gt;
+        &lt;/menu&gt;
+    &lt;/item&gt;
+
+
+&lt;/menu&gt;</pre>
+For menu icons you can download form <a href="https://icons8.com/" target="_blank">Icons8</a> site and size should be 24px.</p>
+<p><b>9</b>. Now for Header View of Navigation View create new layout xml file naming <em>header_view.xml </em>and add your header UI in these xml.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sellers_profile_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"&gt;
+    &lt;!-- Header View --&gt;
+    &lt;ImageView
+        android:id="@+id/image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_user" /&gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/image_view"
+        android:orientation="vertical"
+        android:paddingBottom="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp"&gt;
+
+        &lt;TextView
+            android:id="@+id/username"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Dr. Droid"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" /&gt;
+
+        &lt;TextView
+            android:id="@+id/email_address"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="androhub.com"
+            android:textColor="@android:color/black"
+            android:textSize="13sp" /&gt;
+    &lt;/LinearLayout&gt;
+
+    &lt;View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/darker_gray" /&gt;
+&lt;/RelativeLayout&gt;</pre><p>
+<b>10</b>. Now create <em>activity_main.xml</em> that contains two <em>button</em> for starting default and custom navigation view activity.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"&gt;
+
+    &lt;Button
+        android:id="@+id/default_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/default_navigation_view"
+        android:textColor="#000000"
+        android:textSize="15sp" /&gt;
+
+    &lt;Button
+        android:id="@+id/custom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/custom_navigation_view"
+        android:textColor="#000000"
+        android:textSize="15sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>11</b>. Now create a java class naming <em>MainActivity.java</em> and add the following code. In this class we are just starting <em>NavigationView_Activity</em> class by passing <em>boolean</em> data type.</p><pre class="crayon-plain-tag">package com.navigationview_demo;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        findViewById(R.id.default_navigation_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startNavigationViewActivity(true);
+            }
+        });
+        findViewById(R.id.custom_navigation_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startNavigationViewActivity(false);
+            }
+        });
+    }
+
+    /*  Start Navigation View activity  */
+    private void startNavigationViewActivity(boolean value) {
+        Intent in = new Intent(MainActivity.this, NavigationView_Activity.class);
+        in.putExtra("value", value);
+        startActivity(in);
+
+    }
+}</pre><p>
+<b>12</b>. Now mainly create NavigationMenu_Activity.java and add the following code. In this code there is nothing to do with navigation view because we already set menu items in xml layout. So here we are just going to implement navigation view menu item click listener.</p>
+<p>For using header view for changing text or images you can refer to<strong><em> setUpHeaderView()</em> </strong>in this class.</p><pre class="crayon-plain-tag">package com.navigationview_demo;
+
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+/**
+ * Created by SONU on 21/03/16.
+ */
+public class NavigationView_Activity extends AppCompatActivity {
+
+    private static DrawerLayout mDrawerLayout;
+    private static ActionBarDrawerToggle mDrawerToggle;
+    private static Toolbar toolbar;
+    private static FragmentManager fragmentManager;
+    private static NavigationView navigationView;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        //Get boolean data value from intent
+        boolean isDefaultNavigationView = getIntent().getBooleanExtra("value", false);
+
+        //according to boolean value set content view
+        if (isDefaultNavigationView)
+            setContentView(R.layout.default_navigation_view_activity);
+        else
+            setContentView(R.layout.custom_navigation_view_activity);
+
+        initViews();
+        setUpHeaderView();
+        onMenuItemSelected();
+
+        //At start set home fragment
+        if (savedInstanceState == null) {
+            navigationView.setCheckedItem(R.id.home);
+            MenuItem item = navigationView.getMenu().findItem(R.id.home);
+            setFragment(item);
+        }
+    }
+
+    /*  Init all views  */
+    private void initViews() {
+        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.slider_menu);
+        fragmentManager = getSupportFragmentManager();
+        mDrawerToggle = new ActionBarDrawerToggle(this,
+                mDrawerLayout, toolbar, // nav menu toggle icon
+                R.string.drawer_open, // nav drawer open - description for
+                // accessibility
+                R.string.drawer_close // nav drawer close - description for
+                // accessibility
+        ) {
+            public void onDrawerClosed(View view) {
+            }
+
+            public void onDrawerOpened(View drawerView) {
+
+            }
+        };
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggls
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+
+    /**
+     * For using header view use this method
+     **/
+    private void setUpHeaderView() {
+        View headerView = navigationView.inflateHeaderView(R.layout.header_view);
+        TextView textOne = (TextView) headerView.findViewById(R.id.username);
+        TextView textTwo = (TextView) headerView.findViewById(R.id.email_address);
+    }
+
+
+    /*  Method for Navigation View item selection  */
+    private void onMenuItemSelected() {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+
+                //Check and un-check menu item if they are checkable behaviour
+                if (item.isCheckable()) {
+                    if (item.isChecked()) item.setChecked(false);
+                    else item.setChecked(true);
+                }
+
+                //Closing drawer on item click
+                mDrawerLayout.closeDrawers();
+
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        //Replace fragment
+
+
+                        setFragment(item);
+                        break;
+
+                    case R.id.my_account:
+                        //Replace fragment
+
+
+                        setFragment(item);
+                        break;
+                    case R.id.chat:
+                        //Replace fragment
+
+
+                        setFragment(item);
+                        break;
+                    case R.id.notifications:
+                        //Replace fragment
+
+
+                        setFragment(item);
+
+                        break;
+                    case R.id.share_app:
+
+                        //Start new Activity or do your stuff
+
+
+                        Toast.makeText(NavigationView_Activity.this, "You Clicked on "" + item.getTitle().toString() + "" menu item.", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.rate_app:
+                        //Start new Activity or do your stuff
+
+
+                        Toast.makeText(NavigationView_Activity.this, "You Clicked on "" + item.getTitle().toString() + "" menu item.", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.settings:
+                        //Start new Activity or do your stuff
+
+
+                        Toast.makeText(NavigationView_Activity.this, "You Clicked on "" + item.getTitle().toString() + "" menu item.", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.help:
+                        //Start new Activity or do your stuff
+
+
+                        Toast.makeText(NavigationView_Activity.this, "You Clicked on "" + item.getTitle().toString() + "" menu item.", Toast.LENGTH_SHORT).show();
+
+                        break;
+
+                }
+
+                return false;
+            }
+        });
+    }
+
+    /*  Set Fragment, setting toolbar title and passing item title via bundle to fragments*/
+    public void setFragment(MenuItem item) {
+        toolbar.setTitle(item.getTitle());
+
+        //Find fragment by tag
+        Fragment fr = fragmentManager.findFragmentByTag(item.getTitle().toString());
+
+        Fragment dummyFragment = new Dummy_Fragment();
+        Bundle b = new Bundle();
+
+        //If fragment is null replace fragment
+        if (fr == null) {
+            b.putString("data", item.getTitle().toString());
+            dummyFragment.setArguments(b);//Set Arguments
+            fragmentManager
+                    .beginTransaction()
+                    .replace(R.id.frame_container,
+                            dummyFragment, item.getTitle().toString())
+                    .commit();
+        }
+    }
+
+
+    //On back press check if drawer is open and closed
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(Gravity.LEFT))
+            mDrawerLayout.closeDrawers();
+        else
+            super.onBackPressed();
+    }
+}</pre><p>
+<b>13</b>. We are using Dummy_Fragment in above step so we need to create a xml file naming <em>dummy_fragment.xml</em>.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"&gt;
+
+    &lt;TextView
+        android:id="@+id/fragment_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dp"
+        android:textColor="@android:color/black"
+        android:textSize="17sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>14</b>. For xml dummy_fragment create a java file naming <em>Dummy_Fragment.java</em> and add the following code.</p><pre class="crayon-plain-tag">package com.navigationview_demo;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+/**
+ * Created by SONU on 21/03/16.
+ */
+public class Dummy_Fragment extends Fragment {
+
+    public Dummy_Fragment() {
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.dummy_fragment, container, false);
+
+        TextView text = (TextView) view.findViewById(R.id.fragment_textview);
+
+        //Get bundle data from arguments and set text over textview
+        String title = getArguments().getString("data");
+        text.setText(title);
+
+        return view;
+    }
+}</pre><p>
+<b>15</b>. Don&#8217;t forget to declare your <em>NavigationView_Activity</em> inside <em>AndroidManifest.xml</em>.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.navigationview_demo"&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"&gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+        &lt;activity android:name=".NavigationView_Activity" /&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>16</b>. Some important codes of NavigationView:</p>
+<ul>
+<li>For accessing header view :</li>
+</ul>
+<pre class="crayon-plain-tag">View headerView = navigationView.inflateHeaderView(R.layout.header_view);</pre>
+<ul>
+<li>For checking menu item manually:</li>
+</ul>
+<p>&#8211; for api level 23+</p><pre class="crayon-plain-tag">navigationView.setCheckedItem(R.id.home);</pre><p>
+&#8211; for api level below 23</p><pre class="crayon-plain-tag">navigationView.getMenu().getItem(0).setChecked(true);</pre><p>
+** where &#8216;0&#8217; is the <strong>index</strong> of the menu item.</p>
+<ul>
+<li>Getting MenuItem from the navigation view  menus.</li>
+</ul>
+<pre class="crayon-plain-tag">MenuItem item = navigationView.getMenu().findItem(R.id.home);</pre>
+<b>17</b>. Finally, all done &#8211; now develop an awesome app using navigation view.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/NavigationView_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/navigation-view-material-design-support-library-tutorial/">Navigation View-Material Design Support Library Tutorial</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/navigation-view-material-design-support-library-tutorial/feed/</wfw:commentRss>
+		<slash:comments>8</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">811</post-id>	</item>
+		<item>
+		<title>Android SlidingDrawer</title>
+		<link>http://www.androhub.com/android-slidingdrawer/</link>
+		<comments>http://www.androhub.com/android-slidingdrawer/#respond</comments>
+		<pubDate>Sat, 30 May 2015 05:03:01 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android Drawer]]></category>
+		<category><![CDATA[Android SlidingDrawer]]></category>
+		<category><![CDATA[drawer]]></category>
+		<category><![CDATA[slider]]></category>
+		<category><![CDATA[sliding drawer]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=402</guid>
+		<description><![CDATA[<p>SlidingDrawer represents a widget, where we can use in our Android applications. SlidingDrawer has the ability to hide and/or appear content when the user drags a handle. More specifically, it includes two basic views: the handle where the user can drag. the hidden content that is associated with the handle and it is shown up [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-slidingdrawer/">Android SlidingDrawer</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p><a class="ext-link" title="" href="http://developer.android.com/reference/android/widget/SlidingDrawer.html" target="_blank" rel="external nofollow" data-wpel-target="_blank"><code>SlidingDrawer</code></a> represents a widget, where we can use in our Android applications. <code>SlidingDrawer</code> has the ability to hide and/or appear content when the user drags a handle. More specifically, it includes two basic views:</p>
+<ul>
+<li>the handle where the user can drag.</li>
+<li>the hidden content that is associated with the handle and it is shown up when the user drags the handle.</li>
+</ul>
+<p>It is very important to mention that the <code>SlidingDrawer</code> class is deprecated in Android Api 17 and above, so it is recommended to use it in previous versions or make your own widget in the new ones.</p>
+<h2>Example</h2>
+<p>In this example I will show you how to implement Sliding Drawer.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_57062" width="602" height="339" src="https://www.youtube.com/embed/4lWTQwPLcxo?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Let’s get start by creating a project in Eclipse IDE.</p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>).</p>
+<p><b>2</b>.  Create a layout file for <em>MainActivtiy.java</em> under <em>res ⇒ layout</em> folder. I named the layout file as <em>activity_main.xml</em>. In this layout i had taken one <em>SlidingDrawer</em> and inside it there is one <em>Button</em> for <em>Handler </em>and there is <em>LinearLayout</em> for <em>Content </em>that will be hidden and showed when handler button pressed or sliding drawer slided.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#CCFF"
+    android:gravity="bottom"
+    android:orientation="vertical" &gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Click on button to open drawer"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" &gt;
+    &lt;/TextView&gt;
+
+    &lt;!-- Sliding drawer contatinig one handle view and one content layout that is hidden --&gt;
+    &lt;SlidingDrawer
+        android:id="@+id/SlidingDrawer"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:content="@+id/contentLayout"
+        android:handle="@+id/slideButton"
+        android:orientation="vertical"
+        android:padding="10dip" &gt;
+
+        &lt;!-- Handle button --&gt;
+        &lt;Button
+            android:id="@+id/slideButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/button_selector"
+            android:ems="10"
+            android:text="Show"
+            android:textColor="#ffffff" &gt;
+        &lt;/Button&gt;
+
+        &lt;!-- Content Layout --&gt;
+        &lt;LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFCC"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dip" &gt;
+
+            &lt;Button
+                android:id="@+id/Button01"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:background="@drawable/button_selector"
+                android:text="Button 1"
+                android:textColor="#ffffff" &gt;
+            &lt;/Button&gt;
+
+            &lt;Button
+                android:id="@+id/Button02"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:background="@drawable/button_selector"
+                android:text="Button 2"
+                android:textColor="#ffffff" &gt;
+            &lt;/Button&gt;
+
+            &lt;Button
+                android:id="@+id/Button03"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:background="@drawable/button_selector"
+                android:text="Button 3"
+                android:textColor="#ffffff" &gt;
+            &lt;/Button&gt;
+
+            &lt;TextView
+                android:id="@+id/text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:background="@drawable/button_selector"
+                android:text="Text View Item"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="#ffffff" /&gt;
+          
+        &lt;/LinearLayout&gt;
+    &lt;/SlidingDrawer&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>3</b>. For buttons background drawable we have to make a drawable xml file for button selector in drawable directory naming <em>button_selector.xml. </em></p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;selector xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+
+    &lt;item android:state_pressed="true"&gt;&lt;shape&gt;
+            &lt;solid android:color="#AA000000" /&gt;
+
+            &lt;stroke android:width="1dp" android:color="#AA000000" /&gt;
+
+            &lt;padding android:bottom="5dp" android:left="5dp" android:right="5dp" android:top="5dp" /&gt;
+        &lt;/shape&gt;&lt;/item&gt;
+    &lt;item&gt;&lt;shape&gt;
+            &lt;gradient android:angle="270" android:endColor="#FF00" android:startColor="#FF00" /&gt;
+
+            &lt;stroke android:width="1dp" android:color="#FF00" /&gt;
+
+            &lt;padding android:bottom="5dp" android:left="5dp" android:right="5dp" android:top="5dp" /&gt;
+        &lt;/shape&gt;&lt;/item&gt;
+
+&lt;/selector&gt;</pre><p>
+<b>4</b>. Now, come to <em>MainActivity.java </em>and add the following code. In this class i had just done how to show/hide sliding drawer and implement clicklisteners on button clicks.</p><pre class="crayon-plain-tag">package com.android_slidingdrawer_demo;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.SlidingDrawer;
+import android.widget.SlidingDrawer.OnDrawerCloseListener;
+import android.widget.SlidingDrawer.OnDrawerOpenListener;
+import android.widget.TextView;
+import android.widget.Toast;
+
+@SuppressWarnings("deprecation")
+public class MainActivity extends ActionBarActivity implements OnClickListener {
+	private static Button slideButton, b1, b2, b3;
+	private static TextView textView;
+	private static SlidingDrawer slidingDrawer;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		slideButton = (Button) findViewById(R.id.slideButton);
+		slidingDrawer = (SlidingDrawer) findViewById(R.id.SlidingDrawer);
+		b1 = (Button) findViewById(R.id.Button01);
+		b2 = (Button) findViewById(R.id.Button02);
+		b3 = (Button) findViewById(R.id.Button03);
+		textView = (TextView) findViewById(R.id.text);
+
+		// Setting Listeners to all buttons and textview
+		setListeners();
+
+		// Listeners for sliding drawer
+		slidingDrawer.setOnDrawerOpenListener(new OnDrawerOpenListener() {
+			@Override
+			public void onDrawerOpened() {
+
+				// Change button text when slider is open
+				slideButton.setText("Close");
+			}
+		});
+
+		slidingDrawer.setOnDrawerCloseListener(new OnDrawerCloseListener() {
+			@Override
+			public void onDrawerClosed() {
+
+				// Change button text when slider is close
+				slideButton.setText("Open");
+			}
+		});
+	}
+
+	// Listeners method
+	void setListeners() {
+		b1.setOnClickListener(this);
+		b2.setOnClickListener(this);
+		b3.setOnClickListener(this);
+		textView.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+
+		// Toast shown on sliding drawer items click
+		if (v.getId() == R.id.text) {
+			Toast.makeText(MainActivity.this, textView.getText() + " Clicked",
+					Toast.LENGTH_SHORT).show();
+		} else {
+			Button b = (Button) v;
+			Toast.makeText(MainActivity.this, b.getText() + " Clicked",
+					Toast.LENGTH_SHORT).show();
+		}
+	}
+}</pre><p>
+<b>5</b>. Now, run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/Android_SlidingDrawer_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-slidingdrawer/">Android SlidingDrawer</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-slidingdrawer/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">402</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android SwipeRefresh Layout &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-swiperefresh-layout/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android SwipeRefresh Layout</title>
+		<link>http://www.androhub.com/android-swiperefresh-layout/</link>
+		<comments>http://www.androhub.com/android-swiperefresh-layout/#respond</comments>
+		<pubDate>Tue, 21 Jul 2015 05:08:24 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android RecyclerView]]></category>
+		<category><![CDATA[Android SwipeRefresh Layout]]></category>
+		<category><![CDATA[Android ViewPager]]></category>
+		<category><![CDATA[adapters]]></category>
+		<category><![CDATA[android recyclerview]]></category>
+		<category><![CDATA[Android Swipeable Tabs]]></category>
+		<category><![CDATA[gridview]]></category>
+		<category><![CDATA[listview]]></category>
+		<category><![CDATA[pull down refresh]]></category>
+		<category><![CDATA[recycler view]]></category>
+		<category><![CDATA[swipe down]]></category>
+		<category><![CDATA[swipe refresh layout]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=502</guid>
+		<description><![CDATA[<p>You might have noticed that lot of android apps like Twitter, Google+ provides an option to swipe / pull down to refresh it’s content. Whenever user swipes down from top, a loader will be shown and will disappear once the new content is loaded. In this tutorial we are going to learn how to provide [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-swiperefresh-layout/">Android SwipeRefresh Layout</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>You might have noticed that lot of android apps like Twitter, Google+ provides an option to swipe / pull down to refresh it’s content. Whenever user swipes down from top, a loader will be shown and will disappear once the new content is loaded. In this tutorial we are going to learn how to provide the same option to your apps too.</p>
+<p>Previously we used to implement a custom swipe view to detect the swipe down. But android made our day easier by introducing <a href="https://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html" target="_blank">SwipeRefreshLayout </a>in <em>android.support.v4</em> to detect the vertical swipe on any view.</p>
+<p>Methods of SwipeRefresh are quite few:</p>
+<p>– <em>setOnRefreshListener(OnRefreshListener):</em> adds a listener to let other parts of the code know when refreshing begins.<br />
+– <em>setRefreshing(boolean)</em>: enables or disables progress visibility.<br />
+– <em>isRefreshing()</em>: checks whether the view is refreshing.<br />
+– <em>setColorScheme()</em>: it receive four different colors that will be used to colorize the animation.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to use Swipe Down Refresh Layout.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_24553" width="602" height="339" src="https://www.youtube.com/embed/s-xwQyzdZWU?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>In last tutorial  we learned about RecyclerView. So i am going to use the same tutorial for SwipeRefresh. You can check RecyclerView tutorial <a href="http://androhub.com/android-recyclerview/" target="_blank">here</a>.</p>
+<h3>1. Android SwipeRefreshLayout</h3>
+<p>Implementing SwipeRefreshLayout is very easy. Whenever you want to detect the swipe down on any view, just the wrap the view around <strong>SwipeRefreshLayout</strong> element. In our case, we are going to use it with RecyclerView. And implement your activity class from <strong>SwipeRefreshLayout.OnRefreshListener</strong>. When user swipes down the view, <strong>onRefresh()</strong> method will be triggered. In you need to take appropriate action in that function like making an http call and fetch the latest data.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!-- Swipe refresh layout --&gt;
+&lt;android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refreshview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" &gt;
+
+    &lt;!-- place your view here --&gt;
+
+    
+&lt;/android.support.v4.widget.SwipeRefreshLayout&gt;</pre><p>
+<h3>2. SwipeRefreshLayout Code</h3>
+<ul>
+<li>First find the id of Swipe View.</li>
+<li>Set the color schemes for refresh view circular bar.</li>
+<li>Finally set the refresh listener for refreshing view. In onRefresh() you can call the refreshing method to refresh view.</li>
+</ul>
+</p><pre class="crayon-plain-tag">@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+ 
+    swipeLayout = (SwipeRefreshLayout) findViewById(R.id.refreshview);
+// set color schemes on refresh view
+    swipeLayout.setColorSchemeResources(R.color.blue, R.color.red,
+				R.color.orange, R.color.pink, R.color.yellow, R.color.black,
+				R.color.cyan);
+// implement refresh listener
+		swipeLayout .setOnRefreshListener(new OnRefreshListener() {
+
+			@Override
+			public void onRefresh() {
+
+				// call this method for repopulating recycler view with new data
+				refreshRecyclerView();
+			}
+		});
+}
+ 
+ 
+
+}</pre><p>
+<h3>3. Refresh Code</h3>
+<p>Here you can see that i am using a handler so that refresh view should be visible for that because i am populating adapter from local data and it won&#8217;t take too long but if you are fetching data from server then you don&#8217;t need to use handler.</p>
+<p>There is <em>RandomGenerator()</em> method that i used in last <a href="http://androhub.com/android-recyclerview/" target="_blank">RecyclerView tutorial</a>. This method will return random numbers between 0-9.</p>
+<p>Finally after refreshing adapter we have to <em>setRefreshing(false)</em>;</p><pre class="crayon-plain-tag">private void refreshRecyclerView() {
+
+		// Handler to show refresh for a period of time you can use async task
+		// while commnunicating serve
+		new Handler().postDelayed(new Runnable() {
+
+			@Override
+			public void run() {
+
+				// Loop for 3 items
+				for (int i = 0; i &lt; 3; i++) {
+					int value = RandomGenerator();// Random value
+
+					// add random data to arraylist
+					gridArrayList.add(new Data_Model(getTitle[value],
+							getLocation[value], getYear[value], images[value]));
+				}
+				adapter.notifyDataSetChanged();// notify adapter
+				gridSwipeRefresh.setRefreshing(false);// set swipe refreshing
+														// false
+
+				// Toast for task completion
+				Toast.makeText(getActivity(), "Items refreshed.",
+						Toast.LENGTH_SHORT).show();
+
+			}
+		}, 5000);
+	}</pre><p>
+<h3>4. Source Code</h3>
+<p>The rest of the code is same as RecyclerView tutorial by adding this RefreshView Code.</p>
+<p>Finally you are all done. Now, you can use swipe refresh into your app to refresh ListView, GridView and RecyclerView. This is easy to implement in minimum number of lines.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/SwipeRefreshLayout_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-swiperefresh-layout/">Android SwipeRefresh Layout</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-swiperefresh-layout/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">502</post-id>	</item>
+	</channel>
+</rss>

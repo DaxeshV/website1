@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Contacts &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-contacts/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Read Contacts using Content Provider</title>
+		<link>http://www.androhub.com/android-read-contacts-using-content-provider/</link>
+		<comments>http://www.androhub.com/android-read-contacts-using-content-provider/#respond</comments>
+		<pubDate>Tue, 28 Jul 2015 05:50:00 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Contacts]]></category>
+		<category><![CDATA[Android Content Provider]]></category>
+		<category><![CDATA[Android ListView]]></category>
+		<category><![CDATA[android listview]]></category>
+		<category><![CDATA[android read contacts]]></category>
+		<category><![CDATA[contacts]]></category>
+		<category><![CDATA[content provider]]></category>
+		<category><![CDATA[content resolver]]></category>
+		<category><![CDATA[custom listview]]></category>
+		<category><![CDATA[listview]]></category>
+		<category><![CDATA[read contacts]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=539</guid>
+		<description><![CDATA[<p>You can read phone contacts using Content Provider. With the help of this content provider we can communicate with the contacts app and query the URIs  and columns to get contact information and it will return as contact name, all contact numbers, all email addresses, company name, etc. Content providers manage access to a structured set of data. They encapsulate [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-read-contacts-using-content-provider/">Android Read Contacts using Content Provider</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>You can read phone contacts using <a href="http://developer.android.com/intl/ru/guide/topics/providers/content-providers.html" target="_blank">Content Provider</a>. With the help of this content provider we can communicate with the contacts app and query the URIs  and columns to get contact information and it will return as contact name, all contact numbers, all email addresses, company name, etc.</p>
+<p>Content providers manage access to a structured set of data. They encapsulate the data, and provide mechanisms for defining data security. Content providers are the standard interface that connects data in one process with code running in another process. A content provider is only required if you need to share data between multiple applications. For example, the contacts data is used by multiple applications and must be stored in a content provider. If you don&#8217;t need to share data amongest multiple applications you can use a database directly via <code><a href="http://androhub.com/android-sqlite-database/" target="_blank">SQLiteDatabase</a></code>.</p>
+<p>When you want to access data in a content provider, you use the <code><a href="http://developer.android.com/intl/ru/reference/android/content/ContentResolver.html" target="_blank">ContentResolver</a> </code>object in your application&#8217;s <a href="http://developer.android.com/intl/ru/reference/android/content/Context.html" target="_blank"><code>Context</code> </a>to communicate with the provider as a client. The <a href="http://developer.android.com/intl/ru/reference/android/content/ContentResolver.html" target="_blank"><code>ContentResolver </code></a>object communicates with the provider object, an instance of a class that implements <code><a href="http://developer.android.com/reference/android/content/ContentProvider.html" target="_blank">ContentProvider</a></code>. The provider object receives data requests from clients, performs the requested action, and returns the results.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to read contact details using content provider.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_43942" width="602" height="339" src="https://www.youtube.com/embed/G0qObXv8Tbg?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Now, to read contact details we have to give &#8220;READ_CONTACTS&#8221; this permission in our Manifest file.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.phonecontact_demo"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" /&gt;
+		
+		
+    &lt;uses-permission android:name="android.permission.READ_CONTACTS"/&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name="com.phonecontact_demo.MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>3</b>. Create a xml layout naming <em>activity_main.xml</em> that contains one listview that will display the contact details.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" &gt;
+
+    &lt;ListView
+        android:id="@+id/contact_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" &gt;
+    &lt;/ListView&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>4</b>. Now, create a new xml layout naming <em>custom_view.xml</em> for custom listview layout. Since we have to display contact details like name, number, email, image and other details so we are using custom view.</p>
+<p>If you are new to custom list view then you can <a href="http://androhub.com/android-listview/" target="_blank">read here</a>.</p><pre class="crayon-plain-tag">&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="5dp" &gt;
+
+    &lt;ImageView
+        android:id="@+id/contactImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactName"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/image"
+        android:padding="5dp"
+        android:src="@drawable/ic_launcher" /&gt;
+
+    &lt;TextView
+        android:id="@+id/contactName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:lineSpacingExtra="3dp"
+        android:padding="5dp"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold" /&gt;
+
+    &lt;TextView
+        android:id="@+id/contactNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactImage"
+        android:lineSpacingExtra="3dp"
+        android:padding="5dp"
+        android:textSize="15sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/contactEmail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactNumber"
+        android:lineSpacingExtra="3dp"
+        android:padding="5dp"
+        android:textSize="15sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/contactOtherDetails"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactEmail"
+        android:lineSpacingExtra="3dp"
+        android:padding="5dp"
+        android:textSize="15sp" /&gt;
+
+&lt;/RelativeLayout&gt;</pre><p>
+<b>5</b>. Now, create a new java class naming <em>Contact_Model.java </em>for getter and setter for contact details.</p><pre class="crayon-plain-tag">package com.phonecontact_demo;
+
+public class Contact_Model {
+
+	// Getter and setter for contacts
+	private String contactId, contactName, contactNumber, contactEmail,
+			contactPhoto, contactOtherDetails;
+
+	public Contact_Model(String contactId, String contactName,
+			String contactNumber, String contactEmail, String contactPhoto,
+			String contactOtherDetails) {
+		this.contactId = contactId;
+		this.contactName = contactName;
+		this.contactEmail = contactEmail;
+		this.contactNumber = contactNumber;
+		this.contactPhoto = contactPhoto;
+		this.contactOtherDetails = contactOtherDetails;
+	}
+
+	public String getContactID() {
+		return contactId;
+	}
+
+	public String getContactName() {
+		return contactName;
+	}
+
+	public String getContactEmail() {
+		return contactEmail;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public String getContactPhoto() {
+		return contactPhoto;
+	}
+
+	public String getContactOtherDetails() {
+		return contactOtherDetails;
+	}
+}</pre><p>
+<b>6</b>. Now, create a custom adapter class naming <em>Contact_Adapter.java </em>for inflating a custom layout over listview.</p><pre class="crayon-plain-tag">package com.phonecontact_demo;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class Contact_Adapter extends BaseAdapter {
+	private Context context;
+	private ArrayList&lt;Contact_Model&gt; arrayList;
+
+	public Contact_Adapter(Context context, ArrayList&lt;Contact_Model&gt; arrayList) {
+		this.context = context;
+		this.arrayList = arrayList;
+	}
+
+	@Override
+	public int getCount() {
+
+		return arrayList.size();
+	}
+
+	@Override
+	public Contact_Model getItem(int position) {
+
+		return arrayList.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Contact_Model model = arrayList.get(position);
+		ViewHodler holder;
+		if (convertView == null) {
+			convertView = inflater.inflate(R.layout.custom_view, parent, false);
+			holder = new ViewHodler();
+			holder.contactImage = (ImageView) convertView
+					.findViewById(R.id.contactImage);
+			holder.contactName = (TextView) convertView
+					.findViewById(R.id.contactName);
+			holder.contactEmail = (TextView) convertView
+					.findViewById(R.id.contactEmail);
+			holder.contactNumber = (TextView) convertView
+					.findViewById(R.id.contactNumber);
+			holder.contactOtherDetails = (TextView) convertView
+					.findViewById(R.id.contactOtherDetails);
+
+			convertView.setTag(holder);
+		} else {
+			holder = (ViewHodler) convertView.getTag();
+		}
+
+		// Set items to all view
+		if (!model.getContactName().equals("")
+				&amp;&amp; model.getContactName() != null) {
+			holder.contactName.setText(model.getContactName());
+		} else {
+			holder.contactName.setText("No Name");
+		}
+		if (!model.getContactEmail().equals("")
+				&amp;&amp; model.getContactEmail() != null) {
+			holder.contactEmail.setText("EMAIL ID - n"
+					+ model.getContactEmail());
+		} else {
+			holder.contactEmail.setText("EMAIL ID - n" + "No EmailId");
+		}
+
+		if (!model.getContactNumber().equals("")
+				&amp;&amp; model.getContactNumber() != null) {
+			holder.contactNumber.setText("CONTACT NUMBER - n"
+					+ model.getContactNumber());
+		} else {
+			holder.contactNumber.setText("CONTACT NUMBER - n"
+					+ "No Contact Number");
+		}
+
+		if (!model.getContactOtherDetails().equals("")
+				&amp;&amp; model.getContactOtherDetails() != null) {
+			holder.contactOtherDetails.setText("OTHER DETAILS - n"
+					+ model.getContactOtherDetails());
+		} else {
+			holder.contactOtherDetails.setText("OTHER DETAILS - n"
+					+ "Other details are empty");
+		}
+
+		// Bitmap for imageview
+		Bitmap image = null;
+		if (!model.getContactPhoto().equals("")
+				&amp;&amp; model.getContactPhoto() != null) {
+			image = BitmapFactory.decodeFile(model.getContactPhoto());// decode
+																		// the
+																		// image
+																		// into
+																		// bitmap
+			if (image != null)
+				holder.contactImage.setImageBitmap(image);// Set image if bitmap
+															// is not null
+			else {
+				image = BitmapFactory.decodeResource(context.getResources(),
+						R.drawable.androhub_logo);// if bitmap is null then set
+													// default bitmap image to
+													// contact image
+				holder.contactImage.setImageBitmap(image);
+			}
+		} else {
+			image = BitmapFactory.decodeResource(context.getResources(),
+					R.drawable.androhub_logo);
+			holder.contactImage.setImageBitmap(image);
+		}
+		return convertView;
+	}
+
+	// View holder to hold views
+	private class ViewHodler {
+		ImageView contactImage;
+		TextView contactName, contactNumber, contactEmail, contactOtherDetails;
+	}
+}</pre><p>
+<b>7</b>. To read contact details we have to know certain things mentioned below :</p>
+<ul>
+<li>URI that we require in querying.</li>
+</ul>
+<pre class="crayon-plain-tag">Uri uri = ContactsContract.Contacts.CONTENT_URI;</pre>
+<ul>
+<li> Fetching contact details into cursor in ascending order. using uri</li>
+</ul>
+<pre class="crayon-plain-tag">Cursor contactsCursor = getContentResolver().query(uri, null, null,
+				null, ContactsContract.Contacts.DISPLAY_NAME + " ASC ");</pre>
+<ul>
+<li>Now we will use this method to fetch data and stored into arraylist.</li>
+</ul>
+<pre class="crayon-plain-tag">private ArrayList&lt;Contact_Model&gt; readContacts() {
+		ArrayList&lt;Contact_Model&gt; contactList = new ArrayList&lt;Contact_Model&gt;();
+
+		Uri uri = ContactsContract.Contacts.CONTENT_URI; // Contact URI
+		Cursor contactsCursor = getContentResolver().query(uri, null, null,
+				null, ContactsContract.Contacts.DISPLAY_NAME + " ASC "); // Return
+																			// all
+																			// contacts
+																			// name
+																			// containing
+																			// in
+																			// URI
+																			// in
+																			// ascending
+																			// order
+		// Move cursor at starting
+		if (contactsCursor.moveToFirst()) {
+			do {
+				long contctId = contactsCursor.getLong(contactsCursor
+						.getColumnIndex("_ID")); // Get contact ID
+				Uri dataUri = ContactsContract.Data.CONTENT_URI; // URI to get
+																	// data of
+																	// contacts
+				Cursor dataCursor = getContentResolver().query(dataUri, null,
+						ContactsContract.Data.CONTACT_ID + " = " + contctId,
+						null, null);// Retrun data cusror represntative to
+									// contact ID
+
+				// Strings to get all details
+				String displayName = "";
+				String nickName = "";
+				String homePhone = "";
+				String mobilePhone = "";
+				String workPhone = "";
+				String photoPath = "" + R.drawable.ic_launcher; // Photo path
+				byte[] photoByte = null;// Byte to get photo since it will come
+										// in BLOB
+				String homeEmail = "";
+				String workEmail = "";
+				String companyName = "";
+				String title = "";
+
+				// This strings stores all contact numbers, email and other
+				// details like nick name, company etc.
+				String contactNumbers = "";
+				String contactEmailAddresses = "";
+				String contactOtherDetails = "";
+
+				// Now start the cusrsor
+				if (dataCursor.moveToFirst()) {
+					displayName = dataCursor
+							.getString(dataCursor
+									.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));// get
+																								// the
+																								// contact
+																								// name
+					do {
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Nickname.CONTENT_ITEM_TYPE)) {
+							nickName = dataCursor.getString(dataCursor
+									.getColumnIndex("data1")); // Get Nick Name
+							contactOtherDetails += "NickName : " + nickName
+									+ "n";// Add the nick name to string
+
+						}
+
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)) {
+
+							// In this get All contact numbers like home,
+							// mobile, work, etc and add them to numbers string
+							switch (dataCursor.getInt(dataCursor
+									.getColumnIndex("data2"))) {
+							case ContactsContract.CommonDataKinds.Phone.TYPE_HOME:
+								homePhone = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactNumbers += "Home Phone : " + homePhone
+										+ "n";
+								break;
+
+							case ContactsContract.CommonDataKinds.Phone.TYPE_WORK:
+								workPhone = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactNumbers += "Work Phone : " + workPhone
+										+ "n";
+								break;
+
+							case ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE:
+								mobilePhone = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactNumbers += "Mobile Phone : "
+										+ mobilePhone + "n";
+								break;
+
+							}
+						}
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE)) {
+
+							// In this get all Emails like home, work etc and
+							// add them to email string
+							switch (dataCursor.getInt(dataCursor
+									.getColumnIndex("data2"))) {
+							case ContactsContract.CommonDataKinds.Email.TYPE_HOME:
+								homeEmail = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactEmailAddresses += "Home Email : "
+										+ homeEmail + "n";
+								break;
+							case ContactsContract.CommonDataKinds.Email.TYPE_WORK:
+								workEmail = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactEmailAddresses += "Work Email : "
+										+ workEmail + "n";
+								break;
+
+							}
+						}
+
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE)) {
+							companyName = dataCursor.getString(dataCursor
+									.getColumnIndex("data1"));// get company
+																// name
+							contactOtherDetails += "Coompany Name : "
+									+ companyName + "n";
+							title = dataCursor.getString(dataCursor
+									.getColumnIndex("data4"));// get Company
+																// title
+							contactOtherDetails += "Title : " + title + "n";
+
+						}
+
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)) {
+							photoByte = dataCursor.getBlob(dataCursor
+									.getColumnIndex("data15")); // get photo in
+																// byte
+
+							if (photoByte != null) {
+
+								// Now make a cache folder in file manager to
+								// make cache of contacts images and save them
+								// in .png
+								Bitmap bitmap = BitmapFactory.decodeByteArray(
+										photoByte, 0, photoByte.length);
+								File cacheDirectory = getBaseContext()
+										.getCacheDir();
+								File tmp = new File(cacheDirectory.getPath()
+										+ "/_androhub" + contctId + ".png");
+								try {
+									FileOutputStream fileOutputStream = new FileOutputStream(
+											tmp);
+									bitmap.compress(Bitmap.CompressFormat.PNG,
+											100, fileOutputStream);
+									fileOutputStream.flush();
+									fileOutputStream.close();
+								} catch (Exception e) {
+									// TODO: handle exception
+									e.printStackTrace();
+								}
+								photoPath = tmp.getPath();// finally get the
+															// saved path of
+															// image
+							}
+
+						}
+
+					} while (dataCursor.moveToNext()); // Now move to next
+														// cursor
+
+					contactList.add(new Contact_Model(Long.toString(contctId),
+							displayName, contactNumbers, contactEmailAddresses,
+							photoPath, contactOtherDetails));// Finally add
+																// items to
+																// array list
+				}
+
+			} while (contactsCursor.moveToNext());
+		}
+		return contactList;
+	}</pre>
+<b>8</b>. Finally open your <em>MainActivty.java </em>and add the following code. In this class we fetch contact details using AsyncTask and display over listview.<br />
+<pre class="crayon-plain-tag">package com.phonecontact_demo;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Random;
+
+import android.app.ProgressDialog;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+	private static ListView contact_listview;
+	private static ArrayList&lt;Contact_Model&gt; arrayList;
+	private static Contact_Adapter adapter;
+
+	private static ProgressDialog pd;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		contact_listview = (ListView) findViewById(R.id.contact_listview);
+
+		new LoadContacts().execute();// Execute the async task
+
+	}
+
+	// Async task to load contacts
+	private class LoadContacts extends AsyncTask&lt;Void, Void, Void&gt; {
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			arrayList = readContacts();// Get contacts array list from this
+										// method
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+
+			super.onPostExecute(result);
+
+			// If array list is not null and is contains value
+			if (arrayList != null &amp;&amp; arrayList.size() &gt; 0) {
+
+				// then set total contacts to subtitle
+				getSupportActionBar().setSubtitle(
+						arrayList.size() + " Contacts");
+				adapter = null;
+				if (adapter == null) {
+					adapter = new Contact_Adapter(MainActivity.this, arrayList);
+					contact_listview.setAdapter(adapter);// set adapter
+				}
+				adapter.notifyDataSetChanged();
+			} else {
+
+				// If adapter is null then show toast
+				Toast.makeText(MainActivity.this, "There are no contacts.",
+						Toast.LENGTH_LONG).show();
+			}
+
+			// Hide dialog if showing
+			if (pd.isShowing())
+				pd.dismiss();
+
+		}
+
+		@Override
+		protected void onPreExecute() {
+
+			super.onPreExecute();
+			// Show Dialog
+			pd = ProgressDialog.show(MainActivity.this, "Loading Contacts",
+					"Please Wait...");
+		}
+
+	}
+
+	// Method that return all contact details in array format
+	private ArrayList&lt;Contact_Model&gt; readContacts() {
+		ArrayList&lt;Contact_Model&gt; contactList = new ArrayList&lt;Contact_Model&gt;();
+
+		Uri uri = ContactsContract.Contacts.CONTENT_URI; // Contact URI
+		Cursor contactsCursor = getContentResolver().query(uri, null, null,
+				null, ContactsContract.Contacts.DISPLAY_NAME + " ASC "); // Return
+																			// all
+																			// contacts
+																			// name
+																			// containing
+																			// in
+																			// URI
+																			// in
+																			// ascending
+																			// order
+		// Move cursor at starting
+		if (contactsCursor.moveToFirst()) {
+			do {
+				long contctId = contactsCursor.getLong(contactsCursor
+						.getColumnIndex("_ID")); // Get contact ID
+				Uri dataUri = ContactsContract.Data.CONTENT_URI; // URI to get
+																	// data of
+																	// contacts
+				Cursor dataCursor = getContentResolver().query(dataUri, null,
+						ContactsContract.Data.CONTACT_ID + " = " + contctId,
+						null, null);// Retrun data cusror represntative to
+									// contact ID
+
+				// Strings to get all details
+				String displayName = "";
+				String nickName = "";
+				String homePhone = "";
+				String mobilePhone = "";
+				String workPhone = "";
+				String photoPath = "" + R.drawable.ic_launcher; // Photo path
+				byte[] photoByte = null;// Byte to get photo since it will come
+										// in BLOB
+				String homeEmail = "";
+				String workEmail = "";
+				String companyName = "";
+				String title = "";
+
+				// This strings stores all contact numbers, email and other
+				// details like nick name, company etc.
+				String contactNumbers = "";
+				String contactEmailAddresses = "";
+				String contactOtherDetails = "";
+
+				// Now start the cusrsor
+				if (dataCursor.moveToFirst()) {
+					displayName = dataCursor
+							.getString(dataCursor
+									.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));// get
+																								// the
+																								// contact
+																								// name
+					do {
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Nickname.CONTENT_ITEM_TYPE)) {
+							nickName = dataCursor.getString(dataCursor
+									.getColumnIndex("data1")); // Get Nick Name
+							contactOtherDetails += "NickName : " + nickName
+									+ "n";// Add the nick name to string
+
+						}
+
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)) {
+
+							// In this get All contact numbers like home,
+							// mobile, work, etc and add them to numbers string
+							switch (dataCursor.getInt(dataCursor
+									.getColumnIndex("data2"))) {
+							case ContactsContract.CommonDataKinds.Phone.TYPE_HOME:
+								homePhone = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactNumbers += "Home Phone : " + homePhone
+										+ "n";
+								break;
+
+							case ContactsContract.CommonDataKinds.Phone.TYPE_WORK:
+								workPhone = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactNumbers += "Work Phone : " + workPhone
+										+ "n";
+								break;
+
+							case ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE:
+								mobilePhone = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactNumbers += "Mobile Phone : "
+										+ mobilePhone + "n";
+								break;
+
+							}
+						}
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE)) {
+
+							// In this get all Emails like home, work etc and
+							// add them to email string
+							switch (dataCursor.getInt(dataCursor
+									.getColumnIndex("data2"))) {
+							case ContactsContract.CommonDataKinds.Email.TYPE_HOME:
+								homeEmail = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactEmailAddresses += "Home Email : "
+										+ homeEmail + "n";
+								break;
+							case ContactsContract.CommonDataKinds.Email.TYPE_WORK:
+								workEmail = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactEmailAddresses += "Work Email : "
+										+ workEmail + "n";
+								break;
+
+							}
+						}
+
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE)) {
+							companyName = dataCursor.getString(dataCursor
+									.getColumnIndex("data1"));// get company
+																// name
+							contactOtherDetails += "Coompany Name : "
+									+ companyName + "n";
+							title = dataCursor.getString(dataCursor
+									.getColumnIndex("data4"));// get Company
+																// title
+							contactOtherDetails += "Title : " + title + "n";
+
+						}
+
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)) {
+							photoByte = dataCursor.getBlob(dataCursor
+									.getColumnIndex("data15")); // get photo in
+																// byte
+
+							if (photoByte != null) {
+
+								// Now make a cache folder in file manager to
+								// make cache of contacts images and save them
+								// in .png
+								Bitmap bitmap = BitmapFactory.decodeByteArray(
+										photoByte, 0, photoByte.length);
+								File cacheDirectory = getBaseContext()
+										.getCacheDir();
+								File tmp = new File(cacheDirectory.getPath()
+										+ "/_androhub" + contctId + ".png");
+								try {
+									FileOutputStream fileOutputStream = new FileOutputStream(
+											tmp);
+									bitmap.compress(Bitmap.CompressFormat.PNG,
+											100, fileOutputStream);
+									fileOutputStream.flush();
+									fileOutputStream.close();
+								} catch (Exception e) {
+									// TODO: handle exception
+									e.printStackTrace();
+								}
+								photoPath = tmp.getPath();// finally get the
+															// saved path of
+															// image
+							}
+
+						}
+
+					} while (dataCursor.moveToNext()); // Now move to next
+														// cursor
+
+					contactList.add(new Contact_Model(Long.toString(contctId),
+							displayName, contactNumbers, contactEmailAddresses,
+							photoPath, contactOtherDetails));// Finally add
+																// items to
+																// array list
+				}
+
+			} while (contactsCursor.moveToNext());
+		}
+		return contactList;
+	}
+
+}</pre>
+<b>9</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/PhoneContact_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-read-contacts-using-content-provider/">Android Read Contacts using Content Provider</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-read-contacts-using-content-provider/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">539</post-id>	</item>
+	</channel>
+</rss>

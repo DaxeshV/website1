@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android ExpandableListView &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-expandablelistview/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android ExpandableListView</title>
+		<link>http://www.androhub.com/android-expandablelistview/</link>
+		<comments>http://www.androhub.com/android-expandablelistview/#comments</comments>
+		<pubDate>Fri, 29 May 2015 05:32:34 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android ExpandableListView]]></category>
+		<category><![CDATA[android listview]]></category>
+		<category><![CDATA[ExpandableListView]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=399</guid>
+		<description><![CDATA[<p>Expandable list view is used to group list data by categories. It has the capability of expanding and collapsing the groups when user touches header. If you are not aware of list view before please refer to this tutorial Android ListView Tutorial. As seen in the Custom ListView we can use a type of array adapter [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-expandablelistview/">Android ExpandableListView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Expandable list view is used to group list data by categories. It has the capability of expanding and collapsing the groups when user touches header.</p>
+<p>If you are not aware of list view before please refer to this tutorial <a class="ref-link" href="http://androhub.com/android-listview/" target="_blank">Android ListView Tutorial</a>.</p>
+<p>As seen in the <em><strong>Custom ListView</strong></em> we can use a type of array adapter to control the data displayed in the expandable list view. We will use the <strong>BaseExpandableListAdapter</strong> to supply and control the data displayed in this tutorial.</p>
+<h2>Example</h2>
+<p>In this example I will show you how to implement ExpandableListView.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_86515" width="602" height="339" src="https://www.youtube.com/embed/zJ2jnh6Jjbo?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Let’s get start by creating a project in Eclipse IDE.</p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>).</p>
+<p><b>2</b>.  Create a layout file for <em>MainActivtiy.java</em> under <em>res ⇒ layout</em> folder. I named the layout file as <em>activity_main.xml</em>. In this layout i had taken one expandable listview.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;ExpandableListView
+        android:id="@+id/simple_expandable_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="#000000"
+        android:dividerHeight="1dp" &gt;
+    &lt;/ExpandableListView&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>3</b>. For expandablelsitview header items create a new xml file naming <em>header.xml  </em>with TextView.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;TextView
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textColor="#ff00"
+        android:drawablePadding="10dp"
+        android:textSize="18sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>4</b>. Now, for child items create a new xml file naming <em>childs.xml  </em>with TextView.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;TextView
+        android:id="@+id/child"
+        android:padding="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textColor="#000000"
+        android:textSize="13sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>5</b>. Create a new class naming <em>ExpandableListAdapter.java </em>for ExpandableListView adapter as we done in ListView. In this class we set the header and child items fro expandablelistview by inflating both header and child layout.</p><pre class="crayon-plain-tag">package com.android_expandablelistview_demo;
+
+import java.util.HashMap;
+import java.util.List;
+
+import android.content.Context;
+import android.graphics.Typeface;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.TextView;
+
+//For expandable list view use BaseExpandableListAdapter
+public class ExpandableListAdapter extends BaseExpandableListAdapter {
+	private Context _context;
+	private List&lt;String&gt; header; // header titles
+	// Child data in format of header title, child title
+	private HashMap&lt;String, List&lt;String&gt;&gt; child;
+
+	public ExpandableListAdapter(Context context, List&lt;String&gt; listDataHeader,
+			HashMap&lt;String, List&lt;String&gt;&gt; listChildData) {
+		this._context = context;
+		this.header = listDataHeader;
+		this.child = listChildData;
+	}
+
+	@Override
+	public Object getChild(int groupPosition, int childPosititon) {
+
+		// This will return the child
+		return this.child.get(this.header.get(groupPosition)).get(
+				childPosititon);
+	}
+
+	@Override
+	public long getChildId(int groupPosition, int childPosition) {
+		return childPosition;
+	}
+
+	@Override
+	public View getChildView(int groupPosition, final int childPosition,
+			boolean isLastChild, View convertView, ViewGroup parent) {
+
+		// Getting child text
+		final String childText = (String) getChild(groupPosition, childPosition);
+
+		// Inflating child layout and setting textview
+		if (convertView == null) {
+			LayoutInflater infalInflater = (LayoutInflater) this._context
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			convertView = infalInflater.inflate(R.layout.childs, parent, false);
+		}
+
+		TextView child_text = (TextView) convertView.findViewById(R.id.child);
+
+		child_text.setText(childText);
+		return convertView;
+	}
+
+	@Override
+	public int getChildrenCount(int groupPosition) {
+
+		// return children count
+		return this.child.get(this.header.get(groupPosition)).size();
+	}
+
+	@Override
+	public Object getGroup(int groupPosition) {
+
+		// Get header position
+		return this.header.get(groupPosition);
+	}
+
+	@Override
+	public int getGroupCount() {
+
+		// Get header size
+		return this.header.size();
+	}
+
+	@Override
+	public long getGroupId(int groupPosition) {
+		return groupPosition;
+	}
+
+	@Override
+	public View getGroupView(int groupPosition, boolean isExpanded,
+			View convertView, ViewGroup parent) {
+
+		// Getting header title
+		String headerTitle = (String) getGroup(groupPosition);
+
+		// Inflating header layout and setting text
+		if (convertView == null) {
+			LayoutInflater infalInflater = (LayoutInflater) this._context
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			convertView = infalInflater.inflate(R.layout.header, parent, false);
+		}
+
+		TextView header_text = (TextView) convertView.findViewById(R.id.header);
+
+		header_text.setText(headerTitle);
+
+		// If group is expanded then change the text into bold and change the
+		// icon
+		if (isExpanded) {
+			header_text.setTypeface(null, Typeface.BOLD);
+			header_text.setCompoundDrawablesWithIntrinsicBounds(0, 0,
+					R.drawable.ic_up, 0);
+		} else {
+			// If group is not expanded then change the text back into normal
+			// and change the icon
+
+			header_text.setTypeface(null, Typeface.NORMAL);
+			header_text.setCompoundDrawablesWithIntrinsicBounds(0, 0,
+					R.drawable.ic_down, 0);
+		}
+
+		return convertView;
+	}
+
+	@Override
+	public boolean hasStableIds() {
+		return false;
+	}
+
+	@Override
+	public boolean isChildSelectable(int groupPosition, int childPosition) {
+		return true;
+	}
+}</pre><p>
+<b>6</b>. Now, come to <em>MainActivity.java </em>and add the following code. In this class we set the items to adapter and set it to expandablelistview and also we worked on some of its methods list expandgroup, collapsegroup, etc.</p><pre class="crayon-plain-tag">package com.android_expandablelistview_demo;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.ExpandableListView.OnGroupExpandListener;
+import android.widget.Toast;
+
+public class MainActivity extends ActionBarActivity {
+	private static ExpandableListView expandableListView;
+	private static ExpandableListAdapter adapter;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		expandableListView = (ExpandableListView) findViewById(R.id.simple_expandable_listview);
+
+		// Setting group indicator null for custom indicator
+		expandableListView.setGroupIndicator(null);
+
+		setItems();
+		setListener();
+
+	}
+
+	// Setting headers and childs to expandable listview
+	void setItems() {
+
+		// Array list for header
+		ArrayList&lt;String&gt; header = new ArrayList&lt;String&gt;();
+
+		// Array list for child items
+		List&lt;String&gt; child1 = new ArrayList&lt;String&gt;();
+		List&lt;String&gt; child2 = new ArrayList&lt;String&gt;();
+		List&lt;String&gt; child3 = new ArrayList&lt;String&gt;();
+		List&lt;String&gt; child4 = new ArrayList&lt;String&gt;();
+
+		// Hash map for both header and child
+		HashMap&lt;String, List&lt;String&gt;&gt; hashMap = new HashMap&lt;String, List&lt;String&gt;&gt;();
+
+		// Adding headers to list
+		for (int i = 1; i &lt; 5; i++) {
+			header.add("Group " + i);
+
+		}
+		// Adding child data
+		for (int i = 1; i &lt; 5; i++) {
+			child1.add("Group 1  - " + " : Child" + i);
+
+		}
+		// Adding child data
+		for (int i = 1; i &lt; 5; i++) {
+			child2.add("Group 2  - " + " : Child" + i);
+
+		}
+		// Adding child data
+		for (int i = 1; i &lt; 6; i++) {
+			child3.add("Group 3  - " + " : Child" + i);
+
+		}
+		// Adding child data
+		for (int i = 1; i &lt; 7; i++) {
+			child4.add("Group 4  - " + " : Child" + i);
+
+		}
+
+		// Adding header and childs to hash map
+		hashMap.put(header.get(0), child1);
+		hashMap.put(header.get(1), child2);
+		hashMap.put(header.get(2), child3);
+		hashMap.put(header.get(3), child4);
+
+		adapter = new ExpandableListAdapter(MainActivity.this, header, hashMap);
+
+		// Setting adpater over expandablelistview
+		expandableListView.setAdapter(adapter);
+	}
+
+	// Setting different listeners to expandablelistview
+	void setListener() {
+
+		// This listener will show toast on group click
+		expandableListView.setOnGroupClickListener(new OnGroupClickListener() {
+
+			@Override
+			public boolean onGroupClick(ExpandableListView listview, View view,
+					int group_pos, long id) {
+
+				Toast.makeText(MainActivity.this,
+						"You clicked : " + adapter.getGroup(group_pos),
+						Toast.LENGTH_SHORT).show();
+				return false;
+			}
+		});
+
+		// This listener will expand one group at one time
+		// You can remove this listener for expanding all groups
+		expandableListView
+				.setOnGroupExpandListener(new OnGroupExpandListener() {
+
+					// Default position
+					int previousGroup = -1;
+
+					@Override
+					public void onGroupExpand(int groupPosition) {
+						if (groupPosition != previousGroup)
+
+							// Collapse the expanded group
+							expandableListView.collapseGroup(previousGroup);
+						previousGroup = groupPosition;
+					}
+
+				});
+
+		// This listener will show toast on child click
+		expandableListView.setOnChildClickListener(new OnChildClickListener() {
+
+			@Override
+			public boolean onChildClick(ExpandableListView listview, View view,
+					int groupPos, int childPos, long id) {
+				Toast.makeText(
+						MainActivity.this,
+						"You clicked : " + adapter.getChild(groupPos, childPos),
+						Toast.LENGTH_SHORT).show();
+				return false;
+			}
+		});
+	}
+}</pre><p>
+<b>7</b>. Now, run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/Android_ExpandableListView_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-expandablelistview/">Android ExpandableListView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-expandablelistview/feed/</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">399</post-id>	</item>
+	</channel>
+</rss>

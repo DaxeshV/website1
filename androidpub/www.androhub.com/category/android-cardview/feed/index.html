@@ -1,0 +1,1372 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android CardView &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-cardview/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Swipe Dismiss CardView with Coordinator Layout</title>
+		<link>http://www.androhub.com/swipe-dismiss-cardview-with-coordinator-layout/</link>
+		<comments>http://www.androhub.com/swipe-dismiss-cardview-with-coordinator-layout/#comments</comments>
+		<pubDate>Tue, 16 May 2017 19:20:27 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Advanced]]></category>
+		<category><![CDATA[Android CardView]]></category>
+		<category><![CDATA[cardview]]></category>
+		<category><![CDATA[coordinator layout]]></category>
+		<category><![CDATA[swipe dismiss]]></category>
+		<category><![CDATA[swipe dismiss behavior]]></category>
+		<category><![CDATA[swipeable card view]]></category>
+
+		<guid isPermaLink="false">http://www.androhub.com/?p=1276</guid>
+		<description><![CDATA[<p>Today we are going to learn an awesome inbuilt functionality provided by design library using Coordinator Layout. CoordinatorLayout is a super-powered FrameLayout. Coordinator Layout is intended for two primary use cases: As a top-level application decor or chrome layout. As a container for a specific interaction with one or more child views. So we are going to implement [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/swipe-dismiss-cardview-with-coordinator-layout/">Swipe Dismiss CardView with Coordinator Layout</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p style="text-align: left;">Today we are going to learn an awesome inbuilt functionality provided by design library using Coordinator Layout. CoordinatorLayout is a super-powered <a href="https://developer.android.com/reference/android/widget/FrameLayout.html" target="_blank">FrameLayout</a>. Coordinator Layout is intended for two primary use cases:</p>
+<ol>
+<li style="text-align: left;">As a top-level application decor or chrome layout.</li>
+<li style="text-align: left;">As a container for a specific interaction with one or more child views.</li>
+</ol>
+<p>So we are going to implement swipe dismiss the CardView with Coordinate Layout. For this we are going to need :</p>
+<ol>
+<li><strong>Coordinator Layout</strong></li>
+<li><strong>CardView</strong> : A FrameLayout with a rounded corner background and shadow.</li>
+<li><strong><a href="https://developer.android.com/reference/android/support/design/widget/SwipeDismissBehavior.html" target="_blank">SwipeDismissBehavior</a> Class</strong> : An interaction behavior plugin for child views of CoordinatorLayout to provide support for the ‘swipe-to-dismiss’ gesture.</li>
+</ol>
+<p>Learn more articles about Coordinator Layout <a href="http://www.androhub.com/?s=coordinator+layout" target="_blank">here</a>.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_65527" width="602" height="339" src="https://www.youtube.com/embed/hKNGn8-2gvA?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New ⇒ New Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>app ⇒ build.gradle </strong> and add below dependencies to it.</p><pre class="crayon-plain-tag">//dependency for CardView
+    compile 'com.android.support:cardview-v7:25.3.1'
+    //dependency for Coordinator Layout
+    compile 'com.android.support:design:25.3.1'</pre><p>
+<strong>3.</strong> Now open up your <em>activity_main.xml</em> and place the below code to it. These layout contains CardView inside Coordinator Layout.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.swipedismisscardview_demo.MainActivity"&gt;
+
+    &lt;!-- CardView to be dismissed --&gt;
+    &lt;android.support.v7.widget.CardView
+        android:id="@+id/text_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:contentPadding="10dp"&gt;
+
+        &lt;TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/cardview_text"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" /&gt;
+    &lt;/android.support.v7.widget.CardView&gt;
+
+
+&lt;/android.support.design.widget.CoordinatorLayout&gt;</pre><p>
+<strong>4.</strong> Now to implement <a href="https://developer.android.com/reference/android/support/design/widget/SwipeDismissBehavior.html" target="_blank">SwipeDismissBeahvior</a> we will be needing below code. Here you can set the swipe dismiss direction and after setting SwipeDismissBehavior you have to get the CardView Layout params and set the behavior to Coordinator Layout.</p><pre class="crayon-plain-tag">/**
+     * method to implement swipe dismiss feature over card view
+     **/
+    private void implementSwipeDismiss() {
+        SwipeDismissBehavior swipeDismissBehavior = new SwipeDismissBehavior();
+        swipeDismissBehavior.setSwipeDirection(SwipeDismissBehavior.SWIPE_DIRECTION_ANY);//Swipe direction i.e any direction, here you can put any direction LEFT or RIGHT
+
+        CoordinatorLayout.LayoutParams layoutParams =
+                (CoordinatorLayout.LayoutParams) textCardView.getLayoutParams();
+
+        layoutParams.setBehavior(swipeDismissBehavior);//set swipe behaviour to Coordinator layout
+    }</pre><p>
+<strong>5.</strong> Finally open your <em>MainActivity.java</em> and place the below code to it.</p><pre class="crayon-plain-tag">package com.swipedismisscardview_demo;
+
+import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.SwipeDismissBehavior;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
+
+public class MainActivity extends AppCompatActivity {
+
+    private CardView textCardView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        textCardView = (CardView) findViewById(R.id.text_card_view);
+        implementSwipeDismiss();
+    }
+
+    /**
+     * method to implement swipe dismiss feature over card view
+     **/
+    private void implementSwipeDismiss() {
+        SwipeDismissBehavior swipeDismissBehavior = new SwipeDismissBehavior();
+        swipeDismissBehavior.setSwipeDirection(SwipeDismissBehavior.SWIPE_DIRECTION_ANY);//Swipe direction i.e any direction, here you can put any direction LEFT or RIGHT
+
+        CoordinatorLayout.LayoutParams layoutParams =
+                (CoordinatorLayout.LayoutParams) textCardView.getLayoutParams();
+
+        layoutParams.setBehavior(swipeDismissBehavior);//set swipe behaviour to Coordinator layout
+    }
+}</pre><p>
+<b>6</b>. Finally, all done. Now you can also make application using Swipe Dismiss Behavior.</p>
+<p>Thanks. <img src="https://s.w.org/images/core/emoji/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><a href="http://androhub.com/downloads/SwipeDismissCardView_Demo.zip" target="_blank"><b>Download Source Code – &gt;</b></a></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/swipe-dismiss-cardview-with-coordinator-layout/">Swipe Dismiss CardView with Coordinator Layout</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/swipe-dismiss-cardview-with-coordinator-layout/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1276</post-id>	</item>
+		<item>
+		<title>Android Toolbar Animation Using Design Support Library</title>
+		<link>http://www.androhub.com/android-toolbar-animation-using-design-support-library/</link>
+		<comments>http://www.androhub.com/android-toolbar-animation-using-design-support-library/#respond</comments>
+		<pubDate>Fri, 02 Oct 2015 08:24:11 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android CardView]]></category>
+		<category><![CDATA[Android Material Design]]></category>
+		<category><![CDATA[Android RecyclerView]]></category>
+		<category><![CDATA[Android ToolBar]]></category>
+		<category><![CDATA[Android UI Design]]></category>
+		<category><![CDATA[android cardview]]></category>
+		<category><![CDATA[android recyclerview]]></category>
+		<category><![CDATA[appbar layout]]></category>
+		<category><![CDATA[cardview]]></category>
+		<category><![CDATA[collapsing toolbar layout]]></category>
+		<category><![CDATA[floating action button]]></category>
+		<category><![CDATA[Material Design]]></category>
+		<category><![CDATA[recycler view]]></category>
+		<category><![CDATA[recyclerview]]></category>
+		<category><![CDATA[ToolBar]]></category>
+		<category><![CDATA[toolbar animation]]></category>
+		<category><![CDATA[ui design]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=675</guid>
+		<description><![CDATA[<p>With the new Design support library for Android, it has become easier for us to create some great animations with minimal effort. We have seen WhatsApp profile view design with user image hide on scrolling. For that we need Design Support Library. In one of my earlier tutorial i had shown how to hide and show [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-toolbar-animation-using-design-support-library/">Android Toolbar Animation Using Design Support Library</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>With the new Design support library for Android, it has become easier for us to create some great animations with minimal effort.</p>
+<p>We have seen WhatsApp profile view design with user image hide on scrolling. For that we need Design Support Library. In one of my earlier tutorial i had shown how to hide and show ToolBar you can see the <a href="http://androhub.com/android-material-design-tabs-using-tablayout/" target="_blank">tutorial here</a>.</p>
+<p>For this tutorial you need to learn how to implement material design in android that you can <a href="http://androhub.com/android-toolbar/" target="_blank">check here</a>.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to implement ToolBar Animation using Design Support Library.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_27162" width="602" height="339" src="https://www.youtube.com/embed/RH3zaLO8H4E?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>build.gradle </strong>and include this libraries show below:</p><pre class="crayon-plain-tag">dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:design:23.0.1'
+    compile 'com.android.support:recyclerview-v7:23.0.1'
+    compile 'com.android.support:cardview-v7:23.0.1'
+    compile 'com.android.support:palette-v7:23.0.1'
+}</pre><p>
+<b>3</b>. Open <strong>res ⇒ values</strong> and create a new xml file naming <em>colors.xml </em>and add the following colors to it.<strong>   </strong></p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+
+    &lt;color name="colorPrimary"&gt;#2196F3&lt;/color&gt;
+    &lt;color name="colorPrimaryDark"&gt;#1976D2&lt;/color&gt;
+    &lt;color name="colorAccent"&gt;#BBDEFB&lt;/color&gt;
+    &lt;color name="textColorPrimary"&gt;#FFFFFF&lt;/color&gt;
+    &lt;color name="windowBackground"&gt;#FFFFFF&lt;/color&gt;
+    &lt;color name="navigationBarColor"&gt;#000000&lt;/color&gt;
+    &lt;color name="black_trans"&gt;#14000000&lt;/color&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>4</b>. For material design we need to modify to our styles.xml file by adding below codes :</p><pre class="crayon-plain-tag">&lt;resources&gt;
+
+    &lt;style name="AppBaseTheme" parent="AppTheme" /&gt;
+
+    &lt;!-- Base application theme. --&gt;
+    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"&gt;
+        &lt;!-- Customize your theme here. --&gt;
+
+        &lt;item name="android:windowDisablePreview"&gt;true&lt;/item&gt;
+        &lt;item name="windowActionBar"&gt;false&lt;/item&gt;
+
+        &lt;item name="android:textColorPrimary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:textColorSecondary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="actionMenuTextColor"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:windowNoTitle"&gt;true&lt;/item&gt;
+        &lt;item name="colorPrimary"&gt;@color/colorPrimary&lt;/item&gt;
+        &lt;item name="colorPrimaryDark"&gt;@color/colorPrimaryDark&lt;/item&gt;
+        &lt;item name="colorAccent"&gt;@color/colorAccent&lt;/item&gt;
+
+
+    &lt;/style&gt;
+
+&lt;/resources&gt;</pre><p>
+Now, for 21 Api Level we need to create a new folder  under <em>res</em> directory naming <em>values-v21 </em>and create styles.xml file and add this code to it :</p><pre class="crayon-plain-tag">&lt;resources&gt;
+
+
+    &lt;!-- Base application theme. --&gt;
+    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"&gt;
+        &lt;!-- Customize your theme here. --&gt;
+
+        &lt;item name="android:windowDisablePreview"&gt;true&lt;/item&gt;
+        &lt;item name="windowActionBar"&gt;false&lt;/item&gt;
+        &lt;item name="android:textColorPrimary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:textColorSecondary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="actionMenuTextColor"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:windowNoTitle"&gt;true&lt;/item&gt;
+        &lt;item name="colorPrimary"&gt;@color/colorPrimary&lt;/item&gt;
+        &lt;item name="colorPrimaryDark"&gt;@color/colorPrimaryDark&lt;/item&gt;
+        &lt;item name="colorAccent"&gt;@color/colorAccent&lt;/item&gt;
+        &lt;item name="android:navigationBarColor"&gt;@color/colorPrimary&lt;/item&gt;
+        &lt;item name="android:windowContentTransitions"&gt;true&lt;/item&gt;
+        &lt;item name="android:windowAllowEnterTransitionOverlap"&gt;true&lt;/item&gt;
+        &lt;item name="android:windowAllowReturnTransitionOverlap"&gt;true&lt;/item&gt;
+        &lt;item name="android:windowSharedElementEnterTransition"&gt;@android:transition/move&lt;/item&gt;
+        &lt;item name="android:windowSharedElementExitTransition"&gt;@android:transition/move&lt;/item&gt;
+
+
+    &lt;/style&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>5</b>. Now create a layout xml file naming <em>activity_main.xml </em>and add the below code to it. This code will help us to do toolbar animation by hiding image. The parent should be CoordinatorLayout and inside that we need AppBarLayout inside this add CollapsingToolbarLayout that will help us to achieve the animation.</p>
+<p>You must set the <em>layout_scrollFlags</em> for the CollapsingToolbarLayout :</p>
+<ul>
+<li><strong>scroll</strong>: this flag should be set for all views that want to scroll off the screen – for views that do not use this flag, they’ll remain pinned to the top of the screen</li>
+</ul>
+<ul>
+<li><strong>exitUntilCollapsed</strong>: this flag causes the view to scroll off until it is ‘collapsed’ (its minHeight) before exiting.</li>
+</ul>
+<p>In CollapsingToolbarLayout add this flags :</p><pre class="crayon-plain-tag">app:layout_scrollFlags="scroll|exitUntilCollapsed"</pre><p>
+Now put your ImageView inside CollapseToolbar similarly you can put here any view that you want to hide on scroll and add the collapse mode:</p><pre class="crayon-plain-tag">app:layout_collapseMode="parallax"</pre><p>
+The Toolbar must use <em>pin</em> as its <em>collapseMode<strong> </strong></em>because we want the Toolbar to persist and remain on top as the user scrolls down. Note I haven’t set any color for the Toolbar. That will be taken care of by the CollapsingToolbarLayout which will dynamically pick a color from our image and set it to the Toolbar on scroll.</p>
+<p>Now add RecyclerView or any your view with below layout behaviour:</p><pre class="crayon-plain-tag">app:layout_behavior="@string/appbar_scrolling_view_behavior"</pre><p>
+</p><pre class="crayon-plain-tag">&lt;android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"&gt;
+
+    &lt;android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"&gt;
+
+        &lt;android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginBottom="32dp"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"&gt;
+
+            &lt;!--  Your View that you want to hide on animation --&gt;
+            &lt;ImageView
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax" /&gt;
+
+            &lt;!-- Your toolbar should always below your View otherwise it won't be visible  --&gt;
+            &lt;android.support.v7.widget.Toolbar
+                android:id="@+id/toolBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" /&gt;
+        &lt;/android.support.design.widget.CollapsingToolbarLayout&gt;
+    &lt;/android.support.design.widget.AppBarLayout&gt;
+
+    &lt;android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" /&gt;
+
+    &lt;android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:clickable="true"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/colorPrimary"
+        app:elevation="6dp"
+        app:layout_anchor="@+id/appbar"
+        app:layout_anchorGravity="bottom|right|end" /&gt;
+
+&lt;/android.support.design.widget.CoordinatorLayout&gt;</pre><p>
+<b>6</b>. Since we are using RecyclerView so we need custom layout. So create custom layout naming item_row.xml and add the code.</p>
+<p>If you want to learn how to implement recycler view than you can see my <a href="http://androhub.com/android-recyclerview/" target="_blank">RecyclerView tutorial</a>.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="7dp"&gt;
+
+    &lt;TextView
+        android:id="@+id/cardTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="Card Title"
+        android:textColor="#000000"
+        android:textSize="17sp" /&gt;
+
+&lt;/android.support.v7.widget.CardView&gt;</pre><p>
+<b>7</b>. Now create a ViewHolder class for RecyclerView naming <em>DemoViewHolder.java </em>and add the following code.</p><pre class="crayon-plain-tag">package com.androidtoolbaranimation_demo;
+
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
+
+/**
+ * Created by SONU on 25/09/15.
+ */
+public class DemoViewHolder  extends RecyclerView.ViewHolder {
+
+
+public TextView title;
+
+
+public DemoViewHolder(View view) {
+        super(view);
+
+
+        this.title = (TextView) view.findViewById(R.id.cardTitle);
+
+}
+        }</pre><p>
+<b>8</b>. Now create RecyclerViewAdapter class naming <em>RecyclerView_Adapter.java</em> and add the following code.</p><pre class="crayon-plain-tag">package com.androidtoolbaranimation_demo;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
+import java.util.ArrayList;
+
+/**
+ * Created by SONU on 25/09/15.
+ */
+public class RecyclerView_Adapter extends
+        RecyclerView.Adapter&lt;DemoViewHolder&gt; {
+    private ArrayList&lt;String&gt; arrayList;
+    private Context context;
+
+
+    public RecyclerView_Adapter(Context context,
+                                ArrayList&lt;String&gt; arrayList) {
+        this.context = context;
+        this.arrayList = arrayList;
+
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return (null != arrayList ? arrayList.size() : 0);
+
+    }
+
+    @Override
+    public void onBindViewHolder(DemoViewHolder holder,
+                                 int position) {
+
+
+        final DemoViewHolder mainHolder = (DemoViewHolder) holder;
+        //Setting text over textview
+        mainHolder.title.setText(arrayList.get(position));
+
+    }
+
+    @Override
+    public DemoViewHolder onCreateViewHolder(
+            ViewGroup viewGroup, int viewType) {
+        LayoutInflater mInflater = LayoutInflater.from(viewGroup.getContext());
+
+        ViewGroup mainGroup = (ViewGroup) mInflater.inflate(
+                R.layout.item_row, viewGroup, false);
+        DemoViewHolder mainHolder = new DemoViewHolder(mainGroup) {
+            @Override
+            public String toString() {
+                return super.toString();
+            }
+        };
+
+
+        return mainHolder;
+
+    }
+
+
+}</pre><p>
+<b>9</b>. Finally come to your <em>MainActivity.java</em> and add the following code. In this we have to set title to CollapsingToolbarLayout only otherwise it won&#8217;t show title.</p>
+<p>I had uses the palette that will generate the color based on our image in AsyncTask and set it over Toolbar.</p><pre class="crayon-plain-tag">package com.androidtoolbaranimation_demo;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.graphics.Palette;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+    private static RecyclerView recyclerView;
+    private static Toolbar toolbar;
+    private static CollapsingToolbarLayout collapsingToolbarLayout;
+    int mutedColor = R.attr.colorPrimary;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        toolbar = (Toolbar)findViewById(R.id.toolBar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout.setTitle("Toolbar Animation Demo");//Set Title over collapsing toolbar layout
+
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
+                R.drawable.background);
+
+      // It will generate colors based on the image in an AsyncTask.
+        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+            @SuppressWarnings("ResourceType")
+            @Override
+            public void onGenerated(Palette palette) {
+
+                mutedColor = palette.getMutedColor(R.color.colorPrimary);
+                collapsingToolbarLayout.setContentScrimColor(mutedColor);
+                collapsingToolbarLayout.setStatusBarScrimColor(R.color.black_trans);
+            }
+        });
+        setRecyclerView();
+    }
+
+    //Setting recycler view
+    private void setRecyclerView() {
+
+        recyclerView = (RecyclerView)
+                findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView
+                .setLayoutManager(new LinearLayoutManager(MainActivity.this));//Linear Items
+
+
+        ArrayList&lt;String&gt; arrayList = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 20; i++) {
+            arrayList.add("Card Item " + i);//Adding items to recycler view
+        }
+        RecyclerView_Adapter adapter = new RecyclerView_Adapter(MainActivity.this, arrayList);
+        recyclerView.setAdapter(adapter);// set adapter on recyclerview
+
+    }
+}</pre><p>
+<b>10</b>. Finally, all done  –  run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/AndroidToolbarAnimation_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-toolbar-animation-using-design-support-library/">Android Toolbar Animation Using Design Support Library</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-toolbar-animation-using-design-support-library/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">675</post-id>	</item>
+		<item>
+		<title>Android Staggered and Horizontal RecyclerView</title>
+		<link>http://www.androhub.com/android-staggered-and-horizontal-recyclerview/</link>
+		<comments>http://www.androhub.com/android-staggered-and-horizontal-recyclerview/#comments</comments>
+		<pubDate>Tue, 29 Sep 2015 04:45:24 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android CardView]]></category>
+		<category><![CDATA[Android Material Design]]></category>
+		<category><![CDATA[Android RecyclerView]]></category>
+		<category><![CDATA[android cardview]]></category>
+		<category><![CDATA[android recyclerview]]></category>
+		<category><![CDATA[cardview]]></category>
+		<category><![CDATA[custom listview]]></category>
+		<category><![CDATA[dynamic size grid view]]></category>
+		<category><![CDATA[horizontal recyclerview]]></category>
+		<category><![CDATA[listview]]></category>
+		<category><![CDATA[recycler view]]></category>
+		<category><![CDATA[recyclerview]]></category>
+		<category><![CDATA[staggered gridview]]></category>
+		<category><![CDATA[staggered recycler view]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=678</guid>
+		<description><![CDATA[<p>In my earlier tutorials of RecyclerView we had learn how to use RecyclerView to create ListView and GridView items. Today we are going to create Staggered GridView and Horizontal RecyclerView. Staggered GridView Staggered GridView is nothing but GridView with random grid sizes that look nice in app. To achieve this we need  StaggeredGridLayoutManager and the syntax [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-staggered-and-horizontal-recyclerview/">Android Staggered and Horizontal RecyclerView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>In my <a href="http://androhub.com/android-recyclerview/" target="_blank">earlier tutorials</a> of RecyclerView we had learn how to use RecyclerView to create ListView and GridView items. Today we are going to create Staggered GridView and Horizontal RecyclerView.</p>
+<h3>Staggered GridView</h3>
+<p>Staggered GridView is nothing but GridView with random grid sizes that look nice in app. To achieve this we need  <span class="s1"><a href="https://developer.android.com/intl/ru/reference/android/support/v7/widget/StaggeredGridLayoutManager.html" target="_blank">StaggeredGridLayoutManager</a> and the syntax is shown below :</span></p><pre class="crayon-plain-tag">recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));</pre><p>
+Here 2 is the no. of columns that you want in single row.</p>
+<h3>Horizontal RecyclerView</h3>
+<p>In earlier android we need to create a custom class for horizontal listview but in latest RecyclerView library we don&#8217;t need this thing we can achieve this thing in simple one step :</p><pre class="crayon-plain-tag">recyclerView.setLayoutManager(new LinearLayoutManager(RecyclerView_Activity.this, LinearLayoutManager.HORIZONTAL, false));</pre><p>
+Here we have to set <em>LinearLayoutManager</em> to <em>HORIZONTAL</em> or <em>VERTICAL</em> according to our need.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to use RecyclerView for Staggered GridView and Horizontal ListView.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_33682" width="602" height="339" src="https://www.youtube.com/embed/QzR2iH0gUrU?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>build.gradle </strong>and include the recyclerview library.</p><pre class="crayon-plain-tag">dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:cardview-v7:23.0.1'
+    compile 'com.android.support:recyclerview-v7:23.0.1'
+}</pre><p>
+<b>3</b>. For recyclerview create a xml file naming recyclerview.xml and add the following code.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;!--  Recycler View  --&gt;
+    &lt;android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recycler_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" /&gt;</pre><p>
+<b>4</b>. Now for recycler view we have to create a custom layout naming <em>item_row.xml</em> and add the following code.</p>
+<p>If you want to learn more about recycler view read this <a href="http://androhub.com/android-recyclerview/" target="_blank">tutorial</a>.</p><pre class="crayon-plain-tag">&lt;android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardCornerRadius="8dp"
+ &gt;
+
+    &lt;!--   Recycler View Item Row   --&gt;
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:layout_height="fill_parent"&gt;
+
+
+        &lt;ImageView
+            android:id="@+id/image"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop" /&gt;
+
+        &lt;TextView
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:gravity="center"
+            android:background="#FF2259"/&gt;
+
+    &lt;/LinearLayout&gt;
+
+&lt;/android.support.v7.widget.CardView&gt;</pre><p>
+<b>5</b>. Create a getter and setter class naming <em>Data_Model.java </em>and add the following code.</p><pre class="crayon-plain-tag">package com.androidstaggeredgridlayoutmanager_demo;
+
+/**
+ * Created by SONU on 25/09/15.
+ */
+public class Data_Model {
+
+    // Getter and Setter model for recycler view items
+    private String title;
+    private int image;
+
+    public Data_Model(String title,  int image) {
+
+        this.title = title;
+
+        this.image = image;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+
+
+    public int getImage() {
+        return image;
+    }
+}</pre><p>
+<b>6</b>. Now create ViewHolder class naming <em>RecyclerViewHolder.java</em> and add the following code.</p><pre class="crayon-plain-tag">package com.androidstaggeredgridlayoutmanager_demo;
+
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+/**
+ * Created by SONU on 25/09/15.
+ */
+public class RecyclerViewHolder extends RecyclerView.ViewHolder  {
+    // View holder for gridview recycler view as we used in listview
+    public TextView title;
+    public ImageView imageview;
+
+
+
+
+    public RecyclerViewHolder(View view) {
+        super(view);
+        // Find all views ids
+
+        this.title = (TextView) view
+                .findViewById(R.id.title);
+        this.imageview = (ImageView) view
+                .findViewById(R.id.image);
+
+
+    }
+
+
+
+}</pre><p>
+<b>7</b>. Now create a adapter class for recyclerview naming <em>RecyclerView_Adapter.java </em>and add the following code.</p><pre class="crayon-plain-tag">package com.androidstaggeredgridlayoutmanager_demo;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
+import java.util.ArrayList;
+
+/**
+ * Created by SONU on 25/09/15.
+ */
+public class RecyclerView_Adapter extends
+        RecyclerView.Adapter&lt;RecyclerViewHolder&gt; {// Recyclerview will extend to
+    // recyclerview adapter
+    private ArrayList&lt;Data_Model&gt; arrayList;
+    private Context context;
+
+    public RecyclerView_Adapter(Context context,
+                                     ArrayList&lt;Data_Model&gt; arrayList) {
+        this.context = context;
+        this.arrayList = arrayList;
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return (null != arrayList ? arrayList.size() : 0);
+
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+        final Data_Model model = arrayList.get(position);
+
+        RecyclerViewHolder mainHolder = (RecyclerViewHolder) holder;// holder
+
+        Bitmap image = BitmapFactory.decodeResource(context.getResources(),
+                model.getImage());// This will convert drawbale image into
+        // bitmap
+
+        // setting title
+        mainHolder.title.setText(model.getTitle());
+
+        mainHolder.imageview.setImageBitmap(image);
+
+
+
+    }
+
+    @Override
+    public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+
+        // This method will inflate the custom layout and return as viewholder
+        LayoutInflater mInflater = LayoutInflater.from(viewGroup.getContext());
+
+        ViewGroup mainGroup = (ViewGroup) mInflater.inflate(
+                R.layout.item_row, viewGroup, false);
+        RecyclerViewHolder listHolder = new RecyclerViewHolder(mainGroup);
+        return listHolder;
+
+    }
+
+}</pre><p>
+<b>8</b>. Now create a new layout xml file naming <em>activity_main.xml </em>and add the following code. In this i am using two buttons for Staggered gridview and horizontal recyclerview.</p><pre class="crayon-plain-tag">&lt;LinearLayout android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+  &gt;
+    &lt;!--  Two Buttons to Open  different recycler view  --&gt;
+
+    &lt;Button android:text="@string/staggeredgrid" android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/staggeredRecyclerViewBtn"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="17sp"
+        android:textColor="#000000"/&gt;
+
+    &lt;Button android:text="@string/horizontalrecyclerview" android:layout_wi       dth="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontalRecyclerViewBtn"
+        android:gravity="center"
+        android:textSize="17sp"
+        android:padding="10dp"
+        android:textColor="#000000"/&gt;
+&lt;/LinearLayout&gt;</pre><p>
+<b>9</b>. Open your <em>MainActivity.java </em>and add the following code. In this code a new activity opens on both button click and a data is pass via intent to next activity.</p><pre class="crayon-plain-tag">package com.androidstaggeredgridlayoutmanager_demo;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+private static Button staggeredRecyclerView, horizontalRecyclerView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        staggeredRecyclerView = (Button)findViewById(R.id.staggeredRecyclerViewBtn);
+        horizontalRecyclerView = (Button)findViewById(R.id.horizontalRecyclerViewBtn);
+
+        staggeredRecyclerView.setOnClickListener(this);
+        horizontalRecyclerView.setOnClickListener(this);
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.staggeredRecyclerViewBtn:
+                OpenRecyclerViewActivity("staggered");
+                break;
+            case R.id.horizontalRecyclerViewBtn:
+                OpenRecyclerViewActivity("horizontal");
+                break;
+
+        }
+
+    }
+
+    //Open Recycler View activity and pass a string to notify which recyclerview is to setup
+    private void OpenRecyclerViewActivity(String navigateFrom){
+        Intent in = new Intent(MainActivity.this, RecyclerView_Activity.class);
+        in.putExtra("navigateFrom",navigateFrom);
+        startActivity(in);
+    }
+}</pre><p>
+<b>10</b>. In above we are opening new activity so we need to create a new activity naming <em>RecyclerView_Activity.java</em> and add the following code. In this code we get the intent data and according to that intent data we display the recyclerview i.e horizontal or staggered.</p><pre class="crayon-plain-tag">package com.androidstaggeredgridlayoutmanager_demo;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.MenuItem;
+
+import java.util.ArrayList;
+
+/**
+ * Created by SONU on 25/09/15.
+ */
+public class RecyclerView_Activity extends AppCompatActivity {
+    private static RecyclerView recyclerView;
+
+    //String and Integer array for Recycler View Items
+    public static final String[] TITLES= {"Hood","Full Sleeve Shirt","Shirt","Jean Jacket","Jacket"};
+    public static final Integer[] IMAGES= {R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.four,R.drawable.five,};
+
+
+    private static String navigateFrom;//String to get Intent Value
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.recyclerview);
+        initViews();
+        populatRecyclerView();
+    }
+
+    // Initialize the view
+    private void initViews() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//Set Back Icon on Activity
+
+        navigateFrom = getIntent().getStringExtra("navigateFrom");//Get Intent Value in String
+
+        recyclerView = (RecyclerView)
+                findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+
+        //Set RecyclerView type according to intent value
+        if (navigateFrom.equals("horizontal")) {
+            getSupportActionBar().setTitle("Horizontal Recycler View");
+            recyclerView
+                    .setLayoutManager(new LinearLayoutManager(RecyclerView_Activity.this, LinearLayoutManager.HORIZONTAL, false));
+        } else {
+            getSupportActionBar().setTitle("Staggered GridLayout Manager");
+            recyclerView
+                    .setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));// Here 2 is no. of columns to be displayed
+
+        }
+    }
+
+
+    // populate the list view by adding data to arraylist
+    private void populatRecyclerView() {
+        ArrayList&lt;Data_Model&gt; arrayList = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; TITLES.length; i++) {
+            arrayList.add(new Data_Model(TITLES[i],IMAGES[i]));
+        }
+        RecyclerView_Adapter  adapter = new RecyclerView_Adapter(RecyclerView_Activity.this, arrayList);
+        recyclerView.setAdapter(adapter);// set adapter on recyclerview
+        adapter.notifyDataSetChanged();// Notify the adapter
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}</pre><p>
+<b>11</b>. Finally add the second activity i.e. <em>RecyclerView_Activity </em>to your Manifest file.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.androidstaggeredgridlayoutmanager_demo" &gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+
+        &lt;/activity&gt;
+        &lt;activity android:name=".RecyclerView_Activity"
+
+/&gt;    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>12</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/AndroidStaggeredGridLayoutManager_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-staggered-and-horizontal-recyclerview/">Android Staggered and Horizontal RecyclerView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-staggered-and-horizontal-recyclerview/feed/</wfw:commentRss>
+		<slash:comments>17</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">678</post-id>	</item>
+		<item>
+		<title>Android Material Design Tabs Using TabLayout</title>
+		<link>http://www.androhub.com/android-material-design-tabs-using-tablayout/</link>
+		<comments>http://www.androhub.com/android-material-design-tabs-using-tablayout/#comments</comments>
+		<pubDate>Thu, 17 Sep 2015 11:01:11 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android CardView]]></category>
+		<category><![CDATA[Android Material Design]]></category>
+		<category><![CDATA[Android RecyclerView]]></category>
+		<category><![CDATA[Android Tabs]]></category>
+		<category><![CDATA[Android ViewPager]]></category>
+		<category><![CDATA[android cardview]]></category>
+		<category><![CDATA[android fragments]]></category>
+		<category><![CDATA[android recyclerview]]></category>
+		<category><![CDATA[android toolbar]]></category>
+		<category><![CDATA[android viewpager]]></category>
+		<category><![CDATA[cardview]]></category>
+		<category><![CDATA[custom adapter]]></category>
+		<category><![CDATA[fragments]]></category>
+		<category><![CDATA[recyclerview]]></category>
+		<category><![CDATA[tabs]]></category>
+		<category><![CDATA[ToolBar]]></category>
+		<category><![CDATA[ViewPager]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=665</guid>
+		<description><![CDATA[<p>In earlier we use ActionBar Tabs over ViewPager that we had done in earlier post that you can check here. But this ActionBar Tabs is deprecated in material design. So for that we need Material Design Tabs for implementing tabs in our app. We have seen Google Play Store, Whatsapp and many more are using [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-material-design-tabs-using-tablayout/">Android Material Design Tabs Using TabLayout</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>In earlier we use <a href="http://developer.android.com/intl/ru/guide/topics/ui/actionbar.html" target="_blank">ActionBar </a>Tabs over <a href="http://developer.android.com/intl/ru/reference/android/support/v4/view/ViewPager.html" target="_blank">ViewPager </a>that we had done in earlier post that you can check <a href="http://androhub.com/android-tab-with-swipeable-views-using-viewpager/" target="_blank">here</a>. But this ActionBar Tabs is deprecated in material design. So for that we need Material Design Tabs for implementing tabs in our app. We have seen Google Play Store, Whatsapp and many more are using Material Design Tabs.</p>
+<p>So in today&#8217;s article we are going to learn how to implement this Material Design Tabs in our app. For this we should have some knowledge about Material Design that you can check in this tutorial of <a href="http://androhub.com/android-toolbar/" target="_blank">Material Toolbar tutorial</a>.</p>
+<p>Before starting we need three libraries to be included in our build.gradle file :</p><pre class="crayon-plain-tag">apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.0"
+
+    defaultConfig {
+        applicationId "tabbardemo.com.materialdesigntabs_demo"
+        minSdkVersion 8
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:design:23.0.1'
+    compile 'com.android.support:cardview-v7:23.0.1'
+    compile 'com.android.support:recyclerview-v7:23.0.1'
+}</pre><p>
+The design library is necessary for implementing tabs.</p>
+<p>Now for implementing Tabs we need to know about something new in design library widgets that are:</p>
+<ul>
+<li><a href="https://developer.android.com/intl/ru/reference/android/support/design/widget/CoordinatorLayout.html" target="_blank">CoordinatorLayout</a></li>
+<li><a href="https://developer.android.com/intl/ru/reference/android/support/design/widget/AppBarLayout.html" target="_blank">AppBarLayout</a></li>
+<li><a href="https://developer.android.com/intl/ru/reference/android/support/design/widget/TabLayout.html" target="_blank">TabLayout</a></li>
+</ul>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to implement Material Design Tabs by using TabLayout and  also how to hide and show toolbar on scroll.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_32532" width="602" height="339" src="https://www.youtube.com/embed/DyyNxJtYTBc?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open<strong><em> res=&gt;values</em></strong> and inside values directory create a new xml file naming<strong><em> colors.xml</em></strong> and the following colors to that file.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+    &lt;color name="colorPrimary"&gt;#D32F2F&lt;/color&gt;
+    &lt;color name="colorPrimaryDark"&gt;#F44336&lt;/color&gt;
+    &lt;color name="textColorPrimary"&gt;#FFFFFF&lt;/color&gt;
+    &lt;color name="windowBackground"&gt;#FFFFFF&lt;/color&gt;
+    &lt;color name="navigationBarColor"&gt;#000000&lt;/color&gt;
+    &lt;color name="colorAccent"&gt;#C62828&lt;/color&gt;
+    &lt;color name="blue"&gt;#03A9F4&lt;/color&gt;
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Now open<strong><em> res=&gt;values</em></strong> and inside values directory open <em><strong>styles.xml</strong> </em>file and add the following style to it. This style is necessary for material design.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+
+    &lt;style name="AppBaseTheme" parent="@style/AppTheme" /&gt;
+
+    &lt;!-- Base application theme. --&gt;
+    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"&gt;
+        &lt;!-- Customize your theme here. --&gt;
+
+        &lt;item name="android:windowDisablePreview"&gt;true&lt;/item&gt;
+        &lt;item name="windowActionBar"&gt;false&lt;/item&gt;
+        &lt;item name="android:textColorPrimary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:textColorSecondary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="actionMenuTextColor"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:windowNoTitle"&gt;true&lt;/item&gt;
+        &lt;item name="colorPrimary"&gt;@color/colorPrimary&lt;/item&gt;
+        &lt;item name="colorPrimaryDark"&gt;@color/colorPrimaryDark&lt;/item&gt;
+        &lt;item name="colorAccent"&gt;@color/colorAccent&lt;/item&gt;
+
+    &lt;/style&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>4</b>. For Lollipop versions we need to create a new directory under <strong>res</strong> directory naming <em><strong>values-v21</strong></em> and under this values directory create new <em><strong>styles.xml</strong></em> file and add the following style for lollipop versions.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+
+
+
+    &lt;!-- Base application theme. --&gt;
+    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"&gt;
+        &lt;!-- Customize your theme here. --&gt;
+
+        &lt;item name="android:windowDisablePreview"&gt;true&lt;/item&gt;
+        &lt;item name="windowActionBar"&gt;false&lt;/item&gt;
+        &lt;item name="android:textColorPrimary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:textColorSecondary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="actionMenuTextColor"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:windowNoTitle"&gt;true&lt;/item&gt;
+        &lt;item name="colorPrimary"&gt;@color/colorPrimary&lt;/item&gt;
+        &lt;item name="colorPrimaryDark"&gt;@color/colorPrimaryDark&lt;/item&gt;
+        &lt;item name="colorAccent"&gt;@color/colorAccent&lt;/item&gt;
+        &lt;item name="android:windowContentTransitions"&gt;true&lt;/item&gt;
+        &lt;item name="android:navigationBarColor"&gt;@color/colorPrimary&lt;/item&gt;
+        &lt;item name="android:windowAllowEnterTransitionOverlap"&gt;true&lt;/item&gt;
+        &lt;item name="android:windowAllowReturnTransitionOverlap"&gt;true&lt;/item&gt;
+        &lt;item name="android:windowSharedElementEnterTransition"&gt;@android:transition/move&lt;/item&gt;
+        &lt;item name="android:windowSharedElementExitTransition"&gt;@android:transition/move&lt;/item&gt;
+
+    &lt;/style&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>5</b>. Now create an <em>activity_main.xml</em> file under layout directory and add the following code this design will be going to be used for setting material design tabs.</p><pre class="crayon-plain-tag">&lt;android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"&gt;
+
+    &lt;!-- AppBar Layout   --&gt;
+    &lt;android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"&gt;
+
+        &lt;android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="fill_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" /&gt;
+        &lt;!-- Tab Layout for creating tabs --&gt;
+        &lt;android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" /&gt;
+    &lt;/android.support.design.widget.AppBarLayout&gt;
+    &lt;!-- Helps handing the Fragments for each Tab --&gt;
+    &lt;android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" /&gt;
+&lt;/android.support.design.widget.CoordinatorLayout&gt;</pre><p>
+The scroll flags for the Toolbar specify how it must behave upon scroll (i.e. its animation). <em>“scroll|enterAlways”</em> says make my Toolbar react to scroll events. Hide it when scrolling down, and reveal it when scrolling back up.</p>
+<p>This behavior will be indicated by our ViewPager which will be hold our Fragments. The Fragments hold our scrollable view. So when we scroll down a list, the Toolbar knows when to react.</p>
+<p><b>6</b>. Since we have to add fragments over viewpager so for that we need a layout for fragment also so we create a new layout naming <em>dummy_fragment.xml</em> and add the following code. In this design i had used recyclerview for listing items.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/blue"
+    android:gravity="center"
+    android:orientation="vertical"&gt;
+
+    &lt;!--  Recycler View  --&gt;
+    &lt;android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>7</b>. Now we have to create another layout for recyclerview row items naming <em>item_row.xml </em>and add the following code. In this code i had taken <a href="https://developer.android.com/intl/ru/reference/android/support/v7/widget/CardView.html" target="_blank">CardView </a>that is also an part of design for this we had included library of cardview. This will display items in cards.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="7dp"&gt;
+
+    &lt;TextView
+        android:id="@+id/cardTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="Card Title"
+        android:textColor="#000000"
+        android:textSize="17sp" /&gt;
+   
+&lt;/android.support.v7.widget.CardView&gt;</pre><p>
+<b>8</b>. Now create a <em>ViewHolder</em> java class for recyclerview item row naming <em>DemoViewHolder.java</em> and add the following code.</p>
+<p>If you are not aware hoe to use recyclerview in android then you can check my tutorial about <a href="http://androhub.com/android-recyclerview/" target="_blank">RecyclerView</a>.</p><pre class="crayon-plain-tag">package tabbardemo.com.materialdesigntabs_demo;
+
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
+
+/**
+ * Created by SONU on 31/08/15.
+ */
+public abstract class DemoViewHolder extends RecyclerView.ViewHolder {
+
+
+    public TextView title;
+
+
+    public DemoViewHolder(View view) {
+        super(view);
+
+
+        this.title = (TextView) view.findViewById(R.id.cardTitle);
+
+    }
+
+
+}</pre><p>
+<b>9</b>. After creating viewholder we need to create a adapter class for recyclerview naming <em>RecyclerView_Adapter.java.</em></p><pre class="crayon-plain-tag">package tabbardemo.com.materialdesigntabs_demo;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
+import java.util.ArrayList;
+
+/**
+ * Created by SONU on 10/09/15.
+ */
+public class RecyclerView_Adapter extends
+        RecyclerView.Adapter&lt;DemoViewHolder&gt; {
+    private ArrayList&lt;String&gt; arrayList;
+    private Context context;
+
+
+    public RecyclerView_Adapter(Context context,
+                                ArrayList&lt;String&gt; arrayList) {
+        this.context = context;
+        this.arrayList = arrayList;
+
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return (null != arrayList ? arrayList.size() : 0);
+
+    }
+
+    @Override
+    public void onBindViewHolder(DemoViewHolder holder,
+                                 int position) {
+
+
+        final DemoViewHolder mainHolder = (DemoViewHolder) holder;
+        //Setting text over textview
+        mainHolder.title.setText(arrayList.get(position));
+
+    }
+
+    @Override
+    public DemoViewHolder onCreateViewHolder(
+            ViewGroup viewGroup, int viewType) {
+        LayoutInflater mInflater = LayoutInflater.from(viewGroup.getContext());
+
+        ViewGroup mainGroup = (ViewGroup) mInflater.inflate(
+                R.layout.item_row, viewGroup, false);
+        DemoViewHolder mainHolder = new DemoViewHolder(mainGroup) {
+            @Override
+            public String toString() {
+                return super.toString();
+            }
+        };
+
+
+        return mainHolder;
+
+    }
+
+
+}</pre><p>
+<b>10</b>. Now come to your <em>MainActivity.java </em>and add the following code for setting Material Design Tabs over viewpager. In this activity we are using a <em>FragmentPagerAdapter </em>for setting fragment over viewpager and adding tabs over viewpager with title and finally attach the view pager to tabs.. We can also use tabListener for listening tab selection.</p>
+<p>Note <em><span class="beyondEnlighterJS EnlighterJS"><span class="">viewPager.</span><span class="me0">setCurrentItem</span><span class="br0">(</span><span class="">tab.</span><span class="me0">getPosition</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="">;</span></span> </em>This handles changing the fragment based on Tab click.</p><pre class="crayon-plain-tag">package tabbardemo.com.materialdesigntabs_demo;
+
+import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+    private static Toolbar toolbar;
+    private static ViewPager viewPager;
+    private static TabLayout tabLayout;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        setupViewPager(viewPager);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        tabLayout.setupWithViewPager(viewPager);//setting tab over viewpager
+
+        //Implementing tab selected listener over tablayout
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());//setting current selected item over viewpager
+                switch (tab.getPosition()) {
+                    case 0:
+                        Log.e("TAG","TAB1");
+                        break;
+                    case 1:
+                        Log.e("TAG","TAB2");
+                        break;
+                    case 2:
+                        Log.e("TAG","TAB3");
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+    }
+
+
+    //Setting View Pager
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFrag(new DummyFragment("ANDROID"), "ANDROID");
+        adapter.addFrag(new DummyFragment("iOS"), "iOS");
+        adapter.addFrag(new DummyFragment("WINDOWS"), "WINDOWS");
+        viewPager.setAdapter(adapter);
+    }
+
+
+    //View Pager fragments setting adapter class
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List&lt;Fragment&gt; mFragmentList = new ArrayList&lt;&gt;();//fragment arraylist
+        private final List&lt;String&gt; mFragmentTitleList = new ArrayList&lt;&gt;();//title arraylist
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+
+        //adding fragments and title method
+        public void addFrag(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
+}</pre><p>
+<b>11</b>. Finally we need to create a <em>DummyFragment.java </em>for placing a fragment over viewpager when tab is selected. In this class we are getting tab title via parameter and using it for setting array over recyclerview.</p>
+<p>If you ant to read more for fragments then you can read my tutorial about <a href="http://androhub.com/android-fragments/" target="_blank">Android Fragments</a>.</p><pre class="crayon-plain-tag">package tabbardemo.com.materialdesigntabs_demo;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import java.util.ArrayList;
+
+/**
+ * Created by SONU on 16/09/15.
+ */
+public class DummyFragment extends Fragment {
+    private View view;
+
+    private String title;//String for tab title
+
+    private static RecyclerView recyclerView;
+
+    public DummyFragment() {
+    }
+
+    public DummyFragment(String title) {
+        this.title = title;//Setting tab title
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.dummy_fragment, container, false);
+
+        setRecyclerView();
+        return view;
+
+    }
+    //Setting recycler view
+    private void setRecyclerView() {
+
+        recyclerView = (RecyclerView) view
+                .findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView
+                .setLayoutManager(new LinearLayoutManager(getActivity()));//Linear Items
+
+
+        ArrayList&lt;String&gt; arrayList = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 20; i++) {
+            arrayList.add(title+" Items " + i);//Adding items to recycler view
+        }
+        RecyclerView_Adapter adapter = new RecyclerView_Adapter(getActivity(), arrayList);
+        recyclerView.setAdapter(adapter);// set adapter on recyclerview
+
+    }
+}</pre><p>
+<b>12</b>. Finally all done, run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a title="Android Fragments" href="http://androhub.com/downloads/MaterialDesignTabs_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-material-design-tabs-using-tablayout/">Android Material Design Tabs Using TabLayout</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-material-design-tabs-using-tablayout/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">665</post-id>	</item>
+	</channel>
+</rss>

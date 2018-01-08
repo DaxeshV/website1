@@ -1,0 +1,2527 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Internet Connection &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-internet-connection/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Advance WebView</title>
+		<link>http://www.androhub.com/android-advance-webview/</link>
+		<comments>http://www.androhub.com/android-advance-webview/#comments</comments>
+		<pubDate>Fri, 30 Oct 2015 17:57:19 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android Internet Connection]]></category>
+		<category><![CDATA[Android UI Design]]></category>
+		<category><![CDATA[advance webview]]></category>
+		<category><![CDATA[android full screen]]></category>
+		<category><![CDATA[android styles]]></category>
+		<category><![CDATA[android webview]]></category>
+		<category><![CDATA[check internet connection]]></category>
+		<category><![CDATA[full screen]]></category>
+		<category><![CDATA[load url in webview]]></category>
+		<category><![CDATA[styles]]></category>
+		<category><![CDATA[webview]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=733</guid>
+		<description><![CDATA[<p>We had learn basic things about WebView in my earlier tutorial. In that tutorial i am showing how to load url in WebView. But in today&#8217;s tutorial we are going to learn some more things about WebView. The things that we are going to learn today are given below: 1 . Go Back  &#8211; We [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-advance-webview/">Android Advance WebView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>We had learn basic things about <a href="http://developer.android.com/intl/ru/reference/android/webkit/WebView.html" target="_blank">WebView</a> in my earlier <a href="http://androhub.com/android-webview/" target="_blank">tutorial</a>. In that tutorial i am showing how to load url in WebView. But in today&#8217;s tutorial we are going to learn some more things about WebView. The things that we are going to learn today are given below:</p>
+<p><strong>1 . Go Back</strong>  &#8211; We can go back to previous page in WebView if present.</p><pre class="crayon-plain-tag">if (webView.canGoBack())
+    webView.goBack();</pre><p>
+<strong>2 .</strong> <strong>Go Forward </strong> &#8211; We can go forward to next page in WebView if present.</p><pre class="crayon-plain-tag">if (webView.canGoForward())
+    webView.goForward();</pre><p>
+<strong>3.</strong> <strong>Refresh WebView </strong> &#8211; We can fetch currentWebView url and reload the WebView.</p><pre class="crayon-plain-tag">String url = webView.getUrl();//Get webview url</pre><p>
+</p><pre class="crayon-plain-tag">webView.loadUrl(url);//Load fetched Url</pre><p>
+4. <strong>Error Catching</strong> &#8211; We can catch errors thrown by WebView occurred by HTTP error,etc. inside <a href="http://developer.android.com/intl/ru/reference/android/webkit/WebViewClient.html" target="_blank">WebViewClient</a> class.</p><pre class="crayon-plain-tag">@Override
+public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+    super.onReceivedError(view, request, error);
+    Toast.makeText(MainActivity.this, &quot;Unexpected error occurred.Reload page again.&quot;, Toast.LENGTH_SHORT).show();
+
+}
+
+@Override
+public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
+    super.onReceivedHttpError(view, request, errorResponse);
+    Toast.makeText(MainActivity.this, &quot;Unexpected error occurred.Reload page again.&quot;, Toast.LENGTH_SHORT).show();
+
+}
+
+@Override
+public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+    super.onReceivedSslError(view, handler, error);
+    Toast.makeText(MainActivity.this, &quot;Unexpected SSL error occurred.Reload page again.&quot;, Toast.LENGTH_SHORT).show();
+
+}</pre><p>
+There are two other things apart from above four steps that we are going to learn are:</p>
+<p><strong>1. UserFriendly UI design &#8211; </strong>I am going to create a Custom Toolbar with some ImageViews as shown in video below.</p>
+<p><strong>2. No ActionBar Activity</strong> &#8211; Since I am creating custom toolbar so we don&#8217;t need <a href="http://developer.android.com/intl/ru/training/appbar/index.html" target="_blank">ActionBar</a> so for that we need our activity withoutActionBar.</p>
+<h2>Video Demo</h2>
+<p><iframe  id="_ytid_39335" width="602" height="339" src="https://www.youtube.com/embed/68WYJySOuJA?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Create a layout naming <em>activity_main.xml</em> and add the following xml code into it. In this code i had created a custom toolbar at top and added some ImageView and title to it and placed WebView below it.</p>
+<p>You can download icons from <a href="http://icons8.com" target="_blank">here</a>. This is a best site to download icons for all sizes, colours and of all app platforms.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"&gt;
+
+    &lt;RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFDFE"
+        android:minHeight="?attr/actionBarSize"&gt;
+
+        &lt;ImageView
+            android:id="@+id/webviewBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/imageview_selector"
+            android:padding="5dp"
+            android:src="@drawable/ic_back" /&gt;
+
+        &lt;ImageView
+            android:id="@+id/webviewForward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@+id/webviewBack"
+            android:background="@drawable/imageview_selector"
+            android:padding="5dp"
+            android:src="@drawable/ic_forward" /&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="5dp"
+            android:text="ANDROHUB"
+            android:textColor="#2196F3"
+            android:textSize="16sp" /&gt;
+
+        &lt;ImageView
+            android:id="@+id/webviewReload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_toLeftOf="@+id/webviewClose"
+            android:background="@drawable/imageview_selector"
+            android:padding="5dp"
+            android:src="@drawable/ic_refresh"
+            android:visibility="gone" /&gt;
+
+        &lt;ProgressBar
+            android:id="@+id/webViewProgressBar"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:layout_toLeftOf="@+id/webviewClose"
+            android:visibility="gone" /&gt;
+
+        &lt;ImageView
+            android:id="@+id/webviewClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/imageview_selector"
+            android:padding="5dp"
+            android:src="@drawable/ic_close" /&gt;
+
+    &lt;/RelativeLayout&gt;
+
+    &lt;View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="#7e7e7e" /&gt;
+
+
+    &lt;WebView
+        android:id="@+id/sitesWebView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" /&gt;
+&lt;/LinearLayout&gt;</pre><p>
+3. Now create a xml <em>drawable</em> file under drawable folder naming <em>imageview_selector.xml</em> for background selector for ImageViews.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;selector xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;item android:state_pressed="true"&gt;
+        &lt;shape android:shape="rectangle"&gt;
+            &lt;solid android:color="#cccacb" /&gt;
+        &lt;/shape&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+        &lt;shape android:shape="rectangle"&gt;
+            &lt;solid android:color="@android:color/transparent" /&gt;
+        &lt;/shape&gt;
+    &lt;/item&gt;
+&lt;/selector&gt;</pre><p>
+4. Now create a <em>MainActivity.java</em> and add the following code. In this code all above discussed steps are included.</p><pre class="crayon-plain-tag">package com.advancewebview;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.http.SslError;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
+import android.view.View;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static WebView webView;
+    private static ProgressBar webViewProgressBar;
+    private static ImageView back, forward, refresh, close;
+
+    private static final String webViewUrl = &quot;http://androhub.com&quot;;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initViews();
+        setUpWebView();
+        setListeners();
+    }
+
+    private void initViews() {
+        back = (ImageView) findViewById(R.id.webviewBack);
+        forward = (ImageView) findViewById(R.id.webviewForward);
+        refresh = (ImageView) findViewById(R.id.webviewReload);
+        close = (ImageView) findViewById(R.id.webviewClose);
+        webViewProgressBar = (ProgressBar) findViewById(R.id.webViewProgressBar);
+    }
+
+
+    private void setUpWebView() {
+        webView = (WebView) findViewById(R.id.sitesWebView);
+        webView.setWebViewClient(new MyWebViewClient());
+        webView.getSettings().setJavaScriptEnabled(true);
+        LoadWebViewUrl(webViewUrl);
+    }
+
+    private void setListeners() {
+        back.setOnClickListener(this);
+        forward.setOnClickListener(this);
+        refresh.setOnClickListener(this);
+        close.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.webviewBack:
+                isWebViewCanGoBack();
+                break;
+            case R.id.webviewForward:
+                if (webView.canGoForward())
+                    webView.goForward();
+                break;
+            case R.id.webviewReload:
+                String url = webView.getUrl();
+                LoadWebViewUrl(url);
+                break;
+            case R.id.webviewClose:
+                finish();
+                break;
+        }
+    }
+
+
+    private class MyWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+
+        }
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+            refresh.setVisibility(View.GONE);
+            if (!webViewProgressBar.isShown())
+                webViewProgressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+            refresh.setVisibility(View.VISIBLE);
+            if (webViewProgressBar.isShown())
+                webViewProgressBar.setVisibility(View.GONE);
+        }
+
+        @Override
+        public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+            super.onReceivedError(view, request, error);
+            refresh.setVisibility(View.VISIBLE);
+            if (webViewProgressBar.isShown())
+                webViewProgressBar.setVisibility(View.GONE);
+            Toast.makeText(MainActivity.this, &quot;Unexpected error occurred.Reload page again.&quot;, Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
+            super.onReceivedHttpError(view, request, errorResponse);
+            refresh.setVisibility(View.VISIBLE);
+            if (webViewProgressBar.isShown())
+                webViewProgressBar.setVisibility(View.GONE);
+            Toast.makeText(MainActivity.this, &quot;Unexpected error occurred.Reload page again.&quot;, Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+            super.onReceivedSslError(view, handler, error);
+            refresh.setVisibility(View.VISIBLE);
+            if (webViewProgressBar.isShown())
+                webViewProgressBar.setVisibility(View.GONE);
+            Toast.makeText(MainActivity.this, &quot;Unexpected SSL error occurred.Reload page again.&quot;, Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
+
+    // To handle &quot;Back&quot; key press event for WebView to go back to previous screen.
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            isWebViewCanGoBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+    private void isWebViewCanGoBack() {
+        if (webView.canGoBack())
+            webView.goBack();
+        else
+            finish();
+    }
+
+
+    private void LoadWebViewUrl(String url) {
+        if (isInternetConnected())
+            webView.loadUrl(url);
+        else {
+            refresh.setVisibility(View.VISIBLE);
+            Toast.makeText(MainActivity.this, &quot;Oops!! There is no internet connection. Please enable your internet connection.&quot;, Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+    public boolean isInternetConnected() {
+        // At activity startup we manually check the internet status and change
+        // the text status
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null &amp;amp;&amp;amp; networkInfo.isConnected())
+            return true;
+        else
+            return false;
+
+    }
+
+}</pre><p>
+5. To open url in WebView we need Internet Connection so for that we have to give “INTERNET” permission in Manifest file also we are checking internet connection before loading any url so for that we need “ACCESS_NETWORK_STATE” permission in Manifest file.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.advancewebview" &gt;
+
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:theme="@style/FullScreen"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+6. Finally add below FullScreen style code inside styles.xml file. This style is used for making our activity fullscreen as i mentioned above.</p><pre class="crayon-plain-tag">&lt;style name="FullScreen" parent="@style/Theme.AppCompat.Light"&gt;
+        &lt;item name="windowNoTitle"&gt;true&lt;/item&gt;
+        &lt;item name="windowActionBar"&gt;false&lt;/item&gt;
+        &lt;item name="android:windowFullscreen"&gt;true&lt;/item&gt;
+        &lt;item name="android:windowContentOverlay"&gt;@null&lt;/item&gt;
+&lt;/style&gt;</pre><p>
+<b>7</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Make sure to put http:// or https:// before loading url and change your url instead of <strong><a href="http://androhub.com/" target="_blank">androhub.com</a> </strong>or you can refer to my <a href="http://androhub.com/android-webview/" target="_blank">earlier tutorial</a> to load url by taking user input.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/AdvanceWebView.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-advance-webview/">Android Advance WebView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-advance-webview/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">733</post-id>	</item>
+		<item>
+		<title>Android Download Files &#038; Save</title>
+		<link>http://www.androhub.com/android-download-files-save/</link>
+		<comments>http://www.androhub.com/android-download-files-save/#comments</comments>
+		<pubDate>Thu, 29 Oct 2015 18:58:24 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Download Files]]></category>
+		<category><![CDATA[Android Internet Connection]]></category>
+		<category><![CDATA[check if sd card is present]]></category>
+		<category><![CDATA[check internet connection]]></category>
+		<category><![CDATA[create directory]]></category>
+		<category><![CDATA[create directory in SD Card]]></category>
+		<category><![CDATA[download doc files]]></category>
+		<category><![CDATA[download files]]></category>
+		<category><![CDATA[download image files]]></category>
+		<category><![CDATA[download mp3 files]]></category>
+		<category><![CDATA[download pdf files]]></category>
+		<category><![CDATA[download video files]]></category>
+		<category><![CDATA[Open directory in SD Card]]></category>
+		<category><![CDATA[SD Card]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=728</guid>
+		<description><![CDATA[<p>In this tutorial we are going to learn how to download pdf, doc , video, mp3, zip ,etc. files from server and save them in device memory. Below are certain things that we are going to learn in this tutorial :  1. Download Files &#8211; Download Files from Server Url. 2. Save Files &#8211; Create [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-download-files-save/">Android Download Files &#038; Save</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>In this tutorial we are going to learn how to download pdf, doc , video, mp3, zip ,etc. files from server and save them in device memory.</p>
+<p>Below are certain things that we are going to learn in this tutorial :</p>
+<p><strong> 1. Download Files &#8211;</strong> Download Files from Server Url.</p>
+<p><strong>2. Save Files &#8211;</strong> Create Folder in device and save the dowloaded files.</p>
+<p><strong>3. Download Multiple Files &#8211;</strong> Download Many Files at a time.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_79282" width="602" height="339" src="https://www.youtube.com/embed/FSggUwC4KeQ?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <b>res=&gt;values=strings.xml </b>and add the following strings to it.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;Android Download Demo&lt;/string&gt;
+
+    &lt;string name="download_Pdf"&gt;Download pdf&lt;/string&gt;
+    &lt;string name="download_Doc"&gt;Download Doc&lt;/string&gt;
+    &lt;string name="download_zip"&gt;Download Zip&lt;/string&gt;
+    &lt;string name="download_video"&gt;Download Video&lt;/string&gt;
+    &lt;string name="download_mp3"&gt;Download MP3&lt;/string&gt;
+    &lt;string name="openFolder"&gt;Open Downloaded Folder&lt;/string&gt;
+    &lt;string name="downloadStarted"&gt;Download Started…&lt;/string&gt;
+    &lt;string name="downloadCompleted"&gt;Download Completed…&lt;/string&gt;
+    &lt;string name="downloadFailed"&gt;Download Failed…&lt;/string&gt;
+    &lt;string name="downloadAgain"&gt;Download Again&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Create a xml layout naming <em>activity_main.xml</em> and add the following code. In this  layout there are some Buttons for showing downloading different type of files.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical"
+    android:padding="5dp"&gt;
+
+    &lt;!--  Download Pdf Layout  --&gt;
+    &lt;Button
+        android:id="@+id/downloadPdf"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/download_Pdf" /&gt;
+
+    &lt;!--  Download Doc Layout  --&gt;
+    &lt;Button
+        android:id="@+id/downloadDoc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/download_Doc" /&gt;
+
+    &lt;!--  Download Zip File Layout  --&gt;
+    &lt;Button
+        android:id="@+id/downloadZip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/download_zip" /&gt;
+
+    &lt;!--  Download Video File Layout  --&gt;
+    &lt;Button
+        android:id="@+id/downloadVideo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/download_video" /&gt;
+
+    &lt;!--  Download MP3 File Layout  --&gt;
+    &lt;Button
+        android:id="@+id/downloadMp3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/download_mp3" /&gt;
+
+    &lt;!--  Open Downloaded Folder  --&gt;
+    &lt;Button
+        android:id="@+id/openDownloadedFolder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/openFolder" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>4</b>. Create a <em>Utils.java</em> class and write all download urls here.</p><pre class="crayon-plain-tag">package com.androiddownloaddemo;
+
+/**
+ * Created by SONU on 29/10/15.
+ */
+public class Utils {
+
+    //String Values to be Used in App
+    public static final String downloadDirectory = "Androhub Downloads";
+    public static final String mainUrl = "http://androhub.com/demo/";
+    public static final String downloadPdfUrl = "http://androhub.com/demo/demo.pdf";
+    public static final String downloadDocUrl = "http://androhub.com/demo/demo.doc";
+    public static final String downloadZipUrl = "http://androhub.com/demo/demo.zip";
+    public static final String downloadVideoUrl = "http://androhub.com/demo/demo.mp4";
+    public static final String downloadMp3Url = "http://androhub.com/demo/demo.mp3";
+}</pre><p>
+<b>5</b>. Create a <em>CheckForSDCard.java</em><i> </i>class for checking if <em>SDCard</em> is present or not.</p><pre class="crayon-plain-tag">package com.androiddownloaddemo;
+
+import android.os.Environment;
+
+public class CheckForSDCard {
+    //Check If SD Card is present or not method
+    public boolean isSDCardPresent() {
+        if (Environment.getExternalStorageState().equals(
+
+                Environment.MEDIA_MOUNTED)) {
+            return true;
+        }
+        return false;
+    }
+}</pre><p>
+<b>6</b>. Now create a DownloadTask.java and add the following code. In this code AsyncTask is used for downloading data from server. There are several main steps in doInBackground(Void&#8230;arg0) that are listed below :</p>
+<p>1. Converting download url into URL:</p><pre class="crayon-plain-tag">URL url = new URL(downloadUrl);</pre><p>
+2. Opening Url Connection for data downloading:</p><pre class="crayon-plain-tag">HttpURLConnection c = (HttpURLConnection) url.openConnection();</pre><p>
+3. Setting request method to server:</p><pre class="crayon-plain-tag">c.setRequestMethod(&quot;GET&quot;);</pre><p>
+4. Connect the open connection:</p><pre class="crayon-plain-tag">c.connect();</pre><p>
+5. Create a directory in SD Card if not present:</p><pre class="crayon-plain-tag">File apkStorage = new File(
+        Environment.getExternalStorageDirectory() + &quot;/&quot;
+                + Utils.downloadDirectory);</pre><p>
+</p><pre class="crayon-plain-tag">if (!apkStorage.exists()) {
+    apkStorage.mkdir();
+    Log.e(TAG, &quot;Directory Created.&quot;);
+}</pre><p>
+6. Create an Output file i.e. download file inside above created directory:</p><pre class="crayon-plain-tag">String downloadFileName = downloadUrl.replace(Utils.mainUrl, &quot;&quot;);//Create file name by picking download file name from URL</pre><p>
+</p><pre class="crayon-plain-tag">File outputFile = new File(apkStorage, downloadFileName);</pre><p>
+</p><pre class="crayon-plain-tag">if (!outputFile.exists()) {
+    outputFile.createNewFile();
+    Log.e(TAG, &quot;File Created&quot;);
+}</pre><p>
+Note: Give extension to your outputFile like .pdf, .mp3, .mp4 etc.</p>
+<p>7. Download File and write it over the <em>outputFile</em> created:</p><pre class="crayon-plain-tag">FileOutputStream fos = new FileOutputStream(outputFile);//Get OutputStream for NewFile Location
+
+InputStream is = c.getInputStream();//Get InputStream for connection
+
+byte[] buffer = new byte[1024];//Set buffer type
+int len1 = 0;//init length
+while ((len1 = is.read(buffer)) != -1) {
+    fos.write(buffer, 0, len1);//Write new file
+}</pre><p>
+8. Close all connection after downloading:</p><pre class="crayon-plain-tag">fos.close();
+is.close();</pre><p>
+Full Code of DownloadTask.java</p><pre class="crayon-plain-tag">package com.androiddownloaddemo;
+
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Environment;
+import android.os.Handler;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+/**
+ * Created by SONU on 29/10/15.
+ */
+public class DownloadTask {
+
+    private static final String TAG = "Download Task";
+    private Context context;
+    private Button buttonText;
+    private String downloadUrl = "", downloadFileName = "";
+
+    public DownloadTask(Context context, Button buttonText, String downloadUrl) {
+        this.context = context;
+        this.buttonText = buttonText;
+        this.downloadUrl = downloadUrl;
+
+        downloadFileName = downloadUrl.replace(Utils.mainUrl, "");//Create file name by picking download file name from URL
+        Log.e(TAG, downloadFileName);
+
+        //Start Downloading Task
+        new DownloadingTask().execute();
+    }
+
+    private class DownloadingTask extends AsyncTask&lt;Void, Void, Void&gt; {
+
+        File apkStorage = null;
+        File outputFile = null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            buttonText.setEnabled(false);
+            buttonText.setText(R.string.downloadStarted);//Set Button Text when download started
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            try {
+                if (outputFile != null) {
+                    buttonText.setEnabled(true);
+                    buttonText.setText(R.string.downloadCompleted);//If Download completed then change button text
+                } else {
+                    buttonText.setText(R.string.downloadFailed);//If download failed change button text
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            buttonText.setEnabled(true);
+                            buttonText.setText(R.string.downloadAgain);//Change button text again after 3sec
+                        }
+                    }, 3000);
+
+                    Log.e(TAG, "Download Failed");
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+
+                //Change button text if exception occurs
+                buttonText.setText(R.string.downloadFailed);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        buttonText.setEnabled(true);
+                        buttonText.setText(R.string.downloadAgain);
+                    }
+                }, 3000);
+                Log.e(TAG, "Download Failed with Exception - " + e.getLocalizedMessage());
+
+            }
+
+
+            super.onPostExecute(result);
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            try {
+                URL url = new URL(downloadUrl);//Create Download URl
+                HttpURLConnection c = (HttpURLConnection) url.openConnection();//Open Url Connection
+                c.setRequestMethod("GET");//Set Request Method to "GET" since we are grtting data
+                c.connect();//connect the URL Connection
+
+                //If Connection response is not OK then show Logs
+                if (c.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                    Log.e(TAG, "Server returned HTTP " + c.getResponseCode()
+                            + " " + c.getResponseMessage());
+
+                }
+
+
+                //Get File if SD card is present
+                if (new CheckForSDCard().isSDCardPresent()) {
+
+                    apkStorage = new File(
+                            Environment.getExternalStorageDirectory() + "/"
+                                    + Utils.downloadDirectory);
+                } else
+                    Toast.makeText(context, "Oops!! There is no SD Card.", Toast.LENGTH_SHORT).show();
+
+                //If File is not present create directory
+                if (!apkStorage.exists()) {
+                    apkStorage.mkdir();
+                    Log.e(TAG, "Directory Created.");
+                }
+
+                outputFile = new File(apkStorage, downloadFileName);//Create Output file in Main File
+
+                //Create New File if not present
+                if (!outputFile.exists()) {
+                    outputFile.createNewFile();
+                    Log.e(TAG, "File Created");
+                }
+
+                FileOutputStream fos = new FileOutputStream(outputFile);//Get OutputStream for NewFile Location
+
+                InputStream is = c.getInputStream();//Get InputStream for connection
+
+                byte[] buffer = new byte[1024];//Set buffer type
+                int len1 = 0;//init length
+                while ((len1 = is.read(buffer)) != -1) {
+                    fos.write(buffer, 0, len1);//Write new file
+                }
+
+                //Close all connection after doing task
+                fos.close();
+                is.close();
+
+            } catch (Exception e) {
+
+                //Read exception if something went wrong
+                e.printStackTrace();
+                outputFile = null;
+                Log.e(TAG, "Download Error Exception " + e.getMessage());
+            }
+
+            return null;
+        }
+    }
+}</pre><p>
+<b>7</b>. Now create <em>MainActivity.java</em> and add the following code. In this code i am starting AsyncTask on button click.<br />
+But before downloading it is necessary there should be a proper internet connection. So for this I had created a method naming isInternetConnected() that will return true or false.</p>
+<p>If you are new in how to detect internet connection then check <a href="http://androhub.com/android-detect-internet-connection-using-broadcast-receiver/" target="_blank">Detect Internet Connection Tutorial</a>.</p>
+<p>Last Button is for Opening  downloaded folder and the code for opening download folder is below:</p><pre class="crayon-plain-tag">//Open downloaded folder
+private void openDownloadedFolder() {
+    //First check if SD Card is present or not
+    if (new CheckForSDCard().isSDCardPresent()) {
+
+        //Get Download Directory File
+        File apkStorage = new File(
+                Environment.getExternalStorageDirectory() + &quot;/&quot;
+                        + Utils.downloadDirectory);
+
+        //If file is not present then display Toast
+        if (!apkStorage.exists())
+            Toast.makeText(MainActivity.this, &quot;Right now there is no directory. Please download some file first.&quot;, Toast.LENGTH_SHORT).show();
+
+        else {
+
+            //If directory is present Open Folder
+
+            /** Note: Directory will open only if there is a app to open directory like File Manager, etc.  **/
+
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            Uri uri = Uri.parse(Environment.getExternalStorageDirectory().getPath()
+                    + &quot;/&quot; + Utils.downloadDirectory);
+            intent.setDataAndType(uri, &quot;file/*&quot;);
+            startActivity(Intent.createChooser(intent, &quot;Open Download Folder&quot;));
+        }
+
+    } else
+        Toast.makeText(MainActivity.this, &quot;Oops!! There is no SD Card.&quot;, Toast.LENGTH_SHORT).show();
+
+}</pre><p>
+Full MainActivity.java Code</p><pre class="crayon-plain-tag">package com.androiddownloaddemo;
+
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import java.io.File;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static Button downloadPdf, downloadDoc, downloadZip, downloadVideo, downloadMp3, openDownloadedFolder;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initViews();
+        setListeners();
+    }
+
+    //Initialize al Views
+    private void initViews() {
+        downloadPdf = (Button) findViewById(R.id.downloadPdf);
+        downloadDoc = (Button) findViewById(R.id.downloadDoc);
+        downloadZip = (Button) findViewById(R.id.downloadZip);
+        downloadVideo = (Button) findViewById(R.id.downloadVideo);
+        downloadMp3 = (Button) findViewById(R.id.downloadMp3);
+        openDownloadedFolder = (Button) findViewById(R.id.openDownloadedFolder);
+
+    }
+
+    //Set Listeners to Buttons
+    private void setListeners() {
+        downloadPdf.setOnClickListener(this);
+        downloadDoc.setOnClickListener(this);
+        downloadZip.setOnClickListener(this);
+        downloadVideo.setOnClickListener(this);
+        downloadMp3.setOnClickListener(this);
+        openDownloadedFolder.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        //Before starting any download check internet connection availability
+        switch (view.getId()) {
+            case R.id.downloadPdf:
+                if (isConnectingToInternet())
+                    new DownloadTask(MainActivity.this, downloadPdf, Utils.downloadPdfUrl);
+                else
+                    Toast.makeText(MainActivity.this, "Oops!! There is no internet connection. Please enable internet connection and try again.", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.downloadDoc:
+                if (isConnectingToInternet())
+                    new DownloadTask(MainActivity.this, downloadDoc, Utils.downloadDocUrl);
+                else
+                    Toast.makeText(MainActivity.this, "Oops!! There is no internet connection. Please enable internet connection and try again.", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.downloadZip:
+                if (isConnectingToInternet())
+                    new DownloadTask(MainActivity.this, downloadZip, Utils.downloadZipUrl);
+                else
+                    Toast.makeText(MainActivity.this, "Oops!! There is no internet connection. Please enable internet connection and try again.", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.downloadVideo:
+                if (isConnectingToInternet())
+                    new DownloadTask(MainActivity.this, downloadVideo, Utils.downloadVideoUrl);
+                else
+                    Toast.makeText(MainActivity.this, "Oops!! There is no internet connection. Please enable internet connection and try again.", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.downloadMp3:
+                if (isConnectingToInternet())
+                    new DownloadTask(MainActivity.this, downloadMp3, Utils.downloadMp3Url);
+                else
+                    Toast.makeText(MainActivity.this, "Oops!! There is no internet connection. Please enable internet connection and try again.", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.openDownloadedFolder:
+                openDownloadedFolder();
+                break;
+
+        }
+
+    }
+
+    //Open downloaded folder
+    private void openDownloadedFolder() {
+        //First check if SD Card is present or not
+        if (new CheckForSDCard().isSDCardPresent()) {
+
+            //Get Download Directory File
+            File apkStorage = new File(
+                    Environment.getExternalStorageDirectory() + "/"
+                            + Utils.downloadDirectory);
+
+            //If file is not present then display Toast
+            if (!apkStorage.exists())
+                Toast.makeText(MainActivity.this, "Right now there is no directory. Please download some file first.", Toast.LENGTH_SHORT).show();
+
+            else {
+
+                //If directory is present Open Folder
+
+                /** Note: Directory will open only if there is a app to open directory like File Manager, etc.  **/
+
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                Uri uri = Uri.parse(Environment.getExternalStorageDirectory().getPath()
+                        + "/" + Utils.downloadDirectory);
+                intent.setDataAndType(uri, "file/*");
+                startActivity(Intent.createChooser(intent, "Open Download Folder"));
+            }
+
+        } else
+            Toast.makeText(MainActivity.this, "Oops!! There is no SD Card.", Toast.LENGTH_SHORT).show();
+
+    }
+
+    //Check if internet is present or not
+    private boolean isConnectingToInternet() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager
+                .getActiveNetworkInfo();
+        if (networkInfo != null &amp;&amp; networkInfo.isConnected())
+            return true;
+        else
+            return false;
+    }
+
+
+}</pre><p>
+<b>8</b>. Finally come to <em>AndroidManifest.xml</em> file and add below several permissions to <em>Manifest</em> file.</p><pre class="crayon-plain-tag">&amp;lt;!--  Permission required for Downloading Files  --&amp;gt;
+&amp;lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&amp;gt;
+
+&amp;lt;!--  Permission required for Checking Internet Connection  --&amp;gt;
+&amp;lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&amp;gt;
+
+&amp;lt;!--  Permission required for Reading Writing SD Card/Memory  --&amp;gt;
+&amp;lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&amp;gt;
+&amp;lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot; /&amp;gt;</pre><p>
+<b>9</b>. Finally, all done you can use above steps for downloading any kind of files.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/AndroidDownload_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-download-files-save/">Android Download Files &#038; Save</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-download-files-save/feed/</wfw:commentRss>
+		<slash:comments>13</slash:comments>
+<enclosure url="http://androhub.com/demo/demo.mp4" length="1597733" type="video/mp4" />
+<enclosure url="http://androhub.com/demo/demo.mp3" length="3194915" type="audio/mpeg" />
+	<post-id xmlns="com-wordpress:feed-additions:1">728</post-id>	</item>
+		<item>
+		<title>Android WebView</title>
+		<link>http://www.androhub.com/android-webview/</link>
+		<comments>http://www.androhub.com/android-webview/#respond</comments>
+		<pubDate>Fri, 31 Jul 2015 10:31:03 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android Internet Connection]]></category>
+		<category><![CDATA[internet connection]]></category>
+		<category><![CDATA[load url]]></category>
+		<category><![CDATA[webview]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=603</guid>
+		<description><![CDATA[<p>Android’s WebView allows you to open an own windows for viewing URL or custom html markup page. WebView is a view that display web pages inside your application. You can also specify HTML string and can show it inside your application using WebView. WebView makes turns your application to a web application. In order to [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-webview/">Android WebView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Android’s <a href="http://developer.android.com/reference/android/webkit/WebView.html" target="_blank">WebView</a> allows you to open an own windows for viewing URL or custom html markup page.</p>
+<p>WebView is a view that display web pages inside your application. You can also specify HTML string and can show it inside your application using WebView. WebView makes turns your application to a web application.</p>
+<p>In order to add WebView to your application, you have to add <b>&lt;WebView&gt;</b> element to your xml layout file. Its syntax is as follows −</p><pre class="crayon-plain-tag">&lt;WebView
+        android:id="@+id/webview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" /&gt;</pre><p>
+In order to use it, you have to get a reference of this view in Java file. To get a reference, create an object of the class WebView. Its syntax is −</p><pre class="crayon-plain-tag">WebView web = (WebView) findViewById(R.id.webview);</pre><p>
+In order to load a web url into the WebView, you need to call a method <b>loadUrl(String url)</b>of the WebView class, specifying the required url. Its syntax is &#8211;</p><pre class="crayon-plain-tag">web.loadUrl("your url");</pre><p>
+Apart from just loading url, you can have more control over your WebView by using the methods defined in WebView class. They are listed as follows −</p>
+
+<table id="tablepress-31" class="tablepress tablepress-id-31">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Method</th><th class="column-2">Description</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">canGoBack()</td><td class="column-2">This method specifies the WebView has a back history item.</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">canGoForward()</td><td class="column-2">This method specifies the WebView has a forward history item.</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">clearHistory()</td><td class="column-2">This method will clear the WebView forward and backward history.</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">destroy()</td><td class="column-2">This method destroy the internal state of WebView.</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">findAllAsync(String find)</td><td class="column-2">This method find all instances of string and highlight them.</td>
+</tr>
+<tr class="row-7 odd">
+	<td class="column-1">getProgress()</td><td class="column-2">This method gets the progress of the current page.</td>
+</tr>
+<tr class="row-8 even">
+	<td class="column-1">getTitle()</td><td class="column-2">This method return the title of the current page.</td>
+</tr>
+<tr class="row-9 odd">
+	<td class="column-1">getUrl()</td><td class="column-2">This method return the url of the current page.</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-31 from cache -->
+<p>If you click on any link inside the webpage of the WebView , that page will not be loaded inside your WebView. In order to do that you need to extend your class from<b>WebViewClient</b> and override its method. Its syntax is −</p><pre class="crayon-plain-tag">private class MyBrowser extends WebViewClient {
+   @Override
+   public boolean shouldOverrideUrlLoading(WebView view, String url) {
+      view.loadUrl(url);
+      return true;
+   }
+}</pre><p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to use WebView in our app to open URLs inside our App.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_68917" width="602" height="339" src="https://www.youtube.com/embed/dnvSLxlE9-w?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. To open url in WebView we need Internet Connection so for that we have to give &#8220;INTERNET&#8221; permission in Manifest file also we are checking internet connection before loading any url so for that we need &#8220;ACCESS_NETWORK_STATE&#8221; permission in Manifest file.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.web_view_demo"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" /&gt;
+
+    &lt;!-- Permission required for loading urls --&gt;
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+    
+    &lt;!-- Permission required for checking internet connection --&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name=".WebActivity"
+            android:theme="@android:style/Theme.NoTitleBar" &gt;
+        &lt;/activity&gt;
+        &lt;activity
+            android:name="com.web_view_demo.MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>3</b>. Create a xml layout naming <em>activity_main.xml </em>this layout contains edittext for input of url and button to load url in WebView below the button.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" &gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/text"
+        android:textColor="#0587d9"
+        android:textSize="18sp"
+        android:textStyle="bold" /&gt;
+
+    &lt;EditText
+        android:id="@+id/url"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:hint="@string/enter_url"
+        android:inputType="textUri"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textSize="15sp" /&gt;
+
+    &lt;Button
+        android:id="@+id/open_url"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/open_url"
+        android:textSize="15sp" /&gt;
+
+    &lt;!-- Web View to open URL --&gt;
+
+    &lt;WebView
+        android:id="@+id/webview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>4</b>. Finally come to your MainActivity.java and add the following code. In this code we validate the entered url on button click before loading over webview and also checking internet connection.</p>
+<p>If you are unaware of how to check internet connection then you can read my <a href="http://androhub.com/android-detect-internet-connection-using-broadcast-receiver/" target="_blank">tutorial here</a>.</p><pre class="crayon-plain-tag">package com.web_view_demo;
+
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Patterns;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+	private static WebView web;
+	private static ProgressDialog dialog;
+	private static EditText enter_url;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		web = (WebView) findViewById(R.id.webview);
+		enter_url = (EditText) findViewById(R.id.url);
+
+		// Implement click listener over button
+		findViewById(R.id.open_url).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				String url = enter_url.getText().toString();// Get editext text
+															// into string
+
+				// Check if string url is not null
+				if (url.equals("") || url.length() == 0)
+
+					// If null then display toast
+					Toast.makeText(MainActivity.this, "Please enter a url.",
+							Toast.LENGTH_SHORT).show();
+
+				else if // Check if entered url is valid or not and if it is not
+						// valid then show toast
+				(!Patterns.WEB_URL.matcher(url).matches())
+					Toast.makeText(MainActivity.this,
+							"Entered URL is not Valid.", Toast.LENGTH_SHORT)
+							.show();
+				else {
+					// Check if interent is there or not
+					if (isConnectingToInternet())
+						// if both above conditions falls then load url
+						loadUrl(url);
+					else
+						Toast.makeText(MainActivity.this,
+								"There is no Interent connection.",
+								Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
+
+	}
+
+	// Load url method in webview
+	private void loadUrl(String url) {
+		// Progressdialog to show when url is loading
+		dialog = new ProgressDialog(MainActivity.this);
+		dialog.setMessage("Please wait..nWhile loading URL");
+		dialog.setCancelable(true);// Make it cancelable true so that user can
+									// dismiss it anytime
+		web.setWebViewClient(new WebViewClient() {
+			@Override
+			public void onPageFinished(WebView view, String url) {
+
+				// On page finished loading dismiss dialog
+				if (dialog.isShowing()) {
+					dialog.dismiss();
+				}
+
+			}
+		});
+
+		dialog.show();// Show dialog
+
+		web.loadUrl(url);// Load url into webview
+
+		web.getSettings().setJavaScriptEnabled(true);// Enable javascript
+	}
+
+	// Return status of internet connection
+	private boolean isConnectingToInternet() {
+		ConnectivityManager connectivity = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		if (connectivity != null) {
+			NetworkInfo[] info = connectivity.getAllNetworkInfo();
+			if (info != null)
+				for (int i = 0; i &lt; info.length; i++)
+					if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+						return true;
+					}
+
+		}
+		return false;
+	}
+}</pre><p>
+<b>5</b>. Now, you are all done, run your app and you will get the output as shown in video. (Make sure to put http:// or https:// before loading url).</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/WebView_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-webview/">Android WebView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-webview/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">603</post-id>	</item>
+		<item>
+		<title>Android GPS Location Manager</title>
+		<link>http://www.androhub.com/android-gps-location-manager/</link>
+		<comments>http://www.androhub.com/android-gps-location-manager/#respond</comments>
+		<pubDate>Fri, 24 Jul 2015 05:53:46 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android GPS]]></category>
+		<category><![CDATA[Android Internet Connection]]></category>
+		<category><![CDATA[connection detector]]></category>
+		<category><![CDATA[get current location]]></category>
+		<category><![CDATA[get user address]]></category>
+		<category><![CDATA[GPS]]></category>
+		<category><![CDATA[GPS Location]]></category>
+		<category><![CDATA[internet connection detector]]></category>
+		<category><![CDATA[Location Manager]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=530</guid>
+		<description><![CDATA[<p>If you are developing any location based app, you can make your app more smarter by finding user’s location automatically. For this you need to integrate location modules in your application. You can learn more about location strategies. Example In this tutorial, we are going to learn how to get user location using GPS location manager [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-gps-location-manager/">Android GPS Location Manager</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>If you are developing any location based app, you can make your app more smarter by finding user’s location automatically. For this you need to integrate location modules in your application. You can learn more about <a href="http://developer.android.com/intl/ru/guide/topics/location/strategies.html" target="_blank">location strategies</a>.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to get user location using GPS location manager with and without internet.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_55867" width="602" height="339" src="https://www.youtube.com/embed/6TrwL18nbXw?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. This are some strings that i am going to use in this tutorial.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="app_name"&gt;LocationGPS Demo&lt;/string&gt;
+    &lt;string name="location_without_internet"&gt;Get Location Without Internet&lt;/string&gt;
+    &lt;string name="location_internet"&gt;Get Location Using Internet&lt;/string&gt;
+    &lt;string name="display_location"&gt;Your Location will be displayed here.&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Open <em>AndroidManifest.xml</em> and add <em>ACCESS_FINE_LOCATION</em> (Which includes both ACCESS_FINE_LOCATION and ACCESS_COARSE_LOCATION). Also we have to detect internet connection so we need ACCESS_NETWORK_STATE this permission also.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.locationgps_demo"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" /&gt;
+
+    &lt;!-- This permission is used to get current location via internet --&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
+
+    &lt;!-- This permission is used to check internet connection --&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>4</b>. Now create a xml layout containing two button and two textview to display location using internet and without internet.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;Button
+        android:id="@+id/get_location_without_internet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/location_without_internet" /&gt;
+
+    &lt;TextView
+        android:id="@+id/show_location_without_internet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="@string/display_location"
+        android:textColor="#000000"
+        android:textSize="16sp" /&gt;
+
+    &lt;Button
+        android:id="@+id/get_location_using_internet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/location_internet" /&gt;
+
+    &lt;TextView
+        android:id="@+id/show_location_using_internet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="@string/display_location"
+        android:textColor="#000000"
+        android:textSize="16sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>5</b>. Create a new java class naming <em>ConnectionDetector.java</em> to detect Internet connection. If you don&#8217;t no how to detect internet connection then you can check my tutorial <a href="http://androhub.com/android-detect-internet-connection-using-broadcast-receiver/" target="_blank">here</a>.</p><pre class="crayon-plain-tag">package com.locationgps_demo;
+
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
+public class ConnectionDetector {
+
+	private Context _context;
+
+	public ConnectionDetector(Context context) {
+		this._context = context;
+	}
+
+	// This method will return boolean value if internet is there or not
+	public boolean isConnectingToInternet() {
+		ConnectivityManager connectivityManager = (ConnectivityManager) _context
+				.getSystemService(Context.CONNECTIVITY_SERVICE);// Connectivity
+																// manager to
+																// work on
+																// connectivtiy
+																// service
+
+		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();// Get
+																				// the
+																				// network
+																				// info
+
+		if (networkInfo != null &amp;&amp; networkInfo.isConnected()) {// Check if
+																// network info
+																// is not null
+																// and it is
+																// connected
+			return true;// Internet is there
+		} else {
+			return false;// No internet
+		}
+
+	}
+}</pre><p>
+<b>6</b>. Now, create a new java class naming <em>GPSService.java</em> extending <em>Service</em> also implement this class from <em>LocationListener </em>and add the following code.</p><pre class="crayon-plain-tag">public class GPSService extends Service implements LocationListener {
+
+	// saving the context for later use
+	private final Context mContext;
+
+	// if GPS is enabled
+	boolean isGPSEnabled = false;
+	// if Network is enabled
+	boolean isNetworkEnabled = false;
+	// if Location co-ordinates are available using GPS or Network
+	public boolean isLocationAvailable = false;
+
+	// Location and co-ordinates coordinates
+	Location mLocation;
+	double mLatitude;
+	double mLongitude;
+
+	// Minimum time fluctuation for next update (in milliseconds)
+	private static final long TIME = 30000;
+	// Minimum distance fluctuation for next update (in meters)
+	private static final long DISTANCE = 20;
+
+	// Declaring a Location Manager
+	protected LocationManager mLocationManager;
+
+	public GPSService(Context context) {
+		this.mContext = context;
+		mLocationManager = (LocationManager) mContext
+				.getSystemService(LOCATION_SERVICE);
+
+	}</pre><p>
+Add the implementation for the function <strong>geoLocation()</strong> which was called in the constructor. In this function we’ll get the location from network provider first. If network provider is disabled, then we get the location from GPS provider.</p><pre class="crayon-plain-tag">public Location getLocation() {
+		try {
+
+			// Getting GPS status
+			isGPSEnabled = mLocationManager
+					.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+			// If GPS enabled, get latitude/longitude using GPS Services
+			if (isGPSEnabled) {
+				mLocationManager.requestLocationUpdates(
+						LocationManager.GPS_PROVIDER, TIME, DISTANCE, this);
+				if (mLocationManager != null) {
+					mLocation = mLocationManager
+							.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+					if (mLocation != null) {
+						mLatitude = mLocation.getLatitude();
+						mLongitude = mLocation.getLongitude();
+						isLocationAvailable = true; // setting a flag that
+													// location is available
+						return mLocation;
+					}
+				}
+			}
+
+			// If we are reaching this part, it means GPS was not able to fetch
+			// any location
+			// Getting network status
+			isNetworkEnabled = mLocationManager
+					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+			if (isNetworkEnabled) {
+				mLocationManager.requestLocationUpdates(
+						LocationManager.NETWORK_PROVIDER, TIME, DISTANCE, this);
+				if (mLocationManager != null) {
+					mLocation = mLocationManager
+							.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+					if (mLocation != null) {
+						mLatitude = mLocation.getLatitude();
+						mLongitude = mLocation.getLongitude();
+						isLocationAvailable = true; // setting a flag that
+													// location is available
+						return mLocation;
+					}
+				}
+			}
+			// If reaching here means, we were not able to get location neither
+			// from GPS not Network,
+			if (!isGPSEnabled) {
+				// so asking user to open GPS
+				askUserToOpenGPS();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// if reaching here means, location was not available, so setting the
+		// flag as false
+		isLocationAvailable = false;
+		return null;
+	}</pre><p>
+This method will return the complete address.</p><pre class="crayon-plain-tag">public String getLocationAddress() {
+
+		if (isLocationAvailable) {
+
+			Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
+			// Get the current location from the input parameter list
+			// Create a list to contain the result address
+			List&lt;Address&gt; addresses = null;
+			try {
+				/*
+				 * Return 1 address.
+				 */
+				addresses = geocoder.getFromLocation(mLatitude, mLongitude, 1);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				return ("IO Exception trying to get address:" + e1);
+			} catch (IllegalArgumentException e2) {
+				// Error message to post in the log
+				String errorString = "Illegal arguments "
+						+ Double.toString(mLatitude) + " , "
+						+ Double.toString(mLongitude)
+						+ " passed to address service";
+				e2.printStackTrace();
+				return errorString;
+			}
+			// If the reverse geocode returned an address
+			if (addresses != null &amp;&amp; addresses.size() &gt; 0) {
+				// Get the first address
+				Address address = addresses.get(0);
+				/*
+				 * Format the first line of address (if available), city, and
+				 * country name.
+				 */
+				String addressText = String.format(
+						"%s, %s, %s",
+						// If there's a street address, add it
+						address.getMaxAddressLineIndex() &gt; 0 ? address
+								.getAddressLine(0) : "",
+						// Locality is usually a city
+						address.getLocality(),
+						// The country of the address
+						address.getCountryName());
+				// Return the text
+				return addressText;
+			} else {
+				return "No address found by the service: Note to the developers, If no address is found by google itself, there is nothing you can do about it.";
+			}
+		} else {
+			return "Location Not available";
+		}
+
+	}</pre><p>
+This methods used to getLongitude, getLatitude and closeGPS.</p><pre class="crayon-plain-tag">/**
+	 * get latitude
+	 * 
+	 * @return latitude in double
+	 */
+	public double getLatitude() {
+		if (mLocation != null) {
+			mLatitude = mLocation.getLatitude();
+		}
+		return mLatitude;
+	}
+
+	/**
+	 * get longitude
+	 * 
+	 * @return longitude in double
+	 */
+	public double getLongitude() {
+		if (mLocation != null) {
+			mLongitude = mLocation.getLongitude();
+		}
+		return mLongitude;
+	}
+	
+	/**
+	 * close GPS to save battery
+	 */
+	public void closeGPS() {
+		if (mLocationManager != null) {
+			mLocationManager.removeUpdates(GPSService.this);
+		}
+	}</pre><p>
+If GPS is not enabled then prompt user to enable GPS via this method.</p><pre class="crayon-plain-tag">/**
+	 * show settings to open GPS
+	 */
+	public void askUserToOpenGPS() {
+		AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(mContext);
+
+		// Setting Dialog Title
+		mAlertDialog.setTitle("Location not available, Open GPS?")
+		.setMessage("Activate GPS to use use location services?")
+		.setPositiveButton("Open Settings", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+				mContext.startActivity(intent);
+				}
+			})
+			.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+					}
+				}).show();
+	}</pre><p>
+Final Source code.</p><pre class="crayon-plain-tag">package com.locationgps_demo;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
+import android.app.AlertDialog;
+import android.app.Service;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.provider.Settings;
+
+public class GPSService extends Service implements LocationListener {
+
+	// saving the context for later use
+	private final Context mContext;
+
+	// if GPS is enabled
+	boolean isGPSEnabled = false;
+	// if Network is enabled
+	boolean isNetworkEnabled = false;
+	// if Location co-ordinates are available using GPS or Network
+	public boolean isLocationAvailable = false;
+
+	// Location and co-ordinates coordinates
+	Location mLocation;
+	double mLatitude;
+	double mLongitude;
+
+	// Minimum time fluctuation for next update (in milliseconds)
+	private static final long TIME = 30000;
+	// Minimum distance fluctuation for next update (in meters)
+	private static final long DISTANCE = 20;
+
+	// Declaring a Location Manager
+	protected LocationManager mLocationManager;
+
+	public GPSService(Context context) {
+		this.mContext = context;
+		mLocationManager = (LocationManager) mContext
+				.getSystemService(LOCATION_SERVICE);
+
+	}
+
+	/**
+	 * Returs the Location
+	 * 
+	 * @return Location or null if no location is found
+	 */
+	public Location getLocation() {
+		try {
+
+			// Getting GPS status
+			isGPSEnabled = mLocationManager
+					.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+			// If GPS enabled, get latitude/longitude using GPS Services
+			if (isGPSEnabled) {
+				mLocationManager.requestLocationUpdates(
+						LocationManager.GPS_PROVIDER, TIME, DISTANCE, this);
+				if (mLocationManager != null) {
+					mLocation = mLocationManager
+							.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+					if (mLocation != null) {
+						mLatitude = mLocation.getLatitude();
+						mLongitude = mLocation.getLongitude();
+						isLocationAvailable = true; // setting a flag that
+													// location is available
+						return mLocation;
+					}
+				}
+			}
+
+			// If we are reaching this part, it means GPS was not able to fetch
+			// any location
+			// Getting network status
+			isNetworkEnabled = mLocationManager
+					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+			if (isNetworkEnabled) {
+				mLocationManager.requestLocationUpdates(
+						LocationManager.NETWORK_PROVIDER, TIME, DISTANCE, this);
+				if (mLocationManager != null) {
+					mLocation = mLocationManager
+							.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+					if (mLocation != null) {
+						mLatitude = mLocation.getLatitude();
+						mLongitude = mLocation.getLongitude();
+						isLocationAvailable = true; // setting a flag that
+													// location is available
+						return mLocation;
+					}
+				}
+			}
+			// If reaching here means, we were not able to get location neither
+			// from GPS not Network,
+			if (!isGPSEnabled) {
+				// so asking user to open GPS
+				askUserToOpenGPS();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// if reaching here means, location was not available, so setting the
+		// flag as false
+		isLocationAvailable = false;
+		return null;
+	}
+
+	/**
+	 * Gives you complete address of the location
+	 * 
+	 * @return complete address in String
+	 */
+	public String getLocationAddress() {
+
+		if (isLocationAvailable) {
+
+			Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
+			// Get the current location from the input parameter list
+			// Create a list to contain the result address
+			List&lt;Address&gt; addresses = null;
+			try {
+				/*
+				 * Return 1 address.
+				 */
+				addresses = geocoder.getFromLocation(mLatitude, mLongitude, 1);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				return ("IO Exception trying to get address:" + e1);
+			} catch (IllegalArgumentException e2) {
+				// Error message to post in the log
+				String errorString = "Illegal arguments "
+						+ Double.toString(mLatitude) + " , "
+						+ Double.toString(mLongitude)
+						+ " passed to address service";
+				e2.printStackTrace();
+				return errorString;
+			}
+			// If the reverse geocode returned an address
+			if (addresses != null &amp;&amp; addresses.size() &gt; 0) {
+				// Get the first address
+				Address address = addresses.get(0);
+				/*
+				 * Format the first line of address (if available), city, and
+				 * country name.
+				 */
+				String addressText = String.format(
+						"%s, %s, %s",
+						// If there's a street address, add it
+						address.getMaxAddressLineIndex() &gt; 0 ? address
+								.getAddressLine(0) : "",
+						// Locality is usually a city
+						address.getLocality(),
+						// The country of the address
+						address.getCountryName());
+				// Return the text
+				return addressText;
+			} else {
+				return "No address found by the service: Note to the developers, If no address is found by google itself, there is nothing you can do about it.";
+			}
+		} else {
+			return "Location Not available";
+		}
+
+	}
+
+	
+
+	/**
+	 * get latitude
+	 * 
+	 * @return latitude in double
+	 */
+	public double getLatitude() {
+		if (mLocation != null) {
+			mLatitude = mLocation.getLatitude();
+		}
+		return mLatitude;
+	}
+
+	/**
+	 * get longitude
+	 * 
+	 * @return longitude in double
+	 */
+	public double getLongitude() {
+		if (mLocation != null) {
+			mLongitude = mLocation.getLongitude();
+		}
+		return mLongitude;
+	}
+	
+	/**
+	 * close GPS to save battery
+	 */
+	public void closeGPS() {
+		if (mLocationManager != null) {
+			mLocationManager.removeUpdates(GPSService.this);
+		}
+	}
+
+	/**
+	 * show settings to open GPS
+	 */
+	public void askUserToOpenGPS() {
+		AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(mContext);
+
+		// Setting Dialog Title
+		mAlertDialog.setTitle("Location not available, Open GPS?")
+		.setMessage("Activate GPS to use use location services?")
+		.setPositiveButton("Open Settings", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+				mContext.startActivity(intent);
+				}
+			})
+			.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+					}
+				}).show();
+	}
+
+	/** 
+	 * Updating the location when location changes
+	 */
+	@Override
+	public void onLocationChanged(Location location) {
+		mLatitude = location.getLatitude();
+		mLongitude = location.getLongitude();
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+	}
+
+	@Override
+	public IBinder onBind(Intent arg0) {
+		return null;
+	}
+
+}</pre><p>
+<b>7</b>. Now, create a new java class naming <em>GPSLocation.java. </em>This class contains methods like turnOn ,turnOff GPS and getLocation that we will use in our activity.</p><pre class="crayon-plain-tag">package com.locationgps_demo;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+
+import android.content.Context;
+import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
+
+public class GPSLocation {
+	private Context context;
+	private StringBuilder currentLocation = new StringBuilder();
+
+	public GPSLocation(Context context) {
+		this.context = context;
+	}
+
+	/**
+	 * Check the type of GPS Provider available at that instance and collect the
+	 * location informations
+	 * 
+	 * @Output Latitude and Longitude
+	 */
+
+	public void turnGPSOn() {
+		try {
+
+			@SuppressWarnings("deprecation")
+			String provider = Settings.Secure.getString(
+					context.getContentResolver(),
+					Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+
+			if (!provider.contains("gps")) { // if gps is disabled
+				final Intent poke = new Intent();
+				poke.setClassName("com.android.settings",
+						"com.android.settings.widget.SettingsAppWidgetProvider");
+				poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+				poke.setData(Uri.parse("3"));
+				context.sendBroadcast(poke);
+			}
+		} catch (Exception e) {
+
+		}
+	}
+
+	// Method to turn off the GPS
+	@SuppressWarnings("deprecation")
+	public void turnGPSOff() {
+		String provider = Settings.Secure.getString(
+				context.getContentResolver(),
+				Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+
+		if (provider.contains("gps")) { // if gps is enabled
+			final Intent poke = new Intent();
+			poke.setClassName("com.android.settings",
+					"com.android.settings.widget.SettingsAppWidgetProvider");
+			poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+			poke.setData(Uri.parse("3"));
+			context.sendBroadcast(poke);
+		}
+	}
+
+	public String getMyCurrentLocation() {
+
+		LocationManager locManager = (LocationManager) context
+				.getSystemService(Context.LOCATION_SERVICE);
+		LocationListener locListener = new MyLocationListener();
+
+		try {
+			gps_enabled = locManager
+					.isProviderEnabled(LocationManager.GPS_PROVIDER);
+		} catch (Exception ex) {
+		}
+		try {
+			network_enabled = locManager
+					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+		} catch (Exception ex) {
+		}
+
+		// don't start listeners if no provider is enabled
+		// if(!gps_enabled &amp;&amp; !network_enabled)
+		// return false;
+
+		if (gps_enabled) {
+			locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
+					0, locListener);
+
+		}
+
+		if (gps_enabled) {
+			location = locManager
+					.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+		}
+
+		if (network_enabled &amp;&amp; location == null) {
+			locManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
+					0, 0, locListener);
+
+		}
+
+		if (network_enabled &amp;&amp; location == null) {
+			location = locManager
+					.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+		}
+
+		if (location != null) {
+
+			MyLat = location.getLatitude();
+			MyLong = location.getLongitude();
+			currentLocation.append("Latitude : " + MyLat + "nLongitude : "
+					+ MyLong);
+
+		} else {
+			Location loc = getLastKnownLocation(context);
+			if (loc != null) {
+
+				MyLat = loc.getLatitude();
+				MyLong = loc.getLongitude();
+
+			}
+		}
+		locManager.removeUpdates(locListener); // removes the periodic updates
+												// from location listener to
+												// //avoid battery drainage. If
+												// you want to get location at
+												// the periodic intervals call
+												// this method using //pending
+												// intent.
+
+		try {
+			// Getting address from found locations.
+			Geocoder geocoder;
+
+			List&lt;Address&gt; addresses;
+			geocoder = new Geocoder(context, Locale.getDefault());
+			addresses = geocoder.getFromLocation(MyLat, MyLong, 1);
+
+			StateName = addresses.get(0).getAdminArea();
+			CityName = addresses.get(0).getLocality();
+			CountryName = addresses.get(0).getCountryName();
+
+			currentLocation.append("nState Name : " + StateName
+					+ "nCity Name : " + CityName + "nCountry Name : "
+					+ CountryName);
+			// you can get more details other than this . like country code,
+			// state code, etc.
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return currentLocation.toString();
+	}
+
+	// Location listener class. to get location.
+	public class MyLocationListener implements LocationListener {
+		public void onLocationChanged(Location location) {
+			if (location != null) {
+			}
+		}
+
+		public void onProviderDisabled(String provider) {
+			// TODO Auto-generated method stub
+		}
+
+		public void onProviderEnabled(String provider) {
+			// TODO Auto-generated method stub
+		}
+
+		public void onStatusChanged(String provider, int status, Bundle extras) {
+			// TODO Auto-generated method stub
+		}
+	}
+
+	private boolean gps_enabled = false;
+	private boolean network_enabled = false;
+	Location location;
+
+	Double MyLat, MyLong;
+	String CityName = "", StateName = "", CountryName = "";
+
+	// below method to get the last remembered location. because we don't get
+	// locations all the times .At some instances we are unable to get the
+	// location from GPS. so at that moment it will show us the last stored
+	// location.
+
+	public static Location getLastKnownLocation(Context context) {
+		Location location = null;
+		LocationManager locationmanager = (LocationManager) context
+				.getSystemService("location");
+		List&lt;String&gt; list = locationmanager.getAllProviders();
+		boolean i = false;
+		Iterator&lt;&gt; iterator = list.iterator();
+		do {
+
+			if (!iterator.hasNext())
+				break;
+			String s = (String) iterator.next();
+
+			if (i != false &amp;&amp; !locationmanager.isProviderEnabled(s))
+				continue;
+
+			Location location1 = locationmanager.getLastKnownLocation(s);
+			if (location1 == null)
+				continue;
+			if (location != null) {
+
+				float f = location.getAccuracy();
+				float f1 = location1.getAccuracy();
+				if (f &gt;= f1) {
+					long l = location1.getTime();
+					long l1 = location.getTime();
+					if (l - l1 &lt;= 600000L)
+						continue;
+				}
+			}
+			location = location1;
+
+			i = locationmanager.isProviderEnabled(s);
+
+		} while (true);
+		return location;
+	}
+
+}</pre><p>
+<b>8</b>. The above two classes are used to get location in presence of internet but in absence of internet we have to do something else. I am using this method to get current location in latitude and longitude.</p><pre class="crayon-plain-tag">private void getLocationWithoutInternet() {
+		// Acquire a reference to the system Location Manager
+		LocationManager locationManager = (LocationManager) this
+				.getSystemService(Context.LOCATION_SERVICE);
+
+		// Define a listener that responds to location updates
+		LocationListener locationListener = new LocationListener() {
+
+			public void onStatusChanged(String provider, int status,
+					Bundle extras) {
+			}
+
+			public void onProviderEnabled(String provider) {
+			}
+
+			public void onProviderDisabled(String provider) {
+			}
+
+			@Override
+			public void onLocationChanged(Location location) {
+
+				// The toast will show loaction continuosly as we are requesting
+				// local updates
+				Toast.makeText(
+						getApplicationContext(),
+						location.getLatitude() + "     "
+								+ location.getLongitude(), Toast.LENGTH_SHORT)
+						.show();
+
+				
+
+			}
+		};
+
+		// Register the listener with the Location Manager to receive location
+		// updates
+		if (locationManager.getAllProviders().contains(LocationManager.NETWORK_PROVIDER))
+		    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+
+		if (locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER))
+		    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+	}</pre><p>
+<b>9</b>. Finally come to your <em>MainActivity.java </em>and add the following code. In this activity we are getting current location via internet and without internet. While getting location through internet we have to check first if internet is present or not. So for this I used ConnectionDetector class to get network status.</p><pre class="crayon-plain-tag">package com.locationgps_demo;
+
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity implements OnClickListener {
+	private static Button getLocation, getLocation_usingInternet;
+	private static TextView displayLocation, displayInternetLocation;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		init();
+		setListeners();
+
+	}
+
+	// Initialize the views
+	private void init() {
+		getLocation = (Button) findViewById(R.id.get_location_without_internet);
+		getLocation_usingInternet = (Button) findViewById(R.id.get_location_using_internet);
+		displayLocation = (TextView) findViewById(R.id.show_location_without_internet);
+		displayInternetLocation = (TextView) findViewById(R.id.show_location_using_internet);
+	}
+
+	// Set listeners over both button
+	private void setListeners() {
+		getLocation.setOnClickListener(this);
+		getLocation_usingInternet.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.get_location_using_internet:
+			getLocationUsingInternet();
+			break;
+
+		case R.id.get_location_without_internet:
+			getLocationWithoutInternet();
+			break;
+		}
+
+	}
+
+	// Method that will return location in longitude, latitude, city, state, and
+	// country
+	private void getLocationUsingInternet() {
+
+		boolean isInternetConnected = new ConnectionDetector(MainActivity.this)
+				.isConnectingToInternet();
+
+		// Before proceding we have to check if therr is internet connection or
+		// not
+		if (isInternetConnected) {
+			getLocation_usingInternet.setText("Please wait...");// while getting
+																// location
+																// please wait
+																// and disable
+																// the button
+			getLocation_usingInternet.setEnabled(false);
+			new GPSLocation(MainActivity.this).turnGPSOn();// First turn on GPS
+			String getLocation = new GPSLocation(MainActivity.this)
+					.getMyCurrentLocation();// Get current location from
+											// Location class
+			displayInternetLocation.setText(getLocation);// Set location over
+															// textview
+
+			// Now again change the state of button
+			getLocation_usingInternet.setText(R.string.location_internet);
+			getLocation_usingInternet.setEnabled(true);
+		} else {
+
+			// If there is no internet connection toast will be displayed
+			Toast.makeText(MainActivity.this,
+					"There is no internet connection.", Toast.LENGTH_SHORT)
+					.show();
+		}
+
+	}
+
+	// Method that will fetch the location in longitude and latitude in absence
+	// of internet
+	private void getLocationWithoutInternet() {
+
+		// Change the state of button
+		getLocation.setText("Please wait..");
+		getLocation.setEnabled(false);
+
+		// Acquire a reference to the system Location Manager
+		LocationManager locationManager = (LocationManager) this
+				.getSystemService(Context.LOCATION_SERVICE);
+
+		// Define a listener that responds to location updates
+		LocationListener locationListener = new LocationListener() {
+
+			public void onStatusChanged(String provider, int status,
+					Bundle extras) {
+			}
+
+			public void onProviderEnabled(String provider) {
+			}
+
+			public void onProviderDisabled(String provider) {
+			}
+
+			@Override
+			public void onLocationChanged(Location location) {
+
+				// Display currnet longitude and latitude over textview
+				displayLocation.setText("Latitude : " + location.getLatitude()
+						+ "nLongitude : " + location.getLongitude());
+
+				// The toast will show loaction continuosly as we are requesting
+				// local updates
+				Toast.makeText(
+						getApplicationContext(),
+						location.getLatitude() + "     "
+								+ location.getLongitude(), Toast.LENGTH_SHORT)
+						.show();
+
+				// Now, again change the state of button
+				getLocation.setText(R.string.location_without_internet);
+				getLocation.setEnabled(true);
+
+			}
+		};
+
+		// Register the listener with the Location Manager to receive location
+		// updates
+		if (locationManager.getAllProviders().contains(LocationManager.NETWORK_PROVIDER))
+		    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+
+		if (locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER))
+		    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+	}
+
+	@Override
+	protected void onDestroy() {
+
+		super.onDestroy();
+		// When activity destroyed we have to turn off GPS
+		new GPSLocation(MainActivity.this).turnGPSOff();
+	}
+
+}</pre><p>
+<b>10</b>. Now, you are all done. If you run your app in emulator you will get longitude and latitude but if you run it over real device you will get proper address (in case of internet).</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/LocationGPS_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-gps-location-manager/">Android GPS Location Manager</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-gps-location-manager/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">530</post-id>	</item>
+		<item>
+		<title>Android Detect Internet Connection Using Broadcast Receiver</title>
+		<link>http://www.androhub.com/android-detect-internet-connection-using-broadcast-receiver/</link>
+		<comments>http://www.androhub.com/android-detect-internet-connection-using-broadcast-receiver/#comments</comments>
+		<pubDate>Fri, 24 Jul 2015 05:08:59 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android Internet Connection]]></category>
+		<category><![CDATA[application]]></category>
+		<category><![CDATA[broadcast]]></category>
+		<category><![CDATA[broadcast receiver]]></category>
+		<category><![CDATA[data pack]]></category>
+		<category><![CDATA[detect internet connection]]></category>
+		<category><![CDATA[internet connection]]></category>
+		<category><![CDATA[wifi]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=526</guid>
+		<description><![CDATA[<p>Android lets your application connect to the internet or any other local network and allows you to perform network operations. A device can have various types of network connections. If your app needs internet connection to make HTTP Requests and or you need internet connection in your whole app then it is better to check [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-detect-internet-connection-using-broadcast-receiver/">Android Detect Internet Connection Using Broadcast Receiver</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Android lets your application <a href="http://developer.android.com/intl/ru/training/basics/network-ops/connecting.html" target="_blank">connect to the internet</a> or any other local network and allows you to perform network operations.</p>
+<p>A device can have various types of network connections. If your app needs internet connection to make HTTP Requests and or you need internet connection in your whole app then it is better to check internet connectivity status before making any HTTP Requests to avoid http exceptions.</p>
+<h2>Checking Network Connection</h2>
+<p>Before you perform any network operations, you must first check that are you connected to that network or internet. For this android provides <b><a href="http://developer.android.com/intl/ru/reference/android/net/ConnectivityManager.html" target="_blank">ConnectivityManager</a></b> class. You need to instantiate an object of this class by calling <b>getSystemService()</b> method. Its syntax is given below −</p><pre class="crayon-plain-tag">ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);</pre><p>
+Once you instantiate the object of ConnectivityManager class, you can use <b>getAllNetworkInfo()</b>  or <strong>getActiveNetworkInfo()</strong> method to get the information of all or active networks respectively. First method returns an array of <b>NetworkInfo </b>and second method return active network info. So you have to receive it like this &#8211;</p><pre class="crayon-plain-tag">NetworkInfo[] info = check.getAllNetworkInfo();//All network info
+
+NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();//Active network info</pre><p>
+The last thing you need to do is to check <b>Connected State</b> of the network. Its syntax is given below −</p><pre class="crayon-plain-tag">//All network info
+for (int i = 0; i&lt;info.length; i++){
+   if (info!= null &amp;&amp; info[i].getState() == NetworkInfo.State.CONNECTED){
+      Toast.makeText(context, "Internet is connected
+      Toast.LENGTH_SHORT).show();
+   }
+}
+
+//Active network info
+if (networkInfo != null &amp;&amp; networkInfo.isConnected()) {
+ Toast.makeText(context, "Internet is connected
+      Toast.LENGTH_SHORT).show();
+}</pre><p>
+Apart from this connected states, there are other states a network can achieve. They are listed below:</p>
+<ol>
+<li>Connecting.</li>
+<li>Disconnected.</li>
+<li>Disconnecting.</li>
+<li>Suspended.</li>
+<li>Unknown.</li>
+</ol>
+<p>Now, since we are using <a href="http://developer.android.com/intl/ru/reference/android/content/BroadcastReceiver.html" target="_blank">Broadcast Receiver</a> to detect the internet connection then we should know about Broadcast Receiver.</p>
+<p><b>Broadcast Receivers </b>simply respond to broadcast messages from other applications or from the system itself. These messages are sometime called events or intents. For example, applications can also initiate broadcasts to let other applications know that some data has been downloaded to the device and is available for them to use, so this is broadcast receiver who will intercept this communication and will initiate appropriate action.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to detect Internet connection in whole app using Broadcast Receiver.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_75290" width="602" height="339" src="https://www.youtube.com/embed/zy-VA84OIyY?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. After creating first step the second thing we have to do is adding certain permissions to Manifest file for accessing Network State.</p><pre class="crayon-plain-tag">&lt;!-- This permissions are neccessary for broadcast receiver --&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;</pre><p>
+<b>3</b>. After putting permissions we have to put our receiver also in manifest file with some intent filters and make sure to enable it.</p><pre class="crayon-plain-tag">&lt;!-- Broadcast receiver declaration in manifest file and make sure to enable it --&gt;
+        &lt;receiver
+            android:name="com.internetconnection_demo.InternetConnector_Receiver"
+            android:enabled="true" &gt;
+            &lt;intent-filter&gt;
+
+                &lt;!-- Intent filters for broadcast receiver --&gt;
+                &lt;action android:name="android.net.conn.CONNECTIVITY_CHANGE" /&gt;
+                &lt;action android:name="android.net.wifi.WIFI_STATE_CHANGED" /&gt;
+                &lt;action android:name="android.net.wifi.STATE_CHANGE" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/receiver&gt;</pre><p>
+<b>4</b>. Now, you manifest file would be like this.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.internetconnection_demo"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" /&gt;
+
+    &lt;!-- This permissions are neccessary for broadcast receiver --&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;
+    
+    &lt;!-- Put your MyApplication inside application tag --&gt;
+    &lt;application
+        android:name="com.internetconnection_demo.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+
+        &lt;!-- Broadcast receiver declaration in manifest file and make sure to enable it --&gt;
+        &lt;receiver
+            android:name="com.internetconnection_demo.InternetConnector_Receiver"
+            android:enabled="true" &gt;
+            &lt;intent-filter&gt;
+
+                &lt;!-- Intent filters for broadcast receiver --&gt;
+                &lt;action android:name="android.net.conn.CONNECTIVITY_CHANGE" /&gt;
+                &lt;action android:name="android.net.wifi.WIFI_STATE_CHANGED" /&gt;
+                &lt;action android:name="android.net.wifi.STATE_CHANGE" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/receiver&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>5</b>. Now, create a simple layout naming <em>activity_main.xml </em>and this layout contain only one TextView to display Internet Status.</p><pre class="crayon-plain-tag">&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center" &gt;
+
+    &lt;!-- This text will display the status of internet --&gt;
+
+    &lt;TextView
+        android:id="@+id/internet_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold" /&gt;
+
+&lt;/RelativeLayout&gt;</pre><p>
+<b>6</b>. When we are using Broadcast Receiver it will always trigger when internet is not there if your activity is closed. So for this we have to make an java class naming <em>MyApplication.java </em>extended by <a href="http://developer.android.com/intl/ru/reference/android/app/Application.html" target="_blank">Application</a>. This class is used to check if activity is visible or not and trigger receiver if activity is visible.</p><pre class="crayon-plain-tag">package com.internetconnection_demo;
+
+import android.app.Application;
+
+public class MyApplication extends Application {
+
+	// Gloabl declaration of variable to use in whole app
+
+	public static boolean activityVisible; // Variable that will check the
+											// current activity state
+
+	public static boolean isActivityVisible() {
+		return activityVisible; // return true or false
+	}
+
+	public static void activityResumed() {
+		activityVisible = true;// this will set true when activity resumed
+
+	}
+
+	public static void activityPaused() {
+		activityVisible = false;// this will set false when activity paused
+
+	}
+
+}</pre><p>
+<b>7</b>. Now create a another class for broadcast receiver naming <em>InternetConnection_Receiver.java </em>extended by BroadcastReceiver. In this class we get the boolean value from the MyApplication class to check whether the activity is visible or not and check network status if activity is visible else do nothing.</p>
+<p>If activity is visible then change the status of TextView that we created in activity_main.xml layout.</p><pre class="crayon-plain-tag">package com.internetconnection_demo;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.util.Log;
+
+public class InternetConnector_Receiver extends BroadcastReceiver {
+	public InternetConnector_Receiver() {
+	}
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		try {
+
+			boolean isVisible = MyApplication.isActivityVisible();// Check if
+																	// activity
+																	// is
+																	// visible
+																	// or not
+			Log.i("Activity is Visible ", "Is activity visible : " + isVisible);
+
+			// If it is visible then trigger the task else do nothing
+			if (isVisible == true) {
+				ConnectivityManager connectivityManager = (ConnectivityManager) context
+						.getSystemService(Context.CONNECTIVITY_SERVICE);
+				NetworkInfo networkInfo = connectivityManager
+						.getActiveNetworkInfo();
+
+				// Check internet connection and accrding to state change the
+				// text of activity by calling method
+				if (networkInfo != null &amp;&amp; networkInfo.isConnected()) {
+
+					new MainActivity().changeTextStatus(true);
+				} else {
+					new MainActivity().changeTextStatus(false);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+}</pre><p>
+<b>8</b>. Finally come to your <em>MainActivity.java </em>and add the following code. As you are seeing that i had added network connection code at starting to check internet status at starting and change TextView text according to that. And we had created a method that is used to change the TextView status according to boolean value it received.</p><pre class="crayon-plain-tag">// Method to change the text status
+	public void changeTextStatus(boolean isConnected) {
+
+		// Change status according to boolean value
+		if (isConnected) {
+			internetStatus.setText("Internet Connected.");
+			internetStatus.setTextColor(Color.parseColor("#00ff00"));
+		} else {
+			internetStatus.setText("Internet Disconnected.");
+			internetStatus.setTextColor(Color.parseColor("#ff0000"));
+		}
+	}</pre><p>
+Also we have to set activity visibility by calling MyApplication on <em>onPause()</em> and <em>onResume()</em> method. This will set true and false value to MyApplication boolean variable.</p><pre class="crayon-plain-tag">@Override
+	protected void onPause() {
+
+		super.onPause();
+		MyApplication.activityPaused();// On Pause notify the Application
+	}
+
+	@Override
+	protected void onResume() {
+
+		super.onResume();
+		MyApplication.activityResumed();// On Resume notify the Application
+	}</pre><p>
+Full Source code of <em>MainActivity.java.</em></p><pre class="crayon-plain-tag">package com.internetconnection_demo;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+	private static TextView internetStatus;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		internetStatus = (TextView) findViewById(R.id.internet_status);
+
+		// At activity startup we manually check the internet status and change
+		// the text status
+		ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+		if (networkInfo != null &amp;&amp; networkInfo.isConnected()) {
+			changeTextStatus(true);
+		} else {
+			changeTextStatus(false);
+		}
+
+	}
+
+	// Method to change the text status
+	public void changeTextStatus(boolean isConnected) {
+
+		// Change status according to boolean value
+		if (isConnected) {
+			internetStatus.setText("Internet Connected.");
+			internetStatus.setTextColor(Color.parseColor("#00ff00"));
+		} else {
+			internetStatus.setText("Internet Disconnected.");
+			internetStatus.setTextColor(Color.parseColor("#ff0000"));
+		}
+	}
+
+	@Override
+	protected void onPause() {
+
+		super.onPause();
+		MyApplication.activityPaused();// On Pause notify the Application
+	}
+
+	@Override
+	protected void onResume() {
+
+		super.onResume();
+		MyApplication.activityResumed();// On Resume notify the Application
+	}
+
+}</pre><p>
+<b>9</b>. Now, you can check internet connection at a particular point or in whole app according to your need.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/InternetConnection_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-detect-internet-connection-using-broadcast-receiver/">Android Detect Internet Connection Using Broadcast Receiver</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-detect-internet-connection-using-broadcast-receiver/feed/</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">526</post-id>	</item>
+	</channel>
+</rss>

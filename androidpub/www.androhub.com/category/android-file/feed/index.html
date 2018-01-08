@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android File &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-file/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Read Write File Operations</title>
+		<link>http://www.androhub.com/android-read-write-file-operations/</link>
+		<comments>http://www.androhub.com/android-read-write-file-operations/#comments</comments>
+		<pubDate>Sat, 31 Oct 2015 17:45:27 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android File]]></category>
+		<category><![CDATA[Android UI Design]]></category>
+		<category><![CDATA[android file]]></category>
+		<category><![CDATA[android shared preferences]]></category>
+		<category><![CDATA[create file in SD Card]]></category>
+		<category><![CDATA[current time]]></category>
+		<category><![CDATA[delete file from sd catrd]]></category>
+		<category><![CDATA[get system time]]></category>
+		<category><![CDATA[read text file]]></category>
+		<category><![CDATA[SD Card]]></category>
+		<category><![CDATA[shared preferences]]></category>
+		<category><![CDATA[ui design]]></category>
+		<category><![CDATA[write text file]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=740</guid>
+		<description><![CDATA[<p>Reading and Writing files in Android will be helpful if you want to read data from SD Card, store your application data as a text file. In this tutorial we are going to learn same. Below are some points that we are going to learn in today&#8217;s tutorial: 1. Write File &#8211; Write user input data [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-read-write-file-operations/">Android Read Write File Operations</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Reading and Writing files in Android will be helpful if you want to read data from SD Card, store your application data as a text file. In this tutorial we are going to learn same. Below are some points that we are going to learn in today&#8217;s tutorial:</p>
+<p><strong>1. Write File &#8211;</strong> Write user input data into TextFile.</p>
+<p><strong>2. Read File &#8211;</strong> Read data from saved user data file.</p>
+<p><strong>3. Delete File &#8211;</strong> Delete saved file from SD Card.</p>
+<p><strong>4. TimeStamp &#8211;</strong> Fetching current time stamp and saved in shared preferences when file is saved.</p>
+<p><strong>5. File Path &#8211;</strong>  Display file path to locate where the Text File is saved.</p>
+<p><strong>Prerequisites required for this tutorial &#8211;</strong></p>
+<ul>
+<li><strong><a href="http://androhub.com/android-download-files-save/" target="_blank">SD Card Mount &#8211; </a></strong>Check if SD Card is mounted or not.</li>
+<li><strong><a href="http://androhub.com/android-download-files-save/" target="_blank">Create Directory &#8211;</a></strong> How to create directory in SD Card.</li>
+<li><strong><a href="http://androhub.com/android-sharedpreferences/" target="_blank">SharedPreferences &#8211;</a></strong> To store timestamp of saved file.</li>
+</ul>
+<p>We are going to use two classes  for writing and reading file to SD Card &#8211;</p>
+<p><strong>1.</strong> <a href="http://developer.android.com/intl/ru/reference/java/io/FileWriter.html" target="_blank">FileWriter &#8211; </a> A specialised <code><a href="http://developer.android.com/reference/java/io/Writer.html" target="_blank">Writer</a></code> that writes to a file in the file system. All write requests made by calling methods in this class are directly forwarded to the equivalent function of the underlying operating system. Since this may induce some performance penalty, in particular if many small write requests are made, a FileWriter is often wrapped by a BufferedWriter.</p>
+<p><strong>2.</strong> <a href="http://developer.android.com/intl/ru/reference/java/io/FileReader.html" target="_blank">FileReader &#8211;</a> A specialised <code><a href="http://developer.android.com/reference/java/io/Reader.html" target="_blank">Reader</a></code> that reads from a file in the file system. All read requests made by calling methods in this class are directly forwarded to the equivalent function of the underlying operating system. Since this may induce some performance penalty, in particular if many small read requests are made, a FileReader is often wrapped by a BufferedReader.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to write, read and delete File operations in Android.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_78288" width="602" height="339" src="https://www.youtube.com/embed/xVo4dRdQHUk?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <b>res=&gt;values=strings.xml </b>and add the following strings to it.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;Read &amp;amp; Write TextFile Demo&lt;/string&gt;
+
+    &lt;string name="mainTitle"&gt;Read &amp;amp; Write Text File&lt;/string&gt;
+    &lt;string name="enterMessage"&gt;Enter your message below&lt;/string&gt;
+    &lt;string name="saveMessage"&gt;Save Message to SD Card&lt;/string&gt;
+    &lt;string name="readMessage"&gt;Read Message From SD Card&lt;/string&gt;
+    &lt;string name="deleteMessage"&gt;Delete Message From SD Card&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Create a xml layout naming <em>activity_main.xml</em> and add the following code. In this  layout there is one EditText to take user input and some buttons for writing, reading and delete text file and a hidden layout for showing saved text file data.</p><pre class="crayon-plain-tag">&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"&gt;
+
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/mainTitle"
+            android:textAllCaps="true"
+            android:textColor="#3F51B5"
+            android:textSize="19sp" /&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="3dp"
+            android:text="@string/enterMessage"
+            android:textColor="#939393"
+            android:textSize="15sp" /&gt;
+
+        &lt;!-- Input your Message to be save in file  --&gt;
+        &lt;EditText
+            android:id="@+id/enterMessage"
+            android:layout_width="fill_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/editttext_border"
+            android:gravity="top|left"
+            android:inputType="textCapSentences|textMultiLine"
+            android:padding="5dp"
+            android:scrollbars="vertical"
+            android:textColor="#9e9e9e"
+            android:textSize="16sp" /&gt;
+
+        &lt;!-- Save Message Button  --&gt;
+        &lt;Button
+            android:id="@+id/saveMessage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
+            android:elevation="5dp"
+            android:text="@string/saveMessage"
+            android:textColor="#2196F3"
+            android:textSize="15sp" /&gt;
+
+        &lt;!-- Read Message Button  --&gt;
+        &lt;Button
+            android:id="@+id/readMessage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
+            android:elevation="5dp"
+            android:text="@string/readMessage"
+            android:textColor="#2196F3"
+            android:textSize="15sp" /&gt;
+
+
+        &lt;!-- Show Message Layout  --&gt;
+        &lt;RelativeLayout
+            android:id="@+id/readMessageLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:visibility="gone"&gt;
+
+            &lt;!-- TextView For displaying saved file path  --&gt;
+            &lt;TextView
+                android:id="@+id/savedTextFileNameandPath"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/savedTextFileTime"
+                android:gravity="left|center_vertical"
+                android:padding="5dp"
+                android:textColor="#009688"
+                android:textSize="13sp" /&gt;
+
+            &lt;!-- TextView For displaying saved file time  --&gt;
+            &lt;TextView
+                android:id="@+id/savedTextFileTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="right|center_vertical"
+                android:padding="5dp"
+                android:textColor="#9e9e9e"
+                android:textSize="12sp" /&gt;
+
+            &lt;!-- TextView For displaying saved file data  --&gt;
+            &lt;TextView
+                android:id="@+id/savedFileMessageBody"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/savedTextFileNameandPath"
+                android:gravity="center_vertical|left"
+                android:padding="5dp"
+                android:textColor="#616161"
+                android:textSize="14sp" /&gt;
+
+        &lt;/RelativeLayout&gt;
+
+        &lt;!-- Delete Message Button  --&gt;
+        &lt;Button
+            android:id="@+id/deleteMessage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
+            android:elevation="5dp"
+            android:text="@string/deleteMessage"
+            android:textColor="#2196F3"
+            android:textSize="15sp" /&gt;
+
+    &lt;/LinearLayout&gt;
+&lt;/ScrollView&gt;</pre><p>
+<b>4</b>. Create a drawable under <em>drawable</em>  directory naming <em>edittext_border.xml</em> for giving border to EditText.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"&gt;
+    &lt;solid android:color="#ffffff" /&gt;
+    &lt;stroke
+        android:width="1px"
+        android:color="#9e9e9e" /&gt;
+
+&lt;/shape&gt;</pre><p>
+<b>5</b>. Create a <em>CheckForSDCard.java</em><i> </i>class for checking if <em>SDCard</em> is mounted or not.</p><pre class="crayon-plain-tag">com.read_write_textfile_demo;
+
+import android.os.Environment;
+ 
+public class CheckForSDCard {
+    //Check If SD Card is present or not method
+    public boolean isSDCardPresent() {
+        if (Environment.getExternalStorageState().equals(
+ 
+                Environment.MEDIA_MOUNTED)) {
+            return true;
+        }
+        return false;
+    }
+}</pre><p>
+<b>6</b>. Now below are methods that i am using for writing , reading and deleting text files.</p>
+<ul>
+<li>Write File Method</li>
+</ul>
+<pre class="crayon-plain-tag">//Method for writing data to text file
+    private void saveMessageIntoSDCard(File savedFile, String messageBody) {
+        try {
+
+            //File writer is used for writing data
+            FileWriter fWriter = new FileWriter(savedFile);
+            fWriter.write(messageBody);//write data
+            fWriter.flush();//flush writer
+            fWriter.close();//close writer
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }</pre>
+<ul>
+<li> Read File Method &#8211; Here &#8216;fileDirectory&#8217; is main directory and &#8216;savedFile&#8217; is our TextFile. This method will return us string data after reading text file.</li>
+</ul>
+<pre class="crayon-plain-tag">//Method that will return saved text file data after reading
+    private String readMessageFromSDCard() {
+
+        //First check if main directory is present or not
+        if (!fileDirectory.exists())
+            Toast.makeText(getBaseContext(), "There is no main directory present. ",
+                    Toast.LENGTH_SHORT).show();
+        else {
+
+            //Then check if text file is present or not
+            File savedFile = new File(fileDirectory.getAbsolutePath() + "/" + FileName);
+            if (!savedFile.exists())
+                Toast.makeText(getBaseContext(), "There is no such file to read data. ",
+                        Toast.LENGTH_SHORT).show();
+            else {
+                //Finally read data using FileReader
+                try {
+                    FileReader rdr = new FileReader(fileDirectory.getAbsolutePath() + "/" + FileName);
+
+                    char[] inputBuffer = new char[READ_BLOCK_SIZE];//get Block size as buffer
+                    String savedData = "";
+                    int charRead = rdr.read(inputBuffer);
+                    //Read all data one by one by using loop and add it to string created above
+                    for (int k = 0; k &lt; charRead; k++) {
+                        savedData += inputBuffer[k];
+                    }
+                    return savedData;//return saved data
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("Message", e.getLocalizedMessage());
+                    return null;
+                }
+            }
+        }
+        return null;
+    }</pre>
+<ul>
+<li>Delete File Method &#8211;</li>
+</ul>
+<pre class="crayon-plain-tag">//Delete text file method
+    private void deleteMessageFromSDCard() {
+
+        //Check if main directory is present or not
+        if (!fileDirectory.exists())
+            Toast.makeText(getBaseContext(), "There is no main directory present.",
+                    Toast.LENGTH_SHORT).show();
+        else {
+
+            //Now Check if text file is present or not
+            File savedFile = new File(fileDirectory.getAbsolutePath() + "/" + FileName);
+            if (!savedFile.exists())
+                Toast.makeText(getBaseContext(), "There is no saved file present.",
+                        Toast.LENGTH_SHORT).show();
+            else {
+                savedFile.delete();//If text file is present then delete file
+                Toast.makeText(getBaseContext(), "File deleted Successfully.",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }</pre>
+<ul>
+<li>TimeStamp Code &#8211;</li>
+</ul>
+<pre class="crayon-plain-tag">//Get Current Date and put it in Shared Preferences
+  SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+  String currentDateandTime = sdf.format(new Date());</pre>
+<b>7</b>. Finally come to your <em>MainActivity.java</em> and add the following code.<br />
+<pre class="crayon-plain-tag">package com.read_write_textfile_demo;
+
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Environment;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static EditText enterMessage;
+    private static Button saveMessage, readMessage, deleteMessage;
+    private static TextView savedMessageFileNameandPath, savedMessageTime, saveMessageData;
+    private static RelativeLayout readMessageLayout;
+
+    private static File fileDirectory = null;//Main Directory File
+
+    private static final String DirectoryName = "Androhub Saved Files";//Main Directory Name
+    private static final String FileName = "androhub.txt";//Text File Name
+    private static final int READ_BLOCK_SIZE = 512;//Block Size for text File
+
+    //Preferences to Store TimStamp when data is Saved
+    private static SharedPreferences timeSharedPreferences;
+    private static SharedPreferences.Editor editor;
+
+    //Preferences Name and KeyValue for TimeStamp
+    private static final String SharedPreferencesName = "TimePreferences";
+    private static final String TimeKeyValue = "TimeKeyValue";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initViews();
+        setListeners();
+    }
+
+
+    //Init All views
+    private void initViews() {
+
+        //Init shared preferences
+        timeSharedPreferences = getSharedPreferences(SharedPreferencesName, Context.MODE_PRIVATE);
+        editor = timeSharedPreferences.edit();
+
+        enterMessage = (EditText) findViewById(R.id.enterMessage);
+
+        saveMessage = (Button) findViewById(R.id.saveMessage);
+        readMessage = (Button) findViewById(R.id.readMessage);
+        deleteMessage = (Button) findViewById(R.id.deleteMessage);
+
+        savedMessageFileNameandPath = (TextView) findViewById(R.id.savedTextFileNameandPath);
+        savedMessageTime = (TextView) findViewById(R.id.savedTextFileTime);
+        saveMessageData = (TextView) findViewById(R.id.savedFileMessageBody);
+
+        readMessageLayout = (RelativeLayout) findViewById(R.id.readMessageLayout);
+
+
+        //Check if sd card is present or not
+        if (new CheckForSDCard().isSDCardPresent()) {
+            fileDirectory = new File(
+                    Environment.getExternalStorageDirectory() + "/"
+                            + DirectoryName);
+        } else
+            Toast.makeText(MainActivity.this, "SD Card is not present.", Toast.LENGTH_SHORT).show();//Show toast if SD Card is not mounted
+    }
+
+
+    //set listeners to buttons
+    private void setListeners() {
+        saveMessage.setOnClickListener(this);
+        readMessage.setOnClickListener(this);
+        deleteMessage.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.saveMessage:
+                saveMessage();
+                break;
+            case R.id.readMessage:
+                showSavedFileData(readMessageFromSDCard());
+                break;
+            case R.id.deleteMessage:
+                deleteMessageFromSDCard();
+                break;
+        }
+    }
+
+
+    //Call Save Message Method
+    private void saveMessage() {
+        String messageBody = enterMessage.getText().toString().trim();//get Input message
+
+        //Check if it is null or not
+        if (messageBody.length() == 0 &amp;&amp; messageBody.equals(""))
+            Toast.makeText(MainActivity.this, "Please Enter some message.", Toast.LENGTH_SHORT).show();
+        else {
+
+            try {
+                //Create Main Directory if not present
+                if (!fileDirectory.exists())
+                    fileDirectory.mkdir();
+
+                //Make File Name under main Directory
+                File savedFile = new File(fileDirectory.getAbsolutePath() + "/" + FileName);
+
+                //If Saved File exists then check if it's size is greater than 0
+                if (savedFile.exists()) {
+                    if (savedFile.length() &gt; 0)
+                        appendOrOverrideSavedFile(savedFile, messageBody);//if file present then show alert for appending and overriding
+                    else {
+                        //else save data into file
+                        saveMessageIntoSDCard(savedFile, messageBody);
+                        Toast.makeText(getBaseContext(), "File saved successfully!",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    //If Saved file doesn't exists then create new file and save file
+                    saveMessageIntoSDCard(savedFile, messageBody);
+                    Toast.makeText(getBaseContext(), "File saved successfully!",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.e("Message", e.getLocalizedMessage());
+
+            }
+        }
+    }
+
+
+    //Method to show alert if file already present
+    private void appendOrOverrideSavedFile(final File savedFile, final String message) {
+        final String savedMessage = readMessageFromSDCard();//Read saved message
+
+        //Check if saved message not null
+        if (savedMessage != null &amp;&amp; savedMessage.length() &gt; 0 &amp;&amp; !savedMessage.equals("")) {
+
+            //If not null then show alert
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Choose..");
+            builder.setMessage("What do you want to do with message?nnAppend data to current saved file or override saved data.");
+            builder.setPositiveButton("OVERRIDE", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    //If Override is selected then textfile data is overrided
+                    saveMessageIntoSDCard(savedFile, message);
+                    Toast.makeText(getBaseContext(), "File Overrided Successfully!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+            builder.setNegativeButton("APPEND", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    //If Append is selected then textfile data is appended with new data
+                    saveMessageIntoSDCard(savedFile, savedMessage + "nn" + message);
+                    Toast.makeText(getBaseContext(), "File Appended Successfully!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+            builder.setNeutralButton("CANCEL", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            AlertDialog ad = builder.create();
+            ad.setCancelable(true);
+            ad.setCanceledOnTouchOutside(true);
+            ad.show();
+        } else
+            //If there is nothing to read from saved fie then simply add data to file
+            saveMessageIntoSDCard(savedFile, message);
+
+    }
+
+
+    //Method for writing data to text file
+    private void saveMessageIntoSDCard(File savedFile, String messageBody) {
+        try {
+
+            //File writer is used for writing data
+            FileWriter fWriter = new FileWriter(savedFile);
+            fWriter.write(messageBody);//write data
+            fWriter.flush();//flush writer
+            fWriter.close();//close writer
+
+
+            //Get Current Date and put it in Shared Preferences
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+            String currentDateandTime = sdf.format(new Date());
+
+            editor.putString(TimeKeyValue, currentDateandTime);
+            editor.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    //Method that will return saved text file data after reading
+    private String readMessageFromSDCard() {
+
+        //First check if main directory is present or not
+        if (!fileDirectory.exists())
+            Toast.makeText(getBaseContext(), "There is no main directory present. ",
+                    Toast.LENGTH_SHORT).show();
+        else {
+
+            //Then check if text file is present or not
+            File savedFile = new File(fileDirectory.getAbsolutePath() + "/" + FileName);
+            if (!savedFile.exists())
+                Toast.makeText(getBaseContext(), "There is no such file to read data. ",
+                        Toast.LENGTH_SHORT).show();
+            else {
+                //Finally read data using FileReader
+                try {
+                    FileReader rdr = new FileReader(fileDirectory.getAbsolutePath() + "/" + FileName);
+
+                    char[] inputBuffer = new char[READ_BLOCK_SIZE];//get Block size as buffer
+                    String savedData = "";
+                    int charRead = rdr.read(inputBuffer);
+                    //Read all data one by one by using loop and add it to string created above
+                    for (int k = 0; k &lt; charRead; k++) {
+                        savedData += inputBuffer[k];
+                    }
+                    return savedData;//return saved data
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("Message", e.getLocalizedMessage());
+                    return null;
+                }
+            }
+        }
+        return null;
+    }
+
+    //Show Saved data
+    private void showSavedFileData(String savedMessage) {
+
+        //Check if saved data is not null
+        if (savedMessage != null &amp;&amp; savedMessage.length() &gt; 0 &amp;&amp; !savedMessage.equals("")) {
+
+            //Check if TimeStamp is present or not
+            if (timeSharedPreferences.contains(TimeKeyValue))
+                savedMessageTime.setText(timeSharedPreferences.getString(TimeKeyValue, ""));//Dispaly saved timestamp
+
+            savedMessageFileNameandPath.setText(FileName + " - inside '" + fileDirectory.getAbsolutePath() + "'");//Display file path
+            saveMessageData.setText(savedMessage);//display saved data
+            readMessageLayout.setVisibility(View.VISIBLE);//Make visible the read message layout
+        }
+    }
+
+    //Delete text file method
+    private void deleteMessageFromSDCard() {
+
+        //Check if main directory is present or not
+        if (!fileDirectory.exists())
+            Toast.makeText(getBaseContext(), "There is no main directory present.",
+                    Toast.LENGTH_SHORT).show();
+        else {
+
+            //Now Check if text file is present or not
+            File savedFile = new File(fileDirectory.getAbsolutePath() + "/" + FileName);
+            if (!savedFile.exists())
+                Toast.makeText(getBaseContext(), "There is no saved file present.",
+                        Toast.LENGTH_SHORT).show();
+            else {
+                savedFile.delete();//If text file is present then delete file
+                readMessageLayout.setVisibility(View.GONE);//hide read file layout
+
+                //Remove Saved TimeStamp
+                editor.remove(TimeKeyValue);
+                editor.commit();
+
+                Toast.makeText(getBaseContext(), "File deleted Successfully.",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }
+}</pre>
+<b>8</b>. Finally, all done you can use above code to save your data in File.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/Read-Write_TextFile_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-read-write-file-operations/">Android Read Write File Operations</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-read-write-file-operations/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">740</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,2053 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Intent &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/intent/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Sectioned RecyclerView Android</title>
+		<link>http://www.androhub.com/sectioned-recyclerview-android/</link>
+		<comments>http://www.androhub.com/sectioned-recyclerview-android/#respond</comments>
+		<pubDate>Mon, 24 Jul 2017 14:32:47 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android RecyclerView]]></category>
+		<category><![CDATA[Intent]]></category>
+		<category><![CDATA[card view]]></category>
+		<category><![CDATA[intent]]></category>
+		<category><![CDATA[recycler view]]></category>
+		<category><![CDATA[section]]></category>
+		<category><![CDATA[sectioned recyclerview]]></category>
+
+		<guid isPermaLink="false">http://www.androhub.com/?p=1292</guid>
+		<description><![CDATA[<p>Hi all, Today we are going to learn how to make Sectioned RecyclerView which you have seen in PlayStore App. To know about RecyclerView and basic implementations you can see my previous articles on it. To make Sectioned RecyclerView we are going to need a RecyclerView nested into another RecyclerView. VIDEO 1. Create a new [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/sectioned-recyclerview-android/">Sectioned RecyclerView Android</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Hi all, Today we are going to learn how to make <strong>Sectioned RecyclerView</strong> which you have seen in <strong>PlayStore App</strong>. To know about RecyclerView and basic implementations you can see my <a href="http://www.androhub.com/android-recyclerview/" target="_blank">previous articles</a> on it.</p>
+<p>To make Sectioned RecyclerView we are going to need a RecyclerView nested into another RecyclerView.</p>
+<h2>VIDEO</h2>
+<p><iframe  id="_ytid_40708" width="602" height="339" src="https://www.youtube.com/embed/sasCrpgHDy8?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. These are some strings that we are going to use in our project.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;Sectioned RecyclerView Demo&lt;/string&gt;
+    &lt;string name="linear_sectioned_recyclerview_vertical"&gt;Linear Sectioned RecyclerView (Vertical)&lt;/string&gt;
+    &lt;string name="linear_sectioned_recyclerview_horizontal"&gt;Linear Sectioned RecyclerView (Horizontal)&lt;/string&gt;
+    &lt;string name="grid_sectioned_recyclerview"&gt;Grid Sectioned RecyclerView&lt;/string&gt;
+    &lt;string name="show_all"&gt;Show All&lt;/string&gt;
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Now go to <em>activity_main.xml</em> and add the below code to it. In this layout we are using three Button to show different types of Sectioned RecyclerView.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context="com.sectionedrecyclerviewdemo.MainActivity"&gt;
+
+    &lt;Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/colorPrimary"
+        android:onClick="linearSectionedRecyclerViewVertical"
+        android:text="@string/linear_sectioned_recyclerview_vertical"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" /&gt;
+
+    &lt;Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        android:padding="10dp"
+        android:onClick="linearSectionedRecyclerViewHorizontal"
+        android:text="@string/linear_sectioned_recyclerview_horizontal"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" /&gt;
+
+    &lt;Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        android:onClick="gridSectionedRecyclerView"
+        android:text="@string/grid_sectioned_recyclerview"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>4</b>. After adding three Button lets implement click event on them and open <em>RecyclerViewActivity.java</em> on Button click. For this add the below code to your <em>MainActivity.java</em>.</p><pre class="crayon-plain-tag">package com.sectionedrecyclerviewdemo;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void linearSectionedRecyclerViewVertical(View view) {
+        startRecyclerViewActivity(RecyclerViewType.LINEAR_VERTICAL);
+    }
+
+    public void linearSectionedRecyclerViewHorizontal(View view) {
+        startRecyclerViewActivity(RecyclerViewType.LINEAR_HORIZONTAL);
+    }
+
+    public void gridSectionedRecyclerView(View view) {
+        startRecyclerViewActivity(RecyclerViewType.GRID);
+    }
+
+    /**
+     * method to start RecyclerViewActivity
+     *
+     * @param recyclerViewType enum type to show recyclerview on basis if button call
+     */
+    private void startRecyclerViewActivity(RecyclerViewType recyclerViewType) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(RecyclerViewActivity.RECYCLER_VIEW_TYPE, recyclerViewType);
+        startActivity(new Intent(this, RecyclerViewActivity.class).putExtras(bundle));
+    }
+}</pre><p>
+<b>5</b>. For <em>RecyclerViewActivity.java</em> create new xml layout naming <em>recycler_view_activity.xml</em> and add RecyclerView to it.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="10dp"&gt;
+
+    &lt;android.support.v7.widget.RecyclerView
+        android:id="@+id/sectioned_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" /&gt;
+&lt;/LinearLayout&gt;</pre><p>
+<b>6</b>. After creating<em> recycler_view_activity.xml</em> create <em>RecyclerViewActivity.java</em> class and put the below code to it. In this class we are populating RecyclerView with Sections and Items using <em>SectionModel.java</em> pojo class.</p><pre class="crayon-plain-tag">package com.sectionedrecyclerviewdemo;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 24/07/17.
+ */
+
+public class RecyclerViewActivity extends AppCompatActivity {
+
+    protected static final String RECYCLER_VIEW_TYPE = "recycler_view_type";
+    private RecyclerViewType recyclerViewType;
+    private RecyclerView recyclerView;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.recycler_view_activity);
+
+        //get enum type passed from MainActivity
+        recyclerViewType = (RecyclerViewType) getIntent().getSerializableExtra(RECYCLER_VIEW_TYPE);
+        setUpToolbarTitle();
+        setUpRecyclerView();
+        populateRecyclerView();
+    }
+
+    //set toolbar title and set back button
+    private void setUpToolbarTitle() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        switch (recyclerViewType) {
+            case LINEAR_HORIZONTAL:
+                getSupportActionBar().setTitle(getResources().getString(R.string.linear_sectioned_recyclerview_horizontal));
+                break;
+            case LINEAR_VERTICAL:
+                getSupportActionBar().setTitle(getResources().getString(R.string.linear_sectioned_recyclerview_vertical));
+                break;
+            case GRID:
+                getSupportActionBar().setTitle(getResources().getString(R.string.grid_sectioned_recyclerview));
+                break;
+
+        }
+    }
+
+    //setup recycler view
+    private void setUpRecyclerView() {
+        recyclerView = (RecyclerView) findViewById(R.id.sectioned_recycler_view);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+    }
+
+    //populate recycler view
+    private void populateRecyclerView() {
+        ArrayList&lt;SectionModel&gt; sectionModelArrayList = new ArrayList&lt;&gt;();
+        //for loop for sections
+        for (int i = 1; i &lt;= 5; i++) {
+            ArrayList&lt;String&gt; itemArrayList = new ArrayList&lt;&gt;();
+            //for loop for items
+            for (int j = 1; j &lt;= 10; j++) {
+                itemArrayList.add("Item " + j);
+            }
+
+            //add the section and items to array list
+            sectionModelArrayList.add(new SectionModel("Section " + i, itemArrayList));
+        }
+
+        SectionRecyclerViewAdapter adapter = new SectionRecyclerViewAdapter(this, recyclerViewType, sectionModelArrayList);
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}</pre><p>
+<div id="attachment_1298" style="width: 586px" class="wp-caption aligncenter"><img class="size-large wp-image-1298" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/07/vertical_sectioned_recyclerview.jpg?resize=576%2C1024" alt="Vertical Sectioned RecyclerView" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/07/vertical_sectioned_recyclerview.jpg?resize=576%2C1024 576w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/07/vertical_sectioned_recyclerview.jpg?resize=169%2C300 169w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/07/vertical_sectioned_recyclerview.jpg?resize=768%2C1365 768w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/07/vertical_sectioned_recyclerview.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">Vertical Sectioned RecyclerView</p></div>
+<div id="attachment_1296" style="width: 586px" class="wp-caption aligncenter"><img class="size-large wp-image-1296" src="https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/07/horizontal_sectioned_recyclerview.jpg?resize=576%2C1024" alt="Horizontal Sectioned RecyclerView" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/07/horizontal_sectioned_recyclerview.jpg?resize=576%2C1024 576w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/07/horizontal_sectioned_recyclerview.jpg?resize=169%2C300 169w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/07/horizontal_sectioned_recyclerview.jpg?resize=768%2C1365 768w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/07/horizontal_sectioned_recyclerview.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">Horizontal Sectioned RecyclerView</p></div>
+<div id="attachment_1295" style="width: 586px" class="wp-caption aligncenter"><img class="size-large wp-image-1295" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/07/grid_sectioned_recyclerview.jpg?resize=576%2C1024" alt="Grid Sectioned RecyclerView" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/07/grid_sectioned_recyclerview.jpg?resize=576%2C1024 576w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/07/grid_sectioned_recyclerview.jpg?resize=169%2C300 169w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/07/grid_sectioned_recyclerview.jpg?resize=768%2C1365 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/07/grid_sectioned_recyclerview.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">Grid Sectioned RecyclerView</p></div>
+<p><b>7</b>. To identify the type of Sectioned RecyclerView we will create an ENUM java class naming <em>RecyclerViewType.java</em> and add the three enums to it.</p><pre class="crayon-plain-tag">package com.sectionedrecyclerviewdemo;
+
+/**
+ * Created by sonu on 24/07/17.
+ */
+
+public enum  RecyclerViewType {
+    LINEAR_VERTICAL,LINEAR_HORIZONTAL,GRID;
+}</pre><p>
+<b>8</b>. Now create pojo class naming <em>SectionModel.java</em> for RecyclerView.</p><pre class="crayon-plain-tag">package com.sectionedrecyclerviewdemo;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 24/07/17.
+ */
+
+public class SectionModel {
+    private String sectionLabel;
+    private ArrayList&lt;String&gt; itemArrayList;
+
+    public SectionModel(String sectionLabel, ArrayList&lt;String&gt; itemArrayList) {
+        this.sectionLabel = sectionLabel;
+        this.itemArrayList = itemArrayList;
+    }
+
+    public String getSectionLabel() {
+        return sectionLabel;
+    }
+
+    public ArrayList&lt;String&gt; getItemArrayList() {
+        return itemArrayList;
+    }
+}</pre><p>
+<b>9</b>. Now lets create adapter class for RecyclerView naming <em>SectionRecyclerViewAdapter.java</em> and put the below code to it. In this class we are setting different LayoutManager on basis of enum type inside <strong>onBindViewHolder</strong> method.</p><pre class="crayon-plain-tag">package com.sectionedrecyclerviewdemo;
+
+import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 24/07/17.
+ */
+
+public class SectionRecyclerViewAdapter extends RecyclerView.Adapter&lt;SectionRecyclerViewAdapter.SectionViewHolder&gt; {
+
+
+    class SectionViewHolder extends RecyclerView.ViewHolder {
+        private TextView sectionLabel, showAllButton;
+        private RecyclerView itemRecyclerView;
+
+        public SectionViewHolder(View itemView) {
+            super(itemView);
+            sectionLabel = (TextView) itemView.findViewById(R.id.section_label);
+            showAllButton = (TextView) itemView.findViewById(R.id.section_show_all_button);
+            itemRecyclerView = (RecyclerView) itemView.findViewById(R.id.item_recycler_view);
+        }
+    }
+
+    private Context context;
+    private RecyclerViewType recyclerViewType;
+    private ArrayList&lt;SectionModel&gt; sectionModelArrayList;
+
+    public SectionRecyclerViewAdapter(Context context, RecyclerViewType recyclerViewType, ArrayList&lt;SectionModel&gt; sectionModelArrayList) {
+        this.context = context;
+        this.recyclerViewType = recyclerViewType;
+        this.sectionModelArrayList = sectionModelArrayList;
+    }
+
+    @Override
+    public SectionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.section_custom_row_layout, parent, false);
+        return new SectionViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(SectionViewHolder holder, int position) {
+        final SectionModel sectionModel = sectionModelArrayList.get(position);
+        holder.sectionLabel.setText(sectionModel.getSectionLabel());
+
+        //recycler view for items
+        holder.itemRecyclerView.setHasFixedSize(true);
+        holder.itemRecyclerView.setNestedScrollingEnabled(false);
+
+        /* set layout manager on basis of recyclerview enum type */
+        switch (recyclerViewType) {
+            case LINEAR_VERTICAL:
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+                holder.itemRecyclerView.setLayoutManager(linearLayoutManager);
+                break;
+            case LINEAR_HORIZONTAL:
+                LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+                holder.itemRecyclerView.setLayoutManager(linearLayoutManager1);
+                break;
+            case GRID:
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 3);
+                holder.itemRecyclerView.setLayoutManager(gridLayoutManager);
+                break;
+        }
+        ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(context, sectionModel.getItemArrayList());
+        holder.itemRecyclerView.setAdapter(adapter);
+
+        //show toast on click of show all button
+        holder.showAllButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "You clicked on Show All of : " + sectionModel.getSectionLabel(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return sectionModelArrayList.size();
+    }
+
+
+}</pre><p>
+<b>10</b>. For RecyclerView sections we are going to create xml layout naming <em>section_custom_row_layout.xml.</em> This layout contains one section label, one show all button and one RecyclerView for displaying Section Items.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp"&gt;
+
+    &lt;TextView
+        android:id="@+id/section_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/section_show_all_button"
+        android:layout_alignParentLeft="true"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/section_show_all_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@color/colorPrimary"
+        android:paddingBottom="8dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="8dp"
+        android:text="@string/show_all"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="12sp" /&gt;
+
+    &lt;!--  recycler view for items --&gt;
+    &lt;android.support.v7.widget.RecyclerView
+        android:id="@+id/item_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/section_show_all_button"
+        android:layout_marginTop="7dp" /&gt;
+&lt;/RelativeLayout&gt;</pre><p>
+<b>11</b>. To display section items we need to create one more adapter for Items naming <em>ItemRecyclerViewAdapter.java </em>and put the below code to it.</p><pre class="crayon-plain-tag">package com.sectionedrecyclerviewdemo;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 24/07/17.
+ */
+
+public class ItemRecyclerViewAdapter extends RecyclerView.Adapter&lt;ItemRecyclerViewAdapter.ItemViewHolder&gt; {
+
+    class ItemViewHolder extends RecyclerView.ViewHolder {
+        private TextView itemLabel;
+
+        public ItemViewHolder(View itemView) {
+            super(itemView);
+            itemLabel = (TextView) itemView.findViewById(R.id.item_label);
+        }
+    }
+
+    private Context context;
+    private ArrayList&lt;String&gt; arrayList;
+
+    public ItemRecyclerViewAdapter(Context context, ArrayList&lt;String&gt; arrayList) {
+        this.context = context;
+        this.arrayList = arrayList;
+    }
+
+    @Override
+    public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_custom_row_layout, parent, false);
+        return new ItemViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(ItemViewHolder holder, int position) {
+        holder.itemLabel.setText(arrayList.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return arrayList.size();
+    }
+
+
+}</pre><p>
+<b>12</b>. For items adapter we need to create an xml layout naming <em>item_custom_row_layout.xml</em>. In this layout we are taking a CardView with ImageView and TextView.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="5dp"
+    app:contentPadding="10dp"&gt;
+
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"&gt;
+
+        &lt;ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_launcher_round" /&gt;
+
+        &lt;TextView
+            android:id="@+id/item_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/android.support.v7.widget.CardView&gt;</pre><p>
+<b>13</b>. Finally all done, now you can also make Sectioned RecyclerView.</p>
+<p class="graf graf--p graf-after--figure">Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" width="13" height="13" /></p>
+<p><strong><a href="http://androhub.com/downloads/SectionedRecyclerViewDemo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/sectioned-recyclerview-android/">Sectioned RecyclerView Android</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/sectioned-recyclerview-android/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1292</post-id>	</item>
+		<item>
+		<title>Android StartActivityForResult</title>
+		<link>http://www.androhub.com/android-startactivityforresult/</link>
+		<comments>http://www.androhub.com/android-startactivityforresult/#respond</comments>
+		<pubDate>Mon, 28 Sep 2015 06:26:18 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Intent]]></category>
+		<category><![CDATA[android get message to an activity from another activity]]></category>
+		<category><![CDATA[android intent]]></category>
+		<category><![CDATA[get message from second activity]]></category>
+		<category><![CDATA[intent]]></category>
+		<category><![CDATA[intent request code]]></category>
+		<category><![CDATA[onActivityResult]]></category>
+		<category><![CDATA[startactivityforresult]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=680</guid>
+		<description><![CDATA[<p>In Android we can pass data from one activity to another via Intent using startActivity(). The syntax for this is shown below : [crayon-5a4d042846a84934424165/] Similarly we can get data from our other activity that is opened by an activity like SecondActivity from MainActivity and we need some message from SecondActivity back again to MainActivity so for this [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-startactivityforresult/">Android StartActivityForResult</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>In Android we can pass data from one activity to another via <a href="http://developer.android.com/intl/ru/reference/android/content/Intent.html" target="_blank">Intent</a> using startActivity(). The syntax for this is shown below :</p><pre class="crayon-plain-tag">Intent in = new Intent(MainActivity.this, SecondActivity.class);
+in.putExtra("message",message);
+startActivity(in);</pre><p>
+Similarly we can get data from our other activity that is opened by an activity like SecondActivity from MainActivity and we need some message from SecondActivity back again to MainActivity so for this we need startActivityForResult(). Below is syntax of startActivityForResult that is in MainActivity.</p><pre class="crayon-plain-tag">Intent in = new Intent(MainActivity.this, SecondActivity.class);
+startActivityForResult(in, 2);//2 is request code</pre><p>
+Here 2 is request code for this activity and make sure no two activity have same request code.</p>
+<p>Now in SecondActivity we send back result via intent. While sending back intent we have to setResult()  :</p>
+<ul>
+<li>RESULT_OK : This refers the result send is ok.</li>
+<li>RESULT_CANCELED : This means the activity cancel to send result.</li>
+</ul>
+<pre class="crayon-plain-tag">Intent intent = new Intent();
+intent.putExtra("message",message);//Put Message to pass over intent
+setResult(RESULT_OK,intent);//Set result OK</pre>
+<pre class="crayon-plain-tag">Intent intent = new Intent();
+setResult(RESULT_CANCELED, intent);//For cancel button set result CANCEl</pre>
+Finally in MainActivity class we have to get result in onActivityResult() method and check the request code and result code and do according to it.<br />
+<pre class="crayon-plain-tag">// Call Back method to get the Message form other Activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is IntentId
+        if (requestCode == IntentId) {
+            if (resultCode == RESULT_OK) {
+
+                //If result code is OK then get String extra and set message
+                String message = data.getStringExtra("message");
+                resultMessage.setText(message);
+            }
+
+            if (resultCode == RESULT_CANCELED)
+
+                //When result is cancelled display toast
+                Toast.makeText(MainActivity.this, "Activity cancelled.", Toast.LENGTH_SHORT).show();
+
+
+        }
+    }</pre>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to get result back from an activity using startActivityForResult.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_68950" width="602" height="339" src="https://www.youtube.com/embed/naCrYz7HyIw?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res=&gt;values=&gt;strings </strong>file and add the following strings.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;StartActivityForResult Demo&lt;/string&gt;
+    &lt;string name="resultMessage"&gt;Result Message&lt;/string&gt;
+    &lt;string name="getResult"&gt;Get Result&lt;/string&gt;
+    &lt;string name="enterMessage"&gt;Enter Your Message&lt;/string&gt;
+    &lt;string name="seciindActivityTitle"&gt;Message enetered here will be displayed in MainActivity&lt;/string&gt;
+    &lt;string name="cancel"&gt;Cancel&lt;/string&gt;
+    &lt;string name="submit"&gt;Submit&lt;/string&gt;
+    &lt;string name="secondActivity"&gt;Second Activity&lt;/string&gt;
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Create a layout xml file naming <em>activity_main.xml</em> and add the following code. In this i had taken one TextView that will display return message from second activity and a Button that will open second activity.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"&gt;
+
+    &lt;!--  Message from Second Activity will be displayed here  --&gt;
+    &lt;TextView
+        android:id="@+id/resultMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/resultMessage"
+        android:textColor="#000000"
+        android:textSize="17sp" /&gt;
+
+    &lt;!--  This will open second activity  --&gt;
+    &lt;Button
+        android:id="@+id/secondActivityBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:ems="12"
+        android:text="@string/getResult" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>4</b>. Now create a new xml file naming <em>second_activity.xml </em>and add the following code. In this we are having an EditText for take user input and a two Button one for Cancel and one for Submit.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp"&gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/seciindActivityTitle"
+        android:textColor="#000000"
+        android:textSize="17sp" /&gt;
+
+    &lt;!--  Enter your message  --&gt;
+    &lt;EditText
+        android:id="@+id/inputMessage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="@string/enterMessage"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#d3d3d3" /&gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal"&gt;
+
+        &lt;Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:text="@string/cancel" /&gt;
+
+        &lt;Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="@string/submit" /&gt;
+
+    &lt;/LinearLayout&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>5</b>. Open your <em>MainActivity.java</em> and the following code. In this code i have used all steps mentioned at starting.</p><pre class="crayon-plain-tag">package com.androidstartactivityforresult_demo;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    public static final int IntentId =1; //Intent Request Code
+    private static TextView resultMessage;
+    private static Button getMessageBtn;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        resultMessage = (TextView)findViewById(R.id.resultMessage);
+        getMessageBtn = (Button)findViewById(R.id.secondActivityBtn);
+
+        getMessageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Open second activity with request code
+                Intent in = new Intent(MainActivity.this, SecondActivity.class);
+                startActivityForResult(in, IntentId);
+            }
+        });
+    }
+
+    // Call Back method to get the Message form other Activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is IntentId
+        if (requestCode == IntentId) {
+            if (resultCode == RESULT_OK) {
+
+                //If result code is OK then get String extra and set message
+                String message = data.getStringExtra("message");
+                resultMessage.setText(message);
+            }
+
+            if (resultCode == RESULT_CANCELED)
+
+                //When result is cancelled display toast
+                Toast.makeText(MainActivity.this, "Activity cancelled.", Toast.LENGTH_SHORT).show();
+
+
+        }
+    }
+    }</pre><p>
+<b>6</b>. Now create a new java file naming <em>SecondActivity.java</em> and add the following code. In this class i am returning message on Submit button click and cancelling activity on Cancel button click.</p><pre class="crayon-plain-tag">package com.androidstartactivityforresult_demo;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+/**
+ * Created by SONU on 25/09/15.
+ */
+public class SecondActivity  extends AppCompatActivity implements OnClickListener{
+    private static EditText inputMessage;
+    private static Button cancel, submit;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.second_activity);
+
+        inputMessage = (EditText)findViewById(R.id.inputMessage);
+        cancel = (Button)findViewById(R.id.cancel);
+        submit = (Button)findViewById(R.id.submit);
+
+        cancel.setOnClickListener(this);
+        submit.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+switch (view.getId()){
+    case R.id.submit:
+        String message=inputMessage.getText().toString();
+        if(message.length()!=0 &amp;&amp; !message.equals("")) {
+            Intent intent = new Intent();
+            intent.putExtra("message",message);//Put Message to pass over intent
+            setResult(RESULT_OK,intent);//Set result OK
+            finish();//finish activity
+        }
+        else
+            Toast.makeText(SecondActivity.this, "Please enter a message.", Toast.LENGTH_SHORT).show();
+
+        break;
+    case R.id.cancel:
+        Intent intent = new Intent();
+        setResult(RESULT_CANCELED, intent);//For cancel button set result CANCEl
+        finish();//finish activity
+        break;
+}
+    }
+}</pre><p>
+<b>7</b>. Finally come to your Manifest file and add your SecondActivity.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.androidstartactivityforresult_demo" &gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+        &lt;activity android:name=".SecondActivity"
+            android:label="@string/secondActivity"&gt;&lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>8</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/AndroidStartActivityForResult_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-startactivityforresult/">Android StartActivityForResult</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-startactivityforresult/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">680</post-id>	</item>
+		<item>
+		<title>Android Share Text and Images Using Share Intent</title>
+		<link>http://www.androhub.com/android-share-text-and-images-using-share-intent/</link>
+		<comments>http://www.androhub.com/android-share-text-and-images-using-share-intent/#respond</comments>
+		<pubDate>Thu, 20 Aug 2015 13:54:48 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Image Picker]]></category>
+		<category><![CDATA[Intent]]></category>
+		<category><![CDATA[android share image]]></category>
+		<category><![CDATA[android share text]]></category>
+		<category><![CDATA[decode image]]></category>
+		<category><![CDATA[gallery image picker]]></category>
+		<category><![CDATA[intent]]></category>
+		<category><![CDATA[share]]></category>
+		<category><![CDATA[share image]]></category>
+		<category><![CDATA[share image into our app]]></category>
+		<category><![CDATA[share text]]></category>
+		<category><![CDATA[share text into our app]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=629</guid>
+		<description><![CDATA[<p>Android provide us an Intent by which we can use to share image, video, audio, text, etc. to other installed apps like WhatsApp, Facebook, Twitter, etc. We had seen many apps has functionality of sharing image and text to other app and also they have functionality to make other apps share their text and image to [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-share-text-and-images-using-share-intent/">Android Share Text and Images Using Share Intent</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Android provide us an Intent by which we can use to share image, video, audio, text, etc. to other installed apps like <a href="https://www.whatsapp.com/" target="_blank">WhatsApp</a>, <a href="http://facebook.com" target="_blank">Facebook</a>, <a href="http://twitter.com/" target="_blank">Twitter</a>, etc. We had seen many apps has functionality of sharing image and text to other app and also they have functionality to make other apps share their text and image to the app like WhatsApp from which we can share text and image and also we can share text and image to WhatsApp.</p>
+<p>For more information about this Sharing Intent you can read over <a href="http://developer.android.com/intl/ru/training/sharing/send.html" target="_blank">here</a>.</p>
+<p>Today we are going to create an app that share text and image to other app and also the other app can share their image and text to this app.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to share image and text to other apps and help other apps to share image and text to our app.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_89114" width="602" height="339" src="https://www.youtube.com/embed/mEpN-K8LurY?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>ShareActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. These are some strings that we are going to use in our project.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+    &lt;string name="share_activity"&gt;Share Activity Demo&lt;/string&gt;
+    &lt;string name="shared_activity"&gt;Shared Activity Demo&lt;/string&gt;
+    &lt;string name="imageview"&gt;Share ImageView&lt;/string&gt;
+    &lt;string name="share_image"&gt;Share Image&lt;/string&gt;
+    &lt;string name="share_text"&gt;Share Text&lt;/string&gt;
+    &lt;string name="select_image"&gt;Select Image&lt;/string&gt;
+    &lt;string name="enter_text"&gt;Enter something to share&lt;/string&gt;
+    &lt;string name="shared_text"&gt;Shared Text&lt;/string&gt;
+    &lt;string name="shared_image"&gt;Shared Image&lt;/string&gt;
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Now, create an xml layout naming <em>share_activity.xml </em>for <em>ShareActivity.java. </em>In this layout i had taken ImageView to display the selected image from gallery and share button for image and one edittext for user input to share the text.</p><pre class="crayon-plain-tag">&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" &gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp" &gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/share_image"
+            android:textColor="#ff6600"
+            android:textSize="25sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;ImageView
+            android:id="@+id/share_imageview"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/imageview"
+            android:padding="5dp"
+            android:src="@drawable/logo" /&gt;
+
+        &lt;LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp" &gt;
+
+            &lt;Button
+                android:id="@+id/select_image"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/select_image" /&gt;
+
+            &lt;Button
+                android:id="@+id/share_image"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/share_image"
+                android:visibility="gone" /&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/share_text"
+            android:textColor="#ff6600"
+            android:textSize="25sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;EditText
+            android:id="@+id/text_share"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/enter_text"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#d3d3d3"
+            android:textSize="15sp" /&gt;
+
+        &lt;Button
+            android:id="@+id/btnTextShare"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:text="@string/share_text" /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;</pre><p>
+<b>4</b>. For sharing image we have to follow some steps :</p>
+<ul>
+<li><em>ACTION_SEND &#8211; </em>This intent will start the Send Activity.</li>
+<li><em>setType(&#8220;image/*&#8221;) &#8211; </em>We have to set type of send data i.e. for image it is&#8221; image/*&#8221;.</li>
+<li><em>putExtra(Intent.EXTRA_STREAM, imagePath) &#8211; </em>Put extra will put the extra stream with the path name of image that we are sharing.</li>
+<li><em>startActivity(Intent.createChooser(sharingIntent, &#8220;Share Image Using&#8221;)) &#8211; </em>Now start chooser activity with title name.</li>
+</ul>
+<p>For sharing text also we have to follow some steps :</p>
+<ul>
+<li><em>setType(&#8220;text/plain&#8221;)  &#8211; </em>We have to change the type of send because we are sending text.</li>
+<li><em>putExtra(Intent.EXTRA_SUBJECT, &#8220;Subject Here&#8221;) &#8211; </em>We can add extra subject to our text.</li>
+<li><em>putExtra(Intent.EXTRA_TEXT, text) &#8211; </em>Now put extra text that we want to share.</li>
+<li><em>startActivity(Intent.createChooser(sharingIntent, &#8220;Share Text Using&#8221;)) &#8211; </em>Finally start chooser activity for text share.</li>
+</ul>
+<p><b>5</b>. Finally come to your ShareActivity.java and add the following code. In this code i had also implemented to choose an image from gallery for image sharing. If you don&#8217;t know how to <a href="http://androhub.com/android-gallery-image-picker/" target="_blank">pick an image from gallery</a> you can read my earlier tutorial.</p><pre class="crayon-plain-tag">package com.imagetext_share_demo;
+
+import java.io.FileNotFoundException;
+
+import com.imagetext_share_demo.R;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+public class ShareActivity extends AppCompatActivity implements OnClickListener {
+	private static Button selectImage, shareImage, shareText;
+	private static ImageView imageView;
+	private static EditText textToShare;
+
+	// Uri for image path
+	private static Uri imageUri = null;
+
+	private final int select_photo = 1; // request code fot gallery intent
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.share_activity);
+
+		init();
+		setListeners();
+
+	}
+
+	// Initialize views
+	private void init() {
+		selectImage = (Button) findViewById(R.id.select_image);
+		shareImage = (Button) findViewById(R.id.share_image);
+		shareText = (Button) findViewById(R.id.btnTextShare);
+
+		imageView = (ImageView) findViewById(R.id.share_imageview);
+
+		textToShare = (EditText) findViewById(R.id.text_share);
+	}
+
+	// Implement click listeners
+	private void setListeners() {
+		selectImage.setOnClickListener(this);
+		shareImage.setOnClickListener(this);
+		shareText.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.select_image:
+			// Intent to gallery
+			Intent in = new Intent(Intent.ACTION_PICK);
+			in.setType("image/*");
+			startActivityForResult(in, select_photo);// start
+														// activity
+														// for
+														// result
+			break;
+		case R.id.share_image:
+
+			// share image
+			shareImage(imageUri);
+
+			break;
+		case R.id.btnTextShare:
+
+			// Share text
+			String getText = textToShare.getText().toString();
+			if (!getText.equals("") &amp;&amp; getText.length() != 0)
+				shareText(getText);
+			else
+				Toast.makeText(ShareActivity.this,
+						"Please enter something to share.", Toast.LENGTH_SHORT)
+						.show();
+
+			break;
+
+		}
+	}
+
+	protected void onActivityResult(int requestcode, int resultcode,
+			Intent imagereturnintent) {
+		super.onActivityResult(requestcode, resultcode, imagereturnintent);
+		switch (requestcode) {
+		case select_photo:
+			if (resultcode == RESULT_OK) {
+				try {
+
+					imageUri = imagereturnintent.getData();// Get intent
+															// data
+
+					Bitmap bitmap = Utils.decodeUri(ShareActivity.this,
+							imageUri, 200);// call
+											// deocde
+											// uri
+											// method
+					// Check if bitmap is not null then set image else show
+					// toast
+					if (bitmap != null) {
+						imageView.setImageBitmap(bitmap);// Set image over
+															// bitmap
+						shareImage.setVisibility(View.VISIBLE);// Visible button
+																// if bitmap is
+																// not null
+					} else {
+						shareImage.setVisibility(View.GONE);
+						Toast.makeText(ShareActivity.this,
+								"Error while decoding image.",
+								Toast.LENGTH_SHORT).show();
+					}
+				} catch (FileNotFoundException e) {
+
+					e.printStackTrace();
+					Toast.makeText(ShareActivity.this, "File not found.",
+							Toast.LENGTH_SHORT).show();
+				}
+			}
+		}
+	}
+
+	// Share image
+	private void shareImage(Uri imagePath) {
+		Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+		sharingIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+		sharingIntent.setType("image/*");
+		sharingIntent.putExtra(Intent.EXTRA_STREAM, imagePath);
+		startActivity(Intent.createChooser(sharingIntent, "Share Image Using"));
+	}
+
+	// Share text
+	private void shareText(String text) {
+
+		Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+		sharingIntent.setType("text/plain");// Plain format text
+
+		// You can add subject also
+		/*
+		 * sharingIntent.putExtra( android.content.Intent.EXTRA_SUBJECT,
+		 * "Subject Here");
+		 */
+		sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
+		startActivity(Intent.createChooser(sharingIntent, "Share Text Using"));
+	}
+}</pre><p>
+<b>6</b>. Create a new class naming Utils.java for decoding large image into smaller image while picking an image from gallery.</p><pre class="crayon-plain-tag">package com.imagetext_share_demo;
+
+import java.io.FileNotFoundException;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+
+public class Utils {
+	// Method that deocde uri into bitmap. This method is necessary to deocde
+	// large size images to load over imageview
+	public static Bitmap decodeUri(Context context, Uri uri,
+			final int requiredSize) throws FileNotFoundException {
+		BitmapFactory.Options o = new BitmapFactory.Options();
+		o.inJustDecodeBounds = true;
+		BitmapFactory.decodeStream(context.getContentResolver()
+				.openInputStream(uri), null, o);
+
+		int width_tmp = o.outWidth, height_tmp = o.outHeight;
+		int scale = 1;
+
+		while (true) {
+			if (width_tmp / 2 &lt; requiredSize || height_tmp / 2 &lt; requiredSize)
+				break;
+			width_tmp /= 2;
+			height_tmp /= 2;
+			scale *= 2;
+		}
+
+		BitmapFactory.Options o2 = new BitmapFactory.Options();
+		o2.inSampleSize = scale;
+		return BitmapFactory.decodeStream(context.getContentResolver()
+				.openInputStream(uri), null, o2);
+	}
+
+}</pre><p>
+&nbsp;</p>
+<p><b>Still we had learned how to share an image and text to other apps. Now we are going to learn how to make our app in such a way so that other apps can also share image and text.</b></p>
+<p><b>7</b>. For other apps to share image and text we have to create a layout to display image and text. I named this layout <em>shared_activity.xml.</em></p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;TextView
+        android:id="@+id/shared_textview_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/shared_text"
+        android:textColor="#ff6600"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:visibility="gone" /&gt;
+
+    &lt;TextView
+        android:id="@+id/shared_textview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:visibility="gone" /&gt;
+
+    &lt;TextView
+        android:id="@+id/shared_imageview_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/shared_image"
+        android:textColor="#ff6600"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:visibility="gone" /&gt;
+
+    &lt;ImageView
+        android:id="@+id/shared_imageview"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/imageview"
+        android:padding="5dp"
+        android:src="@drawable/logo"
+        android:visibility="gone" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>8</b>. Now create a new class naming <em>SharedActivity.java </em>for sharing text  and image to this activity. In this activity we get the intent action and action type and check the conditions according to text and image and display according to it.</p><pre class="crayon-plain-tag">package com.imagetext_share_demo;
+
+import java.io.FileNotFoundException;
+
+import com.imagetext_share_demo.R;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class SharedActivity extends AppCompatActivity {
+	private static ImageView sharedImageView;
+	private static TextView sharedTextView, shared_textview_title,
+			shared_imageview_title;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.shared_activity);
+		sharedImageView = (ImageView) findViewById(R.id.shared_imageview);
+		sharedTextView = (TextView) findViewById(R.id.shared_textview);
+		shared_textview_title = (TextView) findViewById(R.id.shared_textview_title);
+		shared_imageview_title = (TextView) findViewById(R.id.shared_imageview_title);
+
+		// Call shared intent
+		onSharedIntent();
+	}
+
+	// Shared intent method
+	private void onSharedIntent() {
+		Intent receiverdIntent = getIntent();// Receive intent
+		String receivedAction = receiverdIntent.getAction();// Get Action from
+															// receive intent
+		String receivedType = receiverdIntent.getType();// Get type from receive
+														// intent
+
+		// If action is equal to action send
+		if (receivedAction.equals(Intent.ACTION_SEND)) {
+
+			// If nothing shared
+			sharedTextView.setText("Nothing has shared");
+			sharedTextView.setVisibility(View.VISIBLE);
+			shared_textview_title.setVisibility(View.GONE);
+			sharedImageView.setVisibility(View.GONE);
+			shared_imageview_title.setVisibility(View.GONE);
+
+			// If mime type is equal to text then show text and hide imageview
+			if (receivedType.startsWith("text/")) {
+				sharedImageView.setVisibility(View.GONE);
+				shared_imageview_title.setVisibility(View.GONE);
+				String receivedText = receiverdIntent
+						.getStringExtra(Intent.EXTRA_TEXT);
+				if (receivedText != null) {
+					sharedTextView.setText(receivedText);
+					sharedTextView.setVisibility(View.VISIBLE);
+					shared_textview_title.setVisibility(View.VISIBLE);
+				}
+			}
+			// If mime type is equal to image then show image and hide textview
+			else if (receivedType.startsWith("image/")) {
+				sharedTextView.setVisibility(View.GONE);
+				shared_textview_title.setVisibility(View.GONE);
+				Uri receiveUri = (Uri) receiverdIntent
+						.getParcelableExtra(Intent.EXTRA_STREAM);
+
+				if (receiveUri != null) {
+					try {
+						Bitmap bitmap = Utils.decodeUri(SharedActivity.this,
+								receiveUri, 200);
+						sharedImageView.setImageBitmap(bitmap);
+						sharedImageView.setVisibility(View.VISIBLE);
+						shared_imageview_title.setVisibility(View.VISIBLE);
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+		} else if (receivedAction.equals(Intent.ACTION_MAIN)) {
+			sharedTextView.setText("Nothing has shared");
+			sharedTextView.setVisibility(View.VISIBLE);
+			shared_textview_title.setVisibility(View.GONE);
+			sharedImageView.setVisibility(View.GONE);
+			shared_imageview_title.setVisibility(View.GONE);
+		}
+	}
+
+}</pre><p>
+<b>9</b>. Finally the main thing is to add this <em>SharedActivity.java </em>to Manifest file so that your activity should list in Sharing listview. For this you have to add some intent filter and data type that activity gonna listen.</p><pre class="crayon-plain-tag">&lt;activity
+            android:name="com.imagetext_share_demo.SharedActivity"
+            android:icon="@drawable/share_this"
+            android:label="@string/shared_activity" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.SEND" /&gt; &lt;!-- Send action required to display activity in share list --&gt;
+
+                &lt;category android:name="android.intent.category.DEFAULT" /&gt; &lt;!-- Make activity default to launch --&gt;
+
+
+                &lt;!-- Mime type i.e. what can be shared with this activity only image and text --&gt;
+                &lt;data android:mimeType="image/*" /&gt;
+                &lt;data android:mimeType="text/*" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;</pre><p>
+Your Manifest will look like this :</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.imagetext_share_demo"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/share"
+        android:label="@string/share_activity"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name="com.imagetext_share_demo.ShareActivity"
+            android:icon="@drawable/share"
+            android:label="@string/share_activity" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+
+        &lt;!-- Shared Activity --&gt;
+        &lt;activity
+            android:name="com.imagetext_share_demo.SharedActivity"
+            android:icon="@drawable/share_this"
+            android:label="@string/shared_activity" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.SEND" /&gt; &lt;!-- Send action required to display activity in share list --&gt;
+
+                &lt;category android:name="android.intent.category.DEFAULT" /&gt; &lt;!-- Make activity default to launch --&gt;
+
+
+                &lt;!-- Mime type i.e. what can be shared with this activity only image and text --&gt;
+                &lt;data android:mimeType="image/*" /&gt;
+                &lt;data android:mimeType="text/*" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>10</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/ImageText_Share_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-share-text-and-images-using-share-intent/">Android Share Text and Images Using Share Intent</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-share-text-and-images-using-share-intent/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">629</post-id>	</item>
+		<item>
+		<title>Android Text To Speech</title>
+		<link>http://www.androhub.com/android-text-to-speech/</link>
+		<comments>http://www.androhub.com/android-text-to-speech/#respond</comments>
+		<pubDate>Wed, 19 Aug 2015 16:47:13 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Intent]]></category>
+		<category><![CDATA[android intentt]]></category>
+		<category><![CDATA[android speech]]></category>
+		<category><![CDATA[android text to speech]]></category>
+		<category><![CDATA[android voice to text]]></category>
+		<category><![CDATA[intent]]></category>
+		<category><![CDATA[text to speech]]></category>
+		<category><![CDATA[text to voice]]></category>
+		<category><![CDATA[TTS]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=617</guid>
+		<description><![CDATA[<p>Android allows you convert your Text into Voice. Not only you can convert it but it also allows you to speak text in variety of different languages. Android provides TextToSpeech class for this purpose. In order to use this class, you can implement TextToSpeech.OnInitListener this listener to your class and it will automatically add the below method to your [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-text-to-speech/">Android Text To Speech</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Android allows you convert your Text into Voice. Not only you can convert it but it also allows you to speak text in variety of different languages.</p>
+<p>Android provides <b><a href="http://developer.android.com/intl/ru/reference/android/speech/tts/TextToSpeech.html" target="_blank">TextToSpeech</a></b> class for this purpose. In order to use this class, you can implement <strong><em>TextToSpeech.OnInitListener </em></strong>this listener to your class and it will automatically add the below method to your class,</p><pre class="crayon-plain-tag">@Override
+	public void onInit(int status) {
+}</pre><p>
+else you can specify the <b>initListener,</b> its syntax is given below:</p><pre class="crayon-plain-tag">private EditText edit;
+tts=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+   @Override
+   public void onInit(int status) {
+   }
+}
+);</pre><p>
+In this listener, you have to specify the properties for TextToSpeech object , such as its language ,pitch e.t.c. Language can be set by calling <b>setLanguage()</b> method. Its syntax is given below −</p><pre class="crayon-plain-tag">int result = tts.setLanguage(Locale.US);</pre><p>
+The method setLanguage takes an Locale object as parameter. The list of some of the locales available are given below −</p>
+
+<table id="tablepress-32" class="tablepress tablepress-id-32">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">S.No.</th><th class="column-2">Locale</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">1</td><td class="column-2">US</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">2</td><td class="column-2">CANADA_FRENCH</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">3</td><td class="column-2">GERMANY</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">4</td><td class="column-2">ITALY</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">5</td><td class="column-2">JAPAN</td>
+</tr>
+<tr class="row-7 odd">
+	<td class="column-1">6</td><td class="column-2">CHINA</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-32 from cache -->
+<p>Once you have set the language, you can call <b>speak</b> method of the class to speak the text. Its syntax is given below −</p><pre class="crayon-plain-tag">tts.speak(texttospeak, TextToSpeech.QUEUE_FLUSH, null);</pre><p>
+Apart from the speak method, there are some other methods available in the TextToSpeech class. They are listed below:</p>
+
+<table id="tablepress-33" class="tablepress tablepress-id-33">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Method</th><th class="column-2">Description</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">addSpeech(String text, String filename)</td><td class="column-2">This method adds a mapping between a string of text and a sound file.</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">getLanguage()</td><td class="column-2">This method returns a Locale instance describing the language.</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">isSpeaking()</td><td class="column-2">This method checks whether the TextToSpeech engine is busy speaking.</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">setPitch(float pitch)</td><td class="column-2">This method sets the speech pitch for the TextToSpeech engine.</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">setSpeechRate(float speechRate)</td><td class="column-2">This method sets the speech rate.</td>
+</tr>
+<tr class="row-7 odd">
+	<td class="column-1">shutdown()</td><td class="column-2">This method releases the resources used by the TextToSpeech engine.</td>
+</tr>
+<tr class="row-8 even">
+	<td class="column-1">stop()</td><td class="column-2">This method stop the speak.</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-33 from cache -->
+<p>If you want to do the other way i.e converting speech to text, follow my tutorial <a href="http://androhub.com/android-speech-to-text/" target="_blank">Android Speech to Text</a>.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to convert Text to Speech.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_76015" width="602" height="339" src="https://www.youtube.com/embed/xjo07iFpouQ?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. First create a layout in xml file naming <em>activity_main.xml </em>that contains Button for starting TTS(TextToSpeech) and an EditText that take input and convert the text into speech.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/text"
+        android:textColor="#0587d9"
+        android:textSize="26sp"
+        android:textStyle="bold" /&gt;
+
+    &lt;EditText
+        android:id="@+id/speak_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/hint"
+        android:padding="10dp" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnSpeak"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="@string/speak"
+        android:textSize="15sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>3</b>. Finally come to your <em>MainActivtiy.java </em>and add the following code. This class contains all the code that we discussed earlier in this article.</p><pre class="crayon-plain-tag">package com.text_to_speech;
+
+import java.util.Locale;
+
+import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends ActionBarActivity implements
+		TextToSpeech.OnInitListener {
+	private static TextToSpeech tts;
+	private static Button btnSpeak;
+	private static EditText speak_text;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		init();
+	}
+
+	private void init() {
+
+		tts = new TextToSpeech(MainActivity.this, this);
+
+		btnSpeak = (Button) findViewById(R.id.btnSpeak);
+
+		speak_text = (EditText) findViewById(R.id.speak_text);
+
+		// button on click event
+		btnSpeak.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				speakOut();
+			}
+
+		});
+	}
+
+	@Override
+	public void onDestroy() {
+		// Don't forget to shutdown!
+		if (tts != null) {
+			tts.stop();
+			tts.shutdown();
+		}
+		super.onDestroy();
+
+	}
+
+	//Speak Out Method to speak the text
+	private void speakOut() {
+
+		String text = speak_text.getText().toString();
+
+		tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+	}
+
+	
+	@Override
+	public void onInit(int status) {
+		
+		if (status == TextToSpeech.SUCCESS) {
+
+			int result = tts.setLanguage(Locale.US);// Set Language
+
+			// tts.setPitch(5); // set pitch level
+
+			// tts.setSpeechRate(2); // set speech speed rate
+
+			//Language is not Supported
+			if (result == TextToSpeech.LANG_MISSING_DATA
+					|| result == TextToSpeech.LANG_NOT_SUPPORTED) {
+				Log.e("TTS", "Language is not supported");
+			} else {
+				btnSpeak.setEnabled(true);
+				speakOut();
+			}
+
+		} else {
+			Log.e("TTS", "Initialization Failed");
+		}
+	}
+
+}</pre><p>
+<b>4</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/TexttoSpeech_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-text-to-speech/">Android Text To Speech</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-text-to-speech/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">617</post-id>	</item>
+		<item>
+		<title>Android Gallery Image Picker</title>
+		<link>http://www.androhub.com/android-gallery-image-picker/</link>
+		<comments>http://www.androhub.com/android-gallery-image-picker/#respond</comments>
+		<pubDate>Wed, 19 Aug 2015 16:04:02 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Image Picker]]></category>
+		<category><![CDATA[Intent]]></category>
+		<category><![CDATA[Gallery]]></category>
+		<category><![CDATA[gallery picker]]></category>
+		<category><![CDATA[get image real path]]></category>
+		<category><![CDATA[get image uri]]></category>
+		<category><![CDATA[Image Picker]]></category>
+		<category><![CDATA[intent]]></category>
+		<category><![CDATA[picker]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=614</guid>
+		<description><![CDATA[<p>Android supports seamless integration of applications and content providers. Lot many things are handy provided to developers, which helps in reducing the code and consumes less time to integrate different features to app. For example, if we have an application that allow user to change his profile picture. In this requirement user will be welling [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-gallery-image-picker/">Android Gallery Image Picker</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Android supports seamless integration of applications and content providers. Lot many things are handy provided to developers, which helps in reducing the code and consumes less time to integrate different features to app.</p>
+<p>For example, if we have an application that allow user to change his profile picture. In this requirement user will be welling to browse his mobile gallery and pick a picture of his own to set his profile picture. Integrating this feature in traditional operating system, need lot of effort write code to integrate file browser. But in android we can use <strong><code>Intent.ACTION_PICK</code></strong> action to get this feature integrated .</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to pick an Image from Gallery and display in our app.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_47003" width="602" height="339" src="https://www.youtube.com/embed/0Sa2e7LSUNo?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. First create a layout in xml file naming <em>activity_main.xml </em>that contains Button for selecting image , and ImageView to display image and two TextViews for displaying URI path and original path of image.</p><pre class="crayon-plain-tag">&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" &gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp" &gt;
+
+        &lt;FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border" &gt;
+
+            &lt;ImageView
+                android:id="@+id/gallery_imageview"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/gallery_imageview"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logo" /&gt;
+        &lt;/FrameLayout&gt;
+
+        &lt;TextView
+            android:id="@+id/uri_path"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:visibility="gone" /&gt;
+
+        &lt;TextView
+            android:id="@+id/real_path"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:visibility="gone" /&gt;
+
+        &lt;Button
+            android:id="@+id/change_image"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:text="@string/change_image" /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;</pre><p>
+<b>3</b>. In above layout you had seen i had set background to FrameLayout creating a border to ImageView for this we have to create an xml file under <em>drawable</em> directory naming <em>border.xml</em>.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" &gt;
+
+    &lt;corners android:radius="10dp" /&gt;
+
+    &lt;padding
+        android:bottom="5dp"
+        android:left="5dp"
+        android:right="5dp"
+        android:top="5dp" /&gt;
+
+    &lt;solid android:color="#ffffff" /&gt;
+
+    &lt;stroke android:color="#000000" android:width="1dp" /&gt;
+
+&lt;/shape&gt;</pre><p>
+<b>4</b>. Now there are only three main steps by which we can achieve our goal :</p>
+<p><strong>Step 1: Starting Intent</strong></p>
+<ul>
+<li><em>ACTION_PICK &#8211; </em>Action Pick will open the picker in Android device.</li>
+<li><em>setType(&#8220;image/*&#8221;) &#8211; </em>This will set the type of picker i.e. all image type. So action_pick will open gallery.</li>
+</ul>
+<p><strong>Step 2: Receiving the gallery response</strong><br />
+The selected image will result in <strong>onActivityforResult </strong>where we get the image URI and we convert the URI into real path via below method :</p><pre class="crayon-plain-tag">public static String getRealPathFromUri(Context context, Uri contentUri) {
+		Cursor cursor = null;
+		try {
+			String[] proj = { MediaStore.Images.Media.DATA };
+			cursor = context.getContentResolver().query(contentUri, proj, null,
+					null, null);
+			int column_index = cursor
+					.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+			cursor.moveToFirst();
+			return cursor.getString(column_index);
+		} finally {
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+	}</pre><p>
+<strong>Step 3: After receiving response we have to compress the image</strong><br />
+We have to compress and scale the image because large images can cause Exceptions so better to avoid exception. The below method is going to do this task and return a bitmap:</p><pre class="crayon-plain-tag">public static Bitmap decodeUri(Context context, Uri uri,
+			final int requiredSize) throws FileNotFoundException {
+		BitmapFactory.Options o = new BitmapFactory.Options();
+		o.inJustDecodeBounds = true;
+		BitmapFactory.decodeStream(context.getContentResolver()
+				.openInputStream(uri), null, o);
+
+		int width_tmp = o.outWidth, height_tmp = o.outHeight;
+		int scale = 1;
+
+		while (true) {
+			if (width_tmp / 2 &lt; requiredSize || height_tmp / 2 &lt; requiredSize)
+				break;
+			width_tmp /= 2;
+			height_tmp /= 2;
+			scale *= 2;
+		}
+
+		BitmapFactory.Options o2 = new BitmapFactory.Options();
+		o2.inSampleSize = scale;
+		return BitmapFactory.decodeStream(context.getContentResolver()
+				.openInputStream(uri), null, o2);
+	}</pre><p>
+<b>5</b>. Finally  come to your <em>MainActivity.java </em>and add the following code that we had discusses in above point.</p><pre class="crayon-plain-tag">package com.galleryimagepicker_demo;
+
+import java.io.FileNotFoundException;
+
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+	private final int select_photo = 1; // request code fot gallery intent
+
+	private static ImageView gallery_image;
+
+	private static TextView uriPath, realPath;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		gallery_image = (ImageView) findViewById(R.id.gallery_imageview);
+
+		uriPath = (TextView) findViewById(R.id.uri_path);
+		realPath = (TextView) findViewById(R.id.real_path);
+
+		// Implement click listener over button
+		findViewById(R.id.change_image).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View arg0) {
+
+						// Intent to gallery
+						Intent in = new Intent(Intent.ACTION_PICK);
+						in.setType("image/*");
+						startActivityForResult(in, select_photo);// start
+																	// activity
+																	// for
+																	// result
+
+					}
+				});
+
+	}
+
+	protected void onActivityResult(int requestcode, int resultcode,
+			Intent imagereturnintent) {
+		super.onActivityResult(requestcode, resultcode, imagereturnintent);
+		switch (requestcode) {
+		case select_photo:
+			if (resultcode == RESULT_OK) {
+				try {
+
+					Uri imageuri = imagereturnintent.getData();// Get intent
+																// data
+
+					uriPath.setText("URI Path: " + imageuri.toString());
+					// Get real path and show over text view
+					String real_Path = getRealPathFromUri(MainActivity.this,
+							imageuri);
+					realPath.setText("Real Path: " + real_Path);
+
+					uriPath.setVisibility(View.VISIBLE);
+					realPath.setVisibility(View.VISIBLE);
+
+					Bitmap bitmap = decodeUri(MainActivity.this, imageuri, 300);// call
+																				// deocde
+																				// uri
+																				// method
+					// Check if bitmap is not null then set image else show
+					// toast
+					if (bitmap != null)
+						gallery_image.setImageBitmap(bitmap);// Set image over
+																// bitmap
+
+					else
+						Toast.makeText(MainActivity.this,
+								"Error while decoding image.",
+								Toast.LENGTH_SHORT).show();
+				} catch (FileNotFoundException e) {
+
+					e.printStackTrace();
+					Toast.makeText(MainActivity.this, "File not found.",
+							Toast.LENGTH_SHORT).show();
+				}
+			}
+		}
+	}
+
+	// Method that deocde uri into bitmap. This method is necessary to deocde
+	// large size images to load over imageview
+	public static Bitmap decodeUri(Context context, Uri uri,
+			final int requiredSize) throws FileNotFoundException {
+		BitmapFactory.Options o = new BitmapFactory.Options();
+		o.inJustDecodeBounds = true;
+		BitmapFactory.decodeStream(context.getContentResolver()
+				.openInputStream(uri), null, o);
+
+		int width_tmp = o.outWidth, height_tmp = o.outHeight;
+		int scale = 1;
+
+		while (true) {
+			if (width_tmp / 2 &lt; requiredSize || height_tmp / 2 &lt; requiredSize)
+				break;
+			width_tmp /= 2;
+			height_tmp /= 2;
+			scale *= 2;
+		}
+
+		BitmapFactory.Options o2 = new BitmapFactory.Options();
+		o2.inSampleSize = scale;
+		return BitmapFactory.decodeStream(context.getContentResolver()
+				.openInputStream(uri), null, o2);
+	}
+
+	// Get Original image path
+	public static String getRealPathFromUri(Context context, Uri contentUri) {
+		Cursor cursor = null;
+		try {
+			String[] proj = { MediaStore.Images.Media.DATA };
+			cursor = context.getContentResolver().query(contentUri, proj, null,
+					null, null);
+			int column_index = cursor
+					.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+			cursor.moveToFirst();
+			return cursor.getString(column_index);
+		} finally {
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+	}
+}</pre><p>
+<b>6</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/GalleryImagePicker_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-gallery-image-picker/">Android Gallery Image Picker</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-gallery-image-picker/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">614</post-id>	</item>
+		<item>
+		<title>Android Speech to Text</title>
+		<link>http://www.androhub.com/android-speech-to-text/</link>
+		<comments>http://www.androhub.com/android-speech-to-text/#respond</comments>
+		<pubDate>Wed, 19 Aug 2015 15:42:57 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Intent]]></category>
+		<category><![CDATA[Speech Recogniser]]></category>
+		<category><![CDATA[Speech to text]]></category>
+		<category><![CDATA[Voice Recogniser]]></category>
+		<category><![CDATA[voice to text]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=610</guid>
+		<description><![CDATA[<p>Android comes with an inbuilt feature speech to text through which you can provide speech input to your app. With this you can add some of the cool features to your app like adding voice navigation(Helpful when you are targeting disabled people), filling a form with voice input etc., In the background how voice input [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-speech-to-text/">Android Speech to Text</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Android comes with an inbuilt feature speech to text through which you can provide speech input to your app. With this you can add some of the cool features to your app like adding voice navigation(Helpful when you are targeting disabled people), filling a form with voice input etc.,</p>
+<p>In the background how voice input works is, the speech input will be streamed to a server, on the server voice will be converted to text and finally text will be sent back to our app.</p>
+<p>If you want to do the other way i.e converting text to speech, follow my tutorial <a class="link" href="http://androhub.com/android-text-to-speech/" target="_blank">Android Text to Speech</a></p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to use convert Speech/Voice to Text.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_86471" width="602" height="339" src="https://www.youtube.com/embed/bmiZHjfEah0?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. First create a layout in xml file naming <em>activity_main.xml </em>that contains Button for starting voice recognition and a ListView to display the result.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" &gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/click_text"
+        android:textColor="#0587d9"
+        android:textSize="18sp"
+        android:textStyle="bold" /&gt;
+
+    &lt;Button
+        android:id="@+id/speakButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:text="@string/click" /&gt;
+
+    &lt;ListView
+        android:id="@+id/text_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="5dp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>3</b>. Now open your <em>MainActivity.java </em>and add the following lines. There are only two steps by which we can achieve our goal :</p>
+<p><strong>Step 1: Starting RecognizerIntent</strong></p>
+<p>First we need to create a RecognizerIntent by setting necessary flags such as :</p>
+<ul>
+<li><em>ACTION_RECOGNIZE_SPEECH &#8211; </em>Simply takes user’s speech input and returns it to same activity.</li>
+<li><em>LANGUAGE_MODEL_FREE_FORM &#8211; </em>Considers input in free form English.</li>
+<li><em>EXTRA_PROMPT &#8211; </em>Text prompt to show to the user when asking them to speak.</li>
+</ul>
+<p><strong>Step 2: Receiving the speech response</strong><br />
+Once the speech input is done we have to catch the response in <strong>onActivityResult</strong> and take appropriate action needed.</p>
+<p>Note : Before doing anything we have to check if the device support <em>Speech Reocgnizer</em> or not.</p><pre class="crayon-plain-tag">package com.voice_to_text;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.os.Bundle;
+import android.speech.RecognizerIntent;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+
+public class MainActivity extends AppCompatActivity {
+	private static final int REQUEST_CODE = 1234;
+	private static ListView wordsList;
+	private static Button speakButton;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		init();
+
+	}
+
+	private void init() {
+		speakButton = (Button) findViewById(R.id.speakButton);
+		wordsList = (ListView) findViewById(R.id.text_listview);
+
+		// Disable button if no recognition service is present
+		PackageManager pm = getPackageManager();
+		List&lt;ResolveInfo&gt; activities = pm.queryIntentActivities(new Intent(
+				RecognizerIntent.ACTION_RECOGNIZE_SPEECH), 0);
+		if (activities.size() == 0) {
+			speakButton.setEnabled(false);
+			speakButton.setText(R.string.recognizer);
+		}
+		speakButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				startVoiceRecognitionActivity();
+
+			}
+		});
+
+	}
+
+	/**
+	 * Fire an intent to start the voice recognition activity.
+	 */
+	private void startVoiceRecognitionActivity() {
+		Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+		intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+				RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+		intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+				"Voice Recognition Demo...");
+		startActivityForResult(intent, REQUEST_CODE);
+	}
+
+	/**
+	 * Handle the results from the voice recognition activity.
+	 */
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == REQUEST_CODE &amp;&amp; resultCode == RESULT_OK) {
+			// Populate the wordsList with the String values the recognition
+			// engine thought it heard
+			ArrayList&lt;String&gt; matches = data
+					.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+			wordsList.setAdapter(new ArrayAdapter&lt;String&gt;(this,
+					android.R.layout.simple_list_item_1, matches));
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+
+	}
+
+}</pre><p>
+<b>4</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/VoicetoText_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-speech-to-text/">Android Speech to Text</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-speech-to-text/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">610</post-id>	</item>
+	</channel>
+</rss>

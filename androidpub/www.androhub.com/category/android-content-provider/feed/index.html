@@ -1,0 +1,1733 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Content Provider &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-content-provider/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Content Provider</title>
+		<link>http://www.androhub.com/android-content-provider/</link>
+		<comments>http://www.androhub.com/android-content-provider/#respond</comments>
+		<pubDate>Wed, 29 Jul 2015 05:20:21 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Content Provider]]></category>
+		<category><![CDATA[Android Database]]></category>
+		<category><![CDATA[Android SQLite Database]]></category>
+		<category><![CDATA[content provider]]></category>
+		<category><![CDATA[custom content provider]]></category>
+		<category><![CDATA[Database]]></category>
+		<category><![CDATA[SQLite]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=543</guid>
+		<description><![CDATA[<p>A content provider component supplies data from one application to others on request. Such requests are handled by the methods of the ContentResolver class. A content provider can use different ways to store its data and the data can be stored in a database, in files, or even over a network. Content providers let you [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-content-provider/">Android Content Provider</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>A content provider component supplies data from one application to others on request. Such requests are handled by the methods of the ContentResolver class. A content provider can use different ways to store its data and the data can be stored in a database, in files, or even over a network.</p>
+<p><a href="http://developer.android.com/intl/ru/guide/topics/providers/content-provider-creating.html" target="_blank">Content providers</a> let you centralize content in one place and have many different applications access it as needed. A content provider behaves very much like a database where you can query it, edit its content, as well as add or delete content using insert(), update(), delete(), and query() methods. In most cases this data is stored in an <b>SQlite </b>database.</p>
+<p><a href="https://i1.wp.com/androhub.com/newversion/wp-content/uploads/2015/07/content_provider.png"><img class="size-full wp-image-544" src="https://i1.wp.com/androhub.com/newversion/wp-content/uploads/2015/07/content_provider.png?resize=602%2C379" alt="Content Provider" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2015/07/content_provider.png?w=694 694w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2015/07/content_provider.png?resize=300%2C189 300w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /></a></p>
+<p>A content provider is implemented as a subclass of <b>ContentProvider</b> class and must implement a standard set of APIs that enable other applications to perform transactions.</p><pre class="crayon-plain-tag">public class Custom_ContentProvider extends  ContentProvider {
+
+}</pre><p>
+<h2>Content URIs</h2>
+<p>To query a content provider, you specify the query string in the form of a URI which has following format:</p><pre class="crayon-plain-tag">&lt;prefix&gt;://&lt;authority&gt;/&lt;data_type&gt;/&lt;id&gt;</pre><p>
+Here is the detail of various parts of the URI &#8211;</p>
+
+<table id="tablepress-30" class="tablepress tablepress-id-30">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Part</th><th class="column-2">Description</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">prefix</td><td class="column-2">This is always set to content://</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">authority</td><td class="column-2">This specifies the name of the content provider, for example contacts, browser etc. For third-party content providers, this could be the fully qualified name, such as com.androhub.statusprovider</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">data_type</td><td class="column-2">This indicates the type of data that this particular provider provides. For example, if you are getting all the contacts from the Contacts content provider, then the data path would be people and URI would look like this content://contacts/people</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">id</td><td class="column-2">This specifies the specific record requested. For example, if you are looking for contact number 5 in the Contacts content provider then URI would look like this content://contacts/people/5.</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-30 from cache -->
+<h2>Create Content Provider</h2>
+<p>This involves number of simple steps to create your own content provider.</p>
+<ul>
+<li>First of all you need to create a Content Provider class that extends the <i>ContentProvider </i>base class<i>.</i></li>
+<li>Second, you need to define your content provider URI address which will be used to access the content.</li>
+<li>Next you will need to create your own database to keep the content. Usually, Android uses SQLite database and framework needs to override <i>onCreate() </i>method which will use SQLite Open Helper method to create or open the provider&#8217;s database. When your application is launched, the <i>onCreate()</i> handler of each of its Content Providers is called on the main application thread.</li>
+<li>Next you will have to implement Content Provider queries to perform different database specific operations.</li>
+<li>Finally register your Content Provider in your activity file using &lt;provider&gt; tag.</li>
+</ul>
+<p>Here is the list of methods which you need to override in Content Provider class to have your Content Provider working:</p>
+<ul>
+<li><b>onCreate() &#8211; </b>This method is called when the provider is started.</li>
+<li><b>query() &#8211;</b> This method receives a request from a client. The result is returned as a Cursor object.</li>
+<li><b>insert() &#8211; </b>This method inserts a new record into the content provider.</li>
+<li><b>delete() &#8211;</b> This method deletes an existing record from the content provider.</li>
+<li><b>update() &#8211;</b> This method updates an existing record from the content provider.</li>
+<li><b>getType() &#8211;</b> This method returns the MIME type of the data at the given URI.</li>
+</ul>
+<p>In <a href="http://androhub.com/android-read-contacts-using-content-provider/" target="_blank">last tutorial</a> we had covered the topic how to fetch the contact details from phone contacts using content provider i.e. inbuilt content provider. In this tutorial we are going to create our custom content provider.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to create custom content provider and how to fetch the data from this content provider from another app.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_44672" width="602" height="339" src="https://www.youtube.com/embed/98NrjnbEiqA?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<h3></h3>
+<h3>Custom Content Provider Example</h3>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. This are some strings that i am going to use in this tutorial.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="app_name"&gt;ContentProvider Example&lt;/string&gt;
+    &lt;string name="hello_world"&gt;Hello world!&lt;/string&gt;
+    &lt;string name="menu_settings"&gt;Settings&lt;/string&gt;
+    &lt;string name="name"&gt;Enter Name&lt;/string&gt;
+    &lt;string  name="email"&gt;Enter email id&lt;/string&gt;
+    &lt;string name="contact"&gt;Enter conctact number&lt;/string&gt;
+    &lt;string name="add"&gt;Add Data&lt;/string&gt;
+    &lt;string name="save_data"&gt;Save Data using Content Provider&lt;/string&gt;
+    &lt;string name="click"&gt;Click on Button to Show all Saved Data&lt;/string&gt;
+    &lt;string name="show"&gt;Show Data&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Now, create a new java class naming <em>Custom_ContentProvider.java </em>extending <em>ContentProvider. </em>In this java class we put all queries like insert, update, delete and query. We also created a sqlite database to store the data.</p>
+<p>If you are unaware of sqlite database you can check the <a href="http://androhub.com/android-sqlite-database/" target="_blank">tutorial here</a>.</p><pre class="crayon-plain-tag">package com.contentprovider_demo;
+
+import java.util.HashMap;
+
+import android.content.ContentProvider;
+import android.content.ContentUris;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.UriMatcher;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteQueryBuilder;
+import android.net.Uri;
+
+public class Custom_ContentProvider extends ContentProvider {
+	static final String PROVIDER_NAME = "com.contentprovider_demo.Custom_ContentProvider";// Provider
+																							// name
+	static final String URL = "content://" + PROVIDER_NAME + "/androhub";// Provider
+																			// url
+	static final Uri CONTENT_URI = Uri.parse(URL);// Contnet Uri in URI format
+
+	// All fields of database
+	static final String id = "id";
+	static final String name = "name";
+	static final String email = "email";
+	static final String number = "number";
+
+	// Uri code
+	static final int uriCode = 1;
+	static final UriMatcher uriMatcher;
+	private static HashMap&lt;String, String&gt; values;
+	static {
+
+		// Match the uri code to provider name
+		uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+		uriMatcher.addURI(PROVIDER_NAME, "androhub", uriCode);
+		uriMatcher.addURI(PROVIDER_NAME, "androhub/*", uriCode);
+	}
+
+	// detele uri method
+	@Override
+	public int delete(Uri uri, String selection, String[] selectionArgs) {
+		int count = 0;// Count to tell how many rows deleted
+		switch (uriMatcher.match(uri)) {
+		case uriCode:
+			count = db.delete(TABLE_NAME, selection, selectionArgs);
+			break;
+		default:
+			count = 0;
+			throw new IllegalArgumentException("Unknown URI " + uri);
+		}
+		getContext().getContentResolver().notifyChange(uri, null);
+		return count;
+	}
+
+	// return type of content provider
+	@Override
+	public String getType(Uri uri) {
+		switch (uriMatcher.match(uri)) {
+		case uriCode:
+			return "vnd.android.cursor.dir/androhub";
+
+		default:
+			throw new IllegalArgumentException("Unsupported URI: " + uri);
+		}
+	}
+
+	// Insert method
+	@Override
+	public Uri insert(Uri uri, ContentValues values) {
+		long rowID = db.insert(TABLE_NAME, "", values);// Insert data into
+														// database
+		// If row id is greater than 0 then notify content provider
+		if (rowID &gt; 0) {
+			Uri _uri = ContentUris.withAppendedId(CONTENT_URI, rowID);
+			getContext().getContentResolver().notifyChange(_uri, null);
+			return _uri;
+		}
+		throw new SQLException("Failed to add a record into " + uri);
+	}
+
+	@Override
+	public boolean onCreate() {
+		Context context = getContext();
+		DatabaseHelper dbHelper = new DatabaseHelper(context);
+		db = dbHelper.getWritableDatabase();
+		if (db != null) {
+			return true;
+		}
+		return false;
+	}
+
+	// Read all data method
+	@Override
+	public Cursor query(Uri uri, String[] projection, String selection,
+			String[] selectionArgs, String sortOrder) {
+		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+		qb.setTables(TABLE_NAME);
+
+		switch (uriMatcher.match(uri)) {
+		case uriCode:
+			qb.setProjectionMap(values);
+			break;
+		default:
+			throw new IllegalArgumentException("Unknown URI " + uri);
+		}
+		if (sortOrder == null || sortOrder == "") {
+			sortOrder = name;
+		}
+		Cursor c = qb.query(db, projection, selection, selectionArgs, null,
+				null, sortOrder);
+		c.setNotificationUri(getContext().getContentResolver(), uri);
+		return c;
+	}
+
+	// Update data
+	@Override
+	public int update(Uri uri, ContentValues values, String selection,
+			String[] selectionArgs) {
+		int count = 0;// Count to tell number of rows updated
+		switch (uriMatcher.match(uri)) {
+		case uriCode:
+			count = db.update(TABLE_NAME, values, selection, selectionArgs);
+			break;
+		default:
+			count = 0;
+			throw new IllegalArgumentException("Unknown URI " + uri);
+		}
+		getContext().getContentResolver().notifyChange(uri, null);
+		return count;
+	}
+
+	/** SqlLite Database **/
+	private SQLiteDatabase db;
+	static final String DATABASE_NAME = "ContentProvider_Database";// Database
+																	// name
+	static final String TABLE_NAME = "User_Details";// Table Name
+	static final int DATABASE_VERSION = 1;// Database Version
+	static final String CREATE_DB_TABLE = " CREATE TABLE " + TABLE_NAME
+			+ " (id INTEGER PRIMARY KEY AUTOINCREMENT, " + name
+			+ " TEXT NOT NULL, " + email + " TEXT NOT NULL, " + number
+			+ " TEXT NOT NULL" + " );"; // Create table query
+
+	private static class DatabaseHelper extends SQLiteOpenHelper {
+		DatabaseHelper(Context context) {
+			super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		}
+
+		@Override
+		public void onCreate(SQLiteDatabase db) {
+			db.execSQL(CREATE_DB_TABLE);// Create table
+		}
+
+		// On database version upgrade create new table
+		@Override
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+			db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+			onCreate(db);
+		}
+	}
+}</pre><p>
+<b>4</b>. After creating custom content provider we have to put it into manifest file inside provider tag.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.contentprovider_demo"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name="com.contentprovider_demo.MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+
+        &lt;provider
+            android:name="com.contentprovider_demo.Custom_ContentProvider"
+            android:authorities="com.contentprovider_demo.Custom_ContentProvider"
+            android:exported="true"
+            android:multiprocess="true" &gt;
+        &lt;/provider&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>5</b>. Now create a basic xml layout naming <em>activity_main.xml. </em>In this layout i put some edittext and two buttons.</p><pre class="crayon-plain-tag">&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:fillViewport="true" &gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp" &gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/save_data"
+            android:textColor="#F44336"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;EditText
+            android:id="@+id/txtName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="@string/name"
+            android:inputType="textCapWords"
+            android:padding="10dp" /&gt;
+
+        &lt;EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp" /&gt;
+
+        &lt;EditText
+            android:id="@+id/txtContact"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="@string/contact"
+            android:inputType="number"
+            android:padding="10dp" /&gt;
+
+        &lt;Button
+            android:id="@+id/btnAdd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="@string/add" /&gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/click"
+            android:textColor="#F44336"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;Button
+            android:id="@+id/btnShow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="@string/show" /&gt;
+
+        &lt;TextView
+            android:id="@+id/result"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textSize="15sp" /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;</pre><p>
+<b>6</b>. Finally come to <em>MainActivity.java </em>and add the following code to it. In this java class we have two onClickListener buttons :</p>
+<ul>
+<li>Add Button &#8211; This button will add the EditText values into Content Provider database using <a href="http://developer.android.com/intl/ru/reference/android/content/ContentValues.html" target="_blank">Content Values</a>.</li>
+<li>Show Button &#8211; This button fetch the data from content provider in cursor and check if cursor is not null then show data else show empty data.</li>
+</ul>
+<pre class="crayon-plain-tag">package com.contentprovider_demo;
+
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+	private static EditText name, email, number;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		name = (EditText) findViewById(R.id.txtName);
+		email = (EditText) findViewById(R.id.txtEmail);
+		number = (EditText) findViewById(R.id.txtContact);
+
+		findViewById(R.id.btnAdd).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View view) {
+				// Get all text fields into string
+				String getName = name.getText().toString();
+				String getEmail = email.getText().toString();
+				String getNumber = number.getText().toString();
+
+				// Check if all fields are not null
+				if (!getName.equals("") &amp;&amp; getName.length() != 0
+						&amp;&amp; !getEmail.equals("") &amp;&amp; getEmail.length() != 0
+						&amp;&amp; !getNumber.equals("") &amp;&amp; getNumber.length() != 0) {
+
+					onClickAddData(getName, getEmail, getNumber);// Add data
+
+					// empty all fields
+					name.setText("");
+					email.setText("");
+					number.setText("");
+				}
+				// else show toast
+				else
+					Toast.makeText(MainActivity.this,
+							"Please fill all details.", Toast.LENGTH_SHORT)
+							.show();
+
+			}
+		});
+		findViewById(R.id.btnShow).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View view) {
+				TextView resultView = (TextView) findViewById(R.id.result);
+				Cursor cursor = getContentResolver().query(
+						Custom_ContentProvider.CONTENT_URI, null, null, null,
+						null);// Get cursor
+
+				// Check if it is null or not
+				if (cursor != null &amp;&amp; cursor.moveToFirst()) {
+
+					StringBuilder result = new StringBuilder();
+					// Loop to all items
+					while (!cursor.isAfterLast()) {
+						// Add data to string builder
+						result.append("Id - "
+								+ cursor.getString(cursor.getColumnIndex("id"))
+								+ "nName - "
+								+ cursor.getString(cursor
+										.getColumnIndex("name"))
+								+ "nEmail - "
+								+ cursor.getString(cursor
+										.getColumnIndex("email"))
+								+ "nContact Number - "
+								+ cursor.getString(cursor
+										.getColumnIndex("number")) + "nn");
+						cursor.moveToNext();
+					}
+					resultView.setText(result);// finally set string builder to
+												// textview
+				} else {
+
+					// if cursor is null then set data empty
+					resultView.setText("Empty data!!");
+
+				}
+			}
+		});
+	}
+
+	// Add data method
+	private void onClickAddData(String name, String email, String number) {
+		ContentValues values = new ContentValues();// Content values to add data
+		values.put(Custom_ContentProvider.name, name);
+		values.put(Custom_ContentProvider.email, email);
+		values.put(Custom_ContentProvider.number, number);
+		Uri uri = getContentResolver().insert(
+				Custom_ContentProvider.CONTENT_URI, values);// Insert data to
+															// content provider
+		Toast.makeText(getBaseContext(), "New Data Inserted.",
+				Toast.LENGTH_LONG).show();
+	}
+}</pre>
+<b>7</b>. Finally you are done with custom content provider example.</p>
+<p><strong><a href="http://androhub.com/downloads/ContentProvider_Demo.zip" target="_blank">Download Custom Content Provider Source Code – &gt;</a></strong></p>
+<h3></h3>
+<h3>Use of Custom Content Proivder Example</h3>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. This are some strings that i am going to use in this tutorial.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="app_name"&gt;ContentProviderUser Example&lt;/string&gt;
+    &lt;string name="hello_world"&gt;Hello world!&lt;/string&gt;
+    &lt;string name="menu_settings"&gt;Settings&lt;/string&gt;
+    &lt;string name="show_data"&gt;Show Data&lt;/string&gt;
+    &lt;string name="fetch"&gt;Fetch Data from Content Provider&lt;/string&gt;
+    &lt;string name="id"&gt;Enter Id&lt;/string&gt;
+    &lt;string name="update"&gt;Update&lt;/string&gt;
+    &lt;string name="delete"&gt;Delete&lt;/string&gt;
+    &lt;string name="update_delete"&gt;Enter Id to Update/Delete Data&lt;/string&gt;
+    &lt;string name="insert"&gt;Insert&lt;/string&gt;
+    &lt;string name="insert_data"&gt;Click to Insert New Data&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Create a xml layout naming <em>activity_main.xml. </em>This layout contains some buttons for showing data, inserting new data, update data and delete data.</p><pre class="crayon-plain-tag">&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:fillViewport="true" &gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp" &gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/fetch"
+            android:textColor="#F44336"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;Button
+            android:id="@+id/btnRetrieve"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="@string/show_data" /&gt;
+
+        &lt;TextView
+            android:id="@+id/result"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="false"
+            android:padding="5dp"
+            android:textColor="#000000"
+            android:textSize="15sp" /&gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/update_delete"
+            android:textColor="#F44336"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;EditText
+            android:id="@+id/id"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:hint="@string/id"
+            android:inputType="number" /&gt;
+
+        &lt;LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" &gt;
+
+            &lt;Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/update" /&gt;
+
+            &lt;Button
+                android:id="@+id/btnDelete"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/delete" /&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/insert_data"
+            android:textColor="#F44336"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;Button
+            android:id="@+id/btnInsert"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="@string/insert" /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;</pre><p>
+<b>4</b>. Now, create a new class naming <em>Random_Datas.java </em>that contains three string array for adding new data inside content provider.</p><pre class="crayon-plain-tag">package com.contentprovider_user_demo;
+
+public class Random_Datas {
+
+	/** Strings array to insert/update data in Content Provider **/
+	public static final String[] Name = { "Androhub", "Andrew", "Philip",
+			"Sachin", "New User", "Guest" };
+	public static final String[] Email = { "Androhub@gmail.com",
+			"Andrew@gmail.com", "Philip@gmail.com", "Sachin@gmail.com",
+			"New User@gmail.com", "Guest@gmail.com" };
+	public static final String[] Number = { "9008091221", "9977112561",
+			"908456124", "8904561245", "8953234903", "7845362793" };
+}</pre><p>
+<b>5</b>. Finally come to your <em>MainActivity.java </em>and follow some steps while fetching data from custom provider app.</p>
+<ul>
+<li>We have to use the URI that we have created in our Custom Content Provider.</li>
+</ul>
+<pre class="crayon-plain-tag">private static final String uri = "content://com.contentprovider_demo.Custom_ContentProvider/androhub";</pre>
+<ul>
+<li>Before fetching data, inserting data, updating data or doing anything with content provider first check if content provider app is installed in your device and containing some data to perform task else exception will occurs.</li>
+<li>On Content Provider data update and delete i am using id to do this task you can use any field like name, email, etc. Make sure before updating first check if particular id is present in database or not.</li>
+</ul>
+<p>Final source code of MainActivity.java.</p><pre class="crayon-plain-tag">package com.contentprovider_user_demo;
+
+import java.util.Random;
+
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity implements
+		LoaderManager.LoaderCallbacks&lt;Cursor&gt;, OnClickListener {
+	private static TextView resultView;
+	private static EditText id;
+	private static Button retrieve, update, delete, insert;
+
+	private static CursorLoader cursorLoader;
+
+	private static final String uri = "content://com.contentprovider_demo.Custom_ContentProvider/androhub";// Content
+																											// URI
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		// Find Ids
+		resultView = (TextView) findViewById(R.id.result);
+		id = (EditText) findViewById(R.id.id);
+		retrieve = (Button) findViewById(R.id.btnRetrieve);
+		update = (Button) findViewById(R.id.btnUpdate);
+		delete = (Button) findViewById(R.id.btnDelete);
+		insert = (Button) findViewById(R.id.btnInsert);
+
+		// Implement click listener
+		retrieve.setOnClickListener(this);
+		update.setOnClickListener(this);
+		delete.setOnClickListener(this);
+		insert.setOnClickListener(this);
+
+	}
+
+	// On click call representative methods
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnRetrieve:
+			onClickDisplayData();// Fetch data
+			break;
+		case R.id.btnUpdate:
+
+			// Update data according to Id
+			String getId = id.getText().toString();
+			if (!getId.equals("") &amp;&amp; getId.length() != 0)
+				updateData(new String[] { getId });
+			else
+				Toast.makeText(MainActivity.this, "Id is empty.",
+						Toast.LENGTH_SHORT).show();
+
+			break;
+
+		case R.id.btnDelete:
+
+			// Delete data according to Id
+			String getId_ = id.getText().toString();
+			if (!getId_.equals("") &amp;&amp; getId_.length() != 0)
+				deleteData(new String[] { getId_ });
+			else
+				Toast.makeText(MainActivity.this, "Id is empty.",
+						Toast.LENGTH_SHORT).show();
+
+			break;
+		case R.id.btnInsert:
+
+			// Insert data
+			insertData();
+			break;
+
+		}
+
+	}
+
+	private void onClickDisplayData() {
+		// Initate loader manager
+		getSupportLoaderManager().initLoader(1, null, this);
+	}
+
+	@Override
+	public Loader&lt;Cursor&gt; onCreateLoader(int arg0, Bundle arg1) {
+		try {
+			cursorLoader = new CursorLoader(this, Uri.parse(uri), null, null,
+					null, null);// Get cursor loader from URI
+		} catch (NullPointerException e) {
+			// if exception occurs toast occurs
+			Toast.makeText(
+					MainActivity.this,
+					"There is no app found corresponding to your content provider.",
+					Toast.LENGTH_LONG).show();
+		} catch (Exception e) {
+			Toast.makeText(MainActivity.this,
+					"Error in fetching data. Try again.", Toast.LENGTH_SHORT)
+					.show();
+			e.printStackTrace();
+		}
+		return cursorLoader;
+	}
+
+	@Override
+	public void onLoadFinished(Loader&lt;Cursor&gt; arg0, Cursor cursor) {
+
+		// First check if cursor is not null
+		if (cursor != null &amp;&amp; cursor.moveToFirst()) {
+
+			StringBuilder result = new StringBuilder();
+
+			// Now loop to all items and append it to string builder
+			while (!cursor.isAfterLast()) {
+				result.append("Id - "
+						+ cursor.getString(cursor.getColumnIndex("id"))
+						+ "nName - "
+						+ cursor.getString(cursor.getColumnIndex("name"))
+						+ "nEmail - "
+						+ cursor.getString(cursor.getColumnIndex("email"))
+						+ "nContact Number - "
+						+ cursor.getString(cursor.getColumnIndex("number"))
+						+ "nn");
+				cursor.moveToNext();
+			}
+			resultView.setText(result);// Finally set string builder to textview
+		} else {
+			// If cursor is null then display toast and set empty data.
+			resultView.setText("Empty data!!");
+			Toast.makeText(
+					MainActivity.this,
+					"May be there is no app corresponding to your provider or there is null data.",
+					Toast.LENGTH_LONG).show();
+		}
+
+	}
+
+	@Override
+	public void onLoaderReset(Loader&lt;Cursor&gt; arg0) {
+
+	}
+
+	// Random int value generator method between 0-5
+	private int RandomInt() {
+		Random random = new Random();
+		int randomValue = random.nextInt(5);
+		return randomValue;
+	}
+
+	// Update data method
+	private void updateData(String[] id) {
+		Cursor cursor = getContentResolver().query(Uri.parse(uri), null, null,
+				null, null);// Get cursor from Uri
+
+		// If cursor is not null then update data else show toast
+		if (cursor != null) {
+			int randomValue = RandomInt();// Get random integer
+			ContentValues values = new ContentValues();// Content values to
+														// insert data
+			values.put("name", Random_Datas.Name[randomValue]);// add data from
+																// RandomDatas
+																// class
+			values.put("email", Random_Datas.Email[randomValue]);
+			values.put("number", Random_Datas.Number[randomValue]);
+			int count = getContentResolver().update(Uri.parse(uri), values,
+					"id = ?", id);// now update provider using ID
+
+			// If count is not 0 then row is updated else no row is updated
+			if (count != 0)
+				Toast.makeText(MainActivity.this, "Row updated",
+						Toast.LENGTH_LONG).show();
+			else
+				Toast.makeText(
+						MainActivity.this,
+						"May be there is no row to update or the id you pass is not present in database.",
+						Toast.LENGTH_LONG).show();
+
+		} else {
+			Toast.makeText(
+					MainActivity.this,
+					"May be there is no app corresponding to your provider or there is null data.",
+					Toast.LENGTH_LONG).show();
+		}
+
+	}
+
+	// Delete data
+	private void deleteData(String[] id) {
+
+		// Firstly get the cursor then check if it is null or not
+		Cursor cursor = getContentResolver().query(Uri.parse(uri), null, null,
+				null, null);
+		if (cursor != null) {
+
+			int count = getContentResolver().delete(Uri.parse(uri), "id = ? ",
+					id);// Delete row according to id
+			if (count != 0)
+				Toast.makeText(MainActivity.this, "Row deleted",
+						Toast.LENGTH_LONG).show();
+			else
+				Toast.makeText(
+						MainActivity.this,
+						"May be there is no row to delete or the id you pass is not present in database.",
+						Toast.LENGTH_LONG).show();
+
+		} else {
+			Toast.makeText(
+					MainActivity.this,
+					"May be there is no app corresponding to your provider or there is null data.",
+					Toast.LENGTH_LONG).show();
+		}
+
+	}
+
+	// Insert random data
+	private void insertData() {
+		Cursor cursor = getContentResolver().query(Uri.parse(uri), null, null,
+				null, null);
+		// First check if cursor is null or not
+		if (cursor != null) {
+			int randomValue = RandomInt();
+			ContentValues values = new ContentValues();
+			values.put("name", Random_Datas.Name[randomValue]);
+			values.put("email", Random_Datas.Email[randomValue]);
+			values.put("number", Random_Datas.Number[randomValue]);
+			Uri uri_ = getContentResolver().insert(Uri.parse(uri), values);// Now
+																			// add
+																			// the
+																			// content
+																			// values
+																			// to
+																			// content
+																			// provider
+
+			Toast.makeText(MainActivity.this, "Data inserted.",
+					Toast.LENGTH_LONG).show();
+		} else {
+			Toast.makeText(MainActivity.this,
+					"May be there is no app corresponding to your provider.",
+					Toast.LENGTH_LONG).show();
+		}
+
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+	}
+
+}</pre><p>
+<b>6</b>. Finally you are done with this example also.</p>
+<p><strong><a href="http://androhub.com/downloads/ContentProvider_User_Demo.zip" target="_blank">Download Source Code of Second Example – &gt;</a></strong></p>
+<p>Now you can use both example and run the app and you will get the output as shown in the video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-content-provider/">Android Content Provider</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-content-provider/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">543</post-id>	</item>
+		<item>
+		<title>Android Read Contacts using Content Provider</title>
+		<link>http://www.androhub.com/android-read-contacts-using-content-provider/</link>
+		<comments>http://www.androhub.com/android-read-contacts-using-content-provider/#respond</comments>
+		<pubDate>Tue, 28 Jul 2015 05:50:00 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Contacts]]></category>
+		<category><![CDATA[Android Content Provider]]></category>
+		<category><![CDATA[Android ListView]]></category>
+		<category><![CDATA[android listview]]></category>
+		<category><![CDATA[android read contacts]]></category>
+		<category><![CDATA[contacts]]></category>
+		<category><![CDATA[content provider]]></category>
+		<category><![CDATA[content resolver]]></category>
+		<category><![CDATA[custom listview]]></category>
+		<category><![CDATA[listview]]></category>
+		<category><![CDATA[read contacts]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=539</guid>
+		<description><![CDATA[<p>You can read phone contacts using Content Provider. With the help of this content provider we can communicate with the contacts app and query the URIs  and columns to get contact information and it will return as contact name, all contact numbers, all email addresses, company name, etc. Content providers manage access to a structured set of data. They encapsulate [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-read-contacts-using-content-provider/">Android Read Contacts using Content Provider</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>You can read phone contacts using <a href="http://developer.android.com/intl/ru/guide/topics/providers/content-providers.html" target="_blank">Content Provider</a>. With the help of this content provider we can communicate with the contacts app and query the URIs  and columns to get contact information and it will return as contact name, all contact numbers, all email addresses, company name, etc.</p>
+<p>Content providers manage access to a structured set of data. They encapsulate the data, and provide mechanisms for defining data security. Content providers are the standard interface that connects data in one process with code running in another process. A content provider is only required if you need to share data between multiple applications. For example, the contacts data is used by multiple applications and must be stored in a content provider. If you don&#8217;t need to share data amongest multiple applications you can use a database directly via <code><a href="http://androhub.com/android-sqlite-database/" target="_blank">SQLiteDatabase</a></code>.</p>
+<p>When you want to access data in a content provider, you use the <code><a href="http://developer.android.com/intl/ru/reference/android/content/ContentResolver.html" target="_blank">ContentResolver</a> </code>object in your application&#8217;s <a href="http://developer.android.com/intl/ru/reference/android/content/Context.html" target="_blank"><code>Context</code> </a>to communicate with the provider as a client. The <a href="http://developer.android.com/intl/ru/reference/android/content/ContentResolver.html" target="_blank"><code>ContentResolver </code></a>object communicates with the provider object, an instance of a class that implements <code><a href="http://developer.android.com/reference/android/content/ContentProvider.html" target="_blank">ContentProvider</a></code>. The provider object receives data requests from clients, performs the requested action, and returns the results.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to read contact details using content provider.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_50256" width="602" height="339" src="https://www.youtube.com/embed/G0qObXv8Tbg?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Now, to read contact details we have to give &#8220;READ_CONTACTS&#8221; this permission in our Manifest file.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.phonecontact_demo"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" /&gt;
+		
+		
+    &lt;uses-permission android:name="android.permission.READ_CONTACTS"/&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name="com.phonecontact_demo.MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>3</b>. Create a xml layout naming <em>activity_main.xml</em> that contains one listview that will display the contact details.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" &gt;
+
+    &lt;ListView
+        android:id="@+id/contact_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" &gt;
+    &lt;/ListView&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>4</b>. Now, create a new xml layout naming <em>custom_view.xml</em> for custom listview layout. Since we have to display contact details like name, number, email, image and other details so we are using custom view.</p>
+<p>If you are new to custom list view then you can <a href="http://androhub.com/android-listview/" target="_blank">read here</a>.</p><pre class="crayon-plain-tag">&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="5dp" &gt;
+
+    &lt;ImageView
+        android:id="@+id/contactImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactName"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/image"
+        android:padding="5dp"
+        android:src="@drawable/ic_launcher" /&gt;
+
+    &lt;TextView
+        android:id="@+id/contactName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:lineSpacingExtra="3dp"
+        android:padding="5dp"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold" /&gt;
+
+    &lt;TextView
+        android:id="@+id/contactNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactImage"
+        android:lineSpacingExtra="3dp"
+        android:padding="5dp"
+        android:textSize="15sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/contactEmail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactNumber"
+        android:lineSpacingExtra="3dp"
+        android:padding="5dp"
+        android:textSize="15sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/contactOtherDetails"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactEmail"
+        android:lineSpacingExtra="3dp"
+        android:padding="5dp"
+        android:textSize="15sp" /&gt;
+
+&lt;/RelativeLayout&gt;</pre><p>
+<b>5</b>. Now, create a new java class naming <em>Contact_Model.java </em>for getter and setter for contact details.</p><pre class="crayon-plain-tag">package com.phonecontact_demo;
+
+public class Contact_Model {
+
+	// Getter and setter for contacts
+	private String contactId, contactName, contactNumber, contactEmail,
+			contactPhoto, contactOtherDetails;
+
+	public Contact_Model(String contactId, String contactName,
+			String contactNumber, String contactEmail, String contactPhoto,
+			String contactOtherDetails) {
+		this.contactId = contactId;
+		this.contactName = contactName;
+		this.contactEmail = contactEmail;
+		this.contactNumber = contactNumber;
+		this.contactPhoto = contactPhoto;
+		this.contactOtherDetails = contactOtherDetails;
+	}
+
+	public String getContactID() {
+		return contactId;
+	}
+
+	public String getContactName() {
+		return contactName;
+	}
+
+	public String getContactEmail() {
+		return contactEmail;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public String getContactPhoto() {
+		return contactPhoto;
+	}
+
+	public String getContactOtherDetails() {
+		return contactOtherDetails;
+	}
+}</pre><p>
+<b>6</b>. Now, create a custom adapter class naming <em>Contact_Adapter.java </em>for inflating a custom layout over listview.</p><pre class="crayon-plain-tag">package com.phonecontact_demo;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class Contact_Adapter extends BaseAdapter {
+	private Context context;
+	private ArrayList&lt;Contact_Model&gt; arrayList;
+
+	public Contact_Adapter(Context context, ArrayList&lt;Contact_Model&gt; arrayList) {
+		this.context = context;
+		this.arrayList = arrayList;
+	}
+
+	@Override
+	public int getCount() {
+
+		return arrayList.size();
+	}
+
+	@Override
+	public Contact_Model getItem(int position) {
+
+		return arrayList.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Contact_Model model = arrayList.get(position);
+		ViewHodler holder;
+		if (convertView == null) {
+			convertView = inflater.inflate(R.layout.custom_view, parent, false);
+			holder = new ViewHodler();
+			holder.contactImage = (ImageView) convertView
+					.findViewById(R.id.contactImage);
+			holder.contactName = (TextView) convertView
+					.findViewById(R.id.contactName);
+			holder.contactEmail = (TextView) convertView
+					.findViewById(R.id.contactEmail);
+			holder.contactNumber = (TextView) convertView
+					.findViewById(R.id.contactNumber);
+			holder.contactOtherDetails = (TextView) convertView
+					.findViewById(R.id.contactOtherDetails);
+
+			convertView.setTag(holder);
+		} else {
+			holder = (ViewHodler) convertView.getTag();
+		}
+
+		// Set items to all view
+		if (!model.getContactName().equals("")
+				&amp;&amp; model.getContactName() != null) {
+			holder.contactName.setText(model.getContactName());
+		} else {
+			holder.contactName.setText("No Name");
+		}
+		if (!model.getContactEmail().equals("")
+				&amp;&amp; model.getContactEmail() != null) {
+			holder.contactEmail.setText("EMAIL ID - n"
+					+ model.getContactEmail());
+		} else {
+			holder.contactEmail.setText("EMAIL ID - n" + "No EmailId");
+		}
+
+		if (!model.getContactNumber().equals("")
+				&amp;&amp; model.getContactNumber() != null) {
+			holder.contactNumber.setText("CONTACT NUMBER - n"
+					+ model.getContactNumber());
+		} else {
+			holder.contactNumber.setText("CONTACT NUMBER - n"
+					+ "No Contact Number");
+		}
+
+		if (!model.getContactOtherDetails().equals("")
+				&amp;&amp; model.getContactOtherDetails() != null) {
+			holder.contactOtherDetails.setText("OTHER DETAILS - n"
+					+ model.getContactOtherDetails());
+		} else {
+			holder.contactOtherDetails.setText("OTHER DETAILS - n"
+					+ "Other details are empty");
+		}
+
+		// Bitmap for imageview
+		Bitmap image = null;
+		if (!model.getContactPhoto().equals("")
+				&amp;&amp; model.getContactPhoto() != null) {
+			image = BitmapFactory.decodeFile(model.getContactPhoto());// decode
+																		// the
+																		// image
+																		// into
+																		// bitmap
+			if (image != null)
+				holder.contactImage.setImageBitmap(image);// Set image if bitmap
+															// is not null
+			else {
+				image = BitmapFactory.decodeResource(context.getResources(),
+						R.drawable.androhub_logo);// if bitmap is null then set
+													// default bitmap image to
+													// contact image
+				holder.contactImage.setImageBitmap(image);
+			}
+		} else {
+			image = BitmapFactory.decodeResource(context.getResources(),
+					R.drawable.androhub_logo);
+			holder.contactImage.setImageBitmap(image);
+		}
+		return convertView;
+	}
+
+	// View holder to hold views
+	private class ViewHodler {
+		ImageView contactImage;
+		TextView contactName, contactNumber, contactEmail, contactOtherDetails;
+	}
+}</pre><p>
+<b>7</b>. To read contact details we have to know certain things mentioned below :</p>
+<ul>
+<li>URI that we require in querying.</li>
+</ul>
+<pre class="crayon-plain-tag">Uri uri = ContactsContract.Contacts.CONTENT_URI;</pre>
+<ul>
+<li> Fetching contact details into cursor in ascending order. using uri</li>
+</ul>
+<pre class="crayon-plain-tag">Cursor contactsCursor = getContentResolver().query(uri, null, null,
+				null, ContactsContract.Contacts.DISPLAY_NAME + " ASC ");</pre>
+<ul>
+<li>Now we will use this method to fetch data and stored into arraylist.</li>
+</ul>
+<pre class="crayon-plain-tag">private ArrayList&lt;Contact_Model&gt; readContacts() {
+		ArrayList&lt;Contact_Model&gt; contactList = new ArrayList&lt;Contact_Model&gt;();
+
+		Uri uri = ContactsContract.Contacts.CONTENT_URI; // Contact URI
+		Cursor contactsCursor = getContentResolver().query(uri, null, null,
+				null, ContactsContract.Contacts.DISPLAY_NAME + " ASC "); // Return
+																			// all
+																			// contacts
+																			// name
+																			// containing
+																			// in
+																			// URI
+																			// in
+																			// ascending
+																			// order
+		// Move cursor at starting
+		if (contactsCursor.moveToFirst()) {
+			do {
+				long contctId = contactsCursor.getLong(contactsCursor
+						.getColumnIndex("_ID")); // Get contact ID
+				Uri dataUri = ContactsContract.Data.CONTENT_URI; // URI to get
+																	// data of
+																	// contacts
+				Cursor dataCursor = getContentResolver().query(dataUri, null,
+						ContactsContract.Data.CONTACT_ID + " = " + contctId,
+						null, null);// Retrun data cusror represntative to
+									// contact ID
+
+				// Strings to get all details
+				String displayName = "";
+				String nickName = "";
+				String homePhone = "";
+				String mobilePhone = "";
+				String workPhone = "";
+				String photoPath = "" + R.drawable.ic_launcher; // Photo path
+				byte[] photoByte = null;// Byte to get photo since it will come
+										// in BLOB
+				String homeEmail = "";
+				String workEmail = "";
+				String companyName = "";
+				String title = "";
+
+				// This strings stores all contact numbers, email and other
+				// details like nick name, company etc.
+				String contactNumbers = "";
+				String contactEmailAddresses = "";
+				String contactOtherDetails = "";
+
+				// Now start the cusrsor
+				if (dataCursor.moveToFirst()) {
+					displayName = dataCursor
+							.getString(dataCursor
+									.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));// get
+																								// the
+																								// contact
+																								// name
+					do {
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Nickname.CONTENT_ITEM_TYPE)) {
+							nickName = dataCursor.getString(dataCursor
+									.getColumnIndex("data1")); // Get Nick Name
+							contactOtherDetails += "NickName : " + nickName
+									+ "n";// Add the nick name to string
+
+						}
+
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)) {
+
+							// In this get All contact numbers like home,
+							// mobile, work, etc and add them to numbers string
+							switch (dataCursor.getInt(dataCursor
+									.getColumnIndex("data2"))) {
+							case ContactsContract.CommonDataKinds.Phone.TYPE_HOME:
+								homePhone = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactNumbers += "Home Phone : " + homePhone
+										+ "n";
+								break;
+
+							case ContactsContract.CommonDataKinds.Phone.TYPE_WORK:
+								workPhone = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactNumbers += "Work Phone : " + workPhone
+										+ "n";
+								break;
+
+							case ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE:
+								mobilePhone = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactNumbers += "Mobile Phone : "
+										+ mobilePhone + "n";
+								break;
+
+							}
+						}
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE)) {
+
+							// In this get all Emails like home, work etc and
+							// add them to email string
+							switch (dataCursor.getInt(dataCursor
+									.getColumnIndex("data2"))) {
+							case ContactsContract.CommonDataKinds.Email.TYPE_HOME:
+								homeEmail = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactEmailAddresses += "Home Email : "
+										+ homeEmail + "n";
+								break;
+							case ContactsContract.CommonDataKinds.Email.TYPE_WORK:
+								workEmail = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactEmailAddresses += "Work Email : "
+										+ workEmail + "n";
+								break;
+
+							}
+						}
+
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE)) {
+							companyName = dataCursor.getString(dataCursor
+									.getColumnIndex("data1"));// get company
+																// name
+							contactOtherDetails += "Coompany Name : "
+									+ companyName + "n";
+							title = dataCursor.getString(dataCursor
+									.getColumnIndex("data4"));// get Company
+																// title
+							contactOtherDetails += "Title : " + title + "n";
+
+						}
+
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)) {
+							photoByte = dataCursor.getBlob(dataCursor
+									.getColumnIndex("data15")); // get photo in
+																// byte
+
+							if (photoByte != null) {
+
+								// Now make a cache folder in file manager to
+								// make cache of contacts images and save them
+								// in .png
+								Bitmap bitmap = BitmapFactory.decodeByteArray(
+										photoByte, 0, photoByte.length);
+								File cacheDirectory = getBaseContext()
+										.getCacheDir();
+								File tmp = new File(cacheDirectory.getPath()
+										+ "/_androhub" + contctId + ".png");
+								try {
+									FileOutputStream fileOutputStream = new FileOutputStream(
+											tmp);
+									bitmap.compress(Bitmap.CompressFormat.PNG,
+											100, fileOutputStream);
+									fileOutputStream.flush();
+									fileOutputStream.close();
+								} catch (Exception e) {
+									// TODO: handle exception
+									e.printStackTrace();
+								}
+								photoPath = tmp.getPath();// finally get the
+															// saved path of
+															// image
+							}
+
+						}
+
+					} while (dataCursor.moveToNext()); // Now move to next
+														// cursor
+
+					contactList.add(new Contact_Model(Long.toString(contctId),
+							displayName, contactNumbers, contactEmailAddresses,
+							photoPath, contactOtherDetails));// Finally add
+																// items to
+																// array list
+				}
+
+			} while (contactsCursor.moveToNext());
+		}
+		return contactList;
+	}</pre>
+<b>8</b>. Finally open your <em>MainActivty.java </em>and add the following code. In this class we fetch contact details using AsyncTask and display over listview.<br />
+<pre class="crayon-plain-tag">package com.phonecontact_demo;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Random;
+
+import android.app.ProgressDialog;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+	private static ListView contact_listview;
+	private static ArrayList&lt;Contact_Model&gt; arrayList;
+	private static Contact_Adapter adapter;
+
+	private static ProgressDialog pd;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		contact_listview = (ListView) findViewById(R.id.contact_listview);
+
+		new LoadContacts().execute();// Execute the async task
+
+	}
+
+	// Async task to load contacts
+	private class LoadContacts extends AsyncTask&lt;Void, Void, Void&gt; {
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			arrayList = readContacts();// Get contacts array list from this
+										// method
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+
+			super.onPostExecute(result);
+
+			// If array list is not null and is contains value
+			if (arrayList != null &amp;&amp; arrayList.size() &gt; 0) {
+
+				// then set total contacts to subtitle
+				getSupportActionBar().setSubtitle(
+						arrayList.size() + " Contacts");
+				adapter = null;
+				if (adapter == null) {
+					adapter = new Contact_Adapter(MainActivity.this, arrayList);
+					contact_listview.setAdapter(adapter);// set adapter
+				}
+				adapter.notifyDataSetChanged();
+			} else {
+
+				// If adapter is null then show toast
+				Toast.makeText(MainActivity.this, "There are no contacts.",
+						Toast.LENGTH_LONG).show();
+			}
+
+			// Hide dialog if showing
+			if (pd.isShowing())
+				pd.dismiss();
+
+		}
+
+		@Override
+		protected void onPreExecute() {
+
+			super.onPreExecute();
+			// Show Dialog
+			pd = ProgressDialog.show(MainActivity.this, "Loading Contacts",
+					"Please Wait...");
+		}
+
+	}
+
+	// Method that return all contact details in array format
+	private ArrayList&lt;Contact_Model&gt; readContacts() {
+		ArrayList&lt;Contact_Model&gt; contactList = new ArrayList&lt;Contact_Model&gt;();
+
+		Uri uri = ContactsContract.Contacts.CONTENT_URI; // Contact URI
+		Cursor contactsCursor = getContentResolver().query(uri, null, null,
+				null, ContactsContract.Contacts.DISPLAY_NAME + " ASC "); // Return
+																			// all
+																			// contacts
+																			// name
+																			// containing
+																			// in
+																			// URI
+																			// in
+																			// ascending
+																			// order
+		// Move cursor at starting
+		if (contactsCursor.moveToFirst()) {
+			do {
+				long contctId = contactsCursor.getLong(contactsCursor
+						.getColumnIndex("_ID")); // Get contact ID
+				Uri dataUri = ContactsContract.Data.CONTENT_URI; // URI to get
+																	// data of
+																	// contacts
+				Cursor dataCursor = getContentResolver().query(dataUri, null,
+						ContactsContract.Data.CONTACT_ID + " = " + contctId,
+						null, null);// Retrun data cusror represntative to
+									// contact ID
+
+				// Strings to get all details
+				String displayName = "";
+				String nickName = "";
+				String homePhone = "";
+				String mobilePhone = "";
+				String workPhone = "";
+				String photoPath = "" + R.drawable.ic_launcher; // Photo path
+				byte[] photoByte = null;// Byte to get photo since it will come
+										// in BLOB
+				String homeEmail = "";
+				String workEmail = "";
+				String companyName = "";
+				String title = "";
+
+				// This strings stores all contact numbers, email and other
+				// details like nick name, company etc.
+				String contactNumbers = "";
+				String contactEmailAddresses = "";
+				String contactOtherDetails = "";
+
+				// Now start the cusrsor
+				if (dataCursor.moveToFirst()) {
+					displayName = dataCursor
+							.getString(dataCursor
+									.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));// get
+																								// the
+																								// contact
+																								// name
+					do {
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Nickname.CONTENT_ITEM_TYPE)) {
+							nickName = dataCursor.getString(dataCursor
+									.getColumnIndex("data1")); // Get Nick Name
+							contactOtherDetails += "NickName : " + nickName
+									+ "n";// Add the nick name to string
+
+						}
+
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)) {
+
+							// In this get All contact numbers like home,
+							// mobile, work, etc and add them to numbers string
+							switch (dataCursor.getInt(dataCursor
+									.getColumnIndex("data2"))) {
+							case ContactsContract.CommonDataKinds.Phone.TYPE_HOME:
+								homePhone = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactNumbers += "Home Phone : " + homePhone
+										+ "n";
+								break;
+
+							case ContactsContract.CommonDataKinds.Phone.TYPE_WORK:
+								workPhone = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactNumbers += "Work Phone : " + workPhone
+										+ "n";
+								break;
+
+							case ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE:
+								mobilePhone = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactNumbers += "Mobile Phone : "
+										+ mobilePhone + "n";
+								break;
+
+							}
+						}
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE)) {
+
+							// In this get all Emails like home, work etc and
+							// add them to email string
+							switch (dataCursor.getInt(dataCursor
+									.getColumnIndex("data2"))) {
+							case ContactsContract.CommonDataKinds.Email.TYPE_HOME:
+								homeEmail = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactEmailAddresses += "Home Email : "
+										+ homeEmail + "n";
+								break;
+							case ContactsContract.CommonDataKinds.Email.TYPE_WORK:
+								workEmail = dataCursor.getString(dataCursor
+										.getColumnIndex("data1"));
+								contactEmailAddresses += "Work Email : "
+										+ workEmail + "n";
+								break;
+
+							}
+						}
+
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE)) {
+							companyName = dataCursor.getString(dataCursor
+									.getColumnIndex("data1"));// get company
+																// name
+							contactOtherDetails += "Coompany Name : "
+									+ companyName + "n";
+							title = dataCursor.getString(dataCursor
+									.getColumnIndex("data4"));// get Company
+																// title
+							contactOtherDetails += "Title : " + title + "n";
+
+						}
+
+						if (dataCursor
+								.getString(
+										dataCursor.getColumnIndex("mimetype"))
+								.equals(ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)) {
+							photoByte = dataCursor.getBlob(dataCursor
+									.getColumnIndex("data15")); // get photo in
+																// byte
+
+							if (photoByte != null) {
+
+								// Now make a cache folder in file manager to
+								// make cache of contacts images and save them
+								// in .png
+								Bitmap bitmap = BitmapFactory.decodeByteArray(
+										photoByte, 0, photoByte.length);
+								File cacheDirectory = getBaseContext()
+										.getCacheDir();
+								File tmp = new File(cacheDirectory.getPath()
+										+ "/_androhub" + contctId + ".png");
+								try {
+									FileOutputStream fileOutputStream = new FileOutputStream(
+											tmp);
+									bitmap.compress(Bitmap.CompressFormat.PNG,
+											100, fileOutputStream);
+									fileOutputStream.flush();
+									fileOutputStream.close();
+								} catch (Exception e) {
+									// TODO: handle exception
+									e.printStackTrace();
+								}
+								photoPath = tmp.getPath();// finally get the
+															// saved path of
+															// image
+							}
+
+						}
+
+					} while (dataCursor.moveToNext()); // Now move to next
+														// cursor
+
+					contactList.add(new Contact_Model(Long.toString(contctId),
+							displayName, contactNumbers, contactEmailAddresses,
+							photoPath, contactOtherDetails));// Finally add
+																// items to
+																// array list
+				}
+
+			} while (contactsCursor.moveToNext());
+		}
+		return contactList;
+	}
+
+}</pre>
+<b>9</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/PhoneContact_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-read-contacts-using-content-provider/">Android Read Contacts using Content Provider</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-read-contacts-using-content-provider/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">539</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Palette &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-palette/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Working with Palette</title>
+		<link>http://www.androhub.com/android-working-palette/</link>
+		<comments>http://www.androhub.com/android-working-palette/#respond</comments>
+		<pubDate>Tue, 28 Mar 2017 08:43:49 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Palette]]></category>
+		<category><![CDATA[color palette]]></category>
+		<category><![CDATA[Material Design]]></category>
+		<category><![CDATA[palette]]></category>
+		<category><![CDATA[picasso]]></category>
+		<category><![CDATA[radio button]]></category>
+		<category><![CDATA[radio group]]></category>
+		<category><![CDATA[recycler view]]></category>
+		<category><![CDATA[swatches]]></category>
+		<category><![CDATA[ToolBar]]></category>
+
+		<guid isPermaLink="false">http://www.androhub.com/?p=1201</guid>
+		<description><![CDATA[<p>With the release of Android Lollipop, several new support libraries have been created. One of the new libraries is for the Palette class. This new class makes it easy to extract prominent colors from bitmap images, which is useful if you want to style other view components to match colors from your image, such as [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-working-palette/">Android Working with Palette</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>With the release of Android Lollipop, several new support libraries have been created. One of the new libraries is for the <a href="https://developer.android.com/training/material/palette-colors.html" target="_blank"><code class="highlighter-rouge">Palette</code></a> class. This new class makes it easy to extract prominent colors from bitmap images, which is useful if you want to style other view components to match colors from your image, such as a background for the image or a text color with suitable contrast. One way I like to use this is to color the ripple drawable behind the image. It is a subtle effect, but I think it is a nice improvement over the standard grey.</p>
+<p>For example, you can use a palette to create a color-coordinated title card for a song based on its album cover or to adjust an app’s toolbar color when its background image changes.</p>
+<p><code><a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.html" target="_blank">Palette</a></code> object gives you access to the colors in a <code><a href="https://developer.android.com/reference/android/graphics/Bitmap.html" target="_blank">Bitmap</a></code> image while also providing six main color profiles from the bitmap to help inform your <a href="http://material.google.com/" target="_blank">design choices</a>.</p>
+<h2>Prerequisite:</h2>
+<ul>
+<li><a href="http://www.androhub.com/android-toolbar/" target="_blank">Toolbar</a></li>
+<li><a href="http://www.androhub.com/android-recyclerview/" target="_blank">RecyclerView</a></li>
+<li><a href="http://www.androhub.com/android-radiobutton/" target="_blank">Radio Button</a></li>
+</ul>
+<h2></h2>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to Select Colors with the Palette API and using <a href="http://square.github.io/picasso/" target="_blank">Picasso</a> to load images.</p>
+<h2>VIDEO DEMO</h2>
+<p><iframe  id="_ytid_21269" width="602" height="339" src="https://www.youtube.com/embed/iX6Nq-yYT4k?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New ⇒ New Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. These are some strings that we are going to use in our project.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;Android Palette Demo&lt;/string&gt;
+    &lt;string name="vibrant"&gt;Vibrant&lt;/string&gt;
+    &lt;string name="vibrant_light"&gt;Vibrant Light&lt;/string&gt;
+    &lt;string name="vibrant_dark"&gt;Vibrant Dark&lt;/string&gt;
+    &lt;string name="muted"&gt;Muted&lt;/string&gt;
+    &lt;string name="muted_light"&gt;Muted Light&lt;/string&gt;
+    &lt;string name="muted_dark"&gt;Muted Dark&lt;/string&gt;
+    &lt;string name="grid_activity_label"&gt;Grid Activity&lt;/string&gt;
+    &lt;string name="second_image"&gt;Second Image&lt;/string&gt;
+    &lt;string name="first_image"&gt;First Image&lt;/string&gt;
+    &lt;string name="grid_palette_example"&gt;Grid Palette Example&lt;/string&gt;
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Before you can use Palette in your projects you need to add the following compile line to your Gradle dependencies block in your <code class="highlighter-rouge">build.gradle</code> file.</p><pre class="crayon-plain-tag">compile 'com.android.support:palette-v7:25.3.0'</pre><p>
+As i am using Picasso library also for loading image url and RecyclerView for Grid representation, so the <em>build.gradle</em> will change as per below:</p><pre class="crayon-plain-tag">compile 'com.android.support:palette-v7:25.3.0'
+compile 'com.android.support:recyclerview-v7:25.3.0'
+compile 'com.squareup.picasso:picasso:2.3.2'</pre><p>
+<b>4</b>. Create <em>activity_main.xml</em> layout and place the below code. This layout will contain the displayed image and TextViews to display the extracted colors.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.androidpalette_demo.MainActivity"&gt;
+
+    &lt;android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary" /&gt;
+
+    &lt;Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="gridPaletteExample"
+        android:text="@string/grid_palette_example"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" /&gt;
+
+    &lt;!--  Radio Group to toggle between Images  --&gt;
+    &lt;RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"&gt;
+
+        &lt;RadioButton
+            android:id="@+id/first_image_radio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:checked="true"
+            android:gravity="center_vertical"
+            android:text="@string/first_image"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" /&gt;
+
+        &lt;RadioButton
+            android:id="@+id/second_image_radio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/second_image"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" /&gt;
+    &lt;/RadioGroup&gt;
+
+    &lt;!--  ImageView to display selected Image  --&gt;
+    &lt;ImageView
+        android:id="@+id/main_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:scaleType="fitCenter" /&gt;
+
+    &lt;!--  TextView Labels to display different Palette colors background  --&gt;
+    &lt;TextView
+        android:id="@+id/vibrantView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/vibrant"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/vibrantLightView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/vibrant_light"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/vibrantDarkView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/vibrant_dark"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/mutedView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/muted"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/mutedLightView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/muted_light"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/mutedDarkView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/muted_dark"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>5</b>. After creating layout xml let&#8217;s move to generating Palette process:</p>
+<p>In order to generate the <code class="highlighter-rouge">Palette</code> object, there is a static <code class="highlighter-rouge">from(Bitmap)</code> method on the <code class="highlighter-rouge">Palette</code> class. This method returns a <code class="highlighter-rouge">Palette.Builder</code> object that you can use to tweak the generated <code class="highlighter-rouge">Palette</code>. Be sure that the <code class="highlighter-rouge">Bitmap</code> you supply to the <code class="highlighter-rouge">from()</code>method is neither null nor recycled, or it will throw an <code class="highlighter-rouge">IllegalArgumentException</code>.</p>
+<p>Once you have the builder, you can use one of the generate methods to create the<code class="highlighter-rouge">Palette</code> object. One option is to use the no-argument <code class="highlighter-rouge">generate()</code> method like so.</p>
+<h3 id="generate-a-palette-instance">Generate a Palette instance</h3>
+<p>Generate a <code>Palette</code> instance using <code>Palette</code>’s <code>from(Bitmap bitmap)</code> method to first create a <code>Palette.Builder</code> from a <code>Bitmap</code>. The builder can then generate the palette either synchronously or asynchronously.</p>
+<p>Use synchronous palette generation if you want to create the palette on the same thread as the method being called. If you generate the palette asynchronously on a different thread, use the <code><a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.PaletteAsyncListener.html#onGenerated(android.support.v7.graphics.Palette)" target="_blank">onGenerated()</a></code> method to access the palette immediately after it has been created.</p>
+<ul>
+<li><strong>Synchronously Palette Generation</strong></li>
+</ul>
+<pre class="crayon-plain-tag">// Generate palette synchronously and return it
+public Palette createPaletteSync(Bitmap bitmap) {
+  Palette p = Palette.from(bitmap).generate();
+  return p;
+}
+
+// Generate palette asynchronously and use it on a different
+// thread using onGenerated()
+public void createPaletteAsync(Bitmap bitmap) {
+  Palette.from(bitmap).generate(new PaletteAsyncListener() {
+    public void onGenerated(Palette p) {
+      // Use generated instance
+    }
+  });
+}</pre>
+<ul>
+<li><strong>Asynchronously Palette Generation</strong></li>
+</ul>
+<pre class="crayon-plain-tag">/* Generate palette asynchronously and use it on a different thread using onGenerated() */
+    private void createPaletteAsync(Bitmap bitmap) {
+
+        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+            @Override
+            public void onGenerated(Palette palette) {
+                // Use generated instance
+                //work with the palette here
+                int defaultValue = 0x000000;
+                int vibrant = palette.getVibrantColor(defaultValue);
+                int vibrantLight = palette.getLightVibrantColor(defaultValue);
+                int vibrantDark = palette.getDarkVibrantColor(defaultValue);
+                int muted = palette.getMutedColor(defaultValue);
+                int mutedLight = palette.getLightMutedColor(defaultValue);
+                int mutedDark = palette.getDarkMutedColor(defaultValue);
+
+            }
+        });
+    }</pre>
+<h3></h3>
+<h3 id="generate-a-palette-instance">Using the Palette</h3>
+<p>When a palette is generated, it tries to pick six swatches which match certain criteria:</p>
+<ul>
+<li><strong>Vibrant</strong> : <a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.html#getVibrantSwatch()" target="_blank">Palette.getVibrantSwatch()</a></li>
+<li><strong>Vibrant Dark</strong> : <a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.html#getDarkVibrantSwatch()" target="_blank">Palette.getDarkVibrantSwatch()</a></li>
+<li><strong>Vibrant Light</strong> : <a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.html#getLightVibrantSwatch()" target="_blank">Palette.getLightVibrantSwatch()</a></li>
+<li><strong>Muted</strong> : <a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.html#getMutedSwatch()" target="_blank">Palette.getMutedSwatch()</a></li>
+<li><strong>Muted Dark</strong> : <a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.html#getDarkMutedSwatch()" target="_blank">Palette.getDarkMutedSwatch()</a></li>
+<li><strong>Muted Light</strong> : <a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.html#getLightMutedSwatch()" target="_blank">Palette.getLightMutedSwatch()</a></li>
+</ul>
+<p>Which one you choose depends on your use case. Vibrant and Dark Vibrant are the ones that developers will use mostly though.</p>
+<h3 id="using-a-swatch">Using a swatch</h3>
+<p>Each <a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.Swatch.html" target="_blank">Swatch</a> contains the following methods:</p>
+<ul>
+<li><a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.Swatch.html#getPopulation()" target="_blank">getPopulation()</a> : The amount of pixels which this swatch represents.</li>
+<li><a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.Swatch.html#getRgb()" target="_blank">getRgb()</a><strong> </strong>: The RGB value of this color.</li>
+<li><a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.Swatch.html#getHsl()" target="_blank">getHsl()</a><strong> </strong>: The <a href="http://en.wikipedia.org/wiki/HSL_and_HSV" target="_blank">HSL</a> value of this color.</li>
+<li><a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.Swatch.html#getBodyTextColor()" target="_blank">getBodyTextColor()</a><strong> </strong>: The RGB value of a body text color which can be displayed on top of this color.</li>
+<li><a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.Swatch.html#getTitleTextColor()" target="_blank">getTitleTextColor()</a><strong> </strong>: The RGB value of a text color which can be displayed on top of this color.</li>
+</ul>
+<h3></h3>
+<h3 id="using-a-swatch"><a href="https://developer.android.com/training/material/palette-colors.html#create-a-palette" target="_blank">Customize your Palette</a></h3>
+<p>The <code>Palette.Builder</code> allows you to customize your palette by choosing how many colors are in the resulting palette, what area of your image the builder uses to generate the palette, and what colors are allowed in the palette. For example, you can filter out the color black or ensure that the builder only uses the top half of an image to generate your palette.</p>
+<p>Fine-tune your palette’s size and colors with the following methods from the <code>Palette.Builder</code> class:</p>
+<ul>
+<li><a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.Builder.html#addFilter(android.support.v7.graphics.Palette.Filter)" target="_blank">addFilter()</a> : This method adds a filter that indicates what colors are allowed in the resulting palette. Pass in your own<code> <a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.Filter.html" target="_blank">Palette.Filter</a></code> and modify its <code>isAllowed()</code> method to determine which colors are filtered from the palette.</li>
+<li><a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.Builder.html#maximumColorCount(int)" target="_blank">maximumColorCount()</a> : This method sets the maximum number of colors in your palette. The default value is 16, and the optimal value depends on the source image. For landscapes, optimal values range from 8-16 while pictures with faces usually have values that fall between 24-32. The <code>Palette.Builder</code> takes longer to generate palettes with more colors.</li>
+<li><a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.Builder.html#setRegion(int,%20int,%20int,%20int)" target="_blank">setRegion()</a> : This method indicates what area of the bitmap the builder uses when creating the palette. You can only use this method when generating the palette from a bitmap, and it does not affect the original image.</li>
+<li><a href="https://developer.android.com/reference/android/support/v7/graphics/Palette.Builder.html#addTarget(android.support.v7.graphics.Target)" target="_blank">addTarget()</a> : This method allows you to perform your own color matching by adding a <code><a href="https://developer.android.com/reference/android/support/v7/graphics/Target.html" target="_blank">Target</a></code> color profile to the builder. If the default <code>Target</code>s are not sufficient, advanced developers can create their own <code>Target</code>s using a <code><a href="https://developer.android.com/reference/android/support/v7/graphics/Target.Builder.html" target="_blank">Target.Builder</a></code>.</li>
+</ul>
+<h3></h3>
+<h3 id="custom-color-selection">Custom color selection</h3>
+<p>But what if you do not like Palette’s color selections? In this case, you can grab all of the swatches which make up the Palette as so:</p><pre class="crayon-plain-tag">List&lt;Palette.Swatch&gt; swatches = palette.getSwatches();</pre><p>
+You can then iterate over them and choose whichever color you want.</p>
+<p>The following code uses the methods to synchronously generate a palette, get its vibrant swatch, and change the colors of a toolbar to match the bitmap image.</p><pre class="crayon-plain-tag">/*  Set the background and text colors of a toolbar given a bitmap image to match  */
+    public void setToolbarColor(Bitmap bitmap) {
+        // Generate the palette and get the vibrant swatch
+        // See the createPaletteSync() and checkVibrantSwatch() methods
+        // from the code snippets above
+        Palette p = createPaletteSync(bitmap);
+        Palette.Swatch vibrantSwatch = checkVibrantSwatch(p);
+
+        // Set the toolbar background and text colors
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setBackgroundColor(vibrantSwatch.getRgb());
+        toolbar.setTitleTextColor(vibrantSwatch.getTitleTextColor());
+    }</pre><p>
+&nbsp;</p>
+<p>Below are the snapshots with two different images displaying extracted Palette colors and also with changed toolbar background color and title color.</p>
+<p><img class="aligncenter wp-image-1205 size-large" src="https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/03/photo_palette.jpg?resize=576%2C1024" alt="photo_palette" srcset="https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/03/photo_palette.jpg?resize=576%2C1024 576w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/03/photo_palette.jpg?resize=169%2C300 169w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/03/photo_palette.jpg?resize=768%2C1365 768w, https://i0.wp.com/www.androhub.com/wp-content/uploads/2017/03/photo_palette.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /></p>
+<p>&nbsp;</p>
+<p><img class="aligncenter wp-image-1203 size-large" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/03/house_palette.jpg?resize=576%2C1024" alt="house_palette" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/03/house_palette.jpg?resize=576%2C1024 576w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/03/house_palette.jpg?resize=169%2C300 169w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/03/house_palette.jpg?resize=768%2C1365 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/03/house_palette.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /></p>
+<p><b>6</b>. Now open your <em>MainActivity.java</em> and place the below code. In this class we are using all the above steps that we learnt in above point.</p><pre class="crayon-plain-tag">package com.androidpalette_demo;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.graphics.Palette;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    private TextView vibrantView, vibrantLightView, vibrantDarkView, mutedView, mutedLightView, mutedDarkView;
+    private ImageView imageView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initViews();
+        implementRadioGroupListener();
+        //Initially load first image
+        toggleImages(R.drawable.photo);
+    }
+
+    /*  Init all Views  */
+    private void initViews() {
+        imageView = (ImageView) findViewById(R.id.main_image_view);
+
+        vibrantView = (TextView) findViewById(R.id.vibrantView);
+        vibrantLightView = (TextView) findViewById(R.id.vibrantLightView);
+        vibrantDarkView = (TextView) findViewById(R.id.vibrantDarkView);
+        mutedView = (TextView) findViewById(R.id.mutedView);
+        mutedLightView = (TextView) findViewById(R.id.mutedLightView);
+        mutedDarkView = (TextView) findViewById(R.id.mutedDarkView);
+
+    }
+
+    /*  Implement Check listener over Radio group */
+    private void implementRadioGroupListener() {
+        final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                // Finding ID/Position of radio group child
+                int pos = radioGroup.indexOfChild(findViewById(checkedId));
+
+                //Toggle between images
+                switch (pos) {
+                    case 0:
+                        toggleImages(R.drawable.photo);
+                        break;
+                    case 1:
+                        toggleImages(R.drawable.download);
+                        break;
+
+                }
+            }
+
+        });
+    }
+
+    /*  Toggle method to switch between images  */
+    private void toggleImages(int drawableIcon) {
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), drawableIcon);//Get bitmap from drawable resources
+        imageView.setImageBitmap(bitmap);//set bitmap over image view
+        setToolbarColor(bitmap);//set toolbar color according bitmap
+        createPaletteAsync(bitmap);//generate palette asynchronously
+    }
+
+    /*  Set the background and text colors of a toolbar given a bitmap image to match  */
+    public void setToolbarColor(Bitmap bitmap) {
+        // Generate the palette and get the vibrant swatch
+        // See the createPaletteSync() and checkVibrantSwatch() methods
+        // from the code snippets above
+        Palette p = createPaletteSync(bitmap);
+        Palette.Swatch vibrantSwatch = checkVibrantSwatch(p);
+
+        // Set the toolbar background and text colors
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setBackgroundColor(vibrantSwatch.getRgb());
+        toolbar.setTitleTextColor(vibrantSwatch.getTitleTextColor());
+    }
+
+
+    // Generate palette synchronously and return it
+    public Palette createPaletteSync(Bitmap bitmap) {
+        return Palette.from(bitmap).generate();
+    }
+
+
+    // Return a palette's vibrant swatch after checking that it exists
+    private Palette.Swatch checkVibrantSwatch(Palette p) {
+        Palette.Swatch vibrant = p.getVibrantSwatch();
+        if (vibrant != null) {
+            return vibrant;
+        }
+        return null;
+    }
+
+    /* Generate palette asynchronously and use it on a different thread using onGenerated() */
+    private void createPaletteAsync(Bitmap bitmap) {
+
+        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+            @Override
+            public void onGenerated(Palette palette) {
+                // Use generated instance
+                //work with the palette here
+                int defaultValue = 0x000000;
+                int vibrant = palette.getVibrantColor(defaultValue);
+                int vibrantLight = palette.getLightVibrantColor(defaultValue);
+                int vibrantDark = palette.getDarkVibrantColor(defaultValue);
+                int muted = palette.getMutedColor(defaultValue);
+                int mutedLight = palette.getLightMutedColor(defaultValue);
+                int mutedDark = palette.getDarkMutedColor(defaultValue);
+
+                vibrantView.setBackgroundColor(vibrant);
+                vibrantLightView.setBackgroundColor(vibrantLight);
+                vibrantDarkView.setBackgroundColor(vibrantDark);
+                mutedView.setBackgroundColor(muted);
+                mutedLightView.setBackgroundColor(mutedLight);
+                mutedDarkView.setBackgroundColor(mutedDark);
+            }
+        });
+    }
+
+    /*  Open Grid Activity  */
+    public void gridPaletteExample(View view) {
+        startActivity(new Intent(this, RecyclerView_Activity.class));
+    }
+}</pre><p>
+<b>7</b>. As we will also work in RecyclerView and Picasso. So lets create new xml layout naming<em> recycler_view_activity.xml</em> and place the below code to it.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"&gt;
+
+    &lt;android.support.v7.widget.Toolbar
+        android:id="@+id/recycler_view_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary" /&gt;
+
+    &lt;android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp" /&gt;
+&lt;/LinearLayout&gt;</pre><p>
+<b>8</b>. After creating recycler_view_activity layout, now create custom row layout for recycler view item naming<em> recycler_view_custom_row.xml</em> and place the below code to it. In this layout we are only taking ImageView and TextView to display the Palette colors.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:orientation="vertical"&gt;
+
+    &lt;ImageView
+        android:id="@+id/custom_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:scaleType="fitCenter" /&gt;
+
+    &lt;TextView
+        android:id="@+id/text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textSize="15sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>9</b>. Now create POJO class for RecyclerView custom layout naming <em>RecyclerItemModel.java</em> and place the below code to it.</p><pre class="crayon-plain-tag">package com.androidpalette_demo;
+
+/**
+ * Created by sonu on 27/03/17.
+ */
+
+
+/* Model for Grid Item  */
+public class RecyclerItemModel {
+    private String label, imageUrl;
+
+
+    public RecyclerItemModel(String label, String imageUrl) {
+        this.label = label;
+        this.imageUrl = imageUrl;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+}</pre><p>
+<b>10</b>. Now create new activity class naming <em>RecyclerView_Activity.java</em> and place the below code to it. In this class we are taking some image urls and adding them to ArrayList.</p><pre class="crayon-plain-tag">package com.androidpalette_demo;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 27/03/17.
+ */
+
+public class RecyclerView_Activity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.recycler_view_activity);
+        setUpToolbar();
+        setUpRecyclerView();
+    }
+
+    /*  Set Up toolbar  */
+    private void setUpToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.recycler_view_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    /*  Set Up Recycler View */
+    private void setUpRecyclerView() {
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(gridLayoutManager);
+
+        getRecyclerViewArrayList(recyclerView);
+    }
+
+    /*  generate array list and set adapter over recycler view  */
+    private void getRecyclerViewArrayList(RecyclerView recyclerView) {
+        ArrayList&lt;RecyclerItemModel&gt; recyclerItemModels = new ArrayList&lt;&gt;();
+        recyclerItemModels.add(new RecyclerItemModel("Google Chrome", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Google_Chrome_for_Android_Icon_2016.svg/2000px-Google_Chrome_for_Android_Icon_2016.svg.png"));
+        recyclerItemModels.add(new RecyclerItemModel("Google Now", "https://cdn.pixabay.com/photo/2015/10/31/12/56/google-1015752_960_720.png"));
+        recyclerItemModels.add(new RecyclerItemModel("Google Plus", "https://upload.wikimedia.org/wikipedia/commons/f/fb/Google-plus-circle-icon-png.png"));
+        recyclerItemModels.add(new RecyclerItemModel("Google Photos", "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Google-Picasa-icon-logo.png/1016px-Google-Picasa-icon-logo.png"));
+        recyclerItemModels.add(new RecyclerItemModel("Google Maps", "http://maxpixel.freegreatpicture.com/static/photo/1x/Maps-Gps-Map-Icon-Google-Maps-Logo-Navigation-1797882.png"));
+        recyclerItemModels.add(new RecyclerItemModel("Google Play Music", "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Play_music_triangle.svg/2000px-Play_music_triangle.svg.png"));
+        recyclerItemModels.add(new RecyclerItemModel("Google Play Store", "https://cdn.pixabay.com/photo/2016/08/31/00/49/google-1632434_960_720.png"));
+        recyclerItemModels.add(new RecyclerItemModel("Google Drive", "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Google_Drive_Logo.svg/1804px-Google_Drive_Logo.svg.png"));
+        recyclerItemModels.add(new RecyclerItemModel("Google Allo", "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Allo_Logo.png"));
+        recyclerItemModels.add(new RecyclerItemModel("Google Contacts", "https://upload.wikimedia.org/wikipedia/commons/b/b7/Google_Contacts_logo.png"));
+
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, recyclerItemModels);
+        recyclerView.setAdapter(adapter);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            //Finish activity on home back button click
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}</pre><p>
+<b>11</b>. Finally create adapter for RecyclerView naming <em>RecyclerViewAdapter.java</em> and place the below code to it.</p><pre class="crayon-plain-tag">package com.androidpalette_demo;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.support.v7.graphics.Palette;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 27/03/17.
+ */
+
+public class RecyclerViewAdapter extends RecyclerView.Adapter&lt;RecyclerView.ViewHolder&gt; {
+
+
+    private static class DemoViewHolder extends RecyclerView.ViewHolder {
+
+        private ImageView imageView;
+        private TextView textView;
+
+        DemoViewHolder(View itemView) {
+            super(itemView);
+            imageView = (ImageView) itemView.findViewById(R.id.custom_image_view);
+            textView = (TextView) itemView.findViewById(R.id.text_view);
+        }
+
+    }
+
+
+    private ArrayList&lt;RecyclerItemModel&gt; recyclerItemModelArrayList;
+    private Context context;
+
+    public RecyclerViewAdapter(Context context, ArrayList&lt;RecyclerItemModel&gt; recyclerItemModelArrayList) {
+        this.recyclerItemModelArrayList = recyclerItemModelArrayList;
+        this.context = context;
+
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_custom_row, parent, false);
+        return new DemoViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
+        RecyclerItemModel model = recyclerItemModelArrayList.get(position);
+
+        if (holder instanceof DemoViewHolder) {
+            ((DemoViewHolder) holder).textView.setText(model.getLabel());//set text label
+
+            //Use picasso or any other image library to load image url
+            Picasso.with(context)
+                    .load(model.getImageUrl())
+                    .resize(300, 300)//use resize if yoou are using centreCrop
+                    .centerCrop()
+                    .into(new Target() {
+                        @Override
+                        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                            //When bitmap loaded successfully display bitmap over image view and generate palette
+                            ((DemoViewHolder) holder).imageView.setImageBitmap(bitmap);
+                            Palette.from(bitmap)
+                                    .generate(new Palette.PaletteAsyncListener() {
+                                        @Override
+                                        public void onGenerated(Palette palette) {
+                                            Palette.Swatch textSwatch = palette.getVibrantSwatch();
+                                            //Check if swatch is null or not
+                                            if (textSwatch == null) {
+                                                //If null display toast
+                                                Toast.makeText(context, "Got Null swatch !!", Toast.LENGTH_SHORT).show();
+                                                return;
+                                            }
+
+                                            ((DemoViewHolder) holder).textView.setTextColor(textSwatch.getTitleTextColor());//set title text color
+                                            ((DemoViewHolder) holder).textView.setBackgroundColor(textSwatch.getRgb());//set text background color or root background color
+
+                                            // textSwatch.getBodyTextColor(); //Set the body text color if you need
+                                        }
+                                    });
+                        }
+
+                        @Override
+                        public void onBitmapFailed(Drawable errorDrawable) {
+                        }
+
+                        @Override
+                        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                        }
+                    });
+        }
+
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return recyclerItemModelArrayList.size();
+    }
+}</pre><p>
+Below are the process how Palette Generation work with Picasso or any other library:</p>
+<p>The default code of Picasso to load images is:</p><pre class="crayon-plain-tag">Picasso.with(context).load(image_url).into(imageView);</pre><p>
+The problem in above code is that we have no access to the loaded image. The library downloads the image, resize it and define sets it into the <em class="markup--em markup--p-em">ImageView</em> in a totally automated way. To allow us to handle the downloaded image and extract it’s colors, lets change some lines of code. Instead of loading the image into the <em class="markup--em markup--p-em">ImageView</em>, we will load it into a custom target. This way, we will have access to the bitmap, making easier to extract it’s colors.</p><pre class="crayon-plain-tag">Picasso.with(context)
+    .load(model.getImageUrl())
+    .into(new Target() {
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    });</pre><p>
+<p id="9300" class="graf graf--p graf-after--figure">Now we can handle the bitmap inside the method <em class="markup--em markup--p-em">onBitmapLoaded</em>. We can extract it’s colors and then set the bitmap as image source in our <em class="markup--em markup--p-em">ImageView</em>. But not that fast. Changing the target of image loading has another consequence: Picasso now has no dimensions to resize the image. When the loading target is an <em class="markup--em markup--p-em">ImageView</em>, Picasso can resize the bitmap with it’s dimensions. A custom target has no dimensions, so the bitmap we receive as parameter has the original size. For that reason, we have some more lines of code. We must call <em class="markup--em markup--p-em">resize</em> and <em class="markup--em markup--p-em">centerCrop</em> to reduce the image before processing it.</p>
+<pre class="crayon-plain-tag">Picasso.with(MainActivity.this)
+        .load(model.getImageUrl())
+        .resize(300,300)//or any other dimension of your choice
+        .centerCrop()
+        .into(new Target() {
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    });</pre>
+<p class="graf graf--p graf-after--figure">Finally we can extract images’s colors. We can create a new instance from <em class="markup--em markup--p-em">Palette</em> class using the method <em class="markup--em markup--p-em">from</em>, using our bitmap as parameter. A new color set will be generated with the method <em class="markup--em markup--p-em">generate()</em>. This process can take some time, so it will be executed in an asynchronous way, avoiding main thread blocks.</p>
+<pre class="crayon-plain-tag">@Override
+                        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                            //When bitmap loaded successfully display bitmap over image view and generate palette
+                            ((DemoViewHolder) holder).imageView.setImageBitmap(bitmap);
+                            Palette.from(bitmap)
+                                    .generate(new Palette.PaletteAsyncListener() {
+                                        @Override
+                                        public void onGenerated(Palette palette) {
+                                            Palette.Swatch textSwatch = palette.getVibrantSwatch();
+                                            //Check if swatch is null or not
+                                            if (textSwatch == null) {
+                                                //If null display toast
+                                                Toast.makeText(context, "Got Null swatch !!", Toast.LENGTH_SHORT).show();
+                                                return;
+                                            }
+
+                                            ((DemoViewHolder) holder).textView.setTextColor(textSwatch.getTitleTextColor());//set title text color
+                                            ((DemoViewHolder) holder).textView.setBackgroundColor(textSwatch.getRgb());//set text background color or root background color
+
+                                            // textSwatch.getBodyTextColor(); //Set the body text color if you need
+                                        }
+                                    });
+                        }</pre>
+<p class="graf graf--p graf-after--figure">When the process finishes, we will have a palette with multiple combinations. After Palette generations we get all type of colors as we got in MainActivity.java use <em>getTitleTextColor()</em> to get text color and <em>getRgb()</em> for text background color. Don’t forget that the sets can be <em class="markup--em markup--p-em">null</em>, since an image may have no vibrant colors,</p>
+<p class="graf graf--p graf-after--figure">Below is a screenshot of what we got when we open <em>RecyclerView_Activity.java.</em></p>
+<p class="graf graf--p graf-after--figure"><img class="aligncenter wp-image-1202 size-large" src="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/03/grid_palette.jpg?resize=576%2C1024" alt="grid_palette" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/03/grid_palette.jpg?resize=576%2C1024 576w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/03/grid_palette.jpg?resize=169%2C300 169w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/03/grid_palette.jpg?resize=768%2C1365 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/03/grid_palette.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /></p>
+<p class="graf graf--p graf-after--figure"><b>12</b>. Make sure you give <strong>INTERNET</strong> permission in <em>AndroidManifest.xml</em> file to load image urls.</p>
+<pre class="crayon-plain-tag">&lt;uses-permission android:name="android.permission.INTERNET" /&gt;</pre>
+<p class="graf graf--p graf-after--figure"><b>13</b>. Finally you are all done. Now you can also use the Palette in your app.</p>
+<p class="graf graf--p graf-after--figure">Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" width="13" height="13" /></p>
+<p><strong><a href="http://androhub.com/downloads/AndroidPalette_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<figure id="9832" class="graf graf--figure graf--iframe graf-after--p">
+<div class="aspectRatioPlaceholder is-locked"></div>
+</figure>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-working-palette/">Android Working with Palette</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-working-palette/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1201</post-id>	</item>
+	</channel>
+</rss>

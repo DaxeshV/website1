@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Gestures &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-gestures/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Swipe Gesture</title>
+		<link>http://www.androhub.com/android-swipe-gesture/</link>
+		<comments>http://www.androhub.com/android-swipe-gesture/#respond</comments>
+		<pubDate>Sat, 22 Aug 2015 13:09:34 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android Gestures]]></category>
+		<category><![CDATA[double tap]]></category>
+		<category><![CDATA[gesture]]></category>
+		<category><![CDATA[simple swipe gesture listener]]></category>
+		<category><![CDATA[swipe gesture]]></category>
+		<category><![CDATA[swipe gesture listener]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=634</guid>
+		<description><![CDATA[<p>The Android SDK supports a variety of gestures you can detect, allowing you to tailor the ways in which users interact with your applications. In this tutorial, we will look at the framework that allows developers to add gesture detection to a simple application, working through the process of supporting the fling gesture and outlining [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-swipe-gesture/">Android Swipe Gesture</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>The Android SDK supports a variety of <a href="https://developer.android.com/intl/ru/training/gestures/detector.html" target="_blank">gestures</a> you can detect, allowing you to tailor the ways in which users interact with your applications. In this tutorial, we will look at the framework that allows developers to add gesture detection to a simple application, working through the process of supporting the fling gesture and outlining how to support other gestures. Once you&#8217;ve completed the development for a basic fling function, you&#8217;ll be able to add additional gestures to the application yourself.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to implement various swipe gestures in an app.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_93433" width="602" height="339" src="https://www.youtube.com/embed/aS5KhSBAu0U?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>ShareActivity.java</em>.</p>
+<p><b>2</b>. First create an xml layout file naming <em>activity_main.xml </em>that contains several imageview indicating type of gestures that a user can do.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background" &gt;
+
+    &lt;ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:src="@drawable/swipe_left" /&gt;
+
+    &lt;ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:src="@drawable/swipe_right" /&gt;
+
+    &lt;ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:src="@drawable/swipe_up" /&gt;
+
+    &lt;ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:src="@drawable/swipe_down" /&gt;
+
+    &lt;ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:src="@drawable/double_tap" /&gt;
+
+&lt;/RelativeLayout&gt;</pre><p>
+<b>3</b>. Now create a java class naming <em>SimpleGestureFilter.java </em>that conatins various Gesture detector methods that we can use in our activity to recognize user gesture. You can modify this class according to your need.</p><pre class="crayon-plain-tag">package com.example.swipe_screen_demo;
+
+import android.app.Activity;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+
+public class SimpleGestureFilter extends SimpleOnGestureListener {
+
+	// Swipe gestures type
+	public final static int SWIPE_UP = 1;
+	public final static int SWIPE_DOWN = 2;
+	public final static int SWIPE_LEFT = 3;
+	public final static int SWIPE_RIGHT = 4;
+
+	public final static int MODE_TRANSPARENT = 0;
+	public final static int MODE_SOLID = 1;
+	public final static int MODE_DYNAMIC = 2;
+
+	private final static int ACTION_FAKE = -13; // just an unlikely number
+
+	// Swipe distances
+	private int swipe_Min_Distance = 100;
+	private int swipe_Max_Distance = 350;
+	private int swipe_Min_Velocity = 100;
+
+	private int mode = MODE_DYNAMIC;
+	private boolean running = true;
+	private boolean tapIndicator = false;
+
+	private Activity context;
+	private GestureDetector detector;
+	private SimpleGestureListener listener;
+
+	public SimpleGestureFilter(Activity context,
+			SimpleGestureListener simpleGestureListener) {
+
+		this.context = context;
+		this.detector = new GestureDetector(context, this);
+		this.listener = simpleGestureListener;
+	}
+
+	public void onTouchEvent(MotionEvent event) {
+
+		if (!this.running)
+			return;
+
+		boolean result = this.detector.onTouchEvent(event);
+		// Get the gesture
+		if (this.mode == MODE_SOLID)
+			event.setAction(MotionEvent.ACTION_CANCEL);
+		else if (this.mode == MODE_DYNAMIC) {
+
+			if (event.getAction() == ACTION_FAKE)
+				event.setAction(MotionEvent.ACTION_UP);
+			else if (result)
+				event.setAction(MotionEvent.ACTION_CANCEL);
+			else if (this.tapIndicator) {
+				event.setAction(MotionEvent.ACTION_DOWN);
+				this.tapIndicator = false;
+			}
+
+		}
+		// else just do nothing, it's Transparent
+	}
+
+	public void setMode(int m) {
+		this.mode = m;
+	}
+
+	public int getMode() {
+		return this.mode;
+	}
+
+	public void setEnabled(boolean status) {
+		this.running = status;
+	}
+
+	public void setSwipeMaxDistance(int distance) {
+		this.swipe_Max_Distance = distance;
+	}
+
+	public void setSwipeMinDistance(int distance) {
+		this.swipe_Min_Distance = distance;
+	}
+
+	public void setSwipeMinVelocity(int distance) {
+		this.swipe_Min_Velocity = distance;
+	}
+
+	public int getSwipeMaxDistance() {
+		return this.swipe_Max_Distance;
+	}
+
+	public int getSwipeMinDistance() {
+		return this.swipe_Min_Distance;
+	}
+
+	public int getSwipeMinVelocity() {
+		return this.swipe_Min_Velocity;
+	}
+
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+			float velocityY) {
+
+		final float xDistance = Math.abs(e1.getX() - e2.getX());
+		final float yDistance = Math.abs(e1.getY() - e2.getY());
+
+		if (xDistance &gt; this.swipe_Max_Distance
+				|| yDistance &gt; this.swipe_Max_Distance)
+			return false;
+
+		velocityX = Math.abs(velocityX);
+		velocityY = Math.abs(velocityY);
+		boolean result = false;
+
+		if (velocityX &gt; this.swipe_Min_Velocity
+				&amp;&amp; xDistance &gt; this.swipe_Min_Distance) {
+			if (e1.getX() &gt; e2.getX()) // right to left
+				this.listener.onSwipe(SWIPE_LEFT);
+			else
+				this.listener.onSwipe(SWIPE_RIGHT);
+
+			result = true;
+		} else if (velocityY &gt; this.swipe_Min_Velocity
+				&amp;&amp; yDistance &gt; this.swipe_Min_Distance) {
+			if (e1.getY() &gt; e2.getY()) // bottom to up
+				this.listener.onSwipe(SWIPE_UP);
+			else
+				this.listener.onSwipe(SWIPE_DOWN);
+
+			result = true;
+		}
+
+		return result;
+	}
+
+	@Override
+	public boolean onSingleTapUp(MotionEvent e) {
+		this.tapIndicator = true;
+		return false;
+	}
+
+	@Override
+	public boolean onDoubleTap(MotionEvent arg) {
+		this.listener.onDoubleTap();
+		;
+		return true;
+	}
+
+	@Override
+	public boolean onDoubleTapEvent(MotionEvent arg) {
+		return true;
+	}
+
+	@Override
+	public boolean onSingleTapConfirmed(MotionEvent arg) {
+
+		if (this.mode == MODE_DYNAMIC) { // we owe an ACTION_UP, so we fake an
+			arg.setAction(ACTION_FAKE); // action which will be converted to an
+										// ACTION_UP later.
+			this.context.dispatchTouchEvent(arg);
+		}
+
+		return false;
+	}
+
+	static interface SimpleGestureListener {
+		void onSwipe(int direction);
+
+		void onDoubleTap();
+	}
+}</pre><p>
+<b>4</b>. Finally come to your <em>MainActivity.java </em>and add the following code. In this class we do several things listed below:</p>
+<ul>
+<li>Implement SimpleGestureListener interface to listen user gesture.</li>
+<li>Make an instance of SimpleGestureFilter class that we had created above.</li>
+<li>Finally use onSwipe(int direction) and onDoubleTap method to do your stuff.</li>
+</ul>
+<pre class="crayon-plain-tag">package com.example.swipe_screen_demo;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
+import android.widget.Toast;
+
+import com.example.swipe_screen_demo.SimpleGestureFilter.SimpleGestureListener;
+
+public class MainActivity extends AppCompatActivity implements
+		SimpleGestureListener {
+	private SimpleGestureFilter detector;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		// Detect touched area
+		detector = new SimpleGestureFilter(MainActivity.this, this);
+	}
+
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent me) {
+		// Call onTouchEvent of SimpleGestureFilter class
+		this.detector.onTouchEvent(me);
+		return super.dispatchTouchEvent(me);
+	}
+
+	@Override
+	public void onSwipe(int direction) {
+		
+		//Detect the swipe gestures and display toast
+		String showToastMessage = "";
+
+		switch (direction) {
+
+		case SimpleGestureFilter.SWIPE_RIGHT:
+			showToastMessage = "You have Swiped Right.";
+			break;
+		case SimpleGestureFilter.SWIPE_LEFT:
+			showToastMessage = "You have Swiped Left.";
+			break;
+		case SimpleGestureFilter.SWIPE_DOWN:
+			showToastMessage = "You have Swiped Down.";
+			break;
+		case SimpleGestureFilter.SWIPE_UP:
+			showToastMessage = "You have Swiped Up.";
+			break;
+
+		}
+		Toast.makeText(this, showToastMessage, Toast.LENGTH_SHORT).show();
+	}
+
+	
+	//Toast shown when double tapped on screen
+	@Override
+	public void onDoubleTap() {
+		Toast.makeText(this, "You have Double Tapped.", Toast.LENGTH_SHORT)
+				.show();
+	}
+
+}</pre>
+<b>5</b>. Now, you are all done, run your app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/SwipeGesture_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-swipe-gesture/">Android Swipe Gesture</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-swipe-gesture/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">634</post-id>	</item>
+	</channel>
+</rss>

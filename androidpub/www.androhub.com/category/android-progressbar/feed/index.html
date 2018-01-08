@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android ProgressBar &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-progressbar/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android ProgressBar</title>
+		<link>http://www.androhub.com/android_progressbar/</link>
+		<comments>http://www.androhub.com/android_progressbar/#respond</comments>
+		<pubDate>Mon, 25 May 2015 06:55:22 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android ProgressBar]]></category>
+		<category><![CDATA[Android ProgressDialog]]></category>
+		<category><![CDATA[Circular ProgressBar]]></category>
+		<category><![CDATA[Horizontal ProgressBar]]></category>
+		<category><![CDATA[ProgressBar]]></category>
+		<category><![CDATA[ProgressDialog]]></category>
+		<category><![CDATA[Vertical Progressbar]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=372</guid>
+		<description><![CDATA[<p>What is Android ProgressBar ? Progress bars are used to show progress of a task. For example. When you are uploading or downloading something from the internet, it is better to show the progress of download/upload to the user. ProgressBar in Android is a graphical view indicator which shows some progress. It shows a bar [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android_progressbar/">Android ProgressBar</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p><b>What is Android ProgressBar ?</b></p>
+<p>Progress bars are used to show progress of a task. For example. When you are uploading or downloading something from the internet, it is better to show the progress of download/upload to the user.</p>
+<p>ProgressBar in Android is a graphical view indicator which shows some progress. It shows a bar representing the completing of the task. Normally the ProgresBar do not display the amount of completion in numbers. If we want, we can display it in the TextView.</p>
+<p><b>Difference between ProgressBar and ProgressDialog:</b></p>
+<div>The programmers often get this doubt. ProgressBar is a view indicating the amount of progress done. The application can change the value. This can be used in the layout to show the progress.</div>
+<div>On the other side ProgressDialog is a dialog box (like alert). The user must wait for the progress to complete.</div>
+<p><b>Things to know about ProgressBar:</b></p>
+<div>
+<div>By default the progress bar maximum value is 100. It can also be changed by setting the our own maximum value using <b>android:max</b> attribute.</div>
+</div>
+<div>
+<div>If we know the amount of work, then we can use this progress bar showing the actual progress. But if we do not know the amount of work to be done, then we can use <b>progressBar.setIndeterminate(true)</b> in the activity class programatically or using <b>android:indeterminate=&#8221;true&#8221; </b>in the layout xml file which will enable the intermediate mode. In the intermediate mode the actual progress will not be shown. A cyclic animation will be shown to indicate that some progress is happening.</div>
+<div></div>
+<div><b>These are some methods that are provided by the ProgressDialog class :</b></div>
+<div></div>
+</div>
+<div>
+<table id="tablepress-22" class="tablepress tablepress-id-22">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Method</th><th class="column-2">Description</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">getMax()</td><td class="column-2">This method returns the maximum value of the progress.</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">incrementProgressBy(int diff)</td><td class="column-2">This method increments the progress bar by the difference of value passed as a parameter.</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">setIndeterminate(boolean indeterminate)</td><td class="column-2">This method sets the progress indicator as determinate or indeterminate.</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">setMax(int max)</td><td class="column-2">This method sets the maximum value of the progress dialog.</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">setProgress(int value)</td><td class="column-2">This method is used to update the progress dialog with some specific value.</td>
+</tr>
+<tr class="row-7 odd">
+	<td class="column-1">show(Context context, CharSequence title, CharSequence message)</td><td class="column-2">This is a static method, used to display progress dialog.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<h2>Example</h2>
+<p>In this example I will show you how to implement ProgressDialog and different types of ProgressBar like vertical, horizontal and Circular.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_43491" width="602" height="339" src="https://www.youtube.com/embed/f2AwXTeXw8o?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Let’s get start by creating a project in Eclipse IDE.</p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>).</p>
+<p><b>2</b>.  Create a layout file for <em>MainActivtiy.java</em> under <em>res ⇒ layout</em> folder. I named the layout file as <em>activity_main.xml</em>. In this layout i had taken three progressbar for three different style progress and some buttons to start the progress.</p><pre class="crayon-plain-tag">&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" &gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:padding="5dp" &gt;
+
+        &lt;Button
+            android:id="@+id/start_horizontal_progressbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Start Horizontal ProgressBar" /&gt;
+
+        &lt;ProgressBar
+            android:id="@+id/horizontal_progressbar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" /&gt;
+
+        &lt;TextView
+            android:id="@+id/horizontalprogress_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right" /&gt;
+
+        &lt;Button
+            android:id="@+id/start_vertical_progressbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Start Vertical ProgressBar" /&gt;
+
+        &lt;ProgressBar
+            android:id="@+id/vertical_progressbar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:progressDrawable="@drawable/vertical_progressbar" /&gt;
+
+        &lt;TextView
+            android:id="@+id/verticalprogress_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" /&gt;
+
+        &lt;Button
+            android:id="@+id/download_file"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Download File" /&gt;
+
+        &lt;Button
+            android:id="@+id/start_circular_progressbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Start Circular ProgressBar" /&gt;
+
+        &lt;ProgressBar
+            android:id="@+id/circular_progressbar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:progressDrawable="@drawable/circular_progressbar" /&gt;
+
+        &lt;TextView
+            android:id="@+id/circularprogress_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;</pre><p>
+<b>3</b>. For creating vertical and circular progressbar we have to make it by custom because bydefault we are having only horizontal progressbar. So, for custom progressbar create a new directory under <em>res </em>directory naming <em>drawable </em>and under that directory create two new xml files for vertical and circular progressbar.</p>
+<p>This is for vertical progressbar naming <em>vertical_progressbar.xml.</em></p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;layer-list xmlns:android="http://schemas.android.com/apk/res/android" &gt;
+
+    &lt;!-- By default progressbar --&gt;
+    &lt;item android:id="@android:id/background"&gt;
+        &lt;shape&gt;
+            &lt;corners android:radius="5dip" /&gt;
+
+            &lt;solid android:color="#FFFFFF" /&gt;
+
+            &lt;stroke
+                android:width="1dp"
+                android:color="#FF000000" /&gt;
+        &lt;/shape&gt;
+    &lt;/item&gt;
+
+    &lt;!-- on Progress Update --&gt;
+    &lt;item android:id="@android:id/progress"&gt;
+        &lt;clip
+            android:clipOrientation="vertical"
+            android:gravity="bottom" &gt;
+            &lt;shape&gt;
+                &lt;corners android:radius="5dip" /&gt;
+
+                &lt;!-- Color to be shown on progressbar update --&gt;
+                &lt;solid android:color="#FF00" /&gt;
+
+                &lt;stroke
+                    android:width="1dp"
+                    android:color="#FF000000" /&gt;
+            &lt;/shape&gt;
+        &lt;/clip&gt;
+    &lt;/item&gt;
+
+&lt;/layer-list&gt;</pre><p>
+Now, make xml file for circular progressbar naming <em>circular_progressbar.xml.</em></p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;layer-list xmlns:android="http://schemas.android.com/apk/res/android" &gt;
+
+    &lt;!-- By default Progress --&gt;
+    &lt;item android:id="@android:id/secondaryProgress"&gt;
+        &lt;shape
+            android:innerRadiusRatio="3"
+            android:shape="ring"
+            android:thicknessRatio="14.0" &gt;
+            &lt;gradient
+                android:centerColor="#FFFFFF"
+                android:endColor="#FFFFFF"
+                android:startColor="#FFFFFF"
+                android:type="sweep" /&gt;
+        &lt;/shape&gt;
+    &lt;/item&gt;
+    
+     &lt;!-- on Progress Update  --&gt;
+    &lt;item android:id="@android:id/progress"&gt;
+        &lt;rotate
+            android:fromDegrees="270"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="270" &gt;
+            &lt;shape
+                android:innerRadiusRatio="3"
+                android:shape="ring"
+                android:thicknessRatio="14.0" &gt;
+                &lt;rotate
+                    android:fromDegrees="0"
+                    android:pivotX="50%"
+                    android:pivotY="50%"
+                    android:toDegrees="360" /&gt;
+
+                &lt;!-- Color to be shown when progress bar is updating --&gt;
+                &lt;gradient
+                    android:centerColor="#00FF00"
+                    android:endColor="#00FF00"
+                    android:startColor="#00FF00"
+                    android:type="sweep" /&gt;
+            &lt;/shape&gt;
+        &lt;/rotate&gt;
+    &lt;/item&gt;
+
+&lt;/layer-list&gt;</pre><p>
+<b>4</b>. Now, come to <em>MainActivity.java </em>and add the following code. In this class I will show how start the progress of all Progressbar and increment the progress and show it over the TextView and except ProgressBar a ProgressDialog is also shown.</p><pre class="crayon-plain-tag">package com.android_progressbar_demo;
+
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+public class MainActivity extends ActionBarActivity implements OnClickListener {
+
+	private static ProgressBar horizontal_progressbar, vertical_progressbar,
+			circular_progressbar;
+	private static Button horizontal_bar_button, vertical_bar_button,
+			download_file, circular_progressbar_buttom;
+	private static TextView horizontal_status, vertical_status,
+			circular_progressbar_status;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		init();
+		setListeners();
+	}
+
+	// Initialize all widgets
+	void init() {
+		horizontal_progressbar = (ProgressBar) findViewById(R.id.horizontal_progressbar);
+		horizontal_bar_button = (Button) findViewById(R.id.start_horizontal_progressbar);
+		horizontal_status = (TextView) findViewById(R.id.horizontalprogress_percentage);
+
+		vertical_progressbar = (ProgressBar) findViewById(R.id.vertical_progressbar);
+		vertical_bar_button = (Button) findViewById(R.id.start_vertical_progressbar);
+		vertical_status = (TextView) findViewById(R.id.verticalprogress_percentage);
+
+		download_file = (Button) findViewById(R.id.download_file);
+
+		circular_progressbar = (ProgressBar) findViewById(R.id.circular_progressbar);
+		circular_progressbar_buttom = (Button) findViewById(R.id.start_circular_progressbar);
+		circular_progressbar_status = (TextView) findViewById(R.id.circularprogress_percentage);
+
+	}
+
+	// Set Click Listeners to all buttons
+	void setListeners() {
+		horizontal_bar_button.setOnClickListener(this);
+		vertical_bar_button.setOnClickListener(this);
+		download_file.setOnClickListener(this);
+		circular_progressbar_buttom.setOnClickListener(this);
+	}
+
+	// Execute Async Task method on button click
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.start_horizontal_progressbar:
+			new UpdateHorizontalProgressBar().execute();
+			break;
+
+		case R.id.start_vertical_progressbar:
+			new UpdateVerticalProgressBar().execute();
+			break;
+
+		case R.id.download_file:
+			new DownloadFile().execute();
+			break;
+
+		case R.id.start_circular_progressbar:
+			new UpdateCircularProgressBar().execute();
+			break;
+		}
+
+	}
+
+	// Update Horizontal progress bar asynctask
+	public class UpdateHorizontalProgressBar extends
+			AsyncTask&lt;Void, Integer, Void&gt; {
+
+		// Progress variable for progressbar progress
+		int progress;
+
+		@Override
+		protected void onPreExecute() {
+
+			// Set Progress 0 at starting
+			progress = 0;
+
+			// Setting text to status textView
+			horizontal_status.setText(progress + " %");
+		}
+
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+
+			// Update the progressbar and textView Text on Progress Update
+			horizontal_progressbar.setProgress(values[0]);
+			horizontal_status.setText(values[0] + " %");
+		}
+
+		@Override
+		protected Void doInBackground(Void... arg0) {
+
+			// In Background increment the progress one by one till 100
+			while (progress &lt; 100) {
+				progress++;
+
+				// Publish the progress
+				publishProgress(progress);
+
+				// Time wait of 100ms
+				SystemClock.sleep(100);
+			}
+			return null;
+		}
+
+	}
+
+	// Update Vertical progress bar asynctask
+	public class UpdateVerticalProgressBar extends
+			AsyncTask&lt;Void, Integer, Void&gt; {
+
+		int progress;
+
+		@Override
+		protected void onPreExecute() {
+
+			progress = 0;
+			vertical_status.setText(progress + " %");
+		}
+
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+
+			vertical_progressbar.setProgress(values[0]);
+			vertical_status.setText(values[0] + " %");
+		}
+
+		@Override
+		protected Void doInBackground(Void... arg0) {
+
+			while (progress &lt; 100) {
+				progress++;
+				publishProgress(progress);
+
+				SystemClock.sleep(100);
+			}
+			return null;
+		}
+
+	}
+
+	// Download File asynctask
+	public class DownloadFile extends AsyncTask&lt;Void, Integer, Void&gt; {
+
+		int progress;
+
+		// Progress Dialog to show progress on dialog
+		ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+
+		@Override
+		protected void onPreExecute() {
+
+			// Setting title to dialog
+			dialog.setTitle("File is downloading..Please Wait..");
+
+			// This will make the dialog uncancelabe on outside or back clicking
+			dialog.setCancelable(false);
+
+			// Maximum value
+			dialog.setMax(100);
+
+			// Starting Progress
+			dialog.setProgress(0);
+
+			// Progress Style (Horizontal or Circular)
+			dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+
+			// Spinner Style i.e. Circular
+			// dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
+			// Setting intermediate i.e. nothing happen when any intermediate is
+			// happens
+			dialog.setIndeterminate(false);
+
+			// Showing dialog
+			dialog.show();
+
+			progress = 0;
+
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+
+			// Dismiss the dialog when task is done
+			// dialog.hide();
+			dialog.dismiss();
+			super.onPostExecute(result);
+		}
+
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+
+			// Update Progress the dialog
+			dialog.setProgress(values[0]);
+
+		}
+
+		@Override
+		protected Void doInBackground(Void... arg0) {
+
+			while (progress &lt; 100) {
+				progress++;
+				publishProgress(progress);
+
+				SystemClock.sleep(100);
+			}
+			return null;
+		}
+
+	}
+
+	// Update Circular progress bar asynctask
+	public class UpdateCircularProgressBar extends
+			AsyncTask&lt;Void, Integer, Void&gt; {
+
+		int progress;
+
+		@Override
+		protected void onPreExecute() {
+
+			progress = 0;
+			circular_progressbar_status.setText(progress + " %");
+		}
+
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+
+			circular_progressbar.setProgress(values[0]);
+			circular_progressbar_status.setText(values[0] + " %");
+		}
+
+		@Override
+		protected Void doInBackground(Void... arg0) {
+
+			while (progress &lt; 100) {
+				progress++;
+				publishProgress(progress);
+
+				SystemClock.sleep(100);
+			}
+			return null;
+		}
+
+	}
+}</pre><p>
+<b>5</b>. Now, run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/Android_Progressbar_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+</div>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android_progressbar/">Android ProgressBar</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android_progressbar/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">372</post-id>	</item>
+	</channel>
+</rss>

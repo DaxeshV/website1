@@ -1,0 +1,1207 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android JSON &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-json/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android JSON Maker</title>
+		<link>http://www.androhub.com/android-json-maker/</link>
+		<comments>http://www.androhub.com/android-json-maker/#respond</comments>
+		<pubDate>Sat, 18 Jul 2015 05:01:25 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android JSON]]></category>
+		<category><![CDATA[JSON]]></category>
+		<category><![CDATA[JSON Parser]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=492</guid>
+		<description><![CDATA[<p>In last tutorial JSON Parser we learned how to parse JSON data from local file and from server. Sometimes we have to send data to server in JSON format like to store address in server database, etc. so for that we have to encode our data into JSON for server. For this Android provide us several [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-json-maker/">Android JSON Maker</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>In last tutorial <em><strong><a href="http://androhub.com/android-json-parser/" target="_blank">JSON Parser</a> </strong></em>we learned how to parse JSON data from local file and from server. Sometimes we have to send data to server in JSON format like to store address in server database, etc. so for that we have to encode our data into JSON for server. For this Android provide us several methods to create JSON.</p>
+<p>Before proceeding we need to know some methods  that we are going to use :</p>
+<ul>
+<li>Creating JSON Object</li>
+</ul>
+<pre class="crayon-plain-tag">//Creating Json Object
+JSONObject dataObject = new JSONObject();</pre>
+<ul>
+<li>Creating JSON Array</li>
+</ul>
+<pre class="crayon-plain-tag">//creating Json Array
+JSONArray mainArray = new JSONArray();</pre>
+<ul>
+<li>Putting/Inserting values inside Json Object  : You can put any type of data in  Json like string, int, boolean, float, etc with keyvalue.</li>
+</ul>
+<pre class="crayon-plain-tag">JsonObject dataObject = new JsonObject();
+dataObject.put("key_value", value);//put data in json object</pre>
+<ul>
+<li>Adding Json Object into Json Array  : We can add any data to Json Array also.</li>
+</ul>
+<pre class="crayon-plain-tag">JsonArray array = new JsonArray();
+array.put(dataObject);//Putting Json Object into Json Array</pre>
+<ul>
+<li>Similarly adding Json Array into Json Object</li>
+</ul>
+<pre class="crayon-plain-tag">JsonObject mainObject = new JsonObject();
+mainObject.put("key-value", your_jsonarray);//inserting json array</pre>
+The above methods are going to be used in this tutorial. So lets start with tutorial.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to create JSON data both  in JSON Array ([) and JSON Object ({).</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_44153" width="602" height="339" src="https://www.youtube.com/embed/aqHnKj-paUM?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Firstly, open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. This are some strings that i am going to use.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="app_name"&gt;JsonMaker Demo&lt;/string&gt;
+    &lt;string name="hello_world"&gt;Hello world!&lt;/string&gt;
+    &lt;string name="action_settings"&gt;Settings&lt;/string&gt;
+    &lt;string name="submit"&gt;Submit&lt;/string&gt;
+    &lt;string name="full_name"&gt;Full Name&lt;/string&gt;
+    &lt;string name="location"&gt;Location&lt;/string&gt;
+    &lt;string name="number"&gt;Contact Number&lt;/string&gt;
+    &lt;string name="age"&gt;Age&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Now, create a simple layout xml file that contains some edittext and one textview for displaying Json encoded data. You can take any view according to your need.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;EditText
+        android:id="@+id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="@string/full_name"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#d3d3d3"
+        android:textSize="15sp" /&gt;
+
+    &lt;EditText
+        android:id="@+id/location"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="@string/location"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#d3d3d3"
+        android:textSize="15sp" /&gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" &gt;
+
+        &lt;EditText
+            android:id="@+id/contact_number"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:hint="@string/number"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#d3d3d3"
+            android:textSize="15sp" /&gt;
+
+        &lt;EditText
+            android:id="@+id/age"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:hint="@string/age"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#d3d3d3"
+            android:textSize="15sp" /&gt;
+    &lt;/LinearLayout&gt;
+
+    &lt;Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:padding="7dp"
+        android:text="@string/submit" /&gt;
+
+    &lt;!-- TextView for displaying converted json data --&gt;
+
+    &lt;TextView
+        android:id="@+id/show_jsondata"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
+        android:textColor="#ff6600"
+        android:textSize="18sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>4</b>. Finally come to your main java class naming <em>MainActivity.java </em>and add the following code. In this class i fetched all the values from edittexts and encode it into JSON data by using Json methods.</p><pre class="crayon-plain-tag">package com.jsonmaker_demo;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+	private static EditText name, location, age, number;
+	private static TextView showJsonData;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		init();
+	}
+
+	// Initialize all the views
+	private void init() {
+		name = (EditText) findViewById(R.id.name);
+		location = (EditText) findViewById(R.id.location);
+		age = (EditText) findViewById(R.id.age);
+		number = (EditText) findViewById(R.id.contact_number);
+		showJsonData = (TextView) findViewById(R.id.show_jsondata);
+
+		// Click listener for submit button
+		findViewById(R.id.submit).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View view) {
+
+				// Call the json data convertor method
+				ConvertToJsonData();
+			}
+		});
+	}
+
+	// Method to convert simple data into jsondata
+	private void ConvertToJsonData() {
+		// get texts from all edittexts
+		String getName = name.getText().toString();
+		String getLocation = location.getText().toString();
+		String getNumber = number.getText().toString();
+		String getAge = age.getText().toString();
+
+		// Check if all fields are filled or not
+		if (getName.length() != 0 &amp;&amp; !getName.equals("")
+				&amp;&amp; getLocation.length() != 0 &amp;&amp; !getLocation.equals("")
+				&amp;&amp; getNumber.length() != 0 &amp;&amp; !getNumber.equals("")
+				&amp;&amp; getAge.length() != 0 &amp;&amp; !getAge.equals("")) {
+			try {
+
+				JSONObject dataObject = new JSONObject();// JsonObject for
+															// storing edittext
+															// fields
+				dataObject.put("name", getName);// now put the edittext values
+												// w.r.t. keyvalue like "name"
+				dataObject.put("location", getLocation);
+				dataObject.put("number", getNumber);
+				dataObject.put("age", getAge);
+
+				JSONArray mainArray = new JSONArray();// JsonArray to put the
+														// dataObject into
+														// jsonArray, since
+														// there can be more
+														// data if data is saved
+														// in database so the
+														// jsonObject data will
+														// be put into jsonArray
+				mainArray.put(dataObject);
+
+				// Finally put the jsonArray into another jsonObject with "data"
+				// keyvlaue or any other keyvalue
+				JSONObject mainObject = new JSONObject(); // This object is
+															// optional you can
+															// convert json data
+															// according to your
+															// need
+				mainObject.put("data", mainArray);
+
+				// Now, set the converted json data to textview to see the
+				// actual format
+				showJsonData.setText("Converted JSON data is nn"
+						+ mainObject.toString());
+			} catch (Exception e) {
+				e.printStackTrace();
+
+				// If any exception occurs then display error
+				showJsonData.setText("Error in converting data.");
+			}
+
+		}
+		// If all fileds or one of the filed is empty show toast
+		else {
+			Toast.makeText(MainActivity.this, "All fields are required.",
+					Toast.LENGTH_SHORT).show();
+		}
+
+	}
+}</pre><p>
+<b>5</b>. Now, you are all done, run your app.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/JsonMaker_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-json-maker/">Android JSON Maker</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-json-maker/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">492</post-id>	</item>
+		<item>
+		<title>Android JSON Parser</title>
+		<link>http://www.androhub.com/android-json-parser/</link>
+		<comments>http://www.androhub.com/android-json-parser/#respond</comments>
+		<pubDate>Fri, 17 Jul 2015 05:44:52 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android JSON]]></category>
+		<category><![CDATA[Http Requests]]></category>
+		<category><![CDATA[HTTP request]]></category>
+		<category><![CDATA[JSON]]></category>
+		<category><![CDATA[JSON Parser]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=477</guid>
+		<description><![CDATA[<p>JSON stands for JavaScript Object Notation.It is an independent data exchange format and is the best alternative for XML. JSON is very light weight, structured, easy to parse and much human readable. In this tutorial we are going to learn how to parse JSON in android. In this tutorial we will use Http Requests since [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-json-parser/">Android JSON Parser</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p><strong>JSON</strong> stands for <em><strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation</em>.It is an independent data exchange format and is the best alternative for <strong>XML</strong>. JSON is very light weight, structured, easy to parse and much human readable.</p>
+<p>In this tutorial we are going to learn how to parse JSON in android.</p>
+<p>In this tutorial we will use Http Requests since we will work on server. So, if you are not familiar how to use Http Requests then you can check <a href="http://androhub.com/android-making-http-requests/" target="_blank">Http Request tutoria</a>l.</p>
+<h2>JSON &#8211; Elements</h2>
+<p>An JSON file consist of many components. Here is the table defining the components of an JSON file and their description −</p>
+
+<table id="tablepress-24" class="tablepress tablepress-id-24">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Component</th><th class="column-2">Description</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">Array([)</td><td class="column-2">In a JSON file , square bracket ([) represents a JSON array.</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">Objects({)</td><td class="column-2">In a JSON file, curly bracket ({) represents a JSON object.</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">Key</td><td class="column-2">A JSON object contains a key that is just a string. Pairs of key/value make up a JSON object.</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">Value</td><td class="column-2">Each key has a value that could be string , integer or double e.t.c.</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-24 from cache -->
+<h2>The Sample JSON</h2>
+<p>Following is the sample JSON that we are going to parse in this tutorial. This is very simple JSON which gives us list of  information like name, location and phone number array.</p>
+<p>In this tutorial we will parse data from local json file and also from server file.</p>
+<p>1. Local JSON file that will be in <em>.txt</em> or <em>.json</em> extension kept in <strong>assests</strong> folder.</p><pre class="crayon-plain-tag">{
+  "data": [
+    {
+      "name": "Andrew",
+      "location": "India",
+      "phone": [
+        8899002211,
+        7799881122
+      ]
+    },
+    {
+      "name": "Phil",
+      "location": "Pune",
+      "phone": [
+        9900112211,
+        9881122112
+      ]
+    },
+    {
+      "name": "AndroHub",
+      "location": "Bangalore",
+      "phone": [
+        9881221122,
+        9881122333
+      ]
+    }
+  ]
+}</pre><p>
+2. Server file that is my blogs recent posts JSON data.</p><pre class="crayon-plain-tag">{
+    "status": "ok",
+    "count": 10,
+    "count_total": 39,
+    "pages": 4,
+    "posts": [
+        {
+            "id": 474,
+            "type": "post",
+            "slug": "android-date-and-time-picker-dialog",
+            "url": "http://androhub.com/android-date-and-time-picker-dialog/",
+            "status": "publish",
+            "title": "Android Date and Time Picker Dialog",
+            "title_plain": "Android Date and Time Picker Dialog",
+            "content": "&lt;strong&gt;Date Picker Dialog&lt;/strong&gt; and.............",
+            "excerpt": null,
+            "date": "2015-07-15 16:41:27",
+            "modified": "2015-07-15 16:41:27",
+            "categories": [
+                              .
+                              .
+                              .
+                              .
+                              .</pre><p>
+In general all the JSON nodes will start with a square bracket or with a curly bracket. The difference between [ and { is, the square bracket ([) represents starting of an <strong>JSONArray</strong> node whereas curly bracket ({) represents <strong>JSONObject</strong>. So while accessing these nodes we need to call appropriate method to access the data.</p>
+<p>If your JSON node starts with <em>[</em>, then we should use <em>getJSONArray()</em> method. Same as if the node starts with <em>{</em>, then we should use <em>getJSONObject()</em> method.</p>
+<h2>JSON Methods</h2>
+<p>There are several methods provided by JSON class for better parsing JSON files. These methods are listed below −</p>
+
+<table id="tablepress-25" class="tablepress tablepress-id-25">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Method</th><th class="column-2">Description</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">get(String name)</td><td class="column-2">This method just Returns the value but in the form of Object type.</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">getBoolean(String name)</td><td class="column-2">This method returns the boolean value specified by the key.</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">getDouble(String name)</td><td class="column-2">This method returns the double value specified by the key.</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">getInt(String name)</td><td class="column-2">This method returns the integer value specified by the key.</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">getLong(String name)</td><td class="column-2">This method returns the long value specified by the key.</td>
+</tr>
+<tr class="row-7 odd">
+	<td class="column-1">length()</td><td class="column-2">This method returns the number of name/value mappings in this object.</td>
+</tr>
+<tr class="row-8 even">
+	<td class="column-1">names()</td><td class="column-2">This method returns an array containing the string names in this object.</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-25 from cache -->
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to Parse JSON data from local Json file and Server Json data.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_51926" width="602" height="339" src="https://www.youtube.com/embed/5DEbybQ9QIo?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>).</p>
+<p><b>2</b>. As we are fetching the JSON by making HTTP calls, we need to add <em>INTERNET</em> permission in our AndroidManifest.xml file. Open <strong>AndroidManifest.xml</strong> and add the following permission.</p><pre class="crayon-plain-tag">&lt;uses-permission android:name="android.permission.INTERNET" /&gt;</pre><p>
+</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.json_demo"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" /&gt;
+
+    &lt;!-- Internet permission to fetch data from server and this permission is mandatory while working with server --&gt;
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>3</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. This are some strings that i used in this tutorial.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="app_name"&gt;JSONParser Demo&lt;/string&gt;
+    &lt;string name="hello_world"&gt;Hello world!&lt;/string&gt;
+    &lt;string name="action_settings"&gt;Settings&lt;/string&gt;
+    &lt;string name="local_file"&gt;Read JSON Data from Local File&lt;/string&gt;
+    &lt;string name="server_file"&gt;Read JSON Data from Server&lt;/string&gt;
+    &lt;string name="show_data"&gt;Parsed JSON Data&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>4</b>. Now, for local Json file create a <em>dummyjson</em><em>.txt</em> or <em>dummyjson.json </em>and copy from its location and paste it under <em>assests</em> directory.</p><pre class="crayon-plain-tag">{
+  "data": [
+    {
+      "name": "Andrew",
+      "location": "India",
+      "phone": [
+        8899002211,
+        7799881122
+      ]
+    },
+    {
+      "name": "Phil",
+      "location": "Pune",
+      "phone": [
+        9900112211,
+        9881122112
+      ]
+    },
+    {
+      "name": "AndroHub",
+      "location": "Bangalore",
+      "phone": [
+        9881221122,
+        9881122333
+      ]
+    }
+  ]
+}</pre><p>
+<b>5</b>. For reading this local JSON file from assests folder i had created a method that will read the data from text file and return me as <em>String</em>.</p><pre class="crayon-plain-tag">private String loadJSONFromAsset() {// this method will read the text file
+										// from assests folder and return the
+										// file in string format
+		String json = null;
+		try {
+			InputStream is = getAssets().open("your file name like dummyjson.txt");//
+			int size = is.available();
+			byte[] buffer = new byte[size];
+			is.read(buffer);
+			is.close();
+			json = new String(buffer, "UTF-8");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		return json;
+	}</pre><p>
+<b>6</b>. Open your <em>activity_main.xml</em> file and add this code for basic layout of this tutorial. In this layout we have two buttons for executing different json task and one listview for displaying parsed data.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#d3d3d3"
+    android:orientation="vertical" &gt;
+
+    &lt;Button
+        android:id="@+id/read_data_from_localfile"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/local_file" /&gt;
+
+    
+    &lt;Button
+        android:id="@+id/read_data_from_server"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/server_file" /&gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:padding="7dp"
+        android:id="@+id/parsed_showdata_text"
+        android:text="@string/show_data"
+        android:textColor="#000000"
+        android:textSize="15sp" /&gt;
+
+    &lt;View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#ffffff" /&gt;
+
+    &lt;ListView
+        android:id="@+id/show_jsondata"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="2dp" &gt;
+    &lt;/ListView&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>7</b>. Now, for showing parsed data we need custom listview and for custom listview we need custom layout. So create a new layout naming <em>custom_listview.xml </em>and add the following code to it.</p>
+<p>You can see how to make <a href="http://androhub.com/android-listview/" target="_blank">Simple and Custom ListView</a> if you are new.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;TextView
+        android:id="@+id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:text="Surender kumar"
+        android:textColor="#000000"
+        android:textSize="17sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/location"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:singleLine="true"
+        android:text="Bangalore"
+        android:textColor="#00ff00"
+        android:textSize="15sp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/phone_number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="3dp"
+        android:singleLine="false"
+        android:text="998589569"
+        android:textColor="#ff00"
+        android:textSize="14sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>8</b>. Now, we have to create a class that will be the setter and getter for parsed data for custom ListView. In this class i had set the setter and getter for both local json file and server json file, so that we can used as per our need.</p><pre class="crayon-plain-tag">package com.json_demo;
+
+public class JSONData_Model {
+	/** Local Json Parser Getter and Setter **/
+	private String name, location;
+	private String[] phoneNumber;
+
+	public JSONData_Model(String name, String location, String[] phoneNumber) {
+		this.name = name;
+		this.location = location;
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public String[] getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	/** ---------------------------------------------- **/
+
+	/** Sever Json Parser Getter and Setter **/
+	private String date, status, title;
+
+	public JSONData_Model(String title, String status, String date) {
+		this.date = date;
+		this.status = status;
+		this.title = title;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+	/** ----------------------------------------------------- **/
+}</pre><p>
+<b>9</b>. For custom adapter create a class naming <em>JSONData_Adapter.java.</em> This will inflate custom layout over listview. In this i had used if and else for determining from which the adapter is called like &#8220;LOCAL&#8221; or &#8220;SERVER&#8221;. And according to it i displayed data.</p><pre class="crayon-plain-tag">package com.json_demo;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+public class JSONData_Adapter extends BaseAdapter {
+	private Context context;
+	private ArrayList&lt;JSONData_Model&gt; jsonList;
+	private String from = "";// "from" variable is used to check from which
+								// parser the adapter is called
+
+	public JSONData_Adapter(Context context,
+			ArrayList&lt;JSONData_Model&gt; arrayList, String from) {
+		this.context = context;
+		this.jsonList = arrayList;
+		this.from = from;
+	}
+
+	@Override
+	public int getCount() {
+
+		return jsonList.size();
+	}
+
+	@Override
+	public JSONData_Model getItem(int position) {
+
+		return jsonList.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View view, ViewGroup parent) {
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		ViewHolder holder = null;
+		if (view == null) {
+			holder = new ViewHolder();
+			view = inflater.inflate(R.layout.custom_listview, parent, false);
+			holder.name = (TextView) view.findViewById(R.id.name);
+			holder.location = (TextView) view.findViewById(R.id.location);
+			holder.phone = (TextView) view.findViewById(R.id.phone_number);
+
+			// If adapter is called from local json parser then get the data
+			// from local json parser getter
+			if (from.equalsIgnoreCase("Local")) {
+				holder.name.setText(jsonList.get(position).getName());
+				holder.location.setText(jsonList.get(position).getLocation());
+				String[] contactNumber = jsonList.get(position)
+						.getPhoneNumber();
+				String contact = "";
+				for (int i = 0; i &lt; contactNumber.length; i++) {
+					contact += contactNumber[i] + "  ";
+				}
+				holder.phone.setText(contact);
+
+			}
+
+			// Else If adapter is called from server json parser then get the
+			// data from server json parser getter
+			else if (from.equalsIgnoreCase("Server")) {
+				holder.name.setText(jsonList.get(position).getTitle());
+				holder.location.setText(jsonList.get(position).getStatus());
+				holder.phone.setText(jsonList.get(position).getDate());
+			}
+
+			// Else display error
+			else {
+				holder.name.setText("Error in parsing.");
+			}
+
+			view.setTag(holder);
+		} else {
+			holder = (ViewHolder) view.getTag();
+		}
+		return view;
+	}
+
+	// ViewHolder to hold the views
+	private class ViewHolder {
+		TextView name, location, phone;
+	}
+
+}</pre><p>
+<b>10</b>. Now for fetching JSON data we have to parse the data in proper format. First check the start of Json data i.e. &#8216;[&#8216; or &#8216;{&#8216; and parse according to it.</p>
+<p>So, if Json data is starting from &#8216;{&#8216; means this is JSON Object then use :</p><pre class="crayon-plain-tag">JSONObject jsonObject = new JSONObject("data");</pre><p>
+If Json data is starting from &#8216;[&#8216; means JSON Array then use :</p><pre class="crayon-plain-tag">JSONArray postsArray = new JSONArray("data");</pre><p>
+For Parsing JSON data from Local file i used this method :</p><pre class="crayon-plain-tag">private ArrayList&lt;JSONData_Model&gt; ReadDataFromLocalFile() {
+		ArrayList&lt;JSONData_Model&gt; jsonArrayList = new ArrayList&lt;JSONData_Model&gt;();
+		try {
+			JSONObject jsonObject = new JSONObject(loadJSONFromAsset());// JsonObject
+																		// get
+																		// from
+																		// local
+																		// assests
+																		// text
+																		// file
+			JSONArray jsonArray = jsonObject.getJSONArray("data");// "data"
+																	// keyvalue
+																	// contains
+																	// the
+																	// jsonarray
+
+			// Check if jsonArray is null or not and length should be greater
+			// than 0
+			if (jsonArray != null) {
+				if (jsonArray.length() &gt; 0) {
+
+					// Loop to all jsonarray items
+					for (int i = 0; i &lt; jsonArray.length(); i++) {
+						String[] contactNumberArray = null;// String array that
+															// will store phone
+															// numbers
+						JSONObject newJsonObject = jsonArray.getJSONObject(i);// Now
+																				// jsonarray
+																				// contains
+																				// jsonObject
+																				// so
+																				// it
+																				// should
+																				// pe
+																				// parsed
+																				// again
+																				// jsonobject
+						String name = newJsonObject.getString("name");// "name"
+																		// keyvalue
+																		// contain
+																		// name
+						String location = newJsonObject.getString("location");// "location"
+																				// keyvalue
+																				// conatin
+																				// location
+						String contact_number = newJsonObject
+								.getString("phone");// "phone" keyvalue conatins
+													// phonearray
+						JSONArray phoneArray = new JSONArray(contact_number);// so
+																				// the
+																				// contact_number
+																				// string
+																				// will
+																				// parse
+																				// into
+																				// jsonArray
+						if (phoneArray.length() &gt; 0) {
+							contactNumberArray = new String[phoneArray.length()];
+							for (int j = 0; j &lt; phoneArray.length(); j++) {
+								contactNumberArray[j] = phoneArray.getString(j);// string
+																				// array
+																				// will
+																				// store
+																				// the
+																				// number
+																				// array
+
+							}
+						}
+
+						jsonArrayList.add(new JSONData_Model(name, location,
+								contactNumberArray));// finally add the data to
+														// arrayList
+					}
+				}
+			}
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+			// If an exception occurs the arraylist will return null
+			return null;
+
+		}
+		return jsonArrayList;
+	}</pre><p>
+Similarly we can parse the Server JSON data.</p>
+<p><b>11</b>. Finally add the following code to your <em>MainActivity.java. </em>In this activity I used two different methods for loading JSON data from Local file and from Server file. And I used <em>AsyncTask </em> for processing JSON data. I had added comments to each line to make it more understandable.</p><pre class="crayon-plain-tag">package com.json_demo;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity implements OnClickListener {
+
+	private static Button localFile, serverData;
+	private static ListView showParsedData;
+	private static TextView showdatatext;
+	private static JSONData_Adapter adapter;
+
+	private static String call_url = "http://androhub.com/api/get_recent_posts/";// Call
+																					// url
+																					// that
+																					// contain
+																					// json
+																					// data
+
+	// IDs to for both type of parsers
+	private static final int LocalFileId = 0;
+	private static final int ServerFileID = 1;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		init();
+		setListeners();
+		hideListView();
+	}
+
+	// Initiaize all views in activity
+	private void init() {
+		localFile = (Button) findViewById(R.id.read_data_from_localfile);
+
+		serverData = (Button) findViewById(R.id.read_data_from_server);
+		showParsedData = (ListView) findViewById(R.id.show_jsondata);
+		showdatatext = (TextView) findViewById(R.id.parsed_showdata_text);
+	}
+
+	// Set Listeners on all three buttons
+	private void setListeners() {
+		localFile.setOnClickListener(this);
+
+		serverData.setOnClickListener(this);
+	}
+
+	// Show listview and text
+	private void showListView() {
+		showdatatext.setVisibility(View.VISIBLE);
+		showParsedData.setVisibility(View.VISIBLE);
+	}
+
+	// Hide listview and text
+	private void hideListView() {
+		showdatatext.setVisibility(View.GONE);
+		showParsedData.setVisibility(View.GONE);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.read_data_from_localfile:
+
+			// Execute the Asynctask
+			new ReadJSONDataTask(MainActivity.this, LocalFileId).execute();
+
+			break;
+
+		case R.id.read_data_from_server:
+			// Execute the Asynctask
+			new ReadJSONDataTask(MainActivity.this, ServerFileID).execute();
+			break;
+
+		}
+
+	}
+
+	// Background task to parse json Data
+	private class ReadJSONDataTask extends AsyncTask&lt;Void, Void, Void&gt; {
+		ProgressDialog pd;
+		Context context;
+		int id; // Id to execute the particular task in background like..local
+				// or server
+		ArrayList&lt;JSONData_Model&gt; jsonData = new ArrayList&lt;JSONData_Model&gt;();// Arraylist
+																				// for
+																				// setter
+
+		public ReadJSONDataTask(Context context, int id) {
+			this.context = context;
+			this.id = id;
+		}
+
+		@Override
+		protected void onPreExecute() {
+
+			super.onPreExecute();
+
+			// Progress Dialog to show while task is running
+			pd = new ProgressDialog(context);
+			pd.setIndeterminate(true);
+			pd.setCancelable(false);
+			pd.setCanceledOnTouchOutside(false);
+			pd.setMessage("Please wait..nLoading data");
+			pd.show();
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+
+			// Check the send id and call the method according to it
+			if (id == LocalFileId) {
+				jsonData = ReadDataFromLocalFile();
+
+			} else if (id == ServerFileID) {
+				jsonData = ReadDataFromServer();
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+
+			super.onPostExecute(result);
+
+			// After background task the post method will set adapter over
+			// listview
+			if (jsonData != null) {
+
+				// the adapter will be called according to send IDs
+				if (id == LocalFileId) {
+					adapter = new JSONData_Adapter(context, jsonData, "Local");
+					showParsedData.setAdapter(adapter);
+					adapter.notifyDataSetChanged();
+
+					// Show listview after setting adapter
+					showListView();
+				}
+
+				else if (id == ServerFileID) {
+					adapter = new JSONData_Adapter(context, jsonData, "Server");
+					showParsedData.setAdapter(adapter);
+					adapter.notifyDataSetChanged();
+					showListView();
+				}
+
+			}
+
+			// After setting adapter the dilaog should be dismissed
+			if (pd.isShowing())
+				pd.dismiss();
+		}
+	}
+
+	// Method that will return the jsonData in arraylist form after parsing data
+	// from local text file
+	private ArrayList&lt;JSONData_Model&gt; ReadDataFromLocalFile() {
+		ArrayList&lt;JSONData_Model&gt; jsonArrayList = new ArrayList&lt;JSONData_Model&gt;();
+		try {
+			JSONObject jsonObject = new JSONObject(loadJSONFromAsset());// JsonObject
+																		// get
+																		// from
+																		// local
+																		// assests
+																		// text
+																		// file
+			JSONArray jsonArray = jsonObject.getJSONArray("data");// "data"
+																	// keyvalue
+																	// contains
+																	// the
+																	// jsonarray
+
+			// Check if jsonArray is null or not and length should be greater
+			// than 0
+			if (jsonArray != null) {
+				if (jsonArray.length() &gt; 0) {
+
+					// Loop to all jsonarray items
+					for (int i = 0; i &lt; jsonArray.length(); i++) {
+						String[] contactNumberArray = null;// String array that
+															// will store phone
+															// numbers
+						JSONObject newJsonObject = jsonArray.getJSONObject(i);// Now
+																				// jsonarray
+																				// contains
+																				// jsonObject
+																				// so
+																				// it
+																				// should
+																				// pe
+																				// parsed
+																				// again
+																				// jsonobject
+						String name = newJsonObject.getString("name");// "name"
+																		// keyvalue
+																		// contain
+																		// name
+						String location = newJsonObject.getString("location");// "location"
+																				// keyvalue
+																				// conatin
+																				// location
+						String contact_number = newJsonObject
+								.getString("phone");// "phone" keyvalue conatins
+													// phonearray
+						JSONArray phoneArray = new JSONArray(contact_number);// so
+																				// the
+																				// contact_number
+																				// string
+																				// will
+																				// parse
+																				// into
+																				// jsonArray
+						if (phoneArray.length() &gt; 0) {
+							contactNumberArray = new String[phoneArray.length()];
+							for (int j = 0; j &lt; phoneArray.length(); j++) {
+								contactNumberArray[j] = phoneArray.getString(j);// string
+																				// array
+																				// will
+																				// store
+																				// the
+																				// number
+																				// array
+
+							}
+						}
+
+						jsonArrayList.add(new JSONData_Model(name, location,
+								contactNumberArray));// finally add the data to
+														// arrayList
+					}
+				}
+			}
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+			// If an exception occurs the arraylist will return null
+			return null;
+
+		}
+		return jsonArrayList;
+	}
+
+	// Method that will return the jsonData in arraylist form after parsing data
+	// from server
+	private ArrayList&lt;JSONData_Model&gt; ReadDataFromServer() {
+		ArrayList&lt;JSONData_Model&gt; jsonArrayList = new ArrayList&lt;JSONData_Model&gt;();
+		try {
+			HttpClient client = new DefaultHttpClient();// Default httpclient
+														// for request
+			HttpGet httpget = new HttpGet(call_url);// HttpGet method to get the
+													// data from URL
+
+			HttpResponse response = client.execute(httpget);// HttpResponse
+															// after executing
+															// httpGet method
+															// via client
+			HttpEntity entity = response.getEntity();// Entity will get the
+														// respone data
+			String data = EntityUtils.toString(entity);// now finally entity
+														// will convert into
+														// string and data will
+														// fetched in string
+														// format
+			Log.e("data", data);// Log for fetched data
+			JSONObject jsonObject = new JSONObject(data);// Main data is in
+															// JsonObject form
+
+			if (jsonObject != null) {
+				// The data contains many values but we'll parse only needed
+				// values
+
+				String posts = jsonObject.getString("posts");// Posts contains
+																// the all posts
+				JSONArray postsArray = new JSONArray(posts);// "posts" is in
+															// array so
+															// jsonArray will
+															// used to parse
+				if (postsArray != null) {
+					if (postsArray.length() &gt; 0) {
+						for (int i = 0; i &lt; postsArray.length(); i++) {
+							JSONObject postsObject = postsArray
+									.getJSONObject(i);// Now jsonArray contains
+														// josnObject
+
+							// Now this posts jsonObject contains many values
+							// but we'll fetch required data
+							String title = postsObject.getString("title");// "title"
+																			// contains
+																			// title
+																			// of
+																			// post
+							String status = postsObject.getString("status");// "status"
+																			// contains
+																			// status
+																			// of
+																			// post
+							String published_date = postsObject
+									.getString("date");// "date" contains
+														// published_date of
+														// post
+							jsonArrayList.add(new JSONData_Model(title, status,
+									published_date));// finally add the data to
+														// arrayList
+
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return jsonArrayList;
+	}
+
+	// Read file from assets folder and return data in json string
+	private String loadJSONFromAsset() {// this method will read the text file
+										// from assests folder and return the
+										// file in string format
+		String json = null;
+		try {
+			InputStream is = getAssets().open("dummyjson.txt");
+			int size = is.available();
+			byte[] buffer = new byte[size];
+			is.read(buffer);
+			is.close();
+			json = new String(buffer, "UTF-8");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		return json;
+	}
+
+}</pre><p>
+<b>12</b>. Finally, all done  –  run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/JSONParser_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-json-parser/">Android JSON Parser</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-json-parser/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">477</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,1232 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Actionbar &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-actionbar/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android ToolBar</title>
+		<link>http://www.androhub.com/android-toolbar/</link>
+		<comments>http://www.androhub.com/android-toolbar/#respond</comments>
+		<pubDate>Tue, 02 Jun 2015 05:58:34 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Actionbar]]></category>
+		<category><![CDATA[Android ToolBar]]></category>
+		<category><![CDATA[actionbar]]></category>
+		<category><![CDATA[Material Design]]></category>
+		<category><![CDATA[ToolBar]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=406</guid>
+		<description><![CDATA[<p>Android’s new operating system named Android Lollipop, is highly focused on rich user experience and what they called it as material design. In this example we will take a look at the new Actionbar replacement called Toolbar. What is Toolbar? Toolbar is a complete replacement to Android ActionBar. It provides greater control to customize its [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-toolbar/">Android ToolBar</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Android’s new operating system named Android Lollipop, is highly focused on rich user experience and what they called it as <em><strong>material design</strong></em>. In this example we will take a look at the new <em>Actionbar</em> replacement called <em><strong>Toolbar</strong></em>.</p>
+<h2><strong>What is Toolbar?</strong></h2>
+<p>Toolbar is a complete replacement to Android ActionBar. It provides greater control to customize its appearance unlike old ActionBar. Using Toolbar, application developer can now, show multiple toolbars on the screen, spanning only part of the width, etc.</p>
+<p>It is introduced in Android Lollipop, API level 21 (Android 5.0 Lollipop) release, and hence it is available to use, out of box for the application that are targeted to 21 and above. However, as always Google provides fully supported Toolbar features to lower android os devices via AppCompact support library. In AppCompat, Toolbar is implemented in the <code>android.support.v7.widget.Toolbar</code> class.</p>
+<p>A Toolbar can be used in two ways.</p>
+<ol>
+<li>Use a Toolbar as an replacement to ActionBar. In this you can still continued to use the ActionBar features such as menus, selections, etc.</li>
+<li>Use a standalone Toolbar, where ever you want to place in your application.</li>
+</ol>
+<p>If you are on the latest version of Android SDK you don&#8217;t have to add library of Appcombat v7 21 if not then please make sure you add that library to use ToolBar.</p>
+<h2>Example</h2>
+<p>In this example I will show you how to implement ToolBar with ActionBar and without ActionBar (standalone).</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_61263" width="602" height="339" src="https://www.youtube.com/embed/NlDEP6tO4G4?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Let’s get start by creating a project in Eclipse IDE.</p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>).</p>
+<p><b>2</b>. Open your your <em>AndroidManifest.xml</em> file and set TargetSDK to 21 or 22 according to Lollipop and I had added two more activities because i am using three activities.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android_toolbar_demo"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+        &lt;activity android:name="com.android_toolbar_demo.Toolbar_using_ActionBar"&gt;&lt;/activity&gt;
+         &lt;activity android:name="com.android_toolbar_demo.Toolbar_without_ActionBar"&gt;&lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>3</b>. Create a layout file for splash screen under <em>res ⇒ layout</em> folder. I named the layout file as <em>activity_main.xml</em>. This layout contains two buttons both to open different activities.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp" &gt;
+
+    &lt;Button
+        android:id="@+id/toolbar_with_actionbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:text="Toolbar using ActionBar"
+        android:textColor="#ffffff"
+        android:textSize="18sp" /&gt;
+
+    &lt;Button
+        android:id="@+id/toolbar_without_actionbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Toolbar without ActionBar"
+        android:textColor="#ffffff"
+        android:textSize="18sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>4</b>. Now, for button selector we have to create a new xml file in  <em>drawable</em> directory under <em>res</em> directory naming <em>button_selector.xml </em>and set it to button background.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;selector xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+
+    &lt;item android:state_pressed="true"&gt;&lt;shape android:shape="rectangle"&gt;
+            &lt;corners android:radius="10dp" /&gt;
+
+            &lt;padding android:bottom="5dp" android:left="5dp" android:right="5dp" android:top="5dp" /&gt;
+
+            &lt;solid android:color="#FF6600" /&gt;
+
+            &lt;stroke android:width="1dp" android:color="#FF00" /&gt;
+        &lt;/shape&gt;&lt;/item&gt;
+    &lt;item&gt;&lt;shape android:shape="rectangle"&gt;
+            &lt;corners android:radius="10dp" /&gt;
+
+            &lt;padding android:bottom="5dp" android:left="5dp" android:right="5dp" android:top="5dp" /&gt;
+
+            &lt;solid android:color="#FF9800" /&gt;
+
+            &lt;stroke android:width="1dp" android:color="#FF00" /&gt;
+        &lt;/shape&gt;&lt;/item&gt;
+
+&lt;/selector&gt;</pre><p>
+<b>5</b>. Following is <em>strings.xml</em>, the strings that i used in this exmple.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="app_name"&gt;Android_NavigationDrawer_Demo&lt;/string&gt;
+    &lt;string name="hello_world"&gt;Hello world!&lt;/string&gt;
+    &lt;string name="action_settings"&gt;Settings&lt;/string&gt;
+    &lt;string name="edit"&gt;Edit&lt;/string&gt;
+    &lt;string name="delete"&gt;Delete&lt;/string&gt;
+    &lt;string name="share"&gt;Share&lt;/string&gt;
+    &lt;string name="call"&gt;Call&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>6</b>. Now, for material designing we have to select some primary colors and put it in our xml file by creating a new xml file naming <em>colors.xml. </em>You can select this colors palette from this <a href="http://www.google.co.in/design/spec/style/color.html#color-color-palette" target="_blank">link</a>.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+    
+    &lt;!-- Colors for material designing --&gt;
+    &lt;color name="colorPrimary"&gt;#FF1744&lt;/color&gt;
+    &lt;color name="colorPrimaryDark"&gt;#D50000&lt;/color&gt;
+    &lt;color name="textColorPrimary"&gt;#FFFFFF&lt;/color&gt;
+    &lt;color name="windowBackground"&gt;#FFFFFF&lt;/color&gt;
+    &lt;color name="colorAccent"&gt;#EF5350&lt;/color&gt;
+
+&lt;/resources&gt;</pre><p>
+Now what the use of this colors, you can see the image below</p>
+<div style="text-align: center; margin-top: 20px; ;margin-bottom: 20px;"><a href="https://i0.wp.com/androhub.com/wp-content/uploads/2015/06/material_designing.png"><img class="aligncenter size-full wp-image-407" src="https://i0.wp.com/androhub.com/wp-content/uploads/2015/06/material_designing.png?resize=602%2C279" alt="material_designing" data-recalc-dims="1" /></a></div>
+<p>&nbsp;</p>
+<p><b>7</b>. Now, we have to customize the theme also so go to <em>values</em> directory and add these code to your <em>styles.xml</em> file. In this we set all the colors and set actionbar false.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+
+    &lt;!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    --&gt;
+    &lt;style name="AppBaseTheme" parent="Theme.AppCompat.Light"&gt;
+          &lt;item name="windowActionBar"&gt;false&lt;/item&gt;
+        &lt;item name="android:textColorPrimary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:textColorSecondary"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="actionMenuTextColor"&gt;@android:color/white&lt;/item&gt;
+        &lt;item name="android:windowNoTitle"&gt;true&lt;/item&gt;
+        &lt;item name="colorPrimary"&gt;@color/colorPrimary&lt;/item&gt;
+        &lt;item name="colorPrimaryDark"&gt;@color/colorPrimaryDark&lt;/item&gt;
+        &lt;item name="colorAccent"&gt;@color/colorAccent&lt;/item&gt;
+        
+        &lt;!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        --&gt;
+    &lt;/style&gt;
+
+    &lt;!-- Application theme. --&gt;
+    &lt;style name="AppTheme" parent="AppBaseTheme"&gt;
+        &lt;!-- All customizations that are NOT specific to a particular API-level can go here. --&gt;
+    &lt;/style&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>8</b>. Now, create a layout naming <em>toolbar.xml</em> in this layout create a toolbar set background and theme to it and this layout we are going to use in our other layouts.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/common_toolbar"
+    android:background="?attr/colorPrimary"
+    android:elevation="4dp"
+    local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" &gt;
+
+&lt;/android.support.v7.widget.Toolbar&gt;</pre><p>
+<b>9</b>. Now, for other two activities we create two layouts containing toolbar. The <em>include</em> tag is used to include the other layouts in a layout. This make the layout reusable.</p>
+<p>First layout name is <em>toolbar_actionar.xml. </em>This layout is for toolbar with actionbar.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" &gt;
+
+    &lt;include
+        android:id="@+id/toolbar_n_actionbar"
+        layout="@layout/toolbar" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+Second layout name is <em>toolbar_noactionar.xml. </em>This layout is for toolbar without actionbar.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" &gt;
+
+    &lt;include
+        android:id="@+id/toolbar_noaction"
+        layout="@layout/toolbar" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>10</b>. Now, come to <em>MainActivity.java </em>and add the following code to that activity, in this activity i just call different activity on button clicked.</p><pre class="crayon-plain-tag">package com.android_toolbar_demo;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+public class MainActivity extends ActionBarActivity implements OnClickListener {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		findViewById(R.id.toolbar_with_actionbar).setOnClickListener(this);
+		findViewById(R.id.toolbar_without_actionbar).setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.toolbar_with_actionbar:
+			newActivtiy(Toolbar_using_ActionBar.class);
+			break;
+
+		case R.id.toolbar_without_actionbar:
+			newActivtiy(Toolbar_without_ActionBar.class);
+
+			break;
+		}
+
+	}
+
+	// Intent method
+	void newActivtiy(Class&lt;&gt; activity) {
+
+		startActivity(new Intent(MainActivity.this, activity));
+
+	}
+
+}</pre><p>
+<b>11</b>. For menu items on toolbar we have to make a new xml file under <em>menu</em> directory naming <em>main.xml</em>.</p><pre class="crayon-plain-tag">&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" &gt;
+
+    &lt;item
+        android:id="@+id/call"
+        android:icon="@drawable/ic_call"
+        android:title="@string/call"
+        app:showAsAction="always"/&gt;
+    &lt;item
+        android:id="@+id/delete"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/delete"
+        app:showAsAction="always"/&gt;
+    &lt;item
+        android:id="@+id/edit"
+        android:icon="@drawable/ic_edit"
+        android:title="@string/edit"
+        app:showAsAction="never"/&gt;
+    &lt;item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_share"
+        android:title="@string/share"
+        app:showAsAction="never"/&gt;
+
+&lt;/menu&gt;</pre><p>
+<b>12</b>. Now, for ToolBar with ActionBar we have to find the id of toolbar and add this line :</p><pre class="crayon-plain-tag">setSupportActionBar(toolbar);</pre><p>
+For inflating menu items we can inflate like we are inflating in our <a href="http://androhub.com/android-actionbar-and-option-menus/" target="_blank">Android Menus Tutorial </a>and other methods also.</p><pre class="crayon-plain-tag">package com.android_toolbar_demo;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+public class Toolbar_using_ActionBar extends ActionBarActivity {
+	private static Toolbar toolbar;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.toolbar_actionbar);
+
+		// Find the id of toolbar
+		toolbar = (Toolbar) findViewById(R.id.toolbar_n_actionbar);
+
+		// Set upon the actionbar
+		setSupportActionBar(toolbar);
+
+		// Now use actionbar methods to show navigation icon and title
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+		// or
+
+		// toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+
+		// Set title
+		getSupportActionBar().setTitle("Toolbar using ActionBar");
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		// Inflate menu items
+		getMenuInflater().inflate(R.menu.main, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		// Show toast when menu items selected
+		switch (item.getItemId()) {
+		case R.id.call:
+			Toast.makeText(Toolbar_using_ActionBar.this, item.getTitle(),
+					Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.delete:
+			Toast.makeText(Toolbar_using_ActionBar.this, item.getTitle(),
+					Toast.LENGTH_SHORT).show();
+			break;
+
+		case R.id.edit:
+			Toast.makeText(Toolbar_using_ActionBar.this, item.getTitle(),
+					Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.share:
+			Toast.makeText(Toolbar_using_ActionBar.this, item.getTitle(),
+					Toast.LENGTH_SHORT).show();
+			break;
+
+		case android.R.id.home:
+			// On navigation button pressed finis the activity
+			finish();
+			break;
+
+		}
+		return super.onOptionsItemSelected(item);
+	}
+}</pre><p>
+<b>13</b>. Now, for ToolBar without ActionBar i.e. standalone toolbar, we have to find the id of toolbar and use all the methods of toolbar only below code contains mostly all the code of toolbar like inflating menu and click listener over it.</p><pre class="crayon-plain-tag">package com.android_toolbar_demo;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.Toolbar.OnMenuItemClickListener;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+
+public class Toolbar_without_ActionBar extends ActionBarActivity {
+	private static Toolbar toolbar;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.toolbar_noactionbar);
+		toolbar = (Toolbar) findViewById(R.id.toolbar_noaction);
+
+		// Set toolbar subtitle and color
+		// toolbar.setSubtitle("Subtitle");
+		// toolbar.setSubtitleTextColor(getResources().getColor(R.color.textColorPrimary));
+
+		// Set toolbar logo
+		// toolbar.setLogo(R.drawable.ic_launcher);
+
+		// Inflate menu over toolbar
+		toolbar.inflateMenu(R.menu.main);
+
+		// Sett title
+		toolbar.setTitle("Toolbar Only");
+
+		// Set navigation back icon
+		toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+
+		// Implement click listener on navigation icon
+		toolbar.setNavigationOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				finish();
+
+			}
+		});
+
+		// Implement menu click listener to do something when menu items
+		// selected
+		toolbar.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				switch (item.getItemId()) {
+				case R.id.call:
+					Toast.makeText(Toolbar_without_ActionBar.this,
+							item.getTitle(), Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.delete:
+					Toast.makeText(Toolbar_without_ActionBar.this,
+							item.getTitle(), Toast.LENGTH_SHORT).show();
+					break;
+
+				case R.id.edit:
+					Toast.makeText(Toolbar_without_ActionBar.this,
+							item.getTitle(), Toast.LENGTH_SHORT).show();
+					break;
+
+				case R.id.share:
+					Toast.makeText(Toolbar_without_ActionBar.this,
+							item.getTitle(), Toast.LENGTH_SHORT).show();
+					break;
+
+				}
+				return false;
+			}
+		});
+
+	}
+}</pre><p>
+<b>14</b>. Finally, all done  &#8211;  run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/Android_Toolbar_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-toolbar/">Android ToolBar</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-toolbar/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">406</post-id>	</item>
+		<item>
+		<title>Android Tab with Swipeable Views using ViewPager</title>
+		<link>http://www.androhub.com/android-tab-with-swipeable-views-using-viewpager/</link>
+		<comments>http://www.androhub.com/android-tab-with-swipeable-views-using-viewpager/#respond</comments>
+		<pubDate>Thu, 07 May 2015 11:54:20 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Actionbar]]></category>
+		<category><![CDATA[Android ViewPager]]></category>
+		<category><![CDATA[Android ActionBar Tabs]]></category>
+		<category><![CDATA[android fragments]]></category>
+		<category><![CDATA[Android Swipeable Tabs]]></category>
+		<category><![CDATA[Android Tabs]]></category>
+		<category><![CDATA[Android View Pager]]></category>
+		<category><![CDATA[fragments]]></category>
+		<category><![CDATA[Tabs with Fragments]]></category>
+		<category><![CDATA[ViewPager]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=305</guid>
+		<description><![CDATA[<p>This article shows you how to create tab layout using fragments and viewpager. Also you can swipe between tab view as it is the functionality of viewpager which is not possible when using TabHost. Before getting into this tutorial it is suggested to have knowledge on Fragments and ViewPager as these two are main concepts [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-tab-with-swipeable-views-using-viewpager/">Android Tab with Swipeable Views using ViewPager</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>This article shows you how to create tab layout using <b>fragments</b> and <b>viewpager</b>. Also you can swipe between tab view as it is the functionality of viewpager which is not possible when using <b>TabHost</b>.</p>
+<p>Before getting into this tutorial it is suggested to have knowledge on <a title="Fragments" href="http://developer.android.com/guide/components/fragments.html" target="_blank"><b>Fragments</b> </a>and <b>ViewPager</b> as these two are main concepts used here.  My <a title="Android Fragments" href="http://androhub.com/android-fragments/" target="_blank">previous article</a> explains about the usage and implementation of fragments.</p>
+<p>Basically we are using <b>ViewPager</b> as main layout and for individual pager views we use Fragments. The tabs are part of Action Bar.</p>
+<h2>Example</h2>
+<p>In this example i will demonstrate you how to work on swipeable tabs using view pager.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_28235" width="602" height="339" src="https://www.youtube.com/embed/wuHjviaE_nA?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Let’s get start by creating a project in Eclipse IDE.</p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>)</p>
+<p><b>2</b>.  Create a layout file for <em>MainActivtiy.java</em> under <em>res ⇒ layout</em> folder. I named the layout file as <em>activity_main.xml</em>. In this layout i had taken <em>viewpager</em> for implementing swipeable tabs.</p><pre class="crayon-plain-tag">&lt;android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"/&gt;</pre><p>
+<b>3</b>. Now, create three more <em>layout xml</em> files for fragments. I am going to use three fragments so i made three layouts for fragments and named as <em>fragments_a.xml,</em> <em>frgament_b.xml and fragment_c.xml</em>.</p><pre class="crayon-plain-tag">&lt;FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFCC00" &gt;
+
+    &lt;!-- TODO: Update blank fragment layout --&gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+          android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:text="THIS IS FRAGMENT A" /&gt;
+
+&lt;/FrameLayout&gt;</pre><p>
+</p><pre class="crayon-plain-tag">&lt;FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FF0000"
+   &gt;
+
+    &lt;!-- TODO: Update blank fragment layout --&gt;
+
+     &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textStyle="bold"
+          android:textColor="#ffffff"
+        android:text="THIS IS FRAGMENT B" /&gt;
+
+&lt;/FrameLayout&gt;</pre><p>
+</p><pre class="crayon-plain-tag">&lt;FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FF6600" &gt;
+
+    &lt;!-- TODO: Update blank fragment layout --&gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:text="THIS IS FRAGMENT C"
+        android:textStyle="bold" /&gt;
+
+&lt;/FrameLayout&gt;</pre><p>
+<b>4</b>. Now, make three  java files for all fragments naming <em>FragmentA.java,</em> <em>FragmentB.java and FragmentC.java. </em>In this java files just return the view(layout) that you want to show as done in <a title="Android Fragments" href="http://androhub.com/android-fragments/" target="_blank">earlier tutorial</a>.</p><pre class="crayon-plain-tag">package com.viewpager_fragment_tab_demo;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public class FragmentA extends Fragment {
+	public FragmentA() {
+		// Required empty public constructor
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// Inflate the layout for this fragment
+		return inflater.inflate(R.layout.fragment_a, container, false);
+
+	}
+
+}</pre><p>
+</p><pre class="crayon-plain-tag">package com.viewpager_fragment_tab_demo;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public class FragmentB extends Fragment {
+	public FragmentB() {
+		// Required empty public constructor
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// Inflate the layout for this fragment
+		return inflater.inflate(R.layout.fragment_b, container, false);
+	}
+}</pre><p>
+</p><pre class="crayon-plain-tag">package com.viewpager_fragment_tab_demo;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public class FragmentC extends Fragment {
+	public FragmentC() {
+		// Required empty public constructor
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// Inflate the layout for this fragment
+		return inflater.inflate(R.layout.fragment_c, container, false);
+	}
+
+}</pre><p>
+<b>5</b>. Finally, add the following code to your <em>MainActivity.java. </em>In this activity i am going to show how to make tabs and implement fragments and also to swipe between the tabs.</p><pre class="crayon-plain-tag">package com.viewpager_fragment_tab_demo;
+
+import android.annotation.TargetApi;
+import android.app.ActionBar;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
+
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+public class MainActivity extends ActionBarActivity implements
+		android.support.v7.app.ActionBar.TabListener {
+	ViewPager viewPager;
+
+	// Using appcompat action bar
+	private android.support.v7.app.ActionBar actionBar;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		// View pager for showing many fragments over a single activity
+		viewPager = (ViewPager) findViewById(R.id.pager);
+
+		// Getting fragment manager to control fragments
+		FragmentManager fragmnetManager = getSupportFragmentManager();
+
+		// Setting adapter over view pager
+		viewPager.setAdapter(new MyAdapter(fragmnetManager));
+
+		// Implementing view pager pagechangelistener to navigate between tabs
+		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+			@Override
+			public void onPageSelected(int pos) {
+
+				// Setting navigation of tabs to actionbar
+				actionBar.setSelectedNavigationItem(pos);
+			}
+
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+
+			}
+		});
+
+		// Getting actionbar
+		actionBar = getSupportActionBar();
+
+		// Setting navigation mode to actionbar
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+		// Now adding a new tab to action bar and setting title, icon and
+		// implementing listener
+		android.support.v7.app.ActionBar.Tab tab1 = actionBar.newTab();
+		tab1.setText("TAB1");
+		// tab1.setIcon(R.drawable.ic_launcher);
+		tab1.setTabListener(this);
+
+		android.support.v7.app.ActionBar.Tab tab2 = actionBar.newTab();
+		tab2.setText("TAB2");
+		tab2.setTabListener(this);
+
+		android.support.v7.app.ActionBar.Tab tab3 = actionBar.newTab();
+		tab3.setText("TAB3");
+		tab3.setTabListener(this);
+
+		// Now finally adding all tabs to actionbar
+		actionBar.addTab(tab1);
+		actionBar.addTab(tab2);
+		actionBar.addTab(tab3);
+
+	}
+
+	@Override
+	public void onTabReselected(android.support.v7.app.ActionBar.Tab arg0,
+			FragmentTransaction arg1) {
+
+	}
+
+	@Override
+	public void onTabSelected(android.support.v7.app.ActionBar.Tab tab,
+			FragmentTransaction arg1) {
+
+		// Setting current position of tab to view pager
+		viewPager.setCurrentItem(tab.getPosition());
+	}
+
+	@Override
+	public void onTabUnselected(android.support.v7.app.ActionBar.Tab arg0,
+			FragmentTransaction arg1) {
+
+	}
+
+}
+
+// My adapter i.e. custom adapter for displaying fragments over view pager
+class MyAdapter extends FragmentPagerAdapter {
+	public MyAdapter(FragmentManager fm) {
+		super(fm);
+
+	}
+
+	@Override
+	public Fragment getItem(int i) {
+
+		// Getting fragments according to selected position
+		Fragment fragment = null;
+		if (i == 0) {
+			fragment = new FragmentA();
+		}
+		if (i == 1) {
+			fragment = new FragmentB();
+		}
+		if (i == 2) {
+			fragment = new FragmentC();
+		}
+
+		// and finally returning fragments
+		return fragment;
+	}
+
+	@Override
+	public int getCount() {
+
+		// Returning no. of counts of fragments
+		return 3;
+	}
+}</pre><p>
+<b>6</b>. Now, run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a title="Android Swipeable Tabs using ViewPager" href="http://androhub.com/downloads/ViewPager_Fragment_Tab_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-tab-with-swipeable-views-using-viewpager/">Android Tab with Swipeable Views using ViewPager</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-tab-with-swipeable-views-using-viewpager/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">305</post-id>	</item>
+		<item>
+		<title>Android ActionBar and Option Menus</title>
+		<link>http://www.androhub.com/android-actionbar-and-option-menus/</link>
+		<comments>http://www.androhub.com/android-actionbar-and-option-menus/#respond</comments>
+		<pubDate>Tue, 05 May 2015 07:27:52 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Actionbar]]></category>
+		<category><![CDATA[actionbar]]></category>
+		<category><![CDATA[actionbar custom menus]]></category>
+		<category><![CDATA[actionbar menus]]></category>
+		<category><![CDATA[custom actionabr]]></category>
+		<category><![CDATA[custom menus]]></category>
+		<category><![CDATA[option menus]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=280</guid>
+		<description><![CDATA[<p>What is the action bar? The action bar (ActionBar) is located at the top of the activity. It can display the activity title, icon, actions which can be triggered, additional views and other interactive items. It can also be used for navigation in your application. The action bar is enabled for devices which specify a [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-actionbar-and-option-menus/">Android ActionBar and Option Menus</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h3>What is the action bar?</h3>
+</div>
+</div>
+</div>
+<p>The <em class="wordasword">action bar</em> (ActionBar) is located at the top of the activity. It can display the activity title, icon, actions which can be triggered, additional views and other interactive items. It can also be used for navigation in your application.</p>
+<p>The action bar is enabled for devices which specify a target SDK of API version 11 or higher. It is possible to disable the action bar via the used theme, but the default Android themes have it enabled.</p>
+<p>Applications with a target SDK version less than API 11 use the <em class="wordasword">options menu</em> if such a button is present on the device. The option menu is displayed if the user presses the <em class="wordasword">Option</em> button. The action bar is superior to the options menu, as the action bar is clearly visible, while the options menu is only shown on request. In case of the options menu, the user may not recognize that options are available in the application.</p>
+<h3>What is the option menus?</h3>
+<p><strong>Android Option Menus</strong> are the primary menus of android. They can be used for settings, search, delete item etc.</p>
+<p>We inflate the menu by calling the <b>inflate()</b> method of <b>MenuInflater</b> class. To perform event handling on menu items, you need to override <b>onOptionsItemSelected()</b> method of Activity class.</p>
+<p><strong>Note :  </strong>Both actionbar and option menus can be customized.</p>
+<h2>Example</h2>
+<p>In this example i will demonstrate you how to work on action bar and option menus and also custom action bar and option menus.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_91219" width="602" height="339" src="https://www.youtube.com/embed/qHVGFSUOxec?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Let’s get start by creating a project in Eclipse IDE.</p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>)</p>
+<p><b>2</b>. Open your your <em>AndroidManifest.xml</em> file and make your “<em>MainActivity</em>” as Launcher activity and some extra stuffs like meta data that is going to be use in actionbar.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.actionbar_and_menus"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+        &lt;activity
+            android:name="com.actionbar_and_menus.CustomMenu"
+            android:label="@string/second_activity"
+            android:parentActivityName=".MainActivity" &gt;
+            &lt;meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" /&gt;
+        &lt;/activity&gt;
+        &lt;activity
+            android:name="com.actionbar_and_menus.CustomActionBar"
+            android:parentActivityName=".MainActivity" &gt;
+            &lt;meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" /&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>3</b>. Create a layout file for <em>MainActivtiy.java</em> under <em>res ⇒ layout</em> folder. I named the layout file as <em>activity_main.xml</em>. In this layout i made three buttons for different actions.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp" &gt;
+
+    &lt;Button
+        android:id="@+id/show_hide_actionbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="10dp"
+        android:text="@string/hide" /&gt;
+
+    &lt;Button
+        android:id="@+id/custom_menu"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="10dp"
+        android:text="@string/custom_menu_activity" /&gt;
+
+    &lt;Button
+        android:id="@+id/custom_actionbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="10dp"
+        android:text="@string/custom_actionbar_activity" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>4</b>. Now, add the following code in <em>MainActivity.java. </em>In this class we set logo, title, subtitle and implement actionbar option menus and do something on menu selecting and also showing and hiding on first button pressed.</p><pre class="crayon-plain-tag">package com.actionbar_and_menus;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class MainActivity extends ActionBarActivity implements OnClickListener {
+	ActionBar actionBar;
+	Button show_hide_actionbar;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		// Getting actionbar
+		actionBar = getSupportActionBar();
+
+		// Setting up logo over actionbar
+		actionBar.setDisplayUseLogoEnabled(true);
+		actionBar.setDisplayShowHomeEnabled(true);
+		actionBar.setLogo(R.drawable.androhub_logo);
+
+		// setting actionbar title
+		// actionBar.setTitle("Main Activity");
+
+		// setting actionbar subtitle
+		actionBar.setSubtitle("Sub Title");
+
+		show_hide_actionbar = (Button) findViewById(R.id.show_hide_actionbar);
+
+		// Implementing click listener over all buttons
+		show_hide_actionbar.setOnClickListener(this);
+		findViewById(R.id.custom_menu).setOnClickListener(this);
+		findViewById(R.id.custom_actionbar).setOnClickListener(this);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+
+		// Finding search menu item
+		final MenuItem searchItem = menu.findItem(R.id.search);
+		SearchView searchView = (SearchView) MenuItemCompat
+				.getActionView(searchItem);
+
+		// Setting hint over search menu
+		searchView.setQueryHint("Search here....");
+
+		// Calling query listener on search menu
+		SearchView.OnQueryTextListener textListener = new SearchView.OnQueryTextListener() {
+
+			@Override
+			public boolean onQueryTextSubmit(String query) {
+
+				// Showing text that is entered in search menu
+				Toast.makeText(MainActivity.this, query, Toast.LENGTH_SHORT)
+						.show();
+
+				return false;
+			}
+
+			@Override
+			public boolean onQueryTextChange(String newText) {
+
+				return true;
+
+			}
+		};
+
+		// Implementing query listener
+		searchView.setOnQueryTextListener(textListener);
+		return true;
+	}
+
+	// Implementing click listeners over all menu icons and displaying there
+	// texts
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.search:
+			Toast.makeText(MainActivity.this, item.getTitle(),
+					Toast.LENGTH_SHORT).show();
+			break;
+
+		case R.id.save:
+			Toast.makeText(MainActivity.this, item.getTitle(),
+					Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.attachment:
+			Toast.makeText(MainActivity.this, item.getTitle(),
+					Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.email:
+			Toast.makeText(MainActivity.this, item.getTitle(),
+					Toast.LENGTH_SHORT).show();
+			break;
+
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.show_hide_actionbar:
+
+			// Checking if actionbar is visible or not and according to it
+			// hiding and showing the actionbar and changing text of button
+			if (actionBar.isShowing()) {
+				actionBar.hide();
+				show_hide_actionbar.setText(R.string.show);
+			} else {
+				actionBar.show();
+				show_hide_actionbar.setText(R.string.hide);
+			}
+
+			break;
+
+		// Starting a new activity
+		case R.id.custom_menu:
+			startActivity(new Intent(MainActivity.this, CustomMenu.class));
+
+			break;
+		case R.id.custom_actionbar:
+			startActivity(new Intent(MainActivity.this, CustomActionBar.class));
+
+			break;
+		}
+
+	}
+}</pre><p>
+<b>5</b>. Create a new <em>layout</em> file naming <em>custom_actionbar_menu.xml</em> for custom menu. In this layout we take one textview and one edittext according to menus that we want to display for demo i am taking two widgets only.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" &gt;
+
+    &lt;TextView
+        android:id="@+id/custom_text_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/custom_menu"
+        android:textColor="#ff00" /&gt;
+
+    &lt;EditText
+         android:id="@+id/custom_edittext_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter"
+        android:padding="5dp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>6</b>. Now create a java file naming<em> CustomMenu.java</em> for custom menus that is started on button click from <em>MainActivity.java </em>and add the following code. In this activity i am going to show how to inflate custom menu over actionbar and implement click listeners over them.</p><pre class="crayon-plain-tag">package com.actionbar_and_menus;
+
+import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+public class CustomMenu extends ActionBarActivity {
+
+	ActionBar actionBar;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+
+		// Using the same layout but hiding all widgets
+		setContentView(R.layout.activity_main);
+		findViewById(R.id.show_hide_actionbar).setVisibility(View.GONE);
+		findViewById(R.id.custom_menu).setVisibility(View.GONE);
+		findViewById(R.id.custom_actionbar).setVisibility(View.GONE);
+
+		actionBar = getSupportActionBar();
+
+		// Showing a back button over actionbar
+		actionBar.setDisplayHomeAsUpEnabled(true);
+
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		// Inflating actionbar custom menu
+		getMenuInflater().inflate(R.menu.custom_menu, menu);
+
+		// Finding id of custom menu
+		MenuItem custom = menu.findItem(R.id.custom);
+
+		// Getting actionview of the menu item
+		LinearLayout custom_layout = (LinearLayout) MenuItemCompat
+				.getActionView(custom);
+
+		// Implementing click listners over custom menu textview and showing a
+		// toast
+		custom_layout.findViewById(R.id.custom_text_menu).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View arg0) {
+						Toast.makeText(CustomMenu.this, "Text Menu pressed.",
+								Toast.LENGTH_SHORT).show();
+
+					}
+				});
+
+		// Implementing focus listener over edittext and showing a toast
+		custom_layout.findViewById(R.id.custom_edittext_menu)
+				.setOnFocusChangeListener(new OnFocusChangeListener() {
+
+					@Override
+					public void onFocusChange(View arg0, boolean focus) {
+
+						if (focus) {
+							Toast.makeText(CustomMenu.this,
+									"Edit Text Focused.", Toast.LENGTH_SHORT)
+									.show();
+						} else {
+							Toast.makeText(CustomMenu.this,
+									"Edit Text Focused  changed.",
+									Toast.LENGTH_SHORT).show();
+						}
+					}
+				});
+
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+
+		// Over riding actionbar back button and showing a toast
+		case android.R.id.home:
+			Toast.makeText(CustomMenu.this, "Home button pressed.",
+					Toast.LENGTH_SHORT).show();
+			break;
+
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onBackPressed() {
+		// Over riding back pressed button and showing a toast
+		Toast.makeText(CustomMenu.this, "Back button pressed.",
+				Toast.LENGTH_SHORT).show();
+		super.onBackPressed();
+	}
+}</pre><p>
+<b>7</b>. For, custom actionbar create an new layout naming <em>custom_actionbar.xml. </em>In this layout i made one textview with an icon for custom actionbar title and icon.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" &gt;
+
+    &lt;TextView
+        android:id="@+id/custom_actionbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/androhub_logo"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/androhub_logo"
+        android:gravity="center_vertical"
+        android:text="@string/custom_actionbar_title"
+        android:textColor="#ffffff"
+        android:textSize="18sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>8</b>. Now, finally make a new java class for custom actionbar naming <em>CustomActionBar.java </em>and add the following code. In this class i am going to show how inflate custom actionbar and implement click listener on title.</p><pre class="crayon-plain-tag">package com.actionbar_and_menus;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+
+public class CustomActionBar extends ActionBarActivity {
+	ActionBar actionBar;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		// Using the same layout but hiding all widgets
+		setContentView(R.layout.activity_main);
+		findViewById(R.id.show_hide_actionbar).setVisibility(View.GONE);
+		findViewById(R.id.custom_menu).setVisibility(View.GONE);
+		findViewById(R.id.custom_actionbar).setVisibility(View.GONE);
+
+		actionBar = getSupportActionBar();
+
+		// Setting back button on actionbar
+		actionBar.setDisplayHomeAsUpEnabled(true);
+
+		// Disabling the title over actionbar since we are using custom layout
+		// for it
+		actionBar.setDisplayShowTitleEnabled(false);
+
+		// Layout inflater service for custom layout
+		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+		// Inflating layout
+		View view = inflater.inflate(R.layout.cusotm_actionbar, null);
+
+		// Implementing click listeners over actionbar custom title i.e textview
+		// and showing a toast
+		view.findViewById(R.id.custom_actionbar_title).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View arg0) {
+						Toast.makeText(CustomActionBar.this,
+								"Custom title clicked.", Toast.LENGTH_SHORT)
+								.show();
+
+					}
+				});
+
+		// setting custom view over actionbar
+		actionBar.setCustomView(view);
+
+		// enabling custom view
+		actionBar.setDisplayShowCustomEnabled(true);
+
+	}
+}</pre><p>
+<b>9</b>. Finally, you are all set and run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a title="Android Actionbar and Menus" href="http://androhub.com/downloads/ActionBar_and_Menus_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+</div>
+<div class="section"></div>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-actionbar-and-option-menus/">Android ActionBar and Option Menus</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-actionbar-and-option-menus/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">280</post-id>	</item>
+	</channel>
+</rss>

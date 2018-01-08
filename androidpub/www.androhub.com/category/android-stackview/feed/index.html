@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android StackView &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-stackview/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android StackView</title>
+		<link>http://www.androhub.com/android-stackview/</link>
+		<comments>http://www.androhub.com/android-stackview/#comments</comments>
+		<pubDate>Tue, 19 May 2015 12:30:42 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android StackView]]></category>
+		<category><![CDATA[Android Stackview]]></category>
+		<category><![CDATA[stacks of images]]></category>
+		<category><![CDATA[Stackview]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=357</guid>
+		<description><![CDATA[<p>StackView helps in arranging items in the form of stacked cards, where the front item can be flipped to bring the item behind it to the front. In addition to images, you can stack objects composed of text and other data, too. Example In this example I will show how to make use of stack images in [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-stackview/">Android StackView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p><em><strong><tt>StackView</tt></strong></em> helps in arranging items in the form of stacked cards, where the front item can be flipped to bring the item behind it to the front. In addition to images, you can stack objects composed of text and other data, too.</p>
+<h2>Example</h2>
+<p>In this example I will show how to make use of stack images in the <tt>StackView</tt>.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_25430" width="602" height="339" src="https://www.youtube.com/embed/ZEGXaXIKNWw?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Let’s get start by creating a project in Eclipse IDE.</p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>)</p>
+<p><b>2</b>.  Create a layout file for <em>MainActivtiy.java</em> under <em>res ⇒ layout</em> folder. I named the layout file as <em>activity_main.xml</em>. In this layout i had taken StackView for showing stack of images.</p><pre class="crayon-plain-tag">&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" &gt;
+
+    &lt;StackView
+        android:id="@+id/stackView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:animateLayoutChanges="true" &gt;
+    &lt;/StackView&gt;
+
+&lt;/RelativeLayout&gt;</pre><p>
+<b>3</b>. Before, making stackview of images you have to create a custom xml layout and custom adapter for it like we had done in listview and gridview. Now, create a new xml file for custom layout naming <em>display_item.xml.</em></p><pre class="crayon-plain-tag">&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" &gt;
+
+    &lt;ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true" /&gt;
+
+    &lt;TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_below="@+id/imageView1"
+        android:textColor="#FFFFFF"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" /&gt;
+
+&lt;/RelativeLayout&gt;</pre><p>
+<b>4</b>. Now create a getter setter class for custom adadpter naming <em>Stack_Items.java.</em></p><pre class="crayon-plain-tag">package com.android_stackview_demo;
+
+public class Stack_Items {
+	String name;
+	Integer image;
+
+	public Stack_Items(String name, Integer image) {
+		this.name = name;
+		this.image = image;
+	}
+
+	public String getName() {
+		return name;
+
+	}
+
+	public int getImage() {
+		return image;
+	}
+
+}</pre><p>
+<b>5</b>. Now make custom adapter class naming <em>Stack_Adapter.java </em> and add the following code.</p><pre class="crayon-plain-tag">package com.android_stackview_demo;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class Stack_Adapter extends BaseAdapter {
+
+	ArrayList&lt;Stack_Items&gt; arrayList;
+	LayoutInflater inflater;
+	ViewHolder holder = null;
+
+	public Stack_Adapter(Context context, ArrayList&lt;Stack_Items&gt; arrayList) {
+		this.arrayList = arrayList;
+		this.inflater = LayoutInflater.from(context);
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return arrayList.size();
+	}
+
+	@Override
+	public Stack_Items getItem(int pos) {
+		// TODO Auto-generated method stub
+		return arrayList.get(pos);
+	}
+
+	@Override
+	public long getItemId(int pos) {
+		// TODO Auto-generated method stub
+		return pos;
+	}
+
+	@Override
+	public View getView(int pos, View view, ViewGroup parent) {
+		if (view == null) {
+			view = inflater.inflate(R.layout.display_item, parent, false);
+			holder = new ViewHolder();
+
+			holder.text = (TextView) view.findViewById(R.id.textView1);
+			holder.image = (ImageView) view.findViewById(R.id.imageView1);
+			view.setTag(holder);
+		} else {
+			holder = (ViewHolder) view.getTag();
+		}
+
+		holder.text.setText(arrayList.get(pos).getName());
+		holder.image.setBackgroundResource(arrayList.get(pos).getImage());
+
+		return view;
+	}
+
+	public class ViewHolder {
+		TextView text;
+		ImageView image;
+	}
+
+}</pre><p>
+<b>6</b>. Finally come to <em>MainActivity.java </em>and add the following code. In this class we just had taken arraylist for images and texts and just setting the custom adapter over the stackview.</p><pre class="crayon-plain-tag">package com.android_stackview_demo;
+
+import java.util.ArrayList;
+
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.StackView;
+
+public class MainActivity extends ActionBarActivity {
+	private static StackView stackView;
+	private static ArrayList&lt;Stack_Items&gt; list;
+	
+	//Integer array for images
+	private static final Integer[] icons = { R.drawable.a, R.drawable.b,
+			R.drawable.c, R.drawable.d };
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		stackView = (StackView) findViewById(R.id.stackView1);
+		list = new ArrayList&lt;Stack_Items&gt;();
+
+		//Adding items to the list
+		for (int i = 0; i &lt; icons.length; i++) {
+			list.add(new Stack_Items("Item " + i, icons[i]));
+		}
+		
+		//Calling adapter and setting it over stackview
+		Stack_Adapter adapter = new Stack_Adapter(MainActivity.this, list);
+		stackView.setAdapter(adapter);
+		adapter.notifyDataSetChanged();
+	}
+
+}</pre><p>
+<b>7</b>. Now, run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/Android_StackView_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-stackview/">Android StackView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-stackview/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">357</post-id>	</item>
+	</channel>
+</rss>

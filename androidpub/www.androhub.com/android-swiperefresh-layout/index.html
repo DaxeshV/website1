@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+	
+<!-- Mirrored from www.androhub.com/android-swiperefresh-layout/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jan 2018 03:30:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+		<meta charset="UTF-8" />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0'>
+		<title>Android SwipeRefresh Layout - AndrohubAndrohub</title>
+		<link rel="profile" href="http://gmpg.org/xfn/11" />
+		<link rel="pingback" href="http://www.androhub.com/xmlrpc.php" />
+					<link rel="shortcut icon" href="http://www.androhub.com/wp-content/uploads/2016/05/app_icon_small.png" type="image/x-icon" />
+						
+<!-- This site is optimized with the Yoast SEO plugin v4.4 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="http://www.androhub.com/android-swiperefresh-layout/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Android SwipeRefresh Layout - Androhub" />
+<meta property="og:description" content="You might have noticed that lot of android apps like Twitter, Google+ provides an option to swipe / pull down to refresh it’s content. Whenever user swipes down from top, a loader will be shown and will disappear once the new content is loaded. In this tutorial we are going to learn how to provide &hellip;" />
+<meta property="og:url" content="http://www.androhub.com/android-swiperefresh-layout/" />
+<meta property="og:site_name" content="Androhub" />
+<meta property="article:publisher" content="https://www.facebook.com/androhubtutorial/" />
+<meta property="article:author" content="facebook.com/sonu.surender" />
+<meta property="article:tag" content="adapters" />
+<meta property="article:tag" content="android recyclerview" />
+<meta property="article:tag" content="Android Swipeable Tabs" />
+<meta property="article:tag" content="gridview" />
+<meta property="article:tag" content="listview" />
+<meta property="article:tag" content="pull down refresh" />
+<meta property="article:tag" content="recycler view" />
+<meta property="article:tag" content="swipe down" />
+<meta property="article:tag" content="swipe refresh layout" />
+<meta property="article:section" content="Android RecyclerView" />
+<meta property="article:published_time" content="2015-07-21T10:38:24+00:00" />
+<meta property="article:modified_time" content="2016-06-16T09:56:31+00:00" />
+<meta property="og:updated_time" content="2016-06-16T09:56:31+00:00" />
+<meta property="og:image" content="http://www.androhub.com/wp-content/uploads/2015/07/swiperefreshlayout_banner.jpg" />
+<meta property="og:image:width" content="795" />
+<meta property="og:image:height" content="413" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="You might have noticed that lot of android apps like Twitter, Google+ provides an option to swipe / pull down to refresh it’s content. Whenever user swipes down from top, a loader will be shown and will disappear once the new content is loaded. In this tutorial we are going to learn how to provide [&hellip;]" />
+<meta name="twitter:title" content="Android SwipeRefresh Layout - Androhub" />
+<meta name="twitter:site" content="@sonusurender0" />
+<meta name="twitter:image" content="https://i2.wp.com/www.androhub.com/wp-content/uploads/2015/07/swiperefreshlayout_banner.jpg?fit=795%2C413" />
+<meta name="twitter:creator" content="@sonusurender0" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Androhub &raquo; Feed" href="http://www.androhub.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Androhub &raquo; Comments Feed" href="http://www.androhub.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Androhub &raquo; Android SwipeRefresh Layout Comments Feed" href="http://www.androhub.com/android-swiperefresh-layout/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.androhub.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.5.12"}};
+			!function(a,b,c){function d(a){var c,d,e,f=b.createElement("canvas"),g=f.getContext&&f.getContext("2d"),h=String.fromCharCode;if(!g||!g.fillText)return!1;switch(g.textBaseline="top",g.font="600 32px Arial",a){case"flag":return g.fillText(h(55356,56806,55356,56826),0,0),f.toDataURL().length>3e3;case"diversity":return g.fillText(h(55356,57221),0,0),c=g.getImageData(16,16,1,1).data,d=c[0]+","+c[1]+","+c[2]+","+c[3],g.fillText(h(55356,57221,55356,57343),0,0),c=g.getImageData(16,16,1,1).data,e=c[0]+","+c[1]+","+c[2]+","+c[3],d!==e;case"simple":return g.fillText(h(55357,56835),0,0),0!==g.getImageData(16,16,1,1).data[0];case"unicode8":return g.fillText(h(55356,57135),0,0),0!==g.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='http://www.androhub.com/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-classic-css'  href='http://www.androhub.com/wp-content/plugins/crayon-syntax-highlighter/themes/classic/classic.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='http://www.androhub.com/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='normalize-css'  href='http://www.androhub.com/wp-content/themes/circles/css/normalize.css' type='text/css' media='all' />
+<link rel='stylesheet' id='prettyPhoto-css'  href='http://www.androhub.com/wp-content/themes/circles/css/prettyPhoto.css' type='text/css' media='all' />
+<link rel='stylesheet' id='grid-system-css'  href='http://www.androhub.com/wp-content/themes/circles/css/grid-system.css' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='http://www.androhub.com/wp-content/themes/circles/css/main.css' type='text/css' media='all' />
+<link rel='stylesheet' id='shortcodes-css'  href='http://www.androhub.com/wp-content/themes/circles/css/shortcodes.css' type='text/css' media='all' />
+<link rel='stylesheet' id='widgets-css'  href='http://www.androhub.com/wp-admin/css/widgets.min.css?ver=4.5.12' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='http://www.androhub.com/wp-content/themes/circles/css/font-awesome.css' type='text/css' media='all' />
+<link rel='stylesheet' id='icomoon-css'  href='http://www.androhub.com/wp-content/themes/circles/css/icomoon.css' type='text/css' media='all' />
+<link rel='stylesheet' id='responsiveness-css'  href='http://www.androhub.com/wp-content/themes/circles/css/media.php?switch_menu_to_mobile=' type='text/css' media='all' />
+<link rel='stylesheet' id='style-css'  href='http://www.androhub.com/wp-content/themes/circles/style.css?ver=4.5.12' type='text/css' media='all' />
+<!-- Inline jetpack_facebook_likebox -->
+<style id='jetpack_facebook_likebox-inline-css' type='text/css'>
+.widget_facebook_likebox {
+	overflow: hidden;
+}
+
+</style>
+<link rel='stylesheet' id='tablepress-default-css'  href='http://www.androhub.com/wp-content/plugins/tablepress/css/default.min.css?ver=1.7' type='text/css' media='all' />
+<link rel='stylesheet' id='__EPYT__style-css'  href='http://www.androhub.com/wp-content/plugins/youtube-embed-plus/styles/ytprefs.min.css?ver=4.5.12' type='text/css' media='all' />
+<style id='__EPYT__style-inline-css' type='text/css'>
+
+                .epyt-gallery-thumb {
+                        width: 33.333%;
+                }
+                
+</style>
+<link rel='stylesheet' id='social-logos-css'  href='http://www.androhub.com/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='http://www.androhub.com/wp-content/plugins/jetpack/css/jetpack.css?ver=4.4.2' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _EPYT_ = {"ajaxurl":"http:\/\/www.androhub.com\/wp-admin\/admin-ajax.php","security":"83453349b8","gallery_scrolloffset":"20","eppathtoscripts":"http:\/\/www.androhub.com\/wp-content\/plugins\/youtube-embed-plus\/scripts\/","epresponsiveselector":"[\"iframe.__youtube_prefs_widget__\"]","epdovol":"1","version":"11.8.5","evselector":"iframe.__youtube_prefs__[src], iframe[src*=\"youtube.com\/embed\/\"], iframe[src*=\"youtube-nocookie.com\/embed\/\"]","ajax_compat":"","stopMobileBuffer":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/www.androhub.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/image-captcha/assets/image-captcha.js?ver=4.5.12'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/youtube-embed-plus/scripts/ytprefs.min.js?ver=4.5.12'></script>
+<link rel='https://api.w.org/' href='http://www.androhub.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.androhub.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.androhub.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.5.12" />
+<link rel='shortlink' href='http://wp.me/p7E9B2-86' />
+<link rel="alternate" type="application/json+oembed" href="http://www.androhub.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.androhub.com%2Fandroid-swiperefresh-layout%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.androhub.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.androhub.com%2Fandroid-swiperefresh-layout%2F&amp;format=xml" />
+
+<link rel='dns-prefetch' href='http://v0.wordpress.com/'>
+<link rel='dns-prefetch' href='http://i0.wp.com/'>
+<link rel='dns-prefetch' href='http://i1.wp.com/'>
+<link rel='dns-prefetch' href='http://i2.wp.com/'>
+<style type='text/css'>img#wpstats{display:none}</style><!--[if lt IE 9]><script src="http://www.androhub.com/wp-content/themes/circles/js/html5.js"></script><![endif]--><!--[if lt IE 7]><script src="http://www.androhub.com/wp-content/themes/circles/js/icomoon.js"></script><![endif]-->	<script type="text/javascript">
+		var ajaxurl = 'http://www.androhub.com/wp-admin/admin-ajax.php';
+	</script>
+				<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,700" rel="stylesheet" type="text/css">
+					<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,800,300,700" rel="stylesheet" type="text/css">
+			<style type="text/css">
+					body,
+			article .column_post-body,
+			.post-body-text,
+			.post-area 
+			{ font-family: 'Noto Sans'; }
+		
+		
+					.headline h1 { font-family: 'Noto Sans'; }
+		
+		
+					.menu .menu-item a,
+			.menu .page_item a { font-family: 'Noto Sans'; }
+		
+		
+					.post-area h1, .post-body-text h1,
+			.post-area h2, .post-body-text h2,
+			.post-area h3, .post-body-text h3,
+			.post-area h4, .post-body-text h4,
+			.post-area h5, .post-body-text h5,
+			.post-area h6, .post-body-text h6, aside h5 {
+				font-family: 'Noto Sans';
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		#logo {
+											}
+		
+			</style>
+	<style type="text/css" id="dynamic-styles">
+				
+			
+	
+	
+			
+			
+			
+			
+		
+			
+		
+	
+			
+	
+	
+	
+	
+	
+	
+	
+		</style>
+			<style type="text/css">
+			div.wrapper.menu-bg {
+    display: none;
+}
+.right-sidebar h3{
+    margin-top: 15px;
+    margin-bottom: 1px;
+}
+
+footer .wrapper.grey {
+    display: none;
+}
+.form-allowed-tags {
+    display: none;
+}
+.headline.marble h1 {
+    display: none;
+}
+
+.wrapper.headline {
+    height: 36px;
+}
+.header-image {
+    height: 50px;
+    background-position: center;
+}
+.header-image {
+    height: 50px;
+}
+.logo img {
+    position: absolute;
+    top: -18px;
+    height: 87px;
+    width: 270px;
+    z-index: 105;
+}
+.marble {
+    background-color: #91C448 !important;
+}
+.marble .page-path span,.marble .page-path a {
+    color: #FFFFFF;
+}
+.widget_search {
+    margin-bottom: 15px;
+}
+.grid_12 {
+    margin: -8px 1.25%;
+}		</style>
+			<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		
+<style id="custom-css-css">.phone-icon{right:522px;position:absolute;top:33px;display:inline-block;height:16px;padding:1px 0;font-size:13px;font-weight:700;margin-right:10px;padding-left:25px;background:url(http://www.androhub.com/downloads/ic_phone.png);background-position:left center;background-repeat:no-repeat}.email-icon{right:319px;position:absolute;top:33px;display:inline-block;height:16px;padding:1px 0;font-size:13px;font-weight:700;margin-right:10px;padding-left:25px;background:url(http://www.androhub.com/downloads/ic_email.png);background-position:left center;background-repeat:no-repeat}</style>
+	</head>
+	<body class="single single-post postid-502 single-format-standard w1170 sticky-menu-on nice-scroll">
+    
+			<div class="preloading-screen" style=" background: #fff center no-repeat fixed">
+			<div class="spinners">
+				<div class="bounce1"></div>
+			</div>
+		</div>
+					<header class='page-header'>
+	
+		
+	<div class='wrapper wrapper-bg'>
+		<div class='container'>
+			<div class='grid_12'>
+				<div class='logo'>
+																					<a href='http://www.androhub.com/' title="Androhub" rel="home"><img src="http://androhub.com/wp-content/uploads/2016/05/andro_new.png" class="" alt="Androhub" /></a>
+				</div>
+				
+<!-- Header Contact -->
+<div class="phone-icon">
+<span>+91 9008091580</span>
+</div>
+
+<div class="email-icon">
+<span>surender@androhub.com</span>
+</div>
+<!--  Exit  -->
+
+
+				<ul class='socials'>
+											<li>
+							<span class="tran02slinear"></span>
+							<a class='facebook tran02slinear' href='https://www.facebook.com/sonu.surender' title="Facebook" target="_blank"></a>
+						</li>
+																<li>
+							<span class="tran02slinear"></span>
+							<a class='twitter tran02slinear' href='https://twitter.com/sonusurender0' title="Twitter" target="_blank"></a>
+						</li>
+																										<li>
+							<span class="tran02slinear"></span>
+							<a class='youtube tran02slinear' href='https://www.youtube.com/channel/UCHJh3E9mtRzbM3WVVl9glJg' title="Youtube" target="_blank"></a>
+						</li>
+																										<li>
+							<span class="tran02slinear"></span>
+							<a class='google-plus tran02slinear' href='https://plus.google.com/u/0/+SurenderKumarandrohub' title="Google+" target="_blank"></a>
+						</li>
+																<li>
+							<span class="tran02slinear"></span>
+							<a class='linkedin tran02slinear' href='https://in.linkedin.com/in/surender-kumar-681472a8' title="LinkedIn" target="_blank"></a>
+						</li>
+														</ul>
+			</div>
+		</div>
+	</div>
+	<div class='absolute'>
+		<div class='wrapper menu-bg custom-menu-bg border-bottom-black-tr'>
+			<div class='container'>
+										<a id="menu-btn" href="#"></a>
+
+						<nav class="menu"><ul><li ><a href="http://www.androhub.com/">Home</a></li></ul></nav>
+
+					<ul class='socials mobile-socials'>
+											<li>
+							<span class="tran02slinear"></span>
+							<a class='facebook tran02slinear' href='https://www.facebook.com/sonu.surender' title="Facebook" target="_blank"></a>
+						</li>
+																<li>
+							<span class="tran02slinear"></span>
+							<a class='twitter tran02slinear' href='https://twitter.com/sonusurender0' title="Twitter" target="_blank"></a>
+						</li>
+																										<li>
+							<span class="tran02slinear"></span>
+							<a class='youtube tran02slinear' href='https://www.youtube.com/channel/UCHJh3E9mtRzbM3WVVl9glJg' title="Youtube" target="_blank"></a>
+						</li>
+																										<li>
+							<span class="tran02slinear"></span>
+							<a class='google-plus tran02slinear' href='https://plus.google.com/u/0/+SurenderKumarandrohub' title="Google+" target="_blank"></a>
+						</li>
+																<li>
+							<span class="tran02slinear"></span>
+							<a class='linkedin tran02slinear' href='https://in.linkedin.com/in/surender-kumar-681472a8' title="LinkedIn" target="_blank"></a>
+						</li>
+														</ul>
+			</div>
+		</div>
+			<div class='wrapper headline  marble border-bottom-black-tr'>
+		<div class='container'>
+			<div class='grid_12'>
+									<h1>Blog</h1>
+													<div class='page-path'>
+						<div id="crumbs" xmlns:v="http://rdf.data-vocabulary.org/#"><span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="http://www.androhub.com/">Home</a></span> <span class="delimiter">|</span> <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="http://www.androhub.com/category/android-recyclerview/">Android RecyclerView</a></span> <span class="delimiter">|</span> <span class="current">Android SwipeRefresh Layout</span></div>					</div>
+							</div>
+		</div>
+	</div>
+	</div>
+</header><div class='wrapper header-image '></div>
+<div class='wrapper'>
+	<div class='container main'>
+						<div class='post-area grid_9'>
+			<div class='posts-container'>
+													<article id="post-502" class="post  center post-502 type-post status-publish format-standard has-post-thumbnail hentry category-android-recyclerview category-android-swiperefresh-layout category-android-viewpager tag-adapters tag-android-recyclerview tag-android-swipeable-tabs tag-gridview tag-listview tag-pull-down-refresh tag-recycler-view tag-swipe-down tag-swipe-refresh-layout">
+		<header>
+		<a href='http://www.androhub.com/android-swiperefresh-layout/'><h2>Android SwipeRefresh Layout</h2></a>
+	</header>
+	<footer>
+	<div class='post-helper-absolute'>
+		<div class='avatar big'>
+			<img alt='' src='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=61&amp;d=mm&amp;r=g' srcset='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />		</div>
+		<div class='post-comments'>
+			<span>0</span>
+		</div>
+		<div class='post-author'>
+			By			<span>
+				<a href="http://www.androhub.com/author/droid/" title="Posts by Dr. Droid" rel="author">Dr. Droid</a>			</span>
+		</div>
+		<div class='post-type'>
+			<span></span>
+		</div>
+	</div>
+	<div class='post-date'>
+		<span>July 21, 2015</span>
+	</div>
+			<div class='post-category'>
+			<span>
+				<a href="http://www.androhub.com/category/android-recyclerview/" rel="category tag">Android RecyclerView</a>, <a href="http://www.androhub.com/category/android-swiperefresh-layout/" rel="category tag">Android SwipeRefresh Layout</a>, <a href="http://www.androhub.com/category/android-viewpager/" rel="category tag">Android ViewPager</a>			</span>
+		</div>
+		<div class='separator'>
+	</div>
+</footer>	<div class="post-body clearfix">
+					<article class='item-con-t1'>
+				<div class='container-t1'>
+					<div class='container-t1-margin'>
+						<img src="http://www.androhub.com/wp-content/uploads/freshizer/c0550e45ad831493d6afb77964fe967d_swiperefreshlayout_banner-863-430-c.jpg" class="wp-post-image" width="863" height="430" alt="Android SwipeRefresh Layout"  />					</div>
+				</div>
+				<div class='blue-line'></div>
+			</article>
+				<div class='post-body-text'>
+			<p>You might have noticed that lot of android apps like Twitter, Google+ provides an option to swipe / pull down to refresh it’s content. Whenever user swipes down from top, a loader will be shown and will disappear once the new content is loaded. In this tutorial we are going to learn how to provide the same option to your apps too.</p>
+<p>Previously we used to implement a custom swipe view to detect the swipe down. But android made our day easier by introducing <a href="https://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html" target="_blank">SwipeRefreshLayout </a>in <em>android.support.v4</em> to detect the vertical swipe on any view.</p>
+<p>Methods of SwipeRefresh are quite few:</p>
+<p>– <em>setOnRefreshListener(OnRefreshListener):</em> adds a listener to let other parts of the code know when refreshing begins.<br />
+– <em>setRefreshing(boolean)</em>: enables or disables progress visibility.<br />
+– <em>isRefreshing()</em>: checks whether the view is refreshing.<br />
+– <em>setColorScheme()</em>: it receive four different colors that will be used to colorize the animation.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to use Swipe Down Refresh Layout.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_83400" width="602" height="339" src="https://www.youtube.com/embed/s-xwQyzdZWU?enablejsapi=1&amp;autoplay=0&amp;cc_load_policy=0&amp;iv_load_policy=1&amp;loop=0&amp;modestbranding=0&amp;rel=1&amp;showinfo=1&amp;fs=1&amp;theme=dark&amp;color=red&amp;autohide=2&amp;controls=2&amp;playsinline=0&amp;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>In last tutorial  we learned about RecyclerView. So i am going to use the same tutorial for SwipeRefresh. You can check RecyclerView tutorial <a href="http://androhub.com/android-recyclerview/" target="_blank">here</a>.</p>
+<h3>1. Android SwipeRefreshLayout</h3>
+<p>Implementing SwipeRefreshLayout is very easy. Whenever you want to detect the swipe down on any view, just the wrap the view around <strong>SwipeRefreshLayout</strong> element. In our case, we are going to use it with RecyclerView. And implement your activity class from <strong>SwipeRefreshLayout.OnRefreshListener</strong>. When user swipes down the view, <strong>onRefresh()</strong> method will be triggered. In you need to take appropriate action in that function like making an http call and fetch the latest data.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4d04e058323305438094" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">swiperefreshlayout xml</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-mixed-highlight" title="Contains Mixed Languages"></span><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!-- Swipe refresh layout --&gt;
+&lt;android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refreshview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" &gt;
+
+    &lt;!-- place your view here --&gt;
+
+    
+&lt;/android.support.v4.widget.SwipeRefreshLayout&gt;</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4d04e058323305438094-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058323305438094-2">2</div><div class="crayon-num" data-line="crayon-5a4d04e058323305438094-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058323305438094-4">4</div><div class="crayon-num" data-line="crayon-5a4d04e058323305438094-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058323305438094-6">6</div><div class="crayon-num" data-line="crayon-5a4d04e058323305438094-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058323305438094-8">8</div><div class="crayon-num" data-line="crayon-5a4d04e058323305438094-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058323305438094-10">10</div><div class="crayon-num" data-line="crayon-5a4d04e058323305438094-11">11</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4d04e058323305438094-1"><span class="crayon-ta">&lt;?</span><span class="crayon-e">xml </span><span class="crayon-i">version</span><span class="crayon-o">=</span><span class="crayon-s">"1.0"</span><span class="crayon-h"> </span><span class="crayon-i">encoding</span><span class="crayon-o">=</span><span class="crayon-s">"utf-8"</span><span class="crayon-ta">?&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058323305438094-2"><span class="crayon-o">&lt;</span><span class="crayon-o">!</span><span class="crayon-o">--</span><span class="crayon-h"> </span><span class="crayon-e">Swipe </span><span class="crayon-e">refresh </span><span class="crayon-v">layout</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4d04e058323305438094-3"><span class="crayon-o">&lt;</span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">support</span><span class="crayon-sy">.</span><span class="crayon-v">v4</span><span class="crayon-sy">.</span><span class="crayon-v">widget</span><span class="crayon-sy">.</span><span class="crayon-e">SwipeRefreshLayout </span><span class="crayon-v">xmlns</span><span class="crayon-o">:</span><span class="crayon-v">android</span><span class="crayon-o">=</span><span class="crayon-s">"http://schemas.android.com/apk/res/android"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058323305438094-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">id</span><span class="crayon-o">=</span><span class="crayon-s">"@+id/refreshview"</span></div><div class="crayon-line" id="crayon-5a4d04e058323305438094-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_width</span><span class="crayon-o">=</span><span class="crayon-s">"match_parent"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058323305438094-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_height</span><span class="crayon-o">=</span><span class="crayon-s">"wrap_content"</span><span class="crayon-h"> </span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4d04e058323305438094-7">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058323305438094-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-o">!</span><span class="crayon-o">--</span><span class="crayon-h"> </span><span class="crayon-e">place </span><span class="crayon-e">your </span><span class="crayon-e">view </span><span class="crayon-v">here</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4d04e058323305438094-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058323305438094-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-5a4d04e058323305438094-11"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">support</span><span class="crayon-sy">.</span><span class="crayon-v">v4</span><span class="crayon-sy">.</span><span class="crayon-v">widget</span><span class="crayon-sy">.</span><span class="crayon-v">SwipeRefreshLayout</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0072 seconds] -->
+<p>
+<h3>2. SwipeRefreshLayout Code</h3>
+<ul>
+<li>First find the id of Swipe View.</li>
+<li>Set the color schemes for refresh view circular bar.</li>
+<li>Finally set the refresh listener for refreshing view. In onRefresh() you can call the refreshing method to refresh view.</li>
+</ul>
+</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4d04e058334881584749" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">main code</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+ 
+    swipeLayout = (SwipeRefreshLayout) findViewById(R.id.refreshview);
+// set color schemes on refresh view
+    swipeLayout.setColorSchemeResources(R.color.blue, R.color.red,
+				R.color.orange, R.color.pink, R.color.yellow, R.color.black,
+				R.color.cyan);
+// implement refresh listener
+		swipeLayout .setOnRefreshListener(new OnRefreshListener() {
+
+			@Override
+			public void onRefresh() {
+
+				// call this method for repopulating recycler view with new data
+				refreshRecyclerView();
+			}
+		});
+}
+ 
+ 
+
+}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4d04e058334881584749-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058334881584749-2">2</div><div class="crayon-num" data-line="crayon-5a4d04e058334881584749-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058334881584749-4">4</div><div class="crayon-num" data-line="crayon-5a4d04e058334881584749-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058334881584749-6">6</div><div class="crayon-num" data-line="crayon-5a4d04e058334881584749-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058334881584749-8">8</div><div class="crayon-num" data-line="crayon-5a4d04e058334881584749-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058334881584749-10">10</div><div class="crayon-num" data-line="crayon-5a4d04e058334881584749-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058334881584749-12">12</div><div class="crayon-num" data-line="crayon-5a4d04e058334881584749-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058334881584749-14">14</div><div class="crayon-num" data-line="crayon-5a4d04e058334881584749-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058334881584749-16">16</div><div class="crayon-num" data-line="crayon-5a4d04e058334881584749-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058334881584749-18">18</div><div class="crayon-num" data-line="crayon-5a4d04e058334881584749-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058334881584749-20">20</div><div class="crayon-num" data-line="crayon-5a4d04e058334881584749-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058334881584749-22">22</div><div class="crayon-num" data-line="crayon-5a4d04e058334881584749-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e058334881584749-24">24</div><div class="crayon-num" data-line="crayon-5a4d04e058334881584749-25">25</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4d04e058334881584749-1"><span class="crayon-sy">@</span><span class="crayon-e">Override</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058334881584749-2"><span class="crayon-m">protected</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">onCreate</span><span class="crayon-sy">(</span><span class="crayon-e">Bundle </span><span class="crayon-v">savedInstanceState</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4d04e058334881584749-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">super</span><span class="crayon-sy">.</span><span class="crayon-e">onCreate</span><span class="crayon-sy">(</span><span class="crayon-v">savedInstanceState</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058334881584749-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">setContentView</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">layout</span><span class="crayon-sy">.</span><span class="crayon-v">activity_main</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d04e058334881584749-5"><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058334881584749-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">swipeLayout</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">SwipeRefreshLayout</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">findViewById</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">id</span><span class="crayon-sy">.</span><span class="crayon-v">refreshview</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d04e058334881584749-7"><span class="crayon-c">// set color schemes on refresh view</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058334881584749-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">swipeLayout</span><span class="crayon-sy">.</span><span class="crayon-e">setColorSchemeResources</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">color</span><span class="crayon-sy">.</span><span class="crayon-v">blue</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">color</span><span class="crayon-sy">.</span><span class="crayon-v">red</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5a4d04e058334881584749-9"><span class="crayon-h">				</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">color</span><span class="crayon-sy">.</span><span class="crayon-v">orange</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">color</span><span class="crayon-sy">.</span><span class="crayon-v">pink</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">color</span><span class="crayon-sy">.</span><span class="crayon-v">yellow</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">color</span><span class="crayon-sy">.</span><span class="crayon-v">black</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058334881584749-10"><span class="crayon-h">				</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">color</span><span class="crayon-sy">.</span><span class="crayon-v">cyan</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d04e058334881584749-11"><span class="crayon-c">// implement refresh listener</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058334881584749-12"><span class="crayon-h">		</span><span class="crayon-i">swipeLayout</span><span class="crayon-h"> </span><span class="crayon-sy">.</span><span class="crayon-e">setOnRefreshListener</span><span class="crayon-sy">(</span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-e">OnRefreshListener</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4d04e058334881584749-13">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058334881584749-14"><span class="crayon-h">			</span><span class="crayon-sy">@</span><span class="crayon-e">Override</span></div><div class="crayon-line" id="crayon-5a4d04e058334881584749-15"><span class="crayon-e">			</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">onRefresh</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058334881584749-16">&nbsp;</div><div class="crayon-line" id="crayon-5a4d04e058334881584749-17"><span class="crayon-h">				</span><span class="crayon-c">// call this method for repopulating recycler view with new data</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058334881584749-18"><span class="crayon-h">				</span><span class="crayon-e">refreshRecyclerView</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d04e058334881584749-19"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058334881584749-20"><span class="crayon-h">		</span><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d04e058334881584749-21"><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058334881584749-22"><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5a4d04e058334881584749-23"><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e058334881584749-24">&nbsp;</div><div class="crayon-line" id="crayon-5a4d04e058334881584749-25"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0058 seconds] -->
+<p>
+<h3>3. Refresh Code</h3>
+<p>Here you can see that i am using a handler so that refresh view should be visible for that because i am populating adapter from local data and it won&#8217;t take too long but if you are fetching data from server then you don&#8217;t need to use handler.</p>
+<p>There is <em>RandomGenerator()</em> method that i used in last <a href="http://androhub.com/android-recyclerview/" target="_blank">RecyclerView tutorial</a>. This method will return random numbers between 0-9.</p>
+<p>Finally after refreshing adapter we have to <em>setRefreshing(false)</em>;</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4d04e05833e790739137" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">refresh code</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+private void refreshRecyclerView() {
+
+		// Handler to show refresh for a period of time you can use async task
+		// while commnunicating serve
+		new Handler().postDelayed(new Runnable() {
+
+			@Override
+			public void run() {
+
+				// Loop for 3 items
+				for (int i = 0; i &lt; 3; i++) {
+					int value = RandomGenerator();// Random value
+
+					// add random data to arraylist
+					gridArrayList.add(new Data_Model(getTitle[value],
+							getLocation[value], getYear[value], images[value]));
+				}
+				adapter.notifyDataSetChanged();// notify adapter
+				gridSwipeRefresh.setRefreshing(false);// set swipe refreshing
+														// false
+
+				// Toast for task completion
+				Toast.makeText(getActivity(), "Items refreshed.",
+						Toast.LENGTH_SHORT).show();
+
+			}
+		}, 5000);
+	}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-2">2</div><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-4">4</div><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-6">6</div><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-8">8</div><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-10">10</div><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-12">12</div><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-14">14</div><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-16">16</div><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-18">18</div><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-20">20</div><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-22">22</div><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-24">24</div><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-26">26</div><div class="crayon-num" data-line="crayon-5a4d04e05833e790739137-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d04e05833e790739137-28">28</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4d04e05833e790739137-1"><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">refreshRecyclerView</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-2">&nbsp;</div><div class="crayon-line" id="crayon-5a4d04e05833e790739137-3"><span class="crayon-h">		</span><span class="crayon-c">// Handler to show refresh for a period of time you can use async task</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-4"><span class="crayon-h">		</span><span class="crayon-c">// while commnunicating serve</span></div><div class="crayon-line" id="crayon-5a4d04e05833e790739137-5"><span class="crayon-h">		</span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-e">Handler</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">postDelayed</span><span class="crayon-sy">(</span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-e">Runnable</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-6">&nbsp;</div><div class="crayon-line" id="crayon-5a4d04e05833e790739137-7"><span class="crayon-h">			</span><span class="crayon-sy">@</span><span class="crayon-e">Override</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-8"><span class="crayon-e">			</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">run</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4d04e05833e790739137-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-10"><span class="crayon-h">				</span><span class="crayon-c">// Loop for 3 items</span></div><div class="crayon-line" id="crayon-5a4d04e05833e790739137-11"><span class="crayon-h">				</span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-h"> </span><span class="crayon-o">&lt;</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-o">++</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-12"><span class="crayon-h">					</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">value</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-e">RandomGenerator</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-c">// Random value</span></div><div class="crayon-line" id="crayon-5a4d04e05833e790739137-13">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-14"><span class="crayon-h">					</span><span class="crayon-c">// add random data to arraylist</span></div><div class="crayon-line" id="crayon-5a4d04e05833e790739137-15"><span class="crayon-h">					</span><span class="crayon-v">gridArrayList</span><span class="crayon-sy">.</span><span class="crayon-e">add</span><span class="crayon-sy">(</span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-e">Data_Model</span><span class="crayon-sy">(</span><span class="crayon-v">getTitle</span><span class="crayon-sy">[</span><span class="crayon-v">value</span><span class="crayon-sy">]</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-16"><span class="crayon-h">							</span><span class="crayon-v">getLocation</span><span class="crayon-sy">[</span><span class="crayon-v">value</span><span class="crayon-sy">]</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">getYear</span><span class="crayon-sy">[</span><span class="crayon-v">value</span><span class="crayon-sy">]</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">images</span><span class="crayon-sy">[</span><span class="crayon-v">value</span><span class="crayon-sy">]</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d04e05833e790739137-17"><span class="crayon-h">				</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-18"><span class="crayon-h">				</span><span class="crayon-v">adapter</span><span class="crayon-sy">.</span><span class="crayon-e">notifyDataSetChanged</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-c">// notify adapter</span></div><div class="crayon-line" id="crayon-5a4d04e05833e790739137-19"><span class="crayon-h">				</span><span class="crayon-v">gridSwipeRefresh</span><span class="crayon-sy">.</span><span class="crayon-e">setRefreshing</span><span class="crayon-sy">(</span><span class="crayon-t">false</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-c">// set swipe refreshing</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-20"><span class="crayon-h">														</span><span class="crayon-c">// false</span></div><div class="crayon-line" id="crayon-5a4d04e05833e790739137-21">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-22"><span class="crayon-h">				</span><span class="crayon-c">// Toast for task completion</span></div><div class="crayon-line" id="crayon-5a4d04e05833e790739137-23"><span class="crayon-h">				</span><span class="crayon-v">Toast</span><span class="crayon-sy">.</span><span class="crayon-e">makeText</span><span class="crayon-sy">(</span><span class="crayon-e">getActivity</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"Items refreshed."</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-24"><span class="crayon-h">						</span><span class="crayon-v">Toast</span><span class="crayon-sy">.</span><span class="crayon-v">LENGTH_SHORT</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">show</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d04e05833e790739137-25">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-26"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4d04e05833e790739137-27"><span class="crayon-h">		</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">5000</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d04e05833e790739137-28"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0065 seconds] -->
+<p>
+<h3>4. Source Code</h3>
+<p>The rest of the code is same as RecyclerView tutorial by adding this RefreshView Code.</p>
+<p>Finally you are all done. Now, you can use swipe refresh into your app to refresh ListView, GridView and RecyclerView. This is easy to implement in minimum number of lines.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/SwipeRefreshLayout_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-502" class="share-twitter sd-button share-icon no-text" href="http://www.androhub.com/android-swiperefresh-layout/?share=twitter" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-502" class="share-facebook sd-button share-icon no-text" href="http://www.androhub.com/android-swiperefresh-layout/?share=facebook" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-502" class="share-google-plus-1 sd-button share-icon no-text" href="http://www.androhub.com/android-swiperefresh-layout/?share=google-plus-1" target="_blank" title="Click to share on Google+"><span></span><span class="sharing-screen-reader-text">Click to share on Google+ (Opens in new window)</span></a></li><li class="share-jetpack-whatsapp"><a rel="nofollow" data-shared="" class="share-jetpack-whatsapp sd-button share-icon no-text" href="whatsapp://send?text=Android%20SwipeRefresh%20Layout http%3A%2F%2Fwww.androhub.com%2Fandroid-swiperefresh-layout%2F" target="_blank" title="Click to share on WhatsApp"><span></span><span class="sharing-screen-reader-text">Click to share on WhatsApp (Opens in new window)</span></a></li><li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-502" class="share-linkedin sd-button share-icon no-text" href="http://www.androhub.com/android-swiperefresh-layout/?share=linkedin" target="_blank" title="Click to share on LinkedIn"><span></span><span class="sharing-screen-reader-text">Click to share on LinkedIn (Opens in new window)</span></a></li><li class="share-email"><a rel="nofollow" data-shared="" class="share-email sd-button share-icon no-text" href="http://www.androhub.com/android-swiperefresh-layout/?share=email" target="_blank" title="Click to email this to a friend"><span></span><span class="sharing-screen-reader-text">Click to email this to a friend (Opens in new window)</span></a></li><li class="share-print"><a rel="nofollow" data-shared="" class="share-print sd-button share-icon no-text" href="http://www.androhub.com/android-swiperefresh-layout/#print" target="_blank" title="Click to print"><span></span><span class="sharing-screen-reader-text">Click to print (Opens in new window)</span></a></li><li class="share-tumblr"><a rel="nofollow" data-shared="" class="share-tumblr sd-button share-icon no-text" href="http://www.androhub.com/android-swiperefresh-layout/?share=tumblr" target="_blank" title="Click to share on Tumblr"><span></span><span class="sharing-screen-reader-text">Click to share on Tumblr (Opens in new window)</span></a></li><li class="share-pinterest"><a rel="nofollow" data-shared="sharing-pinterest-502" class="share-pinterest sd-button share-icon no-text" href="http://www.androhub.com/android-swiperefresh-layout/?share=pinterest" target="_blank" title="Click to share on Pinterest"><span></span><span class="sharing-screen-reader-text">Click to share on Pinterest (Opens in new window)</span></a></li><li class="share-pocket"><a rel="nofollow" data-shared="" class="share-pocket sd-button share-icon no-text" href="http://www.androhub.com/android-swiperefresh-layout/?share=pocket" target="_blank" title="Click to share on Pocket"><span></span><span class="sharing-screen-reader-text">Click to share on Pocket (Opens in new window)</span></a></li><li class="share-telegram"><a rel="nofollow" data-shared="" class="share-telegram sd-button share-icon no-text" href="http://www.androhub.com/android-swiperefresh-layout/?share=telegram" target="_blank" title="Click to share on Telegram"><span></span><span class="sharing-screen-reader-text">Click to share on Telegram (Opens in new window)</span></a></li><li class="share-skype"><a rel="nofollow" data-shared="sharing-skype-502" class="share-skype sd-button share-icon no-text" href="http://www.androhub.com/android-swiperefresh-layout/?share=skype" target="_blank" title="Share on Skype"><span></span><span class="sharing-screen-reader-text">Share on Skype (Opens in new window)</span></a></li><li class="share-reddit"><a rel="nofollow" data-shared="" class="share-reddit sd-button share-icon no-text" href="http://www.androhub.com/android-swiperefresh-layout/?share=reddit" target="_blank" title="Click to share on Reddit"><span></span><span class="sharing-screen-reader-text">Click to share on Reddit (Opens in new window)</span></a></li><li class="share-end"></li></ul></div></div></div>
+
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div>					</div>
+	</div>
+</article>
+
+	<section class='about'>
+		<h4>About the author</h4>
+		<div class='separator'>
+			<div></div>
+		</div>
+		<article class='about-content'>
+			<footer>
+				<div class='about-helper-absolute'>
+					<div class='avatar'>
+						<img alt='' src='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=61&amp;d=mm&amp;r=g' srcset='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />					</div>
+				</div>
+			</footer>
+			<div class='about-body'>
+				<p>I am an Android developer for whom Android is the one and only love. I work as a freelancer which gets me and Android closer. I always love to share my learnings and love to learn from others knowledge too.</p>
+			</div>
+		</article>
+	</section>
+					
+	
+	
+	
+	<section class='leave-comment'>
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.androhub.com/android-swiperefresh-layout/#respond" style="display:none;">Cancel Comment</a></small></h3>				<form action="http://www.androhub.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<div class="separator"><div></div></div>
+			<div class="input-field text-area">
+				<div>
+					Comment
+					<span>(required)</span>
+				</div>
+				<div class="input-style dlight-grey sc-input">
+					<textarea aria-required="true" rows="1" cols="1" name="comment" id="comment"  aria-required='true'></textarea>
+				</div>
+			</div><div><p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code class=&quot;&quot; title=&quot;&quot; data-url=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre class=&quot;&quot; title=&quot;&quot; data-url=&quot;&quot;&gt; &lt;span class=&quot;&quot; title=&quot;&quot; data-url=&quot;&quot;&gt; </code></p></div>
+					<div class="input-field">
+						<div>
+							Name <span>(required)</span>
+						</div>
+						<div class="input-style dlight-grey sc-input">
+							<input id="author" type="text"  aria-required='true' size="20" value="" name="author">
+						</div>
+					</div>
+
+					<div class="input-field">
+						<div>
+							Email <span>(required)</span>
+						</div>
+						<div class="input-style dlight-grey sc-input">
+							<input id="email" name="email" type="text" value="" size="20" aria-required='true' />
+						</div>
+					</div>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="SENT" /> <input type='hidden' name='comment_post_ID' value='502' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="47b47441fe" /></p>
+    <style type="text/css">
+      .comment-image-captcha {
+        margin-bottom: 20px;
+      }
+      .comment-image-captcha table {
+        border-width: 0;
+        border: 0;
+        padding: 0;
+        margin: 0;
+      }
+      .comment-image-captcha td {
+        border-width: 0;
+        vertical-align: middle !important;
+        padding: 0;
+        margin: 0;
+        background-color: transparent !important;
+      }
+      .comment-image-captcha div {
+        margin: 0;
+      }
+      .image-captcha {
+        display: none;
+      }
+      #image-captcha-input {
+        width: 100% !important;
+        box-sizing: border-box;
+        height: auto !important;;
+      }
+      #image-captcha-refresh {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        position: relative;
+      }
+      #image-captcha-block{
+        margin-right: 10px;
+        background-color: #ffffff;
+      }
+      #image-captcha-refresh img {
+        width: 20px;
+      }
+    </style>
+    <div class="comment-image-captcha">
+      <table style="width: 100%;" class="image-captcha">
+        <tr>
+          <td style="width: 77px; vertical-align: bottom;">
+            <div id="image-captcha-block" style="border: 1px solid #DDDDDD; width: 75px; height: 75px;"><img style="padding: 5px;" src="http://www.androhub.com/wp-content/plugins/image-captcha/images/06-03.png"></div>
+          </td>
+          <td style="vertical-align: bottom;">
+            <table style="width: 100%">
+              <tr>
+                <td colspan="2"><label for="image-captcha-input">Object in the image</label></td>
+              </tr>
+              <tr>
+                <td style="vertical-align: bottom;">
+                  <input style="margin-bottom: 0px;" type="text" class="input" id="image-captcha-input" name="image-captcha-input">
+                </td>
+                <td style="vertical-align: middle; width: 35px; text-align: center;">
+                  <span id="image-captcha-refresh"><img src="http://www.androhub.com/wp-content/plugins/image-captcha/assets/refresh.png"></span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!--<div class="comment-image-captcha">
+      <table class="image-captcha">
+          <tr>
+            <td style="width: 77px; vertical-align: bottom">
+
+            </td>
+            <td style="vertical-align: bottom;">
+              <label for="image-captcha-input">Object in the image</label>
+              <table style="display: block;">
+                <tr>
+                  <td><input style="margin-bottom: 0px;" type="text" value="" class="input" id="image-captcha-input" name="image-captcha-input"></td>
+                  <td><div id="image-captcha-refresh"><img src="http://www.androhub.com/wp-content/plugins/image-captcha/assets/refresh.png"></div></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>--><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="194"/></p>				</form>
+					</div><!-- #respond -->
+			</section>							</div>
+		</div>
+				<aside class='right-sidebar grid_3'>
+	<section id="search-2" class="widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.androhub.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" />
+				</div>
+			</form></section><section id="facebook-likebox-2" class="widget_facebook_likebox">		<div id="fb-root"></div>
+		<div class="fb-page" data-href="https://www.facebook.com/androhubtutorial/" data-width="340"  data-height="432" data-hide-cover="false" data-show-facepile="true" data-show-posts="false">
+		<div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/androhubtutorial/"><a href="https://www.facebook.com/androhubtutorial/"></a></blockquote></div>
+		</div>
+		</section>			<section id="wp_subscribe-2" class="wp_subscribe">	
+		<div id="wp-subscribe" class="wp-subscribe-wrap wp-subscribe wp-subscribe-1" data-thanks_page="0" data-thanks_page_url="" data-thanks_page_new_window="0">
+
+			<h4 class="title"></h4>
+
+			<p class="text">Subscribe to our mailing list and get interesting stuff and updates to your email inbox. We don't Spam.</p>
+
+			
+			<form action="http://www.androhub.com/android-swiperefresh-layout?name=android-swiperefresh-layout" method="post" class="wp-subscribe-form wp-subscribe-mailchimp" id="wp-subscribe-form-1">
+
+				
+				<input class="regular-text email-field" type="text" name="email" placeholder="Enter your email here">
+
+				<input type="hidden" name="form_type" value="widget">
+
+				<input type="hidden" name="service" value="mailchimp">
+
+				<input type="hidden" name="widget" value="wp_subscribe-2">
+
+				<input class="submit" type="submit" name="submit" value="Sign Up Now">
+
+			</form>
+
+			
+			<div class="wp-subscribe-loader">
+				<svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<path fill="" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+						<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/>
+					</path>
+				</svg>
+			</div>
+
+			<p class="thanks">Thank you for subscribing.</p>
+			<p class="error">Something went wrong.</p>
+			<div class="clear"></div>
+
+			<p class="footer-text">We respect your privacy and take protecting it seriously.</p>
+
+		</div>
+
+			</section>	
+		<section id="recent-posts-2" class="widget_recent_entries">		<h3>Recent Posts</h3>		<ul>
+					<li>
+				<a href="http://www.androhub.com/authenticate-using-google-sign-in-on-android/">Authenticate Using Google Sign-In on Android</a>
+						</li>
+					<li>
+				<a href="http://www.androhub.com/implementing-android-app-shortcuts/">Implementing Android App Shortcuts</a>
+						</li>
+					<li>
+				<a href="http://www.androhub.com/implement-youtube-player-fragment-android-app/">How to implement Youtube Player Fragment in Android App</a>
+						</li>
+					<li>
+				<a href="http://www.androhub.com/how-to-show-youtube-video-thumbnail-play-youtube-video-in-android-app/">How to show Youtube Video Thumbnail &#038; Play Youtube Video in Android App</a>
+						</li>
+					<li>
+				<a href="http://www.androhub.com/android-confirm-credential-security-lock/">Android Confirm Credential (Security Lock)</a>
+						</li>
+				</ul>
+		</section>		<section id="recent-comments-2" class="widget_recent_comments"><h3>Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href='http://androhub.com/' rel='external nofollow' class='url'>Dr. Droid</a></span> on <a href="http://www.androhub.com/android-expandablelistview/#comment-478">Android ExpandableListView</a></li><li class="recentcomments"><span class="comment-author-link">Mrittunjay</span> on <a href="http://www.androhub.com/android-expandablelistview/#comment-477">Android ExpandableListView</a></li><li class="recentcomments"><span class="comment-author-link">Lawrence</span> on <a href="http://www.androhub.com/android-download-files-save/#comment-476">Android Download Files &#038; Save</a></li><li class="recentcomments"><span class="comment-author-link"><a href='http://androhub.com/' rel='external nofollow' class='url'>Dr. Droid</a></span> on <a href="http://www.androhub.com/login-signup-and-forgot-password-screen-design-android/#comment-475">Login, SignUp and Forgot Password Screen Design Android</a></li><li class="recentcomments"><span class="comment-author-link">fawad azam</span> on <a href="http://www.androhub.com/login-signup-and-forgot-password-screen-design-android/#comment-474">Login, SignUp and Forgot Password Screen Design Android</a></li></ul></section><section id="archives-2" class="widget_archive"><h3>Archives</h3>		<ul>
+			<li><a href='http://www.androhub.com/2017/12/'>December 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/11/'>November 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/10/'>October 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/07/'>July 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/06/'>June 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/05/'>May 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/03/'>March 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.androhub.com/2016/08/'>August 2016</a></li>
+	<li><a href='http://www.androhub.com/2016/07/'>July 2016</a></li>
+	<li><a href='http://www.androhub.com/2016/06/'>June 2016</a></li>
+	<li><a href='http://www.androhub.com/2016/04/'>April 2016</a></li>
+	<li><a href='http://www.androhub.com/2016/03/'>March 2016</a></li>
+	<li><a href='http://www.androhub.com/2015/12/'>December 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/09/'>September 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/08/'>August 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/06/'>June 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/05/'>May 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/04/'>April 2015</a></li>
+		</ul>
+		</section><section id="categories-2" class="widget_categories"><h3>Categories</h3>		<ul>
+	<li class="cat-item cat-item-2"><a href="http://www.androhub.com/category/android-actionbar/" >Android Actionbar</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="http://www.androhub.com/category/android-advanced/" >Android Advanced</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.androhub.com/category/android-animations/" >Android Animations</a>
+</li>
+	<li class="cat-item cat-item-562"><a href="http://www.androhub.com/category/android-app-shortcuts/" >Android App Shortcuts</a>
+</li>
+	<li class="cat-item cat-item-541"><a href="http://www.androhub.com/category/android-authentication/" >Android Authentication</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.androhub.com/category/android-autocomplete/" >Android AutoComplete</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.androhub.com/category/android-basics/" >Android Basics</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.androhub.com/category/android-bluetooth/" >Android Bluetooth</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.androhub.com/category/android-cardview/" >Android CardView</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.androhub.com/category/android-clocks/" >Android Clocks</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.androhub.com/category/android-contacts/" >Android Contacts</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.androhub.com/category/android-content-provider/" >Android Content Provider</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.androhub.com/category/android-custom-font/" >Android Custom Font</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://www.androhub.com/category/android-custom-view/" >Android Custom View</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://www.androhub.com/category/android-database/" >Android Database</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.androhub.com/category/android-dialogs/" >Android Dialogs</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://www.androhub.com/category/android-download-files/" >Android Download Files</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://www.androhub.com/category/android-drawer/" >Android Drawer</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://www.androhub.com/category/android-expandablelistview/" >Android ExpandableListView</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://www.androhub.com/category/android-file/" >Android File</a>
+</li>
+	<li class="cat-item cat-item-489"><a href="http://www.androhub.com/category/android-fingerprint/" >Android FingerPrint</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://www.androhub.com/category/android-fragment/" >Android Fragment</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://www.androhub.com/category/android-gestures/" >Android Gestures</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://www.androhub.com/category/android-gps/" >Android GPS</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://www.androhub.com/category/android-image-picker/" >Android Image Picker</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.androhub.com/category/android-internet-connection/" >Android Internet Connection</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://www.androhub.com/category/android-json/" >Android JSON</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://www.androhub.com/category/android-listview/" >Android ListView</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://www.androhub.com/category/android-material-design/" >Android Material Design</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="http://www.androhub.com/category/android-navigationdrawer/" >Android NavigationDrawer</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://www.androhub.com/category/android-notification-bar/" >Android Notification Bar</a>
+</li>
+	<li class="cat-item cat-item-493"><a href="http://www.androhub.com/category/android-palette/" >Android Palette</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://www.androhub.com/category/android-progressbar/" >Android ProgressBar</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://www.androhub.com/category/android-ratingbar/" >Android RatingBar</a>
+</li>
+	<li class="cat-item cat-item-31"><a href="http://www.androhub.com/category/android-recyclerview/" >Android RecyclerView</a>
+</li>
+	<li class="cat-item cat-item-32"><a href="http://www.androhub.com/category/android-seekbar/" >Android SeekBar</a>
+</li>
+	<li class="cat-item cat-item-34"><a href="http://www.androhub.com/category/android-spinner/" >Android Spinner</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.androhub.com/category/android-stackview/" >Android StackView</a>
+</li>
+	<li class="cat-item cat-item-36"><a href="http://www.androhub.com/category/android-swiperefresh-layout/" >Android SwipeRefresh Layout</a>
+</li>
+	<li class="cat-item cat-item-37"><a href="http://www.androhub.com/category/android-tabs/" >Android Tabs</a>
+</li>
+	<li class="cat-item cat-item-38"><a href="http://www.androhub.com/category/android-textswitcher/" >Android TextSwitcher</a>
+</li>
+	<li class="cat-item cat-item-39"><a href="http://www.androhub.com/category/android-toolbar/" >Android ToolBar</a>
+</li>
+	<li class="cat-item cat-item-40"><a href="http://www.androhub.com/category/android-ui-design/" >Android UI Design</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.androhub.com/category/android-viewanimator/" >Android ViewAnimator</a>
+</li>
+	<li class="cat-item cat-item-42"><a href="http://www.androhub.com/category/android-viewpager/" >Android ViewPager</a>
+</li>
+	<li class="cat-item cat-item-43"><a href="http://www.androhub.com/category/android-viewswitcher/" >Android ViewSwitcher</a>
+</li>
+	<li class="cat-item cat-item-44"><a href="http://www.androhub.com/category/android-wifi/" >Android WIFI</a>
+</li>
+	<li class="cat-item cat-item-446"><a href="http://www.androhub.com/category/google-maps/" >Google Maps</a>
+</li>
+	<li class="cat-item cat-item-45"><a href="http://www.androhub.com/category/http-requests/" >Http Requests</a>
+</li>
+	<li class="cat-item cat-item-46"><a href="http://www.androhub.com/category/intent/" >Intent</a>
+</li>
+		</ul>
+</section></aside>	</div>
+</div>
+<aside class='wrapper lighter-grey'>
+	<div class='container'>
+		<div class='grid_9'>
+			<div class='posts-container'>
+				<div class='post-single-pagination'>
+					<a href="http://www.androhub.com/android-recyclerview/" rel="prev">previous post</a><a href="http://www.androhub.com/android-custom-toast/" rel="next">next post</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</aside>
+					<footer>
+			<div class='wrapper grey'>
+				<div class='container'>
+						<div class='grid_4'>
+			</div>
+	<div class='grid_4'>
+			</div>
+	<div class='grid_4'>
+			</div>
+				</div>
+			</div>
+			<div class='wrapper dark-grey copyright-bar'>
+				<div class='container'>
+					<div class='grid_12'>
+						<span class='copyright'>Copyright ® 2015 - 2017 Androhub.com | All rights reserved.</span><span class="copyright" style="float: right;">Powered by <a href="http://pacdevelopers.com/" target="_blank">PAC Developers</a></span>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<a id="back_to_top" href="#"></a>
+					<div style="display:none">
+	<div class="grofile-hash-map-ebab67fae339761312d475ef8e13e63d">
+	</div>
+	<div class="grofile-hash-map-ebab67fae339761312d475ef8e13e63d">
+	</div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"http:\/\/www.androhub.com\/android-swiperefresh-layout\/":502};
+	</script>
+	<div id="sharing_email" style="display: none;">
+		<form action="http://www.androhub.com/android-swiperefresh-layout/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="" />
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="" />
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="" />
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" />
+			<script>jQuery( document ).ready( function(){ document.getElementById('jetpack-source_f_name').value = '' });</script>
+			
+			<img style="float: right; display: none" class="loading" src="http://www.androhub.com/wp-content/plugins/jetpack/modules/sharedaddy/images/loading.gif" alt="loading" width="16" height="16" />
+			<input type="submit" value="Send Email" class="sharing_send" />
+			<a rel="nofollow" href="#cancel" class="sharing_cancel">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+		<link rel='stylesheet' id='wp-subscribe-css'  href='http://www.androhub.com/wp-content/plugins/wp-subscribe/assets/css/wp-subscribe-form.css?ver=4.5.12' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/jetpack/modules/photon/photon.js?ver=20130122'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201801'></script>
+<script type='text/javascript' src='http://s.gravatar.com/js/gprofiles.js?ver=2018Janaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.5.12'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/main.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/jquery.nicescroll.min.js'></script>
+<script type='text/javascript' src='http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.1.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/jquery.prettyPhoto.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/zozo.tabs.min.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/jquery.isotope.min.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/jquery.iosslider.min.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-includes/js/comment-reply.min.js?ver=4.5.12'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var jpfbembed = {"appid":"249643311490","locale":"en_US"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/jetpack/_inc/facebook-embed.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/youtube-embed-plus/scripts/fitvids.min.js?ver=4.5.12'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-includes/js/wp-embed.min.js?ver=4.5.12'></script>
+<script async="async" type='text/javascript' src='http://www.androhub.com/wp-content/plugins/akismet/_inc/form.js?ver=4.0.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wp_subscribe = {"ajaxurl":"http:\/\/www.androhub.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/wp-subscribe/assets/js/wp-subscribe-form.js?ver=4.5.12'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/jetpack/modules/sharedaddy/sharing.js?ver=4.4.2'></script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-google-plus-1', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-linkedin', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-tumblr', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtumblr', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-pocket', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcompocket', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-telegram', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtelegram', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-skype', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomskype', 'menubar=1,resizable=1,width=305,height=665' );
+				return false;
+			});
+</script>
+<script type='text/javascript' src='http://stats.wp.com/e-201801.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.4.2',blog:'113004364',post:'502',tz:'0',srv:'www.androhub.com'} ]);
+	_stq.push([ 'clickTrackerInit', '113004364', '502' ]);
+</script>
+		<script type="text/javascript">
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-63664503-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
+			<div class="media_for_js"></div>
+	</body>
+
+<!-- Mirrored from www.androhub.com/android-swiperefresh-layout/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jan 2018 03:30:35 GMT -->
+</html>

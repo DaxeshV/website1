@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+	
+<!-- Mirrored from www.androhub.com/count-down-timer-in-android/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jan 2018 03:38:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+		<meta charset="UTF-8" />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0'>
+		<title>Count Down Timer in Android - AndrohubAndrohub</title>
+		<link rel="profile" href="http://gmpg.org/xfn/11" />
+		<link rel="pingback" href="http://www.androhub.com/xmlrpc.php" />
+					<link rel="shortcut icon" href="http://www.androhub.com/wp-content/uploads/2016/05/app_icon_small.png" type="image/x-icon" />
+						
+<!-- This site is optimized with the Yoast SEO plugin v4.4 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="http://www.androhub.com/count-down-timer-in-android/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Count Down Timer in Android - Androhub" />
+<meta property="og:description" content="Today we are going to create a CountDownTimer in Android. CountDownTimer is used to Schedule a countdown until a time in the future, with regular notifications on intervals along the way. For this we are going to use inbuilt CountDownTimer abstract class. Basically CountDownTimer is working on Seconds but we can manipulate it to work &hellip;" />
+<meta property="og:url" content="http://www.androhub.com/count-down-timer-in-android/" />
+<meta property="og:site_name" content="Androhub" />
+<meta property="article:publisher" content="https://www.facebook.com/androhubtutorial/" />
+<meta property="article:author" content="facebook.com/sonu.surender" />
+<meta property="article:tag" content="conversion of time" />
+<meta property="article:tag" content="Count down" />
+<meta property="article:tag" content="CountDown Timer" />
+<meta property="article:tag" content="reverse timer" />
+<meta property="article:tag" content="timer" />
+<meta property="article:section" content="Android Basics" />
+<meta property="article:published_time" content="2015-12-23T23:31:01+00:00" />
+<meta property="article:modified_time" content="2016-06-16T10:06:21+00:00" />
+<meta property="og:updated_time" content="2016-06-16T10:06:21+00:00" />
+<meta property="og:image" content="http://www.androhub.com/wp-content/uploads/2015/12/countdowntimer_banner.jpg" />
+<meta property="og:image:width" content="795" />
+<meta property="og:image:height" content="413" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="Today we are going to create a CountDownTimer in Android. CountDownTimer is used to Schedule a countdown until a time in the future, with regular notifications on intervals along the way. For this we are going to use inbuilt CountDownTimer abstract class. Basically CountDownTimer is working on Seconds but we can manipulate it to work [&hellip;]" />
+<meta name="twitter:title" content="Count Down Timer in Android - Androhub" />
+<meta name="twitter:site" content="@sonusurender0" />
+<meta name="twitter:image" content="https://i2.wp.com/www.androhub.com/wp-content/uploads/2015/12/countdowntimer_banner.jpg?fit=795%2C413" />
+<meta name="twitter:creator" content="@sonusurender0" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Androhub &raquo; Feed" href="http://www.androhub.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Androhub &raquo; Comments Feed" href="http://www.androhub.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Androhub &raquo; Count Down Timer in Android Comments Feed" href="http://www.androhub.com/count-down-timer-in-android/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.androhub.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.5.12"}};
+			!function(a,b,c){function d(a){var c,d,e,f=b.createElement("canvas"),g=f.getContext&&f.getContext("2d"),h=String.fromCharCode;if(!g||!g.fillText)return!1;switch(g.textBaseline="top",g.font="600 32px Arial",a){case"flag":return g.fillText(h(55356,56806,55356,56826),0,0),f.toDataURL().length>3e3;case"diversity":return g.fillText(h(55356,57221),0,0),c=g.getImageData(16,16,1,1).data,d=c[0]+","+c[1]+","+c[2]+","+c[3],g.fillText(h(55356,57221,55356,57343),0,0),c=g.getImageData(16,16,1,1).data,e=c[0]+","+c[1]+","+c[2]+","+c[3],d!==e;case"simple":return g.fillText(h(55357,56835),0,0),0!==g.getImageData(16,16,1,1).data[0];case"unicode8":return g.fillText(h(55356,57135),0,0),0!==g.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='http://www.androhub.com/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-classic-css'  href='http://www.androhub.com/wp-content/plugins/crayon-syntax-highlighter/themes/classic/classic.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='http://www.androhub.com/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='normalize-css'  href='http://www.androhub.com/wp-content/themes/circles/css/normalize.css' type='text/css' media='all' />
+<link rel='stylesheet' id='prettyPhoto-css'  href='http://www.androhub.com/wp-content/themes/circles/css/prettyPhoto.css' type='text/css' media='all' />
+<link rel='stylesheet' id='grid-system-css'  href='http://www.androhub.com/wp-content/themes/circles/css/grid-system.css' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='http://www.androhub.com/wp-content/themes/circles/css/main.css' type='text/css' media='all' />
+<link rel='stylesheet' id='shortcodes-css'  href='http://www.androhub.com/wp-content/themes/circles/css/shortcodes.css' type='text/css' media='all' />
+<link rel='stylesheet' id='widgets-css'  href='http://www.androhub.com/wp-admin/css/widgets.min.css?ver=4.5.12' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='http://www.androhub.com/wp-content/themes/circles/css/font-awesome.css' type='text/css' media='all' />
+<link rel='stylesheet' id='icomoon-css'  href='http://www.androhub.com/wp-content/themes/circles/css/icomoon.css' type='text/css' media='all' />
+<link rel='stylesheet' id='responsiveness-css'  href='http://www.androhub.com/wp-content/themes/circles/css/media.php?switch_menu_to_mobile=' type='text/css' media='all' />
+<link rel='stylesheet' id='style-css'  href='http://www.androhub.com/wp-content/themes/circles/style.css?ver=4.5.12' type='text/css' media='all' />
+<!-- Inline jetpack_facebook_likebox -->
+<style id='jetpack_facebook_likebox-inline-css' type='text/css'>
+.widget_facebook_likebox {
+	overflow: hidden;
+}
+
+</style>
+<link rel='stylesheet' id='tablepress-default-css'  href='http://www.androhub.com/wp-content/plugins/tablepress/css/default.min.css?ver=1.7' type='text/css' media='all' />
+<link rel='stylesheet' id='__EPYT__style-css'  href='http://www.androhub.com/wp-content/plugins/youtube-embed-plus/styles/ytprefs.min.css?ver=4.5.12' type='text/css' media='all' />
+<style id='__EPYT__style-inline-css' type='text/css'>
+
+                .epyt-gallery-thumb {
+                        width: 33.333%;
+                }
+                
+</style>
+<link rel='stylesheet' id='social-logos-css'  href='http://www.androhub.com/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='http://www.androhub.com/wp-content/plugins/jetpack/css/jetpack.css?ver=4.4.2' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _EPYT_ = {"ajaxurl":"http:\/\/www.androhub.com\/wp-admin\/admin-ajax.php","security":"4948790cd0","gallery_scrolloffset":"20","eppathtoscripts":"http:\/\/www.androhub.com\/wp-content\/plugins\/youtube-embed-plus\/scripts\/","epresponsiveselector":"[\"iframe.__youtube_prefs_widget__\"]","epdovol":"1","version":"11.8.5","evselector":"iframe.__youtube_prefs__[src], iframe[src*=\"youtube.com\/embed\/\"], iframe[src*=\"youtube-nocookie.com\/embed\/\"]","ajax_compat":"","stopMobileBuffer":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/www.androhub.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/image-captcha/assets/image-captcha.js?ver=4.5.12'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/youtube-embed-plus/scripts/ytprefs.min.js?ver=4.5.12'></script>
+<link rel='https://api.w.org/' href='http://www.androhub.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.androhub.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.androhub.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.5.12" />
+<link rel='shortlink' href='http://wp.me/p7E9B2-cR' />
+<link rel="alternate" type="application/json+oembed" href="http://www.androhub.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.androhub.com%2Fcount-down-timer-in-android%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.androhub.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.androhub.com%2Fcount-down-timer-in-android%2F&amp;format=xml" />
+
+<link rel='dns-prefetch' href='http://v0.wordpress.com/'>
+<link rel='dns-prefetch' href='http://i0.wp.com/'>
+<link rel='dns-prefetch' href='http://i1.wp.com/'>
+<link rel='dns-prefetch' href='http://i2.wp.com/'>
+<style type='text/css'>img#wpstats{display:none}</style><!--[if lt IE 9]><script src="http://www.androhub.com/wp-content/themes/circles/js/html5.js"></script><![endif]--><!--[if lt IE 7]><script src="http://www.androhub.com/wp-content/themes/circles/js/icomoon.js"></script><![endif]-->	<script type="text/javascript">
+		var ajaxurl = 'http://www.androhub.com/wp-admin/admin-ajax.php';
+	</script>
+				<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,700" rel="stylesheet" type="text/css">
+					<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,800,300,700" rel="stylesheet" type="text/css">
+			<style type="text/css">
+					body,
+			article .column_post-body,
+			.post-body-text,
+			.post-area 
+			{ font-family: 'Noto Sans'; }
+		
+		
+					.headline h1 { font-family: 'Noto Sans'; }
+		
+		
+					.menu .menu-item a,
+			.menu .page_item a { font-family: 'Noto Sans'; }
+		
+		
+					.post-area h1, .post-body-text h1,
+			.post-area h2, .post-body-text h2,
+			.post-area h3, .post-body-text h3,
+			.post-area h4, .post-body-text h4,
+			.post-area h5, .post-body-text h5,
+			.post-area h6, .post-body-text h6, aside h5 {
+				font-family: 'Noto Sans';
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		#logo {
+											}
+		
+			</style>
+	<style type="text/css" id="dynamic-styles">
+				
+			
+	
+	
+			
+			
+			
+			
+		
+			
+		
+	
+			
+	
+	
+	
+	
+	
+	
+	
+		</style>
+			<style type="text/css">
+			div.wrapper.menu-bg {
+    display: none;
+}
+.right-sidebar h3{
+    margin-top: 15px;
+    margin-bottom: 1px;
+}
+
+footer .wrapper.grey {
+    display: none;
+}
+.form-allowed-tags {
+    display: none;
+}
+.headline.marble h1 {
+    display: none;
+}
+
+.wrapper.headline {
+    height: 36px;
+}
+.header-image {
+    height: 50px;
+    background-position: center;
+}
+.header-image {
+    height: 50px;
+}
+.logo img {
+    position: absolute;
+    top: -18px;
+    height: 87px;
+    width: 270px;
+    z-index: 105;
+}
+.marble {
+    background-color: #91C448 !important;
+}
+.marble .page-path span,.marble .page-path a {
+    color: #FFFFFF;
+}
+.widget_search {
+    margin-bottom: 15px;
+}
+.grid_12 {
+    margin: -8px 1.25%;
+}		</style>
+			<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		
+<style id="custom-css-css">.phone-icon{right:522px;position:absolute;top:33px;display:inline-block;height:16px;padding:1px 0;font-size:13px;font-weight:700;margin-right:10px;padding-left:25px;background:url(http://www.androhub.com/downloads/ic_phone.png);background-position:left center;background-repeat:no-repeat}.email-icon{right:319px;position:absolute;top:33px;display:inline-block;height:16px;padding:1px 0;font-size:13px;font-weight:700;margin-right:10px;padding-left:25px;background:url(http://www.androhub.com/downloads/ic_email.png);background-position:left center;background-repeat:no-repeat}</style>
+	</head>
+	<body class="single single-post postid-797 single-format-standard w1170 sticky-menu-on nice-scroll">
+    
+			<div class="preloading-screen" style=" background: #fff center no-repeat fixed">
+			<div class="spinners">
+				<div class="bounce1"></div>
+			</div>
+		</div>
+					<header class='page-header'>
+	
+		
+	<div class='wrapper wrapper-bg'>
+		<div class='container'>
+			<div class='grid_12'>
+				<div class='logo'>
+																					<a href='http://www.androhub.com/' title="Androhub" rel="home"><img src="http://androhub.com/wp-content/uploads/2016/05/andro_new.png" class="" alt="Androhub" /></a>
+				</div>
+				
+<!-- Header Contact -->
+<div class="phone-icon">
+<span>+91 9008091580</span>
+</div>
+
+<div class="email-icon">
+<span>surender@androhub.com</span>
+</div>
+<!--  Exit  -->
+
+
+				<ul class='socials'>
+											<li>
+							<span class="tran02slinear"></span>
+							<a class='facebook tran02slinear' href='https://www.facebook.com/sonu.surender' title="Facebook" target="_blank"></a>
+						</li>
+																<li>
+							<span class="tran02slinear"></span>
+							<a class='twitter tran02slinear' href='https://twitter.com/sonusurender0' title="Twitter" target="_blank"></a>
+						</li>
+																										<li>
+							<span class="tran02slinear"></span>
+							<a class='youtube tran02slinear' href='https://www.youtube.com/channel/UCHJh3E9mtRzbM3WVVl9glJg' title="Youtube" target="_blank"></a>
+						</li>
+																										<li>
+							<span class="tran02slinear"></span>
+							<a class='google-plus tran02slinear' href='https://plus.google.com/u/0/+SurenderKumarandrohub' title="Google+" target="_blank"></a>
+						</li>
+																<li>
+							<span class="tran02slinear"></span>
+							<a class='linkedin tran02slinear' href='https://in.linkedin.com/in/surender-kumar-681472a8' title="LinkedIn" target="_blank"></a>
+						</li>
+														</ul>
+			</div>
+		</div>
+	</div>
+	<div class='absolute'>
+		<div class='wrapper menu-bg custom-menu-bg border-bottom-black-tr'>
+			<div class='container'>
+										<a id="menu-btn" href="#"></a>
+
+						<nav class="menu"><ul><li ><a href="http://www.androhub.com/">Home</a></li></ul></nav>
+
+					<ul class='socials mobile-socials'>
+											<li>
+							<span class="tran02slinear"></span>
+							<a class='facebook tran02slinear' href='https://www.facebook.com/sonu.surender' title="Facebook" target="_blank"></a>
+						</li>
+																<li>
+							<span class="tran02slinear"></span>
+							<a class='twitter tran02slinear' href='https://twitter.com/sonusurender0' title="Twitter" target="_blank"></a>
+						</li>
+																										<li>
+							<span class="tran02slinear"></span>
+							<a class='youtube tran02slinear' href='https://www.youtube.com/channel/UCHJh3E9mtRzbM3WVVl9glJg' title="Youtube" target="_blank"></a>
+						</li>
+																										<li>
+							<span class="tran02slinear"></span>
+							<a class='google-plus tran02slinear' href='https://plus.google.com/u/0/+SurenderKumarandrohub' title="Google+" target="_blank"></a>
+						</li>
+																<li>
+							<span class="tran02slinear"></span>
+							<a class='linkedin tran02slinear' href='https://in.linkedin.com/in/surender-kumar-681472a8' title="LinkedIn" target="_blank"></a>
+						</li>
+														</ul>
+			</div>
+		</div>
+			<div class='wrapper headline  marble border-bottom-black-tr'>
+		<div class='container'>
+			<div class='grid_12'>
+									<h1>Blog</h1>
+													<div class='page-path'>
+						<div id="crumbs" xmlns:v="http://rdf.data-vocabulary.org/#"><span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="http://www.androhub.com/">Home</a></span> <span class="delimiter">|</span> <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="http://www.androhub.com/category/android-basics/">Android Basics</a></span> <span class="delimiter">|</span> <span class="current">Count Down Timer in Android</span></div>					</div>
+							</div>
+		</div>
+	</div>
+	</div>
+</header><div class='wrapper header-image '></div>
+<div class='wrapper'>
+	<div class='container main'>
+						<div class='post-area grid_9'>
+			<div class='posts-container'>
+													<article id="post-797" class="post  center post-797 type-post status-publish format-standard has-post-thumbnail hentry category-android-basics tag-conversion-of-time tag-count-down tag-countdown-timer tag-reverse-timer tag-timer">
+		<header>
+		<a href='http://www.androhub.com/count-down-timer-in-android/'><h2>Count Down Timer in Android</h2></a>
+	</header>
+	<footer>
+	<div class='post-helper-absolute'>
+		<div class='avatar big'>
+			<img alt='' src='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=61&amp;d=mm&amp;r=g' srcset='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />		</div>
+		<div class='post-comments'>
+			<span>10</span>
+		</div>
+		<div class='post-author'>
+			By			<span>
+				<a href="http://www.androhub.com/author/droid/" title="Posts by Dr. Droid" rel="author">Dr. Droid</a>			</span>
+		</div>
+		<div class='post-type'>
+			<span></span>
+		</div>
+	</div>
+	<div class='post-date'>
+		<span>December 23, 2015</span>
+	</div>
+			<div class='post-category'>
+			<span>
+				<a href="http://www.androhub.com/category/android-basics/" rel="category tag">Android Basics</a>			</span>
+		</div>
+		<div class='separator'>
+	</div>
+</footer>	<div class="post-body clearfix">
+					<article class='item-con-t1'>
+				<div class='container-t1'>
+					<div class='container-t1-margin'>
+						<img src="http://www.androhub.com/wp-content/uploads/freshizer/40e06ca13fba9cb5843d5e4be82fb92a_countdowntimer_banner-863-430-c.jpg" class="wp-post-image" width="863" height="430" alt="Count Down Timer in Android"  />					</div>
+				</div>
+				<div class='blue-line'></div>
+			</article>
+				<div class='post-body-text'>
+			<p>Today we are going to create a <a href="http://developer.android.com/intl/es/reference/android/os/CountDownTimer.html" target="_blank">CountDownTimer</a> in Android. CountDownTimer is used to Schedule a countdown until a time in the future, with regular notifications on intervals along the way. For this we are going to use inbuilt CountDownTimer abstract class.</p>
+<p>Basically CountDownTimer is working on Seconds but we can manipulate it to work on Minutes, Hours or Days. So in this tutorial also we are going to convert seconds into Hour, Minutes and Seconds.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_28032" width="602" height="339" src="https://www.youtube.com/embed/h-z3nAykL0U?enablejsapi=1&amp;autoplay=0&amp;cc_load_policy=0&amp;iv_load_policy=1&amp;loop=0&amp;modestbranding=0&amp;rel=1&amp;showinfo=1&amp;fs=1&amp;theme=dark&amp;color=red&amp;autohide=2&amp;controls=2&amp;playsinline=0&amp;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New ⇒ New Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>strings.xml</strong> located under <strong>res=&gt;values</strong> folder and add following strings. These strings are going to be used in this example.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4e30f0d92b8692231200" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">strings.xml</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+&lt;resources&gt;
+    &lt;string name="app_name"&gt;CountDownTimer Demo&lt;/string&gt;
+
+    &lt;string name="enter_minutes"&gt;Minutes!&lt;/string&gt;
+    &lt;string name="start_timer"&gt;Start Timer&lt;/string&gt;
+    &lt;string name="stop_timer"&gt;Stop Timer&lt;/string&gt;
+    &lt;string name="reset_timer"&gt;Reset Timer&lt;/string&gt;
+    &lt;string name="timer"&gt;00:00:00&lt;/string&gt;
+&lt;/resources&gt;</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4e30f0d92b8692231200-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92b8692231200-2">2</div><div class="crayon-num" data-line="crayon-5a4e30f0d92b8692231200-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92b8692231200-4">4</div><div class="crayon-num" data-line="crayon-5a4e30f0d92b8692231200-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92b8692231200-6">6</div><div class="crayon-num" data-line="crayon-5a4e30f0d92b8692231200-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92b8692231200-8">8</div><div class="crayon-num" data-line="crayon-5a4e30f0d92b8692231200-9">9</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4e30f0d92b8692231200-1"><span class="crayon-o">&lt;</span><span class="crayon-v">resources</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92b8692231200-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"app_name"</span><span class="crayon-o">&gt;</span><span class="crayon-e">CountDownTimer </span><span class="crayon-v">Demo</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92b8692231200-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92b8692231200-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"enter_minutes"</span><span class="crayon-o">&gt;</span><span class="crayon-v">Minutes</span><span class="crayon-o">!</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92b8692231200-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"start_timer"</span><span class="crayon-o">&gt;</span><span class="crayon-e">Start </span><span class="crayon-v">Timer</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92b8692231200-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"stop_timer"</span><span class="crayon-o">&gt;</span><span class="crayon-e">Stop </span><span class="crayon-v">Timer</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92b8692231200-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"reset_timer"</span><span class="crayon-o">&gt;</span><span class="crayon-e">Reset </span><span class="crayon-v">Timer</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92b8692231200-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"timer"</span><span class="crayon-o">&gt;</span><span class="crayon-cn">00</span><span class="crayon-o">:</span><span class="crayon-cn">00</span><span class="crayon-o">:</span><span class="crayon-cn">00</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92b8692231200-9"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">resources</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0023 seconds] -->
+<p>
+<b>3</b>. Now create a layout naming <em>activity_main.xml</em> and add the following code. In this there are two button for start/stop and reset timer, an EditText for entering no of minutes to run timer and a TextView for running timer.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4e30f0d92cc381624451" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">activity_main.xml</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEEEEE"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"&gt;
+
+    &lt;RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"&gt;
+
+        &lt;EditText
+            android:id="@+id/enterMinutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/startTimer"
+            android:hint="@string/enter_minutes"
+            android:padding="10dp"
+            android:maxLength="4"
+            android:inputType="number"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textColorHint="#9E9E9E"
+            /&gt;
+
+        &lt;Button
+            android:id="@+id/startTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="#009688"
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:text="@string/start_timer" /&gt;
+    &lt;/RelativeLayout&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/countdownText"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30sp"
+        android:text="@string/timer"
+        android:layout_marginTop="25dp"
+        android:textStyle="bold"
+        android:textColor="#4CAF50"/&gt;
+    &lt;Button
+        android:id="@+id/resetTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_marginTop="15dp"
+        android:background="#009688"
+        android:padding="10dp"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:text="@string/reset_timer" /&gt;
+
+&lt;/LinearLayout&gt;</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-2">2</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-4">4</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-6">6</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-8">8</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-10">10</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-12">12</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-14">14</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-16">16</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-18">18</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-20">20</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-22">22</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-24">24</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-26">26</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-28">28</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-30">30</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-32">32</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-34">34</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-36">36</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-38">38</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-40">40</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-41">41</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-42">42</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-43">43</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-44">44</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-45">45</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-46">46</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-47">47</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-48">48</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-49">49</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-50">50</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-51">51</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-52">52</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-53">53</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-54">54</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-55">55</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-56">56</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-57">57</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-58">58</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-59">59</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-60">60</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-61">61</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-62">62</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-63">63</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-64">64</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-65">65</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-66">66</div><div class="crayon-num" data-line="crayon-5a4e30f0d92cc381624451-67">67</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92cc381624451-68">68</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-1"><span class="crayon-o">&lt;</span><span class="crayon-e">LinearLayout </span><span class="crayon-v">xmlns</span><span class="crayon-o">:</span><span class="crayon-v">android</span><span class="crayon-o">=</span><span class="crayon-s">"http://schemas.android.com/apk/res/android"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_width</span><span class="crayon-o">=</span><span class="crayon-s">"match_parent"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_height</span><span class="crayon-o">=</span><span class="crayon-s">"match_parent"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">background</span><span class="crayon-o">=</span><span class="crayon-s">"#EEEEEE"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">gravity</span><span class="crayon-o">=</span><span class="crayon-s">"center"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">orientation</span><span class="crayon-o">=</span><span class="crayon-s">"vertical"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">padding</span><span class="crayon-o">=</span><span class="crayon-s">"10dp"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-8">&nbsp;</div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">RelativeLayout</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-10"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_width</span><span class="crayon-o">=</span><span class="crayon-s">"fill_parent"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-11"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_height</span><span class="crayon-o">=</span><span class="crayon-s">"wrap_content"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-12">&nbsp;</div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-13"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">EditText</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-14"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">id</span><span class="crayon-o">=</span><span class="crayon-s">"@+id/enterMinutes"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-15"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_width</span><span class="crayon-o">=</span><span class="crayon-s">"wrap_content"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-16"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_height</span><span class="crayon-o">=</span><span class="crayon-s">"wrap_content"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-17"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_alignParentLeft</span><span class="crayon-o">=</span><span class="crayon-s">"true"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-18"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_centerVertical</span><span class="crayon-o">=</span><span class="crayon-s">"true"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-19"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_marginLeft</span><span class="crayon-o">=</span><span class="crayon-s">"10dp"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-20"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_marginRight</span><span class="crayon-o">=</span><span class="crayon-s">"10dp"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-21"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_toLeftOf</span><span class="crayon-o">=</span><span class="crayon-s">"@+id/startTimer"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-22"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">hint</span><span class="crayon-o">=</span><span class="crayon-s">"@string/enter_minutes"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-23"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">padding</span><span class="crayon-o">=</span><span class="crayon-s">"10dp"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-24"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">maxLength</span><span class="crayon-o">=</span><span class="crayon-s">"4"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-25"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">inputType</span><span class="crayon-o">=</span><span class="crayon-s">"number"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-26"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textSize</span><span class="crayon-o">=</span><span class="crayon-s">"16sp"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-27"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">gravity</span><span class="crayon-o">=</span><span class="crayon-s">"center"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-28"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textColor</span><span class="crayon-o">=</span><span class="crayon-s">"#000000"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-29"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textColorHint</span><span class="crayon-o">=</span><span class="crayon-s">"#9E9E9E"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-30"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">/</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-31">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-32"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">Button</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-33"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">id</span><span class="crayon-o">=</span><span class="crayon-s">"@+id/startTimer"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-34"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_width</span><span class="crayon-o">=</span><span class="crayon-s">"wrap_content"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-35"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_height</span><span class="crayon-o">=</span><span class="crayon-s">"wrap_content"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-36"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_alignParentRight</span><span class="crayon-o">=</span><span class="crayon-s">"true"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-37"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_centerVertical</span><span class="crayon-o">=</span><span class="crayon-s">"true"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-38"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_marginRight</span><span class="crayon-o">=</span><span class="crayon-s">"10dp"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-39"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">background</span><span class="crayon-o">=</span><span class="crayon-s">"#009688"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-40"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">padding</span><span class="crayon-o">=</span><span class="crayon-s">"10dp"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-41"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textColor</span><span class="crayon-o">=</span><span class="crayon-s">"#ffffff"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-42"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textSize</span><span class="crayon-o">=</span><span class="crayon-s">"16sp"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-43"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">text</span><span class="crayon-o">=</span><span class="crayon-s">"@string/start_timer"</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-44"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">RelativeLayout</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-45">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-46"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">TextView</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-47"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_width</span><span class="crayon-o">=</span><span class="crayon-s">"wrap_content"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-48"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_height</span><span class="crayon-o">=</span><span class="crayon-s">"wrap_content"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-49"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">id</span><span class="crayon-o">=</span><span class="crayon-s">"@+id/countdownText"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-50"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">gravity</span><span class="crayon-o">=</span><span class="crayon-s">"center"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-51"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_gravity</span><span class="crayon-o">=</span><span class="crayon-s">"center_horizontal"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-52"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textSize</span><span class="crayon-o">=</span><span class="crayon-s">"30sp"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-53"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">text</span><span class="crayon-o">=</span><span class="crayon-s">"@string/timer"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-54"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_marginTop</span><span class="crayon-o">=</span><span class="crayon-s">"25dp"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-55"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textStyle</span><span class="crayon-o">=</span><span class="crayon-s">"bold"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-56"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textColor</span><span class="crayon-o">=</span><span class="crayon-s">"#4CAF50"</span><span class="crayon-o">/</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-57"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">Button</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-58"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">id</span><span class="crayon-o">=</span><span class="crayon-s">"@+id/resetTimer"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-59"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_width</span><span class="crayon-o">=</span><span class="crayon-s">"wrap_content"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-60"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_height</span><span class="crayon-o">=</span><span class="crayon-s">"wrap_content"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-61"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_marginTop</span><span class="crayon-o">=</span><span class="crayon-s">"15dp"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-62"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">background</span><span class="crayon-o">=</span><span class="crayon-s">"#009688"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-63"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">padding</span><span class="crayon-o">=</span><span class="crayon-s">"10dp"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-64"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textColor</span><span class="crayon-o">=</span><span class="crayon-s">"#ffffff"</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-65"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textSize</span><span class="crayon-o">=</span><span class="crayon-s">"16sp"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-66"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">text</span><span class="crayon-o">=</span><span class="crayon-s">"@string/reset_timer"</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92cc381624451-67">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92cc381624451-68"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">LinearLayout</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0090 seconds] -->
+<p>
+<b>4</b>. The below method <em>startTimer(int noOfMinutes) </em>is going to be used for countdown timer. There are  three methods in CountDownTimer class:</p>
+<ul>
+<li><strong>onTick(long millisUntilFinished) &#8211;</strong> When a count down start this method will run and we can display the Tick over TextView.</li>
+<li><strong>onFinish() &#8211;</strong> When CountDown finished then this method called.</li>
+<li><strong>onCancel() &#8211;</strong> This method is used for cancelling CountDownTimer.</li>
+</ul>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4e30f0d92da963324344" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">Countdown Timer method</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+ private void startTimer(int noOfMinutes) {
+ CountDownTimer  countDownTimer = new CountDownTimer(noOfMinutes, 1000) {
+            public void onTick(long millisUntilFinished) {
+                long millis = millisUntilFinished;
+                //Convert milliseconds into hour,minute and seconds
+                String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis), TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)), TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+                countdownTimerText.setText(hms);//set text
+            }
+            public void onFinish() {
+                countdownTimerText.setText("TIME'S UP!!"); //On finish change timer text
+            }
+        }.start();
+
+    }</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4e30f0d92da963324344-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92da963324344-2">2</div><div class="crayon-num" data-line="crayon-5a4e30f0d92da963324344-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92da963324344-4">4</div><div class="crayon-num" data-line="crayon-5a4e30f0d92da963324344-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92da963324344-6">6</div><div class="crayon-num" data-line="crayon-5a4e30f0d92da963324344-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92da963324344-8">8</div><div class="crayon-num" data-line="crayon-5a4e30f0d92da963324344-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92da963324344-10">10</div><div class="crayon-num" data-line="crayon-5a4e30f0d92da963324344-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92da963324344-12">12</div><div class="crayon-num" data-line="crayon-5a4e30f0d92da963324344-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92da963324344-14">14</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4e30f0d92da963324344-1"><span class="crayon-h"> </span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">startTimer</span><span class="crayon-sy">(</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">noOfMinutes</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92da963324344-2"><span class="crayon-h"> </span><span class="crayon-e">CountDownTimer&nbsp;&nbsp;</span><span class="crayon-v">countDownTimer</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-e">CountDownTimer</span><span class="crayon-sy">(</span><span class="crayon-v">noOfMinutes</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">1000</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4e30f0d92da963324344-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">onTick</span><span class="crayon-sy">(</span><span class="crayon-t">long</span><span class="crayon-h"> </span><span class="crayon-v">millisUntilFinished</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92da963324344-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">long</span><span class="crayon-h"> </span><span class="crayon-v">millis</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">millisUntilFinished</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92da963324344-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Convert milliseconds into hour,minute and seconds</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92da963324344-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">hms</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">String</span><span class="crayon-sy">.</span><span class="crayon-e">format</span><span class="crayon-sy">(</span><span class="crayon-s">"%02d:%02d:%02d"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">MILLISECONDS</span><span class="crayon-sy">.</span><span class="crayon-e">toHours</span><span class="crayon-sy">(</span><span class="crayon-v">millis</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">MILLISECONDS</span><span class="crayon-sy">.</span><span class="crayon-e">toMinutes</span><span class="crayon-sy">(</span><span class="crayon-v">millis</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-h"> </span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">HOURS</span><span class="crayon-sy">.</span><span class="crayon-e">toMinutes</span><span class="crayon-sy">(</span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">MILLISECONDS</span><span class="crayon-sy">.</span><span class="crayon-e">toHours</span><span class="crayon-sy">(</span><span class="crayon-v">millis</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">MILLISECONDS</span><span class="crayon-sy">.</span><span class="crayon-e">toSeconds</span><span class="crayon-sy">(</span><span class="crayon-v">millis</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-h"> </span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">MINUTES</span><span class="crayon-sy">.</span><span class="crayon-e">toSeconds</span><span class="crayon-sy">(</span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">MILLISECONDS</span><span class="crayon-sy">.</span><span class="crayon-e">toMinutes</span><span class="crayon-sy">(</span><span class="crayon-v">millis</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92da963324344-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">countdownTimerText</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-v">hms</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-c">//set text</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92da963324344-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4e30f0d92da963324344-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">onFinish</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92da963324344-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">countdownTimerText</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-s">"TIME'S UP!!"</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-c">//On finish change timer text</span></div><div class="crayon-line" id="crayon-5a4e30f0d92da963324344-11"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92da963324344-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">.</span><span class="crayon-e">start</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92da963324344-13">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92da963324344-14"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0043 seconds] -->
+
+<b>5</b>. Finally come to your MainActivity.java and add the following code. The code is very simple to use CountDownTimer. You can implement this code in your project.<br />
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4e30f0d92e4166533565" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">MainActivity.java</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+package com.countdowntimer_demo;
+
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.concurrent.TimeUnit;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static TextView countdownTimerText;
+    private static EditText minutes;
+    private static Button startTimer, resetTimer;
+    private static CountDownTimer countDownTimer;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        countdownTimerText = (TextView) findViewById(R.id.countdownText);
+        minutes = (EditText) findViewById(R.id.enterMinutes);
+        startTimer = (Button) findViewById(R.id.startTimer);
+        resetTimer = (Button) findViewById(R.id.resetTimer);
+
+        setListeners();
+
+    }
+
+
+    //Set Listeners over button
+    private void setListeners() {
+        startTimer.setOnClickListener(this);
+        resetTimer.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.startTimer:
+                //If CountDownTimer is null then start timer
+                if (countDownTimer == null) {
+                    String getMinutes = minutes.getText().toString();//Get minutes from edittexf
+                    //Check validation over edittext
+                    if (!getMinutes.equals("") &amp;&amp; getMinutes.length() &gt; 0) {
+                        int noOfMinutes = Integer.parseInt(getMinutes) * 60 * 1000;//Convert minutes into milliseconds
+
+                        startTimer(noOfMinutes);//start countdown
+                        startTimer.setText(getString(R.string.stop_timer));//Change Text
+
+                    } else
+                        Toast.makeText(MainActivity.this, "Please enter no. of Minutes.", Toast.LENGTH_SHORT).show();//Display toast if edittext is empty
+                } else {
+                    //Else stop timer and change text
+                    stopCountdown();
+                    startTimer.setText(getString(R.string.start_timer));
+                }
+                break;
+            case R.id.resetTimer:
+                stopCountdown();//stop count down
+                startTimer.setText(getString(R.string.start_timer));//Change text to Start Timer
+                countdownTimerText.setText(getString(R.string.timer));//Change Timer text
+                break;
+        }
+
+
+    }
+
+
+    //Stop Countdown method
+    private void stopCountdown() {
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
+    }
+
+    //Start Countodwn method
+    private void startTimer(int noOfMinutes) {
+        countDownTimer = new CountDownTimer(noOfMinutes, 1000) {
+            public void onTick(long millisUntilFinished) {
+                long millis = millisUntilFinished;
+                //Convert milliseconds into hour,minute and seconds
+                String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis), TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)), TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+                countdownTimerText.setText(hms);//set text
+            }
+
+            public void onFinish() {
+
+                countdownTimerText.setText("TIME'S UP!!"); //On finish change timer text
+                countDownTimer = null;//set CountDownTimer to null
+                startTimer.setText(getString(R.string.start_timer));//Change button text
+            }
+        }.start();
+
+    }
+
+
+}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-2">2</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-4">4</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-6">6</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-8">8</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-10">10</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-12">12</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-14">14</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-16">16</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-18">18</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-20">20</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-22">22</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-24">24</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-26">26</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-28">28</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-30">30</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-32">32</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-34">34</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-36">36</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-38">38</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-40">40</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-41">41</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-42">42</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-43">43</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-44">44</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-45">45</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-46">46</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-47">47</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-48">48</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-49">49</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-50">50</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-51">51</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-52">52</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-53">53</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-54">54</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-55">55</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-56">56</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-57">57</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-58">58</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-59">59</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-60">60</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-61">61</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-62">62</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-63">63</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-64">64</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-65">65</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-66">66</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-67">67</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-68">68</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-69">69</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-70">70</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-71">71</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-72">72</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-73">73</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-74">74</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-75">75</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-76">76</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-77">77</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-78">78</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-79">79</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-80">80</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-81">81</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-82">82</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-83">83</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-84">84</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-85">85</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-86">86</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-87">87</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-88">88</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-89">89</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-90">90</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-91">91</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-92">92</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-93">93</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-94">94</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-95">95</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-96">96</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-97">97</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-98">98</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-99">99</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-100">100</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-101">101</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4e30f0d92e4166533565-102">102</div><div class="crayon-num" data-line="crayon-5a4e30f0d92e4166533565-103">103</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-1"><span class="crayon-t">package</span><span class="crayon-h"> </span><span class="crayon-v">com</span><span class="crayon-sy">.</span><span class="crayon-v">countdowntimer_demo</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-2">&nbsp;</div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-3"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">os</span><span class="crayon-sy">.</span><span class="crayon-v">Bundle</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-4"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">os</span><span class="crayon-sy">.</span><span class="crayon-v">CountDownTimer</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-5"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">support</span><span class="crayon-sy">.</span><span class="crayon-v">v7</span><span class="crayon-sy">.</span><span class="crayon-v">app</span><span class="crayon-sy">.</span><span class="crayon-v">AppCompatActivity</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-6"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">view</span><span class="crayon-sy">.</span><span class="crayon-v">View</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-7"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">widget</span><span class="crayon-sy">.</span><span class="crayon-v">Button</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-8"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">widget</span><span class="crayon-sy">.</span><span class="crayon-v">EditText</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-9"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">widget</span><span class="crayon-sy">.</span><span class="crayon-v">TextView</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-10"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">widget</span><span class="crayon-sy">.</span><span class="crayon-v">Toast</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-11">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-12"><span class="crayon-e">import </span><span class="crayon-v">java</span><span class="crayon-sy">.</span><span class="crayon-v">util</span><span class="crayon-sy">.</span><span class="crayon-v">concurrent</span><span class="crayon-sy">.</span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-13">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-14"><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">class</span><span class="crayon-h"> </span><span class="crayon-e">MainActivity </span><span class="crayon-r">extends</span><span class="crayon-h"> </span><span class="crayon-e">AppCompatActivity </span><span class="crayon-r">implements</span><span class="crayon-h"> </span><span class="crayon-v">View</span><span class="crayon-sy">.</span><span class="crayon-i">OnClickListener</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-15"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-e">TextView </span><span class="crayon-v">countdownTimerText</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-16"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-e">EditText </span><span class="crayon-v">minutes</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-17"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-e">Button </span><span class="crayon-v">startTimer</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">resetTimer</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-18"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-e">CountDownTimer </span><span class="crayon-v">countDownTimer</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-19">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-20"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">@</span><span class="crayon-e">Override</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-21"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">protected</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">onCreate</span><span class="crayon-sy">(</span><span class="crayon-e">Bundle </span><span class="crayon-v">savedInstanceState</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-22"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">super</span><span class="crayon-sy">.</span><span class="crayon-e">onCreate</span><span class="crayon-sy">(</span><span class="crayon-v">savedInstanceState</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-23"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">setContentView</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">layout</span><span class="crayon-sy">.</span><span class="crayon-v">activity_main</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-24">&nbsp;</div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-25"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">countdownTimerText</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">TextView</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">findViewById</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">id</span><span class="crayon-sy">.</span><span class="crayon-v">countdownText</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-26"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">minutes</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">EditText</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">findViewById</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">id</span><span class="crayon-sy">.</span><span class="crayon-v">enterMinutes</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-27"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">startTimer</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">Button</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">findViewById</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">id</span><span class="crayon-sy">.</span><span class="crayon-v">startTimer</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-28"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">resetTimer</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">Button</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">findViewById</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">id</span><span class="crayon-sy">.</span><span class="crayon-v">resetTimer</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-29">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-30"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">setListeners</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-31">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-32"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-33">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-34">&nbsp;</div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-35"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Set Listeners over button</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-36"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">setListeners</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-37"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">startTimer</span><span class="crayon-sy">.</span><span class="crayon-e">setOnClickListener</span><span class="crayon-sy">(</span><span class="crayon-r">this</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-38"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">resetTimer</span><span class="crayon-sy">.</span><span class="crayon-e">setOnClickListener</span><span class="crayon-sy">(</span><span class="crayon-r">this</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-39"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-40">&nbsp;</div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-41"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">@</span><span class="crayon-e">Override</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-42"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">onClick</span><span class="crayon-sy">(</span><span class="crayon-i">View</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-43"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">switch</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">v</span><span class="crayon-sy">.</span><span class="crayon-e">getId</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-44"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">case</span><span class="crayon-h"> </span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">id</span><span class="crayon-sy">.</span><span class="crayon-v">startTimer</span><span class="crayon-o">:</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-45"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//If CountDownTimer is null then start timer</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-46"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">countDownTimer</span><span class="crayon-h"> </span><span class="crayon-o">==</span><span class="crayon-h"> </span><span class="crayon-t">null</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-47"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">getMinutes</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">minutes</span><span class="crayon-sy">.</span><span class="crayon-e">getText</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">toString</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-c">//Get minutes from edittexf</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-48"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Check validation over edittext</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-49"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-o">!</span><span class="crayon-v">getMinutes</span><span class="crayon-sy">.</span><span class="crayon-e">equals</span><span class="crayon-sy">(</span><span class="crayon-s">""</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">&amp;&amp;</span><span class="crayon-h"> </span><span class="crayon-v">getMinutes</span><span class="crayon-sy">.</span><span class="crayon-e">length</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-50"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">noOfMinutes</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">Integer</span><span class="crayon-sy">.</span><span class="crayon-e">parseInt</span><span class="crayon-sy">(</span><span class="crayon-v">getMinutes</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-h"> </span><span class="crayon-cn">60</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-h"> </span><span class="crayon-cn">1000</span><span class="crayon-sy">;</span><span class="crayon-c">//Convert minutes into milliseconds</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-51">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-52"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">startTimer</span><span class="crayon-sy">(</span><span class="crayon-v">noOfMinutes</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-c">//start countdown</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-53"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">startTimer</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-e">getString</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-t">string</span><span class="crayon-sy">.</span><span class="crayon-v">stop_timer</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-c">//Change Text</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-54">&nbsp;</div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-55"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">else</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-56"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">Toast</span><span class="crayon-sy">.</span><span class="crayon-e">makeText</span><span class="crayon-sy">(</span><span class="crayon-v">MainActivity</span><span class="crayon-sy">.</span><span class="crayon-v">this</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"Please enter no. of Minutes."</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">Toast</span><span class="crayon-sy">.</span><span class="crayon-v">LENGTH_SHORT</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">show</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-c">//Display toast if edittext is empty</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-57"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">else</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-58"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Else stop timer and change text</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-59"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">stopCountdown</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-60"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">startTimer</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-e">getString</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-t">string</span><span class="crayon-sy">.</span><span class="crayon-v">start_timer</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-61"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-62"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">break</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-63"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">case</span><span class="crayon-h"> </span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">id</span><span class="crayon-sy">.</span><span class="crayon-v">resetTimer</span><span class="crayon-o">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-64"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">stopCountdown</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-c">//stop count down</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-65"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">startTimer</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-e">getString</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-t">string</span><span class="crayon-sy">.</span><span class="crayon-v">start_timer</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-c">//Change text to Start Timer</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-66"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">countdownTimerText</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-e">getString</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-t">string</span><span class="crayon-sy">.</span><span class="crayon-v">timer</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-c">//Change Timer text</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-67"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">break</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-68"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-69">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-70">&nbsp;</div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-71"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-72">&nbsp;</div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-73">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-74"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Stop Countdown method</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-75"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">stopCountdown</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-76"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">countDownTimer</span><span class="crayon-h"> </span><span class="crayon-o">!=</span><span class="crayon-h"> </span><span class="crayon-t">null</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-77"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">countDownTimer</span><span class="crayon-sy">.</span><span class="crayon-e">cancel</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-78"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">countDownTimer</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">null</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-79"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-80"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-81">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-82"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Start Countodwn method</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-83"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">startTimer</span><span class="crayon-sy">(</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">noOfMinutes</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-84"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">countDownTimer</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-e">CountDownTimer</span><span class="crayon-sy">(</span><span class="crayon-v">noOfMinutes</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">1000</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-85"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">onTick</span><span class="crayon-sy">(</span><span class="crayon-t">long</span><span class="crayon-h"> </span><span class="crayon-v">millisUntilFinished</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-86"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">long</span><span class="crayon-h"> </span><span class="crayon-v">millis</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">millisUntilFinished</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-87"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Convert milliseconds into hour,minute and seconds</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-88"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">hms</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">String</span><span class="crayon-sy">.</span><span class="crayon-e">format</span><span class="crayon-sy">(</span><span class="crayon-s">"%02d:%02d:%02d"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">MILLISECONDS</span><span class="crayon-sy">.</span><span class="crayon-e">toHours</span><span class="crayon-sy">(</span><span class="crayon-v">millis</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">MILLISECONDS</span><span class="crayon-sy">.</span><span class="crayon-e">toMinutes</span><span class="crayon-sy">(</span><span class="crayon-v">millis</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-h"> </span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">HOURS</span><span class="crayon-sy">.</span><span class="crayon-e">toMinutes</span><span class="crayon-sy">(</span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">MILLISECONDS</span><span class="crayon-sy">.</span><span class="crayon-e">toHours</span><span class="crayon-sy">(</span><span class="crayon-v">millis</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">MILLISECONDS</span><span class="crayon-sy">.</span><span class="crayon-e">toSeconds</span><span class="crayon-sy">(</span><span class="crayon-v">millis</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-h"> </span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">MINUTES</span><span class="crayon-sy">.</span><span class="crayon-e">toSeconds</span><span class="crayon-sy">(</span><span class="crayon-v">TimeUnit</span><span class="crayon-sy">.</span><span class="crayon-v">MILLISECONDS</span><span class="crayon-sy">.</span><span class="crayon-e">toMinutes</span><span class="crayon-sy">(</span><span class="crayon-v">millis</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-89"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">countdownTimerText</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-v">hms</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-c">//set text</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-90"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-91">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-92"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">onFinish</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-93">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-94"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">countdownTimerText</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-s">"TIME'S UP!!"</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-c">//On finish change timer text</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-95"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">countDownTimer</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">null</span><span class="crayon-sy">;</span><span class="crayon-c">//set CountDownTimer to null</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-96"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">startTimer</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-e">getString</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-t">string</span><span class="crayon-sy">.</span><span class="crayon-v">start_timer</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-c">//Change button text</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-97"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-98"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">.</span><span class="crayon-e">start</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-99">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-100"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-101">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4e30f0d92e4166533565-102">&nbsp;</div><div class="crayon-line" id="crayon-5a4e30f0d92e4166533565-103"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0182 seconds] -->
+
+<b>6</b>. Finally, run the application and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/CountDownTimer_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-797" class="share-twitter sd-button share-icon no-text" href="http://www.androhub.com/count-down-timer-in-android/?share=twitter" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-797" class="share-facebook sd-button share-icon no-text" href="http://www.androhub.com/count-down-timer-in-android/?share=facebook" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-797" class="share-google-plus-1 sd-button share-icon no-text" href="http://www.androhub.com/count-down-timer-in-android/?share=google-plus-1" target="_blank" title="Click to share on Google+"><span></span><span class="sharing-screen-reader-text">Click to share on Google+ (Opens in new window)</span></a></li><li class="share-jetpack-whatsapp"><a rel="nofollow" data-shared="" class="share-jetpack-whatsapp sd-button share-icon no-text" href="whatsapp://send?text=Count%20Down%20Timer%20in%20Android http%3A%2F%2Fwww.androhub.com%2Fcount-down-timer-in-android%2F" target="_blank" title="Click to share on WhatsApp"><span></span><span class="sharing-screen-reader-text">Click to share on WhatsApp (Opens in new window)</span></a></li><li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-797" class="share-linkedin sd-button share-icon no-text" href="http://www.androhub.com/count-down-timer-in-android/?share=linkedin" target="_blank" title="Click to share on LinkedIn"><span></span><span class="sharing-screen-reader-text">Click to share on LinkedIn (Opens in new window)</span></a></li><li class="share-email"><a rel="nofollow" data-shared="" class="share-email sd-button share-icon no-text" href="http://www.androhub.com/count-down-timer-in-android/?share=email" target="_blank" title="Click to email this to a friend"><span></span><span class="sharing-screen-reader-text">Click to email this to a friend (Opens in new window)</span></a></li><li class="share-print"><a rel="nofollow" data-shared="" class="share-print sd-button share-icon no-text" href="http://www.androhub.com/count-down-timer-in-android/#print" target="_blank" title="Click to print"><span></span><span class="sharing-screen-reader-text">Click to print (Opens in new window)</span></a></li><li class="share-tumblr"><a rel="nofollow" data-shared="" class="share-tumblr sd-button share-icon no-text" href="http://www.androhub.com/count-down-timer-in-android/?share=tumblr" target="_blank" title="Click to share on Tumblr"><span></span><span class="sharing-screen-reader-text">Click to share on Tumblr (Opens in new window)</span></a></li><li class="share-pinterest"><a rel="nofollow" data-shared="sharing-pinterest-797" class="share-pinterest sd-button share-icon no-text" href="http://www.androhub.com/count-down-timer-in-android/?share=pinterest" target="_blank" title="Click to share on Pinterest"><span></span><span class="sharing-screen-reader-text">Click to share on Pinterest (Opens in new window)</span></a></li><li class="share-pocket"><a rel="nofollow" data-shared="" class="share-pocket sd-button share-icon no-text" href="http://www.androhub.com/count-down-timer-in-android/?share=pocket" target="_blank" title="Click to share on Pocket"><span></span><span class="sharing-screen-reader-text">Click to share on Pocket (Opens in new window)</span></a></li><li class="share-telegram"><a rel="nofollow" data-shared="" class="share-telegram sd-button share-icon no-text" href="http://www.androhub.com/count-down-timer-in-android/?share=telegram" target="_blank" title="Click to share on Telegram"><span></span><span class="sharing-screen-reader-text">Click to share on Telegram (Opens in new window)</span></a></li><li class="share-skype"><a rel="nofollow" data-shared="sharing-skype-797" class="share-skype sd-button share-icon no-text" href="http://www.androhub.com/count-down-timer-in-android/?share=skype" target="_blank" title="Share on Skype"><span></span><span class="sharing-screen-reader-text">Share on Skype (Opens in new window)</span></a></li><li class="share-reddit"><a rel="nofollow" data-shared="" class="share-reddit sd-button share-icon no-text" href="http://www.androhub.com/count-down-timer-in-android/?share=reddit" target="_blank" title="Click to share on Reddit"><span></span><span class="sharing-screen-reader-text">Click to share on Reddit (Opens in new window)</span></a></li><li class="share-end"></li></ul></div></div></div>
+
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div>					</div>
+	</div>
+</article>
+
+	<section class='about'>
+		<h4>About the author</h4>
+		<div class='separator'>
+			<div></div>
+		</div>
+		<article class='about-content'>
+			<footer>
+				<div class='about-helper-absolute'>
+					<div class='avatar'>
+						<img alt='' src='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=61&amp;d=mm&amp;r=g' srcset='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />					</div>
+				</div>
+			</footer>
+			<div class='about-body'>
+				<p>I am an Android developer for whom Android is the one and only love. I work as a freelancer which gets me and Android closer. I always love to share my learnings and love to learn from others knowledge too.</p>
+			</div>
+		</article>
+	</section>
+					
+	
+			<section class='comments'>
+			<div class='comments-header'>
+				<h1></h1>
+				<span class='number-of-comments'>COMMENTS (<span>10</span>)</span>
+			</div>
+			<div class='separator'>
+				<div></div>
+			</div>
+			
+				<article class="comment even thread-even depth-1 comment" id="li-comment-249">
+		<footer>
+			<div class='comment-helper-absolute'>
+				<div class='avatar'>
+					<img alt='' src='http://1.gravatar.com/avatar/1b08ef40f855b61809997e98bef0bda5?s=61&amp;d=mm&amp;r=g' srcset='http://1.gravatar.com/avatar/1b08ef40f855b61809997e98bef0bda5?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />				</div>
+				<div class='post-author'>
+					By					<span>
+						madhav					</span>
+				</div>
+			</div>
+			<div class='post-date'>
+				<time pubdate datetime="2016-10-12T13:23:02+00:00"><span class="comment-day">October 12, 2016</span><span class="comment-time">at 1:23 pm</span></time>
+			</div>
+			<span class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='http://www.androhub.com/count-down-timer-in-android/?replytocom=249#respond' onclick='return addComment.moveForm( "comment-249", "249", "respond", "797" )' aria-label='Reply to madhav'>Reply</a></span>
+		</footer>
+		<div class='comment-body'>
+						<p>It will work well but when i close application it stops and reset from start. so can you help me how can i start timer from left time.</p>
+		</div>
+	</article>
+	<ul class="children">
+	<article class="comment byuser comment-author-droid bypostauthor odd alt depth-2 comment" id="li-comment-250">
+		<footer>
+			<div class='comment-helper-absolute'>
+				<div class='avatar'>
+					<img alt='' src='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=61&amp;d=mm&amp;r=g' srcset='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />				</div>
+				<div class='post-author'>
+					By					<span>
+						<a href='http://androhub.com/' rel='external nofollow' class='url'>Dr. Droid</a>					</span>
+				</div>
+			</div>
+			<div class='post-date'>
+				<time pubdate datetime="2016-10-12T13:30:53+00:00"><span class="comment-day">October 12, 2016</span><span class="comment-time">at 1:30 pm</span></time>
+			</div>
+			<span class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='http://www.androhub.com/count-down-timer-in-android/?replytocom=250#respond' onclick='return addComment.moveForm( "comment-250", "250", "respond", "797" )' aria-label='Reply to Dr. Droid'>Reply</a></span>
+		</footer>
+		<div class='comment-body'>
+						<p>HI Madhav,</p>
+<p>To start the timer from where you left it, You have to save the last time in SharedPreferences and then when you open your activity again that time read the value from SharedPreference. If value exist start timer from there else start from 0.</p>
+<p>Thanks</p>
+		</div>
+	</article>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<article class="comment even thread-odd thread-alt depth-1 comment" id="li-comment-278">
+		<footer>
+			<div class='comment-helper-absolute'>
+				<div class='avatar'>
+					<img alt='' src='http://1.gravatar.com/avatar/71e518b773526a63f1827fc45024b3cb?s=61&amp;d=mm&amp;r=g' srcset='http://1.gravatar.com/avatar/71e518b773526a63f1827fc45024b3cb?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />				</div>
+				<div class='post-author'>
+					By					<span>
+						Nur subhan					</span>
+				</div>
+			</div>
+			<div class='post-date'>
+				<time pubdate datetime="2016-12-25T20:05:52+00:00"><span class="comment-day">December 25, 2016</span><span class="comment-time">at 8:05 pm</span></time>
+			</div>
+			<span class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='http://www.androhub.com/count-down-timer-in-android/?replytocom=278#respond' onclick='return addComment.moveForm( "comment-278", "278", "respond", "797" )' aria-label='Reply to Nur subhan'>Reply</a></span>
+		</footer>
+		<div class='comment-body'>
+						<p>Hello Dr.Droid</p>
+<p>I wanted to create a multi countdown ,.Can you help me,.??<br />
+please</p>
+<p>😀</p>
+		</div>
+	</article>
+	<ul class="children">
+	<article class="comment byuser comment-author-droid bypostauthor odd alt depth-2 comment" id="li-comment-279">
+		<footer>
+			<div class='comment-helper-absolute'>
+				<div class='avatar'>
+					<img alt='' src='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=61&amp;d=mm&amp;r=g' srcset='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />				</div>
+				<div class='post-author'>
+					By					<span>
+						<a href='http://androhub.com/' rel='external nofollow' class='url'>Dr. Droid</a>					</span>
+				</div>
+			</div>
+			<div class='post-date'>
+				<time pubdate datetime="2016-12-26T07:04:56+00:00"><span class="comment-day">December 26, 2016</span><span class="comment-time">at 7:04 am</span></time>
+			</div>
+			<span class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='http://www.androhub.com/count-down-timer-in-android/?replytocom=279#respond' onclick='return addComment.moveForm( "comment-279", "279", "respond", "797" )' aria-label='Reply to Dr. Droid'>Reply</a></span>
+		</footer>
+		<div class='comment-body'>
+						<p>Hi Nur Subhan,</p>
+<p>To create MultiCountdown there are two ways:<br />
+1. Create multiple  CountDownTimer instance and use them as to start and stop timer. (I am not sure that this will work out or not)<br />
+2. Create a ListView and add the number of rows and in every row put your timer and there you have to start it and stop. (This will work out.)</p>
+<p>For 2nd Way you can have look to this StackOverFlow Solution:<br />
+ <a href="http://stackoverflow.com/questions/6346075/android-multiple-simultaneous-count-down-timers-in-a-listview" rel="nofollow">http://stackoverflow.com/questions/6346075/android-multiple-simultaneous-count-down-timers-in-a-listview</a></p>
+<p>Thanks</p>
+		</div>
+	</article>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<article class="comment even thread-even depth-1 comment" id="li-comment-280">
+		<footer>
+			<div class='comment-helper-absolute'>
+				<div class='avatar'>
+					<img alt='' src='http://0.gravatar.com/avatar/c4e970c626ed2a7928cdf6890e13e767?s=61&amp;d=mm&amp;r=g' srcset='http://0.gravatar.com/avatar/c4e970c626ed2a7928cdf6890e13e767?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />				</div>
+				<div class='post-author'>
+					By					<span>
+						ismail					</span>
+				</div>
+			</div>
+			<div class='post-date'>
+				<time pubdate datetime="2016-12-26T15:09:11+00:00"><span class="comment-day">December 26, 2016</span><span class="comment-time">at 3:09 pm</span></time>
+			</div>
+			<span class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='http://www.androhub.com/count-down-timer-in-android/?replytocom=280#respond' onclick='return addComment.moveForm( "comment-280", "280", "respond", "797" )' aria-label='Reply to ismail'>Reply</a></span>
+		</footer>
+		<div class='comment-body'>
+						<p>Thanks you.<br />
+i will use in my project</p>
+		</div>
+	</article>
+	<ul class="children">
+	<article class="comment odd alt depth-2 comment" id="li-comment-282">
+		<footer>
+			<div class='comment-helper-absolute'>
+				<div class='avatar'>
+					<img alt='' src='http://1.gravatar.com/avatar/71e518b773526a63f1827fc45024b3cb?s=61&amp;d=mm&amp;r=g' srcset='http://1.gravatar.com/avatar/71e518b773526a63f1827fc45024b3cb?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />				</div>
+				<div class='post-author'>
+					By					<span>
+						Nur subhan					</span>
+				</div>
+			</div>
+			<div class='post-date'>
+				<time pubdate datetime="2017-01-03T06:26:03+00:00"><span class="comment-day">January 3, 2017</span><span class="comment-time">at 6:26 am</span></time>
+			</div>
+			<span class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='http://www.androhub.com/count-down-timer-in-android/?replytocom=282#respond' onclick='return addComment.moveForm( "comment-282", "282", "respond", "797" )' aria-label='Reply to Nur subhan'>Reply</a></span>
+		</footer>
+		<div class='comment-body'>
+						<p>Sory Dr. Droid</p>
+<p>I can not understand all of that code<br />
+please give me a tutorial from you</p>
+<p>:'(</p>
+		</div>
+	</article>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<article class="comment even thread-odd thread-alt depth-1 comment" id="li-comment-322">
+		<footer>
+			<div class='comment-helper-absolute'>
+				<div class='avatar'>
+					<img alt='' src='http://1.gravatar.com/avatar/1301ee28c477a762ff243e4e1c50ea94?s=61&amp;d=mm&amp;r=g' srcset='http://1.gravatar.com/avatar/1301ee28c477a762ff243e4e1c50ea94?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />				</div>
+				<div class='post-author'>
+					By					<span>
+						Dilyan					</span>
+				</div>
+			</div>
+			<div class='post-date'>
+				<time pubdate datetime="2017-05-11T10:11:21+00:00"><span class="comment-day">May 11, 2017</span><span class="comment-time">at 10:11 am</span></time>
+			</div>
+			<span class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='http://www.androhub.com/count-down-timer-in-android/?replytocom=322#respond' onclick='return addComment.moveForm( "comment-322", "322", "respond", "797" )' aria-label='Reply to Dilyan'>Reply</a></span>
+		</footer>
+		<div class='comment-body'>
+						<p>Hello,<br />
+Can you explain me how to make a resume button in this code.</p>
+<p>Thanks in advanced 🙂 !</p>
+		</div>
+	</article>
+	<ul class="children">
+	<article class="comment byuser comment-author-droid bypostauthor odd alt depth-2 comment" id="li-comment-323">
+		<footer>
+			<div class='comment-helper-absolute'>
+				<div class='avatar'>
+					<img alt='' src='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=61&amp;d=mm&amp;r=g' srcset='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />				</div>
+				<div class='post-author'>
+					By					<span>
+						<a href='http://androhub.com/' rel='external nofollow' class='url'>Dr. Droid</a>					</span>
+				</div>
+			</div>
+			<div class='post-date'>
+				<time pubdate datetime="2017-05-11T13:30:11+00:00"><span class="comment-day">May 11, 2017</span><span class="comment-time">at 1:30 pm</span></time>
+			</div>
+			<span class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='http://www.androhub.com/count-down-timer-in-android/?replytocom=323#respond' onclick='return addComment.moveForm( "comment-323", "323", "respond", "797" )' aria-label='Reply to Dr. Droid'>Reply</a></span>
+		</footer>
+		<div class='comment-body'>
+						<p>Hi Dilyan,</p>
+<p>Unfortunately there is no resume functionality in Count Down but there is other way to do this. For this whenever you stop the timer you need to save the time in SharedPreference and when you click on Resume button that time get the remaining time by subtracting total time &#8211; save time = time_remaining. This remaining_time will be your current time for which you have to run the count down.<br />
+Hope you understand.</p>
+<p>Thanks</p>
+		</div>
+	</article>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<article class="comment even thread-even depth-1 comment" id="li-comment-341">
+		<footer>
+			<div class='comment-helper-absolute'>
+				<div class='avatar'>
+					<img alt='' src='http://1.gravatar.com/avatar/1e8eeacd139d5faadd119088fc56389f?s=61&amp;d=mm&amp;r=g' srcset='http://1.gravatar.com/avatar/1e8eeacd139d5faadd119088fc56389f?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />				</div>
+				<div class='post-author'>
+					By					<span>
+						pppp					</span>
+				</div>
+			</div>
+			<div class='post-date'>
+				<time pubdate datetime="2017-06-02T12:16:19+00:00"><span class="comment-day">June 2, 2017</span><span class="comment-time">at 12:16 pm</span></time>
+			</div>
+			<span class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='http://www.androhub.com/count-down-timer-in-android/?replytocom=341#respond' onclick='return addComment.moveForm( "comment-341", "341", "respond", "797" )' aria-label='Reply to pppp'>Reply</a></span>
+		</footer>
+		<div class='comment-body'>
+						<p>How to manipulate it for number of days, as i am trying but its not giving the correct value</p>
+		</div>
+	</article>
+	<ul class="children">
+	<article class="comment byuser comment-author-droid bypostauthor odd alt depth-2 comment" id="li-comment-342">
+		<footer>
+			<div class='comment-helper-absolute'>
+				<div class='avatar'>
+					<img alt='' src='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=61&amp;d=mm&amp;r=g' srcset='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />				</div>
+				<div class='post-author'>
+					By					<span>
+						<a href='http://androhub.com/' rel='external nofollow' class='url'>Dr. Droid</a>					</span>
+				</div>
+			</div>
+			<div class='post-date'>
+				<time pubdate datetime="2017-06-03T07:44:47+00:00"><span class="comment-day">June 3, 2017</span><span class="comment-time">at 7:44 am</span></time>
+			</div>
+			<span class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='http://www.androhub.com/count-down-timer-in-android/?replytocom=342#respond' onclick='return addComment.moveForm( "comment-342", "342", "respond", "797" )' aria-label='Reply to Dr. Droid'>Reply</a></span>
+		</footer>
+		<div class='comment-body'>
+						<p>Hi PPPP,</p>
+<p>I don&#8217;t know what logic you are using. I am telling my logic please cross check with yours one and try it.</p>
+<p>1. Convert the milliseconds into hours.<br />
+2. After convert hours into number of days by  : hours/24.</p>
+<p>In this way you will get the countdown timer into number of days.</p>
+<p>Thanks</p>
+		</div>
+	</article>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+					</section>
+	
+	
+	<section class='leave-comment'>
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.androhub.com/count-down-timer-in-android/#respond" style="display:none;">Cancel Comment</a></small></h3>				<form action="http://www.androhub.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<div class="separator"><div></div></div>
+			<div class="input-field text-area">
+				<div>
+					Comment
+					<span>(required)</span>
+				</div>
+				<div class="input-style dlight-grey sc-input">
+					<textarea aria-required="true" rows="1" cols="1" name="comment" id="comment"  aria-required='true'></textarea>
+				</div>
+			</div><div><p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code class=&quot;&quot; title=&quot;&quot; data-url=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre class=&quot;&quot; title=&quot;&quot; data-url=&quot;&quot;&gt; &lt;span class=&quot;&quot; title=&quot;&quot; data-url=&quot;&quot;&gt; </code></p></div>
+					<div class="input-field">
+						<div>
+							Name <span>(required)</span>
+						</div>
+						<div class="input-style dlight-grey sc-input">
+							<input id="author" type="text"  aria-required='true' size="20" value="" name="author">
+						</div>
+					</div>
+
+					<div class="input-field">
+						<div>
+							Email <span>(required)</span>
+						</div>
+						<div class="input-style dlight-grey sc-input">
+							<input id="email" name="email" type="text" value="" size="20" aria-required='true' />
+						</div>
+					</div>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="SENT" /> <input type='hidden' name='comment_post_ID' value='797' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="8bcdf4fbbe" /></p>
+    <style type="text/css">
+      .comment-image-captcha {
+        margin-bottom: 20px;
+      }
+      .comment-image-captcha table {
+        border-width: 0;
+        border: 0;
+        padding: 0;
+        margin: 0;
+      }
+      .comment-image-captcha td {
+        border-width: 0;
+        vertical-align: middle !important;
+        padding: 0;
+        margin: 0;
+        background-color: transparent !important;
+      }
+      .comment-image-captcha div {
+        margin: 0;
+      }
+      .image-captcha {
+        display: none;
+      }
+      #image-captcha-input {
+        width: 100% !important;
+        box-sizing: border-box;
+        height: auto !important;;
+      }
+      #image-captcha-refresh {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        position: relative;
+      }
+      #image-captcha-block{
+        margin-right: 10px;
+        background-color: #ffffff;
+      }
+      #image-captcha-refresh img {
+        width: 20px;
+      }
+    </style>
+    <div class="comment-image-captcha">
+      <table style="width: 100%;" class="image-captcha">
+        <tr>
+          <td style="width: 77px; vertical-align: bottom;">
+            <div id="image-captcha-block" style="border: 1px solid #DDDDDD; width: 75px; height: 75px;"><img style="padding: 5px;" src="http://www.androhub.com/wp-content/plugins/image-captcha/images/06-61.png"></div>
+          </td>
+          <td style="vertical-align: bottom;">
+            <table style="width: 100%">
+              <tr>
+                <td colspan="2"><label for="image-captcha-input">Object in the image</label></td>
+              </tr>
+              <tr>
+                <td style="vertical-align: bottom;">
+                  <input style="margin-bottom: 0px;" type="text" class="input" id="image-captcha-input" name="image-captcha-input">
+                </td>
+                <td style="vertical-align: middle; width: 35px; text-align: center;">
+                  <span id="image-captcha-refresh"><img src="http://www.androhub.com/wp-content/plugins/image-captcha/assets/refresh.png"></span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!--<div class="comment-image-captcha">
+      <table class="image-captcha">
+          <tr>
+            <td style="width: 77px; vertical-align: bottom">
+
+            </td>
+            <td style="vertical-align: bottom;">
+              <label for="image-captcha-input">Object in the image</label>
+              <table style="display: block;">
+                <tr>
+                  <td><input style="margin-bottom: 0px;" type="text" value="" class="input" id="image-captcha-input" name="image-captcha-input"></td>
+                  <td><div id="image-captcha-refresh"><img src="http://www.androhub.com/wp-content/plugins/image-captcha/assets/refresh.png"></div></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>--><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="32"/></p>				</form>
+					</div><!-- #respond -->
+			</section>							</div>
+		</div>
+				<aside class='right-sidebar grid_3'>
+	<section id="search-2" class="widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.androhub.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" />
+				</div>
+			</form></section><section id="facebook-likebox-2" class="widget_facebook_likebox">		<div id="fb-root"></div>
+		<div class="fb-page" data-href="https://www.facebook.com/androhubtutorial/" data-width="340"  data-height="432" data-hide-cover="false" data-show-facepile="true" data-show-posts="false">
+		<div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/androhubtutorial/"><a href="https://www.facebook.com/androhubtutorial/"></a></blockquote></div>
+		</div>
+		</section>			<section id="wp_subscribe-2" class="wp_subscribe">	
+		<div id="wp-subscribe" class="wp-subscribe-wrap wp-subscribe wp-subscribe-1" data-thanks_page="0" data-thanks_page_url="" data-thanks_page_new_window="0">
+
+			<h4 class="title"></h4>
+
+			<p class="text">Subscribe to our mailing list and get interesting stuff and updates to your email inbox. We don't Spam.</p>
+
+			
+			<form action="http://www.androhub.com/count-down-timer-in-android?name=count-down-timer-in-android" method="post" class="wp-subscribe-form wp-subscribe-mailchimp" id="wp-subscribe-form-1">
+
+				
+				<input class="regular-text email-field" type="text" name="email" placeholder="Enter your email here">
+
+				<input type="hidden" name="form_type" value="widget">
+
+				<input type="hidden" name="service" value="mailchimp">
+
+				<input type="hidden" name="widget" value="wp_subscribe-2">
+
+				<input class="submit" type="submit" name="submit" value="Sign Up Now">
+
+			</form>
+
+			
+			<div class="wp-subscribe-loader">
+				<svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<path fill="" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+						<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/>
+					</path>
+				</svg>
+			</div>
+
+			<p class="thanks">Thank you for subscribing.</p>
+			<p class="error">Something went wrong.</p>
+			<div class="clear"></div>
+
+			<p class="footer-text">We respect your privacy and take protecting it seriously.</p>
+
+		</div>
+
+			</section>	
+		<section id="recent-posts-2" class="widget_recent_entries">		<h3>Recent Posts</h3>		<ul>
+					<li>
+				<a href="http://www.androhub.com/authenticate-using-google-sign-in-on-android/">Authenticate Using Google Sign-In on Android</a>
+						</li>
+					<li>
+				<a href="http://www.androhub.com/implementing-android-app-shortcuts/">Implementing Android App Shortcuts</a>
+						</li>
+					<li>
+				<a href="http://www.androhub.com/implement-youtube-player-fragment-android-app/">How to implement Youtube Player Fragment in Android App</a>
+						</li>
+					<li>
+				<a href="http://www.androhub.com/how-to-show-youtube-video-thumbnail-play-youtube-video-in-android-app/">How to show Youtube Video Thumbnail &#038; Play Youtube Video in Android App</a>
+						</li>
+					<li>
+				<a href="http://www.androhub.com/android-confirm-credential-security-lock/">Android Confirm Credential (Security Lock)</a>
+						</li>
+				</ul>
+		</section>		<section id="recent-comments-2" class="widget_recent_comments"><h3>Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href='http://androhub.com/' rel='external nofollow' class='url'>Dr. Droid</a></span> on <a href="http://www.androhub.com/android-expandablelistview/#comment-478">Android ExpandableListView</a></li><li class="recentcomments"><span class="comment-author-link">Mrittunjay</span> on <a href="http://www.androhub.com/android-expandablelistview/#comment-477">Android ExpandableListView</a></li><li class="recentcomments"><span class="comment-author-link">Lawrence</span> on <a href="http://www.androhub.com/android-download-files-save/#comment-476">Android Download Files &#038; Save</a></li><li class="recentcomments"><span class="comment-author-link"><a href='http://androhub.com/' rel='external nofollow' class='url'>Dr. Droid</a></span> on <a href="http://www.androhub.com/login-signup-and-forgot-password-screen-design-android/#comment-475">Login, SignUp and Forgot Password Screen Design Android</a></li><li class="recentcomments"><span class="comment-author-link">fawad azam</span> on <a href="http://www.androhub.com/login-signup-and-forgot-password-screen-design-android/#comment-474">Login, SignUp and Forgot Password Screen Design Android</a></li></ul></section><section id="archives-2" class="widget_archive"><h3>Archives</h3>		<ul>
+			<li><a href='http://www.androhub.com/2017/12/'>December 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/11/'>November 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/10/'>October 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/07/'>July 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/06/'>June 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/05/'>May 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/03/'>March 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.androhub.com/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.androhub.com/2016/08/'>August 2016</a></li>
+	<li><a href='http://www.androhub.com/2016/07/'>July 2016</a></li>
+	<li><a href='http://www.androhub.com/2016/06/'>June 2016</a></li>
+	<li><a href='http://www.androhub.com/2016/04/'>April 2016</a></li>
+	<li><a href='http://www.androhub.com/2016/03/'>March 2016</a></li>
+	<li><a href='http://www.androhub.com/2015/12/'>December 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/09/'>September 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/08/'>August 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/06/'>June 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/05/'>May 2015</a></li>
+	<li><a href='http://www.androhub.com/2015/04/'>April 2015</a></li>
+		</ul>
+		</section><section id="categories-2" class="widget_categories"><h3>Categories</h3>		<ul>
+	<li class="cat-item cat-item-2"><a href="http://www.androhub.com/category/android-actionbar/" >Android Actionbar</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="http://www.androhub.com/category/android-advanced/" >Android Advanced</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.androhub.com/category/android-animations/" >Android Animations</a>
+</li>
+	<li class="cat-item cat-item-562"><a href="http://www.androhub.com/category/android-app-shortcuts/" >Android App Shortcuts</a>
+</li>
+	<li class="cat-item cat-item-541"><a href="http://www.androhub.com/category/android-authentication/" >Android Authentication</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.androhub.com/category/android-autocomplete/" >Android AutoComplete</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.androhub.com/category/android-basics/" >Android Basics</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.androhub.com/category/android-bluetooth/" >Android Bluetooth</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.androhub.com/category/android-cardview/" >Android CardView</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.androhub.com/category/android-clocks/" >Android Clocks</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.androhub.com/category/android-contacts/" >Android Contacts</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.androhub.com/category/android-content-provider/" >Android Content Provider</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.androhub.com/category/android-custom-font/" >Android Custom Font</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://www.androhub.com/category/android-custom-view/" >Android Custom View</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://www.androhub.com/category/android-database/" >Android Database</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.androhub.com/category/android-dialogs/" >Android Dialogs</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://www.androhub.com/category/android-download-files/" >Android Download Files</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://www.androhub.com/category/android-drawer/" >Android Drawer</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://www.androhub.com/category/android-expandablelistview/" >Android ExpandableListView</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://www.androhub.com/category/android-file/" >Android File</a>
+</li>
+	<li class="cat-item cat-item-489"><a href="http://www.androhub.com/category/android-fingerprint/" >Android FingerPrint</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://www.androhub.com/category/android-fragment/" >Android Fragment</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://www.androhub.com/category/android-gestures/" >Android Gestures</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://www.androhub.com/category/android-gps/" >Android GPS</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://www.androhub.com/category/android-image-picker/" >Android Image Picker</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.androhub.com/category/android-internet-connection/" >Android Internet Connection</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://www.androhub.com/category/android-json/" >Android JSON</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://www.androhub.com/category/android-listview/" >Android ListView</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://www.androhub.com/category/android-material-design/" >Android Material Design</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="http://www.androhub.com/category/android-navigationdrawer/" >Android NavigationDrawer</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://www.androhub.com/category/android-notification-bar/" >Android Notification Bar</a>
+</li>
+	<li class="cat-item cat-item-493"><a href="http://www.androhub.com/category/android-palette/" >Android Palette</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://www.androhub.com/category/android-progressbar/" >Android ProgressBar</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://www.androhub.com/category/android-ratingbar/" >Android RatingBar</a>
+</li>
+	<li class="cat-item cat-item-31"><a href="http://www.androhub.com/category/android-recyclerview/" >Android RecyclerView</a>
+</li>
+	<li class="cat-item cat-item-32"><a href="http://www.androhub.com/category/android-seekbar/" >Android SeekBar</a>
+</li>
+	<li class="cat-item cat-item-34"><a href="http://www.androhub.com/category/android-spinner/" >Android Spinner</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.androhub.com/category/android-stackview/" >Android StackView</a>
+</li>
+	<li class="cat-item cat-item-36"><a href="http://www.androhub.com/category/android-swiperefresh-layout/" >Android SwipeRefresh Layout</a>
+</li>
+	<li class="cat-item cat-item-37"><a href="http://www.androhub.com/category/android-tabs/" >Android Tabs</a>
+</li>
+	<li class="cat-item cat-item-38"><a href="http://www.androhub.com/category/android-textswitcher/" >Android TextSwitcher</a>
+</li>
+	<li class="cat-item cat-item-39"><a href="http://www.androhub.com/category/android-toolbar/" >Android ToolBar</a>
+</li>
+	<li class="cat-item cat-item-40"><a href="http://www.androhub.com/category/android-ui-design/" >Android UI Design</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.androhub.com/category/android-viewanimator/" >Android ViewAnimator</a>
+</li>
+	<li class="cat-item cat-item-42"><a href="http://www.androhub.com/category/android-viewpager/" >Android ViewPager</a>
+</li>
+	<li class="cat-item cat-item-43"><a href="http://www.androhub.com/category/android-viewswitcher/" >Android ViewSwitcher</a>
+</li>
+	<li class="cat-item cat-item-44"><a href="http://www.androhub.com/category/android-wifi/" >Android WIFI</a>
+</li>
+	<li class="cat-item cat-item-446"><a href="http://www.androhub.com/category/google-maps/" >Google Maps</a>
+</li>
+	<li class="cat-item cat-item-45"><a href="http://www.androhub.com/category/http-requests/" >Http Requests</a>
+</li>
+	<li class="cat-item cat-item-46"><a href="http://www.androhub.com/category/intent/" >Intent</a>
+</li>
+		</ul>
+</section></aside>	</div>
+</div>
+<aside class='wrapper lighter-grey'>
+	<div class='container'>
+		<div class='grid_9'>
+			<div class='posts-container'>
+				<div class='post-single-pagination'>
+					<a href="http://www.androhub.com/android-building-multi-language-supported-app/" rel="prev">previous post</a><a href="http://www.androhub.com/navigation-view-material-design-support-library-tutorial/" rel="next">next post</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</aside>
+					<footer>
+			<div class='wrapper grey'>
+				<div class='container'>
+						<div class='grid_4'>
+			</div>
+	<div class='grid_4'>
+			</div>
+	<div class='grid_4'>
+			</div>
+				</div>
+			</div>
+			<div class='wrapper dark-grey copyright-bar'>
+				<div class='container'>
+					<div class='grid_12'>
+						<span class='copyright'>Copyright ® 2015 - 2017 Androhub.com | All rights reserved.</span><span class="copyright" style="float: right;">Powered by <a href="http://pacdevelopers.com/" target="_blank">PAC Developers</a></span>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<a id="back_to_top" href="#"></a>
+					<div style="display:none">
+	<div class="grofile-hash-map-ebab67fae339761312d475ef8e13e63d">
+	</div>
+	<div class="grofile-hash-map-ebab67fae339761312d475ef8e13e63d">
+	</div>
+	<div class="grofile-hash-map-1b08ef40f855b61809997e98bef0bda5">
+	</div>
+	<div class="grofile-hash-map-71e518b773526a63f1827fc45024b3cb">
+	</div>
+	<div class="grofile-hash-map-c4e970c626ed2a7928cdf6890e13e767">
+	</div>
+	<div class="grofile-hash-map-1301ee28c477a762ff243e4e1c50ea94">
+	</div>
+	<div class="grofile-hash-map-1e8eeacd139d5faadd119088fc56389f">
+	</div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"http:\/\/www.androhub.com\/count-down-timer-in-android\/":797};
+	</script>
+	<div id="sharing_email" style="display: none;">
+		<form action="http://www.androhub.com/count-down-timer-in-android/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="" />
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="" />
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="" />
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" />
+			<script>jQuery( document ).ready( function(){ document.getElementById('jetpack-source_f_name').value = '' });</script>
+			
+			<img style="float: right; display: none" class="loading" src="http://www.androhub.com/wp-content/plugins/jetpack/modules/sharedaddy/images/loading.gif" alt="loading" width="16" height="16" />
+			<input type="submit" value="Send Email" class="sharing_send" />
+			<a rel="nofollow" href="#cancel" class="sharing_cancel">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+		<link rel='stylesheet' id='wp-subscribe-css'  href='http://www.androhub.com/wp-content/plugins/wp-subscribe/assets/css/wp-subscribe-form.css?ver=4.5.12' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/jetpack/modules/photon/photon.js?ver=20130122'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201801'></script>
+<script type='text/javascript' src='http://s.gravatar.com/js/gprofiles.js?ver=2018Janaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.5.12'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/main.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/jquery.nicescroll.min.js'></script>
+<script type='text/javascript' src='http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.1.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/jquery.prettyPhoto.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/zozo.tabs.min.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/jquery.isotope.min.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/themes/circles/js/jquery.iosslider.min.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-includes/js/comment-reply.min.js?ver=4.5.12'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var jpfbembed = {"appid":"249643311490","locale":"en_US"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/jetpack/_inc/facebook-embed.js'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/youtube-embed-plus/scripts/fitvids.min.js?ver=4.5.12'></script>
+<script type='text/javascript' src='http://www.androhub.com/wp-includes/js/wp-embed.min.js?ver=4.5.12'></script>
+<script async="async" type='text/javascript' src='http://www.androhub.com/wp-content/plugins/akismet/_inc/form.js?ver=4.0.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wp_subscribe = {"ajaxurl":"http:\/\/www.androhub.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/wp-subscribe/assets/js/wp-subscribe-form.js?ver=4.5.12'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.androhub.com/wp-content/plugins/jetpack/modules/sharedaddy/sharing.js?ver=4.4.2'></script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-google-plus-1', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-linkedin', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-tumblr', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtumblr', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-pocket', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcompocket', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-telegram', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtelegram', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-skype', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomskype', 'menubar=1,resizable=1,width=305,height=665' );
+				return false;
+			});
+</script>
+<script type='text/javascript' src='http://stats.wp.com/e-201801.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.4.2',blog:'113004364',post:'797',tz:'0',srv:'www.androhub.com'} ]);
+	_stq.push([ 'clickTrackerInit', '113004364', '797' ]);
+</script>
+		<script type="text/javascript">
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-63664503-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
+			<div class="media_for_js"></div>
+	</body>
+
+<!-- Mirrored from www.androhub.com/count-down-timer-in-android/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jan 2018 03:38:20 GMT -->
+</html>

@@ -1,0 +1,3608 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Fragment &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-fragment/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Adding Search Functionality to List</title>
+		<link>http://www.androhub.com/android-adding-search-functionality-list/</link>
+		<comments>http://www.androhub.com/android-adding-search-functionality-list/#respond</comments>
+		<pubDate>Wed, 15 Feb 2017 07:39:56 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android Fragment]]></category>
+		<category><![CDATA[Android ListView]]></category>
+		<category><![CDATA[Android Material Design]]></category>
+		<category><![CDATA[Android RecyclerView]]></category>
+		<category><![CDATA[Android Tabs]]></category>
+		<category><![CDATA[Android ViewPager]]></category>
+		<category><![CDATA[filterable]]></category>
+		<category><![CDATA[filterable list]]></category>
+		<category><![CDATA[fragments]]></category>
+		<category><![CDATA[grid view]]></category>
+		<category><![CDATA[listview]]></category>
+		<category><![CDATA[material tabs]]></category>
+		<category><![CDATA[radibutton]]></category>
+		<category><![CDATA[recycler view]]></category>
+		<category><![CDATA[search functionality]]></category>
+		<category><![CDATA[show hide view]]></category>
+		<category><![CDATA[ViewPager]]></category>
+
+		<guid isPermaLink="false">http://www.androhub.com/?p=1147</guid>
+		<description><![CDATA[<p>Today we are going to learn how to add search functionality to ListView, GridView and RecyclerView. In this tutorial you can filter search list by multiple items. Prerequisite: Material Tabs Tutorial ListView Tutorial GridView Tutorial RecyclerView Tutorial Radio Button Tutorial VIDEO DEMO 1. Create a new project in Android Studio by navigating to File ⇒ New ⇒ New Project [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-adding-search-functionality-list/">Android Adding Search Functionality to List</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Today we are going to learn how to add search functionality to ListView, GridView and RecyclerView. In this tutorial you can filter search list by multiple items.</p>
+<h2>Prerequisite:</h2>
+<ol>
+<li><a href="http://www.androhub.com/android-material-design-tabs-using-tablayout/" target="_blank">Material Tabs Tutorial</a></li>
+<li><a href="http://www.androhub.com/android-listview/" target="_blank">ListView Tutorial</a></li>
+<li><a href="http://www.androhub.com/android-gridview/" target="_blank">GridView Tutorial</a></li>
+<li><a href="http://www.androhub.com/android-recyclerview/" target="_blank">RecyclerView Tutorial</a></li>
+<li><a href="http://www.androhub.com/android-radiobutton/" target="_blank">Radio Button Tutorial</a></li>
+</ol>
+<h2>VIDEO DEMO</h2>
+<p><iframe  id="_ytid_93485" width="602" height="339" src="https://www.youtube.com/embed/xT7tzpPmfIk?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New ⇒ New Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>build.gradle </strong>and include this libraries show below:</p><pre class="crayon-plain-tag">compile 'com.android.support:design:25.1.0'//Library need for material tabs
+compile 'com.android.support:recyclerview-v7:25.1.0' //Library need for recycler view</pre><p>
+<b>3</b>. Now create 3 material tabs naming ListView, GridView and RecyclerView. For this you can check this <a href="http://www.androhub.com/android-material-design-tabs-using-tablayout/" target="_blank">link</a> for reference.</p>
+<p><b>4</b>. After creating tabs lets move to creating xml layouts for individual tabs.</p>
+<ul>
+<li><strong><em>list_view_frament.xml</em></strong></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"&gt;
+
+    &lt;include
+        android:id="@+id/top_container"
+        layout="@layout/top_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" /&gt;
+
+    &lt;ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_container"
+        android:layout_marginTop="5dp" /&gt;
+
+
+&lt;/RelativeLayout&gt;</pre>
+<ul>
+<li><strong><em>grid_view_fragment.xml</em></strong></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"&gt;
+    &lt;include
+        android:id="@+id/top_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/top_container" /&gt;
+    &lt;GridView
+        android:id="@+id/grid_view"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/top_container"
+        android:layout_marginTop="5dp"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="2dp"
+        android:numColumns="2"
+        android:verticalSpacing="2dp" /&gt;
+
+&lt;/RelativeLayout&gt;</pre>
+<ul>
+<li><strong><em>recycler_view_fragment.xml</em></strong></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"&gt;
+
+    &lt;include
+        android:id="@+id/top_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/top_container" /&gt;
+
+    &lt;android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_container" /&gt;
+&lt;/RelativeLayout&gt;</pre>
+<b>5</b>. In all the above xml layouts i am using one common layout i.e. <em>top_container.xml.</em> Lets create the common layout xml, this layout contains some radio buttons for custom filter.<br />
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"&gt;
+
+    &lt;TextView
+        android:id="@+id/search_via_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/up_dropdown"
+        android:padding="5dp"
+        android:text="@string/search_via"
+        android:textColor="@android:color/black"
+        android:textSize="10sp" /&gt;
+
+    &lt;!--  Search Via Radio Group  --&gt;
+    &lt;RadioGroup
+        android:id="@+id/search_via_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"&gt;
+
+        &lt;RadioButton
+            android:id="@+id/name_radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="@string/name"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" /&gt;
+
+        &lt;RadioButton
+            android:id="@+id/number_radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="@string/number"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" /&gt;
+
+        &lt;RadioButton
+            android:id="@+id/email_radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="@string/emailid"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" /&gt;
+    &lt;/RadioGroup&gt;
+
+    &lt;View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/darker_gray" /&gt;
+
+    &lt;TextView
+        android:id="@+id/filter_by_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/up_dropdown"
+        android:padding="5dp"
+        android:text="@string/filter_by"
+        android:textColor="@android:color/black"
+        android:textSize="10sp" /&gt;
+
+    &lt;!--  Filter By Radio Group  --&gt;
+    &lt;RadioGroup
+        android:id="@+id/filter_type_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"&gt;
+
+        &lt;RadioButton
+            android:id="@+id/query_contains_radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="@string/contains"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" /&gt;
+
+        &lt;RadioButton
+            android:id="@+id/query_starts_With_radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="@string/starts_with"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" /&gt;
+    &lt;/RadioGroup&gt;
+
+    &lt;!--  EditText for User Input --&gt;
+    &lt;EditText
+        android:id="@+id/search_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/search_bg"
+        android:drawableLeft="@drawable/ic_search"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:hint="@string/enter_text_to_search"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="12sp" /&gt;
+&lt;/LinearLayout&gt;</pre>
+<b>6</b>. Now create custom background for Search EditText naming <em>search_bg.xml.</em><br />
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"&gt;
+    &lt;corners android:radius="4dp" /&gt;
+    &lt;solid android:color="@android:color/white" /&gt;
+    &lt;stroke
+        android:width="1px"
+        android:color="@android:color/darker_gray" /&gt;
+
+&lt;/shape&gt;</pre>
+<b>7</b>. Now lets create java classes for all the above three xml files.</p>
+<ul>
+<li><strong><em>ListViewFragment.java</em></strong></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listsearch_demo.main;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import com.listsearch_demo.R;
+import com.listsearch_demo.adapter.GridListAdapter;
+import com.listsearch_demo.helper.FilterType;
+import com.listsearch_demo.helper.GetUserModelData;
+import com.listsearch_demo.helper.UserModel;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 08/02/17.
+ */
+public class ListViewFragment extends Fragment implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+    private Context context;
+    private GridListAdapter adapter;
+    private ArrayList&lt;UserModel&gt; arrayList;
+    private RadioGroup searchViaRadioGroup, filterByRadioGroup;
+    private EditText searchEditText;
+    private TextView searchViaLabel, filterByLabel;
+
+    /*  Filter Type to identify the type of Filter  */
+    private FilterType filterType;
+
+    /*  boolean variable for Filtering */
+    private boolean isSearchWithPrefix = false;
+
+    public ListViewFragment() {
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.list_view_fragment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        loadListView(view);
+        findViews(view);
+        implementEvents();
+    }
+
+    //Bind all Views
+    private void findViews(View view) {
+        filterType = FilterType.NAME;
+        searchViaRadioGroup = (RadioGroup) view.findViewById(R.id.search_via_radio_group);
+        filterByRadioGroup = (RadioGroup) view.findViewById(R.id.filter_type_radio_group);
+        searchEditText = (EditText) view.findViewById(R.id.search_text);
+
+        searchViaLabel = (TextView) view.findViewById(R.id.search_via_label);
+        filterByLabel = (TextView) view.findViewById(R.id.filter_by_label);
+    }
+
+
+    private void loadListView(View view) {
+        ListView listView = (ListView) view.findViewById(R.id.list_view);
+        arrayList = GetUserModelData.getUserModelData();
+        adapter = new GridListAdapter(context, arrayList, true);
+        listView.setAdapter(adapter);
+    }
+
+    private void implementEvents() {
+        filterByRadioGroup.setOnCheckedChangeListener(this);
+        searchViaRadioGroup.setOnCheckedChangeListener(this);
+        searchViaLabel.setOnClickListener(this);
+        filterByLabel.setOnClickListener(this);
+
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                //On text changed in Edit text start filtering the list
+                adapter.filter(filterType, charSequence.toString(), isSearchWithPrefix);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
+
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+        int pos = radioGroup.indexOfChild(radioGroup.findViewById(checkedId));//get the checked position of radio button
+        switch (radioGroup.getId()) {
+            case R.id.search_via_radio_group:
+                switch (pos) {
+                    case 0:
+                        filterType = FilterType.NAME;//Change filter type to Name if pos = 0
+                        break;
+                    case 1:
+                        filterType = FilterType.NUMBER;//Change filter type to Number if pos = 1
+                        break;
+                    case 2:
+                        filterType = FilterType.EMAIL;//Change filter type to Email if pos = 2
+                        break;
+                }
+                break;
+            case R.id.filter_type_radio_group:
+                switch (pos) {
+                    case 0:
+                        isSearchWithPrefix = false;//Set boolean value to false
+                        break;
+                    case 1:
+                        isSearchWithPrefix = true;//Set boolean value to true
+                        break;
+
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.search_via_label:
+                //show hide the radio group
+                if (searchViaRadioGroup.isShown()) {
+                    searchViaLabel.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.up_dropdown, 0);
+                    searchViaRadioGroup.setVisibility(View.GONE);
+                } else {
+                    searchViaLabel.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.down_dropdown, 0);
+                    searchViaRadioGroup.setVisibility(View.VISIBLE);
+                }
+                break;
+            case R.id.filter_by_label:
+                //show hide the radio group
+                if (filterByRadioGroup.isShown()) {
+                    filterByLabel.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.up_dropdown, 0);
+                    filterByRadioGroup.setVisibility(View.GONE);
+                } else {
+                    filterByLabel.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.down_dropdown, 0);
+                    filterByRadioGroup.setVisibility(View.VISIBLE);
+                }
+                break;
+        }
+    }
+
+}</pre>
+<ul>
+<li><em><strong>GridViewFragment.java</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listsearch_demo.main;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import com.listsearch_demo.R;
+import com.listsearch_demo.adapter.GridListAdapter;
+import com.listsearch_demo.helper.FilterType;
+import com.listsearch_demo.helper.GetUserModelData;
+import com.listsearch_demo.helper.UserModel;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 08/02/17.
+ */
+public class GridViewFragment extends Fragment implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+    private Context context;
+    private GridListAdapter adapter;
+    private ArrayList&lt;UserModel&gt; arrayList;
+    private RadioGroup searchViaRadioGroup, filterByRadioGroup;
+    private EditText searchEditText;
+    private TextView searchViaLabel, filterByLabel;
+
+    /*  Filter Type to identify the type of Filter  */
+    private FilterType filterType;
+
+    /*  boolean variable for Filtering */
+    private boolean isSearchWithPrefix = false;
+
+    public GridViewFragment() {
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.grid_view_fragment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        loadGridView(view);
+        findViews(view);
+        implementEvents();
+    }
+
+    //Bind all Views
+    private void findViews(View view) {
+        filterType = FilterType.NAME;
+        searchViaRadioGroup = (RadioGroup) view.findViewById(R.id.search_via_radio_group);
+        filterByRadioGroup = (RadioGroup) view.findViewById(R.id.filter_type_radio_group);
+        searchEditText = (EditText) view.findViewById(R.id.search_text);
+
+        searchViaLabel = (TextView) view.findViewById(R.id.search_via_label);
+        filterByLabel = (TextView) view.findViewById(R.id.filter_by_label);
+    }
+
+
+    private void loadGridView(View view) {
+        GridView gridView = (GridView) view.findViewById(R.id.grid_view);
+        arrayList = GetUserModelData.getUserModelData();
+        adapter = new GridListAdapter(context, arrayList, false);
+        gridView.setAdapter(adapter);
+    }
+
+    private void implementEvents() {
+        filterByRadioGroup.setOnCheckedChangeListener(this);
+        searchViaRadioGroup.setOnCheckedChangeListener(this);
+        searchViaLabel.setOnClickListener(this);
+        filterByLabel.setOnClickListener(this);
+
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                //On text changed in Edit text start filtering the list
+                adapter.filter(filterType, charSequence.toString(), isSearchWithPrefix);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
+
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+        int pos = radioGroup.indexOfChild(radioGroup.findViewById(checkedId));//get the checked position of radio button
+        switch (radioGroup.getId()) {
+            case R.id.search_via_radio_group:
+                switch (pos) {
+                    case 0:
+                        filterType = FilterType.NAME;//Change filter type to Name if pos = 0
+                        break;
+                    case 1:
+                        filterType = FilterType.NUMBER;//Change filter type to Number if pos = 1
+                        break;
+                    case 2:
+                        filterType = FilterType.EMAIL;//Change filter type to Email if pos = 2
+                        break;
+                }
+                break;
+            case R.id.filter_type_radio_group:
+                switch (pos) {
+                    case 0:
+                        isSearchWithPrefix = false;//Set boolean value to false
+                        break;
+                    case 1:
+                        isSearchWithPrefix = true;//Set boolean value to true
+                        break;
+
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.search_via_label:
+                //show hide the radio group
+                if (searchViaRadioGroup.isShown()) {
+                    searchViaLabel.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.up_dropdown, 0);
+                    searchViaRadioGroup.setVisibility(View.GONE);
+                } else {
+                    searchViaLabel.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.down_dropdown, 0);
+                    searchViaRadioGroup.setVisibility(View.VISIBLE);
+                }
+                break;
+            case R.id.filter_by_label:
+                //show hide the radio group
+                if (filterByRadioGroup.isShown()) {
+                    filterByLabel.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.up_dropdown, 0);
+                    filterByRadioGroup.setVisibility(View.GONE);
+                } else {
+                    filterByLabel.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.down_dropdown, 0);
+                    filterByRadioGroup.setVisibility(View.VISIBLE);
+                }
+                break;
+        }
+    }
+}</pre>
+<ul>
+<li><em><strong>RecyclerViewFragment.java</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listsearch_demo.main;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import com.listsearch_demo.R;
+import com.listsearch_demo.adapter.RecyclerViewAdapter;
+import com.listsearch_demo.helper.FilterType;
+import com.listsearch_demo.helper.GetUserModelData;
+import com.listsearch_demo.helper.UserModel;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 08/02/17.
+ */
+public class RecyclerViewFragment extends Fragment implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+
+    private Context context;
+    private RecyclerViewAdapter adapter;
+    private ArrayList&lt;UserModel&gt; arrayList;
+    private RadioGroup searchViaRadioGroup, filterByRadioGroup;
+    private EditText searchEditText;
+    private TextView searchViaLabel, filterByLabel;
+
+    /*  Filter Type to identify the type of Filter  */
+    private FilterType filterType;
+
+    /*  boolean variable for Filtering */
+    private boolean isSearchWithPrefix = false;
+
+    public RecyclerViewFragment() {
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.recycler_view_fragment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        findViews(view);
+        populateRecyclerView(view);
+        implementEvents();
+    }
+
+    //Bind all Views
+    private void findViews(View view) {
+        filterType = FilterType.NAME;
+        searchViaRadioGroup = (RadioGroup) view.findViewById(R.id.search_via_radio_group);
+        filterByRadioGroup = (RadioGroup) view.findViewById(R.id.filter_type_radio_group);
+        searchEditText = (EditText) view.findViewById(R.id.search_text);
+
+        searchViaLabel = (TextView) view.findViewById(R.id.search_via_label);
+        filterByLabel = (TextView) view.findViewById(R.id.filter_by_label);
+    }
+
+    //Populate recycler view
+    private void populateRecyclerView(View view) {
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        arrayList = GetUserModelData.getUserModelData();
+        adapter = new RecyclerViewAdapter(context, arrayList);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void implementEvents() {
+        filterByRadioGroup.setOnCheckedChangeListener(this);
+        searchViaRadioGroup.setOnCheckedChangeListener(this);
+        searchViaLabel.setOnClickListener(this);
+        filterByLabel.setOnClickListener(this);
+
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                //On text changed in Edit text start filtering the list
+                adapter.filter(filterType, charSequence.toString(), isSearchWithPrefix);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
+
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+        int pos = radioGroup.indexOfChild(radioGroup.findViewById(checkedId));//get the checked position of radio button
+        switch (radioGroup.getId()) {
+            case R.id.search_via_radio_group:
+                switch (pos) {
+                    case 0:
+                        filterType = FilterType.NAME;//Change filter type to Name if pos = 0
+                        break;
+                    case 1:
+                        filterType = FilterType.NUMBER;//Change filter type to Number if pos = 1
+                        break;
+                    case 2:
+                        filterType = FilterType.EMAIL;//Change filter type to Email if pos = 2
+                        break;
+                }
+                break;
+            case R.id.filter_type_radio_group:
+                switch (pos) {
+                    case 0:
+                        isSearchWithPrefix = false;//Set boolean value to false
+                        break;
+                    case 1:
+                        isSearchWithPrefix = true;//Set boolean value to true
+                        break;
+
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.search_via_label:
+                //show hide the radio group
+                if (searchViaRadioGroup.isShown()) {
+                    searchViaLabel.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.up_dropdown, 0);
+                    searchViaRadioGroup.setVisibility(View.GONE);
+                } else {
+                    searchViaLabel.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.down_dropdown, 0);
+                    searchViaRadioGroup.setVisibility(View.VISIBLE);
+                }
+                break;
+            case R.id.filter_by_label:
+                //show hide the radio group
+                if (filterByRadioGroup.isShown()) {
+                    filterByLabel.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.up_dropdown, 0);
+                    filterByRadioGroup.setVisibility(View.GONE);
+                } else {
+                    filterByLabel.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.down_dropdown, 0);
+                    filterByRadioGroup.setVisibility(View.VISIBLE);
+                }
+                break;
+        }
+    }
+}</pre>
+In all the above fragment classes the common code to do filtering is:<br />
+<pre class="crayon-plain-tag">searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                //On text changed in Edit text start filtering the list
+                adapter.filter(filterType, charSequence.toString(), isSearchWithPrefix);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });</pre>
+Here we need to call the filter method created in adapter class by passing the filter query.</p>
+<p><b>8</b>. Now after creating all fragment classes we have to create Adapters for ListView, GridView and RecyclerView.</p>
+<ul>
+<li><em><strong>GridListAdapter.java</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listsearch_demo.adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import com.listsearch_demo.R;
+import com.listsearch_demo.helper.FilterType;
+import com.listsearch_demo.helper.UserModel;
+
+import java.util.ArrayList;
+import java.util.Locale;
+
+/**
+ * Created by sonu on 08/02/17.
+ */
+
+public class GridListAdapter extends BaseAdapter {
+    private Context context;
+    private ArrayList&lt;UserModel&gt; arrayList;
+    private LayoutInflater inflater;
+    private boolean isListView;
+    private ArrayList&lt;UserModel&gt; filterArrayList;//duplicate list for filtering
+
+    public GridListAdapter(Context context, ArrayList&lt;UserModel&gt; arrayList, boolean isListView) {
+        this.context = context;
+        this.arrayList = arrayList;
+        this.isListView = isListView;
+        inflater = LayoutInflater.from(context);
+
+        this.filterArrayList = new ArrayList&lt;&gt;();//initiate filter list
+        this.filterArrayList.addAll(arrayList);//add all items of array list to filter list
+    }
+
+    @Override
+    public int getCount() {
+        return arrayList.size();
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return arrayList.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(final int i, View view, ViewGroup viewGroup) {
+        ViewHolder viewHolder;
+        if (view == null) {
+            viewHolder = new ViewHolder();
+
+            //inflate the layout on basis of boolean
+            if (isListView)
+                view = inflater.inflate(R.layout.list_custom_row_layout, viewGroup, false);
+            else
+                view = inflater.inflate(R.layout.grid_custom_row_layout, viewGroup, false);
+
+            viewHolder.name = (TextView) view.findViewById(R.id.name_label);
+            viewHolder.number = (TextView) view.findViewById(R.id.number_label);
+            viewHolder.emailID = (TextView) view.findViewById(R.id.email_label);
+
+            view.setTag(viewHolder);
+        } else
+            viewHolder = (ViewHolder) view.getTag();
+
+        UserModel model = arrayList.get(i);
+        viewHolder.name.setText(model.getName());
+        viewHolder.number.setText(model.getNumber());
+        viewHolder.emailID.setText(model.getEmailID());
+
+        return view;
+    }
+
+
+    private class ViewHolder {
+        private TextView name, number, emailID;
+    }
+
+    // Filter Class to filter data
+    public void filter(FilterType filterType, String charText, boolean isSearchWithPrefix) {
+
+        //If Filter type is NAME and EMAIL then only do lowercase, else in case of NUMBER no need to do lowercase because of number format
+        if (filterType == FilterType.NAME || filterType == FilterType.EMAIL)
+            charText = charText.toLowerCase(Locale.getDefault());
+
+        arrayList.clear();//Clear the main ArrayList
+
+        //If search query is null or length is 0 then add all filterList items back to arrayList
+        if (charText.length() == 0) {
+            arrayList.addAll(filterArrayList);
+        } else {
+
+            //Else if search query is not null do a loop to all filterList items
+            for (UserModel model : filterArrayList) {
+
+                //Now check the type of search filter
+                switch (filterType) {
+                    case NAME:
+                        if (isSearchWithPrefix) {
+                            //if STARTS WITH radio button is selected then it will match the exact NAME which match with search query
+                            if (model.getName().toLowerCase(Locale.getDefault()).startsWith(charText))
+                                arrayList.add(model);
+                        } else {
+                            //if CONTAINS radio button is selected then it will match the NAME wherever it contains search query
+                            if (model.getName().toLowerCase(Locale.getDefault()).contains(charText))
+                                arrayList.add(model);
+                        }
+
+                        break;
+                    case EMAIL:
+                        if (isSearchWithPrefix) {
+                            //if STARTS WITH radio button is selected then it will match the exact EMAIL which match with search query
+                            if (model.getEmailID().toLowerCase(Locale.getDefault()).startsWith(charText))
+                                arrayList.add(model);
+                        } else {
+                            //if CONTAINS radio button is selected then it will match the EMAIL wherever it contains search query
+                            if (model.getEmailID().toLowerCase(Locale.getDefault()).contains(charText))
+                                arrayList.add(model);
+                        }
+
+                        break;
+                    case NUMBER:
+                        if (isSearchWithPrefix) {
+                            //if STARTS WITH radio button is selected then it will match the exact NUMBER which match with search query
+                            if (model.getNumber().startsWith(charText))
+                                arrayList.add(model);
+                        } else {
+                            //if CONTAINS radio button is selected then it will match the NUMBER wherever it contains search query
+                            if (model.getNumber().contains(charText))
+                                arrayList.add(model);
+                        }
+
+                        break;
+                }
+
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+
+}</pre>
+<ul>
+<li><em><strong>RecyclerViewAdapter.java</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listsearch_demo.adapter;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.listsearch_demo.R;
+import com.listsearch_demo.helper.FilterType;
+import com.listsearch_demo.helper.UserModel;
+
+import java.util.ArrayList;
+import java.util.Locale;
+
+/**
+ * Created by sonu on 19/09/16.
+ */
+
+public class RecyclerViewAdapter extends RecyclerView.Adapter&lt;RecyclerViewAdapter.RecyclerViewHolder&gt; {
+
+    static class RecyclerViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView name, number, emailID;
+
+        RecyclerViewHolder(View view) {
+            super(view);
+
+            name = (TextView) view.findViewById(R.id.name_label);
+            number = (TextView) view.findViewById(R.id.number_label);
+            emailID = (TextView) view.findViewById(R.id.email_label);
+        }
+
+    }
+
+    private ArrayList&lt;UserModel&gt; arrayList;
+    private ArrayList&lt;UserModel&gt; filterArrayList;//duplicate list for filtering
+    private Context context;
+
+
+    public RecyclerViewAdapter(Context context, ArrayList&lt;UserModel&gt; arrayList) {
+        this.arrayList = arrayList;
+        this.context = context;
+
+        this.filterArrayList = new ArrayList&lt;&gt;();//initiate filter list
+        this.filterArrayList.addAll(arrayList);//add all items of array list to filter list
+    }
+
+    @Override
+    public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_custom_row_layout, viewGroup, false);
+        return new RecyclerViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(final RecyclerViewHolder holder, final int i) {
+
+        UserModel model = arrayList.get(i);
+        holder.name.setText(model.getName());
+        holder.number.setText(model.getNumber());
+        holder.emailID.setText(model.getEmailID());
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return (null != arrayList ? arrayList.size() : 0);
+    }
+
+
+    // Filter Class to filter data
+    public void filter(FilterType filterType, String charText, boolean isSearchWithPrefix) {
+
+        //If Filter type is NAME and EMAIL then only do lowercase, else in case of NUMBER no need to do lowercase because of number format
+        if (filterType == FilterType.NAME || filterType == FilterType.EMAIL)
+            charText = charText.toLowerCase(Locale.getDefault());
+
+        arrayList.clear();//Clear the main ArrayList
+
+        //If search query is null or length is 0 then add all filterList items back to arrayList
+        if (charText.length() == 0) {
+            arrayList.addAll(filterArrayList);
+        } else {
+
+            //Else if search query is not null do a loop to all filterList items
+            for (UserModel model : filterArrayList) {
+
+                //Now check the type of search filter
+                switch (filterType) {
+                    case NAME:
+                        if (isSearchWithPrefix) {
+                            //if STARTS WITH radio button is selected then it will match the exact NAME which match with search query
+                            if (model.getName().toLowerCase(Locale.getDefault()).startsWith(charText))
+                                arrayList.add(model);
+                        } else {
+                            //if CONTAINS radio button is selected then it will match the NAME wherever it contains search query
+                            if (model.getName().toLowerCase(Locale.getDefault()).contains(charText))
+                                arrayList.add(model);
+                        }
+
+                        break;
+                    case EMAIL:
+                        if (isSearchWithPrefix) {
+                            //if STARTS WITH radio button is selected then it will match the exact EMAIL which match with search query
+                            if (model.getEmailID().toLowerCase(Locale.getDefault()).startsWith(charText))
+                                arrayList.add(model);
+                        } else {
+                            //if CONTAINS radio button is selected then it will match the EMAIL wherever it contains search query
+                            if (model.getEmailID().toLowerCase(Locale.getDefault()).contains(charText))
+                                arrayList.add(model);
+                        }
+
+                        break;
+                    case NUMBER:
+                        if (isSearchWithPrefix) {
+                            //if STARTS WITH radio button is selected then it will match the exact NUMBER which match with search query
+                            if (model.getNumber().startsWith(charText))
+                                arrayList.add(model);
+                        } else {
+                            //if CONTAINS radio button is selected then it will match the NUMBER wherever it contains search query
+                            if (model.getNumber().contains(charText))
+                                arrayList.add(model);
+                        }
+
+                        break;
+                }
+
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+}</pre>
+In both the above adapter the common code to filter is:<br />
+<pre class="crayon-plain-tag">// Filter Class to filter data
+    public void filter(FilterType filterType, String charText, boolean isSearchWithPrefix) {
+
+        //If Filter type is NAME and EMAIL then only do lowercase, else in case of NUMBER no need to do lowercase because of number format
+        if (filterType == FilterType.NAME || filterType == FilterType.EMAIL)
+            charText = charText.toLowerCase(Locale.getDefault());
+
+        arrayList.clear();//Clear the main ArrayList
+
+        //If search query is null or length is 0 then add all filterList items back to arrayList
+        if (charText.length() == 0) {
+            arrayList.addAll(filterArrayList);
+        } else {
+
+            //Else if search query is not null do a loop to all filterList items
+            for (UserModel model : filterArrayList) {
+
+                //Now check the type of search filter
+                switch (filterType) {
+                    case NAME:
+                        if (isSearchWithPrefix) {
+                            //if STARTS WITH radio button is selected then it will match the exact NAME which match with search query
+                            if (model.getName().toLowerCase(Locale.getDefault()).startsWith(charText))
+                                arrayList.add(model);
+                        } else {
+                            //if CONTAINS radio button is selected then it will match the NAME wherever it contains search query
+                            if (model.getName().toLowerCase(Locale.getDefault()).contains(charText))
+                                arrayList.add(model);
+                        }
+
+                        break;
+                    case EMAIL:
+                        if (isSearchWithPrefix) {
+                            //if STARTS WITH radio button is selected then it will match the exact EMAIL which match with search query
+                            if (model.getEmailID().toLowerCase(Locale.getDefault()).startsWith(charText))
+                                arrayList.add(model);
+                        } else {
+                            //if CONTAINS radio button is selected then it will match the EMAIL wherever it contains search query
+                            if (model.getEmailID().toLowerCase(Locale.getDefault()).contains(charText))
+                                arrayList.add(model);
+                        }
+
+                        break;
+                    case NUMBER:
+                        if (isSearchWithPrefix) {
+                            //if STARTS WITH radio button is selected then it will match the exact NUMBER which match with search query
+                            if (model.getNumber().startsWith(charText))
+                                arrayList.add(model);
+                        } else {
+                            //if CONTAINS radio button is selected then it will match the NUMBER wherever it contains search query
+                            if (model.getNumber().contains(charText))
+                                arrayList.add(model);
+                        }
+
+                        break;
+                }
+
+            }
+        }
+        notifyDataSetChanged();
+    }</pre>
+<b>9</b>. Some helper java classes that we need in this article are:</p>
+<ul>
+<li><em><strong>UserModel.java </strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listsearch_demo.helper;
+
+/**
+ * Created by sonu on 14/02/17.
+ */
+
+/*  POJO Class of UserModel  */
+public class UserModel {
+    private String name, number, emailID;
+
+    public UserModel(String name, String number, String emailID) {
+        this.name = name;
+        this.number = number;
+        this.emailID = emailID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public String getEmailID() {
+        return emailID;
+    }
+}</pre>
+<ul>
+<li><em><strong>GetUserModelData.java </strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listsearch_demo.helper;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 14/02/17.
+ */
+
+/*  Get ArrayList  of UserModel type  */
+public class GetUserModelData {
+    public static ArrayList&lt;UserModel&gt; getUserModelData() {
+        ArrayList&lt;UserModel&gt; arrayList = new ArrayList&lt;&gt;();
+        arrayList.add(new UserModel("Droid", "9008091580", "droid@gmail.com"));
+        arrayList.add(new UserModel("John", "9876543212", "john@gmail.com"));
+        arrayList.add(new UserModel("David", "3452456718", "david@gmail.com"));
+        arrayList.add(new UserModel("Humpy", "9843156780", "humpy@gmail.com"));
+        arrayList.add(new UserModel("Sharma", "1234984378", "sharma@gmail.com"));
+        arrayList.add(new UserModel("Dravid", "4325678943", "dravid@gmail.com"));
+        arrayList.add(new UserModel("Android", "8876554433", "android@gmail.com"));
+        arrayList.add(new UserModel("Amrish", "3344559988", "amrish@gmail.com"));
+        arrayList.add(new UserModel("Allena", "3344990044", "allena@gmail.com"));
+        arrayList.add(new UserModel("Smith", "1144553355", "smith@gmail.com"));
+        arrayList.add(new UserModel("Guru", "5678493002", "guru@gmail.com"));
+        arrayList.add(new UserModel("Rashid", "4450987456", "rashid@gmail.com"));
+        arrayList.add(new UserModel("Prophec", "8967589433", "prphec@gmail.com"));
+        arrayList.add(new UserModel("Diljit", "9058443399", "diljit@gmail.com"));
+        arrayList.add(new UserModel("Bohemia", "5768950484", "bohemia@gmail.com"));
+        return arrayList;
+    }
+}</pre>
+<ul>
+<li><em><strong>FilterType.java</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listsearch_demo.helper;
+
+/**
+ * Created by sonu on 14/02/17.
+ */
+
+/*  Enum Class to identify the type of Filter/Search type  */
+
+public enum FilterType {
+    NAME, NUMBER, EMAIL;
+}</pre>
+<b>10</b>. Finally all things done. Now you can also make filterable ListView.</p>
+<p>Thanks. <img src="https://s.w.org/images/core/emoji/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><a href="http://androhub.com/downloads/ListSearch_Demo.zip" target="_blank"><b>Download Source Code – &gt;</b></a></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-adding-search-functionality-list/">Android Adding Search Functionality to List</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-adding-search-functionality-list/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1147</post-id>	</item>
+		<item>
+		<title>Android ListView RadioButton</title>
+		<link>http://www.androhub.com/android-listview-radiobutton/</link>
+		<comments>http://www.androhub.com/android-listview-radiobutton/#respond</comments>
+		<pubDate>Sat, 11 Feb 2017 14:53:49 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android Fragment]]></category>
+		<category><![CDATA[Android ListView]]></category>
+		<category><![CDATA[Android RecyclerView]]></category>
+		<category><![CDATA[Android Tabs]]></category>
+		<category><![CDATA[Android ViewPager]]></category>
+		<category><![CDATA[custom listview]]></category>
+		<category><![CDATA[fragments]]></category>
+		<category><![CDATA[gridview]]></category>
+		<category><![CDATA[list with radiobutton]]></category>
+		<category><![CDATA[listview]]></category>
+		<category><![CDATA[listview with radiobutton]]></category>
+		<category><![CDATA[material tabs]]></category>
+		<category><![CDATA[radiobutton]]></category>
+		<category><![CDATA[radiobutton list]]></category>
+		<category><![CDATA[recyclerview]]></category>
+		<category><![CDATA[recyclerview with radiobutton]]></category>
+
+		<guid isPermaLink="false">http://www.androhub.com/?p=1141</guid>
+		<description><![CDATA[<p>In previous article  we learnt about how to use multiple choices in ListView. Today we are going to learn how to enable single choice/radio button in ListView, GridView and in RecyclerView using RadioButton, you’ll configure the ListView to display a radioButton next to each item. You can combine many components like TextView, RadioButton, ImageView, etc. and can [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-listview-radiobutton/">Android ListView RadioButton</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>In previous <a href="http://www.androhub.com/android-listview-checkbox/" target="_blank">article</a>  we learnt about how to use multiple choices in ListView. Today we are going to learn how to enable single choice/radio button in ListView, GridView and in RecyclerView using RadioButton, you’ll configure the ListView to display a radioButton next to each item. You can combine many components like TextView, RadioButton, ImageView, etc. and can make ListView as you require.</p>
+<h2>Prerequisite:</h2>
+<ol>
+<li><a href="http://www.androhub.com/android-material-design-tabs-using-tablayout/" target="_blank">Material Tabs Tutorial</a></li>
+<li><a href="http://www.androhub.com/android-listview/" target="_blank">ListView Tutorial</a></li>
+<li><a href="http://www.androhub.com/android-gridview/" target="_blank">GridView Tutorial</a></li>
+<li><a href="http://www.androhub.com/android-recyclerview/" target="_blank">RecyclerView Tutorial</a></li>
+</ol>
+<h3>Example</h3>
+<p>In this tutorial, we are going to learn how to enable single choice/radio button in ListView, GridView and in RecyclerView using RadioButton.</p>
+<h2>VIDEO DEMO</h2>
+<p><iframe  id="_ytid_37363" width="602" height="339" src="https://www.youtube.com/embed/lDwB_G0RCfI?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New ⇒ New Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>build.gradle </strong>and include this libraries show below:</p><pre class="crayon-plain-tag">compile 'com.android.support:design:25.1.0' //Library need for material tabs
+compile 'com.android.support:recyclerview-v7:25.1.0' //Library need for recycler view</pre><p>
+<b>3</b>. Now create 3 material tabs naming ListView, GridView and RecyclerView. For this you can check this <a href="http://www.androhub.com/android-material-design-tabs-using-tablayout/" target="_blank">link</a> for reference.</p>
+<p><b>4</b>. After creating tabs lets move to creating xml layouts for individual tabs.</p>
+<ul>
+<li><strong><em>list_view_frament.xml</em></strong></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"&gt;
+
+    &lt;ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_container" /&gt;
+
+    &lt;include
+        android:id="@+id/bottom_container"
+        layout="@layout/bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" /&gt;
+
+&lt;/RelativeLayout&gt;</pre>
+<ul>
+<li><strong><em>grid_view_fragment.xml</em></strong></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"&gt;
+
+    &lt;GridView
+        android:id="@+id/grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_container"
+        android:horizontalSpacing="2dp"
+        android:numColumns="2"
+        android:verticalSpacing="2dp" /&gt;
+
+    &lt;include
+        android:id="@+id/bottom_container"
+        layout="@layout/bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" /&gt;
+&lt;/RelativeLayout&gt;</pre>
+<ul>
+<li><strong><em>recycler_view_fragment.xml</em></strong></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"&gt;
+
+    &lt;android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_container" /&gt;
+
+    &lt;include
+        android:id="@+id/bottom_container"
+        layout="@layout/bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" /&gt;
+&lt;/RelativeLayout&gt;</pre>
+<b>5</b>. In all the above xml layouts i am using one common layout i.e. <em>bottom_container.xml.</em> Lets create the common layout xml, this layout contains two buttons for implementing actions over selected row.<br />
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"&gt;
+
+    &lt;Button
+        android:id="@+id/show_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/show"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" /&gt;
+
+    &lt;Button
+        android:id="@+id/delete_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/delete"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre>
+<b>6</b>. Now lets create java classes for all the above three xml files.</p>
+<ul>
+<li><strong><em>ListViewFragment.java</em></strong></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listradiobutton_demo.main;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.listradiobutton_demo.R;
+import com.listradiobutton_demo.adapter.GridListAdapter;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 08/02/17.
+ */
+public class ListViewFragment extends Fragment {
+    private Context context;
+    private GridListAdapter adapter;
+    private ArrayList&lt;String&gt; arrayList;
+
+    public ListViewFragment() {
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.list_view_fragment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        loadListView(view);
+        onClickEvent(view);
+    }
+
+    private void loadListView(View view) {
+        ListView listView = (ListView) view.findViewById(R.id.list_view);
+        arrayList = new ArrayList&lt;&gt;();
+        for (int i = 1; i &lt;= 50; i++)
+            arrayList.add("ListView Items " + i);
+
+        adapter = new GridListAdapter(context, arrayList, true);
+        listView.setAdapter(adapter);
+    }
+
+    private void onClickEvent(View view) {
+        view.findViewById(R.id.show_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Get the selected position
+                adapter.getSelectedItem();
+            }
+        });
+        view.findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Delete the selected position
+                adapter.deleteSelectedPosition();
+            }
+        });
+
+    }
+}</pre>
+<ul>
+<li><em><strong>GridViewFragment.java</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listradiobutton_demo.main;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.GridView;
+
+import com.listradiobutton_demo.R;
+import com.listradiobutton_demo.adapter.GridListAdapter;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 08/02/17.
+ */
+public class GridViewFragment extends Fragment {
+    private Context context;
+    private GridListAdapter adapter;
+    private ArrayList&lt;String&gt; arrayList;
+
+    public GridViewFragment() {
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.grid_view_fragment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        loadGridView(view);
+        onClickEvent(view);
+    }
+
+    private void loadGridView(View view) {
+        GridView gridView = (GridView) view.findViewById(R.id.grid_view);
+        arrayList = new ArrayList&lt;&gt;();
+        for (int i = 1; i &lt;= 50; i++)
+            arrayList.add("GridView Items " + i);
+
+        adapter = new GridListAdapter(context, arrayList, false);
+        gridView.setAdapter(adapter);
+    }
+
+    private void onClickEvent(View view) {
+        view.findViewById(R.id.show_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Get the selected position
+                adapter.getSelectedItem();
+            }
+        });
+        view.findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Delete the selected position
+                adapter.deleteSelectedPosition();
+            }
+        });
+
+
+    }
+
+}</pre>
+<ul>
+<li><em><strong>RecyclerViewFragment.java</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listradiobutton_demo.main;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.listradiobutton_demo.R;
+import com.listradiobutton_demo.adapter.RecyclerViewAdapter;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 08/02/17.
+ */
+public class RecyclerViewFragment extends Fragment {
+
+    private Context context;
+    private RecyclerViewAdapter adapter;
+    private ArrayList&lt;String&gt; arrayList;
+
+    public RecyclerViewFragment() {
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.recycler_view_fragment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        populateRecyclerView(view);
+        onClickEvent(view);
+    }
+
+    private void populateRecyclerView(View view) {
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        arrayList = new ArrayList&lt;&gt;();
+        for (int i = 1; i &lt;= 50; i++)
+            arrayList.add("RecyclerView Items " + i);//Adding items to recycler view
+
+        adapter = new RecyclerViewAdapter(context, arrayList);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void onClickEvent(View view) {
+        view.findViewById(R.id.show_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Get the selected position
+                adapter.getSelectedItem();
+            }
+        });
+        view.findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Delete the selected position
+                adapter.deleteSelectedPosition();
+            }
+        });
+
+    }
+}</pre>
+<b>7</b>. Now after creating all fragment classes we have to create Adapters for ListView, GridView and RecyclerView.</p>
+<ul>
+<li><em><strong>GridListAdapter.java</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listradiobutton_demo.adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.listradiobutton_demo.R;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 08/02/17.
+ */
+
+public class GridListAdapter extends BaseAdapter {
+    private Context context;
+    private ArrayList&lt;String&gt; arrayList;
+    private LayoutInflater inflater;
+    private boolean isListView;
+    private int selectedPosition = -1;
+
+    public GridListAdapter(Context context, ArrayList&lt;String&gt; arrayList, boolean isListView) {
+        this.context = context;
+        this.arrayList = arrayList;
+        this.isListView = isListView;
+        inflater = LayoutInflater.from(context);
+    }
+
+    @Override
+    public int getCount() {
+        return arrayList.size();
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return arrayList.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(final int i, View view, ViewGroup viewGroup) {
+        ViewHolder viewHolder;
+        if (view == null) {
+            viewHolder = new ViewHolder();
+
+            //inflate the layout on basis of boolean
+            if (isListView)
+                view = inflater.inflate(R.layout.list_custom_row_layout, viewGroup, false);
+            else
+                view = inflater.inflate(R.layout.grid_custom_row_layout, viewGroup, false);
+
+            viewHolder.label = (TextView) view.findViewById(R.id.label);
+            viewHolder.radioButton = (RadioButton) view.findViewById(R.id.radio_button);
+
+            view.setTag(viewHolder);
+        } else
+            viewHolder = (ViewHolder) view.getTag();
+
+        viewHolder.label.setText(arrayList.get(i));
+
+        //check the radio button if both position and selectedPosition matches
+        viewHolder.radioButton.setChecked(i == selectedPosition);
+
+        //Set the position tag to both radio button and label
+        viewHolder.radioButton.setTag(i);
+        viewHolder.label.setTag(i);
+
+        viewHolder.radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemCheckChanged(v);
+            }
+        });
+
+        viewHolder.label.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemCheckChanged(v);
+            }
+
+
+        });
+        return view;
+    }
+
+    //On selecting any view set the current position to selectedPositon and notify adapter
+    private void itemCheckChanged(View v) {
+        selectedPosition = (Integer) v.getTag();
+        notifyDataSetChanged();
+    }
+
+    private class ViewHolder {
+        private TextView label;
+        private RadioButton radioButton;
+    }
+
+    //Return the selectedPosition item
+    public String getSelectedItem() {
+        if (selectedPosition != -1) {
+            Toast.makeText(context, "Selected Item : " + arrayList.get(selectedPosition), Toast.LENGTH_SHORT).show();
+            return arrayList.get(selectedPosition);
+        }
+        return "";
+    }
+
+    //Delete the selected position from the arrayList
+    public void deleteSelectedPosition() {
+        if (selectedPosition != -1) {
+            arrayList.remove(selectedPosition);
+            selectedPosition = -1;//after removing selectedPosition set it back to -1
+            notifyDataSetChanged();
+        }
+    }
+}</pre>
+<ul>
+<li><em><strong>RecyclerViewAdapter.java</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listradiobutton_demo.adapter;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.listradiobutton_demo.R;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 19/09/16.
+ */
+
+public class RecyclerViewAdapter extends RecyclerView.Adapter&lt;RecyclerViewAdapter.RecyclerViewHolder&gt; {
+
+    static class RecyclerViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView label;
+        private RadioButton radioButton;
+
+        RecyclerViewHolder(View view) {
+            super(view);
+            label = (TextView) view.findViewById(R.id.label);
+            radioButton = (RadioButton) view.findViewById(R.id.radio_button);
+        }
+
+    }
+
+    private ArrayList&lt;String&gt; arrayList;
+    private Context context;
+    private int selectedPosition = -1;
+
+
+    public RecyclerViewAdapter(Context context, ArrayList&lt;String&gt; arrayList) {
+        this.arrayList = arrayList;
+        this.context = context;
+    }
+
+    @Override
+    public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_custom_row_layout, viewGroup, false);
+        return new RecyclerViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(final RecyclerViewHolder holder, final int i) {
+
+        holder.label.setText(arrayList.get(i));
+
+        //check the radio button if both position and selectedPosition matches
+        holder.radioButton.setChecked(i == selectedPosition);
+
+        //Set the position tag to both radio button and label
+        holder.radioButton.setTag(i);
+        holder.label.setTag(i);
+        holder.radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemCheckChanged(v);
+            }
+        });
+
+        holder.label.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemCheckChanged(v);
+            }
+
+
+        });
+    }
+
+    //On selecting any view set the current position to selectedPositon and notify adapter
+    private void itemCheckChanged(View v) {
+        selectedPosition = (Integer) v.getTag();
+        notifyDataSetChanged();
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return (null != arrayList ? arrayList.size() : 0);
+    }
+
+    //Return the selectedPosition item
+    public String getSelectedItem() {
+        if (selectedPosition != -1) {
+            Toast.makeText(context, "Selected Item : " + arrayList.get(selectedPosition), Toast.LENGTH_SHORT).show();
+            return arrayList.get(selectedPosition);
+        }
+        return "";
+    }
+
+    //Delete the selected position from the arrayList
+    public void deleteSelectedPosition() {
+        if (selectedPosition != -1) {
+            arrayList.remove(selectedPosition);
+            selectedPosition = -1;//after removing selectedPosition set it back to -1
+            notifyDataSetChanged();
+        }
+    }
+}</pre>
+In both the above adapter the common code to select row is:<br />
+<pre class="crayon-plain-tag">//On selecting any view set the current position to selectedPosition and notify adapter
+    private void itemCheckChanged(View v) {
+        selectedPosition = (Integer) v.getTag();
+        notifyDataSetChanged();
+    }
+
+ //Return the selectedPosition item
+    public String getSelectedItem() {
+        if (selectedPosition != -1) {
+            Toast.makeText(context, "Selected Item : " + arrayList.get(selectedPosition), Toast.LENGTH_SHORT).show();
+            return arrayList.get(selectedPosition);
+        }
+        return "";
+    }
+
+    //Delete the selected position from the arrayList
+    public void deleteSelectedPosition() {
+        if (selectedPosition != -1) {
+            arrayList.remove(selectedPosition);
+            selectedPosition = -1;//after removing selectedPosition set it back to -1
+            notifyDataSetChanged();
+        }
+    }</pre>
+<b>8</b>. Finally all things done. Now you can also make your any type of single choice list view.</p>
+<p>Thanks. <img src="https://s.w.org/images/core/emoji/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><a href="http://androhub.com/downloads/ListRadioButton_Demo.zip" target="_blank"><b>Download Source Code – &gt;</b></a></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-listview-radiobutton/">Android ListView RadioButton</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-listview-radiobutton/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1141</post-id>	</item>
+		<item>
+		<title>Android ListView Checkbox</title>
+		<link>http://www.androhub.com/android-listview-checkbox/</link>
+		<comments>http://www.androhub.com/android-listview-checkbox/#respond</comments>
+		<pubDate>Thu, 09 Feb 2017 16:58:13 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android Fragment]]></category>
+		<category><![CDATA[Android ListView]]></category>
+		<category><![CDATA[Android Tabs]]></category>
+		<category><![CDATA[checkbox]]></category>
+		<category><![CDATA[deselect all checkbox]]></category>
+		<category><![CDATA[gridview]]></category>
+		<category><![CDATA[gridview with checkbox]]></category>
+		<category><![CDATA[listview]]></category>
+		<category><![CDATA[listview with checkbox]]></category>
+		<category><![CDATA[material tabs]]></category>
+		<category><![CDATA[multiple choice listviews]]></category>
+		<category><![CDATA[recyclerview]]></category>
+		<category><![CDATA[recyclerview with checkbox]]></category>
+		<category><![CDATA[select all checkbox]]></category>
+
+		<guid isPermaLink="false">http://www.androhub.com/?p=1136</guid>
+		<description><![CDATA[<p>Hi to all, today we are going to learn how to enable multiple items to be chosen in ListView, GridView and in RecyclerView using CheckBox, you’ll configure the ListView to display a checkbox next to each item. You can combine many components like TextView, CheckBox, ImageView, etc. and can make ListView as you require. Prerequisite: [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-listview-checkbox/">Android ListView Checkbox</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Hi to all, today we are going to learn how to enable multiple items to be chosen in ListView, GridView and in RecyclerView using CheckBox, you’ll configure the ListView to display a checkbox next to each item. You can combine many components like TextView, CheckBox, ImageView, etc. and can make ListView as you require.</p>
+<h2>Prerequisite:</h2>
+<ol>
+<li><a href="http://www.androhub.com/android-material-design-tabs-using-tablayout/" target="_blank">Material Tabs Tutorial</a></li>
+<li><a href="http://www.androhub.com/android-listview/" target="_blank">ListView Tutorial</a></li>
+<li><a href="http://www.androhub.com/android-gridview/" target="_blank">GridView Tutorial</a></li>
+<li><a href="http://www.androhub.com/android-recyclerview/" target="_blank">RecyclerView Tutorial</a></li>
+</ol>
+<h3>Example</h3>
+<p>In this tutorial, we are going to learn how to enable multiple items to be chosen in ListView, GridView and in RecyclerView using CheckBox.</p>
+<h2>VIDEO DEMO</h2>
+<p><iframe  id="_ytid_46733" width="602" height="339" src="https://www.youtube.com/embed/F6Ysr7TyMew?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New ⇒ New Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>build.gradle </strong>and include this libraries show below:</p><pre class="crayon-plain-tag">compile 'com.android.support:design:25.1.0' //Library need for material tabs
+compile 'com.android.support:recyclerview-v7:25.1.0' //Library need for recycler view</pre><p>
+<b>3</b>. Now create 3 material tabs naming ListView, GridView and RecyclerView. For this you can check this <a href="http://www.androhub.com/android-material-design-tabs-using-tablayout/" target="_blank">link</a> for reference.</p>
+<p><b>4</b>. After creating tabs lets move to creating xml layouts for individual tabs.</p>
+<ul>
+<li><em>list_view_frament.xml</em></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"&gt;
+
+    &lt;ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_container" /&gt;
+
+    &lt;include
+        android:id="@+id/bottom_container"
+        layout="@layout/bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" /&gt;
+
+&lt;/RelativeLayout&gt;</pre>
+<ul>
+<li><em>grid_view_fragment.xml</em></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"&gt;
+
+    &lt;GridView
+        android:id="@+id/grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_container"
+        android:horizontalSpacing="2dp"
+        android:numColumns="2"
+        android:verticalSpacing="2dp" /&gt;
+
+    &lt;include
+        android:id="@+id/bottom_container"
+        layout="@layout/bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" /&gt;
+&lt;/RelativeLayout&gt;</pre>
+<ul>
+<li><em>recycler_view_fragment.xml</em></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"&gt;
+
+    &lt;android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_container" /&gt;
+
+    &lt;include
+        android:id="@+id/bottom_container"
+        layout="@layout/bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" /&gt;
+&lt;/RelativeLayout&gt;</pre>
+<b>5</b>. In all the above xml layouts i am using one common layout i.e. <em>bottom_container.xml.</em> Lets create the common layout xml, this layout contains three buttons for implementing actions over selected rows.<br />
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"&gt;
+
+    &lt;Button
+        android:id="@+id/show_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/show"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" /&gt;
+
+    &lt;Button
+        android:id="@+id/delete_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/delete"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" /&gt;
+
+    &lt;Button
+        android:id="@+id/select_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/select_all"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" /&gt;
+&lt;/LinearLayout&gt;</pre>
+<b>6</b>. Now lets create java classes for all the above three xml files.</p>
+<ul>
+<li><strong><em>ListViewFragment.java</em></strong></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listcheckbox_demo.main;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.util.SparseBooleanArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.listcheckbox_demo.R;
+import com.listcheckbox_demo.adapter.GridListAdapter;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 08/02/17.
+ */
+public class ListViewFragment extends Fragment {
+    private Context context;
+    private GridListAdapter adapter;
+    private ArrayList&lt;String&gt; arrayList;
+    private Button selectButton;
+
+    public ListViewFragment() {
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.list_view_fragment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        selectButton = (Button) view.findViewById(R.id.select_button);
+        loadListView(view);
+        onClickEvent(view);
+    }
+
+    private void loadListView(View view) {
+        ListView listView = (ListView) view.findViewById(R.id.list_view);
+        arrayList = new ArrayList&lt;&gt;();
+        for (int i = 1; i &lt;= 50; i++)
+            arrayList.add("ListView Items " + i);//Adding items to recycler view
+
+        adapter = new GridListAdapter(context, arrayList, true);
+        listView.setAdapter(adapter);
+    }
+
+    private void onClickEvent(View view) {
+        view.findViewById(R.id.show_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SparseBooleanArray selectedRows = adapter.getSelectedIds();
+                if (selectedRows.size() &gt; 0) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    for (int i = 0; i &lt; selectedRows.size(); i++) {
+                        if (selectedRows.valueAt(i)) {
+                            String selectedRowLabel = arrayList.get(selectedRows.keyAt(i));
+                            stringBuilder.append(selectedRowLabel + "\n");
+                        }
+                    }
+                    Toast.makeText(context, "Selected Rows\n" + stringBuilder.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        view.findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SparseBooleanArray selectedRows = adapter.getSelectedIds();
+                if (selectedRows.size() &gt; 0) {
+                    for (int i = (selectedRows.size() - 1); i &gt;= 0; i--) {
+                        if (selectedRows.valueAt(i)) {
+                            arrayList.remove(selectedRows.keyAt(i));
+                        }
+                    }
+                    adapter.removeSelection();
+                }
+            }
+        });
+        selectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Check the current text of Select Button
+                if (selectButton.getText().toString().equals(getResources().getString(R.string.select_all))) {
+
+                    //If Text is Select All then loop to all array List items and check all of them
+                    for (int i = 0; i &lt; arrayList.size(); i++)
+                        adapter.checkCheckBox(i, true);
+
+                    //After checking all items change button text
+                    selectButton.setText(getResources().getString(R.string.deselect_all));
+                } else {
+                    //If button text is Deselect All remove check from all items
+                    adapter.removeSelection();
+
+                    //After checking all items change button text
+                    selectButton.setText(getResources().getString(R.string.select_all));
+                }
+
+
+            }
+        });
+    }
+}</pre>
+<ul>
+<li><em><strong>GridViewFragment.java</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listcheckbox_demo.main;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.util.SparseBooleanArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.Toast;
+
+import com.listcheckbox_demo.R;
+import com.listcheckbox_demo.adapter.GridListAdapter;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 08/02/17.
+ */
+public class GridViewFragment extends Fragment {
+    private Context context;
+    private GridListAdapter adapter;
+    private ArrayList&lt;String&gt; arrayList;
+    private Button selectButton;
+
+    public GridViewFragment() {
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.grid_view_fragment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        selectButton = (Button) view.findViewById(R.id.select_button);
+        loadGridView(view);
+        onClickEvent(view);
+    }
+
+    private void loadGridView(View view) {
+        GridView gridView = (GridView) view.findViewById(R.id.grid_view);
+        arrayList = new ArrayList&lt;&gt;();
+        for (int i = 1; i &lt;= 50; i++)
+            arrayList.add("GridView Items " + i);
+
+        adapter = new GridListAdapter(context, arrayList, false);
+        gridView.setAdapter(adapter);
+    }
+
+    private void onClickEvent(View view) {
+        view.findViewById(R.id.show_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SparseBooleanArray selectedRows = adapter.getSelectedIds();
+                if (selectedRows.size() &gt; 0) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    for (int i = 0; i &lt; selectedRows.size(); i++) {
+                        if (selectedRows.valueAt(i)) {
+                            String selectedRowLabel = arrayList.get(selectedRows.keyAt(i));
+                            stringBuilder.append(selectedRowLabel + "\n");
+                        }
+                    }
+                    Toast.makeText(context, "Selected Rows\n" + stringBuilder.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        view.findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SparseBooleanArray selectedRows = adapter.getSelectedIds();
+                if (selectedRows.size() &gt; 0) {
+                    for (int i = (selectedRows.size() - 1); i &gt;= 0; i--) {
+                        if (selectedRows.valueAt(i)) {
+                            arrayList.remove(selectedRows.keyAt(i));
+                        }
+                    }
+                    adapter.removeSelection();
+                }
+
+            }
+        });
+        selectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Check the current text of Select Button
+                if (selectButton.getText().toString().equals(getResources().getString(R.string.select_all))) {
+
+                    //If Text is Select All then loop to all array List items and check all of them
+                    for (int i = 0; i &lt; arrayList.size(); i++)
+                        adapter.checkCheckBox(i, true);
+
+                    //After checking all items change button text
+                    selectButton.setText(getResources().getString(R.string.deselect_all));
+                } else {
+                    //If button text is Deselect All remove check from all items
+                    adapter.removeSelection();
+
+                    //After checking all items change button text
+                    selectButton.setText(getResources().getString(R.string.select_all));
+                }
+            }
+        });
+
+    }
+
+}</pre>
+<ul>
+<li><em><strong>RecyclerViewFragment.java</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listcheckbox_demo.main;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.SparseBooleanArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.listcheckbox_demo.R;
+import com.listcheckbox_demo.adapter.RecyclerViewAdapter;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 08/02/17.
+ */
+public class RecyclerViewFragment extends Fragment {
+
+    private Context context;
+    private RecyclerViewAdapter adapter;
+    private ArrayList&lt;String&gt; arrayList;
+    private Button selectButton;
+
+    public RecyclerViewFragment() {
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.recycler_view_fragment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        selectButton = (Button) view.findViewById(R.id.select_button);
+        populateRecyclerView(view);
+        onClickEvent(view);
+    }
+
+    private void populateRecyclerView(View view) {
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        arrayList = new ArrayList&lt;&gt;();
+        for (int i = 1; i &lt;= 50; i++)
+            arrayList.add("RecyclerView Items " + i);//Adding items to recycler view
+
+        adapter = new RecyclerViewAdapter(context, arrayList);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void onClickEvent(View view) {
+        view.findViewById(R.id.show_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SparseBooleanArray selectedRows = adapter.getSelectedIds();
+                if (selectedRows.size() &gt; 0) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    for (int i = 0; i &lt; selectedRows.size(); i++) {
+                        if (selectedRows.valueAt(i)) {
+                            String selectedRowLabel = arrayList.get(selectedRows.keyAt(i));
+                            stringBuilder.append(selectedRowLabel + "\n");
+                        }
+                    }
+                    Toast.makeText(context, "Selected Rows\n" + stringBuilder.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        view.findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SparseBooleanArray selectedRows = adapter.getSelectedIds();
+                if (selectedRows.size() &gt; 0) {
+                    for (int i = (selectedRows.size() - 1); i &gt;= 0; i--) {
+                        if (selectedRows.valueAt(i)) {
+                            arrayList.remove(selectedRows.keyAt(i));
+                        }
+                    }
+                    adapter.removeSelection();
+                }
+            }
+        });
+        selectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Check the current text of Select Button
+                if (selectButton.getText().toString().equals(getResources().getString(R.string.select_all))) {
+
+                    //If Text is Select All then loop to all array List items and check all of them
+                    for (int i = 0; i &lt; arrayList.size(); i++)
+                        adapter.checkCheckBox(i, true);
+
+                    //After checking all items change button text
+                    selectButton.setText(getResources().getString(R.string.deselect_all));
+                } else {
+                    //If button text is Deselect All remove check from all items
+                    adapter.removeSelection();
+
+                    //After checking all items change button text
+                    selectButton.setText(getResources().getString(R.string.select_all));
+                }
+            }
+        });
+    }
+}</pre>
+In all the three above Java classes the main thing that we need to focus is button click events:</p>
+<ul>
+<li><strong>Show Button : </strong>This button used to show a Toast of checked rows.</li>
+</ul>
+<pre class="crayon-plain-tag">SparseBooleanArray selectedRows = adapter.getSelectedIds();//Get the selected ids from adapter
+                //Check if item is selected or not via size
+                if (selectedRows.size() &gt; 0) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    //Loop to all the selected rows array
+                    for (int i = 0; i &lt; selectedRows.size(); i++) {
+
+                        //Check if selected rows have value i.e. checked item
+                        if (selectedRows.valueAt(i)) {
+
+                            //Get the checked item text from array list by getting keyAt method of selectedRowsarray
+                            String selectedRowLabel = arrayList.get(selectedRows.keyAt(i));
+
+                            //append the row label text
+                            stringBuilder.append(selectedRowLabel + "\n");
+                        }
+                    }
+                    Toast.makeText(context, "Selected Rows\n" + stringBuilder.toString(), Toast.LENGTH_SHORT).show();
+                }</pre>
+<ul>
+<li><strong>Delete Button : </strong>This button is to delete checked rows.</li>
+</ul>
+<pre class="crayon-plain-tag">SparseBooleanArray selectedRows = adapter.getSelectedIds();//Get the selected ids from adapter
+                //Check if item is selected or not via size
+                if (selectedRows.size() &gt; 0) {
+                    //Loop to all the selected rows array
+                    for (int i = (selectedRows.size() - 1); i &gt;= 0; i--) {
+
+                        //Check if selected rows have value i.e. checked item
+                        if (selectedRows.valueAt(i)) {
+
+                            //remove the checked item
+                            arrayList.remove(selectedRows.keyAt(i));
+                        }
+                    }
+
+                    //notify the adapter and remove all checked selection
+                    adapter.removeSelection();
+                }</pre>
+<ul>
+<li><strong>Select All/Deselect All Button : </strong>This button is to select and deselect all the rows.</li>
+</ul>
+<pre class="crayon-plain-tag">//Check the current text of Select Button
+                if (selectButton.getText().toString().equals(getResources().getString(R.string.select_all))) {
+
+                    //If Text is Select All then loop to all array List items and check all of them
+                    for (int i = 0; i &lt; arrayList.size(); i++)
+                        adapter.checkCheckBox(i, true);
+
+                    //After checking all items change button text
+                    selectButton.setText(getResources().getString(R.string.deselect_all));
+                } else {
+                    //If button text is Deselect All remove check from all items
+                    adapter.removeSelection();
+
+                    //After checking all items change button text
+                    selectButton.setText(getResources().getString(R.string.select_all));
+                }</pre>
+<b>7</b>. Now after creating all fragment classes we have to create Adapters for ListView, GridView and RecyclerView.</p>
+<ul>
+<li><em><strong>GridListAdapter.java</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listcheckbox_demo.adapter;
+
+import android.content.Context;
+import android.util.SparseBooleanArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+import com.listcheckbox_demo.R;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 08/02/17.
+ */
+
+public class GridListAdapter extends BaseAdapter {
+    private Context context;
+    private ArrayList&lt;String&gt; arrayList;
+    private LayoutInflater inflater;
+    private boolean isListView;
+    private SparseBooleanArray mSelectedItemsIds;
+
+    public GridListAdapter(Context context, ArrayList&lt;String&gt; arrayList, boolean isListView) {
+        this.context = context;
+        this.arrayList = arrayList;
+        this.isListView = isListView;
+        inflater = LayoutInflater.from(context);
+        mSelectedItemsIds = new SparseBooleanArray();
+    }
+
+    @Override
+    public int getCount() {
+        return arrayList.size();
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return arrayList.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(final int i, View view, ViewGroup viewGroup) {
+        ViewHolder viewHolder;
+        if (view == null) {
+            viewHolder = new ViewHolder();
+
+            //inflate the layout on basis of boolean
+            if (isListView)
+                view = inflater.inflate(R.layout.list_custom_row_layout, viewGroup, false);
+            else
+                view = inflater.inflate(R.layout.grid_custom_row_layout, viewGroup, false);
+
+            viewHolder.label = (TextView) view.findViewById(R.id.label);
+            viewHolder.checkBox = (CheckBox) view.findViewById(R.id.checkbox);
+
+            view.setTag(viewHolder);
+        } else
+            viewHolder = (ViewHolder) view.getTag();
+
+        viewHolder.label.setText(arrayList.get(i));
+        viewHolder.checkBox.setChecked(mSelectedItemsIds.get(i));
+
+        viewHolder.checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkCheckBox(i, !mSelectedItemsIds.get(i));
+            }
+        });
+
+        viewHolder.label.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkCheckBox(i, !mSelectedItemsIds.get(i));
+            }
+        });
+
+        return view;
+    }
+
+    private class ViewHolder {
+        private TextView label;
+        private CheckBox checkBox;
+    }
+
+
+    /**
+     * Remove all checkbox Selection
+     **/
+    public void removeSelection() {
+        mSelectedItemsIds = new SparseBooleanArray();
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Check the Checkbox if not checked
+     **/
+    public void checkCheckBox(int position, boolean value) {
+        if (value)
+            mSelectedItemsIds.put(position, true);
+        else
+            mSelectedItemsIds.delete(position);
+
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Return the selected Checkbox IDs
+     **/
+    public SparseBooleanArray getSelectedIds() {
+        return mSelectedItemsIds;
+    }
+
+}</pre>
+<ul>
+<li><em><strong>RecyclerViewAdapter.java</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">package com.listcheckbox_demo.adapter;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.util.SparseBooleanArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+import com.listcheckbox_demo.R;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sonu on 19/09/16.
+ */
+
+public class RecyclerViewAdapter extends RecyclerView.Adapter&lt;RecyclerViewAdapter.RecyclerViewHolder&gt; {
+
+    static class RecyclerViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView label;
+        private CheckBox checkBox;
+
+        RecyclerViewHolder(View view) {
+            super(view);
+            label = (TextView) view.findViewById(R.id.label);
+            checkBox = (CheckBox) view.findViewById(R.id.checkbox);
+        }
+
+    }
+
+    private ArrayList&lt;String&gt; arrayList;
+    private Context context;
+    private SparseBooleanArray mSelectedItemsIds;
+
+
+    public RecyclerViewAdapter(Context context, ArrayList&lt;String&gt; arrayList) {
+        this.arrayList = arrayList;
+        this.context = context;
+        mSelectedItemsIds = new SparseBooleanArray();
+    }
+
+    @Override
+    public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_custom_row_layout, viewGroup, false);
+        return new RecyclerViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(final RecyclerViewHolder holder, final int i) {
+        holder.label.setText(arrayList.get(i));
+        holder.checkBox.setChecked(mSelectedItemsIds.get(i));
+
+        holder.checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkCheckBox(i, !mSelectedItemsIds.get(i));
+            }
+        });
+
+        holder.label.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkCheckBox(i, !mSelectedItemsIds.get(i));
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return (null != arrayList ? arrayList.size() : 0);
+    }
+
+    /**
+     * Remove all checkbox Selection
+     **/
+    public void removeSelection() {
+        mSelectedItemsIds = new SparseBooleanArray();
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Check the Checkbox if not checked
+     **/
+    public void checkCheckBox(int position, boolean value) {
+        if (value)
+            mSelectedItemsIds.put(position, true);
+        else
+            mSelectedItemsIds.delete(position);
+
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Return the selected Checkbox IDs
+     **/
+    public SparseBooleanArray getSelectedIds() {
+        return mSelectedItemsIds;
+    }
+
+
+}</pre>
+In both the above adapter the common code is to select rows:<br />
+<pre class="crayon-plain-tag">/**
+     * Remove all checkbox Selection
+     **/
+    public void removeSelection() {
+        mSelectedItemsIds = new SparseBooleanArray();
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Check the Checkbox if not checked
+     **/
+    public void checkCheckBox(int position, boolean value) {
+        if (value)
+            mSelectedItemsIds.put(position, true);
+        else
+            mSelectedItemsIds.delete(position);
+
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Return the selected Checkbox IDs
+     **/
+    public SparseBooleanArray getSelectedIds() {
+        return mSelectedItemsIds;
+    }</pre>
+<b>8</b>. Finally all things done. Now you can also make your any type of multiple choice list view.</p>
+<p>Thanks. <img src="https://s.w.org/images/core/emoji/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><a href="http://androhub.com/downloads/ListCheckBox_Demo.zip" target="_blank"><b>Download Source Code – &gt;</b></a></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-listview-checkbox/">Android ListView Checkbox</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-listview-checkbox/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1136</post-id>	</item>
+		<item>
+		<title>Navigation View-Material Design Support Library Tutorial</title>
+		<link>http://www.androhub.com/navigation-view-material-design-support-library-tutorial/</link>
+		<comments>http://www.androhub.com/navigation-view-material-design-support-library-tutorial/#comments</comments>
+		<pubDate>Tue, 22 Mar 2016 06:05:53 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Drawer]]></category>
+		<category><![CDATA[Android Fragment]]></category>
+		<category><![CDATA[Android Material Design]]></category>
+		<category><![CDATA[Android NavigationDrawer]]></category>
+		<category><![CDATA[Android ToolBar]]></category>
+		<category><![CDATA[android]]></category>
+		<category><![CDATA[android design support library]]></category>
+		<category><![CDATA[android toolbar]]></category>
+		<category><![CDATA[fragment]]></category>
+		<category><![CDATA[navigation]]></category>
+		<category><![CDATA[Navigation Drawer]]></category>
+		<category><![CDATA[Navigation View]]></category>
+		<category><![CDATA[ToolBar]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=811</guid>
+		<description><![CDATA[<p>Google I/O 2015 has brought a whole new set of tools for Android Developers which are meant to make our lives easier. I´d like to devote a set of articles to talk about the incredibly useful Design Support Library. For Material Design tutorial check this link. Navigation View In this article, I&#8217;ll start talking about [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/navigation-view-material-design-support-library-tutorial/">Navigation View-Material Design Support Library Tutorial</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p><a href="https://events.google.com/io2015/" target="_blank">Google I/O 2015</a> has brought a whole new set of tools for Android Developers which are meant to make our lives easier. I´d like to devote a set of articles to talk about the incredibly useful <a href="http://android-developers.blogspot.com.es/2015/05/android-design-support-library.html" target="_blank">Design Support Library</a>.</p>
+<p>For Material Design tutorial check this <a href="http://androhub.com/android-toolbar/" target="_blank">link</a>.</p>
+<h2>Navigation View</h2>
+<p>In this article, I&#8217;ll start talking about the <strong><a href="http://developer.android.com/reference/android/support/design/widget/NavigationView.html" target="_blank">Navigation View</a></strong>. Since Material Design was released, we were given a standard definition on <a href="http://www.google.com/design/spec/patterns/navigation-drawer.html" target="_blank">how a Navigation Drawer must look and feel</a>. Truth is that implementing those guidelines was rather time consuming. But now, with the navigation view, the implementation is much easier.</p>
+<p><strong>Navigation View</strong> represents a standard navigation menu for application. The menu contents can be populated by a menu resource file. NavigationView is typically placed inside a <code><a href="http://developer.android.com/reference/android/support/v4/widget/DrawerLayout.html" target="_blank">DrawerLayout</a></code>.</p>
+<p>We had done <a href="http://androhub.com/android-navigationdrawer/" target="_blank">Navigation Drawer</a> in earlier articles but this is too easy and too awesome.</p>
+<p><span style="text-decoration: underline;"><strong>Navigation View Xml structure:</strong></span></p><pre class="crayon-plain-tag">&lt;android.support.design.widget.NavigationView
+        android:id="@+id/slider_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/navigation_menu"
+        app:header="@layout/header" /&gt;</pre><p>
+<h3>Prerequisite:</h3>
+<ol>
+<li><a href="http://androhub.com/android-toolbar/" target="_blank">Material Design Toolbar.</a></li>
+<li><a href="http://androhub.com/android-fragments/" target="_blank">Fragment Implementation.</a></li>
+<li><a href="http://androhub.com/android-pass-data-from-activity-to-fragment/" target="_blank">Pass data between Activity.</a></li>
+<li><a href="http://androhub.com/android-pass-data-from-activity-to-fragment/" target="_blank">Pass data to Fragments.</a></li>
+</ol>
+<h3>Example</h3>
+<p>In this tutorial, we are going to learn how to implement Navigation View with default and custom way.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_52857" width="602" height="339" src="https://www.youtube.com/embed/_ky7q7QywXo?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New ⇒ New Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>build.gradle </strong>and include this libraries show below:</p><pre class="crayon-plain-tag">dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+}</pre><p>
+<b>3</b>. Open <strong>res ⇒ values</strong> and create a new xml file naming <em>colors.xml </em>and add the following colors to it.<strong>   </strong></p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+    &lt;color name="colorPrimary"&gt;#009688&lt;/color&gt;
+    &lt;color name="colorPrimaryDark"&gt;#00796B&lt;/color&gt;
+    &lt;color name="colorAccent"&gt;#4DB6AC&lt;/color&gt;
+&lt;/resources&gt;</pre><p>
+<b>4</b>. Open <strong>strings.xml</strong> located under <strong>res=&gt;values</strong> folder and add following strings.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;NavigationView Demo&lt;/string&gt;
+
+    &lt;string name="default_navigation_view"&gt;Default Navigation View&lt;/string&gt;
+    &lt;string name="custom_navigation_view"&gt;Custom Navigation View&lt;/string&gt;
+    &lt;string name="drawer_open"&gt;Drawer Open&lt;/string&gt;
+    &lt;string name="drawer_close"&gt;Drawer Close&lt;/string&gt;
+    &lt;string name="others"&gt;Others&lt;/string&gt;
+
+    &lt;!--  Navigation View String Values  --&gt;
+    &lt;string name="home"&gt;Home&lt;/string&gt;
+    &lt;string name="my_account"&gt;My Account&lt;/string&gt;
+    &lt;string name="chat"&gt;Chat&lt;/string&gt;
+    &lt;string name="notification"&gt;Notification&lt;/string&gt;
+    &lt;string name="share"&gt;Share App&lt;/string&gt;
+    &lt;string name="rate"&gt;Rate App&lt;/string&gt;
+    &lt;string name="settings"&gt;Settings&lt;/string&gt;
+    &lt;string name="help"&gt;Help&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>5</b>. Create a xml for toolbar naming <em>toolbar.xml.</em></p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimary"
+    android:elevation="4dp"
+    local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" &gt;
+&lt;/android.support.v7.widget.Toolbar&gt;</pre><p>
+<b>6</b>. Since we are going to learn default and custom navigation view, so we need to create two xml files for this:</p>
+<ul>
+<li><em><strong>default_navigation_view.xml</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"&gt;
+
+        &lt;include
+            android:id="@+id/main_toolbar"
+            layout="@layout/toolbar" /&gt;
+
+        &lt;FrameLayout
+            android:id="@+id/frame_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" /&gt;
+    &lt;/LinearLayout&gt;
+
+    &lt;!--  Navigation View--&gt;
+    &lt;android.support.design.widget.NavigationView
+        android:id="@+id/slider_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/navigation_menu" /&gt;
+
+&lt;/android.support.v4.widget.DrawerLayout&gt;</pre>
+<ul>
+<li><em><strong>custom_navigation_view.xml</strong></em></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"&gt;
+
+        &lt;include
+            android:id="@+id/main_toolbar"
+            layout="@layout/toolbar" /&gt;
+
+        &lt;FrameLayout
+            android:id="@+id/frame_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" /&gt;
+    &lt;/LinearLayout&gt;
+
+    &lt;!--  Navigation View--&gt;
+    &lt;android.support.design.widget.NavigationView
+        android:id="@+id/slider_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:itemIconTint="@drawable/navigation_menu_selector"
+        app:itemTextColor="@drawable/navigation_menu_selector"
+        app:menu="@menu/navigation_menu" /&gt;
+
+&lt;/android.support.v4.widget.DrawerLayout&gt;</pre>
+<b>7</b>. In <em>custom_navigation_view.xml</em> we are using <em>drawable</em> <em>navigation_menu_selector</em> i.e. custom selector, so now create a new xml file under <em>drawable</em> resource naming <em>navigation_menu_selector.xml</em> and add the following code:<br />
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;selector xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;!-- This is used when the Navigation Item is checked --&gt;
+    &lt;item android:color="#E91E63" android:state_checked="true" /&gt;
+    &lt;!-- This is the default text color --&gt;
+    &lt;item android:color="@android:color/black" /&gt;
+&lt;/selector&gt;</pre>
+<b>8</b>. For menu items  for Navigation View we need to create a new menu under menu directory naming navigation_menu.xml and add the following menus:<br />
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;!-- Main Menus --&gt;
+    &lt;group android:checkableBehavior="single"&gt;
+
+        &lt;item
+            android:id="@+id/home"
+            android:checkable="true"
+            android:checked="true"
+            android:icon="@drawable/ic_home"
+            android:title="@string/home" /&gt;
+
+
+        &lt;item
+            android:id="@+id/my_account"
+            android:checkable="true"
+            android:checked="false"
+            android:icon="@drawable/ic_my_account"
+            android:title="@string/my_account" /&gt;
+
+        &lt;item
+            android:id="@+id/notifications"
+            android:checkable="true"
+            android:checked="false"
+            android:icon="@drawable/ic_notification"
+            android:title="@string/notification" /&gt;
+        &lt;item
+            android:id="@+id/chat"
+            android:checkable="true"
+            android:checked="false"
+            android:icon="@drawable/ic_chat"
+            android:title="@string/chat" /&gt;
+
+    &lt;/group&gt;
+
+    &lt;!--  Sub Menus  --&gt;
+    &lt;item android:title="@string/others"&gt;
+        &lt;menu&gt;
+            &lt;group android:checkableBehavior="none"&gt;
+                &lt;item
+                    android:id="@+id/share_app"
+                    android:icon="@drawable/ic_share"
+                    android:title="@string/share" /&gt;
+                &lt;item
+                    android:id="@+id/rate_app"
+                    android:icon="@drawable/ic_rate"
+                    android:title="@string/rate" /&gt;
+                &lt;item
+                    android:id="@+id/settings"
+                    android:icon="@drawable/ic_settings"
+                    android:title="@string/settings" /&gt;
+                &lt;item
+                    android:id="@+id/help"
+                    android:icon="@drawable/ic_help"
+                    android:title="@string/help" /&gt;
+            &lt;/group&gt;
+        &lt;/menu&gt;
+    &lt;/item&gt;
+
+
+&lt;/menu&gt;</pre>
+For menu icons you can download form <a href="https://icons8.com/" target="_blank">Icons8</a> site and size should be 24px.</p>
+<p><b>9</b>. Now for Header View of Navigation View create new layout xml file naming <em>header_view.xml </em>and add your header UI in these xml.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sellers_profile_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"&gt;
+    &lt;!-- Header View --&gt;
+    &lt;ImageView
+        android:id="@+id/image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_user" /&gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/image_view"
+        android:orientation="vertical"
+        android:paddingBottom="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp"&gt;
+
+        &lt;TextView
+            android:id="@+id/username"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Dr. Droid"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" /&gt;
+
+        &lt;TextView
+            android:id="@+id/email_address"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="androhub.com"
+            android:textColor="@android:color/black"
+            android:textSize="13sp" /&gt;
+    &lt;/LinearLayout&gt;
+
+    &lt;View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/darker_gray" /&gt;
+&lt;/RelativeLayout&gt;</pre><p>
+<b>10</b>. Now create <em>activity_main.xml</em> that contains two <em>button</em> for starting default and custom navigation view activity.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"&gt;
+
+    &lt;Button
+        android:id="@+id/default_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/default_navigation_view"
+        android:textColor="#000000"
+        android:textSize="15sp" /&gt;
+
+    &lt;Button
+        android:id="@+id/custom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/custom_navigation_view"
+        android:textColor="#000000"
+        android:textSize="15sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>11</b>. Now create a java class naming <em>MainActivity.java</em> and add the following code. In this class we are just starting <em>NavigationView_Activity</em> class by passing <em>boolean</em> data type.</p><pre class="crayon-plain-tag">package com.navigationview_demo;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        findViewById(R.id.default_navigation_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startNavigationViewActivity(true);
+            }
+        });
+        findViewById(R.id.custom_navigation_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startNavigationViewActivity(false);
+            }
+        });
+    }
+
+    /*  Start Navigation View activity  */
+    private void startNavigationViewActivity(boolean value) {
+        Intent in = new Intent(MainActivity.this, NavigationView_Activity.class);
+        in.putExtra("value", value);
+        startActivity(in);
+
+    }
+}</pre><p>
+<b>12</b>. Now mainly create NavigationMenu_Activity.java and add the following code. In this code there is nothing to do with navigation view because we already set menu items in xml layout. So here we are just going to implement navigation view menu item click listener.</p>
+<p>For using header view for changing text or images you can refer to<strong><em> setUpHeaderView()</em> </strong>in this class.</p><pre class="crayon-plain-tag">package com.navigationview_demo;
+
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+/**
+ * Created by SONU on 21/03/16.
+ */
+public class NavigationView_Activity extends AppCompatActivity {
+
+    private static DrawerLayout mDrawerLayout;
+    private static ActionBarDrawerToggle mDrawerToggle;
+    private static Toolbar toolbar;
+    private static FragmentManager fragmentManager;
+    private static NavigationView navigationView;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        //Get boolean data value from intent
+        boolean isDefaultNavigationView = getIntent().getBooleanExtra("value", false);
+
+        //according to boolean value set content view
+        if (isDefaultNavigationView)
+            setContentView(R.layout.default_navigation_view_activity);
+        else
+            setContentView(R.layout.custom_navigation_view_activity);
+
+        initViews();
+        setUpHeaderView();
+        onMenuItemSelected();
+
+        //At start set home fragment
+        if (savedInstanceState == null) {
+            navigationView.setCheckedItem(R.id.home);
+            MenuItem item = navigationView.getMenu().findItem(R.id.home);
+            setFragment(item);
+        }
+    }
+
+    /*  Init all views  */
+    private void initViews() {
+        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.slider_menu);
+        fragmentManager = getSupportFragmentManager();
+        mDrawerToggle = new ActionBarDrawerToggle(this,
+                mDrawerLayout, toolbar, // nav menu toggle icon
+                R.string.drawer_open, // nav drawer open - description for
+                // accessibility
+                R.string.drawer_close // nav drawer close - description for
+                // accessibility
+        ) {
+            public void onDrawerClosed(View view) {
+            }
+
+            public void onDrawerOpened(View drawerView) {
+
+            }
+        };
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggls
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+
+    /**
+     * For using header view use this method
+     **/
+    private void setUpHeaderView() {
+        View headerView = navigationView.inflateHeaderView(R.layout.header_view);
+        TextView textOne = (TextView) headerView.findViewById(R.id.username);
+        TextView textTwo = (TextView) headerView.findViewById(R.id.email_address);
+    }
+
+
+    /*  Method for Navigation View item selection  */
+    private void onMenuItemSelected() {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+
+                //Check and un-check menu item if they are checkable behaviour
+                if (item.isCheckable()) {
+                    if (item.isChecked()) item.setChecked(false);
+                    else item.setChecked(true);
+                }
+
+                //Closing drawer on item click
+                mDrawerLayout.closeDrawers();
+
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        //Replace fragment
+
+
+                        setFragment(item);
+                        break;
+
+                    case R.id.my_account:
+                        //Replace fragment
+
+
+                        setFragment(item);
+                        break;
+                    case R.id.chat:
+                        //Replace fragment
+
+
+                        setFragment(item);
+                        break;
+                    case R.id.notifications:
+                        //Replace fragment
+
+
+                        setFragment(item);
+
+                        break;
+                    case R.id.share_app:
+
+                        //Start new Activity or do your stuff
+
+
+                        Toast.makeText(NavigationView_Activity.this, "You Clicked on "" + item.getTitle().toString() + "" menu item.", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.rate_app:
+                        //Start new Activity or do your stuff
+
+
+                        Toast.makeText(NavigationView_Activity.this, "You Clicked on "" + item.getTitle().toString() + "" menu item.", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.settings:
+                        //Start new Activity or do your stuff
+
+
+                        Toast.makeText(NavigationView_Activity.this, "You Clicked on "" + item.getTitle().toString() + "" menu item.", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.help:
+                        //Start new Activity or do your stuff
+
+
+                        Toast.makeText(NavigationView_Activity.this, "You Clicked on "" + item.getTitle().toString() + "" menu item.", Toast.LENGTH_SHORT).show();
+
+                        break;
+
+                }
+
+                return false;
+            }
+        });
+    }
+
+    /*  Set Fragment, setting toolbar title and passing item title via bundle to fragments*/
+    public void setFragment(MenuItem item) {
+        toolbar.setTitle(item.getTitle());
+
+        //Find fragment by tag
+        Fragment fr = fragmentManager.findFragmentByTag(item.getTitle().toString());
+
+        Fragment dummyFragment = new Dummy_Fragment();
+        Bundle b = new Bundle();
+
+        //If fragment is null replace fragment
+        if (fr == null) {
+            b.putString("data", item.getTitle().toString());
+            dummyFragment.setArguments(b);//Set Arguments
+            fragmentManager
+                    .beginTransaction()
+                    .replace(R.id.frame_container,
+                            dummyFragment, item.getTitle().toString())
+                    .commit();
+        }
+    }
+
+
+    //On back press check if drawer is open and closed
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(Gravity.LEFT))
+            mDrawerLayout.closeDrawers();
+        else
+            super.onBackPressed();
+    }
+}</pre><p>
+<b>13</b>. We are using Dummy_Fragment in above step so we need to create a xml file naming <em>dummy_fragment.xml</em>.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"&gt;
+
+    &lt;TextView
+        android:id="@+id/fragment_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dp"
+        android:textColor="@android:color/black"
+        android:textSize="17sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>14</b>. For xml dummy_fragment create a java file naming <em>Dummy_Fragment.java</em> and add the following code.</p><pre class="crayon-plain-tag">package com.navigationview_demo;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+/**
+ * Created by SONU on 21/03/16.
+ */
+public class Dummy_Fragment extends Fragment {
+
+    public Dummy_Fragment() {
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.dummy_fragment, container, false);
+
+        TextView text = (TextView) view.findViewById(R.id.fragment_textview);
+
+        //Get bundle data from arguments and set text over textview
+        String title = getArguments().getString("data");
+        text.setText(title);
+
+        return view;
+    }
+}</pre><p>
+<b>15</b>. Don&#8217;t forget to declare your <em>NavigationView_Activity</em> inside <em>AndroidManifest.xml</em>.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.navigationview_demo"&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"&gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+        &lt;activity android:name=".NavigationView_Activity" /&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>16</b>. Some important codes of NavigationView:</p>
+<ul>
+<li>For accessing header view :</li>
+</ul>
+<pre class="crayon-plain-tag">View headerView = navigationView.inflateHeaderView(R.layout.header_view);</pre>
+<ul>
+<li>For checking menu item manually:</li>
+</ul>
+<p>&#8211; for api level 23+</p><pre class="crayon-plain-tag">navigationView.setCheckedItem(R.id.home);</pre><p>
+&#8211; for api level below 23</p><pre class="crayon-plain-tag">navigationView.getMenu().getItem(0).setChecked(true);</pre><p>
+** where &#8216;0&#8217; is the <strong>index</strong> of the menu item.</p>
+<ul>
+<li>Getting MenuItem from the navigation view  menus.</li>
+</ul>
+<pre class="crayon-plain-tag">MenuItem item = navigationView.getMenu().findItem(R.id.home);</pre>
+<b>17</b>. Finally, all done &#8211; now develop an awesome app using navigation view.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/NavigationView_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/navigation-view-material-design-support-library-tutorial/">Navigation View-Material Design Support Library Tutorial</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/navigation-view-material-design-support-library-tutorial/feed/</wfw:commentRss>
+		<slash:comments>8</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">811</post-id>	</item>
+		<item>
+		<title>Android Pass Data from Activity to Fragment</title>
+		<link>http://www.androhub.com/android-pass-data-from-activity-to-fragment/</link>
+		<comments>http://www.androhub.com/android-pass-data-from-activity-to-fragment/#comments</comments>
+		<pubDate>Mon, 12 Oct 2015 13:56:14 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android Fragment]]></category>
+		<category><![CDATA[android fragment manager]]></category>
+		<category><![CDATA[android fragments]]></category>
+		<category><![CDATA[fragment]]></category>
+		<category><![CDATA[fragment manager]]></category>
+		<category><![CDATA[fragments]]></category>
+		<category><![CDATA[get Argument]]></category>
+		<category><![CDATA[how to pass data from activity to fragment]]></category>
+		<category><![CDATA[pass data from activity to fragment]]></category>
+		<category><![CDATA[pass data to fragment]]></category>
+		<category><![CDATA[replace fragment]]></category>
+		<category><![CDATA[set argument]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=702</guid>
+		<description><![CDATA[<p>Earlier we had learn how to pass data from one activity to another and get back data from another activity. You can find both tutorials here : Android Intent. StartActivityForResult. Today we are going to learn how to pass data from Activity to Fragment. Before starting this tutorial just go through Fragments Tutorial if you [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-pass-data-from-activity-to-fragment/">Android Pass Data from Activity to Fragment</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Earlier we had learn how to pass data from one activity to another and get back data from another activity. You can find both tutorials here :</p>
+<ol>
+<li><a href="http://androhub.com/android-intents/" target="_blank">Android Intent</a>.</li>
+<li><a href="http://androhub.com/android-startactivityforresult/" target="_blank">StartActivityForResult</a>.</li>
+</ol>
+<p>Today we are going to learn how to pass data from Activity to Fragment. Before starting this tutorial just go through <a href="http://androhub.com/android-fragments/" target="_blank">Fragments Tutorial</a> if you are new to Fragments. For passing data from activity to fragment you can follow some steps given below:</p>
+<ul>
+<li><strong><a href="http://developer.android.com/intl/ru/reference/android/os/Bundle.html" target="_blank">Bundle</a></strong> &#8211; Bundle is a mapping from String values to various Parcelable types.</li>
+</ul>
+<pre class="crayon-plain-tag">Bundle data = new Bundle();//create bundle instance
+data.putString("key_value", "String to pass");//put string to pass with a key value</pre>
+We can pass int, float or any data type. This is same as we pass data in <a href="http://androhub.com/android-intents/" target="_blank">Intent</a>.</p>
+<ul>
+<li><strong>SetArguments</strong> &#8211; setArguments() is a method to set bundle data over fragment. This bundle data will pass with the fragment.</li>
+</ul>
+<pre class="crayon-plain-tag">fragmentName.setArguments(data);//Set bundle data to fragment</pre>
+<strong>Note:</strong> The above two steps are done inside Activity.<br />
+Now, steps for how to retrieve data inside fragment.</p>
+<ul>
+<li><strong>GetArguments</strong> &#8211; getArguments() method used for getting passed data from activity to fragment. In this we have to retrieve data with particular key value.</li>
+</ul>
+<pre class="crayon-plain-tag">String getArgument = getArguments().getString("key_value");//Get pass data with its key value</pre>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_72308" width="602" height="339" src="https://www.youtube.com/embed/PpDzGqfdEG8?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Now, Let&#8217;s start with example.</p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Now create a xml layout naming <em>activity_main.xml</em> and add the following code. In this layout i had taken two Button one for Simple Fragment and another for Argument Fragment and there is a FrameLayout for holding fragment.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"&gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"&gt;
+
+        &lt;Button
+            android:id="@+id/setDefaultFragment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Default Fragment" /&gt;
+
+        &lt;Button
+            android:id="@+id/setArgumentFragment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Argument Fragment" /&gt;
+    &lt;/LinearLayout&gt;
+
+    &lt;!--  Frame Layout for placing Fragments  --&gt;
+    &lt;FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"&gt;
+
+    &lt;/FrameLayout&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>3</b>. For fragment UI design create new layout xml file naming <em>fragmentlayout.xml </em>and add the following code. In this layout i had taken one TextView whose text is &#8220;<em>Default Text</em>&#8221; by default which gonna change while replacing Argument Fragment.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ff00"
+    android:gravity="center"
+    android:orientation="vertical"&gt;
+
+    &lt;TextView
+        android:id="@+id/fragmentText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Default Text"
+        android:textColor="#ffffff"
+        android:textSize="20sp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>4</b>. Since we are working on two fragment so create two new java classes. First create <em>DefaultFragment.java</em> and add the following code. In this code i had just inflate the layout.</p><pre class="crayon-plain-tag">package com.fragmentsetargument_demo;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+/**
+ * Created by SONU on 07/10/15.
+ */
+public class DefaultFragment extends Fragment {
+    //Simple Fragment
+    public DefaultFragment() {
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragmentlayout, container, false);
+    }
+}</pre><p>
+<b>5</b>. Now create a new java class for second fragment naming <em>ArgumentFragment.java</em> and add the following code. In this code i am retrieving passed data by using <strong><em>getArguments()</em></strong> method with particular key value and setting over TextView.</p><pre class="crayon-plain-tag">package com.fragmentsetargument_demo;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+/**
+ * Created by SONU on 07/10/15.
+ */
+public class ArgumentFragment extends Fragment {
+    public ArgumentFragment() {
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragmentlayout, container, false);//Inflate Layout
+        TextView text = (TextView) view.findViewById(R.id.fragmentText);//Find textview Id
+
+        //Get Argument that passed from activity in "data" key value
+        String getArgument = getArguments().getString("data");
+        text.setText(getArgument);//set string over textview
+        return view;//return view
+    }
+}</pre><p>
+<b>6</b>. Finally come to your <em>MainActivity.java</em> and add the following code. In this code i am passing data by using <em><strong>setArguments() </strong></em>to fragment.</p><pre class="crayon-plain-tag">package com.fragmentsetargument_demo;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static Button defaultFragment, argumentFragment;
+    private static FragmentManager fragmentManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        fragmentManager = getSupportFragmentManager();//Get Fragment Manager
+
+        //Find Ids
+        defaultFragment = (Button) findViewById(R.id.setDefaultFragment);
+        argumentFragment = (Button) findViewById(R.id.setArgumentFragment);
+
+        //Implement Click Listener
+        defaultFragment.setOnClickListener(this);
+        argumentFragment.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.setDefaultFragment:
+
+                //Replace default fragment
+                fragmentManager.beginTransaction().replace(R.id.fragmentContainer, new DefaultFragment()).commit();
+                break;
+            case R.id.setArgumentFragment:
+
+                Fragment argumentFragment = new ArgumentFragment();//Get Fragment Instance
+                Bundle data = new Bundle();//Use bundle to pass data
+                data.putString("data", "This is Argument Fragment");//put string, int, etc in bundle with a key value
+                argumentFragment.setArguments(data);//Finally set argument bundle to fragment
+
+                fragmentManager.beginTransaction().replace(R.id.fragmentContainer, argumentFragment).commit();//now replace the argument fragment
+
+                /**  Note: If you are passing argument in fragment then don't use below code always replace fragment instance where we had set bundle as argument as we had done above else it will give exception  **/
+                //   fragmentManager.beginTransaction().replace(R.id.fragmentContainer, new ArgumentFragment()).commit();
+                break;
+        }
+
+    }
+}</pre><p>
+<b>7</b>. Finally, all done  –  run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/FragmentSetArgument_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-pass-data-from-activity-to-fragment/">Android Pass Data from Activity to Fragment</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-pass-data-from-activity-to-fragment/feed/</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">702</post-id>	</item>
+	</channel>
+</rss>

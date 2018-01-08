@@ -1,0 +1,1661 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Database &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-database/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Content Provider</title>
+		<link>http://www.androhub.com/android-content-provider/</link>
+		<comments>http://www.androhub.com/android-content-provider/#respond</comments>
+		<pubDate>Wed, 29 Jul 2015 05:20:21 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Content Provider]]></category>
+		<category><![CDATA[Android Database]]></category>
+		<category><![CDATA[Android SQLite Database]]></category>
+		<category><![CDATA[content provider]]></category>
+		<category><![CDATA[custom content provider]]></category>
+		<category><![CDATA[Database]]></category>
+		<category><![CDATA[SQLite]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=543</guid>
+		<description><![CDATA[<p>A content provider component supplies data from one application to others on request. Such requests are handled by the methods of the ContentResolver class. A content provider can use different ways to store its data and the data can be stored in a database, in files, or even over a network. Content providers let you [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-content-provider/">Android Content Provider</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>A content provider component supplies data from one application to others on request. Such requests are handled by the methods of the ContentResolver class. A content provider can use different ways to store its data and the data can be stored in a database, in files, or even over a network.</p>
+<p><a href="http://developer.android.com/intl/ru/guide/topics/providers/content-provider-creating.html" target="_blank">Content providers</a> let you centralize content in one place and have many different applications access it as needed. A content provider behaves very much like a database where you can query it, edit its content, as well as add or delete content using insert(), update(), delete(), and query() methods. In most cases this data is stored in an <b>SQlite </b>database.</p>
+<p><a href="https://i1.wp.com/androhub.com/newversion/wp-content/uploads/2015/07/content_provider.png"><img class="size-full wp-image-544" src="https://i1.wp.com/androhub.com/newversion/wp-content/uploads/2015/07/content_provider.png?resize=602%2C379" alt="Content Provider" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2015/07/content_provider.png?w=694 694w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2015/07/content_provider.png?resize=300%2C189 300w" sizes="(max-width: 602px) 100vw, 602px" data-recalc-dims="1" /></a></p>
+<p>A content provider is implemented as a subclass of <b>ContentProvider</b> class and must implement a standard set of APIs that enable other applications to perform transactions.</p><pre class="crayon-plain-tag">public class Custom_ContentProvider extends  ContentProvider {
+
+}</pre><p>
+<h2>Content URIs</h2>
+<p>To query a content provider, you specify the query string in the form of a URI which has following format:</p><pre class="crayon-plain-tag">&lt;prefix&gt;://&lt;authority&gt;/&lt;data_type&gt;/&lt;id&gt;</pre><p>
+Here is the detail of various parts of the URI &#8211;</p>
+
+<table id="tablepress-30" class="tablepress tablepress-id-30">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Part</th><th class="column-2">Description</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">prefix</td><td class="column-2">This is always set to content://</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">authority</td><td class="column-2">This specifies the name of the content provider, for example contacts, browser etc. For third-party content providers, this could be the fully qualified name, such as com.androhub.statusprovider</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">data_type</td><td class="column-2">This indicates the type of data that this particular provider provides. For example, if you are getting all the contacts from the Contacts content provider, then the data path would be people and URI would look like this content://contacts/people</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">id</td><td class="column-2">This specifies the specific record requested. For example, if you are looking for contact number 5 in the Contacts content provider then URI would look like this content://contacts/people/5.</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-30 from cache -->
+<h2>Create Content Provider</h2>
+<p>This involves number of simple steps to create your own content provider.</p>
+<ul>
+<li>First of all you need to create a Content Provider class that extends the <i>ContentProvider </i>base class<i>.</i></li>
+<li>Second, you need to define your content provider URI address which will be used to access the content.</li>
+<li>Next you will need to create your own database to keep the content. Usually, Android uses SQLite database and framework needs to override <i>onCreate() </i>method which will use SQLite Open Helper method to create or open the provider&#8217;s database. When your application is launched, the <i>onCreate()</i> handler of each of its Content Providers is called on the main application thread.</li>
+<li>Next you will have to implement Content Provider queries to perform different database specific operations.</li>
+<li>Finally register your Content Provider in your activity file using &lt;provider&gt; tag.</li>
+</ul>
+<p>Here is the list of methods which you need to override in Content Provider class to have your Content Provider working:</p>
+<ul>
+<li><b>onCreate() &#8211; </b>This method is called when the provider is started.</li>
+<li><b>query() &#8211;</b> This method receives a request from a client. The result is returned as a Cursor object.</li>
+<li><b>insert() &#8211; </b>This method inserts a new record into the content provider.</li>
+<li><b>delete() &#8211;</b> This method deletes an existing record from the content provider.</li>
+<li><b>update() &#8211;</b> This method updates an existing record from the content provider.</li>
+<li><b>getType() &#8211;</b> This method returns the MIME type of the data at the given URI.</li>
+</ul>
+<p>In <a href="http://androhub.com/android-read-contacts-using-content-provider/" target="_blank">last tutorial</a> we had covered the topic how to fetch the contact details from phone contacts using content provider i.e. inbuilt content provider. In this tutorial we are going to create our custom content provider.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to create custom content provider and how to fetch the data from this content provider from another app.</p>
+<h3>Video Demo</h3>
+<p><iframe  id="_ytid_66448" width="602" height="339" src="https://www.youtube.com/embed/98NrjnbEiqA?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<h3></h3>
+<h3>Custom Content Provider Example</h3>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. This are some strings that i am going to use in this tutorial.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="app_name"&gt;ContentProvider Example&lt;/string&gt;
+    &lt;string name="hello_world"&gt;Hello world!&lt;/string&gt;
+    &lt;string name="menu_settings"&gt;Settings&lt;/string&gt;
+    &lt;string name="name"&gt;Enter Name&lt;/string&gt;
+    &lt;string  name="email"&gt;Enter email id&lt;/string&gt;
+    &lt;string name="contact"&gt;Enter conctact number&lt;/string&gt;
+    &lt;string name="add"&gt;Add Data&lt;/string&gt;
+    &lt;string name="save_data"&gt;Save Data using Content Provider&lt;/string&gt;
+    &lt;string name="click"&gt;Click on Button to Show all Saved Data&lt;/string&gt;
+    &lt;string name="show"&gt;Show Data&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Now, create a new java class naming <em>Custom_ContentProvider.java </em>extending <em>ContentProvider. </em>In this java class we put all queries like insert, update, delete and query. We also created a sqlite database to store the data.</p>
+<p>If you are unaware of sqlite database you can check the <a href="http://androhub.com/android-sqlite-database/" target="_blank">tutorial here</a>.</p><pre class="crayon-plain-tag">package com.contentprovider_demo;
+
+import java.util.HashMap;
+
+import android.content.ContentProvider;
+import android.content.ContentUris;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.UriMatcher;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteQueryBuilder;
+import android.net.Uri;
+
+public class Custom_ContentProvider extends ContentProvider {
+	static final String PROVIDER_NAME = "com.contentprovider_demo.Custom_ContentProvider";// Provider
+																							// name
+	static final String URL = "content://" + PROVIDER_NAME + "/androhub";// Provider
+																			// url
+	static final Uri CONTENT_URI = Uri.parse(URL);// Contnet Uri in URI format
+
+	// All fields of database
+	static final String id = "id";
+	static final String name = "name";
+	static final String email = "email";
+	static final String number = "number";
+
+	// Uri code
+	static final int uriCode = 1;
+	static final UriMatcher uriMatcher;
+	private static HashMap&lt;String, String&gt; values;
+	static {
+
+		// Match the uri code to provider name
+		uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+		uriMatcher.addURI(PROVIDER_NAME, "androhub", uriCode);
+		uriMatcher.addURI(PROVIDER_NAME, "androhub/*", uriCode);
+	}
+
+	// detele uri method
+	@Override
+	public int delete(Uri uri, String selection, String[] selectionArgs) {
+		int count = 0;// Count to tell how many rows deleted
+		switch (uriMatcher.match(uri)) {
+		case uriCode:
+			count = db.delete(TABLE_NAME, selection, selectionArgs);
+			break;
+		default:
+			count = 0;
+			throw new IllegalArgumentException("Unknown URI " + uri);
+		}
+		getContext().getContentResolver().notifyChange(uri, null);
+		return count;
+	}
+
+	// return type of content provider
+	@Override
+	public String getType(Uri uri) {
+		switch (uriMatcher.match(uri)) {
+		case uriCode:
+			return "vnd.android.cursor.dir/androhub";
+
+		default:
+			throw new IllegalArgumentException("Unsupported URI: " + uri);
+		}
+	}
+
+	// Insert method
+	@Override
+	public Uri insert(Uri uri, ContentValues values) {
+		long rowID = db.insert(TABLE_NAME, "", values);// Insert data into
+														// database
+		// If row id is greater than 0 then notify content provider
+		if (rowID &gt; 0) {
+			Uri _uri = ContentUris.withAppendedId(CONTENT_URI, rowID);
+			getContext().getContentResolver().notifyChange(_uri, null);
+			return _uri;
+		}
+		throw new SQLException("Failed to add a record into " + uri);
+	}
+
+	@Override
+	public boolean onCreate() {
+		Context context = getContext();
+		DatabaseHelper dbHelper = new DatabaseHelper(context);
+		db = dbHelper.getWritableDatabase();
+		if (db != null) {
+			return true;
+		}
+		return false;
+	}
+
+	// Read all data method
+	@Override
+	public Cursor query(Uri uri, String[] projection, String selection,
+			String[] selectionArgs, String sortOrder) {
+		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+		qb.setTables(TABLE_NAME);
+
+		switch (uriMatcher.match(uri)) {
+		case uriCode:
+			qb.setProjectionMap(values);
+			break;
+		default:
+			throw new IllegalArgumentException("Unknown URI " + uri);
+		}
+		if (sortOrder == null || sortOrder == "") {
+			sortOrder = name;
+		}
+		Cursor c = qb.query(db, projection, selection, selectionArgs, null,
+				null, sortOrder);
+		c.setNotificationUri(getContext().getContentResolver(), uri);
+		return c;
+	}
+
+	// Update data
+	@Override
+	public int update(Uri uri, ContentValues values, String selection,
+			String[] selectionArgs) {
+		int count = 0;// Count to tell number of rows updated
+		switch (uriMatcher.match(uri)) {
+		case uriCode:
+			count = db.update(TABLE_NAME, values, selection, selectionArgs);
+			break;
+		default:
+			count = 0;
+			throw new IllegalArgumentException("Unknown URI " + uri);
+		}
+		getContext().getContentResolver().notifyChange(uri, null);
+		return count;
+	}
+
+	/** SqlLite Database **/
+	private SQLiteDatabase db;
+	static final String DATABASE_NAME = "ContentProvider_Database";// Database
+																	// name
+	static final String TABLE_NAME = "User_Details";// Table Name
+	static final int DATABASE_VERSION = 1;// Database Version
+	static final String CREATE_DB_TABLE = " CREATE TABLE " + TABLE_NAME
+			+ " (id INTEGER PRIMARY KEY AUTOINCREMENT, " + name
+			+ " TEXT NOT NULL, " + email + " TEXT NOT NULL, " + number
+			+ " TEXT NOT NULL" + " );"; // Create table query
+
+	private static class DatabaseHelper extends SQLiteOpenHelper {
+		DatabaseHelper(Context context) {
+			super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		}
+
+		@Override
+		public void onCreate(SQLiteDatabase db) {
+			db.execSQL(CREATE_DB_TABLE);// Create table
+		}
+
+		// On database version upgrade create new table
+		@Override
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+			db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+			onCreate(db);
+		}
+	}
+}</pre><p>
+<b>4</b>. After creating custom content provider we have to put it into manifest file inside provider tag.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.contentprovider_demo"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name="com.contentprovider_demo.MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+
+        &lt;provider
+            android:name="com.contentprovider_demo.Custom_ContentProvider"
+            android:authorities="com.contentprovider_demo.Custom_ContentProvider"
+            android:exported="true"
+            android:multiprocess="true" &gt;
+        &lt;/provider&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>5</b>. Now create a basic xml layout naming <em>activity_main.xml. </em>In this layout i put some edittext and two buttons.</p><pre class="crayon-plain-tag">&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:fillViewport="true" &gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp" &gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/save_data"
+            android:textColor="#F44336"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;EditText
+            android:id="@+id/txtName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="@string/name"
+            android:inputType="textCapWords"
+            android:padding="10dp" /&gt;
+
+        &lt;EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp" /&gt;
+
+        &lt;EditText
+            android:id="@+id/txtContact"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="@string/contact"
+            android:inputType="number"
+            android:padding="10dp" /&gt;
+
+        &lt;Button
+            android:id="@+id/btnAdd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="@string/add" /&gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/click"
+            android:textColor="#F44336"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;Button
+            android:id="@+id/btnShow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="@string/show" /&gt;
+
+        &lt;TextView
+            android:id="@+id/result"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textSize="15sp" /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;</pre><p>
+<b>6</b>. Finally come to <em>MainActivity.java </em>and add the following code to it. In this java class we have two onClickListener buttons :</p>
+<ul>
+<li>Add Button &#8211; This button will add the EditText values into Content Provider database using <a href="http://developer.android.com/intl/ru/reference/android/content/ContentValues.html" target="_blank">Content Values</a>.</li>
+<li>Show Button &#8211; This button fetch the data from content provider in cursor and check if cursor is not null then show data else show empty data.</li>
+</ul>
+<pre class="crayon-plain-tag">package com.contentprovider_demo;
+
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+	private static EditText name, email, number;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		name = (EditText) findViewById(R.id.txtName);
+		email = (EditText) findViewById(R.id.txtEmail);
+		number = (EditText) findViewById(R.id.txtContact);
+
+		findViewById(R.id.btnAdd).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View view) {
+				// Get all text fields into string
+				String getName = name.getText().toString();
+				String getEmail = email.getText().toString();
+				String getNumber = number.getText().toString();
+
+				// Check if all fields are not null
+				if (!getName.equals("") &amp;&amp; getName.length() != 0
+						&amp;&amp; !getEmail.equals("") &amp;&amp; getEmail.length() != 0
+						&amp;&amp; !getNumber.equals("") &amp;&amp; getNumber.length() != 0) {
+
+					onClickAddData(getName, getEmail, getNumber);// Add data
+
+					// empty all fields
+					name.setText("");
+					email.setText("");
+					number.setText("");
+				}
+				// else show toast
+				else
+					Toast.makeText(MainActivity.this,
+							"Please fill all details.", Toast.LENGTH_SHORT)
+							.show();
+
+			}
+		});
+		findViewById(R.id.btnShow).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View view) {
+				TextView resultView = (TextView) findViewById(R.id.result);
+				Cursor cursor = getContentResolver().query(
+						Custom_ContentProvider.CONTENT_URI, null, null, null,
+						null);// Get cursor
+
+				// Check if it is null or not
+				if (cursor != null &amp;&amp; cursor.moveToFirst()) {
+
+					StringBuilder result = new StringBuilder();
+					// Loop to all items
+					while (!cursor.isAfterLast()) {
+						// Add data to string builder
+						result.append("Id - "
+								+ cursor.getString(cursor.getColumnIndex("id"))
+								+ "nName - "
+								+ cursor.getString(cursor
+										.getColumnIndex("name"))
+								+ "nEmail - "
+								+ cursor.getString(cursor
+										.getColumnIndex("email"))
+								+ "nContact Number - "
+								+ cursor.getString(cursor
+										.getColumnIndex("number")) + "nn");
+						cursor.moveToNext();
+					}
+					resultView.setText(result);// finally set string builder to
+												// textview
+				} else {
+
+					// if cursor is null then set data empty
+					resultView.setText("Empty data!!");
+
+				}
+			}
+		});
+	}
+
+	// Add data method
+	private void onClickAddData(String name, String email, String number) {
+		ContentValues values = new ContentValues();// Content values to add data
+		values.put(Custom_ContentProvider.name, name);
+		values.put(Custom_ContentProvider.email, email);
+		values.put(Custom_ContentProvider.number, number);
+		Uri uri = getContentResolver().insert(
+				Custom_ContentProvider.CONTENT_URI, values);// Insert data to
+															// content provider
+		Toast.makeText(getBaseContext(), "New Data Inserted.",
+				Toast.LENGTH_LONG).show();
+	}
+}</pre>
+<b>7</b>. Finally you are done with custom content provider example.</p>
+<p><strong><a href="http://androhub.com/downloads/ContentProvider_Demo.zip" target="_blank">Download Custom Content Provider Source Code – &gt;</a></strong></p>
+<h3></h3>
+<h3>Use of Custom Content Proivder Example</h3>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. This are some strings that i am going to use in this tutorial.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="app_name"&gt;ContentProviderUser Example&lt;/string&gt;
+    &lt;string name="hello_world"&gt;Hello world!&lt;/string&gt;
+    &lt;string name="menu_settings"&gt;Settings&lt;/string&gt;
+    &lt;string name="show_data"&gt;Show Data&lt;/string&gt;
+    &lt;string name="fetch"&gt;Fetch Data from Content Provider&lt;/string&gt;
+    &lt;string name="id"&gt;Enter Id&lt;/string&gt;
+    &lt;string name="update"&gt;Update&lt;/string&gt;
+    &lt;string name="delete"&gt;Delete&lt;/string&gt;
+    &lt;string name="update_delete"&gt;Enter Id to Update/Delete Data&lt;/string&gt;
+    &lt;string name="insert"&gt;Insert&lt;/string&gt;
+    &lt;string name="insert_data"&gt;Click to Insert New Data&lt;/string&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Create a xml layout naming <em>activity_main.xml. </em>This layout contains some buttons for showing data, inserting new data, update data and delete data.</p><pre class="crayon-plain-tag">&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:fillViewport="true" &gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp" &gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/fetch"
+            android:textColor="#F44336"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;Button
+            android:id="@+id/btnRetrieve"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="@string/show_data" /&gt;
+
+        &lt;TextView
+            android:id="@+id/result"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="false"
+            android:padding="5dp"
+            android:textColor="#000000"
+            android:textSize="15sp" /&gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/update_delete"
+            android:textColor="#F44336"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;EditText
+            android:id="@+id/id"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:hint="@string/id"
+            android:inputType="number" /&gt;
+
+        &lt;LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" &gt;
+
+            &lt;Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/update" /&gt;
+
+            &lt;Button
+                android:id="@+id/btnDelete"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/delete" /&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/insert_data"
+            android:textColor="#F44336"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;Button
+            android:id="@+id/btnInsert"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="@string/insert" /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;</pre><p>
+<b>4</b>. Now, create a new class naming <em>Random_Datas.java </em>that contains three string array for adding new data inside content provider.</p><pre class="crayon-plain-tag">package com.contentprovider_user_demo;
+
+public class Random_Datas {
+
+	/** Strings array to insert/update data in Content Provider **/
+	public static final String[] Name = { "Androhub", "Andrew", "Philip",
+			"Sachin", "New User", "Guest" };
+	public static final String[] Email = { "Androhub@gmail.com",
+			"Andrew@gmail.com", "Philip@gmail.com", "Sachin@gmail.com",
+			"New User@gmail.com", "Guest@gmail.com" };
+	public static final String[] Number = { "9008091221", "9977112561",
+			"908456124", "8904561245", "8953234903", "7845362793" };
+}</pre><p>
+<b>5</b>. Finally come to your <em>MainActivity.java </em>and follow some steps while fetching data from custom provider app.</p>
+<ul>
+<li>We have to use the URI that we have created in our Custom Content Provider.</li>
+</ul>
+<pre class="crayon-plain-tag">private static final String uri = "content://com.contentprovider_demo.Custom_ContentProvider/androhub";</pre>
+<ul>
+<li>Before fetching data, inserting data, updating data or doing anything with content provider first check if content provider app is installed in your device and containing some data to perform task else exception will occurs.</li>
+<li>On Content Provider data update and delete i am using id to do this task you can use any field like name, email, etc. Make sure before updating first check if particular id is present in database or not.</li>
+</ul>
+<p>Final source code of MainActivity.java.</p><pre class="crayon-plain-tag">package com.contentprovider_user_demo;
+
+import java.util.Random;
+
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity implements
+		LoaderManager.LoaderCallbacks&lt;Cursor&gt;, OnClickListener {
+	private static TextView resultView;
+	private static EditText id;
+	private static Button retrieve, update, delete, insert;
+
+	private static CursorLoader cursorLoader;
+
+	private static final String uri = "content://com.contentprovider_demo.Custom_ContentProvider/androhub";// Content
+																											// URI
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		// Find Ids
+		resultView = (TextView) findViewById(R.id.result);
+		id = (EditText) findViewById(R.id.id);
+		retrieve = (Button) findViewById(R.id.btnRetrieve);
+		update = (Button) findViewById(R.id.btnUpdate);
+		delete = (Button) findViewById(R.id.btnDelete);
+		insert = (Button) findViewById(R.id.btnInsert);
+
+		// Implement click listener
+		retrieve.setOnClickListener(this);
+		update.setOnClickListener(this);
+		delete.setOnClickListener(this);
+		insert.setOnClickListener(this);
+
+	}
+
+	// On click call representative methods
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnRetrieve:
+			onClickDisplayData();// Fetch data
+			break;
+		case R.id.btnUpdate:
+
+			// Update data according to Id
+			String getId = id.getText().toString();
+			if (!getId.equals("") &amp;&amp; getId.length() != 0)
+				updateData(new String[] { getId });
+			else
+				Toast.makeText(MainActivity.this, "Id is empty.",
+						Toast.LENGTH_SHORT).show();
+
+			break;
+
+		case R.id.btnDelete:
+
+			// Delete data according to Id
+			String getId_ = id.getText().toString();
+			if (!getId_.equals("") &amp;&amp; getId_.length() != 0)
+				deleteData(new String[] { getId_ });
+			else
+				Toast.makeText(MainActivity.this, "Id is empty.",
+						Toast.LENGTH_SHORT).show();
+
+			break;
+		case R.id.btnInsert:
+
+			// Insert data
+			insertData();
+			break;
+
+		}
+
+	}
+
+	private void onClickDisplayData() {
+		// Initate loader manager
+		getSupportLoaderManager().initLoader(1, null, this);
+	}
+
+	@Override
+	public Loader&lt;Cursor&gt; onCreateLoader(int arg0, Bundle arg1) {
+		try {
+			cursorLoader = new CursorLoader(this, Uri.parse(uri), null, null,
+					null, null);// Get cursor loader from URI
+		} catch (NullPointerException e) {
+			// if exception occurs toast occurs
+			Toast.makeText(
+					MainActivity.this,
+					"There is no app found corresponding to your content provider.",
+					Toast.LENGTH_LONG).show();
+		} catch (Exception e) {
+			Toast.makeText(MainActivity.this,
+					"Error in fetching data. Try again.", Toast.LENGTH_SHORT)
+					.show();
+			e.printStackTrace();
+		}
+		return cursorLoader;
+	}
+
+	@Override
+	public void onLoadFinished(Loader&lt;Cursor&gt; arg0, Cursor cursor) {
+
+		// First check if cursor is not null
+		if (cursor != null &amp;&amp; cursor.moveToFirst()) {
+
+			StringBuilder result = new StringBuilder();
+
+			// Now loop to all items and append it to string builder
+			while (!cursor.isAfterLast()) {
+				result.append("Id - "
+						+ cursor.getString(cursor.getColumnIndex("id"))
+						+ "nName - "
+						+ cursor.getString(cursor.getColumnIndex("name"))
+						+ "nEmail - "
+						+ cursor.getString(cursor.getColumnIndex("email"))
+						+ "nContact Number - "
+						+ cursor.getString(cursor.getColumnIndex("number"))
+						+ "nn");
+				cursor.moveToNext();
+			}
+			resultView.setText(result);// Finally set string builder to textview
+		} else {
+			// If cursor is null then display toast and set empty data.
+			resultView.setText("Empty data!!");
+			Toast.makeText(
+					MainActivity.this,
+					"May be there is no app corresponding to your provider or there is null data.",
+					Toast.LENGTH_LONG).show();
+		}
+
+	}
+
+	@Override
+	public void onLoaderReset(Loader&lt;Cursor&gt; arg0) {
+
+	}
+
+	// Random int value generator method between 0-5
+	private int RandomInt() {
+		Random random = new Random();
+		int randomValue = random.nextInt(5);
+		return randomValue;
+	}
+
+	// Update data method
+	private void updateData(String[] id) {
+		Cursor cursor = getContentResolver().query(Uri.parse(uri), null, null,
+				null, null);// Get cursor from Uri
+
+		// If cursor is not null then update data else show toast
+		if (cursor != null) {
+			int randomValue = RandomInt();// Get random integer
+			ContentValues values = new ContentValues();// Content values to
+														// insert data
+			values.put("name", Random_Datas.Name[randomValue]);// add data from
+																// RandomDatas
+																// class
+			values.put("email", Random_Datas.Email[randomValue]);
+			values.put("number", Random_Datas.Number[randomValue]);
+			int count = getContentResolver().update(Uri.parse(uri), values,
+					"id = ?", id);// now update provider using ID
+
+			// If count is not 0 then row is updated else no row is updated
+			if (count != 0)
+				Toast.makeText(MainActivity.this, "Row updated",
+						Toast.LENGTH_LONG).show();
+			else
+				Toast.makeText(
+						MainActivity.this,
+						"May be there is no row to update or the id you pass is not present in database.",
+						Toast.LENGTH_LONG).show();
+
+		} else {
+			Toast.makeText(
+					MainActivity.this,
+					"May be there is no app corresponding to your provider or there is null data.",
+					Toast.LENGTH_LONG).show();
+		}
+
+	}
+
+	// Delete data
+	private void deleteData(String[] id) {
+
+		// Firstly get the cursor then check if it is null or not
+		Cursor cursor = getContentResolver().query(Uri.parse(uri), null, null,
+				null, null);
+		if (cursor != null) {
+
+			int count = getContentResolver().delete(Uri.parse(uri), "id = ? ",
+					id);// Delete row according to id
+			if (count != 0)
+				Toast.makeText(MainActivity.this, "Row deleted",
+						Toast.LENGTH_LONG).show();
+			else
+				Toast.makeText(
+						MainActivity.this,
+						"May be there is no row to delete or the id you pass is not present in database.",
+						Toast.LENGTH_LONG).show();
+
+		} else {
+			Toast.makeText(
+					MainActivity.this,
+					"May be there is no app corresponding to your provider or there is null data.",
+					Toast.LENGTH_LONG).show();
+		}
+
+	}
+
+	// Insert random data
+	private void insertData() {
+		Cursor cursor = getContentResolver().query(Uri.parse(uri), null, null,
+				null, null);
+		// First check if cursor is null or not
+		if (cursor != null) {
+			int randomValue = RandomInt();
+			ContentValues values = new ContentValues();
+			values.put("name", Random_Datas.Name[randomValue]);
+			values.put("email", Random_Datas.Email[randomValue]);
+			values.put("number", Random_Datas.Number[randomValue]);
+			Uri uri_ = getContentResolver().insert(Uri.parse(uri), values);// Now
+																			// add
+																			// the
+																			// content
+																			// values
+																			// to
+																			// content
+																			// provider
+
+			Toast.makeText(MainActivity.this, "Data inserted.",
+					Toast.LENGTH_LONG).show();
+		} else {
+			Toast.makeText(MainActivity.this,
+					"May be there is no app corresponding to your provider.",
+					Toast.LENGTH_LONG).show();
+		}
+
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+	}
+
+}</pre><p>
+<b>6</b>. Finally you are done with this example also.</p>
+<p><strong><a href="http://androhub.com/downloads/ContentProvider_User_Demo.zip" target="_blank">Download Source Code of Second Example – &gt;</a></strong></p>
+<p>Now you can use both example and run the app and you will get the output as shown in the video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-content-provider/">Android Content Provider</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-content-provider/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">543</post-id>	</item>
+		<item>
+		<title>Android SQLite Database</title>
+		<link>http://www.androhub.com/android-sqlite-database/</link>
+		<comments>http://www.androhub.com/android-sqlite-database/#respond</comments>
+		<pubDate>Fri, 24 Apr 2015 06:03:30 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Database]]></category>
+		<category><![CDATA[android database]]></category>
+		<category><![CDATA[Android SQLite Database]]></category>
+		<category><![CDATA[Android Storage]]></category>
+		<category><![CDATA[Database]]></category>
+		<category><![CDATA[Local Database]]></category>
+		<category><![CDATA[SQLite]]></category>
+		<category><![CDATA[Storing data into Android]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=232</guid>
+		<description><![CDATA[<p>1. What is SQLite? SQLite is an Open Source database. SQLite supports standard relational database features like SQL syntax, transactions and prepared statements. The database requires limited memory at runtime (approx. 250 KByte) which makes it a good candidate from being embedded into other runtimes. SQLite supports the data types TEXT (similar to String in [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-sqlite-database/">Android SQLite Database</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h2>1. What is SQLite?</h2>
+</div>
+</div>
+</div>
+<p><em class="wordasword">SQLite</em> is an Open Source database. SQLite supports standard relational database features like SQL syntax, transactions and prepared statements. The database requires limited memory at runtime (approx. 250 KByte) which makes it a good candidate from being embedded into other runtimes.</p>
+<p>SQLite supports the data types <code class="code">TEXT</code> (similar to String in Java), <code class="code">INTEGER</code> (similar to long in Java) and <code class="code">REAL</code> (similar to double in Java). All other types must be converted into one of these fields before getting saved in the database. SQLite itself does not validate if the types written to the columns are actually of the defined type, e.g. you can write an integer into a string column and vice versa.</p>
+</div>
+<div class="section">
+<div class="titlepage">
+<div class="section">
+<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h2>2. SQLite in Android</h2>
+</div>
+</div>
+</div>
+<p>SQLite is embedded into every Android device. Using an SQLite database in Android does not require a setup procedure or administration of the database.</p>
+<p>You only have to define the SQL statements for creating and updating the database. Afterwards the database is automatically managed for you by the Android platform.</p>
+<p>Access to an SQLite database involves accessing the file system. This can be slow. Therefore it is recommended to perform database operations asynchronously.</p>
+<p>If your application creates a database, this database is by default saved in the directory  DATA/data/APP_NAME/databases/FILENAME.</p>
+<p>The parts of the above directory are constructed based on the following rules. <code class="code">DATA</code> is the path which the <code class="code">Environment.getDataDirectory()</code> method returns. <code class="code">APP_NAME</code> is your application name. <code class="code">FILENAME</code> is the name you specify in your application code for the database.</p>
+<h2>3. SQLite architecture</h2>
+<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h3>3.1. Packages</h3>
+</div>
+</div>
+</div>
+<p>The <code class="code">android.database</code> package contains all necessary classes for working with databases. The <code class="code">android.database.sqlite </code>package contains the SQLite specific classes.</p>
+</div>
+<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h3>3.2. Creating and updating database with SQLiteOpenHelper</h3>
+</div>
+</div>
+</div>
+<p>To create and upgrade a database in your Android application you create a subclass of the <code class="code">SQLiteOpenHelper</code> class. In the constructor of your subclass you call the <code class="code">super()</code> method of <code class="code">SQLiteOpenHelper</code>, specifying the database name and the current database version.</p>
+<p>In this class you need to override the following methods to create and update your database.</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" type="disc">
+<li class="listitem"><code class="code">onCreate()</code> &#8211; is called by the framework, if the database is accessed but not yet created.</li>
+<li class="listitem"><code class="code">onUpgrade()</code> &#8211; called, if the database version is increased in your application code. This method allows you to update an existing database schema or to drop the existing database and recreate it via the <code class="code">onCreate()</code> method.</li>
+</ul>
+</div>
+<p>Both methods receive an <code class="code">SQLiteDatabase</code> object as parameter which is the Java representation of the database.</p>
+<p>The <code class="code">SQLiteOpenHelper</code> class provides the <code class="code">getReadableDatabase()</code> and <code class="code">getWriteableDatabase()</code> methods to get access to an <code class="code">SQLiteDatabase</code> object either in read or write mode.</p>
+<p>The database tables should use the identifier <code class="code">_id</code> for the primary key of the table. Several Android functions rely on this standard.</p>
+<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h3>3.3. SQLiteDatabase</h3>
+</div>
+</div>
+</div>
+<p><code class="code">SQLiteDatabase</code> is the base class for working with a SQLite database in Android and provides methods to open, query, update and close the database.</p>
+<p>More specifically <code class="code">SQLiteDatabase</code> provides the <code class="code">insert()</code>, <code class="code">update()</code> and <code class="code">delete()</code> methods.</p>
+<p>In addition it provides the <code class="code">execSQL()</code> method, which allows to execute an SQL statement directly.</p>
+<p>The object <code class="code">ContentValues</code> allows to define key/values. The <em class="parameter"><code>key</code></em> represents the table column identifier and the <em class="parameter"><code>value</code></em> represents the content for the table record in this column. <code class="code">ContentValues</code> can be used for inserts and updates of database entries.</p>
+<p>Queries can be created via the <code class="code">rawQuery()</code> and <code class="code">query()</code> methods or via the <code class="code">SQLiteQueryBuilder</code> class .</p>
+<p><code class="code">rawQuery()</code> directly accepts an SQL select statement as input.</p>
+<p><code class="code">query()</code> provides a structured interface for specifying the SQL query.</p>
+<p><code class="code">SQLiteQueryBuilder</code> is a convenience class that helps to build SQL queries.</p>
+<div class="titlepage">
+<div>
+<div>
+<h3>3.4. rawQuery() Example</h3>
+</div>
+</div>
+</div>
+<p>The following gives an example of a <code class="code">rawQuery()</code> call.</p><pre class="crayon-plain-tag">Cursor cursor = getReadableDatabase().
+  rawQuery("select * from table_name where _id = ?", new String[] { id });</pre><p>
+<div class="titlepage">
+<div>
+<div>
+<h3>3.5. query() Example</h3>
+</div>
+</div>
+</div>
+<p>The following gives an example of a <code class="code">query()</code> call.</p><pre class="crayon-plain-tag">return database.query(DATABASE_TABLE, 
+  new String[] { KEY_ROWID, KEY_CATEGORY, KEY_SUMMARY}, 
+  null, null, null, null, null);</pre><p>
+&nbsp;</p>
+<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h3>3.6. Cursor</h3>
+</div>
+</div>
+</div>
+<p>A query returns a <code class="code">Cursor</code> object. A Cursor represents the result of a query and basically points to one row of the query result. This way Android can buffer the query results efficiently; as it does not have to load all data into memory.</p>
+<p>To get the number of elements of the resulting query use the <code class="code">getCount()</code> method.</p>
+<p>To move between individual data rows, you can use the <code class="code">moveToFirst()</code> and <code class="code">moveToNext()</code> methods. The <code class="code">isAfterLast()</code>method allows to check if the end of the query result has been reached.</p>
+<p><code class="code">Cursor</code> provides typed <code class="code">get*()</code> methods, e.g. <code class="code">getLong(columnIndex)</code>, <code class="code">getString(columnIndex)</code> to access the column data for the current position of the result. The &#8220;columnIndex&#8221; is the number of the column you are accessing.</p>
+<p><code class="code">Cursor</code> also provides the <code class="code">getColumnIndexOrThrow(String)</code> method which allows to get the column index for a column name of the table.</p>
+<p>A <code class="code">Cursor</code> needs to be closed with the <code class="code">close()</code> method call.</p>
+<div class="titlepage">
+<div>
+<div>
+<h3>3.7. ListViews, ListActivities and SimpleCursorAdapter</h3>
+</div>
+</div>
+</div>
+<p><code class="code">ListViews</code> are <code class="code">Views</code> which allow to display a list of elements.</p>
+<p><code class="code">ListActivities</code> are specialized <em class="wordasword">activities</em> which make the usage of <code class="code">ListViews</code> easier.</p>
+<p>To work with databases and <code class="code">ListViews</code> you can use the <code class="code">SimpleCursorAdapter</code>. The <code class="code">SimpleCursorAdapter</code> allows to set a layout for each row of the <code class="code">ListViews</code>.</p>
+<p>You also define an array which contains the column names and another array which contains the IDs of <code class="code">Views</code> which should be filled with the data.</p>
+<p>The <code class="code">SimpleCursorAdapter</code> class will map the columns to the <code class="code">Views</code> based on the <code class="code">Cursor</code> passed to it.</p>
+<p>To obtain the <code class="code">Cursor</code> you should use the <code class="code">Loader</code> class.</p>
+<h2>Example</h2>
+<p>In this example i will be demonstrating how to work on SQLite Database i.e. local database for storing data and fetching data again.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_65588" width="602" height="339" src="https://www.youtube.com/embed/Ffhj4s0atGA?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Let’s get start by creating a project in Eclipse IDE.</p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>)</p>
+<p><b>2</b>. Open your your <em>AndroidManifest.xml</em> file and make your “<em>MainActivity</em>” as Launcher activity.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sqllite_demo"
+    android:versionCode="1"
+    android:versionName="1.0" &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" &gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre><p>
+<b>3</b>. Create a new folder in <em>res folder </em>naming <em>drawable </em>by right clicking on <em>res ⇒ New ⇒ Folder </em>. In that folder create a new <em>xml </em> file for button selector naming <em>button_selector.xml </em>and set it as background to buttons. We can go beyond just displaying image, where Android allows us to differentiate different states of the selected button.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;selector xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+
+    &lt;item android:state_pressed="true"&gt;&lt;shape&gt;
+            &lt;solid android:color="#0032C3" /&gt;
+
+            &lt;stroke android:width="1dp" android:color="#0032C3" /&gt;
+
+            &lt;corners android:radius="6dp" /&gt;
+
+            &lt;padding android:bottom="3dp" android:left="3dp" android:right="3dp" android:top="3dp" /&gt;
+        &lt;/shape&gt;&lt;/item&gt;
+    &lt;item&gt;&lt;shape&gt;
+            &lt;gradient android:angle="270" android:endColor="#1589FF" android:startColor="#1589FF" /&gt;
+
+            &lt;stroke android:width="1dp" android:color="#1589FF" /&gt;
+
+            &lt;corners android:radius="6dp" /&gt;
+
+            &lt;padding android:bottom="3dp" android:left="3dp" android:right="3dp" android:top="3dp" /&gt;
+        &lt;/shape&gt;&lt;/item&gt;
+
+&lt;/selector&gt;</pre><p>
+<b>4</b>. Create a layout file for <em>MainActivtiy.java</em> under <em>res ⇒ layout</em> folder. I named the layout file as <em>activity_main.xml</em>. This layout contains some edittexts, buttons and a listview for displaying saved data.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;EditText
+        android:id="@+id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:hint="@string/name"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:textSize="18sp" /&gt;
+
+    &lt;EditText
+        android:id="@+id/email"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:textSize="18sp" /&gt;
+
+    &lt;EditText
+        android:id="@+id/address"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:hint="@string/address"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:textSize="18sp" &gt;
+    &lt;/EditText&gt;
+
+    &lt;LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" &gt;
+
+        &lt;Button
+            android:id="@+id/save"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:text="@string/save"
+            android:textColor="#ffffff"
+            android:textSize="15sp" /&gt;
+
+        &lt;Button
+            android:id="@+id/show"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:text="@string/show"
+            android:textColor="#ffffff"
+            android:textSize="15sp" /&gt;
+
+        &lt;Button
+            android:id="@+id/delete"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:text="@string/delete"
+            android:textColor="#ffffff"
+            android:textSize="15sp" /&gt;
+    &lt;/LinearLayout&gt;
+
+    &lt;ListView
+        android:id="@+id/show_saved_data"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:divider="#ff00"
+        android:dividerHeight="1dp"
+        android:visibility="gone" &gt;
+    &lt;/ListView&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+</div>
+<div class="section"> <b>5</b>. Create a java class naming <em>Data_Model.java </em>for getter and setter and add the following code. I am storing three things so I used three strings it can be changed according to need.</div>
+<div class="section">
+</p><pre class="crayon-plain-tag">package com.sqllite_demo;
+
+public class Data_Model {
+
+	String name, email, address;
+
+	// Setter for database
+	public Data_Model(String name, String email, String address) {
+		this.name = name;
+		this.email = email;
+		this.address = address;
+	}
+
+	// Getter
+	public String getName() {
+		return name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+}</pre><p>
+<b>6</b>. Now make a <em>Database_Helper.java </em>file for SQLite Database for storing the data and reading data back. For this class we extend the class with  SQLiteOpenHelper.</p><pre class="crayon-plain-tag">package com.sqllite_demo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class Database_Helper extends SQLiteOpenHelper {
+
+	// Database Name
+	private static final String Database_Name = "Androhub";
+
+	// Database Version
+	private static final int Database_Version = 1;
+
+	// Table Name
+	private static final String Table_Name = "User_Data";
+
+	// Column Id Primary Key
+	private static final String Column_Id = "id";
+
+	// Table fields
+	private static final String Name = "name";
+	private static final String Email = "Email";
+	private static final String Address = "Address";
+
+	// Create table query
+	private static final String Create_Table = "Create table " + Table_Name
+			+ " ( " + Column_Id + " integer primary key autoincrement, " + Name
+			+ " text not null, " + Email + " text not null, " + Address
+			+ " text not null );";
+
+	// Drop/delete table query
+	private static final String Drop_Table = "Drop table if exists "
+			+ Table_Name;
+
+	public Database_Helper(Context context) {
+		super(context, Database_Name, null, Database_Version);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void onCreate(SQLiteDatabase db) {
+
+		// executing the created table query
+		db.execSQL(Create_Table);
+	}
+
+	@Override
+	public void onUpgrade(SQLiteDatabase db, int olderVersion, int newVersion) {
+
+		// executing the drop table query if database version is changed
+		db.execSQL(Drop_Table);
+		onCreate(db);
+
+	}
+
+	// Insert data into database method
+	public void insertData(Data_Model data) {
+
+		// Accessing SQL database to write data
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		// Content values used for editing/writing data into database
+		ContentValues values = new ContentValues();
+
+		// Putting datas into content values
+		values.put(Name, data.getName());
+		values.put(Email, data.getEmail());
+		values.put(Address, data.getAddress());
+
+		// Now inserting content values data into table
+		db.insert(Table_Name, null, values);
+
+		// Closing database after using
+		db.close();
+
+	}
+
+	// Getting all saved data
+	public List&lt;Data_Model&gt; getAllData() {
+
+		// Data model list in which we have to return the data
+		List&lt;Data_Model&gt; data = new ArrayList&lt;Data_Model&gt;();
+
+		// Accessing database for reading data
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		// Select query for selecting whole table data
+		String select_query = "Select * from " + Table_Name;
+
+		// Cursor for traversing whole data into database
+		Cursor cursor = db.rawQuery(select_query, null);
+		try {
+			// check if cursor move to first
+			if (cursor.moveToFirst()) {
+
+				// looping through all data and adding to arraylist
+				do {
+
+					Data_Model data_model = new Data_Model(cursor.getString(1),
+							cursor.getString(2), cursor.getString(3));
+					data.add(data_model);
+
+				} while (cursor.moveToNext());
+
+			}
+		} finally {
+
+			// After using cursor we have to close it
+			cursor.close();
+
+		}
+
+		// Closing database
+		db.close();
+
+		// returning list
+		return data;
+	}
+
+	// Deleting table from database
+	public void deleteTable() {
+
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		// Deleting table
+		db.delete(Table_Name, null, null);
+
+		// Closing database
+		db.close();
+
+	}
+}</pre><p>
+</div>
+</div>
+<div class="section"> <b>7</b>. Now, add the following code in <em>MainActivity.java. </em>In this class we save the data in database on button click and read back the data on button click.</div>
+<div class="section">
+</p><pre class="crayon-plain-tag">package com.sqllite_demo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class MainActivity extends ActionBarActivity implements OnClickListener {
+
+	EditText name, email, address;
+	Button save, show, delete;
+	ListView show_data_list;
+
+	Database_Helper database;
+
+	// Variable for database table fields size
+	int data_size = 0;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		// Calling init method
+		init();
+	}
+
+	void init() {
+		name = (EditText) findViewById(R.id.name);
+		email = (EditText) findViewById(R.id.email);
+		address = (EditText) findViewById(R.id.address);
+
+		save = (Button) findViewById(R.id.save);
+		show = (Button) findViewById(R.id.show);
+		delete = (Button) findViewById(R.id.delete);
+
+		show_data_list = (ListView) findViewById(R.id.show_saved_data);
+
+		// Initializing database
+		database = new Database_Helper(MainActivity.this);
+
+		// Implementing click listener to all buttons
+		save.setOnClickListener(this);
+		show.setOnClickListener(this);
+		delete.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.save:
+
+			// Getting edittext fields texts into string
+			String getName = name.getText().toString();
+			String getEmail = email.getText().toString();
+			String getAddress = address.getText().toString();
+
+			// Check if all edit text is filled or not
+			if (TextUtils.isEmpty(getName) || TextUtils.isEmpty(getEmail)
+					|| TextUtils.isEmpty(getAddress)) {
+
+				// Showing a toast if any of them fields empty
+				Toast.makeText(MainActivity.this, "All fields are necessary.",
+						Toast.LENGTH_SHORT).show();
+			} else {
+
+				// Insert data into database
+				database.insertData(new Data_Model(getName, getEmail,
+						getAddress));
+
+				// Toast for successfully saved data
+				Toast.makeText(MainActivity.this, "Data saved successfully.",
+						Toast.LENGTH_SHORT).show();
+
+			}
+
+			break;
+
+		case R.id.show:
+
+			// Getting stored data from database in list
+			List&lt;Data_Model&gt; list = database.getAllData();
+
+			// Arraylist for storing data to show over listview
+			ArrayList&lt;Data_Model&gt; new_list = new ArrayList&lt;Data_Model&gt;();
+
+			// getting list size and stored in data_size
+			data_size = list.size();
+
+			// Checked if database contains data or not
+			if (data_size == 0) {
+
+				// If data is not contained means 0 then show a toast
+				Toast.makeText(MainActivity.this, "There is no data in table.",
+						Toast.LENGTH_SHORT).show();
+
+				// Check if listview is shown or not
+				if (show_data_list.isShown()) {
+
+					// Hide listview
+					show_data_list.setVisibility(View.GONE);
+				}
+			} else {
+
+				// For each for all data in database
+				for (Data_Model data : list) {
+
+					// Getting data from database
+					String stored_name = data.getName();
+					String stored_email = data.getEmail();
+					String stored_address = data.getAddress();
+
+					// Adding data to array list
+					new_list.add(new Data_Model(stored_name, stored_email,
+							stored_address));
+
+				}
+
+				// Custom adapter for setting array list
+				Custom_Adapter adapter = new Custom_Adapter(MainActivity.this,
+						new_list);
+
+				// setting adapter over listview
+				show_data_list.setAdapter(adapter);
+
+				// Notifying adapter
+				adapter.notifyDataSetChanged();
+
+				// Showing listview
+				show_data_list.setVisibility(View.VISIBLE);
+			}
+
+			break;
+
+		case R.id.delete:
+
+			// Check if database contains data or not
+			if (data_size == 0) {
+
+				// If there is no data toast is shown
+				Toast.makeText(MainActivity.this,
+						"There is nothing to delete.", Toast.LENGTH_SHORT)
+						.show();
+			} else {
+
+				// else data is deleted and hide the listview
+				Toast.makeText(MainActivity.this, "Data deleted Successfully.",
+						Toast.LENGTH_SHORT).show();
+				database.deleteTable();
+				show_data_list.setVisibility(View.GONE);
+			}
+
+			break;
+		}
+
+	}
+
+}</pre><p>
+<b>8</b>. For displaying data in ListView i make a custom layout file under <em>res ⇒ layout</em> folder. I named the layout file as <em>customview_for_listview.xml</em>.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" &gt;
+
+    &lt;TextView
+        android:id="@+id/all_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>9</b>. Finally make a <em>Custom_Adapter.java</em>  for ListView and add the following code.</p><pre class="crayon-plain-tag">package com.sqllite_demo;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+public class Custom_Adapter extends BaseAdapter {
+
+	ArrayList&lt;Data_Model&gt; arrayList;
+	LayoutInflater inflater;
+	ViewHolder holder = null;
+
+	public Custom_Adapter(Context context, ArrayList&lt;Data_Model&gt; arrayList) {
+		this.arrayList = arrayList;
+		this.inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return arrayList.size();
+	}
+
+	@Override
+	public Object getItem(int pos) {
+		// TODO Auto-generated method stub
+		return arrayList.get(pos);
+	}
+
+	@Override
+	public long getItemId(int pos) {
+		// TODO Auto-generated method stub
+		return pos;
+	}
+
+	@Override
+	public View getView(int pos, View view, ViewGroup root) {
+
+		if (view == null) {
+			view = inflater.inflate(R.layout.customview_for_listview, root,
+					false);
+			holder = new ViewHolder();
+
+			holder.text = (TextView) view.findViewById(R.id.all_data);
+
+			view.setTag(holder);
+		} else {
+			holder = (ViewHolder) view.getTag();
+		}
+
+		// Getting all fields from array list and stored in strings
+		String name = arrayList.get(pos).getName();
+		String email = arrayList.get(pos).getEmail();
+		String address = arrayList.get(pos).getAddress();
+
+		// Data is displayed over textView
+		holder.text.setText("Name : " + name + "\n" + "Email : " + email + "\n"
+				+ "Address : " + address);
+
+		return view;
+	}
+
+	// View holder for holding view
+	public class ViewHolder {
+
+		TextView text;
+
+	}
+
+}</pre><p>
+<b>10</b>. Run the application and you will get the output as shown in video and you are done.</p>
+<p>Thanks. <img src="https://s.w.org/images/core/emoji/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><strong><a title="Android SQLite Database" href="http://androhub.com/downloads/Android_SQLite_Database.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>&nbsp;</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section"></div>
+</div>
+</div>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-sqlite-database/">Android SQLite Database</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-sqlite-database/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">232</post-id>	</item>
+	</channel>
+</rss>

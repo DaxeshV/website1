@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Clocks &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-clocks/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Analog and Digital Clock</title>
+		<link>http://www.androhub.com/android-analog-and-digital-clock/</link>
+		<comments>http://www.androhub.com/android-analog-and-digital-clock/#respond</comments>
+		<pubDate>Sat, 23 May 2015 04:43:11 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android Clocks]]></category>
+		<category><![CDATA[analog]]></category>
+		<category><![CDATA[Analog clock]]></category>
+		<category><![CDATA[Android Clock]]></category>
+		<category><![CDATA[digital]]></category>
+		<category><![CDATA[digital clock]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=368</guid>
+		<description><![CDATA[<p>In Android, the AnalogClock is a two-handed clock, one for hour indicator and the other for minute indicator. The DigitalClock is look like your normal digital watch on hand, which display hours, minutes and seconds in digital format. Both AnalogClock and DigitalClock are UNABLE to modify the time, if you want to change the time, [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-analog-and-digital-clock/">Android Analog and Digital Clock</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>In Android, the <a href="http://developer.android.com/reference/android/widget/AnalogClock.html" target="_blank">AnalogClock</a> is a two-handed clock, one for hour indicator and the other for minute indicator. The <a href="http://developer.android.com/reference/android/widget/DigitalClock.html" target="_blank">DigitalClock</a> is look like your normal digital watch on hand, which display hours, minutes and seconds in digital format.</p>
+<p>Both <code>AnalogClock</code> and <code>DigitalClock</code> are UNABLE to modify the time, if you want to change the time, use “TimePicker” instead.</p>
+<h2>Example</h2>
+<p>In this example I will show you how to implement both Analog and Digital Clock.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_11020" width="602" height="339" src="https://www.youtube.com/embed/qov-RKVqFww?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Let’s get start by creating a project in Eclipse IDE.</p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>)</p>
+<p><b>2</b>. Create a layout file for <em>MainActivtiy.java</em> under <em>res ⇒ layout</em> folder. I named the layout file as <em>activity_main.xml</em>. In this layout i had taken one Analog and one Digital Clock.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Analog Clock"
+        android:textSize="25sp" /&gt;
+
+    &lt;AnalogClock
+        android:id="@+id/analogClock1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp" /&gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Digital Clock"
+        android:textSize="25sp" /&gt;
+
+    &lt;DigitalClock
+        android:id="@+id/digitalClock1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>3</b>. Now, come to <em>MainActivity.java </em>and add the following code. In this class we have to find the ids of both clocks.</p><pre class="crayon-plain-tag">package com.analog_digital_clock_demo;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.widget.AnalogClock;
+import android.widget.DigitalClock;
+
+import com.android_analog_n_digital_clock_demo.R;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		// Just find both ID and it will automatically get the current device
+		// timing and set time
+		findViewById(R.id.analogClock1);
+		findViewById(R.id.digitalClock1);
+
+	}
+
+}</pre><p>
+<b>4</b>. Now, run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/Android_Analog_n_Digital_Clock_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-analog-and-digital-clock/">Android Analog and Digital Clock</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-analog-and-digital-clock/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">368</post-id>	</item>
+	</channel>
+</rss>

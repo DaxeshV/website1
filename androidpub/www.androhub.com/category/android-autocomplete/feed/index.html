@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android AutoComplete &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-autocomplete/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android AutoComplete and MultiAutoComplete TextView</title>
+		<link>http://www.androhub.com/android-autocomplete-and-multiautocomplete-textview/</link>
+		<comments>http://www.androhub.com/android-autocomplete-and-multiautocomplete-textview/#respond</comments>
+		<pubDate>Wed, 27 May 2015 06:22:03 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android AutoComplete]]></category>
+		<category><![CDATA[Android Basics]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=387</guid>
+		<description><![CDATA[<p>Android AutoCompleteTextView completes the word based on the reserved words, so no need to write all the characters of the word. Android AutoCompleteTextView is a editable text field, it displays a list of suggestions in a drop down menu from which user can select only one suggestion or value. Android AutoCompleteTextView is the subclass of [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-autocomplete-and-multiautocomplete-textview/">Android AutoComplete and MultiAutoComplete TextView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p><strong>Android <a href="http://developer.android.com/reference/android/widget/AutoCompleteTextView.html" target="_blank">AutoCompleteTextView</a></strong> completes the word based on the reserved words, so no need to write all the characters of the word.</p>
+<p>Android AutoCompleteTextView is a editable text field, it displays a list of suggestions in a drop down menu from which user can select only one suggestion or value.</p>
+<p>Android AutoCompleteTextView is the subclass of EditText class. The MultiAutoCompleteTextView is the subclass of AutoCompleteTextView class.</p>
+<p>There are some methods of AutoCompleteTextView listed below :</p>
+
+<table id="tablepress-23" class="tablepress tablepress-id-23">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Method</th><th class="column-2">Description</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">getAdapter()</td><td class="column-2">This method returns a filterable list adapter used for auto completion.</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">getCompletionHint()</td><td class="column-2">This method returns optional hint text displayed at the bottom of the the matching list.</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">getDropDownAnchor()</td><td class="column-2">This method returns the id for the view that the auto-complete drop down list is anchored to.</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">getListSelection()</td><td class="column-2">This method returns the position of the dropdown view selection, if there is one.</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">isPopupShowing()</td><td class="column-2">This method indicates whether the popup menu is showing.</td>
+</tr>
+<tr class="row-7 odd">
+	<td class="column-1">setText(CharSequence text, boolean filter)</td><td class="column-2">This method sets text except that it can disable filtering.</td>
+</tr>
+<tr class="row-8 even">
+	<td class="column-1">showDropDown()</td><td class="column-2">This method displays the drop down on screen.</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-23 from cache -->
+<p><strong>Android <a href="http://developer.android.com/reference/android/widget/MultiAutoCompleteTextView.html" target="_blank">MultiAutoCompleteTextView</a></strong> is an editable text view, extending AutoCompleteTextView, that can show completion suggestions for the substring of the text where the user is typing instead of necessarily for the entire thing.</p>
+<p>You must must provide a MultiAutoCompleteTextView. Tokenizer to distinguish the various substring like comma (,).</p>
+<h2>Example</h2>
+<p>In this example I will show you how to implement AutoComplete and MultiAutoComplete TextView Android.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_61899" width="602" height="339" src="https://www.youtube.com/embed/1oo-R5wVuOg?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Let’s get start by creating a project in Eclipse IDE.</p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>).</p>
+<p><b>2</b>.  Create a layout file for <em>MainActivtiy.java</em> under <em>res ⇒ layout</em> folder. I named the layout file as <em>activity_main.xml</em>. In this layout i had taken one AutoCompleteTextView and one MultiAutoCompleteTextView.</p><pre class="crayon-plain-tag">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#DDFF"
+    android:orientation="vertical"
+    android:padding="5dp" &gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text="AutoCompleteTextView"
+        android:textColor="#FF6600"
+        android:textSize="20sp" /&gt;
+
+    &lt;AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="Enter a key..." /&gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text="MultiAutoCompleteTextView"
+        android:textColor="#FF6600"
+        android:textSize="20sp" /&gt;
+
+    &lt;MultiAutoCompleteTextView
+        android:id="@+id/multiAutoCompleteTextView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="Enter a key..." /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>3</b>. Now, go to <em>values</em> directory inside of <em>res</em> directory in that open the <em>strings.xml</em> file and add the following <em>string</em> <em>array</em> for setting items for <em>AutoComplete suggestion</em> keywords.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="app_name"&gt;Android_AutoComplete_n_MultiAutoComplete_TextView_Demo&lt;/string&gt;
+    &lt;string name="hello_world"&gt;Hello world!&lt;/string&gt;
+    &lt;string name="action_settings"&gt;Settings&lt;/string&gt;
+
+    &lt;!-- Suggestions items for autocomplete textview --&gt;
+    &lt;string-array name="suggest_items"&gt;
+        &lt;item&gt;Android&lt;/item&gt;
+        &lt;item&gt;Java&lt;/item&gt;
+        &lt;item&gt;Windows&lt;/item&gt;
+        &lt;item&gt;iOS&lt;/item&gt;
+        &lt;item&gt;HTML&lt;/item&gt;
+        &lt;item&gt;PHP&lt;/item&gt;
+        &lt;item&gt;Languages&lt;/item&gt;
+    &lt;/string-array&gt;
+
+&lt;/resources&gt;</pre><p>
+<b>4</b>. Now, come to <em>MainActivity.java </em>and add the following code. In this class we just get the<em> string array </em>from <em>strings.xml</em> and add to <em>arraylist</em> and <em>set adapter</em> to autocomplete textview. We have to set the <em>threshold</em> for both textview means to show hints after number of characters entered.</p><pre class="crayon-plain-tag">package com.android_autocomplete_n_multiautocomplete_textview_demo;
+
+import java.util.ArrayList;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.MultiAutoCompleteTextView;
+import android.widget.Toast;
+
+public class MainActivity extends ActionBarActivity {
+
+	private static AutoCompleteTextView autoComplete_textView;
+	private static MultiAutoCompleteTextView multiautoComplete_textView;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		autoComplete_textView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);
+		multiautoComplete_textView = (MultiAutoCompleteTextView) findViewById(R.id.multiAutoCompleteTextView1);
+
+		// Calling the suggestions method
+		setSuggestions();
+	}
+
+	void setSuggestions() {
+
+		// Getting the string array from strings.xml
+		String items[] = getResources().getStringArray(R.array.suggest_items);
+
+		// New Arrays list for storing items
+		ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();
+		for (int i = 0; i &lt; items.length; i++) {
+
+			// Adding items to arary list
+			list.add(items[i]);
+		}
+
+		// Adapter for holding the data view
+		ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(
+				MainActivity.this, android.R.layout.simple_list_item_1, list);
+
+		// Setting adapter to both textviews
+		autoComplete_textView.setAdapter(adapter);
+		multiautoComplete_textView.setAdapter(adapter);
+
+		// Specify the minimum type of characters before drop-down list is shown
+		autoComplete_textView.setThreshold(1);
+		multiautoComplete_textView.setThreshold(1);
+
+		// comma to separate the different items
+		multiautoComplete_textView
+				.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+
+		// When the user clicks an item of the drop-down list an toast will
+		// shown
+		multiautoComplete_textView
+				.setOnItemClickListener(new OnItemClickListener() {
+
+					@Override
+					public void onItemClick(AdapterView&lt;&gt; parent, View view,
+							int pos,
+
+							long id) {
+
+						Toast.makeText(
+								MainActivity.this,
+								"MultiAutoComplete: " +
+
+								"you add new item "
+										+ parent.getItemAtPosition(pos),
+
+								Toast.LENGTH_SHORT).show();
+
+					}
+
+				});
+
+	}
+
+}</pre><p>
+<b>5</b>. Now, run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/Android_AutoComplete_n_MultiAutoComplete_TextView_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-autocomplete-and-multiautocomplete-textview/">Android AutoComplete and MultiAutoComplete TextView</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-autocomplete-and-multiautocomplete-textview/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">387</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android Spinner &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-spinner/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Spinner</title>
+		<link>http://www.androhub.com/android-spinner/</link>
+		<comments>http://www.androhub.com/android-spinner/#respond</comments>
+		<pubDate>Thu, 21 May 2015 07:35:13 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android Basics]]></category>
+		<category><![CDATA[Android Spinner]]></category>
+		<category><![CDATA[Dropdown]]></category>
+		<category><![CDATA[Dropdown lIst]]></category>
+		<category><![CDATA[Spinner]]></category>
+
+		<guid isPermaLink="false">http://androhub.com/?p=361</guid>
+		<description><![CDATA[<p>Spinner is a widget similar to a drop-down list for selecting items. Example In this example I will show you how to implement Simple and Custom Spinner in Android. VIDEO DEMO Let’s get start by creating a project in Eclipse IDE. 1. Create a new project in Eclipse by navigating to File ⇒ New Android ⇒ Application [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-spinner/">Android Spinner</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p><a href="http://developer.android.com/reference/android/widget/Spinner.html" target="_blank">Spinner</a> is a widget similar to a drop-down list for selecting items.</p>
+<h2>Example</h2>
+<p>In this example I will show you how to implement Simple and Custom Spinner in Android.</p>
+<h3>VIDEO DEMO</h3>
+<p><iframe  id="_ytid_80276" width="602" height="339" src="https://www.youtube.com/embed/nQNl6DEmfIg?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p>Let’s get start by creating a project in Eclipse IDE.</p>
+<p><strong>1</strong>. Create a new project in Eclipse by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. (I kept my main activity name as <em>MainActivity.java</em>)</p>
+<p><b>2</b>.  Create a layout file for <em>MainActivtiy.java</em> under <em>res ⇒ layout</em> folder. I named the layout file as <em>activity_main.xml</em>. In this layout i used two Spinner, one for simple and one for custom.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="5dp" &gt;
+
+    &lt;TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:text="Simple Spinner" /&gt;
+
+    &lt;Spinner
+        android:id="@+id/simple_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:popupBackground="#FFCCDD"
+        android:prompt="@string/spinner_prompt" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Submit" /&gt;
+
+    &lt;TextView
+        android:textSize="18sp"
+         android:textColor="#000000"
+         android:layout_marginTop="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Custom Spinner" /&gt;
+
+    &lt;Spinner
+        android:id="@+id/custom_spinner"
+        android:layout_marginTop="10dp"
+        android:popupBackground="#ffffff"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="true"
+        android:prompt="@string/spinner_prompt" /&gt;
+
+&lt;/LinearLayout&gt;</pre><p>
+<b>3</b>. For custom Spinner we have to make a new layout for custom view naming <em>custom_spinner_layout.xml </em>under layout folder. In this layout i had just taken an ImageView and a TextView.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp" &gt;
+
+    &lt;ImageView
+        android:id="@+id/image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter" /&gt;
+
+    &lt;TextView
+        android:id="@+id/text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dip"
+        android:layout_toRightOf="@+id/image"
+        android:textColor="#000000" /&gt;
+
+&lt;/RelativeLayout&gt;</pre><p>
+<b>4</b>. Now create a new class naming <em>SpinnerData_Items.java </em> for getter and setter for custom view.</p><pre class="crayon-plain-tag">package com.android_spinner_demo;
+
+public class SpinnerData_Items {
+	String text;
+	Integer image;
+
+	// Getter and setter for custom spinner
+	public SpinnerData_Items(String text, Integer image) {
+		this.text = text;
+		this.image = image;
+	}
+
+	// Return the text
+	public String getText() {
+		return text;
+	}
+
+	// Return the image
+	public int getImage() {
+		return image;
+	}
+}</pre><p>
+<b>5</b>. Now make a custom adapter class naming <em>CustomSpinner_Adapter.java </em> for inflating custom view and add the following code.</p><pre class="crayon-plain-tag">package com.android_spinner_demo;
+
+import java.util.ArrayList;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.android_spinner_demo.R;
+
+public class CustomSpinner_Adapter extends BaseAdapter {
+	private ArrayList&lt;SpinnerData_Items&gt; arrayList;
+	LayoutInflater inflater;
+	ViewHolder holder = null;
+
+	public CustomSpinner_Adapter(Context context,
+			ArrayList&lt;SpinnerData_Items&gt; arrayList) {
+		this.arrayList = arrayList;
+		this.inflater = LayoutInflater.from(context);
+
+	}
+
+	@Override
+	public int getCount() {
+
+		// Array list size
+		return arrayList.size();
+	}
+
+	@Override
+	public SpinnerData_Items getItem(int pos) {
+
+		return arrayList.get(pos);
+	}
+
+	@Override
+	public long getItemId(int pos) {
+
+		return pos;
+	}
+
+	@Override
+	public View getView(int position, View view, ViewGroup parent) {
+
+		if (view == null) {
+			view = inflater.inflate(R.layout.custom_spinner_layout, parent,
+					false);
+			holder = new ViewHolder();
+			holder.text = (TextView) view.findViewById(R.id.text);
+			holder.imageView = (ImageView) view.findViewById(R.id.image);
+			view.setTag(holder);
+		} else {
+			holder = (ViewHolder) view.getTag();
+		}
+
+		// Setting text and image
+		holder.text.setText(arrayList.get(position).getText());
+		holder.imageView.setBackgroundResource(arrayList.get(position)
+				.getImage());
+
+		return view;
+	}
+
+	// Viewholder for holding the views
+	public class ViewHolder {
+		TextView text;
+		ImageView imageView;
+	}
+
+}</pre><p>
+<b>6</b>. Finally, come to <em>MainActivity.java </em>and add the following code. In this class we load both the spinners (Simple and Custom) with some data and set adapter to both the spinners. And a toast will be shown when the item is selected from spinner.</p><pre class="crayon-plain-tag">package com.android_spinner_demo;
+
+import java.util.ArrayList;
+import java.util.List;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.android_spinner_demo.R;
+
+public class MainActivity extends ActionBarActivity implements OnClickListener {
+	private static Spinner simple_spinner, custom_spinner;
+	private static Button submit;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		init();
+		setListeners();
+	}
+
+	// Initializing all views
+	void init() {
+
+		simple_spinner = (Spinner) findViewById(R.id.simple_spinner);
+
+		custom_spinner = (Spinner) findViewById(R.id.custom_spinner);
+		submit = (Button) findViewById(R.id.btnSubmit);
+
+		// Loading items to simple spinner
+		loadItemstoSimpleSpinner();
+
+		// Loading items to custom spinner
+		loadItemstoCustomSpinner();
+	}
+
+	// Simple Spinner items loader method
+	void loadItemstoSimpleSpinner() {
+
+		// Getting string array from strings.xml
+		String[] spinner_items = getResources().getStringArray(
+				R.array.simple_spinner_items);
+
+		// List for storing data for spinner
+		List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+		for (int i = 0; i &lt; spinner_items.length; i++) {
+			list.add(spinner_items[i]);
+		}
+
+		// Adappter for showing data
+		ArrayAdapter&lt;String&gt; dataAdapter = new ArrayAdapter&lt;String&gt;(this,
+				android.R.layout.simple_spinner_item, list);
+
+		// Setting dropdown view
+		dataAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		// Setting adapter
+		simple_spinner.setAdapter(dataAdapter);
+	}
+
+	// Cusotm Spinner items loader method
+	void loadItemstoCustomSpinner() {
+
+		// String array for texts
+		String[] spinner_items = getResources().getStringArray(
+				R.array.custom_spinner_items);
+
+		// Integer array for images
+		Integer[] spinner_images = { R.drawable.cupcake, R.drawable.donut,
+				R.drawable.eclair, R.drawable.froyo, R.drawable.gingerbread,
+				R.drawable.honeycomb, R.drawable.icecream };
+
+		// Arrays list for storing string and integer arrays into spinnerdata
+		// items
+		ArrayList&lt;SpinnerData_Items&gt; list = new ArrayList&lt;SpinnerData_Items&gt;();
+		for (int i = 0; i &lt; spinner_items.length; i++) {
+			list.add(new SpinnerData_Items(spinner_items[i], spinner_images[i]));
+		}
+
+		// Custom adapter for custom spinner
+		CustomSpinner_Adapter adapter = new CustomSpinner_Adapter(
+				MainActivity.this, list);
+
+		// Setting adapter
+		custom_spinner.setAdapter(adapter);
+	}
+
+	// Setting listeners
+	void setListeners() {
+
+		// Click listener on button
+		submit.setOnClickListener(this);
+
+		// Item selected listener
+		simple_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView&lt;&gt; parent, View view,
+					int position, long id) {
+
+				// Showing a toast when item is selected
+				Toast.makeText(
+						parent.getContext(),
+						"On Spinner Item Select : n"
+								+ parent.getItemAtPosition(position).toString(), // Getting
+																					// item
+																					// from
+																					// position
+						Toast.LENGTH_SHORT).show();
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView&lt;&gt; arg0) {
+
+			}
+		});
+
+		custom_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView&lt;&gt; parentView, View v,
+					int position, long id) {
+
+				// Getting textView text and showing via toast
+				String text = ((TextView) v.findViewById(R.id.text)).getText()
+						.toString();
+
+				Toast.makeText(getApplicationContext(), text,
+						Toast.LENGTH_SHORT).show();
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView&lt;&gt; parentView) {
+
+			}
+
+		});
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnSubmit:
+			Toast.makeText(
+
+					// Showing a toast on button click for simple spinner
+					MainActivity.this,
+					"On Button Click : " + "n"
+							+ String.valueOf(simple_spinner.getSelectedItem()), // Get
+																				// simple
+																				// spinner
+																				// item
+																				// selected
+					Toast.LENGTH_SHORT).show();
+			break;
+
+		}
+
+	}
+
+}</pre><p>
+<b>7</b>. Now, run the app and you will get the output as shown in video.</p>
+<p>Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" data-recalc-dims="1" /></p>
+<p><strong><a href="http://androhub.com/downloads/Android_Spinner_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-spinner/">Android Spinner</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-spinner/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">361</post-id>	</item>
+	</channel>
+</rss>

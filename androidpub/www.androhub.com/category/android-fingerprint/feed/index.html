@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Android FingerPrint &#8211; Androhub</title>
+	<atom:link href="http://www.androhub.com/category/android-fingerprint/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.androhub.com</link>
+	<description>Meet Professor Dro!d !!</description>
+	<lastBuildDate>Thu, 21 Dec 2017 20:24:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.12</generator>
+<site xmlns="com-wordpress:feed-additions:1">113004364</site>	<item>
+		<title>Android Fingerprint Authentication</title>
+		<link>http://www.androhub.com/android-fingerprint-authentication/</link>
+		<comments>http://www.androhub.com/android-fingerprint-authentication/#respond</comments>
+		<pubDate>Fri, 24 Mar 2017 15:04:14 +0000</pubDate>
+		<dc:creator><![CDATA[Dr. Droid]]></dc:creator>
+				<category><![CDATA[Android FingerPrint]]></category>
+		<category><![CDATA[cipher]]></category>
+		<category><![CDATA[fingerprint]]></category>
+		<category><![CDATA[getting fingerprint]]></category>
+		<category><![CDATA[keystore]]></category>
+
+		<guid isPermaLink="false">http://www.androhub.com/?p=1186</guid>
+		<description><![CDATA[<p>Android fingerprint authentication uses smartphone touch sensor to authenticate the user. Android Marshmallow has introduced a set of API that makes it easy to use the touch sensor. Before Android Marshmallow, the method to access the touch sensor was not standard. There are several benefits of using Android fingerprint authentication: 1. Doesn’t matter how sick [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-fingerprint-authentication/">Android Fingerprint Authentication</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Android fingerprint authentication uses smartphone touch sensor to authenticate the user. Android Marshmallow has introduced a set of API that makes it easy to use the touch sensor. Before Android Marshmallow, the method to access the touch sensor was not standard.</p>
+<p><strong>There are several benefits of using Android fingerprint authentication:</strong></p>
+<p><strong>1</strong>. Doesn’t matter how sick you are , your fingerprint still stays faultless as your identity and can never be misplaced.<br />
+<strong>2</strong>. Fast, Convenient and Reliable to use.<br />
+<strong>3</strong>. Unique fingerprints assure that it’s unlocked just by you.<br />
+<strong>4</strong>. With the help of Fingerprint authentication, online transactions become more convenient, hence your just a tap away from getting verified.</p>
+<p><b>NOTE: Make sure you have at least one fingerprint is registered on the smartphone.</b></p>
+<p>To authenticate users using the fingerprint sensor, you need to get an instance of the newly implemented <a href="https://developer.android.com/reference/android/hardware/fingerprint/FingerprintManager.html" target="_blank" rel="nofollow">FingerprintManager</a> class and call the <strong>authenticate()</strong> method. However your app must be running on a compatible device which includes a fingerprint sensor. Moreover you must implement the user interface for the fingerprint authentication flow on your app, and use the standard Android fingerprint icon in your UI. Note that If you are developing multiple apps that use fingerprint authentication, each app must authenticate the user’s fingerprint separately.</p>
+<h2>Example</h2>
+<p>In this tutorial, we are going to learn how to implement Fingerprint Authentication in your application.</p>
+<h2>VIDEO DEMO</h2>
+<p><iframe  id="_ytid_17118" width="602" height="339" src="https://www.youtube.com/embed/5WJ3r67ORxo?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;showinfo=1&#038;fs=1&#038;theme=dark&#038;color=red&#038;autohide=2&#038;controls=2&#038;playsinline=0&#038;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New ⇒ New Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. These are some strings that we are going to use in our project.</p><pre class="crayon-plain-tag">&lt;resources&gt;
+    &lt;string name="app_name"&gt;FingerPrint Demo&lt;/string&gt;
+    &lt;string name="fingerprint_message"&gt;Place your fingertip on the scanner to verify fingerprint.&lt;/string&gt;
+    &lt;string name="successful_message"&gt;You have successfully authenticated with FingerPrint.&lt;/string&gt;
+    &lt;string name="fingerprint_not_exist"&gt;Your Device does not have a Fingerprint Sensor.&lt;/string&gt;
+    &lt;string name="fingerprint_not_enabled"&gt;Fingerprint authentication permission not enabled in your device.&lt;/string&gt;
+    &lt;string name="fingerprint_not_registered"&gt;Register at least one fingerprint in Settings to make work Fingerprint.&lt;/string&gt;
+    &lt;string name="lock_screen_setting_disabled"&gt;Lock screen security not enabled in Settings.&lt;/string&gt;
+&lt;/resources&gt;</pre><p>
+<b>3</b>. Since we are going to work with Fingerprint authentication, we need to add <strong><em>USE_FINGERPRINT</em></strong> permission to <strong>AndroidManifest.xml</strong> file</p><pre class="crayon-plain-tag">&lt;!--  Permission required for FingerPrint  --&gt;
+    &lt;uses-permission android:name="android.permission.USE_FINGERPRINT" /&gt;</pre><p>
+<b>4</b>. Create the fingerprint icon with the help of <strong>Android Vector Assets</strong>. To do so, <strong>Right click</strong> on the drawable folder and <strong>Create a New ⇒ Vector Asset</strong> named <strong>ic_fingerprint_white_60dp.xml.</strong></p>
+<div>
+<pre class="crayon-plain-tag">&lt;vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="60dp"
+        android:height="60dp"
+        android:viewportWidth="24.0"
+        android:viewportHeight="24.0"&gt;
+    &lt;path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M17.81,4.47c-0.08,0 -0.16,-0.02 -0.23,-0.06C15.66,3.42 14,3 12.01,3c-1.98,0 -3.86,0.47 -5.57,1.41 -0.24,0.13 -0.54,0.04 -0.68,-0.2 -0.13,-0.24 -0.04,-0.55 0.2,-0.68C7.82,2.52 9.86,2 12.01,2c2.13,0 3.99,0.47 6.03,1.52 0.25,0.13 0.34,0.43 0.21,0.67 -0.09,0.18 -0.26,0.28 -0.44,0.28zM3.5,9.72c-0.1,0 -0.2,-0.03 -0.29,-0.09 -0.23,-0.16 -0.28,-0.47 -0.12,-0.7 0.99,-1.4 2.25,-2.5 3.75,-3.27C9.98,4.04 14,4.03 17.15,5.65c1.5,0.77 2.76,1.86 3.75,3.25 0.16,0.22 0.11,0.54 -0.12,0.7 -0.23,0.16 -0.54,0.11 -0.7,-0.12 -0.9,-1.26 -2.04,-2.25 -3.39,-2.94 -2.87,-1.47 -6.54,-1.47 -9.4,0.01 -1.36,0.7 -2.5,1.7 -3.4,2.96 -0.08,0.14 -0.23,0.21 -0.39,0.21zM9.75,21.79c-0.13,0 -0.26,-0.05 -0.35,-0.15 -0.87,-0.87 -1.34,-1.43 -2.01,-2.64 -0.69,-1.23 -1.05,-2.73 -1.05,-4.34 0,-2.97 2.54,-5.39 5.66,-5.39s5.66,2.42 5.66,5.39c0,0.28 -0.22,0.5 -0.5,0.5s-0.5,-0.22 -0.5,-0.5c0,-2.42 -2.09,-4.39 -4.66,-4.39 -2.57,0 -4.66,1.97 -4.66,4.39 0,1.44 0.32,2.77 0.93,3.85 0.64,1.15 1.08,1.64 1.85,2.42 0.19,0.2 0.19,0.51 0,0.71 -0.11,0.1 -0.24,0.15 -0.37,0.15zM16.92,19.94c-1.19,0 -2.24,-0.3 -3.1,-0.89 -1.49,-1.01 -2.38,-2.65 -2.38,-4.39 0,-0.28 0.22,-0.5 0.5,-0.5s0.5,0.22 0.5,0.5c0,1.41 0.72,2.74 1.94,3.56 0.71,0.48 1.54,0.71 2.54,0.71 0.24,0 0.64,-0.03 1.04,-0.1 0.27,-0.05 0.53,0.13 0.58,0.41 0.05,0.27 -0.13,0.53 -0.41,0.58 -0.57,0.11 -1.07,0.12 -1.21,0.12zM14.91,22c-0.04,0 -0.09,-0.01 -0.13,-0.02 -1.59,-0.44 -2.63,-1.03 -3.72,-2.1 -1.4,-1.39 -2.17,-3.24 -2.17,-5.22 0,-1.62 1.38,-2.94 3.08,-2.94 1.7,0 3.08,1.32 3.08,2.94 0,1.07 0.93,1.94 2.08,1.94s2.08,-0.87 2.08,-1.94c0,-3.77 -3.25,-6.83 -7.25,-6.83 -2.84,0 -5.44,1.58 -6.61,4.03 -0.39,0.81 -0.59,1.76 -0.59,2.8 0,0.78 0.07,2.01 0.67,3.61 0.1,0.26 -0.03,0.55 -0.29,0.64 -0.26,0.1 -0.55,-0.04 -0.64,-0.29 -0.49,-1.31 -0.73,-2.61 -0.73,-3.96 0,-1.2 0.23,-2.29 0.68,-3.24 1.33,-2.79 4.28,-4.6 7.51,-4.6 4.55,0 8.25,3.51 8.25,7.83 0,1.62 -1.38,2.94 -3.08,2.94s-3.08,-1.32 -3.08,-2.94c0,-1.07 -0.93,-1.94 -2.08,-1.94s-2.08,0.87 -2.08,1.94c0,1.71 0.66,3.31 1.87,4.51 0.95,0.94 1.86,1.46 3.27,1.85 0.27,0.07 0.42,0.35 0.35,0.61 -0.05,0.23 -0.26,0.38 -0.47,0.38z"/&gt;
+&lt;/vector&gt;</pre>
+</div>
+<p><b>5</b>. Now, open your <em>activity_main.xml</em> layout and place the below code.</p><pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context="com.fingerprint_demo.MainActivity"&gt;
+
+    &lt;ImageView
+        android:id="@+id/fingerprint_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/fingerprint_message"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_fingerprint_white_60dp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/fingerprint_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/fingerprint_message"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" /&gt;
+
+    &lt;!--  TextView to show any error message  --&gt;
+    &lt;TextView
+        android:id="@+id/error_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@color/redColor"
+        android:textSize="14sp" /&gt;
+&lt;/RelativeLayout&gt;</pre><p>
+<b>6</b>. Now open your <em>MainActivity.java </em>class<em> </em>and place the below code. The following class includes various steps as follows:</p>
+<ul>
+<li><strong>Access to Android KeyStore and Generate the Key</strong> :<strong> generateKey()</strong> function which generates an encryption key which is then stored securely on the device.</li>
+</ul>
+<pre class="crayon-plain-tag">@TargetApi(Build.VERSION_CODES.M)
+    protected void generateKey() {
+        try {
+            // Get the reference to the key store
+            keyStore = KeyStore.getInstance("AndroidKeyStore");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        KeyGenerator keyGenerator;
+        try {
+            // Key generator to generate the key
+            keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
+        } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
+            throw new RuntimeException("Failed to get KeyGenerator instance", e);
+        }
+
+        try {
+            keyStore.load(null);
+            keyGenerator.init(new
+                    KeyGenParameterSpec.Builder(KEY_NAME,
+                    KeyProperties.PURPOSE_ENCRYPT |
+                            KeyProperties.PURPOSE_DECRYPT)
+                    .setBlockModes(KeyProperties.BLOCK_MODE_CBC)
+                    .setUserAuthenticationRequired(true)
+                    .setEncryptionPaddings(
+                            KeyProperties.ENCRYPTION_PADDING_PKCS7)
+                    .build());
+            keyGenerator.generateKey();
+        } catch (NoSuchAlgorithmException |
+                InvalidAlgorithmParameterException
+                | CertificateException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }</pre>
+<ul>
+<li><strong>Create the Android Cipher : cipherInit()</strong> function that initialises the cipher that will be used to create the encrypted FingerprintManager.</li>
+</ul>
+<pre class="crayon-plain-tag">@TargetApi(Build.VERSION_CODES.M)
+    public boolean cipherInit() {
+        try {
+            cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_CBC + "/" + KeyProperties.ENCRYPTION_PADDING_PKCS7);
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
+            throw new RuntimeException("Failed to get Cipher", e);
+        }
+
+        try {
+            keyStore.load(null);
+            SecretKey key = (SecretKey) keyStore.getKey(KEY_NAME,
+                    null);
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+            return true;
+        } catch (KeyPermanentlyInvalidatedException e) {
+            return false;
+        } catch (KeyStoreException | CertificateException | UnrecoverableKeyException | IOException | NoSuchAlgorithmException | InvalidKeyException e) {
+            throw new RuntimeException("Failed to init Cipher", e);
+        }
+
+    }</pre>
+<ul>
+<li><strong>CryptoObject</strong> instance and various other checks before initiating the authentication process which is implemented inside onCreate() method.</li>
+</ul>
+<p><span style="text-decoration: underline;"><strong>Full Code</strong></span></p><pre class="crayon-plain-tag">package com.fingerprint_demo;
+
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.app.KeyguardManager;
+import android.content.pm.PackageManager;
+import android.hardware.fingerprint.FingerprintManager;
+import android.os.Build;
+import android.os.Bundle;
+import android.security.keystore.KeyGenParameterSpec;
+import android.security.keystore.KeyPermanentlyInvalidatedException;
+import android.security.keystore.KeyProperties;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
+
+import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+
+public class MainActivity extends AppCompatActivity {
+    private KeyStore keyStore;
+
+    // Variable used for storing the key in the Android Keystore container
+    private static final String KEY_NAME = "AndroHub";
+
+    private Cipher cipher;
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        // Initializing both Android Keyguard Manager and Fingerprint Manager
+        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+        FingerprintManager fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
+
+        //Find id of Error text
+        TextView errorText = (TextView) findViewById(R.id.error_message);
+
+
+        // Check whether the device has a Fingerprint sensor.
+        if (!fingerprintManager.isHardwareDetected()) {
+            /**
+             * An error message will be displayed if the device does not contain the fingerprint hardware.
+             * However if you plan to implement a default authentication method,
+             * you can redirect the user to a default authentication activity from here or can skip this method.
+             * Example:
+             * Intent intent = new Intent(this, YourActivity.class);
+             * startActivity(intent);
+             * finish();
+             */
+            errorText.setText(getResources().getString(R.string.fingerprint_not_exist));
+        } else {
+            // Checks whether fingerprint permission is set on manifest
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
+                //If permission is not set show error message
+                errorText.setText(getResources().getString(R.string.fingerprint_not_enabled));
+            } else {
+                // Check whether at least one fingerprint is registered on your device
+                if (!fingerprintManager.hasEnrolledFingerprints()) {
+                    //If no fingerprint is registered show error message
+                    errorText.setText(getResources().getString(R.string.fingerprint_not_registered));
+                } else {
+                    // Checks whether lock screen security is enabled or not
+                    if (!keyguardManager.isKeyguardSecure()) {
+                        //Show error message when screen security is disabled
+                        errorText.setText(getResources().getString(R.string.lock_screen_setting_disabled));
+                    } else {
+
+                        //else generate keystore key
+                        generateKey();
+
+                        //Now initiate Cipher, if cipher is initiated successfully then proceed
+                        if (cipherInit()) {
+                            FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
+                            FingerPrintHandler helper = new FingerPrintHandler(this, errorText);//Set Fingerprint Handler class
+                            helper.startAuth(fingerprintManager, cryptoObject);//now start authentication process
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    protected void generateKey() {
+        try {
+            // Get the reference to the key store
+            keyStore = KeyStore.getInstance("AndroidKeyStore");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        KeyGenerator keyGenerator;
+        try {
+            // Key generator to generate the key
+            keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
+        } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
+            throw new RuntimeException("Failed to get KeyGenerator instance", e);
+        }
+
+        try {
+            keyStore.load(null);
+            keyGenerator.init(new
+                    KeyGenParameterSpec.Builder(KEY_NAME,
+                    KeyProperties.PURPOSE_ENCRYPT |
+                            KeyProperties.PURPOSE_DECRYPT)
+                    .setBlockModes(KeyProperties.BLOCK_MODE_CBC)
+                    .setUserAuthenticationRequired(true)
+                    .setEncryptionPaddings(
+                            KeyProperties.ENCRYPTION_PADDING_PKCS7)
+                    .build());
+            keyGenerator.generateKey();
+        } catch (NoSuchAlgorithmException |
+                InvalidAlgorithmParameterException
+                | CertificateException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    @TargetApi(Build.VERSION_CODES.M)
+    public boolean cipherInit() {
+        try {
+            cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_CBC + "/" + KeyProperties.ENCRYPTION_PADDING_PKCS7);
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
+            throw new RuntimeException("Failed to get Cipher", e);
+        }
+
+        try {
+            keyStore.load(null);
+            SecretKey key = (SecretKey) keyStore.getKey(KEY_NAME,
+                    null);
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+            return true;
+        } catch (KeyPermanentlyInvalidatedException e) {
+            return false;
+        } catch (KeyStoreException | CertificateException | UnrecoverableKeyException | IOException | NoSuchAlgorithmException | InvalidKeyException e) {
+            throw new RuntimeException("Failed to init Cipher", e);
+        }
+
+    }
+}</pre><p>
+<b>7</b>. Now create Welcome activity which will open on successful Fingerprint Authentication.</p>
+<ul>
+<li><strong>welcome_activity.xml</strong></li>
+</ul>
+<pre class="crayon-plain-tag">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/successful_message"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" /&gt;
+&lt;/LinearLayout&gt;</pre>
+<ul>
+<li><strong>WelcomeActivity.java</strong></li>
+</ul>
+<pre class="crayon-plain-tag">package com.fingerprint_demo;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+
+/**
+ * Created by sonu on 24/03/17.
+ */
+
+public class WelcomeActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.welcome_activity);
+    }
+}</pre>
+<div><b>8</b>. Create a Fingerprint Authentication Handler class and name it <strong>FingerPrintHandler.java</strong>. The Handler class extends <strong>FingerprintManager.AuthenticationCallback</strong> and includes some additional modules so that we can receive event notification and we can know when the authentication succeeded or something went wrong.</div>
+<p>There are some important methods to notice. First of all, the doAuth that starts the authentication process. This method has the CryptoObject, a cancellation signal and the callback listener (this class).</p><pre class="crayon-plain-tag">package com.fingerprint_demo;
+
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.hardware.fingerprint.FingerprintManager;
+import android.os.Build;
+import android.os.CancellationSignal;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.TextView;
+
+/**
+ * Created by sonu on 24/03/17.
+ */
+
+/*  Implement Fingerprint Authentication Callback to get access to Fingerprint methods  */
+@TargetApi(Build.VERSION_CODES.M)
+public class FingerPrintHandler extends FingerprintManager.AuthenticationCallback {
+
+    private Context context;
+    private TextView errorText;
+
+    public FingerPrintHandler(Context mContext,TextView errorText) {
+        context = mContext;
+        this.errorText=errorText;
+    }
+
+
+    public void startAuth(FingerprintManager manager, FingerprintManager.CryptoObject cryptoObject) {
+        CancellationSignal cancellationSignal = new CancellationSignal();
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        manager.authenticate(cryptoObject, cancellationSignal, 0, this, null);
+    }
+
+    /*  Method will call on Fingerprint Auth Error  */
+    @Override
+    public void onAuthenticationError(int errMsgId, CharSequence errString) {
+        this.update("Fingerprint Authentication error\n" + errString);
+    }
+
+    /*  Method will call on Fingerprint Auth have some help  */
+    @Override
+    public void onAuthenticationHelp(int helpMsgId, CharSequence helpString) {
+        this.update("Fingerprint Authentication help\n" + helpString);
+    }
+
+    /*  Method will call on Fingerprint Auth Failed  */
+    @Override
+    public void onAuthenticationFailed() {
+        this.update("Fingerprint Authentication failed. Please try again.");
+    }
+
+    /*  Method will call on Fingerprint Auth Succeeded  */
+    @Override
+    public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
+        Log.d("Authentication", "Fingerprint Authentication successful.");
+        onAuthSuccess();
+    }
+
+    /*  Trigger this method on FingerPrint get Success  */
+    private void onAuthSuccess() {
+        context.startActivity(new Intent(context, WelcomeActivity.class));
+        ((AppCompatActivity) context).finish();
+    }
+
+
+    /*  Method to update Error text message on Auth failed  */
+    public void update(String e) {
+        errorText.setText(e);
+    }
+}</pre><p>
+<b>9</b>. Finally you are all done. Now you can test your app in Physical Device or in Emulator. To test the app in emulator follow below steps:</p>
+<ul>
+<li>Install Android SDK Tools Revision 24.3, if you have not done so.</li>
+<li>Enroll a new fingerprint in the emulator by going to <strong>Settings ⇒ Security ⇒ Fingerprint</strong>, then follow the enrolment instructions.</li>
+</ul>
+<p>Use an emulator to emulate fingerprint touch events with the following command. Use the same command to emulate fingerprint touch events on the lockscreen or in your app.</p><pre class="crayon-plain-tag">adb -e emu finger touch &lt;finger_id&gt;</pre><p>
+Thanks. <img class="wp-smiley" src="https://i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile.gif?w=602" alt=":)" width="13" height="13" /></p>
+<p><strong><a href="http://androhub.com/downloads/FingerPrint_Demo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<p>The post <a rel="nofollow" href="http://www.androhub.com/android-fingerprint-authentication/">Android Fingerprint Authentication</a> appeared first on <a rel="nofollow" href="http://www.androhub.com">Androhub</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.androhub.com/android-fingerprint-authentication/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1186</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+	
+<!-- Mirrored from www.androhub.com/android-confirm-credential-security-lock/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Jan 2018 05:54:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+		<meta charset="UTF-8" />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0'>
+		<title>Android Confirm Credential (Security Lock) - AndrohubAndrohub</title>
+		<link rel="profile" href="http://gmpg.org/xfn/11" />
+		<link rel="pingback" href="../xmlrpc.html" />
+					<link rel="shortcut icon" href="../wp-content/uploads/2016/05/app_icon_small.png" type="image/x-icon" />
+						
+<!-- This site is optimized with the Yoast SEO plugin v4.4 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="index.html" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Android Confirm Credential (Security Lock) - Androhub" />
+<meta property="og:description" content="Hi all today we are going to work on one more app security topic apart from FingerPrint Authentication. In many of apps you have seen the app is opening a screen where it ask you to enter the PIN or draw a Pattern which is by default security you have set to your device. Some the &hellip;" />
+<meta property="og:url" content="index.html" />
+<meta property="og:site_name" content="Androhub" />
+<meta property="article:publisher" content="https://www.facebook.com/androhubtutorial/" />
+<meta property="article:author" content="facebook.com/sonu.surender" />
+<meta property="article:tag" content="confirm credential" />
+<meta property="article:tag" content="intent" />
+<meta property="article:tag" content="open security settings" />
+<meta property="article:tag" content="pin lock" />
+<meta property="article:tag" content="security lock" />
+<meta property="article:tag" content="startactivityforresult" />
+<meta property="article:section" content="Android Advanced" />
+<meta property="article:published_time" content="2017-10-05T16:25:17+00:00" />
+<meta property="og:image" content="../wp-content/uploads/2017/09/security_lock_banner.jpg" />
+<meta property="og:image:width" content="795" />
+<meta property="og:image:height" content="413" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="Hi all today we are going to work on one more app security topic apart from FingerPrint Authentication. In many of apps you have seen the app is opening a screen where it ask you to enter the PIN or draw a Pattern which is by default security you have set to your device. Some the [&hellip;]" />
+<meta name="twitter:title" content="Android Confirm Credential (Security Lock) - Androhub" />
+<meta name="twitter:site" content="@sonusurender0" />
+<meta name="twitter:image" content="../../i2.wp.com/www.androhub.com/wp-content/uploads/2017/09/security_lock_banner6da9.jpg?fit=795%2C413" />
+<meta name="twitter:creator" content="@sonusurender0" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Androhub &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="Androhub &raquo; Comments Feed" href="http://www.androhub.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Androhub &raquo; Android Confirm Credential (Security Lock) Comments Feed" href="feed/index.html" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.androhub.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.5.12"}};
+			!function(a,b,c){function d(a){var c,d,e,f=b.createElement("canvas"),g=f.getContext&&f.getContext("2d"),h=String.fromCharCode;if(!g||!g.fillText)return!1;switch(g.textBaseline="top",g.font="600 32px Arial",a){case"flag":return g.fillText(h(55356,56806,55356,56826),0,0),f.toDataURL().length>3e3;case"diversity":return g.fillText(h(55356,57221),0,0),c=g.getImageData(16,16,1,1).data,d=c[0]+","+c[1]+","+c[2]+","+c[3],g.fillText(h(55356,57221,55356,57343),0,0),c=g.getImageData(16,16,1,1).data,e=c[0]+","+c[1]+","+c[2]+","+c[3],d!==e;case"simple":return g.fillText(h(55357,56835),0,0),0!==g.getImageData(16,16,1,1).data[0];case"unicode8":return g.fillText(h(55356,57135),0,0),0!==g.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='../wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min2f6a.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-classic-css'  href='../wp-content/plugins/crayon-syntax-highlighter/themes/classic/classic2f6a.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='../wp-content/plugins/crayon-syntax-highlighter/fonts/monaco2f6a.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='normalize-css'  href='../wp-content/themes/circles/css/normalize.css' type='text/css' media='all' />
+<link rel='stylesheet' id='prettyPhoto-css'  href='../wp-content/themes/circles/css/prettyPhoto.css' type='text/css' media='all' />
+<link rel='stylesheet' id='grid-system-css'  href='../wp-content/themes/circles/css/grid-system.css' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='../wp-content/themes/circles/css/main.css' type='text/css' media='all' />
+<link rel='stylesheet' id='shortcodes-css'  href='../wp-content/themes/circles/css/shortcodes.css' type='text/css' media='all' />
+<link rel='stylesheet' id='widgets-css'  href='http://www.androhub.com/wp-admin/css/widgets.min.css?ver=4.5.12' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/circles/css/font-awesome.css' type='text/css' media='all' />
+<link rel='stylesheet' id='icomoon-css'  href='../wp-content/themes/circles/css/icomoon.css' type='text/css' media='all' />
+<link rel='stylesheet' id='responsiveness-css'  href='../wp-content/themes/circles/css/mediaf45f.css?switch_menu_to_mobile=' type='text/css' media='all' />
+<link rel='stylesheet' id='style-css'  href='../wp-content/themes/circles/stylee91a.css?ver=4.5.12' type='text/css' media='all' />
+<!-- Inline jetpack_facebook_likebox -->
+<style id='jetpack_facebook_likebox-inline-css' type='text/css'>
+.widget_facebook_likebox {
+	overflow: hidden;
+}
+
+</style>
+<link rel='stylesheet' id='tablepress-default-css'  href='../wp-content/plugins/tablepress/css/default.min97e1.css?ver=1.7' type='text/css' media='all' />
+<link rel='stylesheet' id='__EPYT__style-css'  href='../wp-content/plugins/youtube-embed-plus/styles/ytprefs.mine91a.css?ver=4.5.12' type='text/css' media='all' />
+<style id='__EPYT__style-inline-css' type='text/css'>
+
+                .epyt-gallery-thumb {
+                        width: 33.333%;
+                }
+                
+</style>
+<link rel='stylesheet' id='social-logos-css'  href='../wp-content/plugins/jetpack/_inc/social-logos/social-logos.min68b3.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='../wp-content/plugins/jetpack/css/jetpackc1f9.css?ver=4.4.2' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _EPYT_ = {"ajaxurl":"http:\/\/www.androhub.com\/wp-admin\/admin-ajax.php","security":"83453349b8","gallery_scrolloffset":"20","eppathtoscripts":"http:\/\/www.androhub.com\/wp-content\/plugins\/youtube-embed-plus\/scripts\/","epresponsiveselector":"[\"iframe.__youtube_prefs_widget__\"]","epdovol":"1","version":"11.8.5","evselector":"iframe.__youtube_prefs__[src], iframe[src*=\"youtube.com\/embed\/\"], iframe[src*=\"youtube-nocookie.com\/embed\/\"]","ajax_compat":"","stopMobileBuffer":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jqueryb8ff.js?ver=1.12.4'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/jetpack/modules/related-posts/related-posts7f79.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/www.androhub.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min2f6a.js?ver=_2.7.2_beta'></script>
+<script type='text/javascript' src='../wp-content/plugins/image-captcha/assets/image-captchae91a.js?ver=4.5.12'></script>
+<script type='text/javascript' src='../wp-content/plugins/youtube-embed-plus/scripts/ytprefs.mine91a.js?ver=4.5.12'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.html?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.5.12" />
+<link rel='shortlink' href='http://wp.me/p7E9B2-lc' />
+<link rel="alternate" type="application/json+oembed" href="../wp-json/oembed/1.0/embed6b49.json?url=http%3A%2F%2Fwww.androhub.com%2Fandroid-confirm-credential-security-lock%2F" />
+<link rel="alternate" type="text/xml+oembed" href="../wp-json/oembed/1.0/embedbfcd?url=http%3A%2F%2Fwww.androhub.com%2Fandroid-confirm-credential-security-lock%2F&amp;format=xml" />
+
+<link rel='dns-prefetch' href='http://v0.wordpress.com/'>
+<link rel='dns-prefetch' href='http://i0.wp.com/'>
+<link rel='dns-prefetch' href='http://i1.wp.com/'>
+<link rel='dns-prefetch' href='http://i2.wp.com/'>
+<style type='text/css'>img#wpstats{display:none}</style><!--[if lt IE 9]><script src="http://www.androhub.com/wp-content/themes/circles/js/html5.js"></script><![endif]--><!--[if lt IE 7]><script src="http://www.androhub.com/wp-content/themes/circles/js/icomoon.js"></script><![endif]-->	<script type="text/javascript">
+		var ajaxurl = 'http://www.androhub.com/wp-admin/admin-ajax.php';
+	</script>
+				<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,700" rel="stylesheet" type="text/css">
+					<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,800,300,700" rel="stylesheet" type="text/css">
+			<style type="text/css">
+					body,
+			article .column_post-body,
+			.post-body-text,
+			.post-area 
+			{ font-family: 'Noto Sans'; }
+		
+		
+					.headline h1 { font-family: 'Noto Sans'; }
+		
+		
+					.menu .menu-item a,
+			.menu .page_item a { font-family: 'Noto Sans'; }
+		
+		
+					.post-area h1, .post-body-text h1,
+			.post-area h2, .post-body-text h2,
+			.post-area h3, .post-body-text h3,
+			.post-area h4, .post-body-text h4,
+			.post-area h5, .post-body-text h5,
+			.post-area h6, .post-body-text h6, aside h5 {
+				font-family: 'Noto Sans';
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		#logo {
+											}
+		
+			</style>
+	<style type="text/css" id="dynamic-styles">
+				
+			
+	
+	
+			
+			
+			
+			
+		
+			
+		
+	
+			
+	
+	
+	
+	
+	
+	
+	
+		</style>
+			<style type="text/css">
+			div.wrapper.menu-bg {
+    display: none;
+}
+.right-sidebar h3{
+    margin-top: 15px;
+    margin-bottom: 1px;
+}
+
+footer .wrapper.grey {
+    display: none;
+}
+.form-allowed-tags {
+    display: none;
+}
+.headline.marble h1 {
+    display: none;
+}
+
+.wrapper.headline {
+    height: 36px;
+}
+.header-image {
+    height: 50px;
+    background-position: center;
+}
+.header-image {
+    height: 50px;
+}
+.logo img {
+    position: absolute;
+    top: -18px;
+    height: 87px;
+    width: 270px;
+    z-index: 105;
+}
+.marble {
+    background-color: #91C448 !important;
+}
+.marble .page-path span,.marble .page-path a {
+    color: #FFFFFF;
+}
+.widget_search {
+    margin-bottom: 15px;
+}
+.grid_12 {
+    margin: -8px 1.25%;
+}		</style>
+			<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		
+<style id="custom-css-css">.phone-icon{right:522px;position:absolute;top:33px;display:inline-block;height:16px;padding:1px 0;font-size:13px;font-weight:700;margin-right:10px;padding-left:25px;background:url(../downloads/ic_phone.png);background-position:left center;background-repeat:no-repeat}.email-icon{right:319px;position:absolute;top:33px;display:inline-block;height:16px;padding:1px 0;font-size:13px;font-weight:700;margin-right:10px;padding-left:25px;background:url(http://www.androhub.com/downloads/ic_email.png);background-position:left center;background-repeat:no-repeat}</style>
+	</head>
+	<body class="single single-post postid-1314 single-format-standard w1170 sticky-menu-on nice-scroll">
+    
+			<div class="preloading-screen" style=" background: #fff center no-repeat fixed">
+			<div class="spinners">
+				<div class="bounce1"></div>
+			</div>
+		</div>
+					<header class='page-header'>
+	
+		
+	<div class='wrapper wrapper-bg'>
+		<div class='container'>
+			<div class='grid_12'>
+				<div class='logo'>
+																					<a href='../index.html' title="Androhub" rel="home"><img src="../wp-content/uploads/2016/05/andro_new.png" class="" alt="Androhub" /></a>
+				</div>
+				
+<!-- Header Contact -->
+<div class="phone-icon">
+<span>+91 9008091580</span>
+</div>
+
+<div class="email-icon">
+<span>surender@androhub.com</span>
+</div>
+<!--  Exit  -->
+
+
+				<ul class='socials'>
+											<li>
+							<span class="tran02slinear"></span>
+							<a class='facebook tran02slinear' href='https://www.facebook.com/sonu.surender' title="Facebook" target="_blank"></a>
+						</li>
+																<li>
+							<span class="tran02slinear"></span>
+							<a class='twitter tran02slinear' href='https://twitter.com/sonusurender0' title="Twitter" target="_blank"></a>
+						</li>
+																										<li>
+							<span class="tran02slinear"></span>
+							<a class='youtube tran02slinear' href='https://www.youtube.com/channel/UCHJh3E9mtRzbM3WVVl9glJg' title="Youtube" target="_blank"></a>
+						</li>
+																										<li>
+							<span class="tran02slinear"></span>
+							<a class='google-plus tran02slinear' href='https://plus.google.com/u/0/+SurenderKumarandrohub' title="Google+" target="_blank"></a>
+						</li>
+																<li>
+							<span class="tran02slinear"></span>
+							<a class='linkedin tran02slinear' href='https://in.linkedin.com/in/surender-kumar-681472a8' title="LinkedIn" target="_blank"></a>
+						</li>
+														</ul>
+			</div>
+		</div>
+	</div>
+	<div class='absolute'>
+		<div class='wrapper menu-bg custom-menu-bg border-bottom-black-tr'>
+			<div class='container'>
+										<a id="menu-btn" href="#"></a>
+
+						<nav class="menu"><ul><li ><a href="../index.html">Home</a></li></ul></nav>
+
+					<ul class='socials mobile-socials'>
+											<li>
+							<span class="tran02slinear"></span>
+							<a class='facebook tran02slinear' href='https://www.facebook.com/sonu.surender' title="Facebook" target="_blank"></a>
+						</li>
+																<li>
+							<span class="tran02slinear"></span>
+							<a class='twitter tran02slinear' href='https://twitter.com/sonusurender0' title="Twitter" target="_blank"></a>
+						</li>
+																										<li>
+							<span class="tran02slinear"></span>
+							<a class='youtube tran02slinear' href='https://www.youtube.com/channel/UCHJh3E9mtRzbM3WVVl9glJg' title="Youtube" target="_blank"></a>
+						</li>
+																										<li>
+							<span class="tran02slinear"></span>
+							<a class='google-plus tran02slinear' href='https://plus.google.com/u/0/+SurenderKumarandrohub' title="Google+" target="_blank"></a>
+						</li>
+																<li>
+							<span class="tran02slinear"></span>
+							<a class='linkedin tran02slinear' href='https://in.linkedin.com/in/surender-kumar-681472a8' title="LinkedIn" target="_blank"></a>
+						</li>
+														</ul>
+			</div>
+		</div>
+			<div class='wrapper headline  marble border-bottom-black-tr'>
+		<div class='container'>
+			<div class='grid_12'>
+									<h1>Blog</h1>
+													<div class='page-path'>
+						<div id="crumbs" xmlns:v="http://rdf.data-vocabulary.org/#"><span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="../index.html">Home</a></span> <span class="delimiter">|</span> <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="../category/android-advanced/index.html">Android Advanced</a></span> <span class="delimiter">|</span> <span class="current">Android Confirm Credential (Security Lock)</span></div>					</div>
+							</div>
+		</div>
+	</div>
+	</div>
+</header><div class='wrapper header-image '></div>
+<div class='wrapper'>
+	<div class='container main'>
+						<div class='post-area grid_9'>
+			<div class='posts-container'>
+													<article id="post-1314" class="post  center post-1314 type-post status-publish format-standard has-post-thumbnail hentry category-android-advanced category-android-authentication tag-confirm-credential tag-intent tag-open-security-settings tag-pin-lock tag-security-lock tag-startactivityforresult">
+		<header>
+		<a href='index.html'><h2>Android Confirm Credential (Security Lock)</h2></a>
+	</header>
+	<footer>
+	<div class='post-helper-absolute'>
+		<div class='avatar big'>
+			<img alt='' src='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=61&amp;d=mm&amp;r=g' srcset='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />		</div>
+		<div class='post-comments'>
+			<span>0</span>
+		</div>
+		<div class='post-author'>
+			By			<span>
+				<a href="../author/droid/index.html" title="Posts by Dr. Droid" rel="author">Dr. Droid</a>			</span>
+		</div>
+		<div class='post-type'>
+			<span></span>
+		</div>
+	</div>
+	<div class='post-date'>
+		<span>October 5, 2017</span>
+	</div>
+			<div class='post-category'>
+			<span>
+				<a href="../category/android-advanced/index.html" rel="category tag">Android Advanced</a>, <a href="../category/android-authentication/index.html" rel="category tag">Android Authentication</a>			</span>
+		</div>
+		<div class='separator'>
+	</div>
+</footer>	<div class="post-body clearfix">
+					<article class='item-con-t1'>
+				<div class='container-t1'>
+					<div class='container-t1-margin'>
+						<img src="../wp-content/uploads/freshizer/153f0779fc9e4a60dec1868b24fb8b0d_security_lock_banner-863-430-c.jpg" class="wp-post-image" width="863" height="430" alt="Android Confirm Credential (Security Lock)"  />					</div>
+				</div>
+				<div class='blue-line'></div>
+			</article>
+				<div class='post-body-text'>
+			<p>Hi all today we are going to work on one more app security topic apart from <a href="../android-fingerprint-authentication/index.html" target="_blank">FingerPrint Authentication</a>. In many of apps you have seen the app is opening a screen where it ask you to enter the PIN or draw a Pattern which is by default security you have set to your device. Some the apps are <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.nbu.paisa.user" target="_blank">Tez</a>, <a href="https://play.google.com/store/apps/details?id=net.one97.paytm" target="_blank">Paytm</a>, etc.</p>
+<p><strong>NOTE : The Security Lock authentication only works for API Level 21+ (Lollipop+). </strong></p>
+<p>So today we are going to do the same and we will see how we can also implement the same kind of authentication which other apps are doing. The steps to implement the Security Level Authentication are following:</p>
+<p><strong>1</strong>. You will be needing a <em><a href="https://developer.android.com/reference/android/app/KeyguardManager.html" target="_blank">KeyguardManager</a></em> to implement this authentication:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4d00d3eb068654955539" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+ KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4d00d3eb068654955539-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4d00d3eb068654955539-1"><span class="crayon-h"> </span><span class="crayon-e">KeyguardManager </span><span class="crayon-v">keyguardManager</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">KeyguardManager</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">getSystemService</span><span class="crayon-sy">(</span><span class="crayon-v">KEYGUARD_SERVICE</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0008 seconds] -->
+<p>
+<strong>2</strong>. Create an <a href="../android-intents/index.html" target="_blank">Intent</a> like below:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4d00d3eb079615790722" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+ Intent i = keyguardManager.createConfirmDeviceCredentialIntent(title, description);</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4d00d3eb079615790722-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4d00d3eb079615790722-1"><span class="crayon-h"> </span><span class="crayon-i">Intent</span><span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">keyguardManager</span><span class="crayon-sy">.</span><span class="crayon-e">createConfirmDeviceCredentialIntent</span><span class="crayon-sy">(</span><span class="crayon-v">title</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">description</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0008 seconds] -->
+<p>
+After creating Intent start the intent with <a href="../android-startactivityforresult/index.html" target="_blank"><em><strong>startActivityForResult()</strong></em></a> to check if the authentication is successful or not.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4d00d3eb081464909735" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+try {
+                //Start activity for result
+                startActivityForResult(i, LOCK_REQUEST_CODE);
+            } catch (Exception e) {
+                //If some exception occurs means Screen lock is not set up please set screen lock
+                
+}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4d00d3eb081464909735-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb081464909735-2">2</div><div class="crayon-num" data-line="crayon-5a4d00d3eb081464909735-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb081464909735-4">4</div><div class="crayon-num" data-line="crayon-5a4d00d3eb081464909735-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb081464909735-6">6</div><div class="crayon-num" data-line="crayon-5a4d00d3eb081464909735-7">7</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4d00d3eb081464909735-1"><span class="crayon-st">try</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb081464909735-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Start activity for result</span></div><div class="crayon-line" id="crayon-5a4d00d3eb081464909735-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">startActivityForResult</span><span class="crayon-sy">(</span><span class="crayon-v">i</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">LOCK_REQUEST_CODE</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb081464909735-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">catch</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-i">Exception</span><span class="crayon-h"> </span><span class="crayon-v">e</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4d00d3eb081464909735-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//If some exception occurs means Screen lock is not set up please set screen lock</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb081464909735-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb081464909735-7"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0013 seconds] -->
+<p>
+It will open the screen requesting user to enter the PIN or draw a Pattern which he has set for particular device.</p>
+<div id="attachment_1321" style="width: 586px" class="wp-caption aligncenter"><img class="wp-image-1321 size-large" src="../../i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pattern50fa.jpg?resize=576%2C1024" alt="Unlock via Pattern Screen" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pattern.jpg?resize=576%2C1024 576w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pattern.jpg?resize=169%2C300 169w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pattern.jpg?resize=768%2C1365 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pattern.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">Unlock via Pattern Screen</p></div>
+<p><strong>3</strong>. Some of the devices have not enabled Security Lock for their device. So for those devices you will get exception and in that case you need to open the <strong>Security Settings</strong> of the device with an intent:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4d00d3eb08a501316402" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+               //Open Security screen directly to enable patter lock
+                Intent intent = new Intent(Settings.ACTION_SECURITY_SETTINGS);
+                try {
+
+                    //Start activity for result
+                    startActivityForResult(intent, SECURITY_SETTING_REQUEST_CODE);
+                } catch (Exception ex) {
+
+                    //If app is unable to find any Security settings then user has to set screen lock manually
+                    textView.setText(getResources().getString(R.string.setting_label));
+                }</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4d00d3eb08a501316402-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb08a501316402-2">2</div><div class="crayon-num" data-line="crayon-5a4d00d3eb08a501316402-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb08a501316402-4">4</div><div class="crayon-num" data-line="crayon-5a4d00d3eb08a501316402-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb08a501316402-6">6</div><div class="crayon-num" data-line="crayon-5a4d00d3eb08a501316402-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb08a501316402-8">8</div><div class="crayon-num" data-line="crayon-5a4d00d3eb08a501316402-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb08a501316402-10">10</div><div class="crayon-num" data-line="crayon-5a4d00d3eb08a501316402-11">11</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4d00d3eb08a501316402-1"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-c">//Open Security screen directly to enable patter lock</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb08a501316402-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">Intent </span><span class="crayon-v">intent</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-e">Intent</span><span class="crayon-sy">(</span><span class="crayon-v">Settings</span><span class="crayon-sy">.</span><span class="crayon-v">ACTION_SECURITY_SETTINGS</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb08a501316402-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">try</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb08a501316402-4">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb08a501316402-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Start activity for result</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb08a501316402-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">startActivityForResult</span><span class="crayon-sy">(</span><span class="crayon-v">intent</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">SECURITY_SETTING_REQUEST_CODE</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb08a501316402-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">catch</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">Exception </span><span class="crayon-v">ex</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb08a501316402-8">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb08a501316402-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//If app is unable to find any Security settings then user has to set screen lock manually</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb08a501316402-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">textView</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-e">getResources</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">getString</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-t">string</span><span class="crayon-sy">.</span><span class="crayon-v">setting_label</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb08a501316402-11"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0026 seconds] -->
+<p>
+<strong>4. </strong>Alternate way to check if the device is Security Lock enabled or not is given below :</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4d00d3eb092669903220" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+private boolean isDeviceSecure() {
+        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+
+        //this method only work whose api level is greater than or equal to Jelly_Bean (16)
+        return Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.JELLY_BEAN &amp;&amp; keyguardManager.isKeyguardSecure();
+
+        //You can also use keyguardManager.isDeviceSecure(); but it requires API Level 23
+
+    }</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4d00d3eb092669903220-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb092669903220-2">2</div><div class="crayon-num" data-line="crayon-5a4d00d3eb092669903220-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb092669903220-4">4</div><div class="crayon-num" data-line="crayon-5a4d00d3eb092669903220-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb092669903220-6">6</div><div class="crayon-num" data-line="crayon-5a4d00d3eb092669903220-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb092669903220-8">8</div><div class="crayon-num" data-line="crayon-5a4d00d3eb092669903220-9">9</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4d00d3eb092669903220-1"><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-t">boolean</span><span class="crayon-h"> </span><span class="crayon-e">isDeviceSecure</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb092669903220-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">KeyguardManager </span><span class="crayon-v">keyguardManager</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">KeyguardManager</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">getSystemService</span><span class="crayon-sy">(</span><span class="crayon-v">KEYGUARD_SERVICE</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb092669903220-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb092669903220-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//this method only work whose api level is greater than or equal to Jelly_Bean (16)</span></div><div class="crayon-line" id="crayon-5a4d00d3eb092669903220-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-v">Build</span><span class="crayon-sy">.</span><span class="crayon-v">VERSION</span><span class="crayon-sy">.</span><span class="crayon-v">SDK_INT</span><span class="crayon-h"> </span><span class="crayon-o">&gt;=</span><span class="crayon-h"> </span><span class="crayon-v">Build</span><span class="crayon-sy">.</span><span class="crayon-v">VERSION_CODES</span><span class="crayon-sy">.</span><span class="crayon-v">JELLY_BEAN</span><span class="crayon-h"> </span><span class="crayon-o">&amp;&amp;</span><span class="crayon-h"> </span><span class="crayon-v">keyguardManager</span><span class="crayon-sy">.</span><span class="crayon-e">isKeyguardSecure</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb092669903220-6">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb092669903220-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//You can also use keyguardManager.isDeviceSecure(); but it requires API Level 23</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb092669903220-8">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb092669903220-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0022 seconds] -->
+<p>
+<strong>The above method only works for API Level 16+ (Jelly Bean+)</strong>.</p>
+<h2>VIDEO DEMO</h2>
+<p><iframe  id="_ytid_47466" width="602" height="339" src="https://www.youtube.com/embed/CqhpNxI8qYw?enablejsapi=1&amp;autoplay=0&amp;cc_load_policy=0&amp;iv_load_policy=1&amp;loop=0&amp;modestbranding=0&amp;rel=1&amp;showinfo=1&amp;fs=1&amp;theme=dark&amp;color=red&amp;autohide=2&amp;controls=2&amp;playsinline=0&amp;" class="__youtube_prefs__" title="YouTube player"  allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></p>
+<p><strong>1</strong>. Create a new project in Android Studio by navigating to <strong>File ⇒ New Android ⇒ Application Project</strong> and fill required details. By default my activity is <em>MainActivity.java</em>.</p>
+<p><b>2</b>. Open <strong>res ⇒ values ⇒ strings.xml</strong> and add below string values. These are some strings that we are going to use in our project.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4d00d3eb09a375627563" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">strings.xml</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+&lt;resources&gt;
+    &lt;string name="app_name"&gt;Security Lock Demo&lt;/string&gt;
+    &lt;string name="unlock"&gt;Unlock&lt;/string&gt;
+    &lt;string name="confirm_pattern"&gt;Confirm your screen lock PIN,Pattern or Password&lt;/string&gt;
+    &lt;string name="setting_label"&gt;&lt;![CDATA[Please set the screen lock Manually by navigating to : Settings&gt;Security.]]&gt;&lt;/string&gt;
+    &lt;string name="unlock_success"&gt;App is Unlocked successfully.&lt;/string&gt;
+    &lt;string name="unlock_failed"&gt;Failed to Unlock the app.&lt;/string&gt;
+    &lt;string name="device_is_secure"&gt;Device is now secure.&lt;/string&gt;
+    &lt;string name="security_device_cancelled"&gt;Device is not secure or user cancel the request.&lt;/string&gt;
+    &lt;string name="authenticate_again"&gt;Authenticate Again&lt;/string&gt;
+&lt;/resources&gt;</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4d00d3eb09a375627563-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb09a375627563-2">2</div><div class="crayon-num" data-line="crayon-5a4d00d3eb09a375627563-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb09a375627563-4">4</div><div class="crayon-num" data-line="crayon-5a4d00d3eb09a375627563-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb09a375627563-6">6</div><div class="crayon-num" data-line="crayon-5a4d00d3eb09a375627563-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb09a375627563-8">8</div><div class="crayon-num" data-line="crayon-5a4d00d3eb09a375627563-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb09a375627563-10">10</div><div class="crayon-num" data-line="crayon-5a4d00d3eb09a375627563-11">11</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4d00d3eb09a375627563-1"><span class="crayon-o">&lt;</span><span class="crayon-v">resources</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb09a375627563-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"app_name"</span><span class="crayon-o">&gt;</span><span class="crayon-e">Security </span><span class="crayon-e">Lock </span><span class="crayon-v">Demo</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb09a375627563-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"unlock"</span><span class="crayon-o">&gt;</span><span class="crayon-v">Unlock</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb09a375627563-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"confirm_pattern"</span><span class="crayon-o">&gt;</span><span class="crayon-e">Confirm </span><span class="crayon-e">your </span><span class="crayon-e">screen </span><span class="crayon-e">lock </span><span class="crayon-v">PIN</span><span class="crayon-sy">,</span><span class="crayon-e">Pattern </span><span class="crayon-st">or</span><span class="crayon-h"> </span><span class="crayon-v">Password</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb09a375627563-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"setting_label"</span><span class="crayon-o">&gt;</span><span class="crayon-o">&lt;</span><span class="crayon-o">!</span><span class="crayon-sy">[</span><span class="crayon-v">CDATA</span><span class="crayon-sy">[</span><span class="crayon-e">Please </span><span class="crayon-e">set </span><span class="crayon-e">the </span><span class="crayon-e">screen </span><span class="crayon-e">lock </span><span class="crayon-e">Manually </span><span class="crayon-e">by </span><span class="crayon-e">navigating </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">Settings</span><span class="crayon-o">&gt;</span><span class="crayon-v">Security</span><span class="crayon-sy">.</span><span class="crayon-sy">]</span><span class="crayon-sy">]</span><span class="crayon-o">&gt;</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb09a375627563-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"unlock_success"</span><span class="crayon-o">&gt;</span><span class="crayon-e">App </span><span class="crayon-st">is</span><span class="crayon-h"> </span><span class="crayon-e">Unlocked </span><span class="crayon-v">successfully</span><span class="crayon-sy">.</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb09a375627563-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"unlock_failed"</span><span class="crayon-o">&gt;</span><span class="crayon-e">Failed </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">Unlock </span><span class="crayon-e">the </span><span class="crayon-v">app</span><span class="crayon-sy">.</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb09a375627563-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"device_is_secure"</span><span class="crayon-o">&gt;</span><span class="crayon-e">Device </span><span class="crayon-st">is</span><span class="crayon-h"> </span><span class="crayon-e">now </span><span class="crayon-v">secure</span><span class="crayon-sy">.</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb09a375627563-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"security_device_cancelled"</span><span class="crayon-o">&gt;</span><span class="crayon-e">Device </span><span class="crayon-st">is</span><span class="crayon-h"> </span><span class="crayon-st">not</span><span class="crayon-h"> </span><span class="crayon-e">secure </span><span class="crayon-st">or</span><span class="crayon-h"> </span><span class="crayon-e">user </span><span class="crayon-e">cancel </span><span class="crayon-e">the </span><span class="crayon-v">request</span><span class="crayon-sy">.</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb09a375627563-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"authenticate_again"</span><span class="crayon-o">&gt;</span><span class="crayon-e">Authenticate </span><span class="crayon-v">Again</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">string</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb09a375627563-11"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">resources</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0062 seconds] -->
+<p>
+<b>3</b>. Now go to <em>activity_main.xml</em> and add the below code to it.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4d00d3eb0a3024306067" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">activity_main.xml</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-mixed-highlight" title="Contains Mixed Languages"></span><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.security_lock_demo.MainActivity"&gt;
+
+
+    &lt;TextView
+        android:id="@+id/texview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" /&gt;
+
+    &lt;Button
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorPrimary"
+        android:onClick="authenticateAgain"
+        android:text="@string/authenticate_again"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" /&gt;
+&lt;/LinearLayout&gt;</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-2">2</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-4">4</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-6">6</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-8">8</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-10">10</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-12">12</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-14">14</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-16">16</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-18">18</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-20">20</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-22">22</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-24">24</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-26">26</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-28">28</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-30">30</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0a3024306067-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0a3024306067-32">32</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-1"><span class="crayon-ta">&lt;?</span><span class="crayon-e">xml </span><span class="crayon-i">version</span><span class="crayon-o">=</span><span class="crayon-s">"1.0"</span><span class="crayon-h"> </span><span class="crayon-i">encoding</span><span class="crayon-o">=</span><span class="crayon-s">"utf-8"</span><span class="crayon-ta">?&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-2"><span class="crayon-o">&lt;</span><span class="crayon-e">LinearLayout </span><span class="crayon-v">xmlns</span><span class="crayon-o">:</span><span class="crayon-v">android</span><span class="crayon-o">=</span><span class="crayon-s">"http://schemas.android.com/apk/res/android"</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">xmlns</span><span class="crayon-o">:</span><span class="crayon-v">tools</span><span class="crayon-o">=</span><span class="crayon-s">"http://schemas.android.com/tools"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_width</span><span class="crayon-o">=</span><span class="crayon-s">"match_parent"</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_height</span><span class="crayon-o">=</span><span class="crayon-s">"match_parent"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">gravity</span><span class="crayon-o">=</span><span class="crayon-s">"center"</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">orientation</span><span class="crayon-o">=</span><span class="crayon-s">"vertical"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">padding</span><span class="crayon-o">=</span><span class="crayon-s">"10dp"</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">tools</span><span class="crayon-o">:</span><span class="crayon-v">context</span><span class="crayon-o">=</span><span class="crayon-s">"com.security_lock_demo.MainActivity"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-10">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-11">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">TextView</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-13"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">id</span><span class="crayon-o">=</span><span class="crayon-s">"@+id/texview"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-14"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_width</span><span class="crayon-o">=</span><span class="crayon-s">"wrap_content"</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-15"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_height</span><span class="crayon-o">=</span><span class="crayon-s">"wrap_content"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-16"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">gravity</span><span class="crayon-o">=</span><span class="crayon-s">"center"</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-17"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">padding</span><span class="crayon-o">=</span><span class="crayon-s">"10dp"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-18"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textColor</span><span class="crayon-o">=</span><span class="crayon-s">"@android:color/black"</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-19"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textSize</span><span class="crayon-o">=</span><span class="crayon-s">"18sp"</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-20">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-21"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">Button</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-22"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_width</span><span class="crayon-o">=</span><span class="crayon-s">"match_parent"</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-23"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_marginTop</span><span class="crayon-o">=</span><span class="crayon-s">"15dp"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-24"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_height</span><span class="crayon-o">=</span><span class="crayon-s">"wrap_content"</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-25"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_marginLeft</span><span class="crayon-o">=</span><span class="crayon-s">"10dp"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-26"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">layout_marginRight</span><span class="crayon-o">=</span><span class="crayon-s">"10dp"</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-27"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">background</span><span class="crayon-o">=</span><span class="crayon-s">"@color/colorPrimary"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-28"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">onClick</span><span class="crayon-o">=</span><span class="crayon-s">"authenticateAgain"</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-29"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">text</span><span class="crayon-o">=</span><span class="crayon-s">"@string/authenticate_again"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-30"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textColor</span><span class="crayon-o">=</span><span class="crayon-s">"@android:color/white"</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0a3024306067-31"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">android</span><span class="crayon-o">:</span><span class="crayon-v">textSize</span><span class="crayon-o">=</span><span class="crayon-s">"15sp"</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0a3024306067-32"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">LinearLayout</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0066 seconds] -->
+<p>
+<b>4</b>. After adding the<em> activity_main.xml</em> layout come to <em>MainActivity.java</em> and put the below code to it. This code contains all step by step information which we discussed above.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a4d00d3eb0ac307121575" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">MainActivity.java</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+package com.security_lock_demo;
+
+import android.app.KeyguardManager;
+import android.content.Intent;
+import android.os.Build;
+import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    private static final int LOCK_REQUEST_CODE = 221;
+    private static final int SECURITY_SETTING_REQUEST_CODE = 233;
+
+    private TextView textView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        textView = (TextView) findViewById(R.id.texview);
+        authenticateApp();
+    }
+
+    //method to authenticate app
+    private void authenticateApp() {
+        //Get the instance of KeyGuardManager
+        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+
+        //Check if the device version is greater than or equal to Lollipop(21)
+        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {
+            //Create an intent to open device screen lock screen to authenticate
+            //Pass the Screen Lock screen Title and Description
+            Intent i = keyguardManager.createConfirmDeviceCredentialIntent(getResources().getString(R.string.unlock), getResources().getString(R.string.confirm_pattern));
+            try {
+                //Start activity for result
+                startActivityForResult(i, LOCK_REQUEST_CODE);
+            } catch (Exception e) {
+
+                //If some exception occurs means Screen lock is not set up please set screen lock
+                //Open Security screen directly to enable patter lock
+                Intent intent = new Intent(Settings.ACTION_SECURITY_SETTINGS);
+                try {
+
+                    //Start activity for result
+                    startActivityForResult(intent, SECURITY_SETTING_REQUEST_CODE);
+                } catch (Exception ex) {
+
+                    //If app is unable to find any Security settings then user has to set screen lock manually
+                    textView.setText(getResources().getString(R.string.setting_label));
+                }
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case LOCK_REQUEST_CODE:
+                if (resultCode == RESULT_OK) {
+                    //If screen lock authentication is success update text
+                    textView.setText(getResources().getString(R.string.unlock_success));
+                } else {
+                    //If screen lock authentication is failed update text
+                    textView.setText(getResources().getString(R.string.unlock_failed));
+                }
+                break;
+            case SECURITY_SETTING_REQUEST_CODE:
+                //When user is enabled Security settings then we don't get any kind of RESULT_OK
+                //So we need to check whether device has enabled screen lock or not
+                if (isDeviceSecure()) {
+                    //If screen lock enabled show toast and start intent to authenticate user
+                    Toast.makeText(this, getResources().getString(R.string.device_is_secure), Toast.LENGTH_SHORT).show();
+                    authenticateApp();
+                } else {
+                    //If screen lock is not enabled just update text
+                    textView.setText(getResources().getString(R.string.security_device_cancelled));
+                }
+
+                break;
+        }
+    }
+
+    /**
+     * method to return whether device has screen lock enabled or not
+     **/
+    private boolean isDeviceSecure() {
+        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+
+        //this method only work whose api level is greater than or equal to Jelly_Bean (16)
+        return Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.JELLY_BEAN &amp;&amp; keyguardManager.isKeyguardSecure();
+
+        //You can also use keyguardManager.isDeviceSecure(); but it requires API Level 23
+
+    }
+
+    //On Click of button do authentication again
+    public void authenticateAgain(View view) {
+        authenticateApp();
+    }
+}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-2">2</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-4">4</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-6">6</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-8">8</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-10">10</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-12">12</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-14">14</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-16">16</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-18">18</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-20">20</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-22">22</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-24">24</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-26">26</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-28">28</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-30">30</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-32">32</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-34">34</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-36">36</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-38">38</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-40">40</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-41">41</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-42">42</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-43">43</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-44">44</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-45">45</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-46">46</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-47">47</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-48">48</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-49">49</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-50">50</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-51">51</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-52">52</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-53">53</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-54">54</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-55">55</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-56">56</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-57">57</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-58">58</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-59">59</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-60">60</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-61">61</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-62">62</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-63">63</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-64">64</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-65">65</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-66">66</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-67">67</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-68">68</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-69">69</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-70">70</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-71">71</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-72">72</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-73">73</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-74">74</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-75">75</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-76">76</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-77">77</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-78">78</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-79">79</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-80">80</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-81">81</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-82">82</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-83">83</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-84">84</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-85">85</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-86">86</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-87">87</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-88">88</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-89">89</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-90">90</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-91">91</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-92">92</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-93">93</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-94">94</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-95">95</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-96">96</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-97">97</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-98">98</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-99">99</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-100">100</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-101">101</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-102">102</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-103">103</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a4d00d3eb0ac307121575-104">104</div><div class="crayon-num" data-line="crayon-5a4d00d3eb0ac307121575-105">105</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-1"><span class="crayon-t">package</span><span class="crayon-h"> </span><span class="crayon-v">com</span><span class="crayon-sy">.</span><span class="crayon-v">security_lock_demo</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-2">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-3"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">app</span><span class="crayon-sy">.</span><span class="crayon-v">KeyguardManager</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-4"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">content</span><span class="crayon-sy">.</span><span class="crayon-v">Intent</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-5"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">os</span><span class="crayon-sy">.</span><span class="crayon-v">Build</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-6"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">provider</span><span class="crayon-sy">.</span><span class="crayon-v">Settings</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-7"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">support</span><span class="crayon-sy">.</span><span class="crayon-v">v7</span><span class="crayon-sy">.</span><span class="crayon-v">app</span><span class="crayon-sy">.</span><span class="crayon-v">AppCompatActivity</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-8"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">os</span><span class="crayon-sy">.</span><span class="crayon-v">Bundle</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-9"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">view</span><span class="crayon-sy">.</span><span class="crayon-v">View</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-10"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">widget</span><span class="crayon-sy">.</span><span class="crayon-v">TextView</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-11"><span class="crayon-e">import </span><span class="crayon-v">android</span><span class="crayon-sy">.</span><span class="crayon-v">widget</span><span class="crayon-sy">.</span><span class="crayon-v">Toast</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-12">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-13"><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">class</span><span class="crayon-h"> </span><span class="crayon-e">MainActivity</span><span class="crayon-h"> </span><span class="crayon-r">extends</span><span class="crayon-h"> </span><span class="crayon-e">AppCompatActivity</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-14">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-15"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-m">final</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">LOCK_REQUEST_CODE</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-cn">221</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-16"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-m">final</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">SECURITY_SETTING_REQUEST_CODE</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-cn">233</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-17">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-18"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-e">TextView </span><span class="crayon-v">textView</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-19">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-20"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">@</span><span class="crayon-e">Override</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-21"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">protected</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">onCreate</span><span class="crayon-sy">(</span><span class="crayon-e">Bundle </span><span class="crayon-v">savedInstanceState</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-22"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">super</span><span class="crayon-sy">.</span><span class="crayon-e">onCreate</span><span class="crayon-sy">(</span><span class="crayon-v">savedInstanceState</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-23"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">setContentView</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">layout</span><span class="crayon-sy">.</span><span class="crayon-v">activity_main</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-24"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">textView</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">TextView</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">findViewById</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-v">id</span><span class="crayon-sy">.</span><span class="crayon-v">texview</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-25"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">authenticateApp</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-26"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-27">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-28"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//method to authenticate app</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-29"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">authenticateApp</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-30"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Get the instance of KeyGuardManager</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-31"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">KeyguardManager </span><span class="crayon-v">keyguardManager</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">KeyguardManager</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">getSystemService</span><span class="crayon-sy">(</span><span class="crayon-v">KEYGUARD_SERVICE</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-32">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-33"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Check if the device version is greater than or equal to Lollipop(21)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-34"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">Build</span><span class="crayon-sy">.</span><span class="crayon-v">VERSION</span><span class="crayon-sy">.</span><span class="crayon-v">SDK_INT</span><span class="crayon-h"> </span><span class="crayon-o">&gt;=</span><span class="crayon-h"> </span><span class="crayon-v">Build</span><span class="crayon-sy">.</span><span class="crayon-v">VERSION_CODES</span><span class="crayon-sy">.</span><span class="crayon-v">LOLLIPOP</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-35"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Create an intent to open device screen lock screen to authenticate</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-36"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Pass the Screen Lock screen Title and Description</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-37"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">Intent</span><span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">keyguardManager</span><span class="crayon-sy">.</span><span class="crayon-e">createConfirmDeviceCredentialIntent</span><span class="crayon-sy">(</span><span class="crayon-e">getResources</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">getString</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-t">string</span><span class="crayon-sy">.</span><span class="crayon-v">unlock</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-e">getResources</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">getString</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-t">string</span><span class="crayon-sy">.</span><span class="crayon-v">confirm_pattern</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-38"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">try</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-39"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Start activity for result</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-40"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">startActivityForResult</span><span class="crayon-sy">(</span><span class="crayon-v">i</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">LOCK_REQUEST_CODE</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-41"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">catch</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-i">Exception</span><span class="crayon-h"> </span><span class="crayon-v">e</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-42">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-43"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//If some exception occurs means Screen lock is not set up please set screen lock</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-44"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Open Security screen directly to enable patter lock</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-45"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">Intent </span><span class="crayon-v">intent</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-e">Intent</span><span class="crayon-sy">(</span><span class="crayon-v">Settings</span><span class="crayon-sy">.</span><span class="crayon-v">ACTION_SECURITY_SETTINGS</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-46"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">try</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-47">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-48"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Start activity for result</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-49"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">startActivityForResult</span><span class="crayon-sy">(</span><span class="crayon-v">intent</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">SECURITY_SETTING_REQUEST_CODE</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-50"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">catch</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">Exception </span><span class="crayon-v">ex</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-51">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-52"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//If app is unable to find any Security settings then user has to set screen lock manually</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-53"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">textView</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-e">getResources</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">getString</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-t">string</span><span class="crayon-sy">.</span><span class="crayon-v">setting_label</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-54"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-55"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-56"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-57"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-58">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-59"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">@</span><span class="crayon-e">Override</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-60"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">protected</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">onActivityResult</span><span class="crayon-sy">(</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">requestCode</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">resultCode</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-e">Intent </span><span class="crayon-v">data</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-61"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">super</span><span class="crayon-sy">.</span><span class="crayon-e">onActivityResult</span><span class="crayon-sy">(</span><span class="crayon-v">requestCode</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">resultCode</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">data</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-62"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">switch</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">requestCode</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-63"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">case</span><span class="crayon-h"> </span><span class="crayon-v">LOCK_REQUEST_CODE</span><span class="crayon-o">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-64"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">resultCode</span><span class="crayon-h"> </span><span class="crayon-o">==</span><span class="crayon-h"> </span><span class="crayon-v">RESULT_OK</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-65"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//If screen lock authentication is success update text</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-66"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">textView</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-e">getResources</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">getString</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-t">string</span><span class="crayon-sy">.</span><span class="crayon-v">unlock_success</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-67"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">else</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-68"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//If screen lock authentication is failed update text</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-69"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">textView</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-e">getResources</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">getString</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-t">string</span><span class="crayon-sy">.</span><span class="crayon-v">unlock_failed</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-70"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-71"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">break</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-72"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">case</span><span class="crayon-h"> </span><span class="crayon-v">SECURITY_SETTING_REQUEST_CODE</span><span class="crayon-o">:</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-73"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//When user is enabled Security settings then we don't get any kind of RESULT_OK</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-74"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//So we need to check whether device has enabled screen lock or not</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-75"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">isDeviceSecure</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-76"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//If screen lock enabled show toast and start intent to authenticate user</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-77"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">Toast</span><span class="crayon-sy">.</span><span class="crayon-e">makeText</span><span class="crayon-sy">(</span><span class="crayon-r">this</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-e">getResources</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">getString</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-t">string</span><span class="crayon-sy">.</span><span class="crayon-v">device_is_secure</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">Toast</span><span class="crayon-sy">.</span><span class="crayon-v">LENGTH_SHORT</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">show</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-78"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">authenticateApp</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-79"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">else</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-80"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//If screen lock is not enabled just update text</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-81"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">textView</span><span class="crayon-sy">.</span><span class="crayon-e">setText</span><span class="crayon-sy">(</span><span class="crayon-e">getResources</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">getString</span><span class="crayon-sy">(</span><span class="crayon-v">R</span><span class="crayon-sy">.</span><span class="crayon-t">string</span><span class="crayon-sy">.</span><span class="crayon-v">security_device_cancelled</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-82"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-83">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-84"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">break</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-85"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-86"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-87">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-88"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">/**</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-89"><span class="crayon-c">&nbsp;&nbsp;&nbsp;&nbsp; * method to return whether device has screen lock enabled or not</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-90"><span class="crayon-c">&nbsp;&nbsp;&nbsp;&nbsp; **/</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-91"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-t">boolean</span><span class="crayon-h"> </span><span class="crayon-e">isDeviceSecure</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-92"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">KeyguardManager </span><span class="crayon-v">keyguardManager</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">KeyguardManager</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">getSystemService</span><span class="crayon-sy">(</span><span class="crayon-v">KEYGUARD_SERVICE</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-93">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-94"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//this method only work whose api level is greater than or equal to Jelly_Bean (16)</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-95"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-v">Build</span><span class="crayon-sy">.</span><span class="crayon-v">VERSION</span><span class="crayon-sy">.</span><span class="crayon-v">SDK_INT</span><span class="crayon-h"> </span><span class="crayon-o">&gt;=</span><span class="crayon-h"> </span><span class="crayon-v">Build</span><span class="crayon-sy">.</span><span class="crayon-v">VERSION_CODES</span><span class="crayon-sy">.</span><span class="crayon-v">JELLY_BEAN</span><span class="crayon-h"> </span><span class="crayon-o">&amp;&amp;</span><span class="crayon-h"> </span><span class="crayon-v">keyguardManager</span><span class="crayon-sy">.</span><span class="crayon-e">isKeyguardSecure</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-96">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-97"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//You can also use keyguardManager.isDeviceSecure(); but it requires API Level 23</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-98">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-99"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-100">&nbsp;</div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-101"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//On Click of button do authentication again</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-102"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">authenticateAgain</span><span class="crayon-sy">(</span><span class="crayon-e">View </span><span class="crayon-v">view</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-103"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">authenticateApp</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a4d00d3eb0ac307121575-104"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5a4d00d3eb0ac307121575-105"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0154 seconds] -->
+<p>
+<div id="attachment_1322" style="width: 586px" class="wp-caption aligncenter"><img class="size-large wp-image-1322" src="../../i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pin50fa.jpg?resize=576%2C1024" alt="Unlock via PIN Screen" srcset="https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pin.jpg?resize=576%2C1024 576w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pin.jpg?resize=169%2C300 169w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pin.jpg?resize=768%2C1365 768w, https://i1.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_via_pin.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">Unlock via PIN Screen</p></div>
+<div id="attachment_1320" style="width: 586px" class="wp-caption aligncenter"><img class="size-large wp-image-1320" src="../../i2.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_success50fa.jpg?resize=576%2C1024" alt="PIN/Pattern is Authenticated Successfully" srcset="https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_success.jpg?resize=576%2C1024 576w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_success.jpg?resize=169%2C300 169w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_success.jpg?resize=768%2C1365 768w, https://i2.wp.com/www.androhub.com/wp-content/uploads/2017/09/unlock_success.jpg?w=1080 1080w" sizes="(max-width: 576px) 100vw, 576px" data-recalc-dims="1" /><p class="wp-caption-text">PIN/Pattern is Authenticated Successfully</p></div>
+<p>&nbsp;</p>
+<p><b>5</b>. Finally all done, now you can also make your app secure with the help of Confirm Credential/Security Lock.</p>
+<h2>USAGE</h2>
+<p><strong>You can use the above code to authenticate the users while making Payment in your app or while accessing some critical information from app.</strong></p>
+<p class="graf graf--p graf-after--figure">Thanks. <img class="wp-smiley" src="../../i2.wp.com/androhub.com/wp-includes/images/smilies/icon_smile5957.gif?w=602" alt=":)" width="13" height="13" /></p>
+<p><strong><a href="http://androhub.com/downloads/SecurityLockDemo.zip" target="_blank">Download Source Code – &gt;</a></strong></p>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-1314" class="share-twitter sd-button share-icon no-text" href="index9a7b.html?share=twitter" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-1314" class="share-facebook sd-button share-icon no-text" href="index5a58.html?share=facebook" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-1314" class="share-google-plus-1 sd-button share-icon no-text" href="index386f.html?share=google-plus-1" target="_blank" title="Click to share on Google+"><span></span><span class="sharing-screen-reader-text">Click to share on Google+ (Opens in new window)</span></a></li><li class="share-jetpack-whatsapp"><a rel="nofollow" data-shared="" class="share-jetpack-whatsapp sd-button share-icon no-text" href="whatsapp://send?text=Android%20Confirm%20Credential%20%28Security%20Lock%29 http%3A%2F%2Fwww.androhub.com%2Fandroid-confirm-credential-security-lock%2F" target="_blank" title="Click to share on WhatsApp"><span></span><span class="sharing-screen-reader-text">Click to share on WhatsApp (Opens in new window)</span></a></li><li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-1314" class="share-linkedin sd-button share-icon no-text" href="index9f21.html?share=linkedin" target="_blank" title="Click to share on LinkedIn"><span></span><span class="sharing-screen-reader-text">Click to share on LinkedIn (Opens in new window)</span></a></li><li class="share-email"><a rel="nofollow" data-shared="" class="share-email sd-button share-icon no-text" href="index3081.html?share=email" target="_blank" title="Click to email this to a friend"><span></span><span class="sharing-screen-reader-text">Click to email this to a friend (Opens in new window)</span></a></li><li class="share-print"><a rel="nofollow" data-shared="" class="share-print sd-button share-icon no-text" href="index.html#print" target="_blank" title="Click to print"><span></span><span class="sharing-screen-reader-text">Click to print (Opens in new window)</span></a></li><li class="share-tumblr"><a rel="nofollow" data-shared="" class="share-tumblr sd-button share-icon no-text" href="indexcce0.html?share=tumblr" target="_blank" title="Click to share on Tumblr"><span></span><span class="sharing-screen-reader-text">Click to share on Tumblr (Opens in new window)</span></a></li><li class="share-pinterest"><a rel="nofollow" data-shared="sharing-pinterest-1314" class="share-pinterest sd-button share-icon no-text" href="indexd2b8.html?share=pinterest" target="_blank" title="Click to share on Pinterest"><span></span><span class="sharing-screen-reader-text">Click to share on Pinterest (Opens in new window)</span></a></li><li class="share-pocket"><a rel="nofollow" data-shared="" class="share-pocket sd-button share-icon no-text" href="index27bb.html?share=pocket" target="_blank" title="Click to share on Pocket"><span></span><span class="sharing-screen-reader-text">Click to share on Pocket (Opens in new window)</span></a></li><li class="share-telegram"><a rel="nofollow" data-shared="" class="share-telegram sd-button share-icon no-text" href="index266e.html?share=telegram" target="_blank" title="Click to share on Telegram"><span></span><span class="sharing-screen-reader-text">Click to share on Telegram (Opens in new window)</span></a></li><li class="share-skype"><a rel="nofollow" data-shared="sharing-skype-1314" class="share-skype sd-button share-icon no-text" href="index32f4.html?share=skype" target="_blank" title="Share on Skype"><span></span><span class="sharing-screen-reader-text">Share on Skype (Opens in new window)</span></a></li><li class="share-reddit"><a rel="nofollow" data-shared="" class="share-reddit sd-button share-icon no-text" href="index1ea5.html?share=reddit" target="_blank" title="Click to share on Reddit"><span></span><span class="sharing-screen-reader-text">Click to share on Reddit (Opens in new window)</span></a></li><li class="share-end"></li></ul></div></div></div>
+
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div>					</div>
+	</div>
+</article>
+
+	<section class='about'>
+		<h4>About the author</h4>
+		<div class='separator'>
+			<div></div>
+		</div>
+		<article class='about-content'>
+			<footer>
+				<div class='about-helper-absolute'>
+					<div class='avatar'>
+						<img alt='' src='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=61&amp;d=mm&amp;r=g' srcset='http://2.gravatar.com/avatar/ebab67fae339761312d475ef8e13e63d?s=122&amp;d=mm&amp;r=g 2x' class='avatar avatar-61 photo' height='61' width='61' />					</div>
+				</div>
+			</footer>
+			<div class='about-body'>
+				<p>I am an Android developer for whom Android is the one and only love. I work as a freelancer which gets me and Android closer. I always love to share my learnings and love to learn from others knowledge too.</p>
+			</div>
+		</article>
+	</section>
+					
+	
+	
+	
+	<section class='leave-comment'>
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel Comment</a></small></h3>				<form action="http://www.androhub.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<div class="separator"><div></div></div>
+			<div class="input-field text-area">
+				<div>
+					Comment
+					<span>(required)</span>
+				</div>
+				<div class="input-style dlight-grey sc-input">
+					<textarea aria-required="true" rows="1" cols="1" name="comment" id="comment"  aria-required='true'></textarea>
+				</div>
+			</div><div><p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code class=&quot;&quot; title=&quot;&quot; data-url=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre class=&quot;&quot; title=&quot;&quot; data-url=&quot;&quot;&gt; &lt;span class=&quot;&quot; title=&quot;&quot; data-url=&quot;&quot;&gt; </code></p></div>
+					<div class="input-field">
+						<div>
+							Name <span>(required)</span>
+						</div>
+						<div class="input-style dlight-grey sc-input">
+							<input id="author" type="text"  aria-required='true' size="20" value="" name="author">
+						</div>
+					</div>
+
+					<div class="input-field">
+						<div>
+							Email <span>(required)</span>
+						</div>
+						<div class="input-style dlight-grey sc-input">
+							<input id="email" name="email" type="text" value="" size="20" aria-required='true' />
+						</div>
+					</div>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="SENT" /> <input type='hidden' name='comment_post_ID' value='1314' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="0444558aba" /></p>
+    <style type="text/css">
+      .comment-image-captcha {
+        margin-bottom: 20px;
+      }
+      .comment-image-captcha table {
+        border-width: 0;
+        border: 0;
+        padding: 0;
+        margin: 0;
+      }
+      .comment-image-captcha td {
+        border-width: 0;
+        vertical-align: middle !important;
+        padding: 0;
+        margin: 0;
+        background-color: transparent !important;
+      }
+      .comment-image-captcha div {
+        margin: 0;
+      }
+      .image-captcha {
+        display: none;
+      }
+      #image-captcha-input {
+        width: 100% !important;
+        box-sizing: border-box;
+        height: auto !important;;
+      }
+      #image-captcha-refresh {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        position: relative;
+      }
+      #image-captcha-block{
+        margin-right: 10px;
+        background-color: #ffffff;
+      }
+      #image-captcha-refresh img {
+        width: 20px;
+      }
+    </style>
+    <div class="comment-image-captcha">
+      <table style="width: 100%;" class="image-captcha">
+        <tr>
+          <td style="width: 77px; vertical-align: bottom;">
+            <div id="image-captcha-block" style="border: 1px solid #DDDDDD; width: 75px; height: 75px;"><img style="padding: 5px;" src="../wp-content/plugins/image-captcha/images/06-06.png"></div>
+          </td>
+          <td style="vertical-align: bottom;">
+            <table style="width: 100%">
+              <tr>
+                <td colspan="2"><label for="image-captcha-input">Object in the image</label></td>
+              </tr>
+              <tr>
+                <td style="vertical-align: bottom;">
+                  <input style="margin-bottom: 0px;" type="text" class="input" id="image-captcha-input" name="image-captcha-input">
+                </td>
+                <td style="vertical-align: middle; width: 35px; text-align: center;">
+                  <span id="image-captcha-refresh"><img src="../wp-content/plugins/image-captcha/assets/refresh.png"></span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!--<div class="comment-image-captcha">
+      <table class="image-captcha">
+          <tr>
+            <td style="width: 77px; vertical-align: bottom">
+
+            </td>
+            <td style="vertical-align: bottom;">
+              <label for="image-captcha-input">Object in the image</label>
+              <table style="display: block;">
+                <tr>
+                  <td><input style="margin-bottom: 0px;" type="text" value="" class="input" id="image-captcha-input" name="image-captcha-input"></td>
+                  <td><div id="image-captcha-refresh"><img src="http://www.androhub.com/wp-content/plugins/image-captcha/assets/refresh.png"></div></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>--><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="39"/></p>				</form>
+					</div><!-- #respond -->
+			</section>							</div>
+		</div>
+				<aside class='right-sidebar grid_3'>
+	<section id="search-2" class="widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.androhub.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" />
+				</div>
+			</form></section><section id="facebook-likebox-2" class="widget_facebook_likebox">		<div id="fb-root"></div>
+		<div class="fb-page" data-href="https://www.facebook.com/androhubtutorial/" data-width="340"  data-height="432" data-hide-cover="false" data-show-facepile="true" data-show-posts="false">
+		<div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/androhubtutorial/"><a href="https://www.facebook.com/androhubtutorial/"></a></blockquote></div>
+		</div>
+		</section>			<section id="wp_subscribe-2" class="wp_subscribe">	
+		<div id="wp-subscribe" class="wp-subscribe-wrap wp-subscribe wp-subscribe-1" data-thanks_page="0" data-thanks_page_url="" data-thanks_page_new_window="0">
+
+			<h4 class="title"></h4>
+
+			<p class="text">Subscribe to our mailing list and get interesting stuff and updates to your email inbox. We don't Spam.</p>
+
+			
+			<form action="http://www.androhub.com/android-confirm-credential-security-lock?name=android-confirm-credential-security-lock" method="post" class="wp-subscribe-form wp-subscribe-mailchimp" id="wp-subscribe-form-1">
+
+				
+				<input class="regular-text email-field" type="text" name="email" placeholder="Enter your email here">
+
+				<input type="hidden" name="form_type" value="widget">
+
+				<input type="hidden" name="service" value="mailchimp">
+
+				<input type="hidden" name="widget" value="wp_subscribe-2">
+
+				<input class="submit" type="submit" name="submit" value="Sign Up Now">
+
+			</form>
+
+			
+			<div class="wp-subscribe-loader">
+				<svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<path fill="" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+						<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/>
+					</path>
+				</svg>
+			</div>
+
+			<p class="thanks">Thank you for subscribing.</p>
+			<p class="error">Something went wrong.</p>
+			<div class="clear"></div>
+
+			<p class="footer-text">We respect your privacy and take protecting it seriously.</p>
+
+		</div>
+
+			</section>	
+		<section id="recent-posts-2" class="widget_recent_entries">		<h3>Recent Posts</h3>		<ul>
+					<li>
+				<a href="../authenticate-using-google-sign-in-on-android/index.html">Authenticate Using Google Sign-In on Android</a>
+						</li>
+					<li>
+				<a href="../implementing-android-app-shortcuts/index.html">Implementing Android App Shortcuts</a>
+						</li>
+					<li>
+				<a href="../implement-youtube-player-fragment-android-app/index.html">How to implement Youtube Player Fragment in Android App</a>
+						</li>
+					<li>
+				<a href="../how-to-show-youtube-video-thumbnail-play-youtube-video-in-android-app/index.html">How to show Youtube Video Thumbnail &#038; Play Youtube Video in Android App</a>
+						</li>
+					<li>
+				<a href="index.html">Android Confirm Credential (Security Lock)</a>
+						</li>
+				</ul>
+		</section>		<section id="recent-comments-2" class="widget_recent_comments"><h3>Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href='../index.html' rel='external nofollow' class='url'>Dr. Droid</a></span> on <a href="../android-expandablelistview/index.html#comment-478">Android ExpandableListView</a></li><li class="recentcomments"><span class="comment-author-link">Mrittunjay</span> on <a href="../android-expandablelistview/index.html#comment-477">Android ExpandableListView</a></li><li class="recentcomments"><span class="comment-author-link">Lawrence</span> on <a href="../android-download-files-save/index.html#comment-476">Android Download Files &#038; Save</a></li><li class="recentcomments"><span class="comment-author-link"><a href='../index.html' rel='external nofollow' class='url'>Dr. Droid</a></span> on <a href="../login-signup-and-forgot-password-screen-design-android/index.html#comment-475">Login, SignUp and Forgot Password Screen Design Android</a></li><li class="recentcomments"><span class="comment-author-link">fawad azam</span> on <a href="../login-signup-and-forgot-password-screen-design-android/index.html#comment-474">Login, SignUp and Forgot Password Screen Design Android</a></li></ul></section><section id="archives-2" class="widget_archive"><h3>Archives</h3>		<ul>
+			<li><a href='../2017/12/index.html'>December 2017</a></li>
+	<li><a href='../2017/11/index.html'>November 2017</a></li>
+	<li><a href='../2017/10/index.html'>October 2017</a></li>
+	<li><a href='../2017/07/index.html'>July 2017</a></li>
+	<li><a href='../2017/06/index.html'>June 2017</a></li>
+	<li><a href='../2017/05/index.html'>May 2017</a></li>
+	<li><a href='../2017/04/index.html'>April 2017</a></li>
+	<li><a href='../2017/03/index.html'>March 2017</a></li>
+	<li><a href='../2017/02/index.html'>February 2017</a></li>
+	<li><a href='../2017/01/index.html'>January 2017</a></li>
+	<li><a href='../2016/08/index.html'>August 2016</a></li>
+	<li><a href='../2016/07/index.html'>July 2016</a></li>
+	<li><a href='../2016/06/index.html'>June 2016</a></li>
+	<li><a href='../2016/04/index.html'>April 2016</a></li>
+	<li><a href='../2016/03/index.html'>March 2016</a></li>
+	<li><a href='../2015/12/index.html'>December 2015</a></li>
+	<li><a href='../2015/11/index.html'>November 2015</a></li>
+	<li><a href='../2015/10/index.html'>October 2015</a></li>
+	<li><a href='../2015/09/index.html'>September 2015</a></li>
+	<li><a href='../2015/08/index.html'>August 2015</a></li>
+	<li><a href='../2015/07/index.html'>July 2015</a></li>
+	<li><a href='../2015/06/index.html'>June 2015</a></li>
+	<li><a href='../2015/05/index.html'>May 2015</a></li>
+	<li><a href='../2015/04/index.html'>April 2015</a></li>
+		</ul>
+		</section><section id="categories-2" class="widget_categories"><h3>Categories</h3>		<ul>
+	<li class="cat-item cat-item-2"><a href="../category/android-actionbar/index.html" >Android Actionbar</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="../category/android-advanced/index.html" >Android Advanced</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="../category/android-animations/index.html" >Android Animations</a>
+</li>
+	<li class="cat-item cat-item-562"><a href="../category/android-app-shortcuts/index.html" >Android App Shortcuts</a>
+</li>
+	<li class="cat-item cat-item-541"><a href="../category/android-authentication/index.html" >Android Authentication</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="../category/android-autocomplete/index.html" >Android AutoComplete</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="../category/android-basics/index.html" >Android Basics</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="../category/android-bluetooth/index.html" >Android Bluetooth</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="../category/android-cardview/index.html" >Android CardView</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="../category/android-clocks/index.html" >Android Clocks</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="../category/android-contacts/index.html" >Android Contacts</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="../category/android-content-provider/index.html" >Android Content Provider</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="../category/android-custom-font/index.html" >Android Custom Font</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="../category/android-custom-view/index.html" >Android Custom View</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="../category/android-database/index.html" >Android Database</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="../category/android-dialogs/index.html" >Android Dialogs</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="../category/android-download-files/index.html" >Android Download Files</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="../category/android-drawer/index.html" >Android Drawer</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="../category/android-expandablelistview/index.html" >Android ExpandableListView</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="../category/android-file/index.html" >Android File</a>
+</li>
+	<li class="cat-item cat-item-489"><a href="../category/android-fingerprint/index.html" >Android FingerPrint</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="../category/android-fragment/index.html" >Android Fragment</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="../category/android-gestures/index.html" >Android Gestures</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="../category/android-gps/index.html" >Android GPS</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="../category/android-image-picker/index.html" >Android Image Picker</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="../category/android-internet-connection/index.html" >Android Internet Connection</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="../category/android-json/index.html" >Android JSON</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="../category/android-listview/index.html" >Android ListView</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="../category/android-material-design/index.html" >Android Material Design</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="../category/android-navigationdrawer/index.html" >Android NavigationDrawer</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="../category/android-notification-bar/index.html" >Android Notification Bar</a>
+</li>
+	<li class="cat-item cat-item-493"><a href="../category/android-palette/index.html" >Android Palette</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="../category/android-progressbar/index.html" >Android ProgressBar</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="../category/android-ratingbar/index.html" >Android RatingBar</a>
+</li>
+	<li class="cat-item cat-item-31"><a href="../category/android-recyclerview/index.html" >Android RecyclerView</a>
+</li>
+	<li class="cat-item cat-item-32"><a href="../category/android-seekbar/index.html" >Android SeekBar</a>
+</li>
+	<li class="cat-item cat-item-34"><a href="../category/android-spinner/index.html" >Android Spinner</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="../category/android-stackview/index.html" >Android StackView</a>
+</li>
+	<li class="cat-item cat-item-36"><a href="../category/android-swiperefresh-layout/index.html" >Android SwipeRefresh Layout</a>
+</li>
+	<li class="cat-item cat-item-37"><a href="../category/android-tabs/index.html" >Android Tabs</a>
+</li>
+	<li class="cat-item cat-item-38"><a href="../category/android-textswitcher/index.html" >Android TextSwitcher</a>
+</li>
+	<li class="cat-item cat-item-39"><a href="../category/android-toolbar/index.html" >Android ToolBar</a>
+</li>
+	<li class="cat-item cat-item-40"><a href="../category/android-ui-design/index.html" >Android UI Design</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="../category/android-viewanimator/index.html" >Android ViewAnimator</a>
+</li>
+	<li class="cat-item cat-item-42"><a href="../category/android-viewpager/index.html" >Android ViewPager</a>
+</li>
+	<li class="cat-item cat-item-43"><a href="../category/android-viewswitcher/index.html" >Android ViewSwitcher</a>
+</li>
+	<li class="cat-item cat-item-44"><a href="../category/android-wifi/index.html" >Android WIFI</a>
+</li>
+	<li class="cat-item cat-item-446"><a href="../category/google-maps/index.html" >Google Maps</a>
+</li>
+	<li class="cat-item cat-item-45"><a href="../category/http-requests/index.html" >Http Requests</a>
+</li>
+	<li class="cat-item cat-item-46"><a href="../category/intent/index.html" >Intent</a>
+</li>
+		</ul>
+</section></aside>	</div>
+</div>
+<aside class='wrapper lighter-grey'>
+	<div class='container'>
+		<div class='grid_9'>
+			<div class='posts-container'>
+				<div class='post-single-pagination'>
+					<a href="../sectioned-recyclerview-android/index.html" rel="prev">previous post</a><a href="../how-to-show-youtube-video-thumbnail-play-youtube-video-in-android-app/index.html" rel="next">next post</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</aside>
+					<footer>
+			<div class='wrapper grey'>
+				<div class='container'>
+						<div class='grid_4'>
+			</div>
+	<div class='grid_4'>
+			</div>
+	<div class='grid_4'>
+			</div>
+				</div>
+			</div>
+			<div class='wrapper dark-grey copyright-bar'>
+				<div class='container'>
+					<div class='grid_12'>
+						<span class='copyright'>Copyright ® 2015 - 2017 Androhub.com | All rights reserved.</span><span class="copyright" style="float: right;">Powered by <a href="http://pacdevelopers.com/" target="_blank">PAC Developers</a></span>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<a id="back_to_top" href="#"></a>
+					<div style="display:none">
+	<div class="grofile-hash-map-ebab67fae339761312d475ef8e13e63d">
+	</div>
+	<div class="grofile-hash-map-ebab67fae339761312d475ef8e13e63d">
+	</div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"http:\/\/www.androhub.com\/android-confirm-credential-security-lock\/":1314};
+	</script>
+	<div id="sharing_email" style="display: none;">
+		<form action="http://www.androhub.com/android-confirm-credential-security-lock/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="" />
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="" />
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="" />
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" />
+			<script>jQuery( document ).ready( function(){ document.getElementById('jetpack-source_f_name').value = '' });</script>
+			
+			<img style="float: right; display: none" class="loading" src="../wp-content/plugins/jetpack/modules/sharedaddy/images/loading.gif" alt="loading" width="16" height="16" />
+			<input type="submit" value="Send Email" class="sharing_send" />
+			<a rel="nofollow" href="#cancel" class="sharing_cancel">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+		<link rel='stylesheet' id='wp-subscribe-css'  href='../wp-content/plugins/wp-subscribe/assets/css/wp-subscribe-forme91a.css?ver=4.5.12' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-content/plugins/jetpack/modules/photon/photonb3d9.js?ver=20130122'></script>
+<script type='text/javascript' src='../../s0.wp.com/wp-content/js/devicepx-jetpack35eb.js?ver=201801'></script>
+<script type='text/javascript' src='../../s.gravatar.com/js/gprofiles6abb.js?ver=2018Janaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/jetpack/modules/wpgrohoe91a.js?ver=4.5.12'></script>
+<script type='text/javascript' src='../wp-content/themes/circles/js/main.js'></script>
+<script type='text/javascript' src='../wp-content/themes/circles/js/jquery.nicescroll.min.js'></script>
+<script type='text/javascript' src='../../heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.1.html'></script>
+<script type='text/javascript' src='../wp-content/themes/circles/js/jquery.prettyPhoto.js'></script>
+<script type='text/javascript' src='../wp-content/themes/circles/js/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='../wp-content/themes/circles/js/zozo.tabs.min.js'></script>
+<script type='text/javascript' src='../wp-content/themes/circles/js/jquery.isotope.min.js'></script>
+<script type='text/javascript' src='../wp-content/themes/circles/js/jquery.iosslider.min.js'></script>
+<script type='text/javascript' src='../wp-includes/js/comment-reply.mine91a.js?ver=4.5.12'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var jpfbembed = {"appid":"249643311490","locale":"en_US"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/jetpack/_inc/facebook-embed.js'></script>
+<script type='text/javascript' src='../wp-content/plugins/youtube-embed-plus/scripts/fitvids.mine91a.js?ver=4.5.12'></script>
+<script type='text/javascript' src='../wp-includes/js/wp-embed.mine91a.js?ver=4.5.12'></script>
+<script async="async" type='text/javascript' src='../wp-content/plugins/akismet/_inc/form05da.js?ver=4.0.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wp_subscribe = {"ajaxurl":"http:\/\/www.androhub.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/wp-subscribe/assets/js/wp-subscribe-forme91a.js?ver=4.5.12'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/jetpack/modules/sharedaddy/sharingc1f9.js?ver=4.4.2'></script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-google-plus-1', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-linkedin', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-tumblr', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtumblr', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-pocket', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcompocket', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-telegram', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtelegram', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-skype', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomskype', 'menubar=1,resizable=1,width=305,height=665' );
+				return false;
+			});
+</script>
+<script type='text/javascript' src='../../stats.wp.com/e-201801.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.4.2',blog:'113004364',post:'1314',tz:'0',srv:'www.androhub.com'} ]);
+	_stq.push([ 'clickTrackerInit', '113004364', '1314' ]);
+</script>
+		<script type="text/javascript">
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-63664503-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
+			<div class="media_for_js"></div>
+	</body>
+
+<!-- Mirrored from www.androhub.com/android-confirm-credential-security-lock/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Jan 2018 05:54:44 GMT -->
+</html>
